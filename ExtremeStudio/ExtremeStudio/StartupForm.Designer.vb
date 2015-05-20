@@ -24,7 +24,6 @@ Partial Class StartupForm
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.FolderBrowserDialog1 = New ExtremeStudio.FolderBrowserDialog()
         Me.locTextBox = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -33,6 +32,7 @@ Partial Class StartupForm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.FolderBrowserDialog1 = New ExtremeStudio.FolderBrowserDialog()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.SuspendLayout()
@@ -64,14 +64,6 @@ Partial Class StartupForm
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Create new project"
         Me.TabPage1.UseVisualStyleBackColor = True
-        '
-        'FolderBrowserDialog1
-        '
-        Me.FolderBrowserDialog1.Location = New System.Drawing.Point(698, 124)
-        Me.FolderBrowserDialog1.Name = "FolderBrowserDialog1"
-        Me.FolderBrowserDialog1.Size = New System.Drawing.Size(63, 21)
-        Me.FolderBrowserDialog1.TabIndex = 8
-        Me.FolderBrowserDialog1.TextControl = Me.locTextBox
         '
         'locTextBox
         '
@@ -141,14 +133,24 @@ Partial Class StartupForm
         Me.TabPage2.Text = "Load project"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
+        'FolderBrowserDialog1
+        '
+        Me.FolderBrowserDialog1.Location = New System.Drawing.Point(698, 124)
+        Me.FolderBrowserDialog1.Name = "FolderBrowserDialog1"
+        Me.FolderBrowserDialog1.Size = New System.Drawing.Size(63, 21)
+        Me.FolderBrowserDialog1.TabIndex = 8
+        Me.FolderBrowserDialog1.TextControl = Me.locTextBox
+        '
         'StartupForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(799, 237)
         Me.Controls.Add(Me.TabControl1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
         Me.Name = "StartupForm"
-        Me.Text = "ExtremeStudio"
+        Me.Text = "Load / Create Project"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()

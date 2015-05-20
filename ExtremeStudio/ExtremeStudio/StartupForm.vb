@@ -3,8 +3,10 @@ Imports System.Xml
 Imports System.IO
 Imports System.IO.Compression
 
-
 Public Class StartupForm
+
+    'Global variables that are used through the whole program: 
+    Dim currentProject As New currentProjectClass
 
     Private Sub StartupForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Create needed folders and files.
@@ -58,16 +60,16 @@ Public Class StartupForm
             If Not verListBox.SelectedIndex = -1 Then
                 If My.Computer.FileSystem.FileExists(Application.StartupPath + "/serverPackages/" + verListBox.SelectedItem + ".zip") Then 'check if that version is existing
                     ZipFile.ExtractToDirectory(Application.StartupPath + "/serverPackages/" + verListBox.SelectedItem + ".zip", locTextBox.Text) 'Extract the zip to project folder.
-
                 Else 'Download from net if not exist.
                     Dim client As New WebClient 'For downloading the selected file.
                     client.DownloadFile(verListBox.Tag(verListBox.SelectedIndex), My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip") 'Download the zip file.
                     ZipFile.ExtractToDirectory(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip", locTextBox.Text) 'Extract the zip.
                     My.Computer.FileSystem.CopyFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip", Application.StartupPath + "/serverPackages/" + verListBox.SelectedItem + ".zip") 'Copy the file to be used instead of downloading
                     My.Computer.FileSystem.DeleteFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip") 'Delete the file from temp.
-
                 End If
-
+                currentProject.projectName = nameTextBox.Text
+                currentProject.projectPath = locTextBox.Text
+                currentProject.CreateDefaultConfig() 'Write the default extremeStudio config.
             Else
                 MsgBox("You haven't selected a SAMP version to use.")
             End If

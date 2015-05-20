@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes and Modules\generalModule.vb" />
+    <Compile Include="Classes and Modules\currentProjectClass.vb" />
     <Compile Include="UserControls\FolderBrowserDialog.Designer.vb">
       <DependentUpon>FolderBrowserDialog.vb</DependentUpon>
     </Compile>
