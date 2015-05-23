@@ -32,7 +32,7 @@ Partial Class StartupForm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.FolderBrowserDialog1 = New ExtremeStudio.FolderBrowserDialog()
+        Me.FolderBrowserDialog1 = New ExtremeCore.FolderBrowserButton()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.SuspendLayout()
@@ -167,5 +167,5 @@ Partial Class StartupForm
     Friend WithEvents locTextBox As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents FolderBrowserDialog1 As ExtremeStudio.FolderBrowserDialog
+    Friend WithEvents FolderBrowserDialog1 As ExtremeCore.FolderBrowserButton
 End Class

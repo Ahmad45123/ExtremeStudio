@@ -17,7 +17,7 @@ Public Class StartupForm
         'Load samp versions into list.
         Dim str As New List(Of String)
         verListBox.Tag = str
-        If isNetAvailable() Then 'Download latest from internet if there is internet.
+        If ExtremeCore.isNetAvailable() Then 'Download latest from internet if there is internet.
             Dim webClient As New WebClient
             Dim xmlFile As New XmlDocument()
             Dim fileText As String = webClient.DownloadString("http://5.231.50.158/ExtremeStudio/serverPackages.xml")
@@ -39,7 +39,7 @@ Public Class StartupForm
     Private Sub nameTextBox_TextChanged(sender As Object, e As EventArgs) Handles nameTextBox.TextChanged
         If nameTextBox.Text = "" Then Exit Sub
 
-        If FilenameIsOK(nameTextBox.Text) Then
+        If ExtremeCore.FilenameIsOK(nameTextBox.Text) Then
         Else
             Beep()
 

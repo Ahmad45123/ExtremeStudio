@@ -1,6 +1,7 @@
 ﻿Imports System.ComponentModel
+Imports System.Windows.Forms
 
-Public Class FolderBrowserDialog
+Public Class FolderBrowserButton
 
     <Description("Enter the name of the control to be used to enter the data. [.Text will be used]"), Category("Common Properties")>
     Public Property TextControl As Control

@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Net
 
-Module generalModule
+Public Module generalFunctions
     Function FilenameIsOK(ByVal fileName As String, _
                                         Optional ByVal allowPathDefinition As Boolean = False, _
                                         Optional ByRef firstCharIndex As Integer = Nothing) As Boolean
