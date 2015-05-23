@@ -77,6 +77,12 @@
   <ItemGroup>
     <Compile Include="Classes and Modules\generalModule.vb" />
     <Compile Include="Classes and Modules\currentProjectClass.vb" />
+    <Compile Include="MainForm.Designer.vb">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UserControls\FolderBrowserDialog.Designer.vb">
       <DependentUpon>FolderBrowserDialog.vb</DependentUpon>
     </Compile>
@@ -106,6 +112,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FolderBrowserDialog.resx">
       <DependentUpon>FolderBrowserDialog.vb</DependentUpon>
     </EmbeddedResource>

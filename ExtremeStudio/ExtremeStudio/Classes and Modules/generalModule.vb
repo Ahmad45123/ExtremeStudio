@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Net
 
 Module generalModule
     Function FilenameIsOK(ByVal fileName As String, _
@@ -35,6 +36,15 @@ Module generalModule
                         OrElse _
                         directory.Intersect(Path.GetInvalidPathChars()).Any())
         End If
+    End Function
 
+    Public Function isNetAvailable() As Boolean 'Custom function due to a bug in my.computer.network.isavailable.
+        Dim webClient As New WebClient
+        Try
+            Dim fileText As String = webClient.DownloadString("http://5.231.50.158/ExtremeStudio/serverPackages.xml")
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
     End Function
 End Module
