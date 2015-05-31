@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes and Modules\currentProjectClass.vb" />
+    <Compile Include="Classes and Modules\funcsHandler.vb" />
     <Compile Include="MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
@@ -107,6 +108,7 @@
     <Compile Include="StartupForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="test.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainForm.resx">
