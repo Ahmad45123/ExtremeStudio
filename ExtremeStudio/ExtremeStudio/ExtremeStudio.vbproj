@@ -81,6 +81,12 @@
   <ItemGroup>
     <Compile Include="Classes and Modules\currentProjectClass.vb" />
     <Compile Include="Classes and Modules\funcsHandler.vb" />
+    <Compile Include="DockPanel Forms\MainForm Docks\EditorDock.Designer.vb">
+      <DependentUpon>EditorDock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockPanel Forms\MainForm Docks\EditorDock.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
@@ -111,6 +117,9 @@
     <Compile Include="test.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\EditorDock.resx">
+      <DependentUpon>EditorDock.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +152,7 @@
       <Name>ExtremeCore</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
