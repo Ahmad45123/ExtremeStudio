@@ -46,6 +46,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ExtremeParser">
+      <HintPath>..\..\..\ExtremeParser\ExtremeParser\bin\Debug\ExtremeParser.dll</HintPath>
+    </Reference>
     <Reference Include="ScintillaNET, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\jacobslusser.ScintillaNET.3.3.0\lib\net40\ScintillaNET.dll</HintPath>
       <Private>True</Private>

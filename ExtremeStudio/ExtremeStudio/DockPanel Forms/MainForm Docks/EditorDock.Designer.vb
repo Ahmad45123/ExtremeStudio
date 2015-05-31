@@ -22,28 +22,41 @@ Partial Class EditorDock
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Scintilla1 = New ScintillaNET.Scintilla()
+        Me.components = New System.ComponentModel.Container()
+        Me.Editor = New ScintillaNET.Scintilla()
+        Me.RefreshTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.RefreshWorker = New System.ComponentModel.BackgroundWorker()
         Me.SuspendLayout()
         '
-        'Scintilla1
+        'Editor
         '
-        Me.Scintilla1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Scintilla1.Location = New System.Drawing.Point(0, 0)
-        Me.Scintilla1.Name = "Scintilla1"
-        Me.Scintilla1.Size = New System.Drawing.Size(566, 417)
-        Me.Scintilla1.TabIndex = 0
-        Me.Scintilla1.Text = "Scintilla1"
+        Me.Editor.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Editor.Location = New System.Drawing.Point(0, 0)
+        Me.Editor.Name = "Editor"
+        Me.Editor.Size = New System.Drawing.Size(566, 417)
+        Me.Editor.TabIndex = 0
+        Me.Editor.Text = "Scintilla1"
+        '
+        'RefreshTimer
+        '
+        Me.RefreshTimer.Enabled = True
+        Me.RefreshTimer.Interval = 1000
+        '
+        'RefreshWorker
+        '
         '
         'EditorDock
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(566, 417)
-        Me.Controls.Add(Me.Scintilla1)
+        Me.Controls.Add(Me.Editor)
         Me.Font = New System.Drawing.Font("Tahoma", 8.0!)
         Me.Name = "EditorDock"
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents Scintilla1 As ScintillaNET.Scintilla
+    Friend WithEvents Editor As ScintillaNET.Scintilla
+    Friend WithEvents RefreshTimer As System.Windows.Forms.Timer
+    Friend WithEvents RefreshWorker As System.ComponentModel.BackgroundWorker
 End Class
