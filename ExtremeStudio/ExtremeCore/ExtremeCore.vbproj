@@ -77,12 +77,6 @@
     <Compile Include="Controls\FolderBrowserButton.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\LabelButton.Designer.vb">
-      <DependentUpon>LabelButton.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\LabelButton.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Controls\OpenFileButton.Designer.vb">
       <DependentUpon>OpenFileButton.vb</DependentUpon>
     </Compile>
@@ -109,9 +103,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Controls\FolderBrowserButton.resx">
       <DependentUpon>FolderBrowserButton.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\LabelButton.resx">
-      <DependentUpon>LabelButton.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\OpenFileButton.resx">
       <DependentUpon>OpenFileButton.vb</DependentUpon>

@@ -51,6 +51,7 @@ Partial Class EditorDock
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(566, 417)
         Me.Controls.Add(Me.Editor)
+        Me.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document
         Me.Font = New System.Drawing.Font("Tahoma", 8.0!)
         Me.Name = "EditorDock"
         Me.ResumeLayout(False)

@@ -7,6 +7,7 @@ Public Class EditorDock
 
     Private Sub EditorDock_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+
         'Set-Up the syntax highlighting.
         Editor.StyleResetDefault()
         Editor.Styles(Style.[Default]).Font = "Consolas"
@@ -38,6 +39,11 @@ Public Class EditorDock
     End Sub
 
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork
-        codeParts = New Parser(Editor.Text)
+        If Me.Then Then
+
+        End If
+        Editor.Invoke(DirectCast(Sub()
+                                     codeParts = New Parser(Editor.Text)
+                                 End Sub, MethodInvoker))
     End Sub
 End Class

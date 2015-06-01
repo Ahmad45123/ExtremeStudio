@@ -5,9 +5,6 @@ Imports System.IO.Compression
 
 Public Class StartupForm
 
-    'Global variables that are used through the whole program: 
-    Dim currentProject As New currentProjectClass
-
     Private Sub StartupForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Create needed folders and files.
         If Not My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "/cache") Then
@@ -69,9 +66,12 @@ Public Class StartupForm
                     My.Computer.FileSystem.CopyFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip", Application.StartupPath + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip") 'Copy the file to be used instead of downloading
                     My.Computer.FileSystem.DeleteFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip") 'Delete the file from temp.
                 End If
-                currentProject.projectName = nameTextBox.Text
-                currentProject.projectPath = locTextBox.Text
-                currentProject.CreateDefaultConfig() 'Write the default extremeStudio config.
+                My.Computer.FileSystem.WriteAllText(locTextBox.Text + "/gamemodes/" + nameTextBox.Text + ".pwn", "", False)
+                MainForm.currentProject.projectName = nameTextBox.Text
+                MainForm.currentProject.projectPath = locTextBox.Text
+                MainForm.currentProject.CreateDefaultConfig() 'Write the default extremeStudio config.
+                MainForm.ShowDialog()
+                'Me.Hide()
             Else
                 MsgBox("You haven't selected a SAMP version to use.")
             End If
