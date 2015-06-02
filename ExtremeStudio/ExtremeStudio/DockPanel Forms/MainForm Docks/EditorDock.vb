@@ -39,11 +39,10 @@ Public Class EditorDock
     End Sub
 
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork
-        If Me.Then Then
-
+        If Editor.IsHandleCreated Then
+            Editor.Invoke(DirectCast(Sub()
+                                         codeParts = New Parser(Editor.Text)
+                                     End Sub, MethodInvoker))
         End If
-        Editor.Invoke(DirectCast(Sub()
-                                     codeParts = New Parser(Editor.Text)
-                                 End Sub, MethodInvoker))
     End Sub
 End Class
