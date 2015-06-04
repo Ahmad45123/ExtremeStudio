@@ -84,10 +84,17 @@
   <ItemGroup>
     <Compile Include="Classes and Modules\currentProjectClass.vb" />
     <Compile Include="Classes and Modules\funcsHandler.vb" />
+    <Compile Include="Classes and Modules\versionHandler.vb" />
     <Compile Include="DockPanel Forms\MainForm Docks\EditorDock.Designer.vb">
       <DependentUpon>EditorDock.vb</DependentUpon>
     </Compile>
     <Compile Include="DockPanel Forms\MainForm Docks\EditorDock.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Functions Forms\NewProjectFile.Designer.vb">
+      <DependentUpon>NewProjectFile.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Functions Forms\NewProjectFile.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.vb">
@@ -121,6 +128,9 @@
   <ItemGroup>
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\EditorDock.resx">
       <DependentUpon>EditorDock.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Functions Forms\NewProjectFile.resx">
+      <DependentUpon>NewProjectFile.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>

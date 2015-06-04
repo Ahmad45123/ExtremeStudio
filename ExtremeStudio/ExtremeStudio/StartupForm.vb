@@ -5,6 +5,8 @@ Imports System.IO.Compression
 
 Public Class StartupForm
 
+    Dim versionHandler As New versionHandler
+
     Private Sub StartupForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Create needed folders and files.
         If Not My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "/cache") Then
@@ -69,14 +71,51 @@ Public Class StartupForm
                 My.Computer.FileSystem.WriteAllText(locTextBox.Text + "/gamemodes/" + nameTextBox.Text + ".pwn", "", False)
                 MainForm.currentProject.projectName = nameTextBox.Text
                 MainForm.currentProject.projectPath = locTextBox.Text
-                MainForm.currentProject.CreateDefaultConfig() 'Write the default extremeStudio config.
-                MainForm.ShowDialog()
-                'Me.Hide()
+                MainForm.currentProject.projectVersion = versionHandler.currentVersion
+                MainForm.currentProject.SaveInfo() 'Write the default extremeStudio config.
+                MainForm.Show()
+                Me.Hide()
             Else
                 MsgBox("You haven't selected a SAMP version to use.")
             End If
         Else
             MsgBox("That directory doesn't exist or contains a project.")
         End If
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles pathTextBox.TextChanged
+        loadProjectBtn.Enabled = False
+        projectName.Text = "None"
+        projectVersion.Text = "None"
+
+        If ExtremeCore.isValidExtremeProject(pathTextBox.Text) Then
+            MainForm.currentProject.projectPath = pathTextBox.Text
+            MainForm.currentProject.ReadInfo()
+            If My.Computer.FileSystem.FileExists(pathTextBox.Text + "/gamemodes/" + MainForm.currentProject.projectName + ".pwn") Then
+                projectName.Text = MainForm.currentProject.projectName
+
+                Dim projVersion As Integer = MainForm.currentProject.projectVersion
+                Dim progVersion As Integer = versionHandler.currentVersion
+
+                If projVersion = progVersion Then
+                    projectVersion.Text = "Project version is the same as ExtremeStudio's version, No conversation is needed."
+                    loadProjectBtn.Enabled = True
+                ElseIf projVersion < progVersion Then
+                    projectVersion.Text = "Project older then ExtremeStudio, Conversion will be done and won't be able to work on older versions again."
+                    loadProjectBtn.Enabled = True
+                ElseIf projVersion > progVersion Then
+                    projectVersion.Text = "Project version is newer then ExtremeStudio's version, Please download latest ExtremeStudio package."
+                End If
+            Else
+                MsgBox("The main .pwn file is either renamed or deleted, Please manually create it or rename it back.")
+            End If
+        Else
+            MsgBox("ERROR: That folder isn't a valid ExtremeStudio project." + vbCrLf + "Make sure you haven't deleted or modified any file manually.")
+        End If
+    End Sub
+
+    Private Sub loadProjectBtn_Click(sender As Object, e As EventArgs) Handles loadProjectBtn.Click
+        MainForm.Show()
+        Me.Hide()
     End Sub
 End Class

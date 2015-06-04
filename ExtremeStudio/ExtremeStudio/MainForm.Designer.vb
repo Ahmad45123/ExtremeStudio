@@ -37,12 +37,13 @@ Partial Class MainForm
         Dim DockPanelGradient3 As WeifenLuo.WinFormsUI.Docking.DockPanelGradient = New WeifenLuo.WinFormsUI.Docking.DockPanelGradient()
         Dim TabGradient6 As WeifenLuo.WinFormsUI.Docking.TabGradient = New WeifenLuo.WinFormsUI.Docking.TabGradient()
         Dim TabGradient7 As WeifenLuo.WinFormsUI.Docking.TabGradient = New WeifenLuo.WinFormsUI.Docking.TabGradient()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
         Me.MainDock = New WeifenLuo.WinFormsUI.Docking.DockPanel()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripSplitButton1 = New System.Windows.Forms.ToolStripSplitButton()
-        Me.GamemodePartToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.IncludeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FilterscriptToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -106,40 +107,44 @@ Partial Class MainForm
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSplitButton1})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton3, Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripSeparator1})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(938, 25)
         Me.ToolStrip1.TabIndex = 6
         Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'ToolStripSplitButton1
+        'ToolStripButton3
         '
-        Me.ToolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripSplitButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GamemodePartToolStripMenuItem, Me.IncludeToolStripMenuItem, Me.FilterscriptToolStripMenuItem})
-        Me.ToolStripSplitButton1.Image = Global.ExtremeStudio.My.Resources.Resources.new_file_toolstrip
-        Me.ToolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripSplitButton1.Name = "ToolStripSplitButton1"
-        Me.ToolStripSplitButton1.Size = New System.Drawing.Size(32, 22)
-        Me.ToolStripSplitButton1.Text = "ToolStripSplitButton1"
+        Me.ToolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton3.Image = Global.ExtremeStudio.My.Resources.Resources.new_file_toolstrip
+        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton3.Name = "ToolStripButton3"
+        Me.ToolStripButton3.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton3.Text = "New File"
         '
-        'GamemodePartToolStripMenuItem
+        'ToolStripButton1
         '
-        Me.GamemodePartToolStripMenuItem.Name = "GamemodePartToolStripMenuItem"
-        Me.GamemodePartToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
-        Me.GamemodePartToolStripMenuItem.Text = "Gamemode Part"
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton1.Text = "Save"
         '
-        'IncludeToolStripMenuItem
+        'ToolStripButton2
         '
-        Me.IncludeToolStripMenuItem.Name = "IncludeToolStripMenuItem"
-        Me.IncludeToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
-        Me.IncludeToolStripMenuItem.Text = "Include"
+        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
+        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton2.Name = "ToolStripButton2"
+        Me.ToolStripButton2.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton2.Text = "Save All"
         '
-        'FilterscriptToolStripMenuItem
+        'ToolStripSeparator1
         '
-        Me.FilterscriptToolStripMenuItem.Name = "FilterscriptToolStripMenuItem"
-        Me.FilterscriptToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
-        Me.FilterscriptToolStripMenuItem.Text = "Filterscript"
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
         '
         'ToolStrip2
         '
@@ -169,8 +174,8 @@ Partial Class MainForm
     Friend WithEvents MainDock As WeifenLuo.WinFormsUI.Docking.DockPanel
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
     Friend WithEvents ToolStrip2 As System.Windows.Forms.ToolStrip
-    Friend WithEvents ToolStripSplitButton1 As System.Windows.Forms.ToolStripSplitButton
-    Friend WithEvents GamemodePartToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents IncludeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents FilterscriptToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripButton3 As System.Windows.Forms.ToolStripButton
 End Class

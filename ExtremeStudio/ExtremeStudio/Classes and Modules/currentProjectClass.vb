@@ -2,19 +2,31 @@
 
 Public Class currentProjectClass
     Public Property projectName As String
+    Public Property projectVersion As Integer
     Public Property projectPath As String
 
-    Public Sub CreateDefaultConfig()
-        ' Create XmlWriterSettings.
+    'Will only work if the projectPath is set to valid ExtremeStudio project.
+    Public Sub ReadInfo()
+        Dim m_xmld As XmlDocument
+        Dim m_nodelist As XmlNodeList
+        Dim m_node As XmlNode
+        m_xmld = New XmlDocument()
+        m_xmld.Load(projectPath + "/extremeStudio.config")
+        m_nodelist = m_xmld.SelectNodes("ProjectMainConfig")
+        For Each m_node In m_nodelist
+            projectName = m_node.ChildNodes.Item(0).InnerText 'ProjectName
+            projectVersion = m_node.ChildNodes.Item(1).InnerText 'ProjectVersion
+        Next
+    End Sub
+    Public Sub SaveInfo() 'Will only work if the projectPath is set to valid ExtremeStudio project.
         Dim settings As XmlWriterSettings = New XmlWriterSettings()
         settings.Indent = True
 
-        ' Create XmlWriter.
         Using writer As XmlWriter = XmlWriter.Create(projectPath + "/extremeStudio.config", settings)
-            ' Begin writing.
             writer.WriteStartDocument()
             writer.WriteStartElement("ProjectMainConfig")
             writer.WriteElementString("ProjectName", projectName)
+            writer.WriteElementString("ProjectVersion", projectVersion.ToString)
             writer.WriteEndElement()
             writer.WriteEndDocument()
         End Using
