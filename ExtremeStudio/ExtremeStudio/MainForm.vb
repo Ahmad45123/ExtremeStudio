@@ -33,4 +33,15 @@ Public Class MainForm
 
         StartupForm.Show()
     End Sub
+
+    Private Sub ProjectExplorerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProjectExplorerToolStripMenuItem.Click
+        If ProjExplorerDock.Visible = False Then
+            ProjExplorerDock.Visible = True
+            ProjExplorerDock.Show(MainDock)
+            ProjExplorerDock.RefreshList()
+        Else
+            ProjExplorerDock.Close()
+            ProjExplorerDock.Visible = False
+        End If
+    End Sub
 End Class
