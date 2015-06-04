@@ -28,10 +28,10 @@ Partial Class NewProjectFile
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.RadioButton3 = New System.Windows.Forms.RadioButton()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.fileNameText = New System.Windows.Forms.TextBox()
         Me.extensionLabel = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.includeCheck = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'Label1
@@ -92,12 +92,12 @@ Partial Class NewProjectFile
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "File Name: "
         '
-        'TextBox1
+        'fileNameText
         '
-        Me.TextBox1.Location = New System.Drawing.Point(260, 64)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(215, 20)
-        Me.TextBox1.TabIndex = 6
+        Me.fileNameText.Location = New System.Drawing.Point(260, 64)
+        Me.fileNameText.Name = "fileNameText"
+        Me.fileNameText.Size = New System.Drawing.Size(215, 20)
+        Me.fileNameText.TabIndex = 6
         '
         'extensionLabel
         '
@@ -117,25 +117,25 @@ Partial Class NewProjectFile
         Me.Button1.Text = "Create the File"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'CheckBox1
+        'includeCheck
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(197, 101)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(342, 17)
-        Me.CheckBox1.TabIndex = 9
-        Me.CheckBox1.Text = "Paste an #include. (Only works for includes and gamemode parts)"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.includeCheck.AutoSize = True
+        Me.includeCheck.Location = New System.Drawing.Point(197, 101)
+        Me.includeCheck.Name = "includeCheck"
+        Me.includeCheck.Size = New System.Drawing.Size(342, 17)
+        Me.includeCheck.TabIndex = 9
+        Me.includeCheck.Text = "Paste an #include. (Only works for includes and gamemode parts)"
+        Me.includeCheck.UseVisualStyleBackColor = True
         '
         'NewProjectFile
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(580, 304)
-        Me.Controls.Add(Me.CheckBox1)
+        Me.Controls.Add(Me.includeCheck)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.extensionLabel)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.fileNameText)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.RadioButton3)
         Me.Controls.Add(Me.RadioButton2)
@@ -157,8 +157,8 @@ Partial Class NewProjectFile
     Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
     Friend WithEvents RadioButton3 As System.Windows.Forms.RadioButton
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents fileNameText As System.Windows.Forms.TextBox
     Friend WithEvents extensionLabel As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
+    Friend WithEvents includeCheck As System.Windows.Forms.CheckBox
 End Class
