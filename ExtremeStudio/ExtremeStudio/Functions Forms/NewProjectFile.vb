@@ -12,6 +12,7 @@ Public Class NewProjectFile
             Next
 
             extensionLabel.Text = ".pwn"
+            FolderList.SelectedIndex = 0
         End If
     End Sub
 
@@ -25,6 +26,7 @@ Public Class NewProjectFile
             Next
 
             extensionLabel.Text = ".inc"
+            FolderList.SelectedIndex = 0
         End If
     End Sub
 
@@ -38,6 +40,7 @@ Public Class NewProjectFile
             Next
 
             extensionLabel.Text = ".pwn"
+            FolderList.SelectedIndex = 0
         End If
     End Sub
 
@@ -56,8 +59,8 @@ Public Class NewProjectFile
             targetPath += "filterscripts/" + fileNameText.Text + ".pwn"
         End If
         My.Computer.FileSystem.CopyFile(Application.StartupPath + "/newfileTemplate.pwn", targetPath)
+        MainForm.CreateTab(targetPath)
 
-        'TODO: Add code to create the tab.
         'TODO: Add code to refresh to the mainform.
         Me.Close()
     End Sub
