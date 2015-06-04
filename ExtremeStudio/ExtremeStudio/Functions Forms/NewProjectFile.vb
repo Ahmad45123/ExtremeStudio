@@ -42,6 +42,23 @@ Public Class NewProjectFile
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If FolderList.SelectedIndex = -1 Then
+            MsgBox("Please select a valid target.")
+            Exit Sub
+        End If
 
+        Dim targetPath As String = MainForm.currentProject.projectPath + "/"
+        If RadioButton1.Checked Then
+            targetPath += "gamemodes/" + fileNameText.Text + ".pwn"
+        ElseIf RadioButton2.Checked Then
+            targetPath += "pawno/include/" + fileNameText.Text + ".inc"
+        ElseIf RadioButton3.Checked Then
+            targetPath += "filterscripts/" + fileNameText.Text + ".pwn"
+        End If
+        My.Computer.FileSystem.CopyFile(Application.StartupPath + "/newfileTemplate.pwn", targetPath)
+
+        'TODO: Add code to create the tab.
+        'TODO: Add code to refresh to the mainform.
+        Me.Close()
     End Sub
 End Class
