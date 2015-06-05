@@ -176,6 +176,15 @@
   <ItemGroup>
     <None Include="Resources\new_file_toolstrip.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_projexplorer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dirs_projexplorer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\correct_projexplorer.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

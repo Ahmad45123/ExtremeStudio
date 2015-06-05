@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Net
+Imports System.Windows.Forms
 
 Public Module generalFunctions
     Function FilenameIsOK(ByVal fileName As String, _
@@ -60,6 +61,34 @@ Public Module generalFunctions
             Next
         Next
         Return path
+    End Function
+
+    Dim getAllFiles_treeNode As TreeNode
+    Public Function getAllFilesInFolders(ByVal dir As String, Optional ByVal parentNode As TreeNode = Nothing) As TreeNode
+        If parentNode Is Nothing Then
+            getAllFiles_treeNode = New TreeNode
+        End If
+
+        Dim dirs() As String = Directory.GetDirectories(dir)
+
+        For Each Str As String In dirs
+            Dim currentDir As TreeNode
+            If parentNode Is Nothing Then
+                currentDir = getAllFiles_treeNode.Nodes.Add(Str.Remove(0, Str.LastIndexOf("\") + 1))
+            Else
+                currentDir = getAllFiles_treeNode.Nodes(getAllFiles_treeNode.Nodes.IndexOf(parentNode)).Nodes.Add(Str.Remove(0, Str.LastIndexOf("\") + 1))
+            End If
+
+            For Each stra As String In Directory.GetFiles(Str)
+                Dim node = currentDir.Nodes.Add(Path.GetFileName(stra))
+                node.ImageIndex = 1
+            Next
+
+            For Each Strb As String In Directory.GetDirectories(Str)
+                getAllFilesInFolders(Strb, currentDir)
+            Next
+        Next
+        Return getAllFiles_treeNode
     End Function
 
     Public Function isValidExtremeProject(path As String)

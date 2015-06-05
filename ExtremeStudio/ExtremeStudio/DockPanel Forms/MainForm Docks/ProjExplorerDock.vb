@@ -12,36 +12,25 @@ Public Class ProjExplorerDock
         For Each stra As String In Directory.GetFiles(MainForm.currentProject.projectPath + "\gamemodes")
             If Not stra.EndsWith("pwn") Then Continue For
             stra = stra.Replace(MainForm.currentProject.projectPath + "\gamemodes\", "")
-            treeView.Nodes(0).Nodes.Add(stra)
+            Dim node = treeView.Nodes(0).Nodes.Add(stra)
+            node.ImageIndex = 1
         Next
         For Each stra As String In Directory.GetFiles(MainForm.currentProject.projectPath + "\filterscripts")
             If Not stra.EndsWith("pwn") Then Continue For
             stra = stra.Replace(MainForm.currentProject.projectPath + "\filterscripts\", "")
-            treeView.Nodes(1).Nodes.Add(stra)
+            Dim node = treeView.Nodes(1).Nodes.Add(stra)
+            node.ImageIndex = 1
         Next
 
         'Sub dirs
-        Dim gameModesFolder As String() = ExtremeCore.getAllFolders(MainForm.currentProject.projectPath + "\gamemodes")
-        Dim filterScriptsFolder As String() = ExtremeCore.getAllFolders(MainForm.currentProject.projectPath + "\filterscripts")
+        Dim gameModesFolder As TreeNode = ExtremeCore.getAllFilesInFolders(MainForm.currentProject.projectPath + "\gamemodes")
+        Dim filterScriptsFolder As TreeNode = ExtremeCore.getAllFilesInFolders(MainForm.currentProject.projectPath + "\filterscripts")
 
-        For Each Str As String In gameModesFolder
-            Dim rootFolder As TreeNode = treeView.Nodes(0).Nodes.Add(Path.GetDirectoryName(Str))
-            Dim files() As String = Directory.GetFiles(Str)
-            For Each stra As String In files
-                If Not stra.EndsWith("pwn") Then Continue For
-                stra = stra.Replace(Path.GetDirectoryName(stra) + "\", "")
-                rootFolder.Nodes.Add(stra)
-            Next
+        For Each nde As TreeNode In gameModesFolder.Nodes
+            treeView.Nodes(0).Nodes.Add(nde)
         Next
-
-        For Each Str As String In filterScriptsFolder
-            Dim rootFolder As TreeNode = treeView.Nodes(1).Nodes.Add(Path.GetDirectoryName(Str))
-            Dim files() As String = Directory.GetFiles(Str)
-            For Each stra As String In files
-                If Not stra.EndsWith("pwn") Then Continue For
-                stra = stra.Replace(Path.GetDirectoryName(stra) + "\", "")
-                rootFolder.Nodes.Add(stra)
-            Next
+        For Each nde As TreeNode In filterScriptsFolder.Nodes
+            treeView.Nodes(1).Nodes.Add(nde)
         Next
     End Sub
     Public Sub RefreshIncludes()
@@ -53,5 +42,11 @@ Public Class ProjExplorerDock
 
     Private Sub ProjExplorerDock_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+    End Sub
+
+    Private Sub treeView_BeforeLabelEdit(sender As Object, e As NodeLabelEditEventArgs) Handles treeView.BeforeLabelEdit
+        If e.Node.Text = "Gamemode Parts" Or e.Node.Text = "Filterscripts" Or e.Node.Text = "Includes" Then
+            e.CancelEdit = True
+        End If
     End Sub
 End Class

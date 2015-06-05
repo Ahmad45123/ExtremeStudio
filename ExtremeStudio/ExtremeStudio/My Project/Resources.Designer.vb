@@ -63,6 +63,36 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property correct_projexplorer() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("correct_projexplorer", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property dirs_projexplorer() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("dirs_projexplorer", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property file_projexplorer() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("file_projexplorer", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property new_file_toolstrip() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("new_file_toolstrip", resourceCulture)
