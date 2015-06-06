@@ -3,10 +3,32 @@ Imports ExtremeParser
 
 Public Class EditorDock
 
-    Public codeParts As Parser
+#Region "TextChangedDelayed Setup Code"
+    Private WithEvents idleTimer As New Timer
+    Public Event TextChangedDelayed As EventHandler
+    Private Sub idleTimer_Tick(sender As Object, e As EventArgs) Handles idleTimer.Tick
+        'If idleTimer.Enabled = False Then Exit Sub
+
+        idleTimer.Stop()
+        RaiseEvent TextChangedDelayed(Editor, EventArgs.Empty)
+    End Sub
+    Private Sub Editor_TextChanged(sender As Object, e As EventArgs) Handles Editor.TextChanged
+        idleTimer.Stop()
+        idleTimer.Start()
+    End Sub
+#End Region
+    Private Sub scintilla_TextChangedDelayed(sender As Object, e As EventArgs)
+        If RefreshWorker.IsBusy = False Then RefreshWorker.RunWorkerAsync()
+    End Sub
+
 
     Private Sub EditorDock_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        'TextChangedDelayed Event
+        AddHandler TextChangedDelayed, AddressOf scintilla_TextChangedDelayed
+        With idleTimer
+            .Enabled = True
+            .Interval = 2000
+        End With
 
         'Set-Up the syntax highlighting.
         Editor.StyleResetDefault()
@@ -34,20 +56,15 @@ Public Class EditorDock
         Editor.SetKeywords(1, "enum")
     End Sub
 
-    Private Sub RefreshTimer_Tick(sender As Object, e As EventArgs) Handles RefreshTimer.Tick
-        If RefreshWorker.IsBusy = False Then RefreshWorker.RunWorkerAsync()
-    End Sub
-
+    Public codeParts As Parser
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork
         If Editor.IsHandleCreated Then
-            Editor.Invoke(DirectCast(Sub()
-                                         codeParts = New Parser(Editor.Text)
+            codeParts = New Parser(Editor.Text)
 
-                                         If ProjExplorerDock.Visible Then
-                                             ProjExplorerDock.Includes = codeParts.Includes
-                                             ProjExplorerDock.RefreshIncludes()
-                                         End If
-                                     End Sub, MethodInvoker))
+            If ProjExplorerDock.Visible Then
+                ProjExplorerDock.Includes = codeParts.Includes
+                ProjExplorerDock.RefreshIncludes()
+            End If
         End If
     End Sub
 End Class
