@@ -49,8 +49,8 @@
     <Reference Include="ExtremeParser">
       <HintPath>..\..\..\ExtremeParser\ExtremeParser\bin\Debug\ExtremeParser.dll</HintPath>
     </Reference>
-    <Reference Include="ScintillaNET, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\jacobslusser.ScintillaNET.3.3.0\lib\net40\ScintillaNET.dll</HintPath>
+    <Reference Include="ScintillaNET, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\jacobslusser.ScintillaNET.3.4.0\lib\net40\ScintillaNET.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -165,7 +165,6 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExtremeCore\ExtremeCore.vbproj">
@@ -174,6 +173,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\new_file_toolstrip.png" />
   </ItemGroup>
   <ItemGroup>
