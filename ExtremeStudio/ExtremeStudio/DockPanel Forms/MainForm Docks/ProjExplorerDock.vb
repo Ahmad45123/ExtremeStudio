@@ -36,17 +36,21 @@ Public Class ProjExplorerDock
     Public Sub RefreshIncludes()
         treeView.Nodes(2).Nodes.Clear()
         For Each Str As String In Includes
-            treeView.Nodes(2).Nodes.Add(Str)
+            Dim nde As TreeNode = treeView.Nodes(2).Nodes.Add(Str)
+            nde.ImageIndex = 1
         Next
-    End Sub
-
-    Private Sub ProjExplorerDock_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
     End Sub
 
     Private Sub treeView_BeforeLabelEdit(sender As Object, e As NodeLabelEditEventArgs) Handles treeView.BeforeLabelEdit
         If e.Node.Text = "Gamemode Parts" Or e.Node.Text = "Filterscripts" Or e.Node.Text = "Includes" Then
             e.CancelEdit = True
         End If
+
+        For Each nde As TreeNode In treeView.Nodes(2).Nodes
+            If nde.Text = e.Node.Text Then
+                e.CancelEdit = True
+                Exit For
+            End If
+        Next
     End Sub
 End Class

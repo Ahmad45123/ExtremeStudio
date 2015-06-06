@@ -40,7 +40,7 @@ Partial Class EditorDock
         'RefreshTimer
         '
         Me.RefreshTimer.Enabled = True
-        Me.RefreshTimer.Interval = 1000
+        Me.RefreshTimer.Interval = 5000
         '
         'RefreshWorker
         '

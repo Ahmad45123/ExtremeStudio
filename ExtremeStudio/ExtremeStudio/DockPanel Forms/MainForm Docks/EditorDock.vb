@@ -42,6 +42,11 @@ Public Class EditorDock
         If Editor.IsHandleCreated Then
             Editor.Invoke(DirectCast(Sub()
                                          codeParts = New Parser(Editor.Text)
+
+                                         If ProjExplorerDock.Visible Then
+                                             ProjExplorerDock.Includes = codeParts.Includes
+                                             ProjExplorerDock.RefreshIncludes()
+                                         End If
                                      End Sub, MethodInvoker))
         End If
     End Sub
