@@ -90,9 +90,9 @@ Public Class ProjExplorerDock
             If path.StartsWith("Gamemode Parts") Then
                 path = path.Remove(0, 14)
                 path = "gamemodes" + path
-            ElseIf path.StartsWith("Includes") Then
-                path.Remove(0, 8)
-                path = "pawno/includes" + path
+                'ElseIf path.StartsWith("Includes") Then
+                '    path.Remove(0, 8)
+                '    path = "pawno/includes" + path
             End If
             oldPath += path
 
