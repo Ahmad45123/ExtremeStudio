@@ -18,7 +18,7 @@ Public Class EditorDock
     End Sub
 #End Region
     Private Sub scintilla_TextChangedDelayed(sender As Object, e As EventArgs)
-        If RefreshWorker.IsBusy = False Then RefreshWorker.RunWorkerAsync()
+        If RefreshWorker.IsBusy = False Then RefreshWorker.RunWorkerAsync(Editor.Text)
     End Sub
 
 
@@ -27,7 +27,7 @@ Public Class EditorDock
         AddHandler TextChangedDelayed, AddressOf scintilla_TextChangedDelayed
         With idleTimer
             .Enabled = True
-            .Interval = 2000
+            .Interval = 1000
         End With
 
         'Set-Up the syntax highlighting.
@@ -59,12 +59,16 @@ Public Class EditorDock
     Public codeParts As Parser
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork
         If Editor.IsHandleCreated Then
-            codeParts = New Parser(Editor.Text)
+            Dim parsed As New Parser(e.Argument)
+            e.Result = parsed
+        End If
+    End Sub
 
-            If ProjExplorerDock.Visible Then
-                ProjExplorerDock.Includes = codeParts.Includes
-                ProjExplorerDock.RefreshIncludes()
-            End If
+    Private Sub RefreshWorker_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles RefreshWorker.RunWorkerCompleted
+        codeParts = e.Result
+        If ProjExplorerDock.Visible Then
+            ProjExplorerDock.Includes = codeParts.Includes
+            ProjExplorerDock.RefreshIncludes()
         End If
     End Sub
 End Class

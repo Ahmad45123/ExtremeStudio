@@ -64,7 +64,9 @@ Public Module generalFunctions
     End Function
 
     Dim getAllFiles_treeNode As TreeNode
-    Public Function getAllFilesInFolders(ByVal dir As String, Optional ByVal parentNode As TreeNode = Nothing) As TreeNode
+    Public Function getAllFilesInFolders(ByVal dir As String, Optional ByVal extension As String = "", Optional ByVal parentNode As TreeNode = Nothing) As TreeNode
+        Dim currentDir As TreeNode
+
         If parentNode Is Nothing Then
             getAllFiles_treeNode = New TreeNode
         End If
@@ -72,20 +74,36 @@ Public Module generalFunctions
         Dim dirs() As String = Directory.GetDirectories(dir)
 
         For Each Str As String In dirs
-            Dim currentDir As TreeNode
             If parentNode Is Nothing Then
                 currentDir = getAllFiles_treeNode.Nodes.Add(Str.Remove(0, Str.LastIndexOf("\") + 1))
             Else
-                currentDir = getAllFiles_treeNode.Nodes(getAllFiles_treeNode.Nodes.IndexOf(parentNode)).Nodes.Add(Str.Remove(0, Str.LastIndexOf("\") + 1))
+                currentDir = parentNode.Nodes.Add(Str.Remove(0, Str.LastIndexOf("\") + 1))
             End If
 
             For Each stra As String In Directory.GetFiles(Str)
+                If Not extension = "" Then
+                    If Not stra.EndsWith(extension) Then
+                        Continue For
+                    End If
+                End If
+
                 Dim node = currentDir.Nodes.Add(Path.GetFileName(stra))
                 node.ImageIndex = 1
             Next
 
             For Each Strb As String In Directory.GetDirectories(Str)
-                getAllFilesInFolders(Strb, currentDir)
+                currentDir = currentDir.Nodes.Add(Strb.Remove(0, Strb.LastIndexOf("\") + 1))
+                For Each stra As String In Directory.GetFiles(Strb)
+                    If Not extension = "" Then
+                        If Not stra.EndsWith(extension) Then
+                            Continue For
+                        End If
+                    End If
+
+                    Dim node = currentDir.Nodes.Add(Path.GetFileName(stra))
+                    node.ImageIndex = 1
+                Next
+                getAllFilesInFolders(Strb, extension, currentDir)
             Next
         Next
         Return getAllFiles_treeNode

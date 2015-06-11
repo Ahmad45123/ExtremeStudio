@@ -23,8 +23,8 @@ Public Class ProjExplorerDock
         Next
 
         'Sub dirs
-        Dim gameModesFolder As TreeNode = ExtremeCore.getAllFilesInFolders(MainForm.currentProject.projectPath + "\gamemodes")
-        Dim filterScriptsFolder As TreeNode = ExtremeCore.getAllFilesInFolders(MainForm.currentProject.projectPath + "\filterscripts")
+        Dim gameModesFolder As TreeNode = ExtremeCore.getAllFilesInFolders(MainForm.currentProject.projectPath + "\gamemodes", ".pwn")
+        Dim filterScriptsFolder As TreeNode = ExtremeCore.getAllFilesInFolders(MainForm.currentProject.projectPath + "\filterscripts", ".pwn")
 
         For Each nde As TreeNode In gameModesFolder.Nodes
             treeView.Nodes(0).Nodes.Add(nde)
@@ -52,5 +52,35 @@ Public Class ProjExplorerDock
                 Exit For
             End If
         Next
+    End Sub
+
+    Private Sub treeView_AfterLabelEdit(sender As Object, e As NodeLabelEditEventArgs) Handles treeView.AfterLabelEdit
+        If e.Label Is Nothing Then
+            Exit Sub
+        Else
+            If e.Label = e.Node.Text Then
+                Exit Sub
+            End If
+        End If
+
+        Dim oldPath As String = MainForm.currentProject.projectPath + "/"
+        Dim path As String = e.Node.FullPath
+
+        If path.StartsWith("Gamemode Parts") Then
+            path = path.Remove(0, 14)
+            path = "gamemodes" + path
+        ElseIf path.StartsWith("Includes") Then
+            path.Remove(0, 8)
+            path = "pawno/includes" + path
+        End If
+        oldPath += path
+
+        If (e.Label.EndsWith(".pwn") Or e.Label.EndsWith(".inc")) And ExtremeCore.FilenameIsOK(e.Label) Then
+            My.Computer.FileSystem.RenameFile(oldPath, e.Label)
+        Else
+            e.CancelEdit = True
+            Beep()
+            MsgBox("Invalid name please use valid filename characters and make sure to has a .inc or .pwn extension")
+        End If
     End Sub
 End Class
