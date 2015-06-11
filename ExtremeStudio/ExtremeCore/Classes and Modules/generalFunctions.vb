@@ -76,8 +76,10 @@ Public Module generalFunctions
         For Each Str As String In dirs
             If parentNode Is Nothing Then
                 currentDir = getAllFiles_treeNode.Nodes.Add(Str.Remove(0, Str.LastIndexOf("\") + 1))
+                currentDir.Tag = "Folder"
             Else
                 currentDir = parentNode.Nodes.Add(Str.Remove(0, Str.LastIndexOf("\") + 1))
+                currentDir.Tag = "Folder"
             End If
 
             For Each stra As String In Directory.GetFiles(Str)
@@ -89,10 +91,12 @@ Public Module generalFunctions
 
                 Dim node = currentDir.Nodes.Add(Path.GetFileName(stra))
                 node.ImageIndex = 1
+                node.Tag = "File"
             Next
 
             For Each Strb As String In Directory.GetDirectories(Str)
                 currentDir = currentDir.Nodes.Add(Strb.Remove(0, Strb.LastIndexOf("\") + 1))
+                currentDir.Tag = "Folder"
                 For Each stra As String In Directory.GetFiles(Strb)
                     If Not extension = "" Then
                         If Not stra.EndsWith(extension) Then
@@ -102,6 +106,7 @@ Public Module generalFunctions
 
                     Dim node = currentDir.Nodes.Add(Path.GetFileName(stra))
                     node.ImageIndex = 1
+                    node.Tag = "File"
                 Next
                 getAllFilesInFolders(Strb, extension, currentDir)
             Next

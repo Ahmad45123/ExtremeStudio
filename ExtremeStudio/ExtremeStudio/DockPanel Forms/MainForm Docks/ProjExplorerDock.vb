@@ -63,24 +63,46 @@ Public Class ProjExplorerDock
             End If
         End If
 
-        Dim oldPath As String = MainForm.currentProject.projectPath + "/"
-        Dim path As String = e.Node.FullPath
+        If e.Node.Tag = "File" Then
+            Dim oldPath As String = MainForm.currentProject.projectPath + "/"
+            Dim path As String = e.Node.FullPath
 
-        If path.StartsWith("Gamemode Parts") Then
-            path = path.Remove(0, 14)
-            path = "gamemodes" + path
-        ElseIf path.StartsWith("Includes") Then
-            path.Remove(0, 8)
-            path = "pawno/includes" + path
-        End If
-        oldPath += path
+            If path.StartsWith("Gamemode Parts") Then
+                path = path.Remove(0, 14)
+                path = "gamemodes" + path
+            ElseIf path.StartsWith("Includes") Then
+                path.Remove(0, 8)
+                path = "pawno/includes" + path
+            End If
+            oldPath += path
 
-        If (e.Label.EndsWith(".pwn") Or e.Label.EndsWith(".inc")) And ExtremeCore.FilenameIsOK(e.Label) Then
-            My.Computer.FileSystem.RenameFile(oldPath, e.Label)
-        Else
-            e.CancelEdit = True
-            Beep()
-            MsgBox("Invalid name please use valid filename characters and make sure to has a .inc or .pwn extension")
+            If (e.Label.EndsWith(".pwn") Or e.Label.EndsWith(".inc")) And ExtremeCore.FilenameIsOK(e.Label) Then
+                My.Computer.FileSystem.RenameFile(oldPath, e.Label)
+            Else
+                e.CancelEdit = True
+                Beep()
+                MsgBox("Invalid name please use valid filename characters and make sure to has a .inc or .pwn extension")
+            End If
+        ElseIf e.Node.Tag = "Folder" Then
+            Dim oldPath As String = MainForm.currentProject.projectPath + "/"
+            Dim path As String = e.Node.FullPath
+
+            If path.StartsWith("Gamemode Parts") Then
+                path = path.Remove(0, 14)
+                path = "gamemodes" + path
+            ElseIf path.StartsWith("Includes") Then
+                path.Remove(0, 8)
+                path = "pawno/includes" + path
+            End If
+            oldPath += path
+
+            If ExtremeCore.FilenameIsOK(e.Label) Then
+                My.Computer.FileSystem.RenameDirectory(oldPath, e.Label)
+            Else
+                e.CancelEdit = True
+                Beep()
+                MsgBox("Invalid name please use valid filename characters and make sure to has a .inc or .pwn extension")
+            End If
         End If
     End Sub
 End Class
