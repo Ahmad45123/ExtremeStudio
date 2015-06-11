@@ -12,6 +12,7 @@ Public Class StartupForm
         For Each Str As String In Recent
             If Str = path Then
                 Recent.Remove(Str)
+                Exit For
             End If
         Next
 

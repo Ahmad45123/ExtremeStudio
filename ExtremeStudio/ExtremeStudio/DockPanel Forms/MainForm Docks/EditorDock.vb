@@ -69,4 +69,8 @@ Public Class EditorDock
             ProjExplorerDock.RefreshIncludes()
         End If
     End Sub
+
+    Private Sub EditorDock_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        idleTimer.Stop()
+    End Sub
 End Class
