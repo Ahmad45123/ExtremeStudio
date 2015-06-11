@@ -41,15 +41,21 @@ Partial Class StartupForm
         Me.FolderBrowserButton1 = New ExtremeCore.FolderBrowserButton()
         Me.pathTextBox = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.recentListBox = New System.Windows.Forms.ListBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
+        Me.TabPage3.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
+        Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Location = New System.Drawing.Point(12, 12)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -229,6 +235,46 @@ Partial Class StartupForm
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "Project directory: "
         '
+        'TabPage3
+        '
+        Me.TabPage3.Controls.Add(Me.Button3)
+        Me.TabPage3.Controls.Add(Me.Button1)
+        Me.TabPage3.Controls.Add(Me.recentListBox)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage3.Size = New System.Drawing.Size(767, 189)
+        Me.TabPage3.TabIndex = 2
+        Me.TabPage3.Text = "Recent"
+        Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(660, 35)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(101, 23)
+        Me.Button3.TabIndex = 2
+        Me.Button3.Text = "Delete Selected"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(660, 6)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(101, 23)
+        Me.Button1.TabIndex = 1
+        Me.Button1.Text = "Load Selected"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'recentListBox
+        '
+        Me.recentListBox.FormattingEnabled = True
+        Me.recentListBox.HorizontalScrollbar = True
+        Me.recentListBox.Location = New System.Drawing.Point(6, 6)
+        Me.recentListBox.Name = "recentListBox"
+        Me.recentListBox.Size = New System.Drawing.Size(648, 173)
+        Me.recentListBox.TabIndex = 0
+        '
         'StartupForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -244,6 +290,7 @@ Partial Class StartupForm
         Me.TabPage1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
+        Me.TabPage3.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -266,4 +313,8 @@ Partial Class StartupForm
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents projectVersion As System.Windows.Forms.Label
     Friend WithEvents loadProjectBtn As System.Windows.Forms.Button
+    Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
+    Friend WithEvents recentListBox As System.Windows.Forms.ListBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button3 As System.Windows.Forms.Button
 End Class

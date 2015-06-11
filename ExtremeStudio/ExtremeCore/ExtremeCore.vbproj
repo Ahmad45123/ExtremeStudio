@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes and Modules\generalFunctions.vb" />
+    <Compile Include="Classes and Modules\listSerializer.vb" />
     <Compile Include="Controls\FolderBrowserButton.Designer.vb">
       <DependentUpon>FolderBrowserButton.vb</DependentUpon>
     </Compile>

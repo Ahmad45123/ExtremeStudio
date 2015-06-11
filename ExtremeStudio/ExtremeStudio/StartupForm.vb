@@ -5,12 +5,44 @@ Imports System.IO.Compression
 
 Public Class StartupForm
 
+#Region "RecentCode"
+    Public Recent As New List(Of String)
+    Const MAX_LIST_ITEMS = 30
+    Public Sub AddNewRecent(path As String)
+        For Each Str As String In Recent
+            If Str = path Then
+                Recent.Remove(Str)
+            End If
+        Next
+
+        Recent.Insert(0, path) 'Inset it at the very start
+        If Recent.Count - 1 = MAX_LIST_ITEMS Then 'Remove the new added stuff
+            Recent.RemoveAt(MAX_LIST_ITEMS)
+        End If
+
+        My.Computer.FileSystem.WriteAllText(Application.StartupPath + "/configs/recent.xml", ExtremeCore.listSerializer.Serialize(Of List(Of String))(Recent), False)
+    End Sub
+#End Region
+
     Dim versionHandler As New versionHandler
 
     Private Sub StartupForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Create needed folders and files.
         If Not My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "/cache") Then
             My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "/cache")
+        End If
+        If Not My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "/configs") Then
+            My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "/configs")
+            My.Computer.FileSystem.WriteAllText(Application.StartupPath + "/configs/recent.xml", "", False)
+        End If
+
+
+        'Load all the recent.
+        If My.Computer.FileSystem.FileExists(Application.StartupPath + "/configs/recent.xml") Then
+            Try
+                Recent = ExtremeCore.listSerializer.Deserialize(Of List(Of String))(My.Computer.FileSystem.ReadAllText(Application.StartupPath + "/configs/recent.xml"))
+            Catch ex As Exception
+            End Try
         End If
 
         'Load samp versions into list.
@@ -73,6 +105,7 @@ Public Class StartupForm
                 MainForm.currentProject.projectPath = locTextBox.Text
                 MainForm.currentProject.projectVersion = versionHandler.currentVersion
                 MainForm.currentProject.SaveInfo() 'Write the default extremeStudio config.
+                AddNewRecent(MainForm.currentProject.projectPath) 'Add it to the recent list.
                 MainForm.Show()
                 Me.Hide()
             Else
@@ -115,7 +148,19 @@ Public Class StartupForm
     End Sub
 
     Private Sub loadProjectBtn_Click(sender As Object, e As EventArgs) Handles loadProjectBtn.Click
+        AddNewRecent(MainForm.currentProject.projectPath) 'Add it to the recent list.
         MainForm.Show()
         Me.Hide()
+    End Sub
+
+    Private Sub TabControl1_Selected(sender As Object, e As TabControlEventArgs) Handles TabControl1.Selected
+        If e.TabPageIndex = 2 Then
+            recentListBox.Items.Clear()
+
+            'Get recent list.
+            For Each Str As String In Recent
+                recentListBox.Items.Add(Str)
+            Next
+        End If
     End Sub
 End Class

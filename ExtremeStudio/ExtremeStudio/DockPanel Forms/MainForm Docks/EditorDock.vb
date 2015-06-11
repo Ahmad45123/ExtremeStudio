@@ -7,8 +7,6 @@ Public Class EditorDock
     Private WithEvents idleTimer As New Timer
     Public Event TextChangedDelayed As EventHandler
     Private Sub idleTimer_Tick(sender As Object, e As EventArgs) Handles idleTimer.Tick
-        'If idleTimer.Enabled = False Then Exit Sub
-
         idleTimer.Stop()
         RaiseEvent TextChangedDelayed(Editor, EventArgs.Empty)
     End Sub
