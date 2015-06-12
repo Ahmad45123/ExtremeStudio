@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Xml.Serialization
 
-Public Class listSerializer
+Public Class ObjectSerializer
     Public Shared Function Serialize(Of T)(ByVal obj As T) As String
         Dim xml As New System.Xml.Serialization.XmlSerializer(GetType(T))
         Dim ns As New System.Xml.Serialization.XmlSerializerNamespaces()

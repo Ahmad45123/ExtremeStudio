@@ -24,7 +24,6 @@ Partial Class StartupForm
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.FolderBrowserDialog1 = New ExtremeCore.FolderBrowserButton()
         Me.locTextBox = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -38,13 +37,14 @@ Partial Class StartupForm
         Me.Label6 = New System.Windows.Forms.Label()
         Me.projectName = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.FolderBrowserButton1 = New ExtremeCore.FolderBrowserButton()
         Me.pathTextBox = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.recentListBox = New System.Windows.Forms.ListBox()
+        Me.FolderBrowserDialog1 = New ExtremeCore.FolderBrowserButton()
+        Me.FolderBrowserButton1 = New ExtremeCore.FolderBrowserButton()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -79,14 +79,6 @@ Partial Class StartupForm
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Create new project"
         Me.TabPage1.UseVisualStyleBackColor = True
-        '
-        'FolderBrowserDialog1
-        '
-        Me.FolderBrowserDialog1.Location = New System.Drawing.Point(698, 124)
-        Me.FolderBrowserDialog1.Name = "FolderBrowserDialog1"
-        Me.FolderBrowserDialog1.Size = New System.Drawing.Size(63, 21)
-        Me.FolderBrowserDialog1.TabIndex = 8
-        Me.FolderBrowserDialog1.TextControl = Me.locTextBox
         '
         'locTextBox
         '
@@ -153,9 +145,9 @@ Partial Class StartupForm
         Me.TabPage2.Controls.Add(Me.Label6)
         Me.TabPage2.Controls.Add(Me.projectName)
         Me.TabPage2.Controls.Add(Me.Label5)
-        Me.TabPage2.Controls.Add(Me.FolderBrowserButton1)
         Me.TabPage2.Controls.Add(Me.pathTextBox)
         Me.TabPage2.Controls.Add(Me.Label4)
+        Me.TabPage2.Controls.Add(Me.FolderBrowserButton1)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
@@ -209,14 +201,6 @@ Partial Class StartupForm
         Me.Label5.Size = New System.Drawing.Size(78, 13)
         Me.Label5.TabIndex = 3
         Me.Label5.Text = "Project Name: "
-        '
-        'FolderBrowserButton1
-        '
-        Me.FolderBrowserButton1.Location = New System.Drawing.Point(693, 10)
-        Me.FolderBrowserButton1.Name = "FolderBrowserButton1"
-        Me.FolderBrowserButton1.Size = New System.Drawing.Size(68, 20)
-        Me.FolderBrowserButton1.TabIndex = 2
-        Me.FolderBrowserButton1.TextControl = Me.pathTextBox
         '
         'pathTextBox
         '
@@ -274,6 +258,22 @@ Partial Class StartupForm
         Me.recentListBox.Name = "recentListBox"
         Me.recentListBox.Size = New System.Drawing.Size(648, 173)
         Me.recentListBox.TabIndex = 0
+        '
+        'FolderBrowserDialog1
+        '
+        Me.FolderBrowserDialog1.Location = New System.Drawing.Point(698, 124)
+        Me.FolderBrowserDialog1.Name = "FolderBrowserDialog1"
+        Me.FolderBrowserDialog1.Size = New System.Drawing.Size(63, 21)
+        Me.FolderBrowserDialog1.TabIndex = 8
+        Me.FolderBrowserDialog1.TextControl = Me.locTextBox
+        '
+        'FolderBrowserButton1
+        '
+        Me.FolderBrowserButton1.Location = New System.Drawing.Point(693, 10)
+        Me.FolderBrowserButton1.Name = "FolderBrowserButton1"
+        Me.FolderBrowserButton1.Size = New System.Drawing.Size(68, 20)
+        Me.FolderBrowserButton1.TabIndex = 2
+        Me.FolderBrowserButton1.TextControl = Me.pathTextBox
         '
         'StartupForm
         '

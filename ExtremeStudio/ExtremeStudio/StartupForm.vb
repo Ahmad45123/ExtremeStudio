@@ -15,13 +15,21 @@ Public Class StartupForm
                 Exit For
             End If
         Next
-
         Recent.Insert(0, path) 'Inset it at the very start
         If Recent.Count - 1 = MAX_LIST_ITEMS Then 'Remove the new added stuff
             Recent.RemoveAt(MAX_LIST_ITEMS)
         End If
+        My.Computer.FileSystem.WriteAllText(Application.StartupPath + "/configs/recent.xml", ExtremeCore.ObjectSerializer.Serialize(Of List(Of String))(Recent), False)
+    End Sub
 
-        My.Computer.FileSystem.WriteAllText(Application.StartupPath + "/configs/recent.xml", ExtremeCore.listSerializer.Serialize(Of List(Of String))(Recent), False)
+    Public Sub RemoveRecent(path As String)
+        For Each Str As String In Recent
+            If Str = path Then
+                Recent.Remove(Str)
+                Exit For
+            End If
+        Next
+        My.Computer.FileSystem.WriteAllText(Application.StartupPath + "/configs/recent.xml", ExtremeCore.ObjectSerializer.Serialize(Of List(Of String))(Recent), False)
     End Sub
 #End Region
 
@@ -41,7 +49,7 @@ Public Class StartupForm
         'Load all the recent.
         If My.Computer.FileSystem.FileExists(Application.StartupPath + "/configs/recent.xml") Then
             Try
-                Recent = ExtremeCore.listSerializer.Deserialize(Of List(Of String))(My.Computer.FileSystem.ReadAllText(Application.StartupPath + "/configs/recent.xml"))
+                Recent = ExtremeCore.ObjectSerializer.Deserialize(Of List(Of String))(My.Computer.FileSystem.ReadAllText(Application.StartupPath + "/configs/recent.xml"))
             Catch ex As Exception
             End Try
         End If
@@ -163,5 +171,22 @@ Public Class StartupForm
                 recentListBox.Items.Add(Str)
             Next
         End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If recentListBox.SelectedIndex = -1 Then Exit Sub
+        pathTextBox.Text = recentListBox.SelectedItem : TextBox1_TextChanged(pathTextBox, EventArgs.Empty) 'Fire the TextChanged event.
+        loadProjectBtn_Click(loadProjectBtn, EventArgs.Empty) 'Click `Load Project` button.
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        If recentListBox.SelectedIndex = -1 Then Exit Sub
+        RemoveRecent(recentListBox.SelectedItem)
+        TabControl1_Selected(TabControl1, New TabControlEventArgs(TabPage3, 2, TabControlAction.Selected)) 'Fire the selected event to refresh the list.
+
+    End Sub
+
+    Private Sub recentListBox_DoubleClick(sender As Object, e As EventArgs) Handles recentListBox.DoubleClick
+        Button1.PerformClick() 'Press the load button.
     End Sub
 End Class
