@@ -40,6 +40,7 @@ Public Class ProjExplorerDock
         For Each Str As String In Includes
             Dim nde As TreeNode = treeView.Nodes(2).Nodes.Add(Str)
             nde.ImageIndex = 1
+            nde.Tag = "Include"
         Next
     End Sub
 
@@ -127,5 +128,36 @@ Public Class ProjExplorerDock
 
     Private Sub ProjExplorerDock_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RefreshList()
+    End Sub
+
+    Private Sub treeView_NodeMouseDoubleClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles treeView.NodeMouseDoubleClick
+        If e.Button = Windows.Forms.MouseButtons.Left Then
+            If e.Node.Text = "Gamemode Parts" Or e.Node.Text = "Filterscripts" Or e.Node.Text = "Includes" Then
+                Exit Sub
+            End If
+
+            If e.Node.Tag = "File" Or e.Node.Tag = "Include" Then
+                Dim oldPath As String = MainForm.currentProject.projectPath + "/"
+                Dim path As String = e.Node.FullPath
+
+                If path.StartsWith("Gamemode Parts") Then
+                    path = path.Remove(0, 14)
+                    path = "gamemodes" + path
+                ElseIf path.StartsWith("Includes") Then
+                    path = path.Remove(0, 8)
+                    path = "pawno/include" + path
+                End If
+                oldPath += path
+
+                'Make sure include path is valid.
+                If e.Node.Tag = "Include" Then
+                    If Not oldPath.EndsWith(".pwn") And Not oldPath.EndsWith(".inc") Then
+                        oldPath = oldPath + ".inc"
+                    End If
+                End If
+
+                MainForm.CreateTab(oldPath)
+            End If
+        End If
     End Sub
 End Class
