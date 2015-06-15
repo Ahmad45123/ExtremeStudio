@@ -61,7 +61,10 @@ Public Class NewProjectFile
         My.Computer.FileSystem.CopyFile(Application.StartupPath + "/newfileTemplate.pwn", targetPath)
         MainForm.CreateTab(targetPath)
 
-        'TODO: Add code to refresh to the mainform.
+        If ProjExplorerDock.Visible Then
+            ProjExplorerDock.RefreshList()
+        End If
+
         Me.Close()
     End Sub
 End Class
