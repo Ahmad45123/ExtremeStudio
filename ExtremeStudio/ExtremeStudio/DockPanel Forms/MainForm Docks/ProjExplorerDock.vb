@@ -124,4 +124,8 @@ Public Class ProjExplorerDock
             End If
         End If
     End Sub
+
+    Private Sub ProjExplorerDock_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        RefreshList()
+    End Sub
 End Class

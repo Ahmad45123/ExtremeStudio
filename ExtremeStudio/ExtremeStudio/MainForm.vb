@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports WeifenLuo.WinFormsUI.Docking
 
 Public Class MainForm
 
@@ -19,8 +20,9 @@ Public Class MainForm
         CreateTab(currentProject.projectPath + "/gamemodes/" + currentProject.projectName + ".pwn")
     End Sub
 
-    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
-
+    Private Sub MainForm_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        'TODO: Whatever saving code here.
+        StartupForm.Show()
     End Sub
 
     Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
@@ -28,20 +30,38 @@ Public Class MainForm
         newFile.ShowDialog()
     End Sub
 
-    Private Sub MainForm_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
-        'TODO: Whatever saving code here.
-
-        StartupForm.Show()
-    End Sub
-
+#Region "View Codes"
     Private Sub ProjectExplorerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProjectExplorerToolStripMenuItem.Click
         If ProjExplorerDock.Visible = False Then
             ProjExplorerDock.Visible = True
             ProjExplorerDock.Show(MainDock)
-            ProjExplorerDock.RefreshList()
         Else
             ProjExplorerDock.Close()
             ProjExplorerDock.Visible = False
         End If
     End Sub
+#End Region
+
+#Region "DocksSavingLoading"
+    Dim m_deserlise As DeserializeDockContent
+    Private Function GetContentFromPersistString(ByVal persistString As String) As IDockContent
+        If persistString = GetType(ProjExplorerDock).ToString Then
+            Return ProjExplorerDock
+        End If
+        Return Nothing
+    End Function
+
+    Private Sub DockSavingLoading_Mainform_Load(sendr As Object, e As EventArgs) Handles MyBase.Load
+        Try
+            m_deserlise = New DeserializeDockContent(AddressOf GetContentFromPersistString)
+            MainDock.LoadFromXml(Application.StartupPath + "/configs/docksInfo.xml", m_deserlise)
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        MainDock.SaveAsXml(Application.StartupPath + "/configs/docksInfo.xml")
+    End Sub
+#End Region
+
 End Class
