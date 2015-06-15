@@ -50,7 +50,7 @@ Public Class EditorDock
 
         Editor.Lexer = Lexer.Cpp
 
-        Editor.SetKeywords(0, "break case continue do else false for foreach goto public stock if is new null return sizeof switch true using while")
+        Editor.SetKeywords(0, "break case continue do else false for foreach goto public stock if is new null return sizeof switch true using while forward native")
         Editor.SetKeywords(1, "enum")
     End Sub
 
