@@ -13,12 +13,14 @@ Public Class ProjExplorerDock
             If Not stra.EndsWith("pwn") Then Continue For
             stra = stra.Replace(MainForm.currentProject.projectPath + "\gamemodes\", "")
             Dim node = treeView.Nodes(0).Nodes.Add(stra)
+            node.Tag = "File"
             node.ImageIndex = 1
         Next
         For Each stra As String In Directory.GetFiles(MainForm.currentProject.projectPath + "\filterscripts")
             If Not stra.EndsWith("pwn") Then Continue For
             stra = stra.Replace(MainForm.currentProject.projectPath + "\filterscripts\", "")
             Dim node = treeView.Nodes(1).Nodes.Add(stra)
+            node.Tag = "File"
             node.ImageIndex = 1
         Next
 
@@ -63,16 +65,16 @@ Public Class ProjExplorerDock
             End If
         End If
 
+        Dim oldPath As String = MainForm.currentProject.projectPath + "/"
+        Dim path As String = e.Node.FullPath
+
+        If path.StartsWith("Gamemode Parts") Then
+            path = path.Remove(0, 14)
+            path = "gamemodes" + path
+        End If
+        oldPath += path
+
         If e.Node.Tag = "File" Then
-            Dim oldPath As String = MainForm.currentProject.projectPath + "/"
-            Dim path As String = e.Node.FullPath
-
-            If path.StartsWith("Gamemode Parts") Then
-                path = path.Remove(0, 14)
-                path = "gamemodes" + path
-            End If
-            oldPath += path
-
             If (e.Label.EndsWith(".pwn") Or e.Label.EndsWith(".inc")) And ExtremeCore.FilenameIsOK(e.Label) Then
                 My.Computer.FileSystem.RenameFile(oldPath, e.Label)
             Else
@@ -81,21 +83,12 @@ Public Class ProjExplorerDock
                 MsgBox("Invalid name please use valid filename characters and make sure to has a .inc or .pwn extension")
             End If
         ElseIf e.Node.Tag = "Folder" Then
-            Dim oldPath As String = MainForm.currentProject.projectPath + "/"
-            Dim path As String = e.Node.FullPath
-
-            If path.StartsWith("Gamemode Parts") Then
-                path = path.Remove(0, 14)
-                path = "gamemodes" + path
-            End If
-            oldPath += path
-
             If ExtremeCore.FilenameIsOK(e.Label) Then
                 My.Computer.FileSystem.RenameDirectory(oldPath, e.Label)
             Else
                 e.CancelEdit = True
                 Beep()
-                MsgBox("Invalid name, please use valid filename characters and make sure to has a .inc or .pwn extension")
+                MsgBox("Invalid name, Please use valid file-name characters and make sure to use a .inc or .pwn extension")
             End If
         End If
     End Sub
@@ -112,10 +105,22 @@ Public Class ProjExplorerDock
                 End If
             Next
 
-            If selNode.Tag = "File" Then
+            If MsgBox("Are you sure you want to delete this file/folder ?" + vbCrLf + vbCrLf + "NOTE: If it's a folder, All its contents will be deleted.", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                Dim oldPath As String = MainForm.currentProject.projectPath + "/"
+                Dim path As String = selNode.FullPath
 
-            ElseIf selNode.Tag = "Folder" Then
+                If path.StartsWith("Gamemode Parts") Then
+                    path = path.Remove(0, 14)
+                    path = "gamemodes" + path
+                End If
+                oldPath += path
 
+                If selNode.Tag = "File" Then
+                    My.Computer.FileSystem.DeleteFile(oldPath)
+                ElseIf selNode.Tag = "Folder" Then
+                    My.Computer.FileSystem.DeleteDirectory(oldPath, FileIO.DeleteDirectoryOption.DeleteAllContents)
+                End If
+                RefreshList()
             End If
         End If
     End Sub
