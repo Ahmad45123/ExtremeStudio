@@ -70,9 +70,6 @@ Public Class ProjExplorerDock
             If path.StartsWith("Gamemode Parts") Then
                 path = path.Remove(0, 14)
                 path = "gamemodes" + path
-            ElseIf path.StartsWith("Includes") Then
-                path.Remove(0, 8)
-                path = "pawno/includes" + path
             End If
             oldPath += path
 
@@ -90,9 +87,6 @@ Public Class ProjExplorerDock
             If path.StartsWith("Gamemode Parts") Then
                 path = path.Remove(0, 14)
                 path = "gamemodes" + path
-                'ElseIf path.StartsWith("Includes") Then
-                '    path.Remove(0, 8)
-                '    path = "pawno/includes" + path
             End If
             oldPath += path
 
@@ -101,7 +95,27 @@ Public Class ProjExplorerDock
             Else
                 e.CancelEdit = True
                 Beep()
-                MsgBox("Invalid name please use valid filename characters and make sure to has a .inc or .pwn extension")
+                MsgBox("Invalid name, please use valid filename characters and make sure to has a .inc or .pwn extension")
+            End If
+        End If
+    End Sub
+
+    Private Sub treeView_KeyDown(sender As Object, e As KeyEventArgs) Handles treeView.KeyDown
+        If e.KeyCode = Keys.Delete Then
+            Dim selNode As TreeNode = treeView.SelectedNode
+            If selNode.Text = "Gamemode Parts" Or selNode.Text = "Filterscripts" Or selNode.Text = "Includes" Then
+                Exit Sub
+            End If
+            For Each nde As TreeNode In treeView.Nodes(2).Nodes
+                If nde.Text = selNode.Text Then
+                    Exit Sub
+                End If
+            Next
+
+            If selNode.Tag = "File" Then
+
+            ElseIf selNode.Tag = "Folder" Then
+
             End If
         End If
     End Sub
