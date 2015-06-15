@@ -32,10 +32,6 @@ Public Class currentProjectClass
         End Using
     End Sub
 
-    Public Sub EditProjectConfig(key As String, value As String)
-
-    End Sub
-
     Public Sub EditSAMPConfig(key As String, value As String)
         'Variables
         Dim allInfo As New List(Of String)
