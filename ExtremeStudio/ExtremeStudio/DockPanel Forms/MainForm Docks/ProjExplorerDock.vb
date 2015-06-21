@@ -2,11 +2,22 @@
 
 Public Class ProjExplorerDock
 
+
+    'Tag List: 
+    '   1) File
+    '   2) Folder
+    '   3) Include
+    '   4) GamemodeFilterRoot
+    '   5) IncludeRoot
+
     Public Includes As List(Of String)
 
     Public Sub RefreshList()
         treeView.Nodes(0).Nodes.Clear()
         treeView.Nodes(1).Nodes.Clear()
+        treeView.Nodes(0).Tag = "GamemodeFilterRoot"
+        treeView.Nodes(1).Tag = "GamemodeFilterRoot"
+
 
         'Root
         For Each stra As String In Directory.GetFiles(MainForm.currentProject.projectPath + "\gamemodes")
@@ -37,6 +48,7 @@ Public Class ProjExplorerDock
     End Sub
     Public Sub RefreshIncludes()
         treeView.Nodes(2).Nodes.Clear()
+        treeView.Nodes(2).Tag = "IncludeRoot"
         For Each Str As String In Includes
             Dim nde As TreeNode = treeView.Nodes(2).Nodes.Add(Str)
             nde.ImageIndex = 1
@@ -45,7 +57,7 @@ Public Class ProjExplorerDock
     End Sub
 
     Private Sub treeView_BeforeLabelEdit(sender As Object, e As NodeLabelEditEventArgs) Handles treeView.BeforeLabelEdit
-        If e.Node.Text = "Gamemode Parts" Or e.Node.Text = "Filterscripts" Or e.Node.Text = "Includes" Then
+        If e.Node.Tag = "IncludeRoot" Or e.Node.Tag = "GamemodeFilterRoot" Then
             e.CancelEdit = True
         End If
 
@@ -97,7 +109,7 @@ Public Class ProjExplorerDock
     Private Sub treeView_KeyDown(sender As Object, e As KeyEventArgs) Handles treeView.KeyDown
         If e.KeyCode = Keys.Delete Then
             Dim selNode As TreeNode = treeView.SelectedNode
-            If selNode.Text = "Gamemode Parts" Or selNode.Text = "Filterscripts" Or selNode.Text = "Includes" Then
+            If selNode.Tag = "IncludeRoot" Or selNode.Tag = "GamemodeFilterRoot" Then
                 Exit Sub
             End If
             For Each nde As TreeNode In treeView.Nodes(2).Nodes
@@ -132,7 +144,7 @@ Public Class ProjExplorerDock
 
     Private Sub treeView_NodeMouseDoubleClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles treeView.NodeMouseDoubleClick
         If e.Button = Windows.Forms.MouseButtons.Left Then
-            If e.Node.Text = "Gamemode Parts" Or e.Node.Text = "Filterscripts" Or e.Node.Text = "Includes" Then
+            If e.Node.Tag = "IncludeRoot" Or e.Node.Tag = "GamemodeFilterRoot" Then
                 Exit Sub
             End If
 
@@ -158,6 +170,70 @@ Public Class ProjExplorerDock
 
                 MainForm.CreateTab(oldPath)
             End If
+        End If
+    End Sub
+
+    Private Sub treeView_NodeMouseClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles treeView.NodeMouseClick
+        If e.Button = Windows.Forms.MouseButtons.Right Then
+
+            'Setup the menu
+            If e.Node.Tag = "File" Or e.Node.Tag = "Include" Or e.Node.Tag = "IncludeRoot" Then
+                NewFileToolStripMenuItem.Enabled = False
+                NewDirectoryToolStripMenuItem.Enabled = False
+            ElseIf e.Node.Tag = "Folder" Or e.Node.Tag = "GamemodeFilterRoot" Then
+                NewFileToolStripMenuItem.Enabled = True
+                NewDirectoryToolStripMenuItem.Enabled = True
+            End If
+            If e.Node.Tag = "File" Or e.Node.Tag = "Folder" Then
+                RenameToolStripMenuItem.Enabled = True
+                DeleteToolStripMenuItem.Enabled = True
+            Else
+                RenameToolStripMenuItem.Enabled = False
+                DeleteToolStripMenuItem.Enabled = False
+            End If
+
+
+            'Show the context menu.
+            mouseRightClick.Show(treeView, e.X, e.Y)
+        End If
+    End Sub
+
+    Private Sub RenameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RenameToolStripMenuItem.Click
+        treeView.SelectedNode.BeginEdit()
+    End Sub
+
+    Private Sub DeleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
+        treeView_KeyDown(treeView, New KeyEventArgs(Keys.Delete))
+    End Sub
+
+    Private Sub NewFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewFileToolStripMenuItem.Click
+        NewProjectFile.Show()
+
+        Dim selNode As TreeNode = treeView.SelectedNode
+
+        'Setup the path.
+        If selNode.Tag = "IncludeRoot" Or selNode.Tag = "GamemodeFilterRoot" Then
+            Exit Sub
+        End If
+
+        If selNode.Tag = "Folder" Then
+            Dim path As String = selNode.FullPath
+            If path.StartsWith("Gamemode Parts") Then
+                path = path.Remove(0, 14)
+                path = "gamemodes" + path
+                NewProjectFile.RadioButton1.Checked = True
+            ElseIf path.StartsWith("Includes") Then
+                path = path.Remove(0, 8)
+                path = "pawno/include" + path
+                NewProjectFile.RadioButton2.Checked = True
+            Else
+                path = path.Remove(0, 13)
+                path = "filterscripts" + path
+                NewProjectFile.RadioButton3.Checked = True '<< Filter script.
+            End If
+
+            'Select the item after showing the form.
+            NewProjectFile.FolderList.SelectedIndex = NewProjectFile.FolderList.Items.IndexOf(path)
         End If
     End Sub
 End Class
