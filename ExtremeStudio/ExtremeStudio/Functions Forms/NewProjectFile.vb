@@ -52,11 +52,11 @@ Public Class NewProjectFile
 
         Dim targetPath As String = MainForm.currentProject.projectPath + "/"
         If RadioButton1.Checked Then
-            targetPath += "gamemodes/" + fileNameText.Text + ".pwn"
+            targetPath += FolderList.SelectedItem + "/" + fileNameText.Text + ".pwn"
         ElseIf RadioButton2.Checked Then
-            targetPath += "pawno/include/" + fileNameText.Text + ".inc"
+            targetPath += "pawno/" + FolderList.SelectedItem + "/" + fileNameText.Text + ".inc"
         ElseIf RadioButton3.Checked Then
-            targetPath += "filterscripts/" + fileNameText.Text + ".pwn"
+            targetPath += FolderList.SelectedItem + "/" + fileNameText.Text + ".pwn"
         End If
         My.Computer.FileSystem.CopyFile(Application.StartupPath + "/newfileTemplate.pwn", targetPath)
         MainForm.CreateTab(targetPath)
