@@ -216,7 +216,7 @@ Public Class ProjExplorerDock
             Exit Sub
         End If
 
-        If selNode.Tag = "Folder" Then
+        If selNode.Tag = "Folder" Or selNode.Tag = "GamemodeFilterRoot" Then
             Dim path As String = selNode.FullPath
             If path.StartsWith("Gamemode Parts") Then
                 path = path.Remove(0, 14)
@@ -234,6 +234,34 @@ Public Class ProjExplorerDock
 
             'Select the item after showing the form.
             NewProjectFile.FolderList.SelectedIndex = NewProjectFile.FolderList.Items.IndexOf(path)
+        End If
+    End Sub
+
+    Private Sub NewDirectoryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewDirectoryToolStripMenuItem.Click
+        Dim selNode = treeView.SelectedNode
+        If selNode.Tag = "Folder" Or selNode.Tag = "GamemodeFilterRoot" Then
+            Dim path As String = selNode.FullPath
+            If path.StartsWith("Gamemode Parts") Then
+                path = path.Remove(0, 14)
+                path = "gamemodes" + path
+            ElseIf path.StartsWith("Includes") Then
+                path = path.Remove(0, 8)
+                path = "pawno/include" + path
+            Else
+                path = path.Remove(0, 13)
+                path = "filterscripts" + path
+            End If
+
+            'Select the item after showing the form.
+            Dim input As New ExtremeCore.AdvacnedInputBox("Folder Name", "Enter a name for the new folder: ")
+            If input.resResult = ExtremeCore.AdvacnedInputBox.returnValue.INPUT_RESULT_OK Then
+                If ExtremeCore.FilenameIsOK(input.resResult) Then
+                    My.Computer.FileSystem.CreateDirectory(MainForm.currentProject.projectPath + "/" + path + "/" + input.resText)
+                    RefreshList()
+                Else
+                    MsgBox("Invalid name, Please use valid filename characters.")
+                End If
+            End If
         End If
     End Sub
 End Class
