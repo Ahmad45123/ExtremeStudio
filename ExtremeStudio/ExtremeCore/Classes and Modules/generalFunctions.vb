@@ -94,9 +94,11 @@ Public Module generalFunctions
                 node.Tag = "File"
             Next
 
+            Dim tmpDir As TreeNode = currentDir
             For Each Strb As String In Directory.GetDirectories(Str)
-                currentDir = currentDir.Nodes.Add(Strb.Remove(0, Strb.LastIndexOf("\") + 1))
+                currentDir = tmpDir.Nodes.Add(Strb.Remove(0, Strb.LastIndexOf("\") + 1))
                 currentDir.Tag = "Folder"
+
                 For Each stra As String In Directory.GetFiles(Strb)
                     If Not extension = "" Then
                         If Not stra.EndsWith(extension) Then

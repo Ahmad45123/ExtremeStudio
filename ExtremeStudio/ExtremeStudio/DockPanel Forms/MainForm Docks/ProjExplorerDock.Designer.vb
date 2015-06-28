@@ -69,35 +69,35 @@ Partial Class ProjExplorerDock
         '
         Me.mouseRightClick.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RenameToolStripMenuItem, Me.DeleteToolStripMenuItem, Me.ToolStripMenuItem1, Me.NewFileToolStripMenuItem, Me.NewDirectoryToolStripMenuItem})
         Me.mouseRightClick.Name = "mouseRightClick"
-        Me.mouseRightClick.Size = New System.Drawing.Size(153, 120)
+        Me.mouseRightClick.Size = New System.Drawing.Size(150, 98)
         '
         'RenameToolStripMenuItem
         '
         Me.RenameToolStripMenuItem.Name = "RenameToolStripMenuItem"
-        Me.RenameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.RenameToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.RenameToolStripMenuItem.Text = "Rename"
         '
         'DeleteToolStripMenuItem
         '
         Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(146, 6)
         '
         'NewFileToolStripMenuItem
         '
         Me.NewFileToolStripMenuItem.Name = "NewFileToolStripMenuItem"
-        Me.NewFileToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.NewFileToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.NewFileToolStripMenuItem.Text = "New File"
         '
         'NewDirectoryToolStripMenuItem
         '
         Me.NewDirectoryToolStripMenuItem.Name = "NewDirectoryToolStripMenuItem"
-        Me.NewDirectoryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.NewDirectoryToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.NewDirectoryToolStripMenuItem.Text = "New Directory"
         '
         'ProjExplorerDock
