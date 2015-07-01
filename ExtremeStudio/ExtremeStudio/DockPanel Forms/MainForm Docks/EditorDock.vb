@@ -1,5 +1,6 @@
 ﻿Imports ScintillaNET
 Imports ExtremeParser
+Imports System.Text.RegularExpressions
 
 Public Class EditorDock
 
@@ -19,17 +20,24 @@ Public Class EditorDock
         If RefreshWorker.IsBusy = False Then RefreshWorker.RunWorkerAsync(Editor.Text)
     End Sub
 
+#Region "CodeIndent Handlers"
+    Const SCI_SETLINEINDENTATION As Integer = 2126
+    Const SCI_GETLINEINDENTATION As Integer = 2127
+    Private Sub SetIndent(scin As ScintillaNET.Scintilla, line As Integer, indent As Integer)
+        scin.DirectMessage(SCI_SETLINEINDENTATION, New IntPtr(line), New IntPtr(indent))
+    End Sub
+    Private Function GetIndent(scin As ScintillaNET.Scintilla, line As Integer) As Integer
+        Return (scin.DirectMessage(SCI_GETLINEINDENTATION, New IntPtr(line), Nothing).ToInt32)
+    End Function
+#End Region
+
     Private maxLineNumberCharLength As Integer
     Private Sub Editor_TextChanged(sender As Object, e As EventArgs) Handles Editor.TextChanged
-        ' Did the number of characters in the line number display change?
-        ' i.e. nnn VS nn, or nnnn VS nn, etc...
-        Dim maxLineNumberCharLength = editor.Lines.Count.ToString().Length
+        Dim maxLineNumberCharLength = Editor.Lines.Count.ToString().Length
         If maxLineNumberCharLength = Me.maxLineNumberCharLength Then
             Return
         End If
 
-        ' Calculate the width required to display the last line number
-        ' and include some padding for good measure.
         Const padding As Integer = 2
         Editor.Margins(0).Width = Editor.TextWidth(Style.LineNumber, New String("9"c, maxLineNumberCharLength + 1)) + padding
         Me.maxLineNumberCharLength = maxLineNumberCharLength
@@ -40,7 +48,6 @@ Public Class EditorDock
             Case AscW("("), AscW(")"), AscW("["), AscW("]"), AscW("{"), AscW("}")
                 Return True
         End Select
-
         Return False
     End Function
 
@@ -59,7 +66,7 @@ Public Class EditorDock
         Editor.StyleClearAll()
 
         'Set the code part styles.
-        Editor.Styles(Style.Cpp.[Default]).ForeColor = Color.Silver
+        Editor.Styles(Style.Cpp.[Default]).ForeColor = Color.Black
         Editor.Styles(Style.Cpp.Comment).ForeColor = Color.FromArgb(0, 128, 0)
         Editor.Styles(Style.Cpp.CommentLine).ForeColor = Color.FromArgb(0, 128, 0)
         Editor.Styles(Style.Cpp.CommentLineDoc).ForeColor = Color.FromArgb(128, 128, 128)
@@ -162,6 +169,28 @@ Public Class EditorDock
                 ' Turn off brace matching
                 Editor.BraceHighlight(Scintilla.InvalidPosition, Scintilla.InvalidPosition)
                 Editor.HighlightGuide = 0
+            End If
+        End If
+    End Sub
+
+    Private Sub Editor_InsertCheck(sender As Object, e As InsertCheckEventArgs) Handles Editor.InsertCheck
+        If (e.Text.EndsWith("" & vbCr) OrElse e.Text.EndsWith("" & vbLf)) Then
+            Dim startPos As Integer = Editor.Lines(Editor.LineFromPosition(Editor.CurrentPosition)).Position
+            Dim endPos As Integer = e.Position
+            Dim curLineText As String = Editor.GetTextRange(startPos, (endPos - startPos)) 'Text until the caret.
+            Dim indent As Match = Regex.Match(curLineText, "^[ \t]*")
+            e.Text = (e.Text + indent.Value)
+            If Regex.IsMatch(curLineText, "{\s*$") Then
+                e.Text = (e.Text + vbTab)
+            End If
+        End If
+    End Sub
+
+    Private Sub Editor_CharAdded(sender As Object, e As CharAddedEventArgs) Handles Editor.CharAdded
+        If e.Char = 125 Then  'The '}' char.
+            Dim curLine As Integer = Editor.LineFromPosition(Editor.CurrentPosition)
+            If Editor.Lines(curLine).Text.Trim() = "}" Then
+                SetIndent(Editor, curLine, GetIndent(Editor, curLine) - 4)
             End If
         End If
     End Sub
