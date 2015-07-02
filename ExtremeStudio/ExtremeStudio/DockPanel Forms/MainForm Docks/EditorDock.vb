@@ -189,7 +189,7 @@ Public Class EditorDock
     Private Sub Editor_CharAdded(sender As Object, e As CharAddedEventArgs) Handles Editor.CharAdded
         If e.Char = 125 Then  'The '}' char.
             Dim curLine As Integer = Editor.LineFromPosition(Editor.CurrentPosition)
-            If Editor.Lines(curLine).Text.Trim() = "}" Then
+            If Editor.Lines(curLine).Text.Trim() = "}" Then 'Check whether the bracket is the only thing on the line.. For cases like "if() { }".
                 SetIndent(Editor, curLine, GetIndent(Editor, curLine) - 4)
             End If
         End If
