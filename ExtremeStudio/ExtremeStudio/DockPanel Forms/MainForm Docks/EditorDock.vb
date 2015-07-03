@@ -136,6 +136,15 @@ Public Class EditorDock
     End Sub
 
     Private Sub EditorDock_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If Editor.Modified Then
+            Dim res = MsgBox("The file contains un-saved content, Would you like to save it ?", MsgBoxStyle.YesNoCancel)
+            If res = MsgBoxResult.Yes Then
+                MainForm.SaveFile(Editor)
+            ElseIf res = MsgBoxResult.Cancel Then
+                e.Cancel = True
+                Exit Sub
+            End If
+        End If
         idleTimer.Stop()
     End Sub
 
@@ -192,6 +201,26 @@ Public Class EditorDock
             If Editor.Lines(curLine).Text.Trim() = "}" Then 'Check whether the bracket is the only thing on the line.. For cases like "if() { }".
                 SetIndent(Editor, curLine, GetIndent(Editor, curLine) - 4)
             End If
+        End If
+    End Sub
+
+    Private Sub Editor_SavePointReached(sender As Object, e As EventArgs) Handles Editor.SavePointReached
+        Me.TabText = Me.Text
+    End Sub
+    Private Sub Editor_SavePointLeft(sender As Object, e As EventArgs) Handles Editor.SavePointLeft
+        If Me.Text = "" Then Exit Sub
+        Me.TabText = "* " + Me.Text
+    End Sub
+
+    Private Sub Editor_KeyDown(sender As Object, e As KeyEventArgs) Handles Editor.KeyDown
+        If e.Control = True And e.KeyCode = Keys.S Then
+            MainForm.SaveFile(Editor)
+            Editor.SetSavePoint()
+            If e.Shift = True Then 'If he has shift pressed also.
+                MainForm.SaveAllFiles(Me, EventArgs.Empty)
+            End If
+
+            e.SuppressKeyPress = True
         End If
     End Sub
 End Class

@@ -57,7 +57,7 @@ Partial Class EditorDock
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents Editor As ScintillaNET.Scintilla
     Friend WithEvents RefreshTimer As System.Windows.Forms.Timer
     Friend WithEvents RefreshWorker As System.ComponentModel.BackgroundWorker
+    Public WithEvents Editor As ScintillaNET.Scintilla
 End Class

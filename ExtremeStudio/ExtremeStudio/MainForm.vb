@@ -1,14 +1,33 @@
 ﻿Imports System.IO
 Imports WeifenLuo.WinFormsUI.Docking
+Imports ScintillaNET
+Imports System.Text
 
 Public Class MainForm
 
+    'Use `MainForm.MainDock.ActiveDocument` to get the current active tab.
+    'It will return Nothing if there is none active.
+    'And to access the editor control, Use the property `CurrentScintilla`.
+
 #Region "Functions"
-    Public Sub CreateTab(ByVal targetPath As String)
+    Public ReadOnly Property CurrentScintilla As Scintilla
+        Get
+            If MainDock.ActiveDocument Is Nothing Then Return Nothing
+            Return DirectCast(MainDock.ActiveDocument.DockHandler.Form.Controls("Editor"), Scintilla)
+        End Get
+    End Property
+
+    Public Sub OpenFile(ByVal targetPath As String)
         Dim newEditor As New EditorDock
         newEditor.Text = Path.GetFileName(targetPath)
+        newEditor.Editor.Tag = targetPath
         newEditor.Editor.Text = My.Computer.FileSystem.ReadAllText(targetPath)
         newEditor.Show(MainDock)
+        newEditor.Editor.SetSavePoint() 'Set that all data has been saved.
+    End Sub
+    Public Sub SaveFile(editor As Scintilla)
+        File.WriteAllText(editor.Tag, editor.Text, New UTF8Encoding(False))
+        editor.SetSavePoint() 'Set as un-modified.
     End Sub
 #End Region
 
@@ -17,7 +36,7 @@ Public Class MainForm
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = "ExtremeStudio - " + currentProject.projectName
-        CreateTab(currentProject.projectPath + "/gamemodes/" + currentProject.projectName + ".pwn")
+        OpenFile(currentProject.projectPath + "/gamemodes/" + currentProject.projectName + ".pwn")
     End Sub
 
     Private Sub MainForm_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -64,4 +83,14 @@ Public Class MainForm
     End Sub
 #End Region
 
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
+        If CurrentScintilla Is Nothing Then Exit Sub
+        SaveFile(CurrentScintilla)
+    End Sub
+
+    Public Sub SaveAllFiles(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
+        For Each Dock As DockContent In MainDock.Documents
+            SaveFile(Dock.Controls("Editor"))
+        Next
+    End Sub
 End Class

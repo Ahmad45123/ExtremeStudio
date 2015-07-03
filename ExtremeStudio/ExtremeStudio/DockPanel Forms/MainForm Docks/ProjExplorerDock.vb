@@ -208,7 +208,7 @@ Public Class ProjExplorerDock
                     End If
                 End If
 
-                MainForm.CreateTab(oldPath)
+                MainForm.OpenFile(oldPath)
             End If
         End If
     End Sub

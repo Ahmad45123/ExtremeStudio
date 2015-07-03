@@ -59,7 +59,7 @@ Public Class NewProjectFile
             targetPath += FolderList.SelectedItem + "/" + fileNameText.Text + ".pwn"
         End If
         My.Computer.FileSystem.CopyFile(Application.StartupPath + "/newfileTemplate.pwn", targetPath)
-        MainForm.CreateTab(targetPath)
+        MainForm.OpenFile(targetPath)
 
         If ProjExplorerDock.Visible Then
             ProjExplorerDock.RefreshList()
