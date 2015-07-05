@@ -22,9 +22,7 @@ Partial Class EditorDock
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Me.Editor = New ScintillaNET.Scintilla()
-        Me.RefreshTimer = New System.Windows.Forms.Timer(Me.components)
         Me.RefreshWorker = New System.ComponentModel.BackgroundWorker()
         Me.SuspendLayout()
         '
@@ -36,11 +34,6 @@ Partial Class EditorDock
         Me.Editor.Size = New System.Drawing.Size(566, 417)
         Me.Editor.TabIndex = 0
         Me.Editor.Text = "Scintilla1"
-        '
-        'RefreshTimer
-        '
-        Me.RefreshTimer.Enabled = True
-        Me.RefreshTimer.Interval = 5000
         '
         'RefreshWorker
         '
@@ -57,7 +50,6 @@ Partial Class EditorDock
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents RefreshTimer As System.Windows.Forms.Timer
     Friend WithEvents RefreshWorker As System.ComponentModel.BackgroundWorker
     Public WithEvents Editor As ScintillaNET.Scintilla
 End Class
