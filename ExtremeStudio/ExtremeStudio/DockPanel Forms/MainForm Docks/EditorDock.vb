@@ -17,7 +17,7 @@ Public Class EditorDock
     End Sub
 #End Region
     Private Sub scintilla_TextChangedDelayed(sender As Object, e As EventArgs)
-        If RefreshWorker.IsBusy = False Then RefreshWorker.RunWorkerAsync(Editor.Text)
+        If RefreshWorker.IsBusy = False Then RefreshWorker.RunWorkerAsync(Editor.Text) : MainForm.statusLabel.Text = "Parsing Code."
     End Sub
 
 #Region "CodeIndent Handlers"
@@ -122,16 +122,27 @@ Public Class EditorDock
     Public codeParts As Parser
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork
         If Editor.IsHandleCreated Then
-            Dim parsed As New Parser(e.Argument)
-            e.Result = parsed
+            Try
+                e.Result = New Parser(e.Argument)
+            Catch ex As ParserException
+                e.Result = ex
+            End Try
         End If
     End Sub
 
     Private Sub RefreshWorker_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles RefreshWorker.RunWorkerCompleted
-        codeParts = e.Result
-        If ProjExplorerDock.Visible Then
-            ProjExplorerDock.Includes = codeParts.Includes
-            ProjExplorerDock.RefreshIncludes()
+        MainForm.statusLabel.Text = "Idle."
+
+        If TypeOf (e.Result) Is ParserException Then
+            Dim err = DirectCast(e.Result, ParserException)
+            SetError(err.Message, err.startPos, err.endPos)
+        ElseIf TypeOf (e.Result) Is Parser Then
+            codeParts = DirectCast(e.Result, Parser)
+
+            If ProjExplorerDock.Visible Then
+                ProjExplorerDock.Includes = codeParts.Includes
+                ProjExplorerDock.RefreshIncludes()
+            End If
         End If
     End Sub
 
@@ -223,4 +234,11 @@ Public Class EditorDock
             e.SuppressKeyPress = True
         End If
     End Sub
+
+#Region "Indicator Colorizing Functions"
+    Public Sub SetError(ByVal errorMsg As String, startPos As Integer, endPos As Integer)
+        'TODO: Add code for indicators.
+        Editor.GotoPosition(startPos) 'Temp Solution
+    End Sub
+#End Region
 End Class
