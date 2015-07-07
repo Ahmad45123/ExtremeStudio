@@ -51,6 +51,12 @@ Public Class EditorDock
         Return False
     End Function
 
+
+    Enum indicatorIDs
+        INDICATOR_PARSERERROR = 50 'Start from 50
+        INDICATOR_CODEERROR
+        INDICATOR_PHPDOCERROR
+    End Enum
     Private Sub EditorDock_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TextChangedDelayed Event
         AddHandler TextChangedDelayed, AddressOf scintilla_TextChangedDelayed
@@ -114,6 +120,11 @@ Public Class EditorDock
         ' Enable automatic folding.
         Editor.AutomaticFold = (AutomaticFold.Show Or AutomaticFold.Click Or AutomaticFold.Change)
 
+        'Setup the indicators
+        Editor.Indicators(indicatorIDs.INDICATOR_PARSERERROR).Style = IndicatorStyle.Squiggle
+        Editor.Indicators(indicatorIDs.INDICATOR_PARSERERROR).ForeColor = Color.DarkGreen
+        Editor.Indicators(indicatorIDs.INDICATOR_PARSERERROR).Under = True
+
         'Set the PAWN language keywords.
         Editor.SetKeywords(0, "break case continue do else false for foreach goto public stock if is new null return sizeof switch true using while forward native")
         Editor.SetKeywords(1, "enum")
@@ -132,10 +143,11 @@ Public Class EditorDock
 
     Private Sub RefreshWorker_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles RefreshWorker.RunWorkerCompleted
         MainForm.statusLabel.Text = "Idle."
+        ClearParserError()
 
         If TypeOf (e.Result) Is ParserException Then
             Dim err = DirectCast(e.Result, ParserException)
-            SetError(err.Message, err.startPos, err.endPos)
+            SetParserError(err.Message, err.startPos, err.length)
         ElseIf TypeOf (e.Result) Is Parser Then
             codeParts = DirectCast(e.Result, Parser)
 
@@ -236,9 +248,13 @@ Public Class EditorDock
     End Sub
 
 #Region "Indicator Colorizing Functions"
-    Public Sub SetError(ByVal errorMsg As String, startPos As Integer, endPos As Integer)
-        'TODO: Add code for indicators.
-        Editor.GotoPosition(startPos) 'Temp Solution
+    Public Sub ClearParserError()
+        Editor.IndicatorCurrent = indicatorIDs.INDICATOR_PARSERERROR
+        Editor.IndicatorClearRange(0, Editor.TextLength)
+    End Sub
+    Public Sub SetParserError(ByVal errorMsg As String, startPos As Integer, length As Integer)
+        Editor.IndicatorCurrent = indicatorIDs.INDICATOR_PARSERERROR
+        Editor.IndicatorFillRange(startPos, length)
     End Sub
 #End Region
 End Class
