@@ -75,7 +75,7 @@ Public Class EditorDock
         Editor.Styles(Style.Cpp.[Default]).ForeColor = Color.Black
         Editor.Styles(Style.Cpp.Comment).ForeColor = Color.FromArgb(0, 128, 0)
         Editor.Styles(Style.Cpp.CommentLine).ForeColor = Color.FromArgb(0, 128, 0)
-        Editor.Styles(Style.Cpp.CommentLineDoc).ForeColor = Color.FromArgb(128, 128, 128)
+        Editor.Styles(Style.Cpp.CommentLineDoc).ForeColor = Color.Red
         Editor.Styles(Style.Cpp.Number).ForeColor = Color.Olive
         Editor.Styles(Style.Cpp.Word).ForeColor = Color.Blue
         Editor.Styles(Style.Cpp.Word2).ForeColor = Color.Blue
@@ -126,7 +126,7 @@ Public Class EditorDock
         Editor.Indicators(indicatorIDs.INDICATOR_PARSERERROR).Under = True
 
         'Set the PAWN language keywords.
-        Editor.SetKeywords(0, "break case continue do else false for foreach goto public stock if is new null return sizeof switch true using while forward native")
+        Editor.SetKeywords(0, "break case continue do else false for goto public stock if is new null return sizeof switch true using while forward native")
         Editor.SetKeywords(1, "enum")
     End Sub
 
