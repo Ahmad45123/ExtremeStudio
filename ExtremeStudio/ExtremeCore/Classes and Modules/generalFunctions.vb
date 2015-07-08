@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Net
 Imports System.Windows.Forms
+Imports ScintillaNET
 
 Public Module generalFunctions
     Function FilenameIsOK(ByVal fileName As String, _
@@ -131,5 +132,21 @@ Public Module generalFunctions
         If Not My.Computer.FileSystem.FileExists(path + "/pawno/pawnc.dll") Then Return False
         If Not My.Computer.FileSystem.FileExists(path + "/pawno/pawncc.exe") Then Return False
         Return True
+    End Function
+
+    Public Function getLinesFromRange(scin As Scintilla, ByVal startPos As Integer, ByVal endPos As Integer) As List(Of Integer)
+        Dim lines As New List(Of Integer)
+
+        For i = 0 To 1 Step 0
+            Dim lne As Integer = scin.LineFromPosition(startPos)
+            lines.Add(lne)
+            startPos += scin.Lines(lne).Length
+
+            If startPos = endPos Or startPos >= scin.CurrentPosition Then
+                i = 1 'End the loop
+            End If
+        Next
+
+        Return lines
     End Function
 End Module

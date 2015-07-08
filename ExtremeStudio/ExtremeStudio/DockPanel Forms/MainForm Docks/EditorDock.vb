@@ -78,7 +78,7 @@ Public Class EditorDock
         Editor.Styles(Style.Cpp.CommentLineDoc).ForeColor = Color.Red
         Editor.Styles(Style.Cpp.Number).ForeColor = Color.Olive
         Editor.Styles(Style.Cpp.Word).ForeColor = Color.Blue
-        Editor.Styles(Style.Cpp.Word2).ForeColor = Color.Blue
+        Editor.Styles(Style.Cpp.Word2).ForeColor = Color.CadetBlue
         Editor.Styles(Style.Cpp.[String]).ForeColor = Color.FromArgb(163, 21, 21)
         Editor.Styles(Style.Cpp.Character).ForeColor = Color.FromArgb(163, 21, 21)
         Editor.Styles(Style.Cpp.Verbatim).ForeColor = Color.FromArgb(163, 21, 21)
@@ -94,7 +94,7 @@ Public Class EditorDock
 
         'Set the folding configs.
         Editor.SetProperty("fold", "1")
-        Editor.SetProperty("fold.compact", "1")
+        Editor.SetProperty("fold.compact", "0")
 
         ' Configure a margin to display folding symbols.
         Editor.Margins(2).Type = MarginType.Symbol
@@ -126,8 +126,8 @@ Public Class EditorDock
         Editor.Indicators(indicatorIDs.INDICATOR_PARSERERROR).Under = True
 
         'Set the PAWN language keywords.
-        Editor.SetKeywords(0, "break case continue do else false for goto public stock if is new null return sizeof switch true using while forward native")
-        Editor.SetKeywords(1, "enum")
+        Editor.SetKeywords(0, "break case enum continue do else false for goto public stock if is new null return sizeof switch true using while forward native")
+        Editor.SetKeywords(1, "GetPlayerName")
     End Sub
 
     Public codeParts As Parser
