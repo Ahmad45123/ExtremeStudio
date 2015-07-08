@@ -127,7 +127,7 @@ Public Class EditorDock
 
         'Set the PAWN language keywords.
         Editor.SetKeywords(0, "break case enum continue do else false for goto public stock if is new null return sizeof switch true using while forward native")
-        Editor.SetKeywords(1, "GetPlayerName")
+        Editor.SetKeywords(1, "")
     End Sub
 
     Public codeParts As Parser
