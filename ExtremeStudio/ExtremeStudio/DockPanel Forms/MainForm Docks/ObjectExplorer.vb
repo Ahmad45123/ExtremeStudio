@@ -1,5 +1,8 @@
 ﻿Public Class ObjectExplorer
+    Dim nodeState As ExtremeCore.treeNodeStateSaving = New ExtremeCore.treeNodeStateSaving
+
     Public Sub refreshTreeView(parser As ExtremeParser.Parser)
+        nodeState.SaveTreeState(treeView.Nodes) 'Save states
         treeView.Nodes.Clear() 'Clear all
 
         Dim defines = treeView.Nodes.Add("Defines")
@@ -28,5 +31,7 @@
             Dim nde = natives.Nodes.Add(key)
             nde.Tag = parser.Natives(key)
         Next
+
+        nodeState.RestoreTreeState(treeView) 'Restore
     End Sub
 End Class

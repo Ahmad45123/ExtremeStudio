@@ -2,55 +2,12 @@
 
 Public Class ProjExplorerDock
 
-#Region "SavingExpandedNodesCode"
-    Dim nodeStates
-    Private Sub SaveTreeState(nodes As TreeNodeCollection, Optional newFunc As Boolean = True)
-        If newFunc = True Then nodeStates = New List(Of String)
-        For Each node As TreeNode In nodes
-            If node.IsExpanded Then
-                nodeStates.Add(node.Text)
-                SaveTreeState(node.Nodes, False)
-            End If
-        Next
-    End Sub
-
-    Private Sub RecurseNodes(ByVal searchValue As String)
-        For Each tn As TreeNode In treeView.Nodes
-            If tn.Text = searchValue Then
-                tn.Expand()
-                Exit For
-            End If
-            If tn.Nodes.Count > 0 Then
-                For Each cTn As TreeNode In tn.Nodes
-                    recurseChildren(cTn, searchValue)
-                Next
-            End If
-        Next
-    End Sub
-    Private Sub recurseChildren(ByVal tn As TreeNode, ByVal searchValue As String)
-        If tn.Text = searchValue Then
-            tn.Expand()
-            Exit Sub
-        End If
-        If tn.Nodes.Count > 0 Then
-            For Each tnC As TreeNode In tn.Nodes
-                recurseChildren(tnC, searchValue)
-            Next
-        End If
-    End Sub
-
-    Private Sub RestoreTreeState(tree As TreeView)
-        For Each NodeName As String In nodeStates
-            RecurseNodes(NodeName)
-        Next
-        nodeStates = Nothing 'Clear
-    End Sub
-#End Region
+    Private nodeState As ExtremeCore.treeNodeStateSaving = New ExtremeCore.treeNodeStateSaving
 
     Public Includes As List(Of String)
 
     Public Sub RefreshList(Optional firstTime As Boolean = False)
-        If firstTime = False Then SaveTreeState(treeView.Nodes) 'Save current expanded nodes.
+        If firstTime = False Then nodeState.SaveTreeState(treeView.Nodes) 'Save current expanded nodes.
 
         treeView.Nodes(0).Nodes.Clear()
         treeView.Nodes(1).Nodes.Clear()
@@ -84,7 +41,7 @@ Public Class ProjExplorerDock
             treeView.Nodes(1).Nodes.Add(nde)
         Next
 
-        If firstTime = False Then RestoreTreeState(treeView) 'Load the last opened nodes.
+        If firstTime = False Then nodeState.RestoreTreeState(treeView) 'Load the last opened nodes.
     End Sub
     Public Sub RefreshIncludes()
         treeView.Nodes(2).Nodes.Clear()
