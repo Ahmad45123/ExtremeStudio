@@ -127,7 +127,6 @@ Public Class EditorDock
 
         'Set the PAWN language keywords.
         Editor.SetKeywords(0, "break case enum continue do else false for goto public stock if is new null return sizeof switch true using while forward native")
-        Editor.SetKeywords(1, "")
     End Sub
 
     Public codeParts As Parser
@@ -154,6 +153,9 @@ Public Class EditorDock
             If ProjExplorerDock.Visible Then
                 ProjExplorerDock.Includes = codeParts.Includes
                 ProjExplorerDock.RefreshIncludes()
+            End If
+            If ObjectExplorer.Visible Then
+                ObjectExplorer.refreshTreeView(codeParts)
             End If
         End If
     End Sub

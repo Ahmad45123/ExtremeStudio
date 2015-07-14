@@ -49,6 +49,7 @@ Partial Class MainForm
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusLabel = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ObjectExplorerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -154,7 +155,7 @@ Partial Class MainForm
         'ToolStripDropDownButton1
         '
         Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProjectExplorerToolStripMenuItem})
+        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProjectExplorerToolStripMenuItem, Me.ObjectExplorerToolStripMenuItem})
         Me.ToolStripDropDownButton1.Image = CType(resources.GetObject("ToolStripDropDownButton1.Image"), System.Drawing.Image)
         Me.ToolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
@@ -191,6 +192,12 @@ Partial Class MainForm
         Me.statusLabel.Size = New System.Drawing.Size(26, 17)
         Me.statusLabel.Text = "Idle"
         '
+        'ObjectExplorerToolStripMenuItem
+        '
+        Me.ObjectExplorerToolStripMenuItem.Name = "ObjectExplorerToolStripMenuItem"
+        Me.ObjectExplorerToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.ObjectExplorerToolStripMenuItem.Text = "Object Explorer"
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -223,4 +230,5 @@ Partial Class MainForm
     Friend WithEvents ProjectExplorerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Friend WithEvents statusLabel As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents ObjectExplorerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class
