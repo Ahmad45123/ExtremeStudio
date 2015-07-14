@@ -154,8 +154,8 @@ Public Class EditorDock
                 ProjExplorerDock.Includes = codeParts.Includes
                 ProjExplorerDock.RefreshIncludes()
             End If
-            If ObjectExplorer.Visible Then
-                ObjectExplorer.refreshTreeView(codeParts)
+            If ObjectExplorerDock.Visible Then
+                ObjectExplorerDock.refreshTreeView(codeParts)
             End If
         End If
     End Sub

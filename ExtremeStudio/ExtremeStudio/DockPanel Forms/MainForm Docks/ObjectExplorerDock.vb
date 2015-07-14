@@ -1,4 +1,4 @@
-﻿Public Class ObjectExplorer
+﻿Public Class ObjectExplorerDock
     Dim nodeState As ExtremeCore.treeNodeStateSaving = New ExtremeCore.treeNodeStateSaving
 
     Public Sub refreshTreeView(parser As ExtremeParser.Parser)

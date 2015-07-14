@@ -60,12 +60,12 @@ Public Class MainForm
         End If
     End Sub
     Private Sub ObjectExplorerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ObjectExplorerToolStripMenuItem.Click
-        If ObjectExplorer.Visible = False Then
-            ObjectExplorer.Visible = True
-            ObjectExplorer.Show(MainDock)
+        If ObjectExplorerDock.Visible = False Then
+            ObjectExplorerDock.Visible = True
+            ObjectExplorerDock.Show(MainDock)
         Else
-            ObjectExplorer.Close()
-            ObjectExplorer.Visible = False
+            ObjectExplorerDock.Close()
+            ObjectExplorerDock.Visible = False
         End If
     End Sub
 #End Region
@@ -75,8 +75,8 @@ Public Class MainForm
     Private Function GetContentFromPersistString(ByVal persistString As String) As IDockContent
         If persistString = GetType(ProjExplorerDock).ToString Then
             Return ProjExplorerDock
-        ElseIf persistString = GetType(ObjectExplorer).ToString Then
-            Return ObjectExplorer
+        ElseIf persistString = GetType(ObjectExplorerDock).ToString Then
+            Return ObjectExplorerDock
         End If
         Return Nothing
     End Function
