@@ -33,7 +33,7 @@ Partial Class ObjectExplorerDock
         Me.treeView.Size = New System.Drawing.Size(245, 402)
         Me.treeView.TabIndex = 0
         '
-        'ObjectExplorer
+        'ObjectExplorerDock
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -44,7 +44,7 @@ Partial Class ObjectExplorerDock
             Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop) _
             Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom), WeifenLuo.WinFormsUI.Docking.DockAreas)
         Me.Font = New System.Drawing.Font("Tahoma", 8.0!)
-        Me.Name = "ObjectExplorer"
+        Me.Name = "ObjectExplorerDock"
         Me.Text = "Object Explorer"
         Me.ResumeLayout(False)
 
