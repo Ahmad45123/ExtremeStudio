@@ -17,6 +17,7 @@
 
         Dim defines = treeView.Nodes.Add("Defines") : defines.Tag = "Root"
         Dim macros = treeView.Nodes.Add("Macros") : macros.Tag = "Root"
+        Dim functions = treeView.Nodes.Add("Functions") : functions.Tag = "Root"
         Dim publics = treeView.Nodes.Add("Publics") : publics.Tag = "Root"
         Dim stocks = treeView.Nodes.Add("Stocks") : stocks.Tag = "Root"
         Dim natives = treeView.Nodes.Add("Natives") : natives.Tag = "Root"
@@ -28,6 +29,10 @@
         For Each key As String In parser.Macros.Keys
             Dim nde = macros.Nodes.Add(key)
             nde.Tag = New ValAndLineInfoCombine(parser.Macros(key), parser.Macros.Tag(key))
+        Next
+        For Each key As String In parser.Functions.Keys
+            Dim nde = functions.Nodes.Add(key)
+            nde.Tag = New ValAndLineInfoCombine(parser.Functions(key), parser.Functions.Tag(key))
         Next
         For Each key As String In parser.Publics.Keys
             Dim nde = publics.Nodes.Add(key)
@@ -54,5 +59,15 @@
                 End If
             End If
         End If
+    End Sub
+
+    Private Sub ObjectExplorerDock_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If MainForm.CurrentEditor IsNot Nothing Then
+            refreshTreeView(MainForm.CurrentEditor.codeParts)
+        End If
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+
     End Sub
 End Class

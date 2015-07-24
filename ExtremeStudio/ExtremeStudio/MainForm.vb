@@ -9,14 +9,21 @@ Public Class MainForm
     'It will return Nothing if there is none active.
     'And to access the editor control, Use the property `CurrentScintilla`.
 
-#Region "Functions"
+#Region "Properties"
     Public ReadOnly Property CurrentScintilla As Scintilla
         Get
             If MainDock.ActiveDocument Is Nothing Then Return Nothing
             Return DirectCast(MainDock.ActiveDocument.DockHandler.Form.Controls("Editor"), Scintilla)
         End Get
     End Property
-
+    Public ReadOnly Property CurrentEditor As EditorDock
+        Get
+            If MainDock.ActiveDocument Is Nothing Then Return Nothing
+            Return DirectCast(MainDock.ActiveDocument.DockHandler.Form, EditorDock)
+        End Get
+    End Property
+#End Region
+#Region "Functions"
     Public Sub OpenFile(ByVal targetPath As String)
         Dim newEditor As New EditorDock
         newEditor.Text = Path.GetFileName(targetPath)
