@@ -91,6 +91,12 @@
     <Compile Include="DockPanel Forms\MainForm Docks\EditorDock.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DockPanel Forms\MainForm Docks\ErrorsDock.Designer.vb">
+      <DependentUpon>ErrorsDock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockPanel Forms\MainForm Docks\ErrorsDock.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DockPanel Forms\MainForm Docks\ObjectExplorerDock.Designer.vb">
       <DependentUpon>ObjectExplorerDock.vb</DependentUpon>
     </Compile>
@@ -140,6 +146,9 @@
   <ItemGroup>
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\EditorDock.resx">
       <DependentUpon>EditorDock.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ErrorsDock.resx">
+      <DependentUpon>ErrorsDock.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ObjectExplorerDock.resx">
       <DependentUpon>ObjectExplorerDock.vb</DependentUpon>

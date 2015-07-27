@@ -12,6 +12,8 @@
     Dim nodeState As ExtremeCore.treeNodeStateSaving = New ExtremeCore.treeNodeStateSaving
 
     Public Sub refreshTreeView(parser As ExtremeParser.Parser)
+        If parser Is Nothing Then Exit Sub
+
         nodeState.SaveTreeState(treeView.Nodes) 'Save states
         treeView.Nodes.Clear() 'Clear all
 

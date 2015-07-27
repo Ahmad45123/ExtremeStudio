@@ -134,7 +134,7 @@ Public Class EditorDock
         If Editor.IsHandleCreated Then
             Try
                 e.Result = New Parser(e.Argument)
-            Catch ex As ParserException
+            Catch ex As ExceptionsList
                 e.Result = ex
             End Try
         End If
@@ -142,11 +142,13 @@ Public Class EditorDock
 
     Private Sub RefreshWorker_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles RefreshWorker.RunWorkerCompleted
         MainForm.statusLabel.Text = "Idle."
-        ClearParserError()
+        ClearParserErrors()
 
-        If TypeOf (e.Result) Is ParserException Then
-            Dim err = DirectCast(e.Result, ParserException)
-            SetParserError(err.Message, err.startPos, err.length)
+        If TypeOf (e.Result) Is ExceptionsList Then
+            Dim err = DirectCast(e.Result, ExceptionsList)
+            For Each obj As ParserException In err.exceptionsList
+                SetParserError(obj.Message, obj.startPos, obj.length)
+            Next
         ElseIf TypeOf (e.Result) Is Parser Then
             codeParts = DirectCast(e.Result, Parser)
 
@@ -250,11 +252,13 @@ Public Class EditorDock
     End Sub
 
 #Region "Indicator Colorizing Functions"
-    Public Sub ClearParserError()
+    Public Sub ClearParserErrors()
+        ErrorsDock.parserErrors.Rows.Clear()
         Editor.IndicatorCurrent = indicatorIDs.INDICATOR_PARSERERROR
         Editor.IndicatorClearRange(0, Editor.TextLength)
     End Sub
     Public Sub SetParserError(ByVal errorMsg As String, startPos As Integer, length As Integer)
+        ErrorsDock.parserErrors.Rows.Add({errorMsg, startPos, length})
         Editor.IndicatorCurrent = indicatorIDs.INDICATOR_PARSERERROR
         Editor.IndicatorFillRange(startPos, length)
     End Sub

@@ -40,16 +40,17 @@ Partial Class MainForm
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
         Me.MainDock = New WeifenLuo.WinFormsUI.Docking.DockPanel()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.ProjectExplorerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusLabel = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.ProjectExplorerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ObjectExplorerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ErrorsAndWarningsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -120,6 +121,34 @@ Partial Class MainForm
         Me.ToolStrip1.TabIndex = 6
         Me.ToolStrip1.Text = "ToolStrip1"
         '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStrip2
+        '
+        Me.ToolStrip2.Location = New System.Drawing.Point(0, 25)
+        Me.ToolStrip2.Name = "ToolStrip2"
+        Me.ToolStrip2.Size = New System.Drawing.Size(938, 25)
+        Me.ToolStrip2.TabIndex = 7
+        Me.ToolStrip2.Text = "ToolStrip2"
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusLabel})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 440)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(938, 22)
+        Me.StatusStrip1.TabIndex = 10
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'statusLabel
+        '
+        Me.statusLabel.Name = "statusLabel"
+        Me.statusLabel.Size = New System.Drawing.Size(26, 17)
+        Me.statusLabel.Text = "Idle"
+        '
         'ToolStripButton3
         '
         Me.ToolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -147,15 +176,10 @@ Partial Class MainForm
         Me.ToolStripButton2.Size = New System.Drawing.Size(23, 22)
         Me.ToolStripButton2.Text = "Save All"
         '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
         'ToolStripDropDownButton1
         '
         Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProjectExplorerToolStripMenuItem, Me.ObjectExplorerToolStripMenuItem})
+        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProjectExplorerToolStripMenuItem, Me.ObjectExplorerToolStripMenuItem, Me.ErrorsAndWarningsToolStripMenuItem})
         Me.ToolStripDropDownButton1.Image = CType(resources.GetObject("ToolStripDropDownButton1.Image"), System.Drawing.Image)
         Me.ToolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
@@ -166,37 +190,20 @@ Partial Class MainForm
         'ProjectExplorerToolStripMenuItem
         '
         Me.ProjectExplorerToolStripMenuItem.Name = "ProjectExplorerToolStripMenuItem"
-        Me.ProjectExplorerToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.ProjectExplorerToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
         Me.ProjectExplorerToolStripMenuItem.Text = "Project Explorer"
-        '
-        'ToolStrip2
-        '
-        Me.ToolStrip2.Location = New System.Drawing.Point(0, 25)
-        Me.ToolStrip2.Name = "ToolStrip2"
-        Me.ToolStrip2.Size = New System.Drawing.Size(938, 25)
-        Me.ToolStrip2.TabIndex = 7
-        Me.ToolStrip2.Text = "ToolStrip2"
-        '
-        'StatusStrip1
-        '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusLabel})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 440)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(938, 22)
-        Me.StatusStrip1.TabIndex = 10
-        Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'statusLabel
-        '
-        Me.statusLabel.Name = "statusLabel"
-        Me.statusLabel.Size = New System.Drawing.Size(26, 17)
-        Me.statusLabel.Text = "Idle"
         '
         'ObjectExplorerToolStripMenuItem
         '
         Me.ObjectExplorerToolStripMenuItem.Name = "ObjectExplorerToolStripMenuItem"
-        Me.ObjectExplorerToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.ObjectExplorerToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
         Me.ObjectExplorerToolStripMenuItem.Text = "Object Explorer"
+        '
+        'ErrorsAndWarningsToolStripMenuItem
+        '
+        Me.ErrorsAndWarningsToolStripMenuItem.Name = "ErrorsAndWarningsToolStripMenuItem"
+        Me.ErrorsAndWarningsToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.ErrorsAndWarningsToolStripMenuItem.Text = "Errors And Warnings"
         '
         'MainForm
         '
@@ -231,4 +238,5 @@ Partial Class MainForm
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Friend WithEvents statusLabel As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents ObjectExplorerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ErrorsAndWarningsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

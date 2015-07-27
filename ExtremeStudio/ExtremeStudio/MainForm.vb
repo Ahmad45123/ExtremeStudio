@@ -75,6 +75,15 @@ Public Class MainForm
             ObjectExplorerDock.Visible = False
         End If
     End Sub
+    Private Sub ErrorsAndWarningsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ErrorsAndWarningsToolStripMenuItem.Click
+        If ErrorsDock.Visible = False Then
+            ErrorsDock.Visible = True
+            ErrorsDock.Show(MainDock)
+        Else
+            ErrorsDock.Close()
+            ErrorsDock.Visible = False
+        End If
+    End Sub
 #End Region
 
 #Region "DocksSavingLoading"
@@ -84,6 +93,8 @@ Public Class MainForm
             Return ProjExplorerDock
         ElseIf persistString = GetType(ObjectExplorerDock).ToString Then
             Return ObjectExplorerDock
+        ElseIf persistString = GetType(ErrorsDock).ToString Then
+            Return ErrorsDock
         End If
         Return Nothing
     End Function
