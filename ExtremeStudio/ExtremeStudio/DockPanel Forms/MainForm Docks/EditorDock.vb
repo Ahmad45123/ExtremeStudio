@@ -126,7 +126,7 @@ Public Class EditorDock
         Editor.Indicators(indicatorIDs.INDICATOR_PARSERERROR).Under = True
 
         'Set the PAWN language keywords.
-        Editor.SetKeywords(0, "break case enum continue do else false for goto public stock if is new null return sizeof switch true using while forward native")
+        Editor.SetKeywords(0, "break case enum continue do else false for goto public stock if is new null return sizeof switch true while forward native")
     End Sub
 
     Public codeParts As Parser
