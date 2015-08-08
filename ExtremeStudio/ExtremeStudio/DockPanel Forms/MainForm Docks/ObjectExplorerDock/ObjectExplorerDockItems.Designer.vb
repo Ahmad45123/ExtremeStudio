@@ -24,17 +24,17 @@ Partial Class ObjectExplorerDockItems
     Private Sub InitializeComponent()
         Me.itemsList = New System.Windows.Forms.ListBox()
         Me.selinfo = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.infoName = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.infoIden = New System.Windows.Forms.Label()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.addName = New System.Windows.Forms.TextBox()
-        Me.addIden = New System.Windows.Forms.TextBox()
+        Me.infoIden = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.infoName = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.addIden = New System.Windows.Forms.TextBox()
+        Me.addName = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.selinfo.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -61,6 +61,42 @@ Partial Class ObjectExplorerDockItems
         Me.selinfo.TabStop = False
         Me.selinfo.Text = "Selected Info"
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(203, 55)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(20, 23)
+        Me.Button1.TabIndex = 3
+        Me.Button1.Text = "X"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'infoIden
+        '
+        Me.infoIden.AutoSize = True
+        Me.infoIden.Location = New System.Drawing.Point(70, 55)
+        Me.infoIden.Name = "infoIden"
+        Me.infoIden.Size = New System.Drawing.Size(25, 13)
+        Me.infoIden.TabIndex = 3
+        Me.infoIden.Text = "Null"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(6, 55)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(53, 13)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "Identifier: "
+        '
+        'infoName
+        '
+        Me.infoName.AutoSize = True
+        Me.infoName.Location = New System.Drawing.Point(49, 28)
+        Me.infoName.Name = "infoName"
+        Me.infoName.Size = New System.Drawing.Size(25, 13)
+        Me.infoName.TabIndex = 1
+        Me.infoName.Text = "Null"
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -69,33 +105,6 @@ Partial Class ObjectExplorerDockItems
         Me.Label1.Size = New System.Drawing.Size(41, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Name: "
-        '
-        'infoName
-        '
-        Me.infoName.AutoSize = True
-        Me.infoName.Location = New System.Drawing.Point(49, 28)
-        Me.infoName.Name = "infoName"
-        Me.infoName.Size = New System.Drawing.Size(24, 13)
-        Me.infoName.TabIndex = 1
-        Me.infoName.Text = "Null"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 55)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(58, 13)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Identifier: "
-        '
-        'infoIden
-        '
-        Me.infoIden.AutoSize = True
-        Me.infoIden.Location = New System.Drawing.Point(70, 55)
-        Me.infoIden.Name = "infoIden"
-        Me.infoIden.Size = New System.Drawing.Size(24, 13)
-        Me.infoIden.TabIndex = 3
-        Me.infoIden.Text = "Null"
         '
         'GroupBox1
         '
@@ -111,14 +120,37 @@ Partial Class ObjectExplorerDockItems
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "New: "
         '
-        'Button1
+        'Button2
         '
-        Me.Button1.Location = New System.Drawing.Point(203, 55)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(20, 23)
-        Me.Button1.TabIndex = 3
-        Me.Button1.Text = "X"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button2.Location = New System.Drawing.Point(148, 71)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 4
+        Me.Button2.Text = "Add"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'addIden
+        '
+        Me.addIden.Location = New System.Drawing.Point(70, 45)
+        Me.addIden.Name = "addIden"
+        Me.addIden.Size = New System.Drawing.Size(153, 20)
+        Me.addIden.TabIndex = 3
+        '
+        'addName
+        '
+        Me.addName.Location = New System.Drawing.Point(52, 23)
+        Me.addName.Name = "addName"
+        Me.addName.Size = New System.Drawing.Size(171, 20)
+        Me.addName.TabIndex = 2
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(6, 48)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(53, 13)
+        Me.Label6.TabIndex = 1
+        Me.Label6.Text = "Identifier: "
         '
         'Label5
         '
@@ -128,38 +160,6 @@ Partial Class ObjectExplorerDockItems
         Me.Label5.Size = New System.Drawing.Size(41, 13)
         Me.Label5.TabIndex = 0
         Me.Label5.Text = "Name: "
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(6, 48)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(58, 13)
-        Me.Label6.TabIndex = 1
-        Me.Label6.Text = "Identifier: "
-        '
-        'addName
-        '
-        Me.addName.Location = New System.Drawing.Point(52, 23)
-        Me.addName.Name = "addName"
-        Me.addName.Size = New System.Drawing.Size(171, 20)
-        Me.addName.TabIndex = 2
-        '
-        'addIden
-        '
-        Me.addIden.Location = New System.Drawing.Point(70, 45)
-        Me.addIden.Name = "addIden"
-        Me.addIden.Size = New System.Drawing.Size(153, 20)
-        Me.addIden.TabIndex = 3
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(148, 71)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 4
-        Me.Button2.Text = "Add"
-        Me.Button2.UseVisualStyleBackColor = True
         '
         'ObjectExplorerDockItems
         '

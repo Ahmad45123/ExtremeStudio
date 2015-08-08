@@ -72,4 +72,8 @@
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs)
 
     End Sub
+
+    Private Sub EditItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditItemsToolStripMenuItem.Click
+        ObjectExplorerDockItems.ShowDialog()
+    End Sub
 End Class

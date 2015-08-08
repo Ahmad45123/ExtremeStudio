@@ -42,7 +42,7 @@ Partial Class ObjectExplorerDock
         '
         Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditItemsToolStripMenuItem})
         Me.MenuStrip.Name = "MenuStrip"
-        Me.MenuStrip.Size = New System.Drawing.Size(127, 26)
+        Me.MenuStrip.Size = New System.Drawing.Size(153, 48)
         '
         'EditItemsToolStripMenuItem
         '
