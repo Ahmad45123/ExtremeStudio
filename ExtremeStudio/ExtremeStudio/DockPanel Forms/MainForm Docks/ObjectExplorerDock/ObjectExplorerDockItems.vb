@@ -10,6 +10,11 @@
 End Class
 
 Public Class objectExplorerItem
+    Public Sub New(name As String, iden As String)
+        Me.Name = name
+        Identifier = iden
+    End Sub
+
     Public Property Name As String
     Public Property Identifier As String
 End Class

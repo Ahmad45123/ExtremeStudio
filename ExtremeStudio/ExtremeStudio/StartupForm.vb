@@ -113,6 +113,7 @@ Public Class StartupForm
                 MainForm.currentProject.projectName = nameTextBox.Text
                 MainForm.currentProject.projectPath = locTextBox.Text
                 MainForm.currentProject.projectVersion = versionHandler.currentVersion
+                MainForm.currentProject.CreateTables() 'Create the tables of the db.
                 MainForm.currentProject.SaveInfo() 'Write the default extremeStudio config.
                 AddNewRecent(MainForm.currentProject.projectPath) 'Add it to the recent list.
                 MainForm.Show()
@@ -168,6 +169,7 @@ Public Class StartupForm
 
             'Get recent list.
             For Each Str As String In Recent
+                If Str Is Nothing Then Continue For
                 recentListBox.Items.Add(Str)
             Next
         End If

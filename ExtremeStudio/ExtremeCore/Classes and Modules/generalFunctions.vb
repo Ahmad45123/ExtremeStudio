@@ -124,6 +124,7 @@ Public Module generalFunctions
         If Not My.Computer.FileSystem.DirectoryExists(path + "/pawno") Then Return False
         If Not My.Computer.FileSystem.DirectoryExists(path + "/pawno/include") Then Return False
         If Not My.Computer.FileSystem.DirectoryExists(path + "/plugins") Then Return False
+        If Not My.Computer.FileSystem.FileExists(path + "/extremeStudio.config") Then Return False
         If Not My.Computer.FileSystem.FileExists(path + "/announce.exe") Then Return False
         If Not My.Computer.FileSystem.FileExists(path + "/samp-npc.exe") Then Return False
         If Not My.Computer.FileSystem.FileExists(path + "/samp-server.exe") Then Return False
