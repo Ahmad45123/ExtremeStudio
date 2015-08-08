@@ -178,7 +178,7 @@ Public Class StartupForm
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If recentListBox.SelectedIndex = -1 Then Exit Sub
         pathTextBox.Text = recentListBox.SelectedItem
-        loadProjectBtn_Click(loadProjectBtn, EventArgs.Empty) 'Click `Load Project` button.
+        If loadProjectBtn.Enabled = True Then loadProjectBtn_Click(loadProjectBtn, EventArgs.Empty) 'Click `Load Project` button.
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
