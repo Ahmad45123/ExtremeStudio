@@ -40,6 +40,10 @@ Public Class StartupForm
         If Not My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "/cache") Then
             My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "/cache")
         End If
+        If Not My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "/cache/serverPackages") Then
+            My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "/cache/serverPackages")
+        End If
+
         If Not My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "/configs") Then
             My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "/configs")
             My.Computer.FileSystem.WriteAllText(Application.StartupPath + "/configs/recent.xml", "", False)
@@ -60,7 +64,7 @@ Public Class StartupForm
         If ExtremeCore.isNetAvailable() Then 'Download latest from internet if there is internet.
             Dim webClient As New WebClient
             Dim xmlFile As New XmlDocument()
-            Dim fileText As String = webClient.DownloadString("http://5.231.50.158/ExtremeStudio/serverPackages.xml")
+            Dim fileText As String = webClient.DownloadString("http://johnymac.github.io/ExtremeStudio/serverPackages.xml")
             xmlFile.LoadXml(fileText)
 
             For Each cs As XmlNode In xmlFile.SelectNodes("serverPackages/samp")
