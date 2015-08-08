@@ -175,7 +175,7 @@ Public Class StartupForm
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If recentListBox.SelectedIndex = -1 Then Exit Sub
-        pathTextBox.Text = recentListBox.SelectedItem : TextBox1_TextChanged(pathTextBox, EventArgs.Empty) 'Fire the TextChanged event.
+        pathTextBox.Text = recentListBox.SelectedItem
         loadProjectBtn_Click(loadProjectBtn, EventArgs.Empty) 'Click `Load Project` button.
     End Sub
 

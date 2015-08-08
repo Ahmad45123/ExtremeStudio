@@ -47,7 +47,7 @@ Public Class MainForm
     End Sub
 
     Private Sub MainForm_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
-        'TODO: Whatever saving code here.
+        currentProject.SaveInfo()
         StartupForm.Show()
     End Sub
 
