@@ -142,12 +142,12 @@ Public Class EditorDock
 
     Private Sub RefreshWorker_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles RefreshWorker.RunWorkerCompleted
         MainForm.statusLabel.Text = "Idle."
-        ClearParserErrors()
+        ErrorsDock.parserErrors.Rows.Clear()
 
         If TypeOf (e.Result) Is ExceptionsList Then
             Dim err = DirectCast(e.Result, ExceptionsList)
             For Each obj As ParserException In err.exceptionsList
-                SetParserError(obj.Message, obj.startPos, obj.length)
+                ErrorsDock.parserErrors.Rows.Add({obj.Message, obj.iden})
             Next
         ElseIf TypeOf (e.Result) Is Parser Then
             codeParts = DirectCast(e.Result, Parser)
@@ -250,17 +250,4 @@ Public Class EditorDock
             e.SuppressKeyPress = True
         End If
     End Sub
-
-#Region "Indicator Colorizing Functions"
-    Public Sub ClearParserErrors()
-        ErrorsDock.parserErrors.Rows.Clear()
-        Editor.IndicatorCurrent = indicatorIDs.INDICATOR_PARSERERROR
-        Editor.IndicatorClearRange(0, Editor.TextLength)
-    End Sub
-    Public Sub SetParserError(ByVal errorMsg As String, startPos As Integer, length As Integer)
-        ErrorsDock.parserErrors.Rows.Add({errorMsg, startPos, length})
-        Editor.IndicatorCurrent = indicatorIDs.INDICATOR_PARSERERROR
-        Editor.IndicatorFillRange(startPos, length)
-    End Sub
-#End Region
 End Class

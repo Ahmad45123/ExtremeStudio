@@ -28,8 +28,7 @@ Partial Class ErrorsDock
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.parserErrors = New System.Windows.Forms.DataGridView()
         Me.ErrorMsg = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ErrorStartPos = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ErrorLength = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabControl1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         CType(Me.parserErrors, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,7 +83,7 @@ Partial Class ErrorsDock
         Me.parserErrors.BackgroundColor = System.Drawing.Color.White
         Me.parserErrors.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
         Me.parserErrors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.parserErrors.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ErrorMsg, Me.ErrorStartPos, Me.ErrorLength})
+        Me.parserErrors.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ErrorMsg, Me.Column1})
         Me.parserErrors.Dock = System.Windows.Forms.DockStyle.Fill
         Me.parserErrors.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.parserErrors.GridColor = System.Drawing.SystemColors.AppWorkspace
@@ -102,17 +101,11 @@ Partial Class ErrorsDock
         Me.ErrorMsg.Name = "ErrorMsg"
         Me.ErrorMsg.ReadOnly = True
         '
-        'ErrorStartPos
+        'Column1
         '
-        Me.ErrorStartPos.HeaderText = "Start Position"
-        Me.ErrorStartPos.Name = "ErrorStartPos"
-        Me.ErrorStartPos.ReadOnly = True
-        '
-        'ErrorLength
-        '
-        Me.ErrorLength.HeaderText = "Length"
-        Me.ErrorLength.Name = "ErrorLength"
-        Me.ErrorLength.ReadOnly = True
+        Me.Column1.HeaderText = "Error Identifier"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
         '
         'ErrorsDock
         '
@@ -138,7 +131,6 @@ Partial Class ErrorsDock
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
     Friend WithEvents parserErrors As System.Windows.Forms.DataGridView
-    Friend WithEvents ErrorMsg As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ErrorStartPos As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ErrorLength As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ErrorMsg As DataGridViewTextBoxColumn
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
 End Class
