@@ -26,6 +26,8 @@ Partial Class ObjectExplorerDock
         Me.treeView = New System.Windows.Forms.TreeView()
         Me.MenuStrip = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.EditItemsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.MenuStrip.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -40,15 +42,26 @@ Partial Class ObjectExplorerDock
         '
         'MenuStrip
         '
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditItemsToolStripMenuItem})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolStripSeparator1, Me.EditItemsToolStripMenuItem})
         Me.MenuStrip.Name = "MenuStrip"
-        Me.MenuStrip.Size = New System.Drawing.Size(153, 48)
+        Me.MenuStrip.Size = New System.Drawing.Size(153, 76)
         '
         'EditItemsToolStripMenuItem
         '
         Me.EditItemsToolStripMenuItem.Name = "EditItemsToolStripMenuItem"
-        Me.EditItemsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.EditItemsToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
         Me.EditItemsToolStripMenuItem.Text = "Edit Items"
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem1.Text = "Refresh"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
         '
         'ObjectExplorerDock
         '
@@ -70,4 +83,6 @@ Partial Class ObjectExplorerDock
     Friend WithEvents treeView As System.Windows.Forms.TreeView
     Friend WithEvents MenuStrip As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents EditItemsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
 End Class

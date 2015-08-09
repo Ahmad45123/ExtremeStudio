@@ -22,10 +22,35 @@
             Dim nde = macros.Nodes.Add(key)
             nde.Tag = parser.Macros(key)
         Next
+
+        'Create the custom Roots (Must be done before the Functions so its used inside it.)
+        Dim listCustom As New List(Of TreeNode)
+        For Each itm In MainForm.currentProject.objectExplorerItems
+            Dim bla = treeView.Nodes.Add(itm.Name) : bla.Tag = itm.Identifier 'Here I set its tag to the identifer temporarly, It will be changed to `Root` again in Functions loop.
+            listCustom.Add(bla)
+        Next
+
         For Each key As String In parser.Functions.Keys
+            'Check if it crosponds to a custom one first.
+            For Each itm In listCustom
+                If key.StartsWith(itm.Tag) Then
+                    Dim node = itm.Nodes.Add(key)
+                    node.Tag = parser.Functions(key)
+                    key = "" 'To skip the `Else if it wasn't used.`
+                    Exit For
+                End If
+            Next
+
+            If key = "" Then Continue For
+            'Else if it wasn't used.
             Dim nde = functions.Nodes.Add(key)
             nde.Tag = parser.Functions(key)
         Next
+        'Set the Root tags.
+        For Each itm In listCustom
+            itm.Tag = "Root"
+        Next
+
         For Each key As String In parser.Publics.Keys
             Dim nde = publics.Nodes.Add(key)
             nde.Tag = parser.Publics(key)
@@ -48,11 +73,11 @@
         End If
     End Sub
 
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub EditItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditItemsToolStripMenuItem.Click
         ObjectExplorerDockItems.ShowDialog()
+    End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        refreshTreeView(MainForm.CurrentEditor.codeParts)
     End Sub
 End Class

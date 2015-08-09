@@ -9,7 +9,7 @@
     End Sub
 
     Private Function GetID(nme As String)
-        For i As Integer = 0 To MainForm.currentProject.objectExplorerItems.Count
+        For i As Integer = 0 To MainForm.currentProject.objectExplorerItems.Count - 1
             If MainForm.currentProject.objectExplorerItems(i).Name = nme Then
                 Return i
             End If
