@@ -17,7 +17,7 @@ Public Class EditorDock
     End Sub
 #End Region
     Private Sub scintilla_TextChangedDelayed(sender As Object, e As EventArgs)
-        If RefreshWorker.IsBusy = False Then RefreshWorker.RunWorkerAsync(Editor.Text) : MainForm.statusLabel.Text = "Parsing Code."
+        If RefreshWorker.IsBusy = False Then RefreshWorker.RunWorkerAsync({Editor.Tag, MainForm.currentProject.projectPath}) : MainForm.statusLabel.Text = "Parsing Code."
     End Sub
 
 #Region "CodeIndent Handlers"
@@ -151,6 +151,50 @@ Public Class EditorDock
             Next
         ElseIf TypeOf (e.Result) Is Parser Then
             codeParts = DirectCast(e.Result, Parser)
+
+#Region "Refresh Key Word Set"
+            Dim setString As String = ""
+            For Each key As String In codeParts.Stocks.Keys
+                setString += " " + key
+            Next
+            For Each key As String In codeParts.Publics.Keys
+                setString += " " + key
+            Next
+            For Each key As String In codeParts.Functions.Keys
+                setString += " " + key
+            Next
+            For Each key As String In codeParts.Natives.Keys
+                setString += " " + key
+            Next
+            For Each key As String In codeParts.Defines.Keys
+                setString += " " + key
+            Next
+            For Each key As String In codeParts.Enums.Keys
+                setString += " " + key
+            Next
+            For Each includeParser As Parser In codeParts.Includes.Values
+                For Each key As String In includeParser.Stocks.Keys
+                    setString += " " + key
+                Next
+                For Each key As String In includeParser.Publics.Keys
+                    setString += " " + key
+                Next
+                For Each key As String In includeParser.Functions.Keys
+                    setString += " " + key
+                Next
+                For Each key As String In includeParser.Natives.Keys
+                    setString += " " + key
+                Next
+                For Each key As String In includeParser.Defines.Keys
+                    setString += " " + key
+                Next
+                For Each key As String In includeParser.Enums.Keys
+                    setString += " " + key
+                Next
+            Next
+            setString = setString.Remove(0, 1) 'Remove the starting space.
+            Editor.SetKeywords(1, setString)
+#End Region
 
             If ProjExplorerDock.Visible Then
                 ProjExplorerDock.Includes = codeParts.Includes.Keys
