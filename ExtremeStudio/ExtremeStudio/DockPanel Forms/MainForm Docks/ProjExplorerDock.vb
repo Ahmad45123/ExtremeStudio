@@ -4,7 +4,7 @@ Public Class ProjExplorerDock
 
     Private nodeState As ExtremeCore.treeNodeStateSaving = New ExtremeCore.treeNodeStateSaving
 
-    Public Includes As List(Of String)
+    Public Includes As Dictionary(Of String, ExtremeParser.Parser).KeyCollection
 
     Public Sub RefreshList(Optional firstTime As Boolean = False)
         If firstTime = False Then nodeState.SaveTreeState(treeView.Nodes) 'Save current expanded nodes.
@@ -90,7 +90,7 @@ Public Class ProjExplorerDock
             Else
                 e.CancelEdit = True
                 Beep()
-                MsgBox("Invalid name please use valid filename characters and make sure to has a .inc or .pwn extension")
+                MsgBox("Invalid name please use valid filename characters And make sure To has a .inc Or .pwn extension")
             End If
         ElseIf e.Node.Tag = "Folder" Then
             If ExtremeCore.FilenameIsOK(e.Label) Then
@@ -98,7 +98,7 @@ Public Class ProjExplorerDock
             Else
                 e.CancelEdit = True
                 Beep()
-                MsgBox("Invalid name, Please use valid file-name characters and make sure to use a .inc or .pwn extension")
+                MsgBox("Invalid name, Please use valid file-name characters And make sure To use a .inc Or .pwn extension")
             End If
         End If
     End Sub
@@ -115,7 +115,7 @@ Public Class ProjExplorerDock
                 End If
             Next
 
-            If MsgBox("Are you sure you want to delete this file/folder ?" + vbCrLf + vbCrLf + "NOTE: If it's a folder, All its contents will be deleted.", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+            If MsgBox("Are you sure you want To delete this file/folder ?" + vbCrLf + vbCrLf + "NOTE: If it's a folder, All its contents will be deleted.", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
                 Dim oldPath As String = MainForm.currentProject.projectPath + "/"
                 Dim path As String = selNode.FullPath
 

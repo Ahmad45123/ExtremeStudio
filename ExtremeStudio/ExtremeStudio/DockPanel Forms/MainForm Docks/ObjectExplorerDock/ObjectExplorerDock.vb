@@ -18,10 +18,6 @@
             Dim nde = defines.Nodes.Add(key)
             nde.Tag = parser.Defines(key)
         Next
-        For Each key As String In parser.Macros.Keys
-            Dim nde = macros.Nodes.Add(key)
-            nde.Tag = parser.Macros(key)
-        Next
 
         'Create the custom Roots (Must be done before the Functions so its used inside it.)
         Dim listCustom As New List(Of TreeNode)

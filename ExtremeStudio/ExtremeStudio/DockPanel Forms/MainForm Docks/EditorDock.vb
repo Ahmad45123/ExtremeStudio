@@ -133,7 +133,7 @@ Public Class EditorDock
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork
         If Editor.IsHandleCreated Then
             Try
-                e.Result = New Parser(e.Argument)
+                e.Result = New Parser(e.Argument(0), e.Argument(1))
             Catch ex As ExceptionsList
                 e.Result = ex
             End Try
@@ -153,7 +153,7 @@ Public Class EditorDock
             codeParts = DirectCast(e.Result, Parser)
 
             If ProjExplorerDock.Visible Then
-                ProjExplorerDock.Includes = codeParts.Includes
+                ProjExplorerDock.Includes = codeParts.Includes.Keys
                 ProjExplorerDock.RefreshIncludes()
             End If
             If ObjectExplorerDock.Visible Then
