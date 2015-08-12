@@ -132,11 +132,7 @@ Public Class EditorDock
     Public codeParts As Parser
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork
         If Editor.IsHandleCreated Then
-            Try
-                e.Result = New Parser(e.Argument(0), e.Argument(1))
-            Catch ex As ExceptionsList
-                e.Result = ex
-            End Try
+            e.Result = New Parser(e.Argument(0), e.Argument(1))
         End If
     End Sub
 
@@ -144,16 +140,23 @@ Public Class EditorDock
         MainForm.statusLabel.Text = "Idle."
         ErrorsDock.parserErrors.Rows.Clear()
 
-        If TypeOf (e.Result) Is ExceptionsList Then
-            Dim err = DirectCast(e.Result, ExceptionsList)
-            For Each obj As ParserException In err.exceptionsList
-                ErrorsDock.parserErrors.Rows.Add({obj.Message, obj.iden})
-            Next
-        ElseIf TypeOf (e.Result) Is Parser Then
-            codeParts = DirectCast(e.Result, Parser)
+        codeParts = DirectCast(e.Result, Parser)
+
+#Region "Error Showing"
+        For Each obj In codeParts.errors.exceptionsList
+            If TypeOf (obj) Is IncludeNotFoundException Then
+                Dim tmpObj = DirectCast(obj, IncludeNotFoundException)
+                Dim Msg As String = "The include `" + tmpObj.includeName + "` is not found, Please make sure it exists."
+                ErrorsDock.parserErrors.Rows.Add({Msg, tmpObj.includeName})
+            ElseIf TypeOf (obj) Is ParserException
+                Dim tmpObj = DirectCast(obj, ParserException)
+                ErrorsDock.parserErrors.Rows.Add({tmpObj.Message, tmpObj.iden})
+            End If
+        Next
+#End Region
 
 #Region "Refresh Key Word Set"
-            Dim setString As String = ""
+        Dim setString As String = ""
             For Each key As String In codeParts.Stocks.Keys
                 setString += " " + key
             Next
@@ -196,13 +199,12 @@ Public Class EditorDock
             Editor.SetKeywords(1, setString)
 #End Region
 
-            If ProjExplorerDock.Visible Then
-                ProjExplorerDock.Includes = codeParts.Includes.Keys
-                ProjExplorerDock.RefreshIncludes()
-            End If
-            If ObjectExplorerDock.Visible Then
-                ObjectExplorerDock.refreshTreeView(codeParts)
-            End If
+        If ProjExplorerDock.Visible Then
+            ProjExplorerDock.Includes = codeParts.Includes.Keys
+            ProjExplorerDock.RefreshIncludes()
+        End If
+        If ObjectExplorerDock.Visible Then
+            ObjectExplorerDock.refreshTreeView(codeParts)
         End If
     End Sub
 
