@@ -138,6 +138,12 @@
     <Compile Include="DockPanel Forms\MainForm Docks\ProjExplorerDock.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Functions Forms\IncludesForm.Designer.vb">
+      <DependentUpon>IncludesForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Functions Forms\IncludesForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Functions Forms\NewProjectFile.Designer.vb">
       <DependentUpon>NewProjectFile.vb</DependentUpon>
     </Compile>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ProjExplorerDock.resx">
       <DependentUpon>ProjExplorerDock.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Functions Forms\IncludesForm.resx">
+      <DependentUpon>IncludesForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Functions Forms\NewProjectFile.resx">
       <DependentUpon>NewProjectFile.vb</DependentUpon>
