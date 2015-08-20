@@ -13,19 +13,27 @@ Public Class versionReader
     End Sub
 
 
-
-    Public Shared Function newVersion(mainV As String, newV As String) As Boolean
+    Public Enum CompareVersionResult
+        VERSION_NEW
+        VERSION_OLD
+        VERSION_SAME
+    End Enum
+    Public Shared Function CompareVersions(mainV As String, newV As String) As CompareVersionResult
         Dim mainVC As New versionReader(mainV)
         Dim newVC As New versionReader(newV)
 
         If newVC.pMajor > mainVC.pMajor Then
-            Return True
+            Return CompareVersionResult.VERSION_NEW
         ElseIf newVC.pMinor > mainVC.pMinor
-            Return True
+            Return CompareVersionResult.VERSION_NEW
         ElseIf newVC.pPatch > mainVC.pPatch
-            Return True
+            Return CompareVersionResult.VERSION_NEW
         Else
-            Return False
+            If newVC.pMajor = mainVC.pMajor And newVC.pMinor = mainVC.pMinor And newVC.pPatch = mainVC.pPatch Then
+                Return CompareVersionResult.VERSION_SAME
+            Else
+                Return CompareVersionResult.VERSION_OLD
+            End If
         End If
     End Function
 End Class
