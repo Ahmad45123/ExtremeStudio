@@ -185,7 +185,19 @@ Public Class StartupForm
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If recentListBox.SelectedIndex = -1 Then Exit Sub
         pathTextBox.Text = recentListBox.SelectedItem
-        If loadProjectBtn.Enabled = True Then loadProjectBtn_Click(loadProjectBtn, EventArgs.Empty) 'Click `Load Project` button.
+        If loadProjectBtn.Enabled = True Then
+            If Not projectVersion.Text.StartsWith("Project version is the same") Then
+                If MsgBox(projectVersion.Text + vbCrLf + vbCrLf + "Would you like to continue ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                    loadProjectBtn_Click(loadProjectBtn, EventArgs.Empty) 'Click `Load Project` button.
+                End If
+            Else
+                loadProjectBtn_Click(loadProjectBtn, EventArgs.Empty) 'Click `Load Project` button.
+            End If
+        Else
+            If Not projectVersion.Text.StartsWith("Project version is the same") Then
+                MsgBox(projectVersion.Text)
+            End If
+        End If
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
