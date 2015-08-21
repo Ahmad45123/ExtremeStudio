@@ -2,7 +2,7 @@
 
 Public Class currentProjectClass
     Public Property projectName As String
-    Public Property projectVersion As Integer
+    Public Property projectVersion As String
 
     Private projectPathB As String
     Public Property projectPath As String
@@ -58,7 +58,7 @@ Public Class currentProjectClass
     Public Sub ReadInfo() 'Will only work if the projectPath is set to valid ExtremeStudio project.
         'Read main info like project name and version.
         projectName = sqlCon.ExecuteScalar("SELECT value FROM MainConfig WHERE name='ProjectName'")
-        projectVersion = Convert.ToInt16(sqlCon.ExecuteScalar("SELECT value FROM MainConfig WHERE name='ProjectVersion'"))
+        projectVersion = sqlCon.ExecuteScalar("SELECT value FROM MainConfig WHERE name='ProjectVersion'")
 
         'Get all the objectexpolreritems.
         Dim dt As DataTable = sqlCon.GetDataTable("SELECT * FROM `ObjectExplorerItems`")

@@ -2,6 +2,7 @@
 Imports System.Xml
 Imports System.IO
 Imports System.IO.Compression
+Imports ExtremeCore
 
 Public Class StartupForm
 
@@ -83,7 +84,7 @@ Public Class StartupForm
     Private Sub nameTextBox_TextChanged(sender As Object, e As EventArgs) Handles nameTextBox.TextChanged
         If nameTextBox.Text = "" Then Exit Sub
 
-        If ExtremeCore.FilenameIsOK(nameTextBox.Text) Then
+        If FilenameIsOK(nameTextBox.Text) Then
         Else
             Beep()
 
@@ -135,22 +136,23 @@ Public Class StartupForm
         projectName.Text = "None"
         projectVersion.Text = "None"
 
-        If ExtremeCore.isValidExtremeProject(pathTextBox.Text) Then
+        If isValidExtremeProject(pathTextBox.Text) Then
             MainForm.currentProject.projectPath = pathTextBox.Text
             MainForm.currentProject.ReadInfo()
             If My.Computer.FileSystem.FileExists(pathTextBox.Text + "/gamemodes/" + MainForm.currentProject.projectName + ".pwn") Then
                 projectName.Text = MainForm.currentProject.projectName
 
-                Dim projVersion As Integer = MainForm.currentProject.projectVersion
-                Dim progVersion As Integer = versionHandler.currentVersion
+                Dim projVersion As String = MainForm.currentProject.projectVersion
+                Dim progVersion As String = versionHandler.currentVersion
 
-                If projVersion = progVersion Then
-                    projectVersion.Text = "Project version is the same as ExtremeStudio's version, No conversation is needed."
+                Dim versionCompare As versionReader.CompareVersionResult = versionReader.CompareVersions(projVersion, progVersion)
+                If versionCompare = versionReader.CompareVersionResult.VERSION_SAME Then
+                    projectVersion.Text = "Project version is the same as ExtremeStudio's version, No converion is needed."
                     loadProjectBtn.Enabled = True
-                ElseIf projVersion < progVersion Then
-                    projectVersion.Text = "Project older then ExtremeStudio, Conversion will be done and won't be able to work on older versions again."
+                ElseIf versionCompare = versionReader.CompareVersionResult.VERSION_NEW Then
+                    projectVersion.Text = "Project older then ExtremeStudio, Conversion will be done however it may bug with older versions so its recommended to not try."
                     loadProjectBtn.Enabled = True
-                ElseIf projVersion > progVersion Then
+                ElseIf versionCompare = versionReader.CompareVersionResult.VERSION_OLD Then
                     projectVersion.Text = "Project version is newer then ExtremeStudio's version, Please download latest ExtremeStudio package."
                 End If
             Else
@@ -163,8 +165,9 @@ Public Class StartupForm
 
     Private Sub loadProjectBtn_Click(sender As Object, e As EventArgs) Handles loadProjectBtn.Click
         AddNewRecent(MainForm.currentProject.projectPath) 'Add it to the recent list.
+        versionHandler.doIfUpdateNeeded(MainForm.currentProject)
         MainForm.Show()
-        Me.Hide()
+        Hide()
     End Sub
 
     Private Sub TabControl1_Selected(sender As Object, e As TabControlEventArgs) Handles TabControl1.Selected
@@ -189,7 +192,6 @@ Public Class StartupForm
         If recentListBox.SelectedIndex = -1 Then Exit Sub
         RemoveRecent(recentListBox.SelectedItem)
         TabControl1_Selected(TabControl1, New TabControlEventArgs(TabPage3, 2, TabControlAction.Selected)) 'Fire the selected event to refresh the list.
-
     End Sub
 
     Private Sub recentListBox_DoubleClick(sender As Object, e As EventArgs) Handles recentListBox.DoubleClick

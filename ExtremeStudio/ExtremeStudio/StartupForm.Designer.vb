@@ -24,6 +24,7 @@ Partial Class StartupForm
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.FolderBrowserDialog1 = New ExtremeCore.FolderBrowserButton()
         Me.locTextBox = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -39,12 +40,11 @@ Partial Class StartupForm
         Me.Label5 = New System.Windows.Forms.Label()
         Me.pathTextBox = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.FolderBrowserButton1 = New ExtremeCore.FolderBrowserButton()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.recentListBox = New System.Windows.Forms.ListBox()
-        Me.FolderBrowserDialog1 = New ExtremeCore.FolderBrowserButton()
-        Me.FolderBrowserButton1 = New ExtremeCore.FolderBrowserButton()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -80,6 +80,14 @@ Partial Class StartupForm
         Me.TabPage1.Text = "Create new project"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'FolderBrowserDialog1
+        '
+        Me.FolderBrowserDialog1.Location = New System.Drawing.Point(698, 124)
+        Me.FolderBrowserDialog1.Name = "FolderBrowserDialog1"
+        Me.FolderBrowserDialog1.Size = New System.Drawing.Size(63, 21)
+        Me.FolderBrowserDialog1.TabIndex = 8
+        Me.FolderBrowserDialog1.TextControl = Me.locTextBox
+        '
         'locTextBox
         '
         Me.locTextBox.Location = New System.Drawing.Point(90, 124)
@@ -101,7 +109,7 @@ Partial Class StartupForm
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(6, 127)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(88, 13)
+        Me.Label3.Size = New System.Drawing.Size(86, 13)
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "Project location: "
         '
@@ -125,7 +133,7 @@ Partial Class StartupForm
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(6, 36)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(83, 13)
+        Me.Label2.Size = New System.Drawing.Size(84, 13)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "SA-MP Version: "
         '
@@ -134,7 +142,7 @@ Partial Class StartupForm
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(6, 13)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(78, 13)
+        Me.Label1.Size = New System.Drawing.Size(77, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Project Name: "
         '
@@ -171,7 +179,7 @@ Partial Class StartupForm
         Me.projectVersion.AutoSize = True
         Me.projectVersion.Location = New System.Drawing.Point(87, 91)
         Me.projectVersion.Name = "projectVersion"
-        Me.projectVersion.Size = New System.Drawing.Size(32, 13)
+        Me.projectVersion.Size = New System.Drawing.Size(33, 13)
         Me.projectVersion.TabIndex = 6
         Me.projectVersion.Text = "None"
         '
@@ -180,7 +188,7 @@ Partial Class StartupForm
         Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(6, 90)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(86, 13)
+        Me.Label6.Size = New System.Drawing.Size(84, 13)
         Me.Label6.TabIndex = 5
         Me.Label6.Text = "Project Version: "
         '
@@ -189,7 +197,7 @@ Partial Class StartupForm
         Me.projectName.AutoSize = True
         Me.projectName.Location = New System.Drawing.Point(79, 53)
         Me.projectName.Name = "projectName"
-        Me.projectName.Size = New System.Drawing.Size(32, 13)
+        Me.projectName.Size = New System.Drawing.Size(33, 13)
         Me.projectName.TabIndex = 4
         Me.projectName.Text = "None"
         '
@@ -198,7 +206,7 @@ Partial Class StartupForm
         Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(6, 52)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(78, 13)
+        Me.Label5.Size = New System.Drawing.Size(77, 13)
         Me.Label5.TabIndex = 3
         Me.Label5.Text = "Project Name: "
         '
@@ -215,9 +223,17 @@ Partial Class StartupForm
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(6, 13)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(94, 13)
+        Me.Label4.Size = New System.Drawing.Size(89, 13)
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "Project directory: "
+        '
+        'FolderBrowserButton1
+        '
+        Me.FolderBrowserButton1.Location = New System.Drawing.Point(693, 10)
+        Me.FolderBrowserButton1.Name = "FolderBrowserButton1"
+        Me.FolderBrowserButton1.Size = New System.Drawing.Size(68, 20)
+        Me.FolderBrowserButton1.TabIndex = 2
+        Me.FolderBrowserButton1.TextControl = Me.pathTextBox
         '
         'TabPage3
         '
@@ -258,22 +274,6 @@ Partial Class StartupForm
         Me.recentListBox.Name = "recentListBox"
         Me.recentListBox.Size = New System.Drawing.Size(648, 173)
         Me.recentListBox.TabIndex = 0
-        '
-        'FolderBrowserDialog1
-        '
-        Me.FolderBrowserDialog1.Location = New System.Drawing.Point(698, 124)
-        Me.FolderBrowserDialog1.Name = "FolderBrowserDialog1"
-        Me.FolderBrowserDialog1.Size = New System.Drawing.Size(63, 21)
-        Me.FolderBrowserDialog1.TabIndex = 8
-        Me.FolderBrowserDialog1.TextControl = Me.locTextBox
-        '
-        'FolderBrowserButton1
-        '
-        Me.FolderBrowserButton1.Location = New System.Drawing.Point(693, 10)
-        Me.FolderBrowserButton1.Name = "FolderBrowserButton1"
-        Me.FolderBrowserButton1.Size = New System.Drawing.Size(68, 20)
-        Me.FolderBrowserButton1.TabIndex = 2
-        Me.FolderBrowserButton1.TextControl = Me.pathTextBox
         '
         'StartupForm
         '

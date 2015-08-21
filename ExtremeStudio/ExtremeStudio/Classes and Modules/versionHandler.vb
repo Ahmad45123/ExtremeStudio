@@ -1,6 +1,7 @@
 ﻿Public Class versionHandler
-    Public Property currentVersion As Integer = 0 'This won't be the versioning used publicly but a versioning system used in converting projects.
+    Public Property currentVersion As String = "1.0.0"
 
     Public Sub doIfUpdateNeeded(project As currentProjectClass)
+        project.projectVersion = currentVersion
     End Sub
 End Class
