@@ -48,7 +48,7 @@ Public Class MainForm
 
     Private Sub MainForm_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         currentProject.SaveInfo()
-        StartupForm.Show()
+        StartupForm.Close()
     End Sub
 
     Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
