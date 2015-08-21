@@ -195,8 +195,11 @@ Public Class EditorDock
                     setString += " " + key
                 Next
             Next
+        Try
             setString = setString.Remove(0, 1) 'Remove the starting space.
             Editor.SetKeywords(1, setString)
+        Catch ex As Exception
+        End Try
 #End Region
 
         If ProjExplorerDock.Visible Then
