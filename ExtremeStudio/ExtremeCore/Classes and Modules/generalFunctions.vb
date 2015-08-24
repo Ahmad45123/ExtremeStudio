@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.IO.Compression
 Imports System.Net
 Imports System.Windows.Forms
 Imports ScintillaNET
@@ -150,4 +151,24 @@ Public Module generalFunctions
 
         Return lines
     End Function
+
+    Public Sub GetFilesInZip(pathtoZip As String, ByRef files As List(Of String), ByRef folders As List(Of String))
+        'Make the temp folder ready.
+        Dim tmpPath As String = My.Computer.FileSystem.SpecialDirectories.Temp + "/" + Path.GetDirectoryName(pathtoZip)
+        My.Computer.FileSystem.CreateDirectory(tmpPath)
+
+        'Extract the files.
+        ZipFile.ExtractToDirectory(pathtoZip, tmpPath)
+
+        'Get all files and folders and put them in the lists.
+        For Each filePath In Directory.GetFiles(tmpPath)
+            files.Add(Path.GetFileName(filePath))
+        Next
+        For Each folderPath In Directory.GetDirectories(tmpPath)
+            folders.Add(Path.GetDirectoryName(folderPath))
+        Next
+
+        'Clean.
+        My.Computer.FileSystem.DeleteDirectory(tmpPath, FileIO.DeleteDirectoryOption.DeleteAllContents)
+    End Sub
 End Module
