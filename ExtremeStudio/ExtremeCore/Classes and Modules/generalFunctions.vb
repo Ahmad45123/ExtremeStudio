@@ -154,7 +154,7 @@ Public Module generalFunctions
 
     Public Sub GetFilesInZip(pathtoZip As String, ByRef files As List(Of String), ByRef folders As List(Of String))
         'Make the temp folder ready.
-        Dim tmpPath As String = My.Computer.FileSystem.SpecialDirectories.Temp + "/" + Path.GetDirectoryName(pathtoZip)
+        Dim tmpPath As String = My.Computer.FileSystem.SpecialDirectories.Temp + "/" + Path.GetFileNameWithoutExtension(pathtoZip)
         My.Computer.FileSystem.CreateDirectory(tmpPath)
 
         'Extract the files.
