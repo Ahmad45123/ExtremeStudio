@@ -44,6 +44,9 @@ Public Class StartupForm
         If Not My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "/cache/serverPackages") Then
             My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "/cache/serverPackages")
         End If
+        If Not My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "/cache/includes") Then
+            My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "/cache/includes")
+        End If
 
         If Not My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "/configs") Then
             My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "/configs")

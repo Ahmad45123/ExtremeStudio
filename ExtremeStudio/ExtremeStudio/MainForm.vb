@@ -122,4 +122,9 @@ Public Class MainForm
             SaveFile(Dock.Controls("Editor"))
         Next
     End Sub
+
+    Private Sub ToolStripButton4_Click(sender As Object, e As EventArgs) Handles ToolStripButton4.Click
+        Dim frm As New IncludesForm
+        frm.Show()
+    End Sub
 End Class

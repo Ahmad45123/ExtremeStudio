@@ -22,6 +22,7 @@ Public Class currentProjectClass
     Public Sub CreateTables()
         sqlCon.ExecuteNonQuery("CREATE TABLE MainConfig(`name` STRING(50), `value` STRING(50));")
         sqlCon.ExecuteNonQuery("CREATE TABLE ObjectExplorerItems(`name` STRING(50), `identifier` STRING(50));")
+        sqlCon.ExecuteNonQuery("CREATE TABLE Includes(`incName` STRING(50));")
     End Sub
 #End Region
 
@@ -66,6 +67,22 @@ Public Class currentProjectClass
             objectExplorerItems.Add(New objectExplorerItem(row(0), row(1)))
         Next
     End Sub
+
+#Region "Includes Codes"
+    Public Sub AddInclude(inc As String)
+        Dim dt = sqlCon.GetDataTable("SELECT * FROM `Includes` WHERE `incName` = '" + inc + "'")
+        If dt.Rows.Count > 0 Then sqlCon.ExecuteNonQuery("DELETE FROM `Includes` WHERE `incName` = '" + inc + "'")
+        sqlCon.ExecuteNonQuery("INSERT INTO `Includes` VALUES('" + inc + "');")
+    End Sub
+    Public Sub RemoveInclude(inc As String)
+        sqlCon.ExecuteNonQuery("DELETE FROM `Includes` WHERE `incName` = '" + inc + "'")
+    End Sub
+    Public Function IncludeExists(inc As String) As Boolean
+        Dim dt = sqlCon.GetDataTable("SELECT * FROM `Includes` WHERE `incName` = '" + inc + "'")
+        If dt.Rows.Count > 0 Then Return True
+        Return False
+    End Function
+#End Region
 
 #Region "server.cfg"
     Public Sub EditSAMPConfig(key As String, value As String)
