@@ -37,6 +37,32 @@ Public Class MainForm
         editor.SetSavePoint() 'Set as un-modified.
     End Sub
 #End Region
+#Region "DocksSavingLoading"
+    Dim m_deserlise As DeserializeDockContent
+    Private Function GetContentFromPersistString(ByVal persistString As String) As IDockContent
+        If persistString = GetType(ProjExplorerDock).ToString Then
+            Return ProjExplorerDock
+        ElseIf persistString = GetType(ObjectExplorerDock).ToString Then
+            Return ObjectExplorerDock
+        ElseIf persistString = GetType(ErrorsDock).ToString Then
+            Return ErrorsDock
+        End If
+        Return Nothing
+    End Function
+
+    Private Sub DockSavingLoading_Mainform_Load(sendr As Object, e As EventArgs) Handles MyBase.Load
+        Try
+            m_deserlise = New DeserializeDockContent(AddressOf GetContentFromPersistString)
+            MainDock.LoadFromXml(Application.StartupPath + "/configs/docksInfo.xml", m_deserlise)
+        Catch ex As Exception
+            MsgBox("Error Loading Docks: " + vbCrLf + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        MainDock.SaveAsXml(Application.StartupPath + "/configs/docksInfo.xml")
+    End Sub
+#End Region
 
     'Global variables that are used through the whole program: 
     Public currentProject As New currentProjectClass
@@ -83,32 +109,6 @@ Public Class MainForm
             ErrorsDock.Close()
             ErrorsDock.Visible = False
         End If
-    End Sub
-#End Region
-
-#Region "DocksSavingLoading"
-    Dim m_deserlise As DeserializeDockContent
-    Private Function GetContentFromPersistString(ByVal persistString As String) As IDockContent
-        If persistString = GetType(ProjExplorerDock).ToString Then
-            Return ProjExplorerDock
-        ElseIf persistString = GetType(ObjectExplorerDock).ToString Then
-            Return ObjectExplorerDock
-        ElseIf persistString = GetType(ErrorsDock).ToString Then
-            Return ErrorsDock
-        End If
-        Return Nothing
-    End Function
-
-    Private Sub DockSavingLoading_Mainform_Load(sendr As Object, e As EventArgs) Handles MyBase.Load
-        Try
-            m_deserlise = New DeserializeDockContent(AddressOf GetContentFromPersistString)
-            MainDock.LoadFromXml(Application.StartupPath + "/configs/docksInfo.xml", m_deserlise)
-        Catch ex As Exception
-        End Try
-    End Sub
-
-    Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        MainDock.SaveAsXml(Application.StartupPath + "/configs/docksInfo.xml")
     End Sub
 #End Region
 
