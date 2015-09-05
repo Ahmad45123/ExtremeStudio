@@ -117,7 +117,7 @@ Public Class StartupForm
                     My.Computer.FileSystem.CopyFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip", Application.StartupPath + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip") 'Copy the file to be used instead of downloading
                     My.Computer.FileSystem.DeleteFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip") 'Delete the file from temp.
                 End If
-                My.Computer.FileSystem.CopyFile(Application.StartupPath + "/newfileTemplate.pwn", locTextBox.Text + "/gamemodes/" + nameTextBox.Text + ".pwn")
+                My.Computer.FileSystem.WriteAllText(locTextBox.Text + "/gamemodes/" + nameTextBox.Text + ".pwn", My.Resources.newfileTemplate, False)
                 MainForm.currentProject.projectName = nameTextBox.Text
                 MainForm.currentProject.projectPath = locTextBox.Text
                 MainForm.currentProject.projectVersion = versionHandler.currentVersion

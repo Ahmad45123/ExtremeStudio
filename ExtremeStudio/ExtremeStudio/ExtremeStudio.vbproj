@@ -258,7 +258,7 @@
     <None Include="Resources\includes_icon_toolstrip.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="license.txt" />
+    <None Include="Resources\newfileTemplate.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.97.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.97.0\build\net45\System.Data.SQLite.Core.targets')" />

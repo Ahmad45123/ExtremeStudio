@@ -111,6 +111,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to .
+        '''</summary>
+        Friend ReadOnly Property newfileTemplate() As String
+            Get
+                Return ResourceManager.GetString("newfileTemplate", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property plugins_icon_toolstrip() As System.Drawing.Bitmap
