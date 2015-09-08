@@ -20,7 +20,7 @@ Public Class StartupForm
         If Recent.Count - 1 = MAX_LIST_ITEMS Then 'Remove the new added stuff
             Recent.RemoveAt(MAX_LIST_ITEMS)
         End If
-        My.Computer.FileSystem.WriteAllText(Application.StartupPath + "/configs/recent.xml", ExtremeCore.ObjectSerializer.Serialize(Of List(Of String))(Recent), False)
+        My.Computer.FileSystem.WriteAllText(Application.StartupPath + "/configs/recent.xml", ExtremeCore.ObjectSerializer.Serialize(Recent), False)
     End Sub
 
     Public Sub RemoveRecent(path As String)
@@ -30,7 +30,7 @@ Public Class StartupForm
                 Exit For
             End If
         Next
-        My.Computer.FileSystem.WriteAllText(Application.StartupPath + "/configs/recent.xml", ExtremeCore.ObjectSerializer.Serialize(Of List(Of String))(Recent), False)
+        My.Computer.FileSystem.WriteAllText(Application.StartupPath + "/configs/recent.xml", ExtremeCore.ObjectSerializer.Serialize(Recent), False)
     End Sub
 #End Region
 
@@ -68,7 +68,7 @@ Public Class StartupForm
         If ExtremeCore.isNetAvailable() Then 'Download latest from internet if there is internet.
             Dim webClient As New WebClient
             Dim xmlFile As New XmlDocument()
-            Dim fileText As String = webClient.DownloadString("http://johnymac.github.io/ExtremeStudio/serverPackages.xml")
+            Dim fileText As String = webClient.DownloadString("http://johnymac.github.io/esfiles/serverPackages.xml")
             xmlFile.LoadXml(fileText)
 
             For Each cs As XmlNode In xmlFile.SelectNodes("serverPackages/samp")
