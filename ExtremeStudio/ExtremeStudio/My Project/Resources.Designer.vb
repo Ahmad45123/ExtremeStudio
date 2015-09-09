@@ -111,7 +111,33 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to // This is a comment
+        '''// uncomment the line below if you want to write a filterscript
+        '''//#define FILTERSCRIPT
+        '''
+        '''#include &lt;a_samp&gt;
+        '''
+        '''#if defined FILTERSCRIPT
+        '''
+        '''public OnFilterScriptInit()
+        '''{
+        '''	print(&quot;\n--------------------------------------&quot;);
+        '''	print(&quot; Blank Filterscript by your name here&quot;);
+        '''	print(&quot;--------------------------------------\n&quot;);
+        '''	return 1;
+        '''}
+        '''
+        '''public OnFilterScriptExit()
+        '''{
+        '''	return 1;
+        '''}
+        '''
+        '''#else
+        '''
+        '''main()
+        '''{
+        '''	print(&quot;\n----------------------------------&quot;);
+        '''	print(&quot; Blank Gamemode by  [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property newfileTemplate() As String
             Get
@@ -146,6 +172,16 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("saveall_file_toolstrip", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Friend ReadOnly Property SQLiteInterop() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("SQLiteInterop", resourceCulture)
+                Return CType(obj,Byte())
             End Get
         End Property
     End Module

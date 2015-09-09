@@ -37,6 +37,19 @@ Public Class StartupForm
     Dim versionHandler As New versionHandler
 
     Private Sub StartupForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'If the interop files don't exist, Extract the files.
+        If Not My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Or Not My.Computer.FileSystem.FileExists(Application.StartupPath + "/x86/SQLite.Interop.dll") Then
+            'Remove old.
+            If My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Then My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/x64/SQLite.Interop.dll")
+            If My.Computer.FileSystem.FileExists(Application.StartupPath + "/x86/SQLite.Interop.dll") Then My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/x86/SQLite.Interop.dll")
+
+            'Extract New
+            My.Computer.FileSystem.WriteAllBytes(Application.StartupPath + "/interop.zip", My.Resources.SQLiteInterop, False) 'Write the file.
+            ZipFile.ExtractToDirectory(Application.StartupPath + "/interop.zip", Application.StartupPath) 'Extract it.
+            My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/interop.zip") 'Delete the temp file.
+        End If
+
+
         'Create needed folders and files.
         If Not My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "/cache") Then
             My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "/cache")
