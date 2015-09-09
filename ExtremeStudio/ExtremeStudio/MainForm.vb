@@ -53,7 +53,12 @@ Public Class MainForm
     Private Sub DockSavingLoading_Mainform_Load(sendr As Object, e As EventArgs) Handles MyBase.Load
         Try
             m_deserlise = New DeserializeDockContent(AddressOf GetContentFromPersistString)
-            MainDock.LoadFromXml(Application.StartupPath + "/configs/docksInfo.xml", m_deserlise)
+            Try
+                MainDock.LoadFromXml(Application.StartupPath + "/configs/docksInfo.xml", m_deserlise)
+            Catch ex As Exception
+                'Do nothing if there isn't any file.
+                'Even though, A default one will be included.
+            End Try
         Catch ex As Exception
             MsgBox("Error Loading Docks: " + vbCrLf + ex.Message)
         End Try
