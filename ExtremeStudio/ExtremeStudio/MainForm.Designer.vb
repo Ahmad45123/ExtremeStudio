@@ -60,7 +60,6 @@ Partial Class MainForm
         '
         'MainDock
         '
-        Me.MainDock.ActiveAutoHideContent = Nothing
         Me.MainDock.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -76,6 +75,7 @@ Partial Class MainForm
         TabGradient1.StartColor = System.Drawing.SystemColors.Control
         TabGradient1.TextColor = System.Drawing.SystemColors.ControlDarkDark
         AutoHideStripSkin1.TabGradient = TabGradient1
+        AutoHideStripSkin1.TextFont = New System.Drawing.Font("Segoe UI", 9.0!)
         DockPanelSkin1.AutoHideStripSkin = AutoHideStripSkin1
         TabGradient2.EndColor = System.Drawing.SystemColors.ControlLightLight
         TabGradient2.StartColor = System.Drawing.SystemColors.ControlLightLight
@@ -89,6 +89,7 @@ Partial Class MainForm
         TabGradient3.TextColor = System.Drawing.SystemColors.ControlText
         DockPaneStripGradient1.InactiveTabGradient = TabGradient3
         DockPaneStripSkin1.DocumentGradient = DockPaneStripGradient1
+        DockPaneStripSkin1.TextFont = New System.Drawing.Font("Segoe UI", 9.0!)
         TabGradient4.EndColor = System.Drawing.SystemColors.ActiveCaption
         TabGradient4.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical
         TabGradient4.StartColor = System.Drawing.SystemColors.GradientActiveCaption

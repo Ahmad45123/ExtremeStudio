@@ -23,6 +23,7 @@ Public Class currentProjectClass
         sqlCon.ExecuteNonQuery("CREATE TABLE MainConfig(`name` STRING(50), `value` STRING(50));")
         sqlCon.ExecuteNonQuery("CREATE TABLE ObjectExplorerItems(`name` STRING(50), `identifier` STRING(50));")
         sqlCon.ExecuteNonQuery("CREATE TABLE Includes(`incName` STRING(50));")
+        sqlCon.ExecuteNonQuery("CREATE TABLE Plugins(`plugName` STRING(50));")
     End Sub
 #End Region
 
@@ -115,7 +116,7 @@ Public Class currentProjectClass
         'Writing
         My.Computer.FileSystem.WriteAllText(projectPath + "/server.cfg", allText, False)
     End Sub
-    Public Function GetSAMPConfig(key As String)
+    Public Function GetSAMPConfig(key As String) As String
         Dim TextLine As String
         If System.IO.File.Exists(projectPath + "/server.cfg") = True Then
             Dim objReader As New System.IO.StreamReader(projectPath + "/server.cfg")
@@ -128,6 +129,22 @@ Public Class currentProjectClass
             Loop
         End If
         Return -1
+    End Function
+#End Region
+
+#Region "PluginsHandler"
+    Public Sub AddPlugin(inc As String)
+        Dim dt = sqlCon.GetDataTable("SELECT * FROM `Plugins` WHERE `plugName` = '" + inc + "'")
+        If dt.Rows.Count > 0 Then sqlCon.ExecuteNonQuery("DELETE FROM `Plugins` WHERE `plugName` = '" + inc + "'")
+        sqlCon.ExecuteNonQuery("INSERT INTO `Plugins` VALUES('" + inc + "');")
+    End Sub
+    Public Sub RemovePlugin(inc As String)
+        sqlCon.ExecuteNonQuery("DELETE FROM `Plugins` WHERE `plugName` = '" + inc + "'")
+    End Sub
+    Public Function PluginExists(inc As String) As Boolean
+        Dim dt = sqlCon.GetDataTable("SELECT * FROM `Plugins` WHERE `plugName` = '" + inc + "'")
+        If dt.Rows.Count > 0 Then Return True
+        Return False
     End Function
 #End Region
 

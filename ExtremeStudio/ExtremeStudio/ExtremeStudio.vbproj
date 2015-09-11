@@ -203,6 +203,12 @@
     <Compile Include="Functions Forms\NewProjectFile.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Functions Forms\PluginsForm.designer.vb">
+      <DependentUpon>PluginsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Functions Forms\PluginsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
@@ -252,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Functions Forms\NewProjectFile.resx">
       <DependentUpon>NewProjectFile.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Functions Forms\PluginsForm.resx">
+      <DependentUpon>PluginsForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>

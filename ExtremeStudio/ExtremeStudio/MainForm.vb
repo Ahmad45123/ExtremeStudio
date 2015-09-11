@@ -132,4 +132,9 @@ Public Class MainForm
         Dim frm As New IncludesForm
         frm.Show()
     End Sub
+
+    Private Sub ToolStripButton5_Click(sender As Object, e As EventArgs) Handles ToolStripButton5.Click
+        Dim frm As New PluginsForm
+        frm.Show()
+    End Sub
 End Class
