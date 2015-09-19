@@ -94,8 +94,14 @@ Public Class PluginsForm
             If res = ExtremeCore.versionReader.CompareVersionResult.VERSION_NEW Then
                 updateAvilableLabel.Visible = True
             End If
+
+            If MainForm.currentProject.isPluginInServerCFG(Path.GetFileNameWithoutExtension(sel.Download)) Then
+                serverCFGButton.Text = "Remove from server.cfg"
+            Else
+                serverCFGButton.Text = "Add to server.cfg"
+            End If
         Else
-            includeInstalledLabel.Visible = False
+                includeInstalledLabel.Visible = False
             updateAvilableLabel.Visible = False
             Button1.Text = "Install Plugin"
             actionsGroup.Visible = False
@@ -148,7 +154,15 @@ Public Class PluginsForm
 
         'Now extract
         ZipFile.ExtractToDirectory(plugFile, MainForm.currentProject.projectPath + "/plugins")
-        MainForm.currentProject.AddPlugin(pluginName.Text) 'Save Include to DB.
+
+        'Save plugin to DB
+        MainForm.currentProject.AddPlugin(pluginName.Text)
+
+        'Edit the server.cfg automaticly.
+        If Not MainForm.currentProject.isPluginInServerCFG(Path.GetFileNameWithoutExtension(plug.Download)) Then
+            MainForm.currentProject.TogglePluginInServerCFG(Path.GetFileNameWithoutExtension(plug.Download))
+            serverCFGButton.Text = "Remove from server.cfg"
+        End If
 
         'Show/hide stuff.
         plug.isInstalled = True
@@ -182,6 +196,11 @@ Public Class PluginsForm
         'Remove plugin from DB.
         MainForm.currentProject.RemovePlugin(plug.Name)
 
+        'Remove plugin from server.cfg if it was there.
+        If MainForm.currentProject.isPluginInServerCFG(Path.GetFileNameWithoutExtension(plug.Download)) Then
+            MainForm.currentProject.TogglePluginInServerCFG(Path.GetFileNameWithoutExtension(plug.Download))
+        End If
+
         'Hide stuff.
         plug.isInstalled = False
         updateAvilableLabel.Visible = False
@@ -196,6 +215,19 @@ Public Class PluginsForm
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
         refreshList(TextBox1.Text, showInstalledOnlyCheck.Checked)
+    End Sub
+
+    Private Sub serverCFGButton_Click(sender As Object, e As EventArgs) Handles serverCFGButton.Click
+        'Get the include info.
+        Dim plug = getPluginInfo(pluginName.Text)
+        If plug Is Nothing Then Exit Sub
+
+        MainForm.currentProject.TogglePluginInServerCFG(Path.GetFileNameWithoutExtension(plug.Download))
+        If MainForm.currentProject.isPluginInServerCFG(Path.GetFileNameWithoutExtension(plug.Download)) Then
+            serverCFGButton.Text = "Remove from server.cfg"
+        Else
+            serverCFGButton.Text = "Add to server.cfg"
+        End If
     End Sub
 End Class
 

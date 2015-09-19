@@ -98,36 +98,46 @@ Public Class currentProjectClass
                 TextLine = objReader.ReadLine()
                 allInfo.Add(TextLine)
             Loop
+
+            objReader.Close()
         End If
 
         'Editing
         Dim allText As String = Nothing 'To short the loops :P
+        Dim done As Boolean = False 'This is to know if it was edited or not.
         For Each Str As String In allInfo
             Dim values() As String = Str.Split(" ", 2, StringSplitOptions.None)
             If values(0) = key Then
-                values(1) = value
-                Str = values(0) + " " + values(1)
-                allText = Str + vbCrLf
-                Exit For
+                Str = values(0) + " " + value
+                allText += Str + vbCrLf
+                done = True
+            Else
+                allText += Str + vbCrLf
             End If
-            allText = Str + vbCrLf
         Next
+
+        'If it wasn't edited, We add it.
+        If done = False Then allText += key + " " + value
 
         'Writing
         My.Computer.FileSystem.WriteAllText(projectPath + "/server.cfg", allText, False)
     End Sub
     Public Function GetSAMPConfig(key As String) As String
         Dim TextLine As String
-        If System.IO.File.Exists(projectPath + "/server.cfg") = True Then
+        If IO.File.Exists(projectPath + "/server.cfg") = True Then
             Dim objReader As New System.IO.StreamReader(projectPath + "/server.cfg")
             Do While objReader.Peek() <> -1
                 TextLine = objReader.ReadLine()
                 Dim values() As String = TextLine.Split(" ", 2, StringSplitOptions.None)
-                If values(0) = key Then
+                If values(0) = key And values.Length = 2 Then
+                    objReader.Close()
                     Return values(1)
                 End If
             Loop
+
+            objReader.Close()
         End If
+
         Return -1
     End Function
 #End Region
@@ -146,6 +156,61 @@ Public Class currentProjectClass
         If dt.Rows.Count > 0 Then Return True
         Return False
     End Function
+
+    'Server.cfg stuff for plugins.
+    Private Function getPluginsListInServerCFG() As List(Of String)
+        getPluginsListInServerCFG = New List(Of String)
+
+        Dim st As String = GetSAMPConfig("plugins")
+        If st = "-1" Then
+            st = ""
+        Else
+            Dim bla As String() = st.Split(" ")
+
+            For Each bl As String In bla
+                If Not bl = "" Or Not bl = " " Then
+                    getPluginsListInServerCFG.Add(bl)
+                End If
+            Next
+        End If
+
+        Return getPluginsListInServerCFG
+    End Function
+    Private Sub savePluginsInServerCFG(plugs As List(Of String))
+        Dim str As String = Nothing
+        For Each plug As String In plugs
+            str += " " + plug
+        Next
+        If str IsNot Nothing Then str = str.Remove(0, 1)
+
+        EditSAMPConfig("plugins", str)
+    End Sub
+
+    Public Function isPluginInServerCFG(pluginName As String)
+        Dim lst As List(Of String) = getPluginsListInServerCFG()
+        For Each str As String In lst
+            If str = pluginName Then
+                Return True
+            End If
+        Next
+
+        Return False
+    End Function
+    Public Sub TogglePluginInServerCFG(pluginName As String)
+        Dim lst As List(Of String) = getPluginsListInServerCFG()
+        For Each str As String In lst
+            If str = pluginName Then
+                lst.Remove(str) 'Remove it then exit sub and don't continue adding it.
+                savePluginsInServerCFG(lst) 'Save it
+                Exit Sub
+            End If
+        Next
+
+        'If code reaches here, Then it wasn't found so add it.
+        lst.Add(pluginName)
+        savePluginsInServerCFG(lst)
+    End Sub
+
 #End Region
 
 End Class

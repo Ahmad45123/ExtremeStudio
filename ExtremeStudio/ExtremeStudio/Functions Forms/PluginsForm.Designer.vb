@@ -34,6 +34,7 @@ Partial Class PluginsForm
         Me.Button1 = New System.Windows.Forms.Button()
         Me.includeInstalledLabel = New System.Windows.Forms.Label()
         Me.actionsGroup = New System.Windows.Forms.GroupBox()
+        Me.serverCFGButton = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.updateAvilableLabel = New System.Windows.Forms.Label()
         Me.showInstalledOnlyCheck = New System.Windows.Forms.CheckBox()
@@ -147,20 +148,30 @@ Partial Class PluginsForm
         '
         'actionsGroup
         '
+        Me.actionsGroup.Controls.Add(Me.serverCFGButton)
         Me.actionsGroup.Controls.Add(Me.Button2)
-        Me.actionsGroup.Location = New System.Drawing.Point(339, 260)
+        Me.actionsGroup.Location = New System.Drawing.Point(324, 260)
         Me.actionsGroup.Name = "actionsGroup"
-        Me.actionsGroup.Size = New System.Drawing.Size(120, 59)
+        Me.actionsGroup.Size = New System.Drawing.Size(153, 80)
         Me.actionsGroup.TabIndex = 5
         Me.actionsGroup.TabStop = False
         Me.actionsGroup.Text = "Actions: "
         Me.actionsGroup.Visible = False
         '
+        'serverCFGButton
+        '
+        Me.serverCFGButton.Location = New System.Drawing.Point(6, 48)
+        Me.serverCFGButton.Name = "serverCFGButton"
+        Me.serverCFGButton.Size = New System.Drawing.Size(138, 23)
+        Me.serverCFGButton.TabIndex = 1
+        Me.serverCFGButton.Text = "Add to server.cfg"
+        Me.serverCFGButton.UseVisualStyleBackColor = True
+        '
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(6, 19)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(105, 23)
+        Me.Button2.Size = New System.Drawing.Size(138, 23)
         Me.Button2.TabIndex = 0
         Me.Button2.Text = "Uninstall Plugin"
         Me.Button2.UseVisualStyleBackColor = True
@@ -234,4 +245,5 @@ Partial Class PluginsForm
     Friend WithEvents updateAvilableLabel As Label
     Friend WithEvents showInstalledOnlyCheck As CheckBox
     Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents serverCFGButton As Button
 End Class
