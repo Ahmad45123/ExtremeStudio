@@ -81,7 +81,7 @@ Public Class EditorDock
         'Custom Keywords.
         Editor.Styles(Style.Cpp.Word).ForeColor = Color.Blue 'For the PAWN keywords
         Editor.Styles(Style.Cpp.Word2).ForeColor = Color.CadetBlue 'For the functions.
-        Editor.Styles(Style.Cpp.GlobalClass).ForeColor = Color.MediumVioletRed 'For the defines.
+        Editor.Styles(Style.Cpp.GlobalClass).ForeColor = Color.MediumVioletRed 'For the defines and enums.
 
         Editor.Styles(Style.Cpp.[String]).ForeColor = Color.FromArgb(163, 21, 21)
         Editor.Styles(Style.Cpp.Character).ForeColor = Color.FromArgb(163, 21, 21)
@@ -179,7 +179,7 @@ Public Class EditorDock
             definesText += " " + key
         Next
         For Each key As String In codeParts.Enums.Keys
-            setString += " " + key
+            definesText += " " + key
         Next
         For Each includeParser As Parser In codeParts.Includes.Values
             For Each key As String In includeParser.Stocks.Keys
@@ -198,7 +198,7 @@ Public Class EditorDock
                 definesText += " " + key
             Next
             For Each key As String In includeParser.Enums.Keys
-                setString += " " + key
+                definesText += " " + key
             Next
         Next
         Try

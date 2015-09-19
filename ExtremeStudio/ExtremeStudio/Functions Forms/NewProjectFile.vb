@@ -58,7 +58,7 @@ Public Class NewProjectFile
         ElseIf RadioButton3.Checked Then
             targetPath += FolderList.SelectedItem + "/" + fileNameText.Text + ".pwn"
         End If
-        My.Computer.FileSystem.CopyFile(Application.StartupPath + "/newfileTemplate.pwn", targetPath)
+        My.Computer.FileSystem.WriteAllText(targetPath, My.Resources.newfileTemplate, False)
         MainForm.OpenFile(targetPath)
 
         If ProjExplorerDock.Visible Then
