@@ -116,6 +116,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutocompleteMenu">
+      <HintPath>..\lib\AutocompleteMenu.dll</HintPath>
+    </Reference>
     <Reference Include="ExtremeParser">
       <HintPath>..\..\..\ExtremeParser\ExtremeParser\bin\Debug\ExtremeParser.dll</HintPath>
     </Reference>

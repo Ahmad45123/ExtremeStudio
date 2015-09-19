@@ -131,6 +131,9 @@ Public Class EditorDock
 
         'Set the PAWN language keywords.
         Editor.SetKeywords(0, "break case enum continue do else false for goto public stock if is new null return sizeof switch true while forward native")
+
+        'Set up auto-complete.
+        AutoCompleteMenu.TargetControlWrapper = New ScintillaWrapper(Editor)
     End Sub
 
     Public codeParts As Parser
@@ -286,6 +289,8 @@ Public Class EditorDock
             If Editor.Lines(curLine).Text.Trim() = "}" Then 'Check whether the bracket is the only thing on the line.. For cases like "if() { }".
                 SetIndent(Editor, curLine, GetIndent(Editor, curLine) - 4)
             End If
+        Else
+            AutoCompleteMenu.Show(Editor, False)
         End If
     End Sub
 
