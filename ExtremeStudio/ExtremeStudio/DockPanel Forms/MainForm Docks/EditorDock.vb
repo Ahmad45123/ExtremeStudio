@@ -77,8 +77,12 @@ Public Class EditorDock
         Editor.Styles(Style.Cpp.CommentLine).ForeColor = Color.FromArgb(0, 128, 0)
         Editor.Styles(Style.Cpp.CommentLineDoc).ForeColor = Color.Red
         Editor.Styles(Style.Cpp.Number).ForeColor = Color.Olive
-        Editor.Styles(Style.Cpp.Word).ForeColor = Color.Blue
-        Editor.Styles(Style.Cpp.Word2).ForeColor = Color.CadetBlue
+
+        'Custom Keywords.
+        Editor.Styles(Style.Cpp.Word).ForeColor = Color.Blue 'For the PAWN keywords
+        Editor.Styles(Style.Cpp.Word2).ForeColor = Color.CadetBlue 'For the functions.
+        Editor.Styles(Style.Cpp.GlobalClass).ForeColor = Color.MediumVioletRed 'For the defines.
+
         Editor.Styles(Style.Cpp.[String]).ForeColor = Color.FromArgb(163, 21, 21)
         Editor.Styles(Style.Cpp.Character).ForeColor = Color.FromArgb(163, 21, 21)
         Editor.Styles(Style.Cpp.Verbatim).ForeColor = Color.FromArgb(163, 21, 21)
@@ -155,49 +159,54 @@ Public Class EditorDock
         Next
 #End Region
 
-#Region "Refresh Key Word Set"
+#Region "Refresh Functions KeyWord Set"
         Dim setString As String = ""
-            For Each key As String In codeParts.Stocks.Keys
+        Dim definesText As String = ""
+
+        For Each key As String In codeParts.Stocks.Keys
+            setString += " " + key
+        Next
+        For Each key As String In codeParts.Publics.Keys
+            setString += " " + key
+        Next
+        For Each key As String In codeParts.Functions.Keys
+            setString += " " + key
+        Next
+        For Each key As String In codeParts.Natives.Keys
+            setString += " " + key
+        Next
+        For Each key As String In codeParts.Defines.Keys
+            definesText += " " + key
+        Next
+        For Each key As String In codeParts.Enums.Keys
+            setString += " " + key
+        Next
+        For Each includeParser As Parser In codeParts.Includes.Values
+            For Each key As String In includeParser.Stocks.Keys
                 setString += " " + key
             Next
-            For Each key As String In codeParts.Publics.Keys
+            For Each key As String In includeParser.Publics.Keys
                 setString += " " + key
             Next
-            For Each key As String In codeParts.Functions.Keys
+            For Each key As String In includeParser.Functions.Keys
                 setString += " " + key
             Next
-            For Each key As String In codeParts.Natives.Keys
+            For Each key As String In includeParser.Natives.Keys
                 setString += " " + key
             Next
-            For Each key As String In codeParts.Defines.Keys
+            For Each key As String In includeParser.Defines.Keys
+                definesText += " " + key
+            Next
+            For Each key As String In includeParser.Enums.Keys
                 setString += " " + key
             Next
-            For Each key As String In codeParts.Enums.Keys
-                setString += " " + key
-            Next
-            For Each includeParser As Parser In codeParts.Includes.Values
-                For Each key As String In includeParser.Stocks.Keys
-                    setString += " " + key
-                Next
-                For Each key As String In includeParser.Publics.Keys
-                    setString += " " + key
-                Next
-                For Each key As String In includeParser.Functions.Keys
-                    setString += " " + key
-                Next
-                For Each key As String In includeParser.Natives.Keys
-                    setString += " " + key
-                Next
-                For Each key As String In includeParser.Defines.Keys
-                    setString += " " + key
-                Next
-                For Each key As String In includeParser.Enums.Keys
-                    setString += " " + key
-                Next
-            Next
+        Next
         Try
             setString = setString.Remove(0, 1) 'Remove the starting space.
             Editor.SetKeywords(1, setString)
+
+            definesText = definesText.Remove(0, 1) 'Remove the starting space.
+            Editor.SetKeywords(3, definesText)
         Catch ex As Exception
         End Try
 #End Region
