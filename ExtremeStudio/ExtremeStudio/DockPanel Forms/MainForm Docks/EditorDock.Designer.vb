@@ -46,7 +46,6 @@ Partial Class EditorDock
         Me.AutoCompleteMenu.Colors = CType(resources.GetObject("AutoCompleteMenu.Colors"), AutocompleteMenuNS.Colors)
         Me.AutoCompleteMenu.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.AutoCompleteMenu.ImageList = Nothing
-        Me.AutoCompleteMenu.Items = New String(-1) {}
         Me.AutoCompleteMenu.TargetControlWrapper = Nothing
         '
         'EditorDock
