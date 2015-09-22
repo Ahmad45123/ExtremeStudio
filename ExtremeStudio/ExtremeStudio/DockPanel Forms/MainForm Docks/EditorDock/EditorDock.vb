@@ -2,6 +2,7 @@
 Imports ExtremeParser
 Imports System.Text.RegularExpressions
 Imports ExtremeStudio.AutoCompleteItemEx
+Imports ExtremeCore
 
 Public Class EditorDock
 
@@ -16,13 +17,6 @@ Public Class EditorDock
 
     'UnRelated events here.
     Private Sub EditorDock_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TextChangedDelayed Event
-        AddHandler TextChangedDelayed, AddressOf scintilla_TextChangedDelayed
-        With idleTimer
-            .Enabled = True
-            .Interval = 1000
-        End With
-
         'Set-Up the syntax highlighting.
         Editor.StyleResetDefault()
         Editor.Styles(Style.[Default]).Font = "Consolas"
@@ -82,13 +76,16 @@ Public Class EditorDock
         ' Enable automatic folding.
         Editor.AutomaticFold = (AutomaticFold.Show Or AutomaticFold.Click Or AutomaticFold.Change)
 
+        'Set the CallTip color.
+        Editor.CallTipSetForeHlt(Color.Black)
+
         'Setup the indicators
         Editor.Indicators(indicatorIDs.INDICATOR_PARSERERROR).Style = IndicatorStyle.Squiggle
         Editor.Indicators(indicatorIDs.INDICATOR_PARSERERROR).ForeColor = Color.DarkGreen
         Editor.Indicators(indicatorIDs.INDICATOR_PARSERERROR).Under = True
 
         'Set the PAWN language keywords.
-        Editor.SetKeywords(0, "break case enum continue do else false for goto public stock if is new null return sizeof switch true while forward native")
+        Editor.SetKeywords(0, "static break case enum continue do else false for goto public stock if is new null return sizeof switch true while forward native")
 
         'Set up auto-complete.
         AutoCompleteMenu.TargetControlWrapper = New ScintillaWrapper(Editor)
@@ -135,6 +132,14 @@ Public Class EditorDock
     Private Sub idleTimer_Tick(sender As Object, e As EventArgs) Handles idleTimer.Tick
         idleTimer.Stop()
         RaiseEvent TextChangedDelayed(Editor, EventArgs.Empty)
+    End Sub
+    Private Sub Editor_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'TextChangedDelayed Event
+        AddHandler TextChangedDelayed, AddressOf scintilla_TextChangedDelayed
+        With idleTimer
+            .Enabled = True
+            .Interval = 1000
+        End With
     End Sub
     Private Sub TextChangedDelayed_Editor_TextChanged(sender As Object, e As EventArgs) Handles Editor.TextChanged
         idleTimer.Stop()
@@ -399,6 +404,108 @@ Public Class EditorDock
     Private Sub Editor_SavePointLeft(sender As Object, e As EventArgs) Handles Editor.SavePointLeft
         If Me.Text = "" Then Exit Sub
         Me.TabText = "* " + Me.Text
+    End Sub
+#End Region
+
+#Region "CallTip Codes"
+    Dim isCallTipShown As Boolean = False
+    Dim currentCallTipItm As AutoCompleteItemEx
+
+    Private Sub CallTipMarkCurrentPar(itm As AutoCompleteItemEx)
+        Dim currentLineText As String = Editor.Lines(Editor.CurrentLine).Text
+        Dim funcOnly As Match = Regex.Match(currentLineText, itm.Text + "\(([^\n\r\);]*)")
+        Dim currentWrite As String
+        If funcOnly.Success Then
+            currentWrite = funcOnly.Captures(0).Value
+        Else
+            currentWrite = currentLineText
+        End If
+
+        Dim extraCount As Integer = itm.Text.Length + 1 '1 for the ( and )
+        Dim wholeFunc As String = itm.Parameters.paramsText
+
+        Dim currentCommas As Integer = stringSearcher.CountChar(currentWrite, ",")
+        Dim allCommads As Integer = stringSearcher.CountChar(wholeFunc, ",")
+
+        If currentCommas > allCommads Then Exit Sub
+
+        Dim allPars As String() = wholeFunc.Split(",")
+
+        Dim startPos As Integer = extraCount
+        For i As Integer = 0 To allPars.Count - 1
+            If i = currentCommas Then
+                Exit For
+            Else
+                startPos += allPars(i).Length + 1 '1 for the comma.
+            End If
+        Next
+        Dim endPos As Integer = startPos + allPars(currentCommas).Length
+
+        Editor.CallTipSetHlt(startPos, endPos)
+    End Sub
+
+    Private Sub AutoCompleteMenu_Selected(sender As Object, e As AutocompleteMenuNS.SelectedEventArgs) Handles AutoCompleteMenu.Selected
+        Dim itm As AutoCompleteItemEx = DirectCast(e.Item, AutoCompleteItemEx)
+
+        If itm.Type = AutoCompeleteTypes.TYPE_FUNCTION Then
+            Editor.CallTipShow(Editor.CurrentPosition, itm.Text + "(" + itm.Parameters.paramsText + ")")
+            isCallTipShown = True
+            currentCallTipItm = itm
+
+            CallTipMarkCurrentPar(currentCallTipItm)
+        End If
+    End Sub
+
+    Private Sub CallTip_Editor_CharAdded(sender As Object, e As CharAddedEventArgs) Handles Editor.CharAdded
+        If e.Char = 44 Then  'The ',' char.
+            If isCallTipShown And TypeOf (currentCallTipItm) Is AutoCompleteItemEx Then
+                CallTipMarkCurrentPar(currentCallTipItm)
+            End If
+        ElseIf e.Char = 13 Then 'If he presses enter, Hide the calltip.
+            If isCallTipShown Then
+                isCallTipShown = False
+                currentCallTipItm = Nothing
+            End If
+        End If
+    End Sub
+
+    Private Sub CallTip_Editor_BeforeDelete(sender As Object, e As ModificationEventArgs) Handles Editor.Delete
+        If isCallTipShown And TypeOf (currentCallTipItm) Is AutoCompleteItemEx Then
+            If e.Text.Contains(",") Then
+                CallTipMarkCurrentPar(currentCallTipItm)
+            End If
+        End If
+    End Sub
+
+    Private Sub CallTip_Editor_Insert(sender As Object, e As ModificationEventArgs) Handles Editor.Insert
+        If e.Text = "(" Then 'Which will be used to show the calltip.
+            'First of all get the funcName.
+            Dim funcText As String = ""
+            Dim pos As Integer = e.Position
+
+            While (pos > 0)
+                pos -= 1
+
+                Dim txt As String = Editor.GetTextRange(pos, 1)
+                If txt = " " Or txt = vbLf Or txt = "(" Or txt = ")" Or txt = "{" Or txt = "}" Or txt = ";" Then Exit While
+
+                funcText = funcText.Insert(0, txt)
+            End While
+
+            'Now check if there is an AutoCompleteItem matching that.
+            For Each itm As AutoCompleteItemEx In autoCompleteList
+                If itm.Text = funcText Then
+                    'Found one.. Now if its a function.. Show it. :)
+                    If itm.Type = AutoCompeleteTypes.TYPE_FUNCTION Then
+                        Editor.CallTipShow(Editor.CurrentPosition, itm.Text + "(" + itm.Parameters.paramsText + ")")
+                        isCallTipShown = True
+                        currentCallTipItm = itm
+
+                        CallTipMarkCurrentPar(currentCallTipItm)
+                    End If
+                End If
+            Next
+        End If
     End Sub
 #End Region
 

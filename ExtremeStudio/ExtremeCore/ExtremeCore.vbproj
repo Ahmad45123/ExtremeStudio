@@ -112,6 +112,7 @@
     </Compile>
     <Compile Include="Classes and Modules\generalFunctions.vb" />
     <Compile Include="Classes and Modules\ObjectSerializer.vb" />
+    <Compile Include="Classes and Modules\stringSearcher.vb" />
     <Compile Include="Classes and Modules\treeNodeStateSaving.vb" />
     <Compile Include="Classes and Modules\versionReader.vb" />
     <Compile Include="Controls\FolderBrowserButton.Designer.vb">
