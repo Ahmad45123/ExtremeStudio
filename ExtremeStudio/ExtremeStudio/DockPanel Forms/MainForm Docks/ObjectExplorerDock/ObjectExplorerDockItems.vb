@@ -22,6 +22,8 @@
     End Sub
 
     Private Sub itemsList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles itemsList.SelectedIndexChanged
+        If itemsList.SelectedIndex = -1 Then Exit Sub
+
         infoName.Text = itemsList.SelectedItem
         infoIden.Text = MainForm.currentProject.objectExplorerItems(GetID(itemsList.SelectedItem)).Identifier
     End Sub
