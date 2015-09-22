@@ -22,10 +22,12 @@ Partial Class EditorDock
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EditorDock))
         Me.Editor = New ScintillaNET.Scintilla()
         Me.RefreshWorker = New System.ComponentModel.BackgroundWorker()
         Me.AutoCompleteMenu = New AutocompleteMenuNS.AutocompleteMenu()
+        Me.ACImageList = New System.Windows.Forms.ImageList(Me.components)
         Me.SuspendLayout()
         '
         'Editor
@@ -35,7 +37,6 @@ Partial Class EditorDock
         Me.Editor.Name = "Editor"
         Me.Editor.Size = New System.Drawing.Size(566, 417)
         Me.Editor.TabIndex = 0
-        Me.Editor.Text = "Scintilla1"
         Me.Editor.UseTabs = False
         '
         'RefreshWorker
@@ -45,8 +46,17 @@ Partial Class EditorDock
         '
         Me.AutoCompleteMenu.Colors = CType(resources.GetObject("AutoCompleteMenu.Colors"), AutocompleteMenuNS.Colors)
         Me.AutoCompleteMenu.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.AutoCompleteMenu.ImageList = Nothing
+        Me.AutoCompleteMenu.ImageList = Me.ACImageList
+        Me.AutoCompleteMenu.Items = New String() {"null"}
         Me.AutoCompleteMenu.TargetControlWrapper = Nothing
+        Me.AutoCompleteMenu.ToolTipDuration = 10000000
+        '
+        'ACImageList
+        '
+        Me.ACImageList.ImageStream = CType(resources.GetObject("ACImageList.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ACImageList.TransparentColor = System.Drawing.Color.Transparent
+        Me.ACImageList.Images.SetKeyName(0, "Functions")
+        Me.ACImageList.Images.SetKeyName(1, "Defines")
         '
         'EditorDock
         '
@@ -63,4 +73,5 @@ Partial Class EditorDock
     Friend WithEvents RefreshWorker As System.ComponentModel.BackgroundWorker
     Public WithEvents Editor As ScintillaNET.Scintilla
     Friend WithEvents AutoCompleteMenu As AutocompleteMenuNS.AutocompleteMenu
+    Friend WithEvents ACImageList As ImageList
 End Class
