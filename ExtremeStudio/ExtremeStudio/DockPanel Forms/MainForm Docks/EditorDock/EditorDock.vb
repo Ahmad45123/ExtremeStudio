@@ -5,59 +5,16 @@ Imports ExtremeStudio.AutoCompleteItemEx
 
 Public Class EditorDock
 
-#Region "TextChangedDelayed Setup Code"
-    Private WithEvents idleTimer As New Timer
-    Public Event TextChangedDelayed As EventHandler
-    Private Sub idleTimer_Tick(sender As Object, e As EventArgs) Handles idleTimer.Tick
-        idleTimer.Stop()
-        RaiseEvent TextChangedDelayed(Editor, EventArgs.Empty)
-    End Sub
-    Private Sub TextChangedDelayed_Editor_TextChanged(sender As Object, e As EventArgs) Handles Editor.TextChanged
-        idleTimer.Stop()
-        idleTimer.Start()
-    End Sub
-#End Region
-    Private Sub scintilla_TextChangedDelayed(sender As Object, e As EventArgs)
-        If RefreshWorker.IsBusy = False Then RefreshWorker.RunWorkerAsync({Editor.Tag, MainForm.currentProject.projectPath}) : MainForm.statusLabel.Text = "Parsing Code."
-    End Sub
-
-#Region "CodeIndent Handlers"
-    Const SCI_SETLINEINDENTATION As Integer = 2126
-    Const SCI_GETLINEINDENTATION As Integer = 2127
-    Private Sub SetIndent(scin As ScintillaNET.Scintilla, line As Integer, indent As Integer)
-        scin.DirectMessage(SCI_SETLINEINDENTATION, New IntPtr(line), New IntPtr(indent))
-    End Sub
-    Private Function GetIndent(scin As ScintillaNET.Scintilla, line As Integer) As Integer
-        Return (scin.DirectMessage(SCI_GETLINEINDENTATION, New IntPtr(line), Nothing).ToInt32)
-    End Function
-#End Region
-
-    Private maxLineNumberCharLength As Integer
-    Private Sub Editor_TextChanged(sender As Object, e As EventArgs) Handles Editor.TextChanged
-        Dim maxLineNumberCharLength = Editor.Lines.Count.ToString().Length
-        If maxLineNumberCharLength = Me.maxLineNumberCharLength Then
-            Return
-        End If
-
-        Const padding As Integer = 2
-        Editor.Margins(0).Width = Editor.TextWidth(Style.LineNumber, New String("9"c, maxLineNumberCharLength + 1)) + padding
-        Me.maxLineNumberCharLength = maxLineNumberCharLength
-    End Sub
-
-    Private Shared Function IsBrace(c As Integer) As Boolean
-        Select Case c
-            Case AscW("("), AscW(")"), AscW("["), AscW("]"), AscW("{"), AscW("}")
-                Return True
-        End Select
-        Return False
-    End Function
-
-
+    'Global Vars
     Enum indicatorIDs
         INDICATOR_PARSERERROR = 50 'Start from 50
         INDICATOR_CODEERROR
         INDICATOR_PHPDOCERROR
     End Enum
+    Public codeParts As Parser
+    Dim autoCompleteList As New List(Of AutoCompleteItemEx)
+
+    'UnRelated events here.
     Private Sub EditorDock_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TextChangedDelayed Event
         AddHandler TextChangedDelayed, AddressOf scintilla_TextChangedDelayed
@@ -136,9 +93,73 @@ Public Class EditorDock
         'Set up auto-complete.
         AutoCompleteMenu.TargetControlWrapper = New ScintillaWrapper(Editor)
     End Sub
+    Private Sub EditorDock_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If Editor.Modified Then
+            Dim res = MsgBox("The file contains un-saved content, Would you like to save it ?", MsgBoxStyle.YesNoCancel)
+            If res = MsgBoxResult.Yes Then
+                MainForm.SaveFile(Editor)
+            ElseIf res = MsgBoxResult.Cancel Then
+                e.Cancel = True
+                Exit Sub
+            End If
+        End If
+        idleTimer.Stop()
+    End Sub
+    Private Sub Editor_KeyDown(sender As Object, e As KeyEventArgs) Handles Editor.KeyDown
+        If e.Control = True And e.KeyCode = Keys.S Then
+            MainForm.SaveFile(Editor)
+            Editor.SetSavePoint()
+            If e.Shift = True Then 'If he has shift pressed also.
+                MainForm.SaveAllFiles(Me, EventArgs.Empty)
+            End If
 
-    Public codeParts As Parser
-    Dim autoCompleteList As New List(Of AutoCompleteItemEx)
+            e.SuppressKeyPress = True
+        End If
+    End Sub
+
+    'All modules are here.
+#Region "CodeIndent Handlers"
+    Const SCI_SETLINEINDENTATION As Integer = 2126
+    Const SCI_GETLINEINDENTATION As Integer = 2127
+    Private Sub SetIndent(scin As ScintillaNET.Scintilla, line As Integer, indent As Integer)
+        scin.DirectMessage(SCI_SETLINEINDENTATION, New IntPtr(line), New IntPtr(indent))
+    End Sub
+    Private Function GetIndent(scin As ScintillaNET.Scintilla, line As Integer) As Integer
+        Return (scin.DirectMessage(SCI_GETLINEINDENTATION, New IntPtr(line), Nothing).ToInt32)
+    End Function
+#End Region
+
+#Region "TextChangedDelayed Setup Code"
+    Private WithEvents idleTimer As New Timer
+    Public Event TextChangedDelayed As EventHandler
+    Private Sub idleTimer_Tick(sender As Object, e As EventArgs) Handles idleTimer.Tick
+        idleTimer.Stop()
+        RaiseEvent TextChangedDelayed(Editor, EventArgs.Empty)
+    End Sub
+    Private Sub TextChangedDelayed_Editor_TextChanged(sender As Object, e As EventArgs) Handles Editor.TextChanged
+        idleTimer.Stop()
+        idleTimer.Start()
+    End Sub
+#End Region
+
+#Region "LineNumbers Calculation"
+    Private maxLineNumberCharLength As Integer
+    Private Sub Editor_TextChanged(sender As Object, e As EventArgs) Handles Editor.TextChanged
+        Dim maxLineNumberCharLength = Editor.Lines.Count.ToString().Length
+        If maxLineNumberCharLength = Me.maxLineNumberCharLength Then
+            Return
+        End If
+
+        Const padding As Integer = 2
+        Editor.Margins(0).Width = Editor.TextWidth(Style.LineNumber, New String("9"c, maxLineNumberCharLength + 1)) + padding
+        Me.maxLineNumberCharLength = maxLineNumberCharLength
+    End Sub
+#End Region
+
+#Region "Refresh Worker Codes"
+    Private Sub scintilla_TextChangedDelayed(sender As Object, e As EventArgs)
+        If RefreshWorker.IsBusy = False Then RefreshWorker.RunWorkerAsync({Editor.Tag, MainForm.currentProject.projectPath}) : MainForm.statusLabel.Text = "Parsing Code."
+    End Sub
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork
         If Editor.IsHandleCreated Then
             e.Result = New Parser(e.Argument(0), e.Argument(1))
@@ -301,19 +322,16 @@ Public Class EditorDock
             ObjectExplorerDock.refreshTreeView(codeParts)
         End If
     End Sub
+#End Region
 
-    Private Sub EditorDock_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If Editor.Modified Then
-            Dim res = MsgBox("The file contains un-saved content, Would you like to save it ?", MsgBoxStyle.YesNoCancel)
-            If res = MsgBoxResult.Yes Then
-                MainForm.SaveFile(Editor)
-            ElseIf res = MsgBoxResult.Cancel Then
-                e.Cancel = True
-                Exit Sub
-            End If
-        End If
-        idleTimer.Stop()
-    End Sub
+#Region "Brace Highlighting"
+    Private Shared Function IsBrace(c As Integer) As Boolean
+        Select Case c
+            Case AscW("("), AscW(")"), AscW("["), AscW("]"), AscW("{"), AscW("}")
+                Return True
+        End Select
+        Return False
+    End Function
 
     Private lastCaretPos As Integer
     Private Sub Editor_UpdateUI(sender As Object, e As UpdateUIEventArgs) Handles Editor.UpdateUI
@@ -348,7 +366,9 @@ Public Class EditorDock
             End If
         End If
     End Sub
+#End Region
 
+#Region "AutoIndent of new lines"
     Private Sub Editor_InsertCheck(sender As Object, e As InsertCheckEventArgs) Handles Editor.InsertCheck
         If (e.Text.EndsWith("" & vbCr) OrElse e.Text.EndsWith("" & vbLf)) Then
             Dim startPos As Integer = Editor.Lines(Editor.LineFromPosition(Editor.CurrentPosition)).Position
@@ -370,7 +390,9 @@ Public Class EditorDock
             End If
         End If
     End Sub
+#End Region
 
+#Region "SavePoints"
     Private Sub Editor_SavePointReached(sender As Object, e As EventArgs) Handles Editor.SavePointReached
         Me.TabText = Me.Text
     End Sub
@@ -378,16 +400,6 @@ Public Class EditorDock
         If Me.Text = "" Then Exit Sub
         Me.TabText = "* " + Me.Text
     End Sub
+#End Region
 
-    Private Sub Editor_KeyDown(sender As Object, e As KeyEventArgs) Handles Editor.KeyDown
-        If e.Control = True And e.KeyCode = Keys.S Then
-            MainForm.SaveFile(Editor)
-            Editor.SetSavePoint()
-            If e.Shift = True Then 'If he has shift pressed also.
-                MainForm.SaveAllFiles(Me, EventArgs.Empty)
-            End If
-
-            e.SuppressKeyPress = True
-        End If
-    End Sub
 End Class
