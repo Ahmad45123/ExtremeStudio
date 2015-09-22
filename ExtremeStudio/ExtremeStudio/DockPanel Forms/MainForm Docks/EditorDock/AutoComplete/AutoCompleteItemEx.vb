@@ -34,7 +34,7 @@ Public Class AutoCompleteItemEx
             Dim allText As String = ""
 
             'Do the remarks
-            allText += "Remarks: " + vbCrLf + funcPars.pawnDoc.Remarks + vbCrLf + vbCrLf
+            allText += "Remarks: " + vbCrLf + vbTab + funcPars.pawnDoc.Remarks + vbCrLf + vbCrLf
 
             'Do the Parameters. (HARDEST ONE)
             allText += "Parameters :" + vbCrLf
@@ -47,7 +47,7 @@ Public Class AutoCompleteItemEx
             allText += vbCrLf
 
             'Do the returns.
-            allText += "Returns: " + vbCrLf + funcPars.pawnDoc.Returns + vbCrLf + vbCrLf
+            allText += "Returns: " + vbCrLf + vbTab + funcPars.pawnDoc.Returns + vbCrLf + vbCrLf
 
             'Then simply set it.
             ToolTipText = allText
