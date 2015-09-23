@@ -10,11 +10,11 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ExtremeStudio", "ExtremeStu
 	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ExtremeCore", "ExtremeCore\ExtremeCore.vbproj", "{1ACB0832-ACE5-4958-8D65-35C5EC357E6C}"
-	ProjectSection(ProjectDependencies) = postProject
-		{24F5F1B3-3D0C-49FA-B026-61A991789CF8} = {24F5F1B3-3D0C-49FA-B026-61A991789CF8}
-	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ExtremeParser", "ExtremeParser\ExtremeParser.vbproj", "{24F5F1B3-3D0C-49FA-B026-61A991789CF8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1ACB0832-ACE5-4958-8D65-35C5EC357E6C} = {1ACB0832-ACE5-4958-8D65-35C5EC357E6C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

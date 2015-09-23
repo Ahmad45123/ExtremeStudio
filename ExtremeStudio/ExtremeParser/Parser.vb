@@ -60,7 +60,7 @@ Public Class Parser
         code = Regex.Replace(code, "\/\*[\s\S]*?\*\/", "", RegexOptions.Multiline)
 
         'Defines & Macros: 
-        For Each Match As Match In Regex.Matches(code, "#define\s+([^\n; ]+)\s+(.+)")
+        For Each Match As Match In Regex.Matches(code, "#define\s+([^\n\r\s;]+)\s+(.+)")
             Dim defineName As String = Match.Groups(1).Value
             Dim defineValue As String = Match.Groups(2).Value
 
@@ -72,10 +72,15 @@ Public Class Parser
         Next
 
         'Publics.
-        For Each Match As Match In Regex.Matches(code, "public\s+([^\n;\(\)\{\} ]+)\s*?\((.*)\)")
+        For Each Match As Match In Regex.Matches(code, "public\s+([^\n;\(\)\{\}\s]+)\s*?\((.*)\)")
             Dim funcName As String = Match.Groups(1).Value
             Dim funcParams As String = Match.Groups(2).Value
             Try
+                'Remove the tag if exists.
+                If funcName.Contains(":") Then
+                    funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
+                End If
+
                 Publics.Add(funcName, New FunctionParameters(funcParams))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The public `" + funcName + "` already exists somewhere in the file.", funcName))
@@ -88,10 +93,15 @@ Public Class Parser
         Next
 
         'Stocks
-        For Each Match As Match In Regex.Matches(code, "stock\s+([^\n;\(\)\{\} ]+)\s*?\((.*)\)")
+        For Each Match As Match In Regex.Matches(code, "stock\s+([^\n;\(\)\{\}\s]+)\s*?\((.*)\)")
             Dim funcName As String = Match.Groups(1).Value
             Dim funcParams As String = Match.Groups(2).Value
             Try
+                'Remove the tag if exists.
+                If funcName.Contains(":") Then
+                    funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
+                End If
+
                 Stocks.Add(funcName, New FunctionParameters(funcParams))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The stock `" + funcName + "` already exists somewhere in the file.", funcName))
@@ -129,10 +139,15 @@ Public Class Parser
         code = Regex.Replace(code, "'[^'\\]*(?:\\[^\n\r\x85\u2028\u2029][^'\\]*)*'", "")
         code = Regex.Replace(code, Chr(34) + "[^" + Chr(34) + "\\]*(?:\\[^\n\r\x85\u2028\u2029][^" + Chr(34) + "\\]*)*" + Chr(34), "")
 
-        For Each Match As Match In Regex.Matches(code, "^\s*([^\n;\(\)\{\} ]+)(?<!" + funcLikeKeywords + ")\((.*)\)\s*{", RegexOptions.Multiline)
+        For Each Match As Match In Regex.Matches(code, "^\s*([^\n;\(\)\{\}\s]+)(?<!" + funcLikeKeywords + ")\((.*)\)\s*{", RegexOptions.Multiline)
             Dim funcName As String = Match.Groups(1).Value
             Dim funcParams As String = Match.Groups(2).Value
             Try
+                'Remove the tag if exists.
+                If funcName.Contains(":") Then
+                    funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
+                End If
+
                 Functions.Add(funcName, New FunctionParameters(funcParams))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The function `" + funcName + "` already exists somewhere in the file.", funcName))
@@ -145,10 +160,15 @@ Public Class Parser
         Next
 
         'Natives
-        For Each Match As Match In Regex.Matches(code, "native\s+([^\n;\(\)\{\} ]+)\s*?\((.*)\)")
+        For Each Match As Match In Regex.Matches(code, "native\s+([^\n;\(\)\{\}\s]+)\s*?\((.*)\)")
             Dim funcName As String = Match.Groups(1).Value
             Dim funcParams As String = Match.Groups(2).Value
             Try
+                'Remove the tag if exists.
+                If funcName.Contains(":") Then
+                    funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
+                End If
+
                 Natives.Add(funcName, New FunctionParameters(funcParams))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The native `" + funcName + "` already exists somewhere in the file.", funcName))
@@ -161,7 +181,7 @@ Public Class Parser
         Next
 
         'Enums
-        For Each Match As Match In Regex.Matches(code, "enum\s+([^\n;\(\)\{\} ]*)\s+(?:(?:[{])([^}]+)(?:[}]))")
+        For Each Match As Match In Regex.Matches(code, "enum\s+([^\n;\(\)\{\}\s]*)\s+(?:(?:[{])([^}]+)(?:[}]))")
             Dim enumds As String() = Match.Groups(2).Value.Split(",")
 
             For Each enuma As String In enumds

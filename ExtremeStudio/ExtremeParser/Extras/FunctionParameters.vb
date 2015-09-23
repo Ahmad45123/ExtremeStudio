@@ -37,6 +37,8 @@
         paramText = trimmedParams
         Dim prms As String() = trimmedParams.Split(",")
         For Each Str As String In prms
+            If Str = "" Or Str = Nothing Then Continue For
+
             If getVarType(Str) = varTypes.TYPE_FLOAT Then
                 Str = Str.Remove(0, 6)
                 Floats.Add(Str)

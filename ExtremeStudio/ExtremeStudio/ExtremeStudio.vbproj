@@ -122,10 +122,6 @@
     <Reference Include="AutocompleteMenu">
       <HintPath>..\lib\AutocompleteMenu.dll</HintPath>
     </Reference>
-    <Reference Include="ExtremeParser, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ExtremeParser.dll</HintPath>
-    </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.6.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetZip.1.9.6\lib\net20\Ionic.Zip.dll</HintPath>
       <Private>True</Private>
@@ -305,6 +301,10 @@
     <ProjectReference Include="..\ExtremeCore\ExtremeCore.vbproj">
       <Project>{1acb0832-ace5-4958-8d65-35c5ec357e6c}</Project>
       <Name>ExtremeCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExtremeParser\ExtremeParser.vbproj">
+      <Project>{24f5f1b3-3d0c-49fa-b026-61a991789cf8}</Project>
+      <Name>ExtremeParser</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
