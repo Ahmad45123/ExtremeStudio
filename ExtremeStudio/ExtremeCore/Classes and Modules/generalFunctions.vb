@@ -2,7 +2,7 @@
 Imports System.Net
 Imports System.Windows.Forms
 Imports ScintillaNET
-Imports ICSharpCode.SharpZipLib.Zip
+Imports Ionic.Zip
 
 Public Module generalFunctions
     Function FilenameIsOK(ByVal fileName As String, _
@@ -172,10 +172,12 @@ Public Module generalFunctions
         My.Computer.FileSystem.DeleteDirectory(tmpPath, FileIO.DeleteDirectoryOption.DeleteAllContents)
     End Sub
 
-    Public Sub FastZipUnpack(ByVal zipFileName As String, ByVal targetDir As String)
-        Dim fastZip As FastZip = New FastZip()
-        Dim fileFilter As String = Nothing
-
-        fastZip.ExtractZip(zipFileName, targetDir, fileFilter)
+    Public Sub FastZipUnpack(ByVal ZipToUnpack As String, ByVal TargetDir As String)
+        Using zip1 As ZipFile = ZipFile.Read(ZipToUnpack)
+            Dim e As ZipEntry
+            For Each e In zip1
+                e.Extract(TargetDir, ExtractExistingFileAction.OverwriteSilently)
+            Next
+        End Using
     End Sub
 End Module
