@@ -1,8 +1,8 @@
 ﻿Imports System.IO
-Imports System.IO.Compression
 Imports System.Net
 Imports System.Windows.Forms
 Imports ScintillaNET
+Imports ICSharpCode.SharpZipLib.Zip
 
 Public Module generalFunctions
     Function FilenameIsOK(ByVal fileName As String, _
@@ -158,7 +158,7 @@ Public Module generalFunctions
         My.Computer.FileSystem.CreateDirectory(tmpPath)
 
         'Extract the files.
-        ZipFile.ExtractToDirectory(pathtoZip, tmpPath)
+        FastZipUnpack(pathtoZip, tmpPath)
 
         'Get all files and folders and put them in the lists.
         For Each filePath In Directory.GetFiles(tmpPath)
@@ -170,5 +170,12 @@ Public Module generalFunctions
 
         'Clean.
         My.Computer.FileSystem.DeleteDirectory(tmpPath, FileIO.DeleteDirectoryOption.DeleteAllContents)
+    End Sub
+
+    Public Sub FastZipUnpack(ByVal zipFileName As String, ByVal targetDir As String)
+        Dim fastZip As FastZip = New FastZip()
+        Dim fileFilter As String = Nothing
+
+        fastZip.ExtractZip(zipFileName, targetDir, fileFilter)
     End Sub
 End Module

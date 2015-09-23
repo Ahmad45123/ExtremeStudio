@@ -45,7 +45,7 @@ Public Class StartupForm
 
             'Extract New
             My.Computer.FileSystem.WriteAllBytes(Application.StartupPath + "/interop.zip", My.Resources.SQLiteInterop, False) 'Write the file.
-            ZipFile.ExtractToDirectory(Application.StartupPath + "/interop.zip", Application.StartupPath) 'Extract it.
+            ExtremeCore.FastZipUnpack(Application.StartupPath + "/interop.zip", Application.StartupPath) 'Extract it.
             My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/interop.zip") 'Delete the temp file.
         End If
 
@@ -122,11 +122,11 @@ Public Class StartupForm
         If My.Computer.FileSystem.DirectoryExists(locTextBox.Text) Or My.Computer.FileSystem.FileExists(locTextBox.Text + "/extremeStudio.config") Then
             If Not verListBox.SelectedIndex = -1 Then
                 If My.Computer.FileSystem.FileExists(Application.StartupPath + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip") Then 'check if that version is existing
-                    ZipFile.ExtractToDirectory(Application.StartupPath + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip", locTextBox.Text) 'Extract the zip to project folder.
+                    FastZipUnpack(Application.StartupPath + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip", locTextBox.Text) 'Extract the zip to project folder.
                 Else 'Download from net if not exist.
                     Dim client As New WebClient 'For downloading the selected file.
                     client.DownloadFile(verListBox.Tag(verListBox.SelectedIndex), My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip") 'Download the zip file.
-                    ZipFile.ExtractToDirectory(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip", locTextBox.Text) 'Extract the zip.
+                    FastZipUnpack(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip", locTextBox.Text) 'Extract the zip.
                     My.Computer.FileSystem.CopyFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip", Application.StartupPath + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip") 'Copy the file to be used instead of downloading
                     My.Computer.FileSystem.DeleteFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip") 'Delete the file from temp.
                 End If

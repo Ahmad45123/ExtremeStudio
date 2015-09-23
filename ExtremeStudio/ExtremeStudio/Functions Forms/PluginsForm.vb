@@ -153,7 +153,7 @@ Public Class PluginsForm
         Next
 
         'Now extract
-        ZipFile.ExtractToDirectory(plugFile, MainForm.currentProject.projectPath + "/plugins")
+        ExtremeCore.FastZipUnpack(plugFile, MainForm.currentProject.projectPath + "/plugins")
 
         'Save plugin to DB
         MainForm.currentProject.AddPlugin(pluginName.Text)

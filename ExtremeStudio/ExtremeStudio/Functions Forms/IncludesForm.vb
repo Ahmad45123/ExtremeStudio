@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-Imports System.IO.Compression
 Imports System.Net
 Imports System.Xml
 
@@ -153,7 +152,7 @@ Public Class IncludesForm
             Next
 
             'Now extract
-            ZipFile.ExtractToDirectory(incFile, MainForm.currentProject.projectPath + "/pawno/include")
+            ExtremeCore.FastZipUnpack(incFile, MainForm.currentProject.projectPath + "/pawno/include")
         End If
         MainForm.currentProject.AddInclude(includeName.Text) 'Save Include to DB.
 
