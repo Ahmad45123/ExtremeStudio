@@ -10,6 +10,14 @@ Public Class Parser
     Public Natives As New DictionaryEx(Of String, FunctionParameters) 'func name, fiunc params class
     Public Enums As New DictionaryEx(Of String, FunctionParameters.varTypes) 'enum name, the enum type
     Public Includes As New Dictionary(Of String, Parser) 'Include path|name, The include parse.
+    Public publicVariables As New List(Of String)
+
+    Public ReadOnly Property fileName As String
+        Get
+            Return p_filename
+        End Get
+    End Property
+    Dim p_filename As String
 
     Private pawnDocs As New List(Of PawnDoc)
 
@@ -25,6 +33,8 @@ Public Class Parser
     Public errors As New ExceptionsList
 
     Public Sub New(filePath As String, projectPath As String, Optional isInclude As Boolean = False)
+        p_filename = Path.GetFileName(filePath)
+
         'Code
         Dim code As String = ""
         Try
@@ -205,6 +215,24 @@ Public Class Parser
                     errors.exceptionsList.Add(New ParserException("The enum `" + enuma + "` already exists somewhere in the file.", enuma))
                 End Try
             Next
+        Next
+
+        'Remove all curly brackets and its contents to remove all child codes.
+        'To be able to get global variables.
+        code = Regex.Replace(code, "\{[\s\S]*?\}", "", RegexOptions.Singleline)
+
+        'Now parse for all global variables.
+        For Each match As Match In Regex.Matches(code, "new\s+(.*);")
+            Dim varName As String = match.Groups(1).Value
+
+            If varName.Contains(":") Then
+                varName = varName.Remove(0, varName.IndexOf(":") + 1)
+            End If
+            If varName.Contains("[") And varName.Contains("]") Then
+                varName = varName.Remove(varName.IndexOf("["), (varName.IndexOf("]") - varName.IndexOf("[")) + 1)
+            End If
+
+            publicVariables.Add(varName)
         Next
     End Sub
 End Class

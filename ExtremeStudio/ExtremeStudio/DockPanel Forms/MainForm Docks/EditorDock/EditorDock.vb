@@ -226,6 +226,13 @@ Public Class EditorDock
             Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, key, "This is an enum item with the type: `" + type + "`")
             autoList.Add(newitm)
         Next
+        For Each var As String In include.publicVariables
+            definesText += " " + var
+
+            'AutoComplete
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, var, "This is a global variable declared in the file '" + include.fileName + "'")
+            autoList.Add(newitm)
+        Next
 
         For Each inc As String In include.Includes.Keys
             Dim newSetString As String = ""
@@ -268,8 +275,13 @@ Public Class EditorDock
         parseFileWithIncludes(codeParts, setString, definesText, autoCompleteList)
 
         Try
-            Editor.SetKeywords(1, setString)
-            Editor.SetKeywords(3, definesText)
+            If setString <> "" Then
+                Editor.SetKeywords(1, setString)
+            End If
+
+            If definesText <> "" Then
+                Editor.SetKeywords(3, definesText)
+            End If
 
             'Set autoComplete List.
             AutoCompleteMenu.SetAutocompleteItems(autoCompleteList)
