@@ -114,26 +114,24 @@ Public Class Parser
         Next
 
         'Includes
-        If isInclude = False Then
-            For Each Match As Match In Regex.Matches(code, "#include\s+(" + Chr(34) + "|<)(.+)(?:" + Chr(34) + "|>)")
-                Dim type As String = Match.Groups(1).Value
-                Dim text As String = Match.Groups(2).Value
-                Dim fullPath As String = ""
+        For Each Match As Match In Regex.Matches(code, "#include\s+(" + Chr(34) + "|<)(.+)(?:" + Chr(34) + "|>)")
+            Dim type As String = Match.Groups(1).Value
+            Dim text As String = Match.Groups(2).Value
+            Dim fullPath As String = ""
 
-                If type = Chr(34) Then
-                    fullPath = projectPath + "/gamemodes/" + text
-                ElseIf type = "<"
-                    fullPath = projectPath + "\pawno\include\" + text
-                    If Not fullPath.EndsWith(".inc") Then fullPath += ".inc"
-                End If
-                Try
-                    Dim prs As New Parser(fullPath, projectPath, True)
-                    Includes.Add(text, prs)
-                Catch ex As IncludeNotFoundException
-                    errors.exceptionsList.Add(ex)
-                End Try
-            Next
-        End If
+            If type = Chr(34) Then
+                fullPath = projectPath + "/gamemodes/" + text
+            ElseIf type = "<"
+                fullPath = projectPath + "\pawno\include\" + text
+                If Not fullPath.EndsWith(".inc") Then fullPath += ".inc"
+            End If
+            Try
+                Dim prs As New Parser(fullPath, projectPath, True)
+                Includes.Add(text, prs)
+            Catch ex As IncludeNotFoundException
+                errors.exceptionsList.Add(ex)
+            End Try
+        Next
 
         'Functions in General -- Removed all strings because some strings which contains a { bugs the below regex.
         code = Regex.Replace(code, "'[^'\\]*(?:\\[^\n\r\x85\u2028\u2029][^'\\]*)*'", "")

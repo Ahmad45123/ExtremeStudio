@@ -171,6 +171,76 @@ Public Class EditorDock
         End If
     End Sub
 
+    Private Sub parseFileWithIncludes(include As Parser, ByRef setString As String, ByRef definesText As String, ByRef autoList As List(Of AutoCompleteItemEx))
+        For Each key As String In include.Stocks.Keys
+            setString += " " + key
+
+            'AutoComplete
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, key, include.Stocks(key))
+            autoList.Add(newitm)
+        Next
+        For Each key As String In include.Publics.Keys
+            setString += " " + key
+
+            'AutoComplete
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, key, include.Publics(key))
+            autoList.Add(newitm)
+        Next
+        For Each key As String In include.Functions.Keys
+            setString += " " + key
+
+            'AutoComplete
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, key, include.Functions(key))
+            autoList.Add(newitm)
+        Next
+        For Each key As String In include.Natives.Keys
+            setString += " " + key
+
+            'AutoComplete
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, key, include.Natives(key))
+            autoList.Add(newitm)
+        Next
+        For Each key As String In include.Defines.Keys
+            definesText += " " + key
+
+            'AutoComplete
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, key, include.Defines(key))
+            autoList.Add(newitm)
+        Next
+        For Each key As String In include.Enums.Keys
+            definesText += " " + key
+
+            'AutoComplete
+            Dim type As String = ""
+
+            If include.Enums(key) = FunctionParameters.varTypes.TYPE_ARRAY Then
+                type = "array/string"
+            ElseIf include.Enums(key) = FunctionParameters.varTypes.TYPE_FLOAT Then
+                type = "float"
+            ElseIf include.Enums(key) = FunctionParameters.varTypes.TYPE_INTEGER Then
+                type = "integer"
+            ElseIf include.Enums(key) = FunctionParameters.varTypes.TYPE_FLOAT Then
+                type = "tagged"
+            End If
+
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, key, "This is an enum item with the type: `" + type + "`")
+            autoList.Add(newitm)
+        Next
+
+        For Each inc As String In include.Includes.Keys
+            Dim newSetString As String = ""
+            Dim newDefinesText As String = ""
+            Dim NewAutoList As New List(Of AutoCompleteItemEx)
+            parseFileWithIncludes(include.Includes(inc), newSetString, newDefinesText, NewAutoList)
+
+            setString += " " + newSetString
+            definesText += " " + newDefinesText
+            For Each itm In NewAutoList
+                autoList.Add(itm)
+            Next
+        Next
+    End Sub
+
     Private Sub RefreshWorker_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles RefreshWorker.RunWorkerCompleted
         MainForm.statusLabel.Text = "Idle."
         ErrorsDock.parserErrors.Rows.Clear()
@@ -195,129 +265,17 @@ Public Class EditorDock
         Dim definesText As String = ""
         autoCompleteList.Clear()
 
-        For Each key As String In codeParts.Stocks.Keys
-            setString += " " + key
+        parseFileWithIncludes(codeParts, setString, definesText, autoCompleteList)
 
-            'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, key, codeParts.Stocks(key))
-            autoCompleteList.Add(newitm)
-        Next
-        For Each key As String In codeParts.Publics.Keys
-            setString += " " + key
-
-            'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, key, codeParts.Publics(key))
-            autoCompleteList.Add(newitm)
-        Next
-        For Each key As String In codeParts.Functions.Keys
-            setString += " " + key
-
-            'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, key, codeParts.Functions(key))
-            autoCompleteList.Add(newitm)
-        Next
-        For Each key As String In codeParts.Natives.Keys
-            setString += " " + key
-
-            'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, key, codeParts.Natives(key))
-            autoCompleteList.Add(newitm)
-        Next
-        For Each key As String In codeParts.Defines.Keys
-            definesText += " " + key
-
-            'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, key, codeParts.Defines(key))
-            autoCompleteList.Add(newitm)
-        Next
-        For Each key As String In codeParts.Enums.Keys
-            definesText += " " + key
-
-            'AutoComplete
-            Dim type As String = ""
-
-            If codeParts.Enums(key) = FunctionParameters.varTypes.TYPE_ARRAY Then
-                type = "array/string"
-            ElseIf codeParts.Enums(key) = FunctionParameters.varTypes.TYPE_FLOAT Then
-                type = "float"
-            ElseIf codeParts.Enums(key) = FunctionParameters.varTypes.TYPE_INTEGER Then
-                type = "integer"
-            ElseIf codeParts.Enums(key) = FunctionParameters.varTypes.TYPE_FLOAT Then
-                type = "tagged"
-            End If
-
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, key, "This is an enum item with the type: `" + type + "`")
-            autoCompleteList.Add(newitm)
-        Next
-
-        For Each includeParser As Parser In codeParts.Includes.Values
-            For Each key As String In includeParser.Stocks.Keys
-                setString += " " + key
-
-                'AutoComplete
-                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, key, includeParser.Stocks(key))
-                autoCompleteList.Add(newitm)
-            Next
-            For Each key As String In includeParser.Publics.Keys
-                setString += " " + key
-
-                'AutoComplete
-                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, key, includeParser.Publics(key))
-                autoCompleteList.Add(newitm)
-            Next
-            For Each key As String In includeParser.Functions.Keys
-                setString += " " + key
-
-                'AutoComplete
-                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, key, includeParser.Functions(key))
-                autoCompleteList.Add(newitm)
-            Next
-            For Each key As String In includeParser.Natives.Keys
-                setString += " " + key
-
-                'AutoComplete
-                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, key, includeParser.Natives(key))
-                autoCompleteList.Add(newitm)
-            Next
-            For Each key As String In includeParser.Defines.Keys
-                definesText += " " + key
-
-                'AutoComplete
-                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, key, includeParser.Defines(key))
-                autoCompleteList.Add(newitm)
-            Next
-            For Each key As String In includeParser.Enums.Keys
-                definesText += " " + key
-
-                'AutoComplete
-                Dim type As String = ""
-
-                If includeParser.Enums(key) = FunctionParameters.varTypes.TYPE_ARRAY Then
-                    type = "array/string"
-                ElseIf includeParser.Enums(key) = FunctionParameters.varTypes.TYPE_FLOAT Then
-                    type = "float"
-                ElseIf includeParser.Enums(key) = FunctionParameters.varTypes.TYPE_INTEGER Then
-                    type = "integer"
-                ElseIf includeParser.Enums(key) = FunctionParameters.varTypes.TYPE_FLOAT Then
-                    type = "tagged"
-                End If
-
-                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, key, "This is an enum item with the type: `" + type + "`")
-                autoCompleteList.Add(newitm)
-            Next
-        Next
         Try
-            setString = setString.Remove(0, 1) 'Remove the starting space.
             Editor.SetKeywords(1, setString)
-
-            definesText = definesText.Remove(0, 1) 'Remove the starting space.
             Editor.SetKeywords(3, definesText)
+
+            'Set autoComplete List.
+            AutoCompleteMenu.SetAutocompleteItems(autoCompleteList)
         Catch ex As Exception
         End Try
 #End Region
-
-        'Set autoComplete List.
-        AutoCompleteMenu.SetAutocompleteItems(autoCompleteList)
 
         If ProjExplorerDock.Visible Then
             ProjExplorerDock.Includes = codeParts.Includes.Keys
