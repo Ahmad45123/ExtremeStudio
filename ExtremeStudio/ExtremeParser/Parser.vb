@@ -224,6 +224,7 @@ Public Class Parser
             If Regex.IsMatch(code, "\{(?:[^{}]*?)\}") Then
                 code = Regex.Replace(code, "\{(?:[^{}]*?)\}", "")
             Else
+                My.Computer.FileSystem.WriteAllText("d:/fuck.pwn", code, False)
                 finish = True
             End If
         End While
@@ -232,14 +233,44 @@ Public Class Parser
         For Each match As Match In Regex.Matches(code, "new\s+(.*);")
             Dim varName As String = match.Groups(1).Value
 
-            If varName.Contains(":") Then
-                varName = varName.Remove(0, varName.IndexOf(":") + 1)
-            End If
-            If varName.Contains("[") And varName.Contains("]") Then
-                varName = varName.Remove(varName.IndexOf("["), (varName.IndexOf("]") - varName.IndexOf("[")) + 1)
+            'Remove all whitespace.
+            varName = varName.Replace(" ", "")
+            varName = varName.Replace(vbTab, "")
+
+            'Now if there is multiple variables in one.. Split it.
+            Dim allVars As String()
+
+            If varName.Contains(",") Then
+                allVars = varName.Split(",")
+            Else
+                allVars = {varName}
             End If
 
-            publicVariables.Add(varName)
+            'Loop through all.
+            For Each str As String In allVars
+                'Remove tags.
+                If str.Contains(":") Then
+                    str = str.Remove(0, str.IndexOf(":") + 1)
+                End If
+
+                'Remove all arrays.
+                Dim done As Boolean = False
+                While done = False
+                    If str.Contains("[") And str.Contains("]") Then
+                        str = str.Remove(str.IndexOf("["), (str.IndexOf("]") - str.IndexOf("[")) + 1)
+                    Else
+                        done = True
+                    End If
+                End While
+
+                'Remove default
+                If str.Contains("=") Then
+                    str = str.Remove(str.IndexOf("="), str.Length - str.IndexOf("="))
+                End If
+
+                'Add
+                publicVariables.Add(str)
+            Next
         Next
     End Sub
 End Class
