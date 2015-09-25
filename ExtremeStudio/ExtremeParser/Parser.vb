@@ -219,7 +219,14 @@ Public Class Parser
 
         'Remove all curly brackets and its contents to remove all child codes.
         'To be able to get global variables.
-        code = Regex.Replace(code, "\{[\s\S]*?\}", "", RegexOptions.Singleline)
+        Dim finish As Boolean = False
+        While (finish = False)
+            If Regex.IsMatch(code, "\{(?:[^{}]*?)\}") Then
+                code = Regex.Replace(code, "\{(?:[^{}]*?)\}", "")
+            Else
+                finish = True
+            End If
+        End While
 
         'Now parse for all global variables.
         For Each match As Match In Regex.Matches(code, "new\s+(.*);")
