@@ -5,6 +5,8 @@ Imports System.Text
 
 Public Class MainForm
 
+    Public ReadOnly APPLICATION_FILES As String = My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData
+
 #Region "Properties"
     Public ReadOnly Property CurrentScintilla As Scintilla
         Get
@@ -50,7 +52,7 @@ Public Class MainForm
         Try
             m_deserlise = New DeserializeDockContent(AddressOf GetContentFromPersistString)
             Try
-                MainDock.LoadFromXml(Application.StartupPath + "/configs/docksInfo.xml", m_deserlise)
+                MainDock.LoadFromXml(APPLICATION_FILES + "/configs/docksInfo.xml", m_deserlise)
             Catch ex As Exception
                 'Do nothing if there isn't any file.
                 'Even though, A default one will be included.
@@ -61,7 +63,7 @@ Public Class MainForm
     End Sub
 
     Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        MainDock.SaveAsXml(Application.StartupPath + "/configs/docksInfo.xml")
+        MainDock.SaveAsXml(APPLICATION_FILES + "/configs/docksInfo.xml")
     End Sub
 #End Region
 

@@ -42,7 +42,7 @@ Public Class PluginsForm
                 Plugins.Add(plug)
             Next
         Else 'List all available cached includes.
-            For Each file In Directory.GetDirectories(Application.StartupPath + "/cache/plugins")
+            For Each file In Directory.GetDirectories(MainForm.APPLICATION_FILES + "/cache/plugins")
                 Dim plug As New PluginData
                 plug.Name = Path.GetFileNameWithoutExtension(file)
                 plug.Download = "local"
@@ -89,7 +89,7 @@ Public Class PluginsForm
             Button1.Text = "Reinstall Plugin"
             actionsGroup.Visible = True
 
-            Dim curVer As String = My.Computer.FileSystem.ReadAllText(Application.StartupPath + "/cache/plugins/" + Path.GetFileNameWithoutExtension(sel.Download) + "/version.cfg")
+            Dim curVer As String = My.Computer.FileSystem.ReadAllText(MainForm.APPLICATION_FILES + "/cache/plugins/" + Path.GetFileNameWithoutExtension(sel.Download) + "/version.cfg")
             Dim res = ExtremeCore.versionReader.CompareVersions(curVer, pluginVersion.Text)
             If res = ExtremeCore.versionReader.CompareVersionResult.VERSION_NEW Then
                 updateAvilableLabel.Visible = True
@@ -101,7 +101,7 @@ Public Class PluginsForm
                 serverCFGButton.Text = "Add to server.cfg"
             End If
         Else
-                includeInstalledLabel.Visible = False
+            includeInstalledLabel.Visible = False
             updateAvilableLabel.Visible = False
             Button1.Text = "Install Plugin"
             actionsGroup.Visible = False
@@ -114,7 +114,7 @@ Public Class PluginsForm
         If plug Is Nothing Then Exit Sub
 
         'Setup the paths.
-        Dim plugFolder As String = Application.StartupPath + "/cache/plugins/" + Path.GetFileNameWithoutExtension(plug.Download)
+        Dim plugFolder As String = MainForm.APPLICATION_FILES + "/cache/plugins/" + Path.GetFileNameWithoutExtension(plug.Download)
         Dim plugFile As String = plugFolder + "/" + Path.GetFileName(plug.Download)
 
         Dim web As New WebClient
@@ -179,7 +179,7 @@ Public Class PluginsForm
         If plug Is Nothing Then Exit Sub
 
         'Setup the paths to ZIP.plug
-        Dim plugFolder As String = Application.StartupPath + "/cache/plugins/" + Path.GetFileNameWithoutExtension(plug.Download)
+        Dim plugFolder As String = MainForm.APPLICATION_FILES + "/cache/plugins/" + Path.GetFileNameWithoutExtension(plug.Download)
         Dim plugFile As String = plugFolder + "/" + Path.GetFileName(plug.Download)
 
         'Remove existing first.

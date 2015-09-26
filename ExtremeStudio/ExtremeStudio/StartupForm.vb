@@ -20,7 +20,7 @@ Public Class StartupForm
         If Recent.Count - 1 = MAX_LIST_ITEMS Then 'Remove the new added stuff
             Recent.RemoveAt(MAX_LIST_ITEMS)
         End If
-        My.Computer.FileSystem.WriteAllText(Application.StartupPath + "/configs/recent.xml", ExtremeCore.ObjectSerializer.Serialize(Recent), False)
+        My.Computer.FileSystem.WriteAllText(MainForm.APPLICATION_FILES + "/configs/recent.xml", ExtremeCore.ObjectSerializer.Serialize(Recent), False)
     End Sub
 
     Public Sub RemoveRecent(path As String)
@@ -30,7 +30,7 @@ Public Class StartupForm
                 Exit For
             End If
         Next
-        My.Computer.FileSystem.WriteAllText(Application.StartupPath + "/configs/recent.xml", ExtremeCore.ObjectSerializer.Serialize(Recent), False)
+        My.Computer.FileSystem.WriteAllText(MainForm.APPLICATION_FILES + "/configs/recent.xml", ExtremeCore.ObjectSerializer.Serialize(Recent), False)
     End Sub
 #End Region
 
@@ -38,7 +38,7 @@ Public Class StartupForm
 
     Private Sub StartupForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'If the interop files don't exist, Extract the files.
-        If Not My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Or Not My.Computer.FileSystem.FileExists(Application.StartupPath + "/x86/SQLite.Interop.dll") Then
+        If Not My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Or Not My.Computer.FileSystem.FileExists(MainForm.APPLICATION_FILES + "/x86/SQLite.Interop.dll") Then
             'Remove old.
             If My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Then My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/x64/SQLite.Interop.dll")
             If My.Computer.FileSystem.FileExists(Application.StartupPath + "/x86/SQLite.Interop.dll") Then My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/x86/SQLite.Interop.dll")
@@ -51,26 +51,26 @@ Public Class StartupForm
 
 
         'Create needed folders and files.
-        If Not My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "/cache") Then
-            My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "/cache")
+        If Not My.Computer.FileSystem.DirectoryExists(MainForm.APPLICATION_FILES + "/cache") Then
+            My.Computer.FileSystem.CreateDirectory(MainForm.APPLICATION_FILES + "/cache")
         End If
-        If Not My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "/cache/serverPackages") Then
-            My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "/cache/serverPackages")
+        If Not My.Computer.FileSystem.DirectoryExists(MainForm.APPLICATION_FILES + "/cache/serverPackages") Then
+            My.Computer.FileSystem.CreateDirectory(MainForm.APPLICATION_FILES + "/cache/serverPackages")
         End If
-        If Not My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "/cache/includes") Then
-            My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "/cache/includes")
+        If Not My.Computer.FileSystem.DirectoryExists(MainForm.APPLICATION_FILES + "/cache/includes") Then
+            My.Computer.FileSystem.CreateDirectory(MainForm.APPLICATION_FILES + "/cache/includes")
         End If
 
-        If Not My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "/configs") Then
-            My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "/configs")
-            My.Computer.FileSystem.WriteAllText(Application.StartupPath + "/configs/recent.xml", "", False)
+        If Not My.Computer.FileSystem.DirectoryExists(MainForm.APPLICATION_FILES + "/configs") Then
+            My.Computer.FileSystem.CreateDirectory(MainForm.APPLICATION_FILES + "/configs")
+            My.Computer.FileSystem.WriteAllText(MainForm.APPLICATION_FILES + "/configs/recent.xml", "", False)
         End If
 
 
         'Load all the recent.
-        If My.Computer.FileSystem.FileExists(Application.StartupPath + "/configs/recent.xml") Then
+        If My.Computer.FileSystem.FileExists(MainForm.APPLICATION_FILES + "/configs/recent.xml") Then
             Try
-                Recent = ExtremeCore.ObjectSerializer.Deserialize(Of List(Of String))(My.Computer.FileSystem.ReadAllText(Application.StartupPath + "/configs/recent.xml"))
+                Recent = ExtremeCore.ObjectSerializer.Deserialize(Of List(Of String))(My.Computer.FileSystem.ReadAllText(MainForm.APPLICATION_FILES + "/configs/recent.xml"))
             Catch ex As Exception
             End Try
         End If
@@ -89,7 +89,7 @@ Public Class StartupForm
                 verListBox.Tag.Add(cs("download").InnerText)
             Next
         Else 'Load existing from folder.
-            For Each pth As String In Directory.GetFiles(Application.StartupPath + "/cache/serverPackages")
+            For Each pth As String In Directory.GetFiles(MainForm.APPLICATION_FILES + "/cache/serverPackages")
                 Dim newList As Integer = verListBox.Items.Add(Path.GetFileNameWithoutExtension(pth))
                 verListBox.Tag.Add(pth)
             Next
@@ -121,13 +121,13 @@ Public Class StartupForm
         'Check if entered path exist.
         If My.Computer.FileSystem.DirectoryExists(locTextBox.Text) Or My.Computer.FileSystem.FileExists(locTextBox.Text + "/extremeStudio.config") Then
             If Not verListBox.SelectedIndex = -1 Then
-                If My.Computer.FileSystem.FileExists(Application.StartupPath + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip") Then 'check if that version is existing
-                    FastZipUnpack(Application.StartupPath + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip", locTextBox.Text) 'Extract the zip to project folder.
+                If My.Computer.FileSystem.FileExists(MainForm.APPLICATION_FILES + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip") Then 'check if that version is existing
+                    FastZipUnpack(MainForm.APPLICATION_FILES + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip", locTextBox.Text) 'Extract the zip to project folder.
                 Else 'Download from net if not exist.
                     Dim client As New WebClient 'For downloading the selected file.
                     client.DownloadFile(verListBox.Tag(verListBox.SelectedIndex), My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip") 'Download the zip file.
                     FastZipUnpack(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip", locTextBox.Text) 'Extract the zip.
-                    My.Computer.FileSystem.CopyFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip", Application.StartupPath + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip") 'Copy the file to be used instead of downloading
+                    My.Computer.FileSystem.CopyFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip", MainForm.APPLICATION_FILES + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip") 'Copy the file to be used instead of downloading
                     My.Computer.FileSystem.DeleteFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip") 'Delete the file from temp.
                 End If
                 My.Computer.FileSystem.WriteAllText(locTextBox.Text + "/gamemodes/" + nameTextBox.Text + ".pwn", My.Resources.newfileTemplate, False)

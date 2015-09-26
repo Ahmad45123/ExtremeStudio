@@ -41,7 +41,7 @@ Public Class IncludesForm
                 Includes.Add(include)
             Next
         Else 'List all available cached includes.
-            For Each file In Directory.GetDirectories(Application.StartupPath + "/cache/includes")
+            For Each file In Directory.GetDirectories(MainForm.APPLICATION_FILES + "/cache/includes")
                 Dim inc As New IncludeData
                 inc.Name = Path.GetFileNameWithoutExtension(file)
                 inc.Download = "local"
@@ -88,7 +88,7 @@ Public Class IncludesForm
             Button1.Text = "Reinstall Include"
             actionsGroup.Visible = True
 
-            Dim curVer As String = My.Computer.FileSystem.ReadAllText(Application.StartupPath + "/cache/includes/" + Path.GetFileNameWithoutExtension(sel.Download) + "/version.cfg")
+            Dim curVer As String = My.Computer.FileSystem.ReadAllText(MainForm.APPLICATION_FILES + "/cache/includes/" + Path.GetFileNameWithoutExtension(sel.Download) + "/version.cfg")
             Dim res = ExtremeCore.versionReader.CompareVersions(curVer, includeVersion.Text)
             If res = ExtremeCore.versionReader.CompareVersionResult.VERSION_NEW Then
                 updateAvilableLabel.Visible = True
@@ -107,7 +107,7 @@ Public Class IncludesForm
         If inc Is Nothing Then Exit Sub
 
         'Setup the paths.
-        Dim incFolder As String = Application.StartupPath + "/cache/includes/" + Path.GetFileNameWithoutExtension(inc.Download)
+        Dim incFolder As String = MainForm.APPLICATION_FILES + "/cache/includes/" + Path.GetFileNameWithoutExtension(inc.Download)
         Dim incFile As String = incFolder + "/" + Path.GetFileName(inc.Download)
 
         Dim web As New WebClient
@@ -175,7 +175,7 @@ Public Class IncludesForm
             My.Computer.FileSystem.DeleteFile(MainForm.currentProject.projectPath + "pawno/include/" + Path.GetFileName(inc.Download))
         ElseIf Path.GetExtension(inc.Download) = ".zip" 'If its a ZIP file, Extract it.
             'Setup the paths to ZIP.
-            Dim incFolder As String = Application.StartupPath + "/cache/includes/" + Path.GetFileNameWithoutExtension(inc.Download)
+            Dim incFolder As String = MainForm.APPLICATION_FILES + "/cache/includes/" + Path.GetFileNameWithoutExtension(inc.Download)
             Dim incFile As String = incFolder + "/" + Path.GetFileName(inc.Download)
 
             'Remove existing first.
