@@ -5,10 +5,6 @@ Imports System.Text
 
 Public Class MainForm
 
-    'Use `MainForm.MainDock.ActiveDocument` to get the current active tab.
-    'It will return Nothing if there is none active.
-    'And to access the editor control, Use the property `CurrentScintilla`.
-
 #Region "Properties"
     Public ReadOnly Property CurrentScintilla As Scintilla
         Get
@@ -18,8 +14,8 @@ Public Class MainForm
     End Property
     Public ReadOnly Property CurrentEditor As EditorDock
         Get
-            If MainDock.ActiveDocument Is Nothing Then Return Nothing
-            Return DirectCast(MainDock.ActiveDocument.DockHandler.Form, EditorDock)
+            If CurrentScintilla Is Nothing Then Return Nothing
+            Return DirectCast(CurrentScintilla.Parent, EditorDock)
         End Get
     End Property
 #End Region
