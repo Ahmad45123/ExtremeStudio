@@ -134,11 +134,6 @@ Public Class Parser
             Dim funcName As String = Match.Groups(1).Value
             Dim funcParams As String = Match.Groups(2).Value
             Try
-                'Remove the tag if exists.
-                If funcName.Contains(":") Then
-                    funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
-                End If
-
                 Functions.Add(funcName, New FunctionParameters(funcParams))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The function `" + funcName + "` already exists somewhere in the file.", funcName))
