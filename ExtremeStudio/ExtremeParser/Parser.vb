@@ -12,12 +12,12 @@ Public Class Parser
     Public Includes As New Dictionary(Of String, Parser) 'Include path|name, The include parse.
     Public publicVariables As New List(Of String)
 
-    Public ReadOnly Property fileName As String
-        Get
-            Return p_filename
-        End Get
-    End Property
-    Dim p_filename As String
+    'Public ReadOnly Property fileName As String
+    '    Get
+    '        Return p_filename
+    '    End Get
+    'End Property
+    'Dim p_filename As String
 
     Private pawnDocs As New List(Of PawnDoc)
 
@@ -32,29 +32,7 @@ Public Class Parser
 
     Public errors As New ExceptionsList
 
-    Public Sub New(filePath As String, projectPath As String, Optional isInclude As Boolean = False)
-        p_filename = Path.GetFileName(filePath)
-
-        'Code
-        Dim code As String = ""
-        Try
-            code = My.Computer.FileSystem.ReadAllText(filePath)
-        Catch ex As DirectoryNotFoundException
-            If isInclude Then
-                Throw New IncludeNotFoundException(Path.GetFileNameWithoutExtension(filePath))
-                Exit Sub
-            Else
-                Throw ex
-            End If
-        Catch ex As FileNotFoundException
-            If isInclude Then
-                Throw New IncludeNotFoundException(Path.GetFileNameWithoutExtension(filePath))
-                Exit Sub
-            Else
-                Throw ex
-            End If
-        End Try
-
+    Public Sub New(code As String, projectPath As String, Optional isInclude As Boolean = False)
         'PawnDoc -- Placed before comments removel because pawndoc is basically a comment.
         For Each Match As Match In Regex.Matches(code, "(?:\/\*\/{1,}\*\/(?:\r\n|\r|\n))((?:\/\/\/.*(?:\r\n|\r|\n))+)(?:\/\*\\{1,}\*\/)") 'Longest RegEx in the world ? :P
             Dim val As String = Match.Groups(0).Value 'Group 0 which contains only the internal text without the start and the end.
@@ -136,10 +114,15 @@ Public Class Parser
                 If Not fullPath.EndsWith(".inc") Then fullPath += ".inc"
             End If
             Try
-                Dim prs As New Parser(fullPath, projectPath, True)
+
+                Dim prs As New Parser(My.Computer.FileSystem.ReadAllText(fullPath), projectPath, True)
                 Includes.Add(text, prs)
-            Catch ex As IncludeNotFoundException
-                errors.exceptionsList.Add(ex)
+
+                'Exceptions.
+            Catch ex As DirectoryNotFoundException
+                errors.exceptionsList.Add(New IncludeNotFoundException(Path.GetFileNameWithoutExtension(fullPath)))
+            Catch ex As FileNotFoundException
+                errors.exceptionsList.Add(New IncludeNotFoundException(Path.GetFileNameWithoutExtension(fullPath)))
             End Try
         Next
 
@@ -224,7 +207,6 @@ Public Class Parser
             If Regex.IsMatch(code, "\{(?:[^{}]*?)\}") Then
                 code = Regex.Replace(code, "\{(?:[^{}]*?)\}", "")
             Else
-                My.Computer.FileSystem.WriteAllText("d:/fuck.pwn", code, False)
                 finish = True
             End If
         End While

@@ -193,7 +193,7 @@ Public Class EditorDock
 
 #Region "Refresh Worker Codes"
     Private Sub scintilla_TextChangedDelayed(sender As Object, e As EventArgs)
-        If RefreshWorker.IsBusy = False Then RefreshWorker.RunWorkerAsync({Editor.Tag, MainForm.currentProject.projectPath}) : MainForm.statusLabel.Text = "Parsing Code."
+        If RefreshWorker.IsBusy = False Then RefreshWorker.RunWorkerAsync({Editor.Text, MainForm.currentProject.projectPath}) : MainForm.statusLabel.Text = "Parsing Code."
     End Sub
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork
         If Editor.IsHandleCreated Then
@@ -260,7 +260,7 @@ Public Class EditorDock
             definesText += " " + var
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, var, "This is a global variable declared in the file '" + include.fileName + "'")
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, var, "This is a global variable declared in one of the includes.")
             autoList.Add(newitm)
         Next
 
