@@ -117,41 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="correct_projexplorer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\correct_projexplorer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="dirs_projexplorer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dirs_projexplorer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="file_projexplorer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\file_projexplorer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="new_file_toolstrip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\new_file_toolstrip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="saveall_file_toolstrip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\saveall_file_toolstrip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="save_file_toolstrip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\save_file_toolstrip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="includes_icon_toolstrip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\includes_icon_toolstrip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="plugins_icon_toolstrip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\plugins_icon_toolstrip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="newfileTemplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\newfileTemplate.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="SQLiteInterop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SQLiteInterop.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="settings_icon_toolstrip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\settings_icon_toolstrip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="defaultThemeInfo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\defaultThemeInfo.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
+  <metadata name="ColorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

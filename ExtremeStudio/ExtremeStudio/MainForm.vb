@@ -135,4 +135,8 @@ Public Class MainForm
         Dim frm As New PluginsForm
         frm.Show()
     End Sub
+
+    Private Sub ToolStripButton6_Click(sender As Object, e As EventArgs) Handles ToolStripButton6.Click
+        SettingsForm.ShowDialog()
+    End Sub
 End Class

@@ -16,34 +16,75 @@ Public Class EditorDock
     Dim autoCompleteList As New List(Of AutoCompleteItemEx)
 
     'UnRelated events here.
-    Private Sub EditorDock_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub EditorDock_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If Editor.Modified Then
+            Dim res = MsgBox("The file contains un-saved content, Would you like to save it ?", MsgBoxStyle.YesNoCancel)
+            If res = MsgBoxResult.Yes Then
+                MainForm.SaveFile(Editor)
+            ElseIf res = MsgBoxResult.Cancel Then
+                e.Cancel = True
+                Exit Sub
+            End If
+        End If
+        idleTimer.Stop()
+    End Sub
+    Private Sub Editor_KeyDown(sender As Object, e As KeyEventArgs) Handles Editor.KeyDown
+        If e.Control = True And e.KeyCode = Keys.S Then
+            MainForm.SaveFile(Editor)
+            Editor.SetSavePoint()
+            If e.Shift = True Then 'If he has shift pressed also.
+                MainForm.SaveAllFiles(Me, EventArgs.Empty)
+            End If
+
+            e.SuppressKeyPress = True
+        End If
+    End Sub
+
+    'All modules are here.
+#Region "Styles Handlers"
+    Private Sub SetBackColor(clr As Color)
+        For Each stle As Style In Editor.Styles
+            stle.BackColor = clr
+        Next
+
+        For i As Integer = 25 To 31
+            Editor.Markers(i).SetBackColor(clr)
+        Next
+    End Sub
+
+    Public Sub OnSetsChange()
         'Set-Up the syntax highlighting.
         Editor.StyleResetDefault()
-        Editor.Styles(Style.[Default]).Font = "Consolas"
-        Editor.Styles(Style.[Default]).Size = 10
+        Editor.Styles(Style.[Default]).Font = SettingsForm.FontDialog.Font.FontFamily.Name
+        Editor.Styles(Style.[Default]).Size = SettingsForm.FontDialog.Font.Size
+        Editor.Styles(Style.[Default]).ForeColor = SettingsForm.defaultColor.Color
         Editor.StyleClearAll()
 
         'Set the code part styles.
-        Editor.Styles(Style.Cpp.[Default]).ForeColor = Color.Black
-        Editor.Styles(Style.Cpp.Comment).ForeColor = Color.FromArgb(0, 128, 0)
-        Editor.Styles(Style.Cpp.CommentLine).ForeColor = Color.FromArgb(0, 128, 0)
-        Editor.Styles(Style.Cpp.CommentLineDoc).ForeColor = Color.Red
-        Editor.Styles(Style.Cpp.Number).ForeColor = Color.Olive
+        Editor.Styles(Style.LineNumber).ForeColor = SettingsForm.lineNumberColor.Color
+        Editor.CaretForeColor = SettingsForm.caretColor.Color
+
+        SetBackColor(SettingsForm.backgroundColor.Color)
+        Editor.Styles(Style.Cpp.Comment).ForeColor = SettingsForm.commentColor.Color
+        Editor.Styles(Style.Cpp.CommentLine).ForeColor = SettingsForm.commentColor.Color
+        Editor.Styles(Style.Cpp.CommentLineDoc).ForeColor = SettingsForm.pawndocColor.Color
+        Editor.Styles(Style.Cpp.Number).ForeColor = SettingsForm.numberColor.Color
 
         'Custom Keywords.
-        Editor.Styles(Style.Cpp.Word).ForeColor = Color.Blue 'For the PAWN keywords
-        Editor.Styles(Style.Cpp.Word2).ForeColor = Color.CadetBlue 'For the functions.
-        Editor.Styles(Style.Cpp.GlobalClass).ForeColor = Color.MediumVioletRed 'For the defines and enums.
+        Editor.Styles(Style.Cpp.Word).ForeColor = SettingsForm.pawnColor.Color 'For the PAWN keywords
+        Editor.Styles(Style.Cpp.Word2).ForeColor = SettingsForm.functionsColor.Color 'For the functions.
+        Editor.Styles(Style.Cpp.GlobalClass).ForeColor = SettingsForm.definesColor.Color 'For the defines and enums.
 
-        Editor.Styles(Style.Cpp.[String]).ForeColor = Color.FromArgb(163, 21, 21)
-        Editor.Styles(Style.Cpp.Character).ForeColor = Color.FromArgb(163, 21, 21)
-        Editor.Styles(Style.Cpp.Verbatim).ForeColor = Color.FromArgb(163, 21, 21)
+        Editor.Styles(Style.Cpp.[String]).ForeColor = SettingsForm.stringColor.Color
+        Editor.Styles(Style.Cpp.Character).ForeColor = SettingsForm.stringColor.Color
+        Editor.Styles(Style.Cpp.Verbatim).ForeColor = SettingsForm.stringColor.Color
         Editor.Styles(Style.Cpp.StringEol).BackColor = Color.Pink
-        Editor.Styles(Style.Cpp.[Operator]).ForeColor = Color.Purple
-        Editor.Styles(Style.Cpp.Preprocessor).ForeColor = Color.Maroon
+        Editor.Styles(Style.Cpp.[Operator]).ForeColor = SettingsForm.operatorColor.Color
+        Editor.Styles(Style.Cpp.Preprocessor).ForeColor = SettingsForm.preproccessColor.Color
         Editor.Styles(Style.BraceLight).BackColor = Color.LightGray
         Editor.Styles(Style.BraceLight).ForeColor = Color.BlueViolet
         Editor.Styles(Style.BraceBad).ForeColor = Color.Red
+
         Editor.IndentationGuides = IndentView.LookBoth
 
         Editor.Lexer = Lexer.Cpp
@@ -90,31 +131,20 @@ Public Class EditorDock
         'Set up auto-complete.
         AutoCompleteMenu.TargetControlWrapper = New ScintillaWrapper(Editor)
     End Sub
-    Private Sub EditorDock_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If Editor.Modified Then
-            Dim res = MsgBox("The file contains un-saved content, Would you like to save it ?", MsgBoxStyle.YesNoCancel)
-            If res = MsgBoxResult.Yes Then
-                MainForm.SaveFile(Editor)
-            ElseIf res = MsgBoxResult.Cancel Then
-                e.Cancel = True
-                Exit Sub
-            End If
-        End If
-        idleTimer.Stop()
-    End Sub
-    Private Sub Editor_KeyDown(sender As Object, e As KeyEventArgs) Handles Editor.KeyDown
-        If e.Control = True And e.KeyCode = Keys.S Then
-            MainForm.SaveFile(Editor)
-            Editor.SetSavePoint()
-            If e.Shift = True Then 'If he has shift pressed also.
-                MainForm.SaveAllFiles(Me, EventArgs.Empty)
-            End If
+    Private Sub EditorDock_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Add handler.
+        AddHandler SettingsForm.OnSettingsChange, AddressOf OnSetsChange
 
-            e.SuppressKeyPress = True
+        'ReLoad data.
+        If SettingsForm.hasBeenLoadedBefore = False Then
+            SettingsForm.ReloadInfo()
         End If
-    End Sub
 
-    'All modules are here.
+        'Call the function.
+        OnSetsChange()
+    End Sub
+#End Region
+
 #Region "CodeIndent Handlers"
     Const SCI_SETLINEINDENTATION As Integer = 2126
     Const SCI_GETLINEINDENTATION As Integer = 2127

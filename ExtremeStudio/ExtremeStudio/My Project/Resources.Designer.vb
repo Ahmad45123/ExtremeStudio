@@ -71,6 +71,45 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+        '''&lt;allStuffClass&gt;
+        '''  &lt;defaultColor&gt;
+        '''    &lt;R&gt;0&lt;/R&gt;
+        '''    &lt;G&gt;0&lt;/G&gt;
+        '''    &lt;B&gt;0&lt;/B&gt;
+        '''    &lt;A&gt;255&lt;/A&gt;
+        '''  &lt;/defaultColor&gt;
+        '''  &lt;pawnDocColor&gt;
+        '''    &lt;R&gt;225&lt;/R&gt;
+        '''    &lt;G&gt;0&lt;/G&gt;
+        '''    &lt;B&gt;0&lt;/B&gt;
+        '''    &lt;A&gt;255&lt;/A&gt;
+        '''  &lt;/pawnDocColor&gt;
+        '''  &lt;pawnColor&gt;
+        '''    &lt;R&gt;0&lt;/R&gt;
+        '''    &lt;G&gt;0&lt;/G&gt;
+        '''    &lt;B&gt;225&lt;/B&gt;
+        '''    &lt;A&gt;255&lt;/A&gt;
+        '''  &lt;/pawnColor&gt;
+        '''  &lt;definesColor&gt;
+        '''    &lt;R&gt;199&lt;/R&gt;
+        '''    &lt;G&gt;21&lt;/G&gt;
+        '''    &lt;B&gt;133&lt;/B&gt;
+        '''    &lt;A&gt;255&lt;/A&gt;
+        '''  &lt;/definesColor&gt;
+        '''  &lt;operatorColor&gt;
+        '''    &lt;R&gt;128&lt;/R&gt;
+        '''    &lt;G&gt;0&lt;/G&gt;
+        '''    &lt;B&gt;128&lt;/B&gt;
+        '''    &lt;A [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property defaultThemeInfo() As String
+            Get
+                Return ResourceManager.GetString("defaultThemeInfo", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property dirs_projexplorer() As System.Drawing.Bitmap
@@ -171,6 +210,16 @@ Namespace My.Resources
         Friend ReadOnly Property saveall_file_toolstrip() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("saveall_file_toolstrip", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property settings_icon_toolstrip() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("settings_icon_toolstrip", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
