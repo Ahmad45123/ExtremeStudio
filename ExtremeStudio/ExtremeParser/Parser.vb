@@ -47,16 +47,83 @@ Public Class Parser
         code = Regex.Replace(code, "//.*", "")
         code = Regex.Replace(code, "\/\*[\s\S]*?\*\/", "", RegexOptions.Multiline)
 
+        'Includes
+        For Each Match As Match In Regex.Matches(code, "#include\s+(" + Chr(34) + "|<)(.+)(?:" + Chr(34) + "|>)")
+            Dim type As String = Match.Groups(1).Value
+            Dim text As String = Match.Groups(2).Value
+            Dim fullPath As String = ""
+
+            If type = Chr(34) Then
+                fullPath = projectPath + "/gamemodes/" + text
+            ElseIf type = "<"
+                fullPath = projectPath + "\pawno\include\" + text
+                If Not fullPath.EndsWith(".inc") Then fullPath += ".inc"
+            End If
+            Try
+
+                Dim prs As New Parser(My.Computer.FileSystem.ReadAllText(fullPath), projectPath, True)
+                Includes.Add(text, prs)
+
+                'Exceptions.
+            Catch ex As DirectoryNotFoundException
+                errors.exceptionsList.Add(New IncludeNotFoundException(Path.GetFileNameWithoutExtension(fullPath)))
+            Catch ex As FileNotFoundException
+                errors.exceptionsList.Add(New IncludeNotFoundException(Path.GetFileNameWithoutExtension(fullPath)))
+            End Try
+        Next
+
         'Defines & Macros: 
-        For Each Match As Match In Regex.Matches(code, "#define\s+([^\n\r\s;]+)\s+(.+)")
+        Dim tmpDefines As New Dictionary(Of String, String)
+        For Each Match As Match In Regex.Matches(code, "#define\s+([^\n\r\s\\;]+)\s+(\\|[^\n\r\s\\;]+)")
             Dim defineName As String = Match.Groups(1).Value
             Dim defineValue As String = Match.Groups(2).Value
 
+#Region "Check if its multiline or not, And if yes.. Start processing to get the lines."
+            If defineValue = "\" Then
+                defineValue = ""
+
+                Dim pos As Integer = Match.Index + Match.Length + 1 ' 1 for Skip the coming vbLf.
+                Dim neededLines As Integer = 1
+
+                'Infinite loop.
+                Dim finished As Boolean = False
+                While (finished = False)
+                    pos += 1
+
+                    If code.Length <= pos Then finished = True : Exit While
+
+                    If code(pos) = "\" Then
+                        neededLines += 1
+                    ElseIf code(pos) = vbCr Then
+                        neededLines -= 1
+                    Else
+                        defineValue += code(pos)
+                    End If
+
+                    If neededLines <= 0 Then
+                        finished = True
+                    End If
+                End While
+            End If
+#End Region
+
             Try
-                Defines.Add(defineName, defineValue)
+                tmpDefines.Add(defineName, defineValue)
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The define `" + defineName + "` already exists somewhere in the file.", defineName))
             End Try
+        Next
+        'Flip the defines upside down cuz the compiler goes from down to top.
+        For i As Integer = tmpDefines.Keys.Count - 1 To 0 Step -1
+            Defines.Add(tmpDefines.Keys(i), tmpDefines(tmpDefines.Keys(i)))
+        Next
+
+
+        'Now loop though all defines in includes and such and then replace em.
+        For Each inc In Includes.Keys
+            For Each defineKey In Includes(inc).Defines.Keys
+                defineReplacer.Replace(code, defineKey, Includes(inc).Defines(defineKey))
+            Next
         Next
 
         'Publics.
@@ -101,31 +168,6 @@ Public Class Parser
             End If
         Next
 
-        'Includes
-        For Each Match As Match In Regex.Matches(code, "#include\s+(" + Chr(34) + "|<)(.+)(?:" + Chr(34) + "|>)")
-            Dim type As String = Match.Groups(1).Value
-            Dim text As String = Match.Groups(2).Value
-            Dim fullPath As String = ""
-
-            If type = Chr(34) Then
-                fullPath = projectPath + "/gamemodes/" + text
-            ElseIf type = "<"
-                fullPath = projectPath + "\pawno\include\" + text
-                If Not fullPath.EndsWith(".inc") Then fullPath += ".inc"
-            End If
-            Try
-
-                Dim prs As New Parser(My.Computer.FileSystem.ReadAllText(fullPath), projectPath, True)
-                Includes.Add(text, prs)
-
-                'Exceptions.
-            Catch ex As DirectoryNotFoundException
-                errors.exceptionsList.Add(New IncludeNotFoundException(Path.GetFileNameWithoutExtension(fullPath)))
-            Catch ex As FileNotFoundException
-                errors.exceptionsList.Add(New IncludeNotFoundException(Path.GetFileNameWithoutExtension(fullPath)))
-            End Try
-        Next
-
         'Functions in General -- Removed all strings because some strings which contains a { bugs the below regex.
         code = Regex.Replace(code, "'[^'\\]*(?:\\[^\n\r\x85\u2028\u2029][^'\\]*)*'", "")
         code = Regex.Replace(code, Chr(34) + "[^" + Chr(34) + "\\]*(?:\\[^\n\r\x85\u2028\u2029][^" + Chr(34) + "\\]*)*" + Chr(34), "")
@@ -134,6 +176,11 @@ Public Class Parser
             Dim funcName As String = Match.Groups(1).Value
             Dim funcParams As String = Match.Groups(2).Value
             Try
+                'Remove the tag if exists.
+                If funcName.Contains(":") Then
+                    funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
+                End If
+
                 Functions.Add(funcName, New FunctionParameters(funcParams))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The function `" + funcName + "` already exists somewhere in the file.", funcName))

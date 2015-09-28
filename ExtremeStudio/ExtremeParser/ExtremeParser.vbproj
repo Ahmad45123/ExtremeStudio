@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\IncludeNotFoundException.vb" />
+    <Compile Include="Extras\defineReplacer.vb" />
     <Compile Include="Extras\DictionaryEx.vb" />
     <Compile Include="Exceptions\ExceptionsList.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
