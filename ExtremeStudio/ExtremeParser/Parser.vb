@@ -12,13 +12,6 @@ Public Class Parser
     Public Includes As New Dictionary(Of String, Parser) 'Include path|name, The include parse.
     Public publicVariables As New List(Of String)
 
-    'Public ReadOnly Property fileName As String
-    '    Get
-    '        Return p_filename
-    '    End Get
-    'End Property
-    'Dim p_filename As String
-
     Private pawnDocs As New List(Of PawnDoc)
 
     ''' <summary>
@@ -48,14 +41,34 @@ Public Class Parser
         code = Regex.Replace(code, "\/\*[\s\S]*?\*\/", "", RegexOptions.Multiline)
 
         'Includes
-        For Each Match As Match In Regex.Matches(code, "#include\s+(" + Char(34) + "|<)?([^\s]+)(?:+" + Char(34) + "|>)?")
-            Dim type As String = Match.Groups(1).Value
-            Dim text As String = Match.Groups(2).Value
+        For Each Match As Match In Regex.Matches(code, "#include[ \t]+([^\s]+)")
+            Dim text As String = Match.Groups(1).Value
             Dim fullPath As String = ""
 
+            Dim type = text.Substring(0, 1)
+
             If type = Chr(34) Then
+                'Remove the quotes.
+                Try
+                    text = text.Remove(text.IndexOf(Chr(34)), 1)
+                    text = text.Remove(text.IndexOf(Chr(34)), 1)
+                Catch ex As Exception
+                    Continue For
+                End Try
+
                 fullPath = projectPath + "/gamemodes/" + text
             ElseIf type = "<"
+                'Remove the brackets.
+                Try
+                    text = text.Remove(text.IndexOf("<"), 1)
+                    text = text.Remove(text.IndexOf(">"), 1)
+                Catch ex As Exception
+                    Continue For
+                End Try
+
+                fullPath = projectPath + "\pawno\include\" + text
+                If Not fullPath.EndsWith(".inc") Then fullPath += ".inc"
+            Else
                 fullPath = projectPath + "\pawno\include\" + text
                 If Not fullPath.EndsWith(".inc") Then fullPath += ".inc"
             End If
