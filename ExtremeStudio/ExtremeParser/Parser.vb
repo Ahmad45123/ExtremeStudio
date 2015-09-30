@@ -74,7 +74,7 @@ Public Class Parser
 
         'Defines & Macros: 
         Dim tmpDefines As New Dictionary(Of String, String)
-        For Each Match As Match In Regex.Matches(code, "#define\s+([^\n\r\s\\;]+)\s+(\\|[^\n\r\s\\;]+)")
+        For Each Match As Match In Regex.Matches(code, "#define[ \t]+([^\n\r\s\\;]+)[ \t]*([^\n\r\s;]+)")
             Dim defineName As String = Match.Groups(1).Value
             Dim defineValue As String = Match.Groups(2).Value
 
