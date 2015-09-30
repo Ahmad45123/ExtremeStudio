@@ -2,8 +2,6 @@
 
 Public Class defineReplacer
     Public Shared Sub Replace(ByRef Code As String, ByVal defineName As String, ByVal defineReplace As String)
-        If defineName.Contains("%") = False Or defineReplace.Contains("%") = False Then Exit Sub 'No need to replace normal defines..
-
         'First start building the regex for the find.
         Dim findRegex As String = Regex.Escape(defineName)
 
@@ -11,7 +9,7 @@ Public Class defineReplacer
         findRegex = Regex.Replace(findRegex, "%([1-9])", "(.*)")
 
         'Find all. (We don't use Regex.Matches here cuz the codes are changed.)
-        While (Regex.IsMatch(Code, findRegex))
+        While (Regex.IsMatch(Code, "\s" + findRegex + "\s"))
             Dim Mtch As Match = Regex.Match(Code, findRegex)
 
             'Now build the replace code.
