@@ -2,10 +2,11 @@
 Imports WeifenLuo.WinFormsUI.Docking
 Imports ScintillaNET
 Imports System.Text
+Imports System.Environment
 
 Public Class MainForm
 
-    Public ReadOnly APPLICATION_FILES As String = My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData
+    Public ReadOnly APPLICATION_FILES As String = Environment.GetFolderPath(SpecialFolder.ApplicationData) + "/ExtremeStudio"
 
 #Region "Properties"
     Public ReadOnly Property CurrentScintilla As Scintilla
