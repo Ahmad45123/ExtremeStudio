@@ -47,9 +47,8 @@ Public Class EditorDock
             stle.BackColor = clr
         Next
 
-        For i As Integer = 25 To 31
-            Editor.Markers(i).SetBackColor(clr)
-        Next
+        Editor.SetFoldMarginColor(True, clr)
+        Editor.SetFoldMarginHighlightColor(True, clr)
     End Sub
 
     Public Sub OnSetsChange()
