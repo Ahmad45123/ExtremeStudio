@@ -48,7 +48,7 @@ Public Class Parser
         code = Regex.Replace(code, "\/\*[\s\S]*?\*\/", "", RegexOptions.Multiline)
 
         'Includes
-        For Each Match As Match In Regex.Matches(code, "#include\s+(" + Chr(34) + "|<)(.+)(?:" + Chr(34) + "|>)")
+        For Each Match As Match In Regex.Matches(code, "#include\s+(" + Char(34) + "|<)?([^\s]+)(?:+" + Char(34) + "|>)?")
             Dim type As String = Match.Groups(1).Value
             Dim text As String = Match.Groups(2).Value
             Dim fullPath As String = ""
