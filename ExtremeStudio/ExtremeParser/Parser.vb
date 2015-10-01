@@ -140,7 +140,7 @@ Public Class Parser
         Next
 
         'Publics.
-        For Each Match As Match In Regex.Matches(code, "public\s+(.+)\s*\((.*)\)", RegexOptions.Multiline)
+        For Each Match As Match In Regex.Matches(code, "public[ \t]+(.+)[ \t]*\((.*)\)", RegexOptions.Multiline)
             Dim funcName As String = Match.Groups(1).Value
             Dim funcParams As String = Match.Groups(2).Value
             Try
@@ -161,7 +161,7 @@ Public Class Parser
         Next
 
         'Stocks
-        For Each Match As Match In Regex.Matches(code, "stock\s+(.+)\s*\((.*)\)", RegexOptions.Multiline)
+        For Each Match As Match In Regex.Matches(code, "stock[ \t]+(.+)[ \t]*\((.*)\)", RegexOptions.Multiline)
             Dim funcName As String = Match.Groups(1).Value
             Dim funcParams As String = Match.Groups(2).Value
             Try
@@ -185,7 +185,7 @@ Public Class Parser
         code = Regex.Replace(code, "'[^'\\]*(?:\\[^\n\r\x85\u2028\u2029][^'\\]*)*'", "")
         code = Regex.Replace(code, Chr(34) + "[^" + Chr(34) + "\\]*(?:\\[^\n\r\x85\u2028\u2029][^" + Chr(34) + "\\]*)*" + Chr(34), "")
 
-        For Each Match As Match In Regex.Matches(code, "^\s*(.+)(?<!" + funcLikeKeywords + ")\((.*)\)\s*{", RegexOptions.Multiline)
+        For Each Match As Match In Regex.Matches(code, "^[ \t]*(.+)(?<!" + funcLikeKeywords + ")\((.*)\)[ \t]*{", RegexOptions.Multiline)
             Dim funcName As String = Match.Groups(1).Value
             Dim funcParams As String = Match.Groups(2).Value
             Try
@@ -206,7 +206,7 @@ Public Class Parser
         Next
 
         'Natives
-        For Each Match As Match In Regex.Matches(code, "native\s+(.+)\s*?\((.*)\)", RegexOptions.Multiline)
+        For Each Match As Match In Regex.Matches(code, "native[ \t]+(.+)[ \t]*?\((.*)\)", RegexOptions.Multiline)
             Dim funcName As String = Match.Groups(1).Value
             Dim funcParams As String = Match.Groups(2).Value
             Try
@@ -267,7 +267,7 @@ Public Class Parser
         End While
 
         'Now parse for all global variables.
-        For Each match As Match In Regex.Matches(code, "new\s+(.*);")
+        For Each match As Match In Regex.Matches(code, "new[ \t]+(.*);")
             Dim varName As String = match.Groups(1).Value
 
             'Remove all whitespace.
