@@ -32,7 +32,7 @@ Public Class EnumsContentsClass
         End Get
     End Property
 
-    Public _type As FunctionParameters.varTypes
+    Private _type As FunctionParameters.varTypes
     Public ReadOnly Property Type As FunctionParameters.varTypes
         Get
             Return _type

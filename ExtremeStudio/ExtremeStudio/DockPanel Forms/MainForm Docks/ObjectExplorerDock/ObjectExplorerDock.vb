@@ -14,9 +14,9 @@
         Dim stocks = treeView.Nodes.Add("Stocks") : stocks.Tag = "Root"
         Dim natives = treeView.Nodes.Add("Natives") : natives.Tag = "Root"
 
-        For Each key As String In parser.Defines.Keys
-            Dim nde = defines.Nodes.Add(key)
-            nde.Tag = parser.Defines(key)
+        For Each key As ExtremeParser.DefinesClass In parser.Defines
+            Dim nde = defines.Nodes.Add(key.DefineName)
+            nde.Tag = key.DefineValue
         Next
 
         'Create the custom Roots (Must be done before the Functions so its used inside it.)
@@ -26,38 +26,41 @@
             listCustom.Add(bla)
         Next
 
-        For Each key As String In parser.Functions.Keys
+        For Each funcs In parser.Functions
+            Dim done As Boolean = False
+
             'Check if it crosponds to a custom one first.
             For Each itm In listCustom
-                If key.StartsWith(itm.Tag) Then
-                    Dim node = itm.Nodes.Add(key)
-                    node.Tag = parser.Functions(key)
-                    key = "" 'To skip the `Else if it wasn't used.`
+                If funcs.FuncName.StartsWith(itm.Tag) Then
+                    Dim node = itm.Nodes.Add(funcs.FuncName)
+                    node.Tag = funcs.FuncParameters
+                    done = True 'To skip the `Else if it wasn't used.`
                     Exit For
                 End If
             Next
 
-            If key = "" Then Continue For
+            If done = True Then Continue For
+
             'Else if it wasn't used.
-            Dim nde = functions.Nodes.Add(key)
-            nde.Tag = parser.Functions(key)
+            Dim nde = functions.Nodes.Add(funcs.FuncName)
+            nde.Tag = funcs.FuncParameters
         Next
         'Set the Root tags.
         For Each itm In listCustom
             itm.Tag = "Root"
         Next
 
-        For Each key As String In parser.Publics.Keys
-            Dim nde = publics.Nodes.Add(key)
-            nde.Tag = parser.Publics(key)
+        For Each publicFunc In parser.Publics
+            Dim nde = publics.Nodes.Add(publicFunc.FuncName)
+            nde.Tag = publicFunc.FuncParameters
         Next
-        For Each key As String In parser.Stocks.Keys
-            Dim nde = stocks.Nodes.Add(key)
-            nde.Tag = parser.Stocks(key)
+        For Each stock In parser.Stocks
+            Dim nde = stocks.Nodes.Add(stock.FuncName)
+            nde.Tag = stock.FuncParameters
         Next
-        For Each key As String In parser.Natives.Keys
-            Dim nde = natives.Nodes.Add(key)
-            nde.Tag = parser.Natives(key)
+        For Each native In parser.Natives
+            Dim nde = natives.Nodes.Add(native.FuncName)
+            nde.Tag = native.FuncParameters
         Next
 
         nodeState.RestoreTreeState(treeView) 'Restore

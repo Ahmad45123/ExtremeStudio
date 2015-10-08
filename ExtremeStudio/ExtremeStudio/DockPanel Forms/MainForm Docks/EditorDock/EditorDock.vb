@@ -201,65 +201,67 @@ Public Class EditorDock
     End Sub
 
     Private Sub parseFileWithIncludes(include As Parser, ByRef setString As String, ByRef definesText As String, ByRef autoList As List(Of AutoCompleteItemEx))
-        For Each key As String In include.Stocks.Keys
-            setString += " " + key
+        For Each stock In include.Stocks
+            setString += " " + stock.FuncName
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, key, include.Stocks(key))
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, stock.FuncName, stock.FuncParameters)
             autoList.Add(newitm)
         Next
-        For Each key As String In include.Publics.Keys
-            setString += " " + key
+        For Each publicFunc In include.Publics
+            setString += " " + publicFunc.FuncName
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, key, include.Publics(key))
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, publicFunc.FuncName, publicFunc.FuncParameters)
             autoList.Add(newitm)
         Next
-        For Each key As String In include.Functions.Keys
-            setString += " " + key
+        For Each func In include.Functions
+            setString += " " + func.FuncName
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, key, include.Functions(key))
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, func.FuncName, func.FuncParameters)
             autoList.Add(newitm)
         Next
-        For Each key As String In include.Natives.Keys
-            setString += " " + key
+        For Each native In include.Natives
+            setString += " " + native.FuncName
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, key, include.Natives(key))
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, native.FuncName, native.FuncParameters)
             autoList.Add(newitm)
         Next
-        For Each key As String In include.Defines.Keys
-            definesText += " " + key
+        For Each def In include.Defines
+            definesText += " " + def.DefineName
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, key, include.Defines(key))
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, def.DefineName, def.DefineValue)
             autoList.Add(newitm)
         Next
-        For Each key As String In include.Enums.Keys
-            definesText += " " + key
+        For Each parentEnm In include.Enums
+            For Each enm In parentEnm.EnumContents
+                definesText += " " + enm.Content
 
-            'AutoComplete
-            Dim type As String = ""
+                'AutoComplete
+                Dim type As String = ""
 
-            If include.Enums(key) = FunctionParameters.varTypes.TYPE_ARRAY Then
-                type = "array/string"
-            ElseIf include.Enums(key) = FunctionParameters.varTypes.TYPE_FLOAT Then
-                type = "float"
-            ElseIf include.Enums(key) = FunctionParameters.varTypes.TYPE_INTEGER Then
-                type = "integer"
-            ElseIf include.Enums(key) = FunctionParameters.varTypes.TYPE_FLOAT Then
-                type = "tagged"
-            End If
+                If enm.Type = FunctionParameters.varTypes.TYPE_ARRAY Then
+                    type = "array/string"
+                ElseIf enm.Type = FunctionParameters.varTypes.TYPE_FLOAT Then
+                    type = "float"
+                ElseIf enm.Type = FunctionParameters.varTypes.TYPE_INTEGER Then
+                    type = "integer"
+                ElseIf enm.Type = FunctionParameters.varTypes.TYPE_FLOAT Then
+                    type = "tagged"
+                End If
 
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, key, "This is an enum item with the type: `" + type + "`")
-            autoList.Add(newitm)
+                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, enm.Content, "This is an enum item with the type: `" + type + "` that is in the enum: `" + parentEnm.EnumName + "`")
+                autoList.Add(newitm)
+            Next
         Next
-        For Each var As String In include.publicVariables
-            definesText += " " + var
+        For Each var In include.publicVariables
+            definesText += " " + var.VarName
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, var, "This is a global variable declared in one of the includes.")
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, var.VarName, "This is a global variable declared in one of the includes.")
             autoList.Add(newitm)
         Next
 

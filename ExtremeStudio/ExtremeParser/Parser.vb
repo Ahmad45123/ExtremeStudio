@@ -276,7 +276,7 @@ Public Class Parser
             Next
 
             'Now add it to the actual list.
-            Enums.Add(New EnumsClass(Match.Captures(1).Value, enumStuff)))
+            Enums.Add(New EnumsClass(Match.Groups(1).Value, enumStuff))
         Next
 
         'Remove all curly brackets and its contents to remove all child codes.
