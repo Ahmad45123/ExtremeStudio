@@ -30,12 +30,19 @@ Public Class FunctionsClass
         End Get
     End Property
 
+    Private _returnTag As String
+    Public ReadOnly Property ReturnTag As String
+        Get
+            Return _returnTag
+        End Get
+    End Property
 
-    Public Sub New(funcName As String, funcPars As String, funcRegexMatch As Match, pwnDoc As PawnDoc)
+    Public Sub New(funcName As String, funcPars As String, funcRegexMatch As Match, ret As String, pwnDoc As PawnDoc)
         _funcName = funcName
         _funcParameters = New FunctionParameters(funcPars)
         _funcMatch = funcRegexMatch
         _funcPawnDoc = pwnDoc
+        _returnTag = ret
     End Sub
 
 End Class

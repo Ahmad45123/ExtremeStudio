@@ -146,9 +146,10 @@ Public Class Parser
             Dim funcName As String = Match.Groups(1).Value
             Dim funcParams As String = Match.Groups(2).Value
             Try
-                'Remove the tag if exists.
+                'Get the tag if exists.
+                Dim tag As String = ""
                 If funcName.Contains(":") Then
-                    funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
+                    tag = funcName.Substring(0, funcName.IndexOf(":") + 1)
                 End If
 
                 'Get the PawnDoc for it.
@@ -159,7 +160,7 @@ Public Class Parser
                     Next
                 End If
 
-                Publics.Add(New FunctionsClass(funcName, funcParams, Match, pwndoc))
+                Publics.Add(New FunctionsClass(funcName, funcParams, Match, tag, pwndoc))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The public `" + funcName + "` already exists somewhere in the file.", funcName))
             End Try
@@ -170,9 +171,10 @@ Public Class Parser
             Dim funcName As String = Match.Groups(1).Value
             Dim funcParams As String = Match.Groups(2).Value
             Try
-                'Remove the tag if exists.
+                'Get the tag if exists.
+                Dim tag As String = ""
                 If funcName.Contains(":") Then
-                    funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
+                    tag = funcName.Substring(0, funcName.IndexOf(":") + 1)
                 End If
 
                 'Get the PawnDoc for it.
@@ -183,7 +185,7 @@ Public Class Parser
                     Next
                 End If
 
-                Stocks.Add(New FunctionsClass(funcName, funcParams, Match, pwndoc))
+                Stocks.Add(New FunctionsClass(funcName, funcParams, Match, tag, pwndoc))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The stock `" + funcName + "` already exists somewhere in the file.", funcName))
             End Try
@@ -197,9 +199,10 @@ Public Class Parser
             Dim funcName As String = Match.Groups(1).Value
             Dim funcParams As String = Match.Groups(2).Value
             Try
-                'Remove the tag if exists.
+                'Get the tag if exists.
+                Dim tag As String = ""
                 If funcName.Contains(":") Then
-                    funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
+                    tag = funcName.Substring(0, funcName.IndexOf(":") + 1)
                 End If
 
                 'Get the PawnDoc for it.
@@ -210,7 +213,7 @@ Public Class Parser
                     Next
                 End If
 
-                Functions.Add(New FunctionsClass(funcName, funcParams, Match, pwndoc))
+                Functions.Add(New FunctionsClass(funcName, funcParams, Match, tag, pwndoc))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The function `" + funcName + "` already exists somewhere in the file.", funcName))
             End Try
@@ -221,9 +224,10 @@ Public Class Parser
             Dim funcName As String = Match.Groups(1).Value
             Dim funcParams As String = Match.Groups(2).Value
             Try
-                'Remove the tag if exists.
+                'Get the tag if exists.
+                Dim tag As String = ""
                 If funcName.Contains(":") Then
-                    funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
+                    tag = funcName.Substring(0, funcName.IndexOf(":") + 1)
                 End If
 
                 'Get the PawnDoc for it.
@@ -234,7 +238,7 @@ Public Class Parser
                     Next
                 End If
 
-                Natives.Add(New FunctionsClass(funcName, funcParams, Match, pwndoc))
+                Natives.Add(New FunctionsClass(funcName, funcParams, Match, tag, pwndoc))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The native `" + funcName + "` already exists somewhere in the file.", funcName))
             End Try
