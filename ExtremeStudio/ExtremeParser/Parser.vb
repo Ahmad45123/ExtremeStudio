@@ -11,7 +11,7 @@ Public Class Parser
     Public Natives As New List(Of FunctionsClass)
     Public Enums As New List(Of EnumsClass)
     Public Includes As New Dictionary(Of String, Parser)
-    Public publicVariables As New List(Of String)
+    Public publicVariables As New List(Of VarClass)
 
     'PRIVATES: 
     Private pawnDocs As New List(Of PawnDoc)
@@ -309,28 +309,34 @@ Public Class Parser
 
             'Loop through all.
             For Each str As String In allVars
-                'Remove tags.
+                'Get tag and remove.
+                Dim tag As String = ""
                 If str.Contains(":") Then
+                    tag = str.Substring(0, str.IndexOf(":") + 1)
                     str = str.Remove(0, str.IndexOf(":") + 1)
                 End If
 
-                'Remove all arrays.
+                'Get and Remove all arrays.
+                Dim arrays As New List(Of String)
                 Dim done As Boolean = False
                 While done = False
                     If str.Contains("[") And str.Contains("]") Then
+                        arrays.Add(str.Substring(str.IndexOf("["), (str.IndexOf("]") - str.IndexOf("[")) + 1))
                         str = str.Remove(str.IndexOf("["), (str.IndexOf("]") - str.IndexOf("[")) + 1)
                     Else
                         done = True
                     End If
                 End While
 
-                'Remove default
+                'Get then Remove default
+                Dim def As String = ""
                 If str.Contains("=") Then
+                    def = str.Substring(str.IndexOf("="), str.Length - str.IndexOf("="))
                     str = str.Remove(str.IndexOf("="), str.Length - str.IndexOf("="))
                 End If
 
                 'Add
-                publicVariables.Add(str)
+                publicVariables.Add(New VarClass(str, tag, def, arrays))
             Next
         Next
     End Sub
