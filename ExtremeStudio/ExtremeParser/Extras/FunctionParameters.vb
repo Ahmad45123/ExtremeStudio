@@ -46,7 +46,16 @@
                 Str = Str.Remove(0, 6)
                 Floats.Add(Str, def)
             ElseIf getVarType(Str) = varTypes.TYPE_ARRAY Then
-                Str = Str.Remove(Str.IndexOf("["), (Str.IndexOf("]") - Str.IndexOf("[")) + 1)
+
+                Dim done As Boolean = False
+                While done = False
+                    If Str.Contains("[") And Str.Contains("]") Then
+                        Str = Str.Remove(Str.IndexOf("["), (Str.IndexOf("]") - Str.IndexOf("[")) + 1)
+                    Else
+                        done = True
+                    End If
+                End While
+
                 Arrays.Add(Str, def)
             ElseIf getVarType(Str) = varTypes.TYPE_TAGGED Then
                 OthersVar.Add(Str, def)
