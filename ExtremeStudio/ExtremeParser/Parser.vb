@@ -27,7 +27,7 @@ Public Class Parser
 
     Public errors As New ExceptionsList
 
-    Public Sub New(code As String, projectPath As String, Optional isInclude As Boolean = False)
+    Public Sub New(code As String, projectPath As String)
         'PawnDoc -- Placed before comments removel because pawndoc is basically a comment.
         For Each Match As Match In Regex.Matches(code, "(?:\/\*\/{1,}\*\/(?:\r\n|\r|\n))((?:\/\/\/.*(?:\r\n|\r|\n))+)(?:\/\*\\{1,}\*\/)") 'Longest RegEx in the world ? :P
             Dim val As String = Match.Groups(0).Value 'Group 0 which contains only the internal text without the start and the end.
@@ -76,7 +76,7 @@ Public Class Parser
             End If
             Try
 
-                Dim prs As New Parser(My.Computer.FileSystem.ReadAllText(fullPath), projectPath, True)
+                Dim prs As New Parser(My.Computer.FileSystem.ReadAllText(fullPath), projectPath)
                 Includes.Add(text, prs)
 
                 'Exceptions.
@@ -89,7 +89,7 @@ Public Class Parser
 
         'Defines & Macros: 
         Dim tmpDefines As New List(Of DefinesClass)
-        For Each Match As Match In Regex.Matches(code, "#define[ \t]+([^\n\r\s\\;]+)[ \t]*([^\n\r\s;]+)")
+        For Each Match As Match In Regex.Matches(code, "#define[ \t]+([^\n\r\s\\;]+)(?:[ \t]*([^\n\r\s;]+))?")
             Dim defineName As String = Match.Groups(1).Value
             Dim defineValue As String = Match.Groups(2).Value
 
@@ -123,7 +123,7 @@ Public Class Parser
 #End Region
 
             Try
-                tmpDefines.Add(new DefinesClass(defineName, defineValue, Match))
+                tmpDefines.Add(New DefinesClass(defineName, defineValue, Match))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The define `" + defineName + "` already exists somewhere in the file.", defineName))
             End Try
@@ -339,5 +339,134 @@ Public Class Parser
                 publicVariables.Add(New VarClass(str, tag, def, arrays))
             Next
         Next
+
+        'Now to checks for if defined stuff and remove as needed.
+        For Each match As Match In Regex.Matches(code, "#if[ \t]+(!)?defined[ \t]+(.+)([\s\S]*)#endif")
+            Dim isNt As Boolean = IIf(match.Groups(1).Value = "", False, True)
+            Dim condition As String = ""
+            Dim mainCode As String = ""
+            Dim elseClode As String = ""
+
+            'Start filling the vars.
+            condition = match.Groups(2).Value
+
+            If match.Groups(3).Value.Contains("#else") Then
+                Dim s As String() = Split(match.Groups(3).Value, "#else")
+                mainCode = s(0) : elseClode = s(1)
+            Else
+                mainCode = match.Groups(3).Value
+            End If
+
+            'The result of the parse will be saved here for deletion.
+            Dim result As Parser = Nothing
+
+            'Now check which part needs to be parsed by seeing isNt and the else.
+            If isNt = False Then
+                'Here the thing should NOT be defined
+                If isDefined(condition.Trim) = False Then
+                    'Parse the main.
+                    result = New Parser(mainCode, Nothing)
+                Else
+                    'Parse the else.
+                    result = New Parser(elseClode, Nothing)
+                End If
+            Else
+                'It SHOULD be defined.
+                If isDefined(condition.Trim) = True Then
+                    'Parse the main.
+                    result = New Parser(mainCode, Nothing)
+                Else
+                    'Parse the else.
+                    result = New Parser(elseClode, Nothing)
+                End If
+            End If
+
+            'After we have got the stuff that needs to be removed,
+            'Start looping through all of them and removing as necessery.
+            For Each def In result.Defines
+                For Each defa In Defines
+                    If def = defa Then
+                        Defines.Remove(defa)
+                        Exit For
+                    End If
+                Next
+            Next
+            For Each stck In result.Stocks
+                For Each stcka In Stocks
+                    If stck = stcka Then
+                        Stocks.Remove(stcka)
+                        Exit For
+                    End If
+                Next
+            Next
+            For Each pblic In result.Publics
+                For Each pblica In Publics
+                    If pblic = pblica Then
+                        Publics.Remove(pblica)
+                        Exit For
+                    End If
+                Next
+            Next
+            For Each func In result.Functions
+                For Each funca In Functions
+                    If func = funca Then
+                        Functions.Remove(funca)
+                        Exit For
+                    End If
+                Next
+            Next
+            For Each nat In result.Natives
+                For Each nata In Natives
+                    If nat = nata Then
+                        Natives.Remove(nata)
+                        Exit For
+                    End If
+                Next
+            Next
+            For Each enm In result.Enums
+                For Each enma In Enums
+                    If enm = enma Then
+                        Enums.Remove(enma)
+                        Exit For
+                    End If
+                Next
+            Next
+            For Each var In result.publicVariables
+                For Each vara In publicVariables
+                    If var = vara Then
+                        publicVariables.Remove(vara)
+                        Exit For
+                    End If
+                Next
+            Next
+
+            'And thats it :D
+        Next
     End Sub
+
+    Private Function isDefined(str As String)
+        For Each def In Defines
+            If def.DefineName = str Then Return True
+        Next
+        For Each stck In Stocks
+            If stck.FuncName = str Then Return True
+        Next
+        For Each pblc In Publics
+            If pblc.FuncName = str Then Return True
+        Next
+        For Each func In Functions
+            If func.FuncName = str Then Return True
+        Next
+        For Each nat In Natives
+            If nat.FuncName = str Then Return True
+        Next
+        For Each enm In Enums
+            If enm.EnumName = str Then Return True
+        Next
+        For Each var In publicVariables
+            If var.VarName = str Then Return True
+        Next
+
+        Return False
+    End Function
 End Class

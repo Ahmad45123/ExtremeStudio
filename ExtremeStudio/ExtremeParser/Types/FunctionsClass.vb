@@ -45,4 +45,18 @@ Public Class FunctionsClass
         _returnTag = ret
     End Sub
 
+    Public Shared Operator =(ByVal first As FunctionsClass, second As FunctionsClass)
+        If first.FuncName = second.FuncName And first.FuncParameters.paramsText = second.FuncParameters.paramsText Then
+            Return True
+        End If
+        Return False
+    End Operator
+    Public Shared Operator <>(ByVal first As FunctionsClass, second As FunctionsClass)
+        If first = second Then
+            Return False
+        Else
+            Return True
+        End If
+    End Operator
+
 End Class

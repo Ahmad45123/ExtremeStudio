@@ -35,5 +35,18 @@
         _defaultValue = def
     End Sub
 
+    Public Shared Operator =(ByVal first As VarClass, second As VarClass)
+        If first.VarName = second.VarName And first.VarTag = second.VarTag And first.DefaultValue = second.DefaultValue Then
+            Return True
+        End If
+        Return False
+    End Operator
+    Public Shared Operator <>(ByVal first As VarClass, second As VarClass)
+        If first = second Then
+            Return False
+        Else
+            Return True
+        End If
+    End Operator
 
 End Class

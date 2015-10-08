@@ -29,4 +29,17 @@ Public Class DefinesClass
         _regexMatch = RegexMatch
     End Sub
 
+    Public Shared Operator =(ByVal first As DefinesClass, second As DefinesClass)
+        If first.DefineName = second.DefineName And first.DefineValue = second.DefineValue Then
+            Return True
+        End If
+        Return False
+    End Operator
+    Public Shared Operator <>(ByVal first As DefinesClass, second As DefinesClass)
+        If first = second Then
+            Return False
+        Else
+            Return True
+        End If
+    End Operator
 End Class
