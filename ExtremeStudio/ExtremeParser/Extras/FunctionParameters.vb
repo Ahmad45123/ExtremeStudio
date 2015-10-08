@@ -6,12 +6,12 @@
         End Get
     End Property
 
-    Public Integers As New List(Of String)
-    Public Arrays As New List(Of String)
-    Public Floats As New List(Of String)
+    Public Integers As New Dictionary(Of String, String)
+    Public Arrays As New Dictionary(Of String, String)
+    Public Floats As New Dictionary(Of String, String)
     Public pawnDoc As PawnDoc
 
-    Private OthersVar As New List(Of String) 'A function is created to handle this.
+    Private OthersVar As New Dictionary(Of String, String) 'A function is created to handle this.
     Private paramText As String
 
     Public Enum varTypes
@@ -39,24 +39,27 @@
         For Each Str As String In prms
             If Str = "" Or Str = Nothing Then Continue For
 
+            Dim def As String = ""
+            If Str.Contains("=") Then def = Str.Substring(Str.IndexOf("=")).Trim()
+
             If getVarType(Str) = varTypes.TYPE_FLOAT Then
                 Str = Str.Remove(0, 6)
-                Floats.Add(Str)
+                Floats.Add(Str, def)
             ElseIf getVarType(Str) = varTypes.TYPE_ARRAY Then
                 Str = Str.Remove(Str.IndexOf("["), (Str.IndexOf("]") - Str.IndexOf("[")) + 1)
-                Arrays.Add(Str)
+                Arrays.Add(Str, def)
             ElseIf getVarType(Str) = varTypes.TYPE_TAGGED Then
-                OthersVar.Add(Str)
+                OthersVar.Add(Str, def)
             Else 'Its an integer obv..
-                Integers.Add(Str)
+                Integers.Add(Str, def)
             End If
         Next
     End Sub
 
     Public Function Others(tag As String) As List(Of String)
         Dim lst As New List(Of String)
-        For Each Str As String In OthersVar
-            Dim vars As String() = Str.Split(":", 2, StringSplitOptions.None)
+        For Each Str As String In OthersVar.Keys
+            Dim vars As String() = OthersVar(Str).Split(":", 2, StringSplitOptions.None)
             If vars(0) = tag Then
                 lst.Add(vars(1))
             End If
@@ -75,8 +78,8 @@
         OTHER
     End Enum
     Public Function GetParameterType(paramName As String, returnType As returnType)
-        For Each Str As String In Integers
-            If Str = paramName Then
+        For Each Str As String In Integers.Keys
+            If Integers(Str) = paramName Then
                 If returnType = FunctionParameters.returnType.AS_STRING Then
                     Return "Integer"
                 ElseIf returnType = FunctionParameters.returnType.AS_ENUM Then
@@ -84,8 +87,8 @@
                 End If
             End If
         Next
-        For Each Str As String In Arrays
-            If Str = paramName Then
+        For Each Str As String In Arrays.Keys
+            If Arrays(Str) = paramName Then
                 If returnType = FunctionParameters.returnType.AS_STRING Then
                     Return "Array"
                 ElseIf returnType = FunctionParameters.returnType.AS_ENUM Then
@@ -93,8 +96,8 @@
                 End If
             End If
         Next
-        For Each Str As String In Floats
-            If Str = paramName Then
+        For Each Str As String In Floats.Keys
+            If Floats(Str) = paramName Then
                 If returnType = FunctionParameters.returnType.AS_STRING Then
                     Return "Float"
                 ElseIf returnType = FunctionParameters.returnType.AS_ENUM Then
