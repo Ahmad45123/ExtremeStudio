@@ -3,15 +3,17 @@ Imports System.Text.RegularExpressions
 
 Public Class Parser
 
-    Public Defines As New DictionaryEx(Of String, String) 'name, value.
-    Public Functions As New DictionaryEx(Of String, FunctionParameters) 'func name, func params class
-    Public Stocks As New DictionaryEx(Of String, FunctionParameters) 'func name, func params class
-    Public Publics As New DictionaryEx(Of String, FunctionParameters) 'func name, func params class
-    Public Natives As New DictionaryEx(Of String, FunctionParameters) 'func name, fiunc params class
-    Public Enums As New DictionaryEx(Of String, FunctionParameters.varTypes) 'enum name, the enum type
-    Public Includes As New Dictionary(Of String, Parser) 'Include path|name, The include parse.
+    'PUBLICS: 
+    Public Defines As New List(Of DefinesClass)
+    Public Functions As New List(Of FunctionsClass)
+    Public Stocks As New List(Of FunctionsClass)
+    Public Publics As New List(Of FunctionsClass)
+    Public Natives As New List(Of FunctionsClass)
+    Public Enums As New List(Of EnumsClass)
+    Public Includes As New Dictionary(Of String, Parser)
     Public publicVariables As New List(Of String)
 
+    'PRIVATES: 
     Private pawnDocs As New List(Of PawnDoc)
 
     ''' <summary>
@@ -86,7 +88,7 @@ Public Class Parser
         Next
 
         'Defines & Macros: 
-        Dim tmpDefines As New Dictionary(Of String, String)
+        Dim tmpDefines As New List(Of DefinesClass)
         For Each Match As Match In Regex.Matches(code, "#define[ \t]+([^\n\r\s\\;]+)[ \t]*([^\n\r\s;]+)")
             Dim defineName As String = Match.Groups(1).Value
             Dim defineValue As String = Match.Groups(2).Value
@@ -121,21 +123,21 @@ Public Class Parser
 #End Region
 
             Try
-                tmpDefines.Add(defineName, defineValue)
+                tmpDefines.Add(new DefinesClass(defineName, defineValue, Match))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The define `" + defineName + "` already exists somewhere in the file.", defineName))
             End Try
         Next
-        'Flip the defines upside down cuz the compiler goes from down to top.
-        For i As Integer = tmpDefines.Keys.Count - 1 To 0 Step -1
-            Defines.Add(tmpDefines.Keys(i), tmpDefines(tmpDefines.Keys(i)))
+        'Flip the defines upside down cuz the compiler goes from down to top, I guess.
+        For i As Integer = tmpDefines.Count - 1 To 0 Step -1
+            Defines.Add(tmpDefines(i))
         Next
 
 
         'Now loop though all defines in includes and such and then replace em.
         For Each inc In Includes.Keys
-            For Each defineKey In Includes(inc).Defines.Keys
-                defineReplacer.Replace(code, defineKey, Includes(inc).Defines(defineKey))
+            For Each define In Includes(inc).Defines
+                defineReplacer.Replace(code, define.DefineName, define.DefineValue)
             Next
         Next
 
@@ -149,15 +151,18 @@ Public Class Parser
                     funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
                 End If
 
-                Publics.Add(funcName, New FunctionParameters(funcParams))
+                'Get the PawnDoc for it.
+                Dim pwndoc As PawnDoc = Nothing
+                If pawnDocs IsNot Nothing Then
+                    For Each doc As PawnDoc In pawnDocs
+                        If doc.Summary = funcName Then pwndoc = doc : Exit For
+                    Next
+                End If
+
+                Publics.Add(New FunctionsClass(funcName, funcParams, Match, pwndoc))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The public `" + funcName + "` already exists somewhere in the file.", funcName))
             End Try
-            If pawnDocs IsNot Nothing Then
-                For Each doc As PawnDoc In pawnDocs
-                    If doc.Summary = funcName Then Publics(funcName).pawnDoc = doc : Exit For
-                Next
-            End If
         Next
 
         'Stocks
@@ -170,15 +175,18 @@ Public Class Parser
                     funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
                 End If
 
-                Stocks.Add(funcName, New FunctionParameters(funcParams))
+                'Get the PawnDoc for it.
+                Dim pwndoc As PawnDoc = Nothing
+                If pawnDocs IsNot Nothing Then
+                    For Each doc As PawnDoc In pawnDocs
+                        If doc.Summary = funcName Then pwndoc = doc : Exit For
+                    Next
+                End If
+
+                Stocks.Add(New FunctionsClass(funcName, funcParams, Match, pwndoc))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The stock `" + funcName + "` already exists somewhere in the file.", funcName))
             End Try
-            If pawnDocs IsNot Nothing Then
-                For Each doc As PawnDoc In pawnDocs
-                    If doc.Summary = funcName Then Stocks(funcName).pawnDoc = doc : Exit For
-                Next
-            End If
         Next
 
         'Functions in General -- Removed all strings because some strings which contains a { bugs the below regex.
@@ -194,15 +202,18 @@ Public Class Parser
                     funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
                 End If
 
-                Functions.Add(funcName, New FunctionParameters(funcParams))
+                'Get the PawnDoc for it.
+                Dim pwndoc As PawnDoc = Nothing
+                If pawnDocs IsNot Nothing Then
+                    For Each doc As PawnDoc In pawnDocs
+                        If doc.Summary = funcName Then pwndoc = doc : Exit For
+                    Next
+                End If
+
+                Functions.Add(New FunctionsClass(funcName, funcParams, Match, pwndoc))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The function `" + funcName + "` already exists somewhere in the file.", funcName))
             End Try
-            If pawnDocs IsNot Nothing Then
-                For Each doc As PawnDoc In pawnDocs
-                    If doc.Summary = funcName Then Functions(funcName).pawnDoc = doc : Exit For
-                Next
-            End If
         Next
 
         'Natives
@@ -215,20 +226,26 @@ Public Class Parser
                     funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
                 End If
 
-                Natives.Add(funcName, New FunctionParameters(funcParams))
+                'Get the PawnDoc for it.
+                Dim pwndoc As PawnDoc = Nothing
+                If pawnDocs IsNot Nothing Then
+                    For Each doc As PawnDoc In pawnDocs
+                        If doc.Summary = funcName Then pwndoc = doc : Exit For
+                    Next
+                End If
+
+                Natives.Add(New FunctionsClass(funcName, funcParams, Match, pwndoc))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The native `" + funcName + "` already exists somewhere in the file.", funcName))
             End Try
-            If pawnDocs IsNot Nothing Then
-                For Each doc As PawnDoc In pawnDocs
-                    If doc.Summary = funcName Then Natives(funcName).pawnDoc = doc : Exit For
-                Next
-            End If
         Next
 
         'Enums
         For Each Match As Match In Regex.Matches(code, "enum\s+([^\n;\(\)\{\}\s]*)\s+(?:(?:[{])([^}]+)(?:[}]))")
             Dim enumds As String() = Match.Groups(2).Value.Split(",")
+
+            'Variable to store the enums contents.
+            Dim enumStuff As New List(Of EnumsContentsClass)
 
             For Each enuma As String In enumds
                 'Check if empty
@@ -248,11 +265,14 @@ Public Class Parser
                 End If
 
                 Try
-                    Enums.Add(enuma, type)
+                    enumStuff.Add(New EnumsContentsClass(enuma, type))
                 Catch ex As Exception
                     errors.exceptionsList.Add(New ParserException("The enum `" + enuma + "` already exists somewhere in the file.", enuma))
                 End Try
             Next
+
+            'Now add it to the actual list.
+            Enums.Add(New EnumsClass(Match.Captures(1).Value, enumStuff)))
         Next
 
         'Remove all curly brackets and its contents to remove all child codes.

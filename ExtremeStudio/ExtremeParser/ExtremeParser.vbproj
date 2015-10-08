@@ -65,7 +65,6 @@
   <ItemGroup>
     <Compile Include="Exceptions\IncludeNotFoundException.vb" />
     <Compile Include="Extras\defineReplacer.vb" />
-    <Compile Include="Extras\DictionaryEx.vb" />
     <Compile Include="Exceptions\ExceptionsList.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -86,6 +85,9 @@
     <Compile Include="Parser.vb" />
     <Compile Include="Exceptions\ParserException.vb" />
     <Compile Include="PawnDoc.vb" />
+    <Compile Include="Types\DefinesClass.vb" />
+    <Compile Include="Types\EnumsClass.vb" />
+    <Compile Include="Types\FunctionsClass.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -106,6 +108,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
