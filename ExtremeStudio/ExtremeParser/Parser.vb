@@ -150,6 +150,7 @@ Public Class Parser
                 Dim tag As String = ""
                 If funcName.Contains(":") Then
                     tag = funcName.Substring(0, funcName.IndexOf(":") + 1)
+                    funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
                 End If
 
                 'Get the PawnDoc for it.
@@ -175,6 +176,7 @@ Public Class Parser
                 Dim tag As String = ""
                 If funcName.Contains(":") Then
                     tag = funcName.Substring(0, funcName.IndexOf(":") + 1)
+                    funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
                 End If
 
                 'Get the PawnDoc for it.
@@ -203,6 +205,7 @@ Public Class Parser
                 Dim tag As String = ""
                 If funcName.Contains(":") Then
                     tag = funcName.Substring(0, funcName.IndexOf(":") + 1)
+                    funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
                 End If
 
                 'Get the PawnDoc for it.
@@ -228,6 +231,7 @@ Public Class Parser
                 Dim tag As String = ""
                 If funcName.Contains(":") Then
                     tag = funcName.Substring(0, funcName.IndexOf(":") + 1)
+                    funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
                 End If
 
                 'Get the PawnDoc for it.
