@@ -140,6 +140,9 @@ Public Class Parser
                 defineReplacer.Replace(code, define.DefineName, define.DefineValue)
             Next
         Next
+        For Each define In Defines
+            defineReplacer.Replace(code, define.DefineName, define.DefineValue)
+        Next
 
         'Publics.
         For Each Match As Match In Regex.Matches(code, "public[ \t]+(.+)[ \t]*\((.*)\)", RegexOptions.Multiline)
