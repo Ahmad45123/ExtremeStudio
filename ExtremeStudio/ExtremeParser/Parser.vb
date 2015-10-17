@@ -146,8 +146,8 @@ Public Class Parser
 
         'Publics.
         For Each Match As Match In Regex.Matches(code, "public[ \t]+(.+)[ \t]*\((.*)\)", RegexOptions.Multiline)
-            Dim funcName As String = Match.Groups(1).Value
-            Dim funcParams As String = Match.Groups(2).Value
+            Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
+            Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
                 'Get the tag if exists.
                 Dim tag As String = ""
@@ -172,8 +172,8 @@ Public Class Parser
 
         'Stocks
         For Each Match As Match In Regex.Matches(code, "stock[ \t]+(.+)[ \t]*\((.*)\)", RegexOptions.Multiline)
-            Dim funcName As String = Match.Groups(1).Value
-            Dim funcParams As String = Match.Groups(2).Value
+            Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
+            Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
                 'Get the tag if exists.
                 Dim tag As String = ""
@@ -201,8 +201,8 @@ Public Class Parser
         code = Regex.Replace(code, Chr(34) + "[^" + Chr(34) + "\\]*(?:\\[^\n\r\x85\u2028\u2029][^" + Chr(34) + "\\]*)*" + Chr(34), "")
 
         For Each Match As Match In Regex.Matches(code, "^[ \t]*(.+)(?<!" + funcLikeKeywords + ")\((.*)\)[ \t]*{", RegexOptions.Multiline)
-            Dim funcName As String = Match.Groups(1).Value
-            Dim funcParams As String = Match.Groups(2).Value
+            Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
+            Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
                 'Get the tag if exists.
                 Dim tag As String = ""
@@ -227,8 +227,8 @@ Public Class Parser
 
         'Natives
         For Each Match As Match In Regex.Matches(code, "native[ \t]+(.+)[ \t]*?\((.*)\)", RegexOptions.Multiline)
-            Dim funcName As String = Match.Groups(1).Value
-            Dim funcParams As String = Match.Groups(2).Value
+            Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
+            Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
                 'Get the tag if exists.
                 Dim tag As String = ""
