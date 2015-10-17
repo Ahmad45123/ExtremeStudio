@@ -352,16 +352,16 @@ Public Class Parser
             Dim isNt As Boolean = IIf(match.Groups(1).Value = "", False, True)
             Dim condition As String = ""
             Dim mainCode As String = ""
-            Dim elseClode As String = ""
+            Dim elseClode As String = " "
 
             'Start filling the vars.
-            condition = match.Groups(2).Value
+            condition = match.Groups(2).Value.Trim
 
             If match.Groups(3).Value.Contains("#else") Then
                 Dim s As String() = Split(match.Groups(3).Value, "#else")
-                mainCode = s(0) : elseClode = s(1)
+                mainCode = s(0).Trim : elseClode = s(1).Trim
             Else
-                mainCode = match.Groups(3).Value
+                mainCode = match.Groups(3).Value.Trim
             End If
 
             'The result of the parse will be saved here for deletion.
@@ -370,7 +370,7 @@ Public Class Parser
             'Now check which part needs to be parsed by seeing isNt and the else.
             If isNt = False Then
                 'Here the thing should NOT be defined
-                If isDefined(condition.Trim) = False Then
+                If isDefined(condition) = False Then
                     'Parse the main.
                     result = New Parser(mainCode, Nothing)
                 Else
@@ -379,7 +379,7 @@ Public Class Parser
                 End If
             Else
                 'It SHOULD be defined.
-                If isDefined(condition.Trim) = True Then
+                If isDefined(condition) = True Then
                     'Parse the main.
                     result = New Parser(mainCode, Nothing)
                 Else
