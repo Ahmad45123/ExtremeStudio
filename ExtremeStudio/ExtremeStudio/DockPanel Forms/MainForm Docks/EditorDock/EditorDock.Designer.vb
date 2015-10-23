@@ -74,4 +74,15 @@ Partial Class EditorDock
     Public WithEvents Editor As ScintillaNET.Scintilla
     Friend WithEvents AutoCompleteMenu As AutocompleteMenuNS.AutocompleteMenu
     Friend WithEvents ACImageList As ImageList
+
+    Public Sub New()
+        'Opt in the fix for the bug with DockPanelSuite.
+        ScintillaNET.Scintilla.SetDestroyHandleBehavior(True)
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+
+    End Sub
 End Class
