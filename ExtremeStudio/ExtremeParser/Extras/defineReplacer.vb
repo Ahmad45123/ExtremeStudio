@@ -5,25 +5,22 @@ Public Class defineReplacer
         'First start building the regex for the find.
         Dim findRegex As String = Regex.Escape(defineName)
 
-        'Now replace all the %'s for the findRegex.
-        findRegex = Regex.Replace(findRegex, "%([1-9])", "(.*)")
+        'Setup find regex.
+        findRegex = Regex.Replace(findRegex, "%([0-9])", "(.*)")
+        findRegex = "(?<!#.*)\b" + findRegex
 
-        'Find all. (We don't use Regex.Matches here cuz the codes are changed.)
-        findRegex = "(?<!#.*)\b(" + findRegex + ")\b"
-        While (Regex.IsMatch(Code, findRegex, RegexOptions.Multiline))
-            Dim Mtch As Match = Regex.Match(Code, findRegex, RegexOptions.Multiline)
+        'Setup replace regex.
+        Dim replaceRegex As String = defineReplace
+        If replaceRegex.Contains("%0") Then
+            For i As Integer = 0 To 9
+                replaceRegex = replaceRegex.Replace("%" + i.ToString, "$" + (i + 1).ToString)
+            Next
+        Else
+            For i As Integer = 1 To 9
+                replaceRegex = replaceRegex.Replace("%" + i.ToString, "$" + i.ToString)
+            Next
+        End If
 
-            'Now build the replace code.
-            Dim tmpDefineReplace As String = defineReplace
-            If tmpDefineReplace.Contains("%") Then
-                For i As Integer = 1 To Mtch.Groups.Count - 1
-                    tmpDefineReplace = tmpDefineReplace.Replace("%" + i.ToString, Mtch.Groups(i + 1).Value)
-                Next
-            End If
-
-            'Now replace actually.
-            Code = Code.Remove(Mtch.Groups(1).Index, Mtch.Groups(1).Length)
-            Code = Code.Insert(Mtch.Groups(1).Index, tmpDefineReplace)
-        End While
+        Code = Regex.Replace(Code, findRegex, replaceRegex)
     End Sub
 End Class

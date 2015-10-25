@@ -123,7 +123,7 @@ Public Class Parser
 #End Region
 
             Try
-                tmpDefines.Add(New DefinesClass(defineName, defineValue, Match))
+                tmpDefines.Add(New DefinesClass(defineName.Trim, defineValue.Trim, Match))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The define `" + defineName + "` already exists somewhere in the file.", defineName))
             End Try
