@@ -27,6 +27,8 @@ Public Class EditorDock
             End If
         End If
         idleTimer.Stop()
+
+        If RefreshWorker.IsBusy Then RefreshWorker.CancelAsync()
     End Sub
     Private Sub Editor_KeyDown(sender As Object, e As KeyEventArgs) Handles Editor.KeyDown
         If e.Control = True And e.KeyCode = Keys.S Then
@@ -191,7 +193,7 @@ Public Class EditorDock
 #End Region
 
 #Region "Refresh Worker Codes"
-    Private Sub scintilla_TextChangedDelayed(sender As Object, e As EventArgs)
+    Public Sub scintilla_TextChangedDelayed(sender As Object, e As EventArgs)
         If RefreshWorker.IsBusy = False Then RefreshWorker.RunWorkerAsync({Editor.Text, MainForm.currentProject.projectPath}) : MainForm.statusLabel.Text = "Parsing Code."
     End Sub
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork

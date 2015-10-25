@@ -41,6 +41,8 @@ Partial Class EditorDock
         '
         'RefreshWorker
         '
+        Me.RefreshWorker.WorkerReportsProgress = True
+        Me.RefreshWorker.WorkerSupportsCancellation = True
         '
         'AutoCompleteMenu
         '

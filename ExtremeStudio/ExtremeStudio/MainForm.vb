@@ -140,4 +140,16 @@ Public Class MainForm
     Private Sub ToolStripButton6_Click(sender As Object, e As EventArgs) Handles ToolStripButton6.Click
         SettingsForm.ShowDialog()
     End Sub
+
+    Private Sub MainDock_ActiveDocumentChanged(sender As Object, e As EventArgs) Handles MainDock.ActiveDocumentChanged
+        'Make sure there isn't any running processes.
+        For Each doc As EditorDock In MainDock.Documents
+            If doc.RefreshWorker.IsBusy Then
+                doc.RefreshWorker.CancelAsync()
+            End If
+        Next
+
+        'Update.
+        CurrentEditor.scintilla_TextChangedDelayed(Me, EventArgs.Empty)
+    End Sub
 End Class
