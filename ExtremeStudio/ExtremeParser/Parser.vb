@@ -5,6 +5,7 @@ Public Class Parser
 
     'PUBLICS: 
     Public Defines As New List(Of DefinesClass)
+    Public Macros As New List(Of DefinesClass)
     Public Functions As New List(Of FunctionsClass)
     Public Stocks As New List(Of FunctionsClass)
     Public Publics As New List(Of FunctionsClass)
@@ -130,7 +131,11 @@ Public Class Parser
         Next
         'Flip the defines upside down cuz the compiler goes from down to top, I guess.
         For i As Integer = tmpDefines.Count - 1 To 0 Step -1
-            Defines.Add(tmpDefines(i))
+            If tmpDefines(i).DefineName.Contains("%") Then
+                Macros.Add(tmpDefines(i))
+            Else
+                Defines.Add(tmpDefines(i))
+            End If
         Next
 
 
@@ -139,9 +144,15 @@ Public Class Parser
             For Each define In Includes(inc).Defines
                 defineReplacer.Replace(code, define.DefineName, define.DefineValue)
             Next
+            For Each macro In Includes(inc).Macros
+                defineReplacer.Replace(code, macro.DefineName, macro.DefineValue)
+            Next
         Next
         For Each define In Defines
             defineReplacer.Replace(code, define.DefineName, define.DefineValue)
+        Next
+        For Each macro In Macros
+            defineReplacer.Replace(code, macro.DefineName, macro.DefineValue)
         Next
 
         'Publics.
