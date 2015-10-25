@@ -19,6 +19,11 @@
             nde.Tag = key.DefineValue
         Next
 
+        For Each key As ExtremeParser.DefinesClass In parser.Macros
+            Dim nde = macros.Nodes.Add(key.DefineName)
+            nde.Tag = key.DefineValue
+        Next
+
         'Create the custom Roots (Must be done before the Functions so its used inside it.)
         Dim listCustom As New List(Of TreeNode)
         For Each itm In MainForm.currentProject.objectExplorerItems
