@@ -43,8 +43,12 @@ Public Class Parser
         code = Regex.Replace(code, "//.*", "")
         code = Regex.Replace(code, "\/\*[\s\S]*?\*\/", "", RegexOptions.Multiline)
 
+        'Remove all strings.
+        code = Regex.Replace(code, "'[^'\\]*(?:\\[^\n\r\x85\u2028\u2029][^'\\]*)*'", "")
+        code = Regex.Replace(code, Chr(34) + "[^" + Chr(34) + "\\]*(?:\\[^\n\r\x85\u2028\u2029][^" + Chr(34) + "\\]*)*" + Chr(34), "")
+
         'Includes
-        For Each Match As Match In Regex.Matches(code, "#include[ \t]+([^\s]+)")
+        For Each Match As Match In Regex.Matches(code, "#include[ \t]+([^\s]+)", RegexOptions.Multiline)
             Dim text As String = Match.Groups(1).Value
             Dim fullPath As String = ""
 
@@ -90,7 +94,7 @@ Public Class Parser
 
         'Defines & Macros: 
         Dim tmpDefines As New List(Of DefinesClass)
-        For Each Match As Match In Regex.Matches(code, "#define[ \t]+([^\n\r\s\\;]+)(?:[ \t]*([^\n\r\s;]+))?")
+        For Each Match As Match In Regex.Matches(code, "#define[ \t]+([^\n\r\s\\;]+)(?:[ \t]*([^\s;]+))?", RegexOptions.Multiline)
             Dim defineName As String = Match.Groups(1).Value
             Dim defineValue As String = Match.Groups(2).Value
 
@@ -156,7 +160,7 @@ Public Class Parser
         Next
 
         'Publics.
-        For Each Match As Match In Regex.Matches(code, "public[ \t]+(.+)[ \t]*\((.*)\)", RegexOptions.Multiline)
+        For Each Match As Match In Regex.Matches(code, "public[ \t]+(.+)[ \t]*\((.*)\)\s*{", RegexOptions.Multiline)
             Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
             Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
@@ -182,7 +186,7 @@ Public Class Parser
         Next
 
         'Stocks
-        For Each Match As Match In Regex.Matches(code, "stock[ \t]+(.+)[ \t]*\((.*)\)", RegexOptions.Multiline)
+        For Each Match As Match In Regex.Matches(code, "stock[ \t]+(.+)[ \t]*\((.*)\)\s*{", RegexOptions.Multiline)
             Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
             Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
@@ -207,11 +211,8 @@ Public Class Parser
             End Try
         Next
 
-        'Functions in General -- Removed all strings because some strings which contains a { bugs the below regex.
-        code = Regex.Replace(code, "'[^'\\]*(?:\\[^\n\r\x85\u2028\u2029][^'\\]*)*'", "")
-        code = Regex.Replace(code, Chr(34) + "[^" + Chr(34) + "\\]*(?:\\[^\n\r\x85\u2028\u2029][^" + Chr(34) + "\\]*)*" + Chr(34), "")
-
-        For Each Match As Match In Regex.Matches(code, "^[ \t]*(.+)(?<!" + funcLikeKeywords + ")\((.*)\)[ \t]*{", RegexOptions.Multiline)
+        'Functions in General.
+        For Each Match As Match In Regex.Matches(code, "^[ \t]*(.+)(?<!" + funcLikeKeywords + ")\((.*)\)\s*{", RegexOptions.Multiline)
             Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
             Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
@@ -359,7 +360,7 @@ Public Class Parser
         Next
 
         'Now to checks for if defined stuff and remove as needed.
-        For Each match As Match In Regex.Matches(code, "#if[ \t]+(!)?defined[ \t]+(.+)([\s\S]*)#endif")
+        For Each match As Match In Regex.Matches(code, "#if[ \t]+(!)?defined[ \t]+(.+)([\s\S]*)#endif", RegexOptions.Multiline)
             Dim isNt As Boolean = IIf(match.Groups(1).Value = "", False, True)
             Dim condition As String = ""
             Dim mainCode As String = ""
