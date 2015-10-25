@@ -212,7 +212,7 @@ Public Class Parser
         Next
 
         'Functions in General.
-        For Each Match As Match In Regex.Matches(code, "^[ \t]*(.+)(?<!" + funcLikeKeywords + ")\((.*)\)\s*{", RegexOptions.Multiline)
+        For Each Match As Match In Regex.Matches(code, "^[ \t]*(?!\s*public\s|\s*stock\s)(.+)(?<!" + funcLikeKeywords + ")\((.*)\)\s*{", RegexOptions.Multiline)
             Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
             Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
