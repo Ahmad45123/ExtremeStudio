@@ -85,10 +85,10 @@
     <Compile Include="Parser.vb" />
     <Compile Include="Exceptions\ParserException.vb" />
     <Compile Include="PawnDoc.vb" />
-    <Compile Include="Types\DefinesClass.vb" />
-    <Compile Include="Types\EnumsClass.vb" />
-    <Compile Include="Types\FunctionsClass.vb" />
-    <Compile Include="Types\VarClass.vb" />
+    <Compile Include="Types\DefinesStruct.vb" />
+    <Compile Include="Types\EnumsStruct.vb" />
+    <Compile Include="Types\FunctionsStruct.vb" />
+    <Compile Include="Types\VarStruct.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -109,7 +109,12 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ExtremeCore\ExtremeCore.vbproj">
+      <Project>{1acb0832-ace5-4958-8d65-35c5ec357e6c}</Project>
+      <Name>ExtremeCore</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

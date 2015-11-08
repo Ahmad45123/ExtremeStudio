@@ -1,27 +1,15 @@
 ﻿Imports ExtremeParser
 
-Public Class EnumsClass
-    Private _enumName As String
-    Private _enumContents As List(Of EnumsContentsClass)
+Public Structure EnumsStruct
+    Public EnumName As String
+    Public EnumContents As List(Of EnumsContentsClass)
 
     Public Sub New(name As String, contents As List(Of EnumsContentsClass))
-        _enumName = name
-        _enumContents = contents
+        EnumName = name
+        EnumContents = contents
     End Sub
 
-    Public ReadOnly Property EnumName As String
-        Get
-            Return _enumName
-        End Get
-    End Property
-
-    Public ReadOnly Property EnumContents As List(Of EnumsContentsClass)
-        Get
-            Return _enumContents
-        End Get
-    End Property
-
-    Public Shared Operator =(ByVal first As EnumsClass, second As EnumsClass)
+    Public Shared Operator =(ByVal first As EnumsStruct, second As EnumsStruct)
         If first.EnumName = second.EnumName Then
             For Each enm In first.EnumContents
                 For Each enma In second.EnumContents
@@ -35,7 +23,7 @@ Public Class EnumsClass
         End If
         Return False
     End Operator
-    Public Shared Operator <>(ByVal first As EnumsClass, second As EnumsClass)
+    Public Shared Operator <>(ByVal first As EnumsStruct, second As EnumsStruct)
         If first = second Then
             Return False
         Else
@@ -43,7 +31,7 @@ Public Class EnumsClass
         End If
     End Operator
 
-End Class
+End Structure
 
 Public Class EnumsContentsClass
     Private _content As String

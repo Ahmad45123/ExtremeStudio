@@ -1,18 +1,21 @@
 ﻿Imports System.IO
 Imports System.Text.RegularExpressions
+Imports System.Threading
+Imports System.Threading.Tasks
+Imports ExtremeCore
 
 Public Class Parser
 
     'PUBLICS: 
-    Public Defines As New List(Of DefinesClass)
-    Public Macros As New List(Of DefinesClass)
-    Public Functions As New List(Of FunctionsClass)
-    Public Stocks As New List(Of FunctionsClass)
-    Public Publics As New List(Of FunctionsClass)
-    Public Natives As New List(Of FunctionsClass)
-    Public Enums As New List(Of EnumsClass)
+    Public Defines As New List(Of DefinesStruct)
+    Public Macros As New List(Of DefinesStruct)
+    Public Functions As New List(Of FunctionsStruct)
+    Public Stocks As New List(Of FunctionsStruct)
+    Public Publics As New List(Of FunctionsStruct)
+    Public Natives As New List(Of FunctionsStruct)
+    Public Enums As New List(Of EnumsStruct)
     Public Includes As New Dictionary(Of String, Parser)
-    Public publicVariables As New List(Of VarClass)
+    Public publicVariables As New List(Of VarStruct)
 
     'PRIVATES: 
     Private pawnDocs As New List(Of PawnDoc)
@@ -24,7 +27,7 @@ Public Class Parser
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Property funcLikeKeywords As String = "do|for|switch|while|if|foreach"
+    Public Property funcLikeKeywords As String = "do|for|switch|while|if|foreach|else"
 
     Public errors As New ExceptionsList
 
@@ -42,6 +45,44 @@ Public Class Parser
         'Remove all comments from code.
         code = Regex.Replace(code, "//.*", "")
         code = Regex.Replace(code, "\/\*[\s\S]*?\*\/", "", RegexOptions.Multiline)
+
+        'Enums
+        For Each Match As Match In Regex.Matches(code, "enum\s+([^\n;\(\)\{\}\s]*)\s+(?:(?:[{])([^}]+)(?:[}]))")
+            Dim enumds As String() = Match.Groups(2).Value.Split(",")
+
+            'Variable to store the enums contents.
+            Dim enumStuff As New List(Of EnumsContentsClass)
+
+            For Each enuma As String In enumds
+                'Check if empty
+                If enuma Is Nothing Or enuma.Trim = "" Then Continue For
+
+                Dim length As Integer = enuma.Length + 1
+                enuma = enuma.Trim
+                Dim type = FunctionParameters.getVarType(enuma)
+
+                'Do what needs to be changed
+                If type = FunctionParameters.varTypes.TYPE_FLOAT Then
+                    enuma = enuma.Remove(0, 6)
+                ElseIf type = FunctionParameters.varTypes.TYPE_ARRAY Then
+                    enuma = enuma.Remove(enuma.IndexOf("["), (enuma.IndexOf("]") - enuma.IndexOf("[")) + 1)
+                ElseIf type = FunctionParameters.varTypes.TYPE_TAGGED Then
+                    enuma = enuma.Remove(0, enuma.IndexOf(":") + 1)
+                End If
+
+                Try
+                    enumStuff.Add(New EnumsContentsClass(enuma, type))
+                Catch ex As Exception
+                    errors.exceptionsList.Add(New ParserException("The enum `" + enuma + "` already exists somewhere in the file.", enuma))
+                End Try
+            Next
+
+            'Now add it to the actual list.
+            Enums.Add(New EnumsStruct(Match.Groups(1).Value, enumStuff))
+        Next
+
+        'Remove all curly brackets and its contents to remove all child codes.
+        code = Regex.Replace(code, "(?<=\{)(?>[^{}]+|\{(?<DEPTH>)|\}(?<-DEPTH>))*(?(DEPTH)(?!))(?=\})", "")
 
         'Remove all strings.
         code = Regex.Replace(code, "'[^'\\]*(?:\\[^\n\r\x85\u2028\u2029][^'\\]*)*'", "")
@@ -93,7 +134,7 @@ Public Class Parser
         Next
 
         'Defines & Macros: 
-        Dim tmpDefines As New List(Of DefinesClass)
+        Dim tmpDefines As New List(Of DefinesStruct)
         For Each Match As Match In Regex.Matches(code, "#define[ \t]+([^\n\r\s\\;]+)(?:[ \t]*([^\s;]+))?", RegexOptions.Multiline)
             Dim defineName As String = Match.Groups(1).Value
             Dim defineValue As String = Match.Groups(2).Value
@@ -128,7 +169,7 @@ Public Class Parser
 #End Region
 
             Try
-                tmpDefines.Add(New DefinesClass(defineName.Trim, defineValue.Trim, Match))
+                tmpDefines.Add(New DefinesStruct(defineName.Trim, defineValue.Trim, Match))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The define `" + defineName + "` already exists somewhere in the file.", defineName))
             End Try
@@ -142,21 +183,20 @@ Public Class Parser
             End If
         Next
 
-
-        'Now loop though all defines in includes and such and then replace em.
+        'Now loop though all defines in includes And such And then replace em.
         For Each inc In Includes.Keys
-            For Each define In Includes(inc).Defines
-                defineReplacer.Replace(code, define.DefineName, define.DefineValue)
+            For i As Integer = 0 To Includes(inc).Defines.Count - 1
+                defineReplacer.Replace(code, Includes(inc).Defines(i).DefineName, Includes(inc).Defines(i).DefineValue)
             Next
-            For Each macro In Includes(inc).Macros
-                defineReplacer.Replace(code, macro.DefineName, macro.DefineValue)
+            For i As Integer = 0 To Includes(inc).Macros.Count - 1
+                defineReplacer.Replace(code, Includes(inc).Macros(i).DefineName, Includes(inc).Macros(i).DefineValue)
             Next
         Next
-        For Each define In Defines
-            defineReplacer.Replace(code, define.DefineName, define.DefineValue)
+        For i As Integer = 0 To Defines.Count - 1
+            defineReplacer.Replace(code, Defines(i).DefineName, Defines(i).DefineValue)
         Next
-        For Each macro In Macros
-            defineReplacer.Replace(code, macro.DefineName, macro.DefineValue)
+        For i As Integer = 0 To Macros.Count - 1
+            defineReplacer.Replace(code, Macros(i).DefineName, Macros(i).DefineValue)
         Next
 
         'Publics.
@@ -179,7 +219,7 @@ Public Class Parser
                     Next
                 End If
 
-                Publics.Add(New FunctionsClass(funcName, funcParams, Match, tag, pwndoc))
+                Publics.Add(New FunctionsStruct(funcName, funcParams, Match, tag, pwndoc))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The public `" + funcName + "` already exists somewhere in the file.", funcName))
             End Try
@@ -205,14 +245,14 @@ Public Class Parser
                     Next
                 End If
 
-                Stocks.Add(New FunctionsClass(funcName, funcParams, Match, tag, pwndoc))
+                Stocks.Add(New FunctionsStruct(funcName, funcParams, Match, tag, pwndoc))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The stock `" + funcName + "` already exists somewhere in the file.", funcName))
             End Try
         Next
 
         'Functions in General.
-        For Each Match As Match In Regex.Matches(code, "^[ \t]*(?!\s*public\s|\s*stock\s)(.+)(?<!" + funcLikeKeywords + ")\((.*)\)\s*{", RegexOptions.Multiline)
+        For Each Match As Match In Regex.Matches(code, "^[ \t]*(?!" + funcLikeKeywords + ")([^ \t\n\r]+)\((.*)\)(?!;)\s*{", RegexOptions.Multiline)
             Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
             Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
@@ -231,14 +271,14 @@ Public Class Parser
                     Next
                 End If
 
-                Functions.Add(New FunctionsClass(funcName, funcParams, Match, tag, pwndoc))
+                Functions.Add(New FunctionsStruct(funcName, funcParams, Match, tag, pwndoc))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The function `" + funcName + "` already exists somewhere in the file.", funcName))
             End Try
         Next
 
         'Natives
-        For Each Match As Match In Regex.Matches(code, "native[ \t]+(.+)[ \t]*?\((.*)\)", RegexOptions.Multiline)
+        For Each Match As Match In Regex.Matches(code, "native[ \t]+(.+)[ \t]*?\((.*)\);", RegexOptions.Multiline)
             Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
             Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
@@ -257,60 +297,14 @@ Public Class Parser
                     Next
                 End If
 
-                Natives.Add(New FunctionsClass(funcName, funcParams, Match, tag, pwndoc))
+                Natives.Add(New FunctionsStruct(funcName, funcParams, Match, tag, pwndoc))
             Catch ex As Exception
                 errors.exceptionsList.Add(New ParserException("The native `" + funcName + "` already exists somewhere in the file.", funcName))
             End Try
         Next
 
-        'Enums
-        For Each Match As Match In Regex.Matches(code, "enum\s+([^\n;\(\)\{\}\s]*)\s+(?:(?:[{])([^}]+)(?:[}]))")
-            Dim enumds As String() = Match.Groups(2).Value.Split(",")
-
-            'Variable to store the enums contents.
-            Dim enumStuff As New List(Of EnumsContentsClass)
-
-            For Each enuma As String In enumds
-                'Check if empty
-                If enuma Is Nothing Or enuma.Trim = "" Then Continue For
-
-                Dim length As Integer = enuma.Length + 1
-                enuma = enuma.Trim
-                Dim type = FunctionParameters.getVarType(enuma)
-
-                'Do what needs to be changed
-                If type = FunctionParameters.varTypes.TYPE_FLOAT Then
-                    enuma = enuma.Remove(0, 6)
-                ElseIf type = FunctionParameters.varTypes.TYPE_ARRAY Then
-                    enuma = enuma.Remove(enuma.IndexOf("["), (enuma.IndexOf("]") - enuma.IndexOf("[")) + 1)
-                ElseIf type = FunctionParameters.varTypes.TYPE_TAGGED Then
-                    enuma = enuma.Remove(0, enuma.IndexOf(":") + 1)
-                End If
-
-                Try
-                    enumStuff.Add(New EnumsContentsClass(enuma, type))
-                Catch ex As Exception
-                    errors.exceptionsList.Add(New ParserException("The enum `" + enuma + "` already exists somewhere in the file.", enuma))
-                End Try
-            Next
-
-            'Now add it to the actual list.
-            Enums.Add(New EnumsClass(Match.Groups(1).Value, enumStuff))
-        Next
-
-        'Remove all curly brackets and its contents to remove all child codes.
-        'To be able to get global variables.
-        Dim finish As Boolean = False
-        While (finish = False)
-            If Regex.IsMatch(code, "\{(?:[^{}]*?)\}") Then
-                code = Regex.Replace(code, "\{(?:[^{}]*?)\}", "")
-            Else
-                finish = True
-            End If
-        End While
-
         'Now parse for all global variables.
-        For Each match As Match In Regex.Matches(code, "new[ \t]+(.*);")
+        For Each match As Match In Regex.Matches(code, "new[ \t]+(.*);", RegexOptions.Multiline)
             Dim varName As String = match.Groups(1).Value
 
             'Remove all whitespace.
@@ -355,7 +349,7 @@ Public Class Parser
                 End If
 
                 'Add
-                publicVariables.Add(New VarClass(str, tag, def, arrays))
+                publicVariables.Add(New VarStruct(str, tag, def, arrays))
             Next
         Next
 
@@ -402,90 +396,96 @@ Public Class Parser
 
             'After we have got the stuff that needs to be removed,
             'Start looping through all of them and removing as necessery.
-            For Each def In result.Defines
-                For Each defa In Defines
-                    If def = defa Then
-                        Defines.Remove(defa)
+            For i As Integer = 0 To result.Defines.Count - 1
+                For a As Integer = 0 To Defines.Count - 1
+                    If result.Defines(i) = Defines(a) Then
+                        Defines.RemoveAt(a)
                         Exit For
                     End If
                 Next
             Next
-            For Each stck In result.Stocks
-                For Each stcka In Stocks
-                    If stck = stcka Then
-                        Stocks.Remove(stcka)
+            For i As Integer = 0 To result.Stocks.Count - 1
+                For a As Integer = 0 To Stocks.Count - 1
+                    If result.Stocks(i) = Stocks(a) Then
+                        Stocks.RemoveAt(a)
                         Exit For
                     End If
                 Next
             Next
-            For Each pblic In result.Publics
-                For Each pblica In Publics
-                    If pblic = pblica Then
-                        Publics.Remove(pblica)
+            For i As Integer = 0 To result.Publics.Count - 1
+                For a As Integer = 0 To Publics.Count - 1
+                    If result.Publics(i) = Publics(a) Then
+                        Publics.RemoveAt(a)
                         Exit For
                     End If
                 Next
             Next
-            For Each func In result.Functions
-                For Each funca In Functions
-                    If func = funca Then
-                        Functions.Remove(funca)
+            For i As Integer = 0 To result.Functions.Count - 1
+                For a As Integer = 0 To Functions.Count - 1
+                    If result.Functions(i) = Functions(a) Then
+                        Functions.RemoveAt(a)
                         Exit For
                     End If
                 Next
             Next
-            For Each nat In result.Natives
-                For Each nata In Natives
-                    If nat = nata Then
-                        Natives.Remove(nata)
+            For i As Integer = 0 To result.Natives.Count - 1
+                For a As Integer = 0 To Natives.Count - 1
+                    If result.Natives(i) = Natives(a) Then
+                        Natives.RemoveAt(a)
                         Exit For
                     End If
                 Next
             Next
-            For Each enm In result.Enums
-                For Each enma In Enums
-                    If enm = enma Then
-                        Enums.Remove(enma)
+            For i As Integer = 0 To result.Enums.Count - 1
+                For a As Integer = 0 To Enums.Count - 1
+                    If result.Enums(i) = Enums(a) Then
+                        Enums.RemoveAt(a)
                         Exit For
                     End If
                 Next
             Next
-            For Each var In result.publicVariables
-                For Each vara In publicVariables
-                    If var = vara Then
-                        publicVariables.Remove(vara)
+            For i As Integer = 0 To result.publicVariables.Count - 1
+                For a As Integer = 0 To publicVariables.Count - 1
+                    If result.publicVariables(i) = publicVariables(a) Then
+                        publicVariables.RemoveAt(a)
                         Exit For
                     End If
                 Next
             Next
-
             'And thats it :D
         Next
+
+        My.Computer.FileSystem.WriteAllText("D:/testCode.pwn", code, False)
     End Sub
 
     Private Function isDefined(str As String)
-        For Each def In Defines
-            If def.DefineName = str Then Return True
+        For i As Integer = 0 To Defines.Count - 1
+            If Defines(i).DefineName = str Then Return True
         Next
-        For Each stck In Stocks
-            If stck.FuncName = str Then Return True
+        For i As Integer = 0 To Stocks.Count - 1
+            If Stocks(i).FuncName = str Then Return True
         Next
-        For Each pblc In Publics
-            If pblc.FuncName = str Then Return True
+        For i As Integer = 0 To Publics.Count - 1
+            If Publics(i).FuncName = str Then Return True
         Next
-        For Each func In Functions
-            If func.FuncName = str Then Return True
+        For i As Integer = 0 To Functions.Count - 1
+            If Functions(i).FuncName = str Then Return True
         Next
-        For Each nat In Natives
-            If nat.FuncName = str Then Return True
+        For i As Integer = 0 To Natives.Count - 1
+            If Natives(i).FuncName = str Then Return True
         Next
-        For Each enm In Enums
-            If enm.EnumName = str Then Return True
+        For i As Integer = 0 To Enums.Count - 1
+            If Enums(i).EnumName = str Then Return True
         Next
-        For Each var In publicVariables
-            If var.VarName = str Then Return True
+        For i As Integer = 0 To publicVariables.Count - 1
+            If publicVariables(i).VarName = str Then Return True
         Next
 
         Return False
     End Function
+
+    Private Sub WriteDebug(str As String)
+        My.Computer.FileSystem.WriteAllText("D:/test.txt", str + vbCrLf, True)
+    End Sub
+
 End Class

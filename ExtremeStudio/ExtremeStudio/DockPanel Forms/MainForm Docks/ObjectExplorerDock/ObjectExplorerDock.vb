@@ -14,12 +14,12 @@
         Dim stocks = treeView.Nodes.Add("Stocks") : stocks.Tag = "Root"
         Dim natives = treeView.Nodes.Add("Natives") : natives.Tag = "Root"
 
-        For Each key As ExtremeParser.DefinesClass In parser.Defines
+        For Each key As ExtremeParser.DefinesStruct In parser.Defines
             Dim nde = defines.Nodes.Add(key.DefineName)
             nde.Tag = key.DefineValue
         Next
 
-        For Each key As ExtremeParser.DefinesClass In parser.Macros
+        For Each key As ExtremeParser.DefinesStruct In parser.Macros
             Dim nde = macros.Nodes.Add(key.DefineName)
             nde.Tag = key.DefineValue
         Next
@@ -50,22 +50,70 @@
             Dim nde = functions.Nodes.Add(funcs.FuncName)
             nde.Tag = funcs.FuncParameters
         Next
-        'Set the Root tags.
-        For Each itm In listCustom
-            itm.Tag = "Root"
-        Next
 
         For Each publicFunc In parser.Publics
+            Dim done As Boolean = False
+
+            'Check if it crosponds to a custom one first.
+            For Each itm In listCustom
+                If publicFunc.FuncName.StartsWith(itm.Tag) Then
+                    Dim node = itm.Nodes.Add(publicFunc.FuncName)
+                    node.Tag = publicFunc.FuncParameters
+                    done = True 'To skip the `Else if it wasn't used.`
+                    Exit For
+                End If
+            Next
+
+            If done = True Then Continue For
+
+            'Else if it wasn't used.
             Dim nde = publics.Nodes.Add(publicFunc.FuncName)
             nde.Tag = publicFunc.FuncParameters
         Next
+
         For Each stock In parser.Stocks
+            Dim done As Boolean = False
+
+            'Check if it crosponds to a custom one first.
+            For Each itm In listCustom
+                If stock.FuncName.StartsWith(itm.Tag) Then
+                    Dim node = itm.Nodes.Add(stock.FuncName)
+                    node.Tag = stock.FuncParameters
+                    done = True 'To skip the `Else if it wasn't used.`
+                    Exit For
+                End If
+            Next
+
+            If done = True Then Continue For
+
+            'Else if it wasn't used.
             Dim nde = stocks.Nodes.Add(stock.FuncName)
             nde.Tag = stock.FuncParameters
         Next
+
         For Each native In parser.Natives
+            Dim done As Boolean = False
+
+            'Check if it crosponds to a custom one first.
+            For Each itm In listCustom
+                If native.FuncName.StartsWith(itm.Tag) Then
+                    Dim node = itm.Nodes.Add(native.FuncName)
+                    node.Tag = native.FuncParameters
+                    done = True 'To skip the `Else if it wasn't used.`
+                    Exit For
+                End If
+            Next
+
+            If done = True Then Continue For
+
+            'Else if it wasn't used.
             Dim nde = natives.Nodes.Add(native.FuncName)
             nde.Tag = native.FuncParameters
+        Next
+
+        'Set the Root tags.
+        For Each itm In listCustom
+            itm.Tag = "Root"
         Next
 
         nodeState.RestoreTreeState(treeView) 'Restore

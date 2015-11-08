@@ -3,6 +3,7 @@ Imports ExtremeParser
 Imports System.Text.RegularExpressions
 Imports ExtremeStudio.AutoCompleteItemEx
 Imports ExtremeCore
+Imports System.Text
 
 Public Class EditorDock
 
@@ -202,37 +203,37 @@ Public Class EditorDock
         End If
     End Sub
 
-    Private Sub parseFileWithIncludes(include As Parser, ByRef setString As String, ByRef definesText As String, ByRef autoList As List(Of AutoCompleteItemEx))
+    Private Sub parseFileWithIncludes(include As Parser, ByRef setString As StringBuilder, ByRef definesText As StringBuilder, ByRef autoList As List(Of AutoCompleteItemEx))
         For Each stock In include.Stocks
-            setString += " " + stock.FuncName
+            setString.Append(" " + stock.FuncName)
 
             'AutoComplete
             Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, stock.FuncName, stock.FuncParameters)
             autoList.Add(newitm)
         Next
         For Each publicFunc In include.Publics
-            setString += " " + publicFunc.FuncName
+            setString.Append(" " + publicFunc.FuncName)
 
             'AutoComplete
             Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, publicFunc.FuncName, publicFunc.FuncParameters)
             autoList.Add(newitm)
         Next
         For Each func In include.Functions
-            setString += " " + func.FuncName
+            setString.Append(" " + func.FuncName)
 
             'AutoComplete
             Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, func.FuncName, func.FuncParameters)
             autoList.Add(newitm)
         Next
         For Each native In include.Natives
-            setString += " " + native.FuncName
+            setString.Append(" " + native.FuncName)
 
             'AutoComplete
             Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, native.FuncName, native.FuncParameters)
             autoList.Add(newitm)
         Next
         For Each def In include.Defines
-            definesText += " " + def.DefineName
+            definesText.Append(" " + def.DefineName)
 
             'AutoComplete
             Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, def.DefineName, def.DefineValue)
@@ -240,7 +241,7 @@ Public Class EditorDock
         Next
         For Each parentEnm In include.Enums
             For Each enm In parentEnm.EnumContents
-                definesText += " " + enm.Content
+                definesText.Append(" " + enm.Content)
 
                 'AutoComplete
                 Dim type As String = ""
@@ -260,7 +261,7 @@ Public Class EditorDock
             Next
         Next
         For Each var In include.publicVariables
-            definesText += " " + var.VarName
+            definesText.Append(" " + var.VarName)
 
             'AutoComplete
             Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, var.VarName, "This is a global variable declared in one of the includes.")
@@ -268,13 +269,13 @@ Public Class EditorDock
         Next
 
         For Each inc As String In include.Includes.Keys
-            Dim newSetString As String = ""
-            Dim newDefinesText As String = ""
+            Dim newSetString As New StringBuilder
+            Dim newDefinesText As New StringBuilder
             Dim NewAutoList As New List(Of AutoCompleteItemEx)
             parseFileWithIncludes(include.Includes(inc), newSetString, newDefinesText, NewAutoList)
 
-            setString += " " + newSetString
-            definesText += " " + newDefinesText
+            setString.Append(" " + newSetString.ToString)
+            definesText.Append(" " + newDefinesText.ToString)
             For Each itm In NewAutoList
                 autoList.Add(itm)
             Next
@@ -301,19 +302,21 @@ Public Class EditorDock
 #End Region
 
 #Region "Refresh Functions KeyWord Set"
-        Dim setString As String = ""
-        Dim definesText As String = ""
+        Dim setString As New StringBuilder()
+        Dim definesText As New StringBuilder()
         autoCompleteList.Clear()
 
         parseFileWithIncludes(codeParts, setString, definesText, autoCompleteList)
 
         Try
-            If setString <> "" Then
-                Editor.SetKeywords(1, setString)
-            End If
+            Dim seta As String = setString.ToString
+            Dim defa As String = definesText.ToString
 
-            If definesText <> "" Then
-                Editor.SetKeywords(3, definesText)
+            If seta <> "" Then
+                Editor.SetKeywords(1, seta)
+            End If
+            If defa <> "" Then
+                Editor.SetKeywords(3, defa)
             End If
 
             'Set autoComplete List.
