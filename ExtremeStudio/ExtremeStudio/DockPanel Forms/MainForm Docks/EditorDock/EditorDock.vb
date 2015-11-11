@@ -195,11 +195,11 @@ Public Class EditorDock
 
 #Region "Refresh Worker Codes"
     Public Sub scintilla_TextChangedDelayed(sender As Object, e As EventArgs)
-        If RefreshWorker.IsBusy = False Then RefreshWorker.RunWorkerAsync({Editor.Text, MainForm.currentProject.projectPath}) : MainForm.statusLabel.Text = "Parsing Code."
+        If RefreshWorker.IsBusy = False Then RefreshWorker.RunWorkerAsync({Editor.Text, Editor.Tag, MainForm.currentProject.projectPath}) : MainForm.statusLabel.Text = "Parsing Code."
     End Sub
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork
         If Editor.IsHandleCreated Then
-            e.Result = New Parser(e.Argument(0), e.Argument(1))
+            e.Result = New Parser(e.Argument(0), e.Argument(1), e.Argument(2))
         End If
     End Sub
 

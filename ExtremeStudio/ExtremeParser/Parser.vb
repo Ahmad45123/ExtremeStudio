@@ -31,7 +31,7 @@ Public Class Parser
 
     Public errors As New ExceptionsList
 
-    Public Sub New(code As String, projectPath As String)
+    Public Sub New(code As String, filePath As String, projectPath As String)
         'Remove singleline comments from code.
         code = Regex.Replace(code, "//.*", "")
 
@@ -89,12 +89,8 @@ Public Class Parser
         'Remove all curly brackets and its contents to remove all child codes.
         code = Regex.Replace(code, "(?<=\{)(?>[^{}]+|\{(?<DEPTH>)|\}(?<-DEPTH>))*(?(DEPTH)(?!))(?=\})", "")
 
-        'Remove all strings.
-        code = Regex.Replace(code, "'[^'\\]*(?:\\[^\n\r\x85\u2028\u2029][^'\\]*)*'", "")
-        code = Regex.Replace(code, Chr(34) + "[^" + Chr(34) + "\\]*(?:\\[^\n\r\x85\u2028\u2029][^" + Chr(34) + "\\]*)*" + Chr(34), "")
-
         'Includes
-        For Each Match As Match In Regex.Matches(code, "#include[ \t]+([^\s]+)", RegexOptions.Multiline)
+        For Each Match As Match In Regex.Matches(code, "\#include[ \t]+([^\s]+)", RegexOptions.Multiline)
             Dim text As String = Match.Groups(1).Value
             Dim fullPath As String = ""
 
@@ -109,7 +105,8 @@ Public Class Parser
                     Continue For
                 End Try
 
-                fullPath = projectPath + "/gamemodes/" + text
+                fullPath = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(filePath)), text)
+                If Not fullPath.EndsWith(".inc") Then fullPath += ".inc"
             ElseIf type = "<"
                 'Remove the brackets.
                 Try
@@ -127,7 +124,7 @@ Public Class Parser
             End If
             Try
 
-                Dim prs As New Parser(My.Computer.FileSystem.ReadAllText(fullPath), projectPath)
+                Dim prs As New Parser(My.Computer.FileSystem.ReadAllText(fullPath), fullPath, projectPath)
                 Includes.Add(text, prs)
 
                 'Exceptions.
@@ -137,6 +134,10 @@ Public Class Parser
                 errors.exceptionsList.Add(New IncludeNotFoundException(Path.GetFileNameWithoutExtension(fullPath)))
             End Try
         Next
+
+        'Remove all strings.
+        code = Regex.Replace(code, "'[^'\\]*(?:\\[^\n\r\x85\u2028\u2029][^'\\]*)*'", "")
+        code = Regex.Replace(code, Chr(34) + "[^" + Chr(34) + "\\]*(?:\\[^\n\r\x85\u2028\u2029][^" + Chr(34) + "\\]*)*" + Chr(34), "")
 
         'Defines & Macros: 
         Dim tmpDefines As New List(Of DefinesStruct)
@@ -383,19 +384,19 @@ Public Class Parser
                 'Here the thing should NOT be defined
                 If isDefined(condition) = False Then
                     'Parse the main.
-                    result = New Parser(mainCode, Nothing)
+                    result = New Parser(mainCode, filePath, projectPath)
                 Else
                     'Parse the else.
-                    result = New Parser(elseClode, Nothing)
+                    result = New Parser(elseClode, filePath, projectPath)
                 End If
             Else
                 'It SHOULD be defined.
                 If isDefined(condition) = True Then
                     'Parse the main.
-                    result = New Parser(mainCode, Nothing)
+                    result = New Parser(mainCode, filePath, projectPath)
                 Else
                     'Parse the else.
-                    result = New Parser(elseClode, Nothing)
+                    result = New Parser(elseClode, filePath, projectPath)
                 End If
             End If
 
