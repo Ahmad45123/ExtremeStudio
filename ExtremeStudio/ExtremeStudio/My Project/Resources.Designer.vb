@@ -227,9 +227,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Byte[].
         '''</summary>
-        Friend ReadOnly Property SQLiteInterop() As Byte()
+        Friend ReadOnly Property SQLite_Interop() As Byte()
             Get
-                Dim obj As Object = ResourceManager.GetObject("SQLiteInterop", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("SQLite_Interop", resourceCulture)
                 Return CType(obj,Byte())
             End Get
         End Property
