@@ -38,47 +38,57 @@ Public Class AutoCompleteItemEx
         'Save the type.
         p_type = type
     End Sub
-    Public Sub New(type As AutoCompeleteTypes, funcName As String, funcPars As FunctionParameters)
+
+    Public Function AutoTab(str As String) As String
+        AutoTab = str.Replace(vbCrLf, vbTab + vbCrLf)
+        Return AutoTab
+    End Function
+
+    Public Sub New(type As AutoCompeleteTypes, func As FunctionsStruct)
         'First of all set the the main stuff like text and icon.
-        Text = funcName
+        Text = func.FuncName
         ImageIndex = type
 
         'Setup the tooltip.
         ToolTipTitle = "PawnDoc Help: "
 
         'If there is pawnDoc, use it.
-        If funcPars.pawnDoc IsNot Nothing Then
+        If func.FuncPawnDoc IsNot Nothing Then
             Dim allText As String = ""
 
             'Do the remarks
-            allText += "Remarks: " + vbCrLf + vbTab + funcPars.pawnDoc.Remarks + vbCrLf + vbCrLf
+            allText += "Remarks: " + vbCrLf + AutoTab(func.FuncPawnDoc.Remarks) + vbCrLf + vbCrLf
 
             'Do the Parameters. (HARDEST ONE)
             allText += "Parameters :" + vbCrLf
 
-            For Each par As String In funcPars.pawnDoc.Parameters.Keys
-                Dim parType As String = funcPars.GetParameterType(par, FunctionParameters.returnType.AS_STRING)
+            For Each par As String In func.FuncPawnDoc.Parameters.Keys
+                Dim parType As String = func.FuncParameters.GetParameterType(par, FunctionParameters.returnType.AS_STRING)
 
-                allText += vbTab + "(" + parType + ") " + par + ": " + funcPars.pawnDoc.Parameters(par) + vbCrLf
+                allText += vbTab + "(" + parType + ") " + par + ": " + func.FuncPawnDoc.Parameters(par) + vbCrLf
             Next
             allText += vbCrLf
 
             'Do the returns.
-            allText += "Returns: " + vbCrLf + vbTab + funcPars.pawnDoc.Returns + vbCrLf + vbCrLf
+            allText += "Returns: " + vbCrLf + AutoTab(func.FuncPawnDoc.Returns) + vbCrLf + vbCrLf
 
             'Then simply set it.
             ToolTipText = allText
 
             'Save the stuff.
             p_type = type
-            p_funcPars = funcPars
+            p_funcPars = func.FuncParameters
         Else
-            'there is no PawnDoc.. Just show the parameters.
-            ToolTipText = "Parameters: " + vbCrLf + funcPars.paramsText
+            'there is no PawnDoc.. Setup our own.
+            Dim allText As String = "Function Name: " + func.FuncName + vbCrLf
+            allText += "Parameters: " + func.FuncParameters.paramsText + vbCrLf
+            allText += "Return Tag: " + func.ReturnTag + vbCrLf
+
+            ToolTipText = allText
 
             'Save the stuff.
             p_type = type
-            p_funcPars = funcPars
+            p_funcPars = func.FuncParameters
         End If
     End Sub
 End Class

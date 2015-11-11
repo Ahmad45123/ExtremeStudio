@@ -29,5 +29,4 @@ Public Structure FunctionsStruct
             Return True
         End If
     End Operator
-
 End Structure

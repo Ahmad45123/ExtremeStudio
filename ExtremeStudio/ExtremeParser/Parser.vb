@@ -32,9 +32,15 @@ Public Class Parser
     Public errors As New ExceptionsList
 
     Public Sub New(code As String, projectPath As String)
-        'PawnDoc -- Placed before comments removel because pawndoc is basically a comment.
-        For Each Match As Match In Regex.Matches(code, "(?:\/\*\/{1,}\*\/(?:\r\n|\r|\n))((?:\/\/\/.*(?:\r\n|\r|\n))+)(?:\/\*\\{1,}\*\/)") 'Longest RegEx in the world ? :P
-            Dim val As String = Match.Groups(0).Value 'Group 0 which contains only the internal text without the start and the end.
+        'Remove singleline comments from code.
+        code = Regex.Replace(code, "//.*", "")
+
+        'PawnDoc -- Placed before multiline comments removel because pawndoc is basically a comment.
+        For Each Match As Match In Regex.Matches(code, "/\*\*([\s\S]*?)\*/")
+            Dim val As String = Match.Groups(1).Value 'Group 0 which contains only the internal text without the start and the end.
+
+            If Not val.Contains("<summary>") Or Not val.Contains("</summary>") Then Continue For
+
             Try
                 pawnDocs.Add(New PawnDoc(val))
             Catch ex As ParserException
@@ -42,8 +48,7 @@ Public Class Parser
             End Try
         Next
 
-        'Remove all comments from code.
-        code = Regex.Replace(code, "//.*", "")
+        'Remove multiline comments.
         code = Regex.Replace(code, "\/\*[\s\S]*?\*\/", "", RegexOptions.Multiline)
 
         'Enums
@@ -454,8 +459,6 @@ Public Class Parser
             Next
             'And thats it :D
         Next
-
-        My.Computer.FileSystem.WriteAllText("D:/testCode.pwn", code, False)
     End Sub
 
     Private Function isDefined(str As String)

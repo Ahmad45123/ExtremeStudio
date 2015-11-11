@@ -18,6 +18,7 @@
         TYPE_FLOAT
         TYPE_INTEGER
         TYPE_ARRAY
+        TYPE_OTHER
         TYPE_TAGGED
     End Enum
     Public Shared Function getVarType(var As String) As varTypes
@@ -80,19 +81,13 @@
         AS_ENUM
         AS_STRING
     End Enum
-    Public Enum paramTypes
-        [INTEGER]
-        ARRAY
-        FLOAT
-        OTHER
-    End Enum
     Public Function GetParameterType(paramName As String, returnType As returnType)
         For Each Str As String In Integers.Keys
             If Integers(Str) = paramName Then
                 If returnType = FunctionParameters.returnType.AS_STRING Then
                     Return "Integer"
                 ElseIf returnType = FunctionParameters.returnType.AS_ENUM Then
-                    Return paramTypes.INTEGER
+                    Return varTypes.TYPE_INTEGER
                 End If
             End If
         Next
@@ -101,7 +96,7 @@
                 If returnType = FunctionParameters.returnType.AS_STRING Then
                     Return "Array"
                 ElseIf returnType = FunctionParameters.returnType.AS_ENUM Then
-                    Return paramTypes.ARRAY
+                    Return varTypes.TYPE_ARRAY 
                 End If
             End If
         Next
@@ -110,7 +105,7 @@
                 If returnType = FunctionParameters.returnType.AS_STRING Then
                     Return "Float"
                 ElseIf returnType = FunctionParameters.returnType.AS_ENUM Then
-                    Return paramTypes.FLOAT
+                    Return varTypes.TYPE_FLOAT
                 End If
             End If
         Next
@@ -118,7 +113,7 @@
         If returnType = FunctionParameters.returnType.AS_STRING Then
             Return "Other"
         ElseIf returnType = FunctionParameters.returnType.AS_ENUM Then
-            Return paramTypes.OTHER
+            Return varTypes.TYPE_OTHER
         End If
         Return Nothing
     End Function

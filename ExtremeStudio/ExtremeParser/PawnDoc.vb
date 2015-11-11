@@ -44,7 +44,6 @@
         Dim isInRemarks As Boolean = False : Dim currentRemark As String = Nothing
 
         For Each line As String In lines
-            line = line.TrimStart("///") 'Remove the starting ///
             line = line.Trim 'Remove the whitespace.
 
             If isInSummary Then

@@ -69,7 +69,7 @@ Public Class EditorDock
         SetBackColor(SettingsForm.backgroundColor.Color)
         Editor.Styles(Style.Cpp.Comment).ForeColor = SettingsForm.commentColor.Color
         Editor.Styles(Style.Cpp.CommentLine).ForeColor = SettingsForm.commentColor.Color
-        Editor.Styles(Style.Cpp.CommentLineDoc).ForeColor = SettingsForm.pawndocColor.Color
+        Editor.Styles(Style.Cpp.CommentDoc).ForeColor = SettingsForm.pawndocColor.Color
         Editor.Styles(Style.Cpp.Number).ForeColor = SettingsForm.numberColor.Color
 
         'Custom Keywords.
@@ -208,28 +208,28 @@ Public Class EditorDock
             setString.Append(" " + stock.FuncName)
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, stock.FuncName, stock.FuncParameters)
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, stock)
             autoList.Add(newitm)
         Next
         For Each publicFunc In include.Publics
             setString.Append(" " + publicFunc.FuncName)
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, publicFunc.FuncName, publicFunc.FuncParameters)
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, publicFunc)
             autoList.Add(newitm)
         Next
         For Each func In include.Functions
             setString.Append(" " + func.FuncName)
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, func.FuncName, func.FuncParameters)
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, func)
             autoList.Add(newitm)
         Next
         For Each native In include.Natives
             setString.Append(" " + native.FuncName)
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, native.FuncName, native.FuncParameters)
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, native)
             autoList.Add(newitm)
         Next
         For Each def In include.Defines
