@@ -6,7 +6,7 @@
             Return p_summary
         End Get
     End Property
-    Public ReadOnly Property Parameters As Dictionary(Of String, String)
+    Public ReadOnly Property Parameters As List(Of KeyValuePair(Of String, String))
         Get
             Return p_params
         End Get
@@ -24,7 +24,7 @@
 #End Region
 
     Private p_summary As String
-    Private p_params As New Dictionary(Of String, String)
+    Private p_params As New List(Of KeyValuePair(Of String, String))
     Private p_returns As String
     Private p_remarks As String
 
@@ -62,7 +62,7 @@
                     isInAParam = False
 
                     'Create the key
-                    Parameters.Add(currentParamName, currentParamDesc)
+                    Parameters.Add(New KeyValuePair(Of String, String)(currentParamName, currentParamDesc))
                 End If
                 Continue For
             ElseIf isInReturn Then
@@ -105,7 +105,7 @@
                     currentParamDesc = line.Trim()
 
                     'Create the key
-                    Parameters.Add(currentParamName, currentParamDesc)
+                    Parameters.Add(New KeyValuePair(Of String, String)(currentParamName, currentParamDesc))
                 Else
                     isInAParam = True
                 End If

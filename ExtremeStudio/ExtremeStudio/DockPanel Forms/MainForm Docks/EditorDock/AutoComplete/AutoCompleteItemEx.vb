@@ -40,7 +40,8 @@ Public Class AutoCompleteItemEx
     End Sub
 
     Public Function AutoTab(str As String) As String
-        AutoTab = str.Replace(vbCrLf, vbTab + vbCrLf)
+        AutoTab = vbTab
+        AutoTab += str.Replace(vbCrLf, vbCrLf + vbTab)
         Return AutoTab
     End Function
 
@@ -62,10 +63,13 @@ Public Class AutoCompleteItemEx
             'Do the Parameters. (HARDEST ONE)
             allText += "Parameters :" + vbCrLf
 
-            For Each par As String In func.FuncPawnDoc.Parameters.Keys
+            For Each itm As KeyValuePair(Of String, String) In func.FuncPawnDoc.Parameters
+                Dim par As String = itm.Key
+                Dim desc As String = itm.Value
+
                 Dim parType As String = func.FuncParameters.GetParameterType(par, FunctionParameters.returnType.AS_STRING)
 
-                allText += vbTab + "(" + parType + ") " + par + ": " + func.FuncPawnDoc.Parameters(par) + vbCrLf
+                allText += vbTab + "(" + parType + ") " + par + ": " + desc + vbCrLf
             Next
             allText += vbCrLf
 

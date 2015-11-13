@@ -1,8 +1,5 @@
 ﻿Imports System.IO
 Imports System.Text.RegularExpressions
-Imports System.Threading
-Imports System.Threading.Tasks
-Imports ExtremeCore
 
 Public Class Parser
 
@@ -31,7 +28,26 @@ Public Class Parser
 
     Public errors As New ExceptionsList
 
-    Public Sub New(code As String, filePath As String, projectPath As String)
+    Private isValid As Boolean = True
+    Public Sub New(code As String, filePath As String, projectPath As String, Optional parsed As List(Of String) = Nothing)
+        'Set as already parsed.
+        If filePath IsNot Nothing Then
+
+            If parsed Is Nothing Then
+                parsed = New List(Of String)
+            End If
+
+            'Check if already parsed and if so, Skip.
+            For Each str As String In parsed
+                If str = Path.GetFileName(filePath) Then
+                    isValid = False
+                    Exit Sub
+                End If
+            Next
+
+            parsed.Add(Path.GetFileName(filePath))
+        End If
+
         'Remove singleline comments from code.
         code = Regex.Replace(code, "//.*", "")
 
@@ -124,8 +140,8 @@ Public Class Parser
             End If
             Try
 
-                Dim prs As New Parser(My.Computer.FileSystem.ReadAllText(fullPath), fullPath, projectPath)
-                Includes.Add(text, prs)
+                Dim prs As New Parser(My.Computer.FileSystem.ReadAllText(fullPath), fullPath, projectPath, parsed)
+                If prs.isValid Then Includes.Add(text, prs)
 
                 'Exceptions.
             Catch ex As DirectoryNotFoundException
@@ -359,9 +375,11 @@ Public Class Parser
             Next
         Next
 
-        'Now to checks for if defined stuff and remove as needed.
-        For Each match As Match In Regex.Matches(code, "#if[ \t]+(!)?defined[ \t]+(.+)([\s\S]*)#endif", RegexOptions.Multiline)
-            Dim isNt As Boolean = IIf(match.Groups(1).Value = "", False, True)
+        My.Computer.FileSystem.WriteAllText("D:/test.pwn", code, False)
+
+        'Now to checks for if defined stuff And remove as needed.
+        For Each match As Match In Regex.Matches(code, "\#if[ \t]+(!)?defined[ \t]+(.+)([\s\S]*?)\#endif", RegexOptions.Multiline)
+            Dim isNt As Boolean = IIf(match.Groups(1).Value = "", True, False)
             Dim condition As String = ""
             Dim mainCode As String = ""
             Dim elseClode As String = " "
@@ -384,19 +402,19 @@ Public Class Parser
                 'Here the thing should NOT be defined
                 If isDefined(condition) = False Then
                     'Parse the main.
-                    result = New Parser(mainCode, filePath, projectPath)
+                    result = New Parser(mainCode, Nothing, Nothing)
                 Else
                     'Parse the else.
-                    result = New Parser(elseClode, filePath, projectPath)
+                    result = New Parser(elseClode, Nothing, Nothing)
                 End If
             Else
                 'It SHOULD be defined.
                 If isDefined(condition) = True Then
                     'Parse the main.
-                    result = New Parser(mainCode, filePath, projectPath)
+                    result = New Parser(mainCode, Nothing, Nothing)
                 Else
                     'Parse the else.
-                    result = New Parser(elseClode, filePath, projectPath)
+                    result = New Parser(elseClode, Nothing, Nothing)
                 End If
             End If
 

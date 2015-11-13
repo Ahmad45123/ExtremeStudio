@@ -82,38 +82,22 @@
         AS_STRING
     End Enum
     Public Function GetParameterType(paramName As String, returnType As returnType)
-        For Each Str As String In Integers.Keys
-            If Integers(Str) = paramName Then
-                If returnType = FunctionParameters.returnType.AS_STRING Then
-                    Return "Integer"
-                ElseIf returnType = FunctionParameters.returnType.AS_ENUM Then
-                    Return varTypes.TYPE_INTEGER
-                End If
-            End If
-        Next
-        For Each Str As String In Arrays.Keys
-            If Arrays(Str) = paramName Then
-                If returnType = FunctionParameters.returnType.AS_STRING Then
-                    Return "Array"
-                ElseIf returnType = FunctionParameters.returnType.AS_ENUM Then
-                    Return varTypes.TYPE_ARRAY 
-                End If
-            End If
-        Next
-        For Each Str As String In Floats.Keys
-            If Floats(Str) = paramName Then
-                If returnType = FunctionParameters.returnType.AS_STRING Then
-                    Return "Float"
-                ElseIf returnType = FunctionParameters.returnType.AS_ENUM Then
-                    Return varTypes.TYPE_FLOAT
-                End If
-            End If
-        Next
+        Dim ret As varTypes = getVarType(paramName)
 
-        If returnType = FunctionParameters.returnType.AS_STRING Then
-            Return "Other"
-        ElseIf returnType = FunctionParameters.returnType.AS_ENUM Then
-            Return varTypes.TYPE_OTHER
+        If returnType = returnType.AS_ENUM Then
+            Return ret
+        Else
+            If ret = varTypes.TYPE_ARRAY Then
+                Return "Array"
+            ElseIf ret = varTypes.TYPE_FLOAT
+                Return "Float"
+            ElseIf ret = varTypes.TYPE_INTEGER
+                Return "Integer"
+            ElseIf ret = varTypes.TYPE_OTHER
+                Return "Other"
+            ElseIf ret = varTypes.TYPE_TAGGED
+                Return "Tagged"
+            End If
         End If
         Return Nothing
     End Function
