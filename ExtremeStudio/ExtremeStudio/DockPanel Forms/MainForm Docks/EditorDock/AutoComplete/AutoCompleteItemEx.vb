@@ -40,6 +40,8 @@ Public Class AutoCompleteItemEx
     End Sub
 
     Public Function AutoTab(str As String) As String
+        If str Is Nothing Then Return Nothing
+
         AutoTab = vbTab
         AutoTab += str.Replace(vbCrLf, vbCrLf + vbTab)
         Return AutoTab

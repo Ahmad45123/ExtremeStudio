@@ -222,7 +222,7 @@ Public Class Parser
         Next
 
         'Publics.
-        For Each Match As Match In Regex.Matches(code, "public[ \t]+([a-zA-Z_@&]+)[ \t]*\((.*)\)\s*{", RegexOptions.Multiline)
+        For Each Match As Match In Regex.Matches(code, "public[ \t]+([a-zA-Z1-3_@: \t]+)[ \t]*\((.*)\)\s*{", RegexOptions.Multiline)
             Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
             Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
@@ -248,7 +248,7 @@ Public Class Parser
         Next
 
         'Stocks
-        For Each Match As Match In Regex.Matches(code, "stock[ \t]+([a-zA-Z_@&]+)[ \t]*\((.*)\)\s*{", RegexOptions.Multiline)
+        For Each Match As Match In Regex.Matches(code, "stock[ \t]+([a-zA-Z1-3_@: \t]+)[ \t]*\((.*)\)\s*{", RegexOptions.Multiline)
             Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
             Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
@@ -274,7 +274,7 @@ Public Class Parser
         Next
 
         'Functions in General.
-        For Each Match As Match In Regex.Matches(code, "^[ \t]*(?!" + funcLikeKeywords + ")(?:static\s+stock\s+|static\s+)?([^ \t\n\r]+)\((.*)\)(?!;)\s*{", RegexOptions.Multiline)
+        For Each Match As Match In Regex.Matches(code, "^[ \t]*(?!" + funcLikeKeywords + ")(?:\sstatic\s+stock\s+|\sstock\s+static\s+|\sstatic\s+)?([^ \t\n\r]+)\((.*)\)(?!;)\s*{", RegexOptions.Multiline)
             Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
             Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
@@ -300,7 +300,7 @@ Public Class Parser
         Next
 
         'Natives
-        For Each Match As Match In Regex.Matches(code, "native[ \t]+([a-zA-Z_@&]+)[ \t]*?\((.*)\);", RegexOptions.Multiline)
+        For Each Match As Match In Regex.Matches(code, "native[ \t]+([a-zA-Z1-3_@: \t]+)[ \t]*?\((.*)\);", RegexOptions.Multiline)
             Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
             Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
@@ -326,7 +326,7 @@ Public Class Parser
         Next
 
         'Now parse for all global variables.
-        For Each match As Match In Regex.Matches(code, "(?:static\s+stock|new\s+stock|new|static|stock)\s+(.*);", RegexOptions.Multiline)
+        For Each match As Match In Regex.Matches(code, "(?:\s?stock\s+static|\s?static\s+stock|\s?new\s+stock|\s?new|\s?static|\s?stock)\s*([\s\S]*?);", RegexOptions.Multiline)
             Dim varName As String = match.Groups(1).Value
 
             'Remove all whitespace.
@@ -353,15 +353,10 @@ Public Class Parser
 
                 'Get and Remove all arrays.
                 Dim arrays As New List(Of String)
-                Dim done As Boolean = False
-                While done = False
-                    If str.Contains("[") And str.Contains("]") Then
-                        arrays.Add(str.Substring(str.IndexOf("["), (str.IndexOf("]") - str.IndexOf("[")) + 1))
-                        str = str.Remove(str.IndexOf("["), (str.IndexOf("]") - str.IndexOf("[")) + 1)
-                    Else
-                        done = True
-                    End If
-                End While
+                For Each mtch As Match In Regex.Matches(str, "(?<=\[)(?>[^\[\]]+|\[(?<DEPTH>)|\](?<-DEPTH>))*(?(DEPTH)(?!))(?=\])")
+                    arrays.Add(mtch.Value)
+                Next
+                str = Regex.Replace(str, "\[(?<=\[)(?>[^\[\]]+|\[(?<DEPTH>)|\](?<-DEPTH>))*(?(DEPTH)(?!))(?=\])\]", "")
 
                 'Get then Remove default
                 Dim def As String = ""
@@ -379,7 +374,7 @@ Public Class Parser
 
         'Now to checks for if defined stuff And remove as needed.
         For Each match As Match In Regex.Matches(code, "\#if[ \t]+(!)?defined[ \t]+(.+)([\s\S]*?)\#endif", RegexOptions.Multiline)
-            Dim isNt As Boolean = IIf(match.Groups(1).Value = "", True, False)
+            Dim isNt As Boolean = IIf(match.Groups(1).Value = "", False, True)
             Dim condition As String = ""
             Dim mainCode As String = ""
             Dim elseClode As String = " "
