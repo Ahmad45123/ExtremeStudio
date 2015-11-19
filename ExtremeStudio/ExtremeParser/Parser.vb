@@ -157,38 +157,13 @@ Public Class Parser
 
         'Defines & Macros: 
         Dim tmpDefines As New List(Of DefinesStruct)
-        For Each Match As Match In Regex.Matches(code, "#define[ \t]+([^\n\r\s\\;]+)(?:[ \t]*([^\s;]+))?", RegexOptions.Multiline)
+        For Each Match As Match In Regex.Matches(code, "^[ \t]*[#]define[ \t]+(?<name>[^\s\\;]+)[ \t]*(?:\\\s+)?(?>(?<value>[^\\\n\r]+)[ \t]*(?:\\\s+)?)*", RegexOptions.Multiline)
             Dim defineName As String = Match.Groups(1).Value
-            Dim defineValue As String = Match.Groups(2).Value
+            Dim defineValue As String = ""
 
-#Region "Check if its multiline or not, And if yes.. Start processing to get the lines."
-            If defineValue = "\" Then
-                defineValue = ""
-
-                Dim pos As Integer = Match.Index + Match.Length + 1 ' 1 for Skip the coming vbLf.
-                Dim neededLines As Integer = 1
-
-                'Infinite loop.
-                Dim finished As Boolean = False
-                While (finished = False)
-                    pos += 1
-
-                    If code.Length <= pos Then finished = True : Exit While
-
-                    If code(pos) = "\" Then
-                        neededLines += 1
-                    ElseIf code(pos) = vbCr Then
-                        neededLines -= 1
-                    Else
-                        defineValue += code(pos)
-                    End If
-
-                    If neededLines <= 0 Then
-                        finished = True
-                    End If
-                End While
-            End If
-#End Region
+            For Each capt As Capture In Match.Groups(2).Captures
+                defineValue += capt.Value.Trim + vbCrLf
+            Next
 
             Try
                 tmpDefines.Add(New DefinesStruct(defineName.Trim, defineValue.Trim, Match))
