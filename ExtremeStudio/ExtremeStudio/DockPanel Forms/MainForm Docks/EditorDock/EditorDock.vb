@@ -13,7 +13,7 @@ Public Class EditorDock
         INDICATOR_CODEERROR
         INDICATOR_PHPDOCERROR
     End Enum
-    Public codeParts As Parser
+    Public codeParts As New Parser(Nothing, Nothing, Nothing)
     Dim autoCompleteList As New List(Of AutoCompleteItemEx)
 
     Public isFirstParse As Boolean = True
@@ -310,7 +310,7 @@ Public Class EditorDock
         MainForm.statusLabel.Text = "Idle."
         ErrorsDock.parserErrors.Rows.Clear()
 
-        codeParts = DirectCast(e.Result, Parser)
+        codeParts += DirectCast(e.Result, Parser)
 
 #Region "Error Showing"
         For Each obj In codeParts.errors.exceptionsList

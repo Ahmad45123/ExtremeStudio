@@ -479,68 +479,149 @@ Public Class Parser
     End Function
 
     Public Shared Operator -(first As Parser, second As Parser)
+        Dim returna As New Parser(Nothing, Nothing, Nothing)
+
         For i As Integer = 0 To first.Defines.Count - 1
+            Dim isAdd As Boolean = True
             For a As Integer = 0 To second.Defines.Count - 1
-                If first.Defines(i).DefineName = second.Defines(a).DefineName Then first.Defines.RemoveAt(i)
+                'If exists, Don't add.
+                If first.Defines(i).DefineName = second.Defines(a).DefineName Then
+                    isAdd = False
+                End If
             Next
+
+            'Add this if it was not found.
+            If isAdd Then
+                returna.Defines.Add(first.Defines(i))
+            End If
         Next
         For i As Integer = 0 To first.Stocks.Count - 1
+            Dim isAdd As Boolean = True
             For a As Integer = 0 To second.Stocks.Count - 1
-                If first.Stocks(i).FuncName = second.Stocks(a).FuncName Then first.Stocks.RemoveAt(i)
+                'If exists, Don't add.
+                If first.Stocks(i).FuncName = second.Stocks(a).FuncName Then
+                    isAdd = False
+                End If
             Next
+
+            'Add this if it was not found.
+            If isAdd Then
+                returna.Stocks.Add(first.Stocks(i))
+            End If
         Next
         For i As Integer = 0 To first.Publics.Count - 1
+            Dim isAdd As Boolean = True
             For a As Integer = 0 To second.Publics.Count - 1
-                If first.Publics(i).FuncName = second.Publics(a).FuncName Then first.Publics.RemoveAt(i)
+                'If exists, Don't add.
+                If first.Publics(i).FuncName = second.Publics(a).FuncName Then
+                    isAdd = False
+                End If
             Next
+
+            'Add this if it was not found.
+            If isAdd Then
+                returna.Publics.Add(first.Publics(i))
+            End If
         Next
         For i As Integer = 0 To first.Functions.Count - 1
+            Dim isAdd As Boolean = True
             For a As Integer = 0 To second.Functions.Count - 1
-                If first.Functions(i).FuncName = second.Functions(a).FuncName Then first.Functions.RemoveAt(i)
+                'If exists, Don't add.
+                If first.Functions(i).FuncName = second.Functions(a).FuncName Then
+                    isAdd = False
+                End If
             Next
+
+            'Add this if it was not found.
+            If isAdd Then
+                returna.Functions.Add(first.Functions(i))
+            End If
         Next
         For i As Integer = 0 To first.Natives.Count - 1
+            Dim isAdd As Boolean = True
             For a As Integer = 0 To second.Natives.Count - 1
-                If first.Natives(i).FuncName = second.Natives(a).FuncName Then first.Natives.RemoveAt(i)
+                'If exists, Don't add.
+                If first.Natives(i).FuncName = second.Natives(a).FuncName Then
+                    isAdd = False
+                End If
             Next
+
+            'Add this if it was not found.
+            If isAdd Then
+                returna.Natives.Add(first.Natives(i))
+            End If
         Next
         For i As Integer = 0 To first.Enums.Count - 1
+            Dim isAdd As Boolean = True
             For a As Integer = 0 To second.Enums.Count - 1
-                If first.Enums(i).EnumName = second.Enums(a).EnumName Then first.Enums.RemoveAt(i)
+                'If exists, Don't add.
+                If first.Enums(i).EnumName = second.Enums(a).EnumName Then
+                    isAdd = False
+                End If
             Next
+
+            'Add this if it was not found.
+            If isAdd Then
+                returna.Enums.Add(first.Enums(i))
+            End If
         Next
         For i As Integer = 0 To first.publicVariables.Count - 1
+            Dim isAdd As Boolean = True
             For a As Integer = 0 To second.publicVariables.Count - 1
-                If first.publicVariables(i).VarName = second.publicVariables(a).VarName Then first.publicVariables.RemoveAt(i)
+                'If exists, Don't add.
+                If first.publicVariables(i).VarName = second.publicVariables(a).VarName Then
+                    isAdd = False
+                End If
             Next
+
+            'Add this if it was not found.
+            If isAdd Then
+                returna.publicVariables.Add(first.publicVariables(i))
+            End If
         Next
 
-        Return first
+        Return returna
     End Operator
 
     Public Shared Operator +(first As Parser, second As Parser)
+        Dim returna As Parser = first
+
         For a As Integer = 0 To second.Defines.Count - 1
-            first.Defines.Add(second.Defines(a))
+            If returna.isDefined(second.Defines(a).DefineName) = False Then
+                returna.Defines.Add(second.Defines(a))
+            End If
         Next
         For a As Integer = 0 To second.Stocks.Count - 1
-            first.Stocks.Add(second.Stocks(a))
+            If returna.isDefined(second.Stocks(a).FuncName) = False Then
+                returna.Stocks.Add(second.Stocks(a))
+            End If
         Next
         For a As Integer = 0 To second.Publics.Count - 1
-            first.Publics.Add(second.Publics(a))
+            If returna.isDefined(second.Publics(a).FuncName) = False Then
+                returna.Publics.Add(second.Publics(a))
+            End If
         Next
         For a As Integer = 0 To second.Functions.Count - 1
-            first.Functions.Add(second.Functions(a))
+            If returna.isDefined(second.Functions(a).FuncName) = False Then
+                returna.Functions.Add(second.Functions(a))
+            End If
         Next
         For a As Integer = 0 To second.Natives.Count - 1
-            first.Natives.Add(second.Natives(a))
+            If returna.isDefined(second.Natives(a).FuncName) = False Then
+                returna.Natives.Add(second.Natives(a))
+            End If
         Next
         For a As Integer = 0 To second.Enums.Count - 1
-            first.Enums.Add(second.Enums(a))
+            If returna.isDefined(second.Enums(a).EnumName) = False Then
+                returna.Enums.Add(second.Enums(a))
+            End If
         Next
         For a As Integer = 0 To second.publicVariables.Count - 1
-            first.publicVariables.Add(second.publicVariables(a))
+            If returna.isDefined(second.publicVariables(a).VarName) = False Then
+                returna.publicVariables.Add(second.publicVariables(a))
+            End If
         Next
 
-        Return first
+        Return returna
     End Operator
 End Class
