@@ -16,6 +16,8 @@ Public Class EditorDock
     Public codeParts As Parser
     Dim autoCompleteList As New List(Of AutoCompleteItemEx)
 
+    Public isFirstParse As Boolean = True
+
     'UnRelated events here.
     Private Sub EditorDock_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If Editor.Modified Then
@@ -195,7 +197,23 @@ Public Class EditorDock
 
 #Region "Refresh Worker Codes"
     Public Sub scintilla_TextChangedDelayed(sender As Object, e As EventArgs)
-        If RefreshWorker.IsBusy = False Then RefreshWorker.RunWorkerAsync({Editor.Text, Editor.Tag, MainForm.currentProject.projectPath}) : MainForm.statusLabel.Text = "Parsing Code."
+        If RefreshWorker.IsBusy = False Then
+            Dim code As String = ""
+
+            'If first parse, Do a full parse.
+            If isFirstParse Then
+                isFirstParse = False
+                code = Editor.Text
+            Else
+                'Else, Get the code chunk.
+                'This might look unreadable.. But pretty simple.
+                'Just calculate and get the visible text.
+                code = Editor.GetTextRange(Editor.Lines(Editor.FirstVisibleLine).Position, (Editor.Lines(Editor.FirstVisibleLine + Editor.LinesOnScreen).EndPosition) - (Editor.Lines(Editor.FirstVisibleLine).Position))
+            End If
+
+            RefreshWorker.RunWorkerAsync({code, Editor.Tag, MainForm.currentProject.projectPath})
+            MainForm.statusLabel.Text = "Parsing Code."
+        End If
     End Sub
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork
         If Editor.IsHandleCreated Then
