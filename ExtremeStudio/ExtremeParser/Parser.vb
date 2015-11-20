@@ -30,6 +30,8 @@ Public Class Parser
 
     Private isValid As Boolean = True
     Public Sub New(code As String, filePath As String, projectPath As String, Optional parsed As List(Of String) = Nothing)
+        If code Is Nothing Then Exit Sub
+
         'Set as already parsed.
         If filePath IsNot Nothing Then
 
@@ -476,8 +478,69 @@ Public Class Parser
         Return False
     End Function
 
-    Private Sub WriteDebug(str As String)
-        My.Computer.FileSystem.WriteAllText("D:/test.txt", str + vbCrLf, True)
-    End Sub
+    Public Shared Operator -(first As Parser, second As Parser)
+        For i As Integer = 0 To first.Defines.Count - 1
+            For a As Integer = 0 To second.Defines.Count - 1
+                If first.Defines(i).DefineName = second.Defines(a).DefineName Then first.Defines.RemoveAt(i)
+            Next
+        Next
+        For i As Integer = 0 To first.Stocks.Count - 1
+            For a As Integer = 0 To second.Stocks.Count - 1
+                If first.Stocks(i).FuncName = second.Stocks(a).FuncName Then first.Stocks.RemoveAt(i)
+            Next
+        Next
+        For i As Integer = 0 To first.Publics.Count - 1
+            For a As Integer = 0 To second.Publics.Count - 1
+                If first.Publics(i).FuncName = second.Publics(a).FuncName Then first.Publics.RemoveAt(i)
+            Next
+        Next
+        For i As Integer = 0 To first.Functions.Count - 1
+            For a As Integer = 0 To second.Functions.Count - 1
+                If first.Functions(i).FuncName = second.Functions(a).FuncName Then first.Functions.RemoveAt(i)
+            Next
+        Next
+        For i As Integer = 0 To first.Natives.Count - 1
+            For a As Integer = 0 To second.Natives.Count - 1
+                If first.Natives(i).FuncName = second.Natives(a).FuncName Then first.Natives.RemoveAt(i)
+            Next
+        Next
+        For i As Integer = 0 To first.Enums.Count - 1
+            For a As Integer = 0 To second.Enums.Count - 1
+                If first.Enums(i).EnumName = second.Enums(a).EnumName Then first.Enums.RemoveAt(i)
+            Next
+        Next
+        For i As Integer = 0 To first.publicVariables.Count - 1
+            For a As Integer = 0 To second.publicVariables.Count - 1
+                If first.publicVariables(i).VarName = second.publicVariables(a).VarName Then first.publicVariables.RemoveAt(i)
+            Next
+        Next
 
+        Return first
+    End Operator
+
+    Public Shared Operator +(first As Parser, second As Parser)
+        For a As Integer = 0 To second.Defines.Count - 1
+            first.Defines.Add(second.Defines(a))
+        Next
+        For a As Integer = 0 To second.Stocks.Count - 1
+            first.Stocks.Add(second.Stocks(a))
+        Next
+        For a As Integer = 0 To second.Publics.Count - 1
+            first.Publics.Add(second.Publics(a))
+        Next
+        For a As Integer = 0 To second.Functions.Count - 1
+            first.Functions.Add(second.Functions(a))
+        Next
+        For a As Integer = 0 To second.Natives.Count - 1
+            first.Natives.Add(second.Natives(a))
+        Next
+        For a As Integer = 0 To second.Enums.Count - 1
+            first.Enums.Add(second.Enums(a))
+        Next
+        For a As Integer = 0 To second.publicVariables.Count - 1
+            first.publicVariables.Add(second.publicVariables(a))
+        Next
+
+        Return first
+    End Operator
 End Class

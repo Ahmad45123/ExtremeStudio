@@ -196,6 +196,14 @@ Public Class EditorDock
 #End Region
 
 #Region "Refresh Worker Codes"
+    Private ReadOnly Property VisibleCode As String
+        Get
+            'This might look unreadable.. But pretty simple.
+            'Just calculate and get the visible text.
+            Return Editor.GetTextRange(Editor.Lines(Editor.FirstVisibleLine).Position, (Editor.Lines(Editor.FirstVisibleLine + Editor.LinesOnScreen).EndPosition) - (Editor.Lines(Editor.FirstVisibleLine).Position))
+        End Get
+    End Property
+
     Public Sub scintilla_TextChangedDelayed(sender As Object, e As EventArgs)
         If RefreshWorker.IsBusy = False Then
             Dim code As String = ""
@@ -206,9 +214,7 @@ Public Class EditorDock
                 code = Editor.Text
             Else
                 'Else, Get the code chunk.
-                'This might look unreadable.. But pretty simple.
-                'Just calculate and get the visible text.
-                code = Editor.GetTextRange(Editor.Lines(Editor.FirstVisibleLine).Position, (Editor.Lines(Editor.FirstVisibleLine + Editor.LinesOnScreen).EndPosition) - (Editor.Lines(Editor.FirstVisibleLine).Position))
+                code = VisibleCode
             End If
 
             RefreshWorker.RunWorkerAsync({code, Editor.Tag, MainForm.currentProject.projectPath})
@@ -350,6 +356,24 @@ Public Class EditorDock
         If ObjectExplorerDock.Visible Then
             ObjectExplorerDock.refreshTreeView(codeParts)
         End If
+    End Sub
+
+    Private Sub Editor_BeforeDelete(sender As Object, e As BeforeModificationEventArgs) Handles Editor.BeforeDelete
+        'Parse removed text.
+        If RemoverWorker.IsBusy = False Then
+            RemoverWorker.RunWorkerAsync({e.Text, Editor.Tag, MainForm.currentProject.projectPath})
+        End If
+    End Sub
+    Private Sub RemoverWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RemoverWorker.DoWork
+        If Editor.IsHandleCreated Then
+            'Parse the removed code.
+            e.Result = New Parser(e.Argument(0), e.Argument(1), e.Argument(2))
+        End If
+    End Sub
+    Private Sub RemoverWorker_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles RemoverWorker.RunWorkerCompleted
+        'Remove the removed code from the lists.
+        Dim toRemoveParts = DirectCast(e.Result, Parser)
+        codeParts -= toRemoveParts
     End Sub
 #End Region
 

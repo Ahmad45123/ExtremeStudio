@@ -28,6 +28,7 @@ Partial Class EditorDock
         Me.RefreshWorker = New System.ComponentModel.BackgroundWorker()
         Me.AutoCompleteMenu = New AutocompleteMenuNS.AutocompleteMenu()
         Me.ACImageList = New System.Windows.Forms.ImageList(Me.components)
+        Me.RemoverWorker = New System.ComponentModel.BackgroundWorker()
         Me.SuspendLayout()
         '
         'Editor
@@ -87,4 +88,6 @@ Partial Class EditorDock
         ' Add any initialization after the InitializeComponent() call.
 
     End Sub
+
+    Friend WithEvents RemoverWorker As System.ComponentModel.BackgroundWorker
 End Class
