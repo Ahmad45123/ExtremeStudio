@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CA2D61E0-76E6-4600-A6EA-20FF17FB4C84}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>ExtremeStudio.My.MyApplication</StartupObject>
+    <RootNamespace>ExtremeStudio</RootNamespace>
+    <AssemblyName>ExtremeStudio</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\Users\Johny\Documents\GitHub\esfiles\latestProg\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://johnymac.github.io/esfiles/latestProg/</InstallUrl>
+    <UpdateUrl>http://johnymac.github.io/esfiles/latestProg/</UpdateUrl>
+    <SupportUrl>http://forum.sa-mp.com/showthread.php%3ft=532630</SupportUrl>
+    <ErrorReportUrl>http://forum.sa-mp.com/showthread.php%3ft=532630</ErrorReportUrl>
+    <TargetCulture>en</TargetCulture>
+    <ProductName>ExtremeStudio</ProductName>
+    <PublisherName>Ahmed Mamdouh</PublisherName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>index.html</WebPage>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>21</ApplicationRevision>
+    <ApplicationVersion>0.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ExtremeStudio.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ExtremeStudio.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>FBD671C8CD98F956984A8103490B359C4D180706</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ExtremeStudio_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>Internet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>ExtremeStudio.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>ExtremeStudio.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutocompleteMenu">
+      <HintPath>..\lib\AutocompleteMenu.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.6.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.9.6\lib\net20\Ionic.Zip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ScintillaNET, Version=3.5.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\jacobslusser.ScintillaNET.3.5.4\lib\net40\ScintillaNET.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.98.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.98.1\lib\net40\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <HintPath>..\packages\DockPanelSuite.2.9.0.0\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes and Modules\currentProjectClass.vb" />
+    <Compile Include="Classes and Modules\funcsHandler.vb" />
+    <Compile Include="Classes and Modules\versionHandler.vb" />
+    <Compile Include="DockPanel Forms\MainForm Docks\EditorDock\AutoComplete\AutoCompleteItemEx.vb" />
+    <Compile Include="DockPanel Forms\MainForm Docks\EditorDock\EditorDock.Designer.vb">
+      <DependentUpon>EditorDock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockPanel Forms\MainForm Docks\EditorDock\EditorDock.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockPanel Forms\MainForm Docks\ErrorsDock.Designer.vb">
+      <DependentUpon>ErrorsDock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockPanel Forms\MainForm Docks\ErrorsDock.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockPanel Forms\MainForm Docks\ObjectExplorerDock\ObjectExplorerDock.Designer.vb">
+      <DependentUpon>ObjectExplorerDock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockPanel Forms\MainForm Docks\ObjectExplorerDock\ObjectExplorerDock.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockPanel Forms\MainForm Docks\ObjectExplorerDock\ObjectExplorerDockItems.Designer.vb">
+      <DependentUpon>ObjectExplorerDockItems.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockPanel Forms\MainForm Docks\ObjectExplorerDock\ObjectExplorerDockItems.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockPanel Forms\MainForm Docks\ProjExplorerDock.Designer.vb">
+      <DependentUpon>ProjExplorerDock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockPanel Forms\MainForm Docks\ProjExplorerDock.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Functions Forms\IncludesForm.Designer.vb">
+      <DependentUpon>IncludesForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Functions Forms\IncludesForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Functions Forms\NewProjectFile.Designer.vb">
+      <DependentUpon>NewProjectFile.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Functions Forms\NewProjectFile.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Functions Forms\PluginsForm.designer.vb">
+      <DependentUpon>PluginsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Functions Forms\PluginsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Functions Forms\SettingsForm.Designer.vb">
+      <DependentUpon>SettingsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Functions Forms\SettingsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.vb">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="StartupForm.Designer.vb">
+      <DependentUpon>StartupForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StartupForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\EditorDock\EditorDock.resx">
+      <DependentUpon>EditorDock.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ErrorsDock.resx">
+      <DependentUpon>ErrorsDock.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ObjectExplorerDock\ObjectExplorerDock.resx">
+      <DependentUpon>ObjectExplorerDock.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ObjectExplorerDock\ObjectExplorerDockItems.resx">
+      <DependentUpon>ObjectExplorerDockItems.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ProjExplorerDock.resx">
+      <DependentUpon>ProjExplorerDock.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Functions Forms\IncludesForm.resx">
+      <DependentUpon>IncludesForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Functions Forms\NewProjectFile.resx">
+      <DependentUpon>NewProjectFile.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Functions Forms\PluginsForm.resx">
+      <DependentUpon>PluginsForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Functions Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartupForm.resx">
+      <DependentUpon>StartupForm.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ExtremeStudio_TemporaryKey.pfx" />
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+    <None Include="Resources\SQLite.Interop.zip" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExtremeCore\ExtremeCore.vbproj">
+      <Project>{1acb0832-ace5-4958-8d65-35c5ec357e6c}</Project>
+      <Name>ExtremeCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExtremeParser\ExtremeParser.vbproj">
+      <Project>{24f5f1b3-3d0c-49fa-b026-61a991789cf8}</Project>
+      <Name>ExtremeParser</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\new_file_toolstrip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_projexplorer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dirs_projexplorer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\correct_projexplorer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_file_toolstrip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveall_file_toolstrip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plugins_icon_toolstrip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\includes_icon_toolstrip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newfileTemplate.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_icon_toolstrip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\defaultThemeInfo.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.98.1\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.98.1\build\net40\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.98.1\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.98.1\build\net40\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
