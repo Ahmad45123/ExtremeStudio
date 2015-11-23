@@ -149,7 +149,7 @@ Public Class MainForm
             End If
         Next
 
-        'Update.
-        CurrentEditor.scintilla_TextChangedDelayed(Me, EventArgs.Empty)
+        'Update. (YES ALL TEXT.)
+        CurrentEditor.scintilla_TextChangedDelayed(CurrentEditor.Editor.Text)
     End Sub
 End Class

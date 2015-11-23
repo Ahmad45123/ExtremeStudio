@@ -347,8 +347,6 @@ Public Class Parser
             Next
         Next
 
-        My.Computer.FileSystem.WriteAllText("D:/test.pwn", code, False)
-
         'Now to checks for if defined stuff And remove as needed.
         For Each match As Match In Regex.Matches(code, "\#if[ \t]+(!)?defined[ \t]+(.+)([\s\S]*?)\#endif", RegexOptions.Multiline)
             Dim isNt As Boolean = IIf(match.Groups(1).Value = "", False, True)

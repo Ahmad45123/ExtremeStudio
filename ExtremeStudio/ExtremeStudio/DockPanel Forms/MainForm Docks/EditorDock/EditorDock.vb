@@ -160,16 +160,26 @@ Public Class EditorDock
     End Function
 #End Region
 
-#Region "TextChangedDelayed Setup Code"
+#Region "TextChangedDelayed WITH VISIBLE Setup Code"
+    'Variables to save parsing offsets.
+    'Will be -1 if done.
+    Private OffsetStart As Integer = -1
+    Private OffsetLength As Integer = -1
+
     Private WithEvents idleTimer As New Timer
-    Public Event TextChangedDelayed As EventHandler
+    Private oldVisible As String = "" 'This is just a key that I am going to use as empty!..
     Private Sub idleTimer_Tick(sender As Object, e As EventArgs) Handles idleTimer.Tick
         idleTimer.Stop()
-        RaiseEvent TextChangedDelayed(Editor, EventArgs.Empty)
+        'Call the before first.
+        Editor_BeforeDeleteOrAddDelayed(oldVisible)
+
+        'Get the new visible text and call the func.
+        scintilla_TextChangedDelayed(Editor.GetTextRange(OffsetStart, OffsetLength))
+
+        'Reset: 
+        oldVisible = "" : OffsetStart = -1 : OffsetLength = -1
     End Sub
     Private Sub Editor_Load(sender As Object, e As EventArgs) Handles Me.Load
-        'TextChangedDelayed Event
-        AddHandler TextChangedDelayed, AddressOf scintilla_TextChangedDelayed
         With idleTimer
             .Enabled = True
             .Interval = 1000
@@ -178,6 +188,30 @@ Public Class EditorDock
     Private Sub TextChangedDelayed_Editor_TextChanged(sender As Object, e As EventArgs) Handles Editor.TextChanged
         idleTimer.Stop()
         idleTimer.Start()
+    End Sub
+
+    'This for on first time.
+    Private Sub BeforeTextChangedDelayed_Timer(sender As Object, e As BeforeModificationEventArgs) Handles Editor.BeforeDelete, Editor.BeforeInsert
+        If OffsetStart = -1 And OffsetLength = -1 Then
+            'Get positions of visible text and store them.
+            OffsetStart = Editor.Lines(Editor.FirstVisibleLine).Position
+            OffsetLength = (Editor.Lines(Editor.FirstVisibleLine + Editor.LinesOnScreen).EndPosition) - OffsetStart
+
+            'Store the text.
+            oldVisible = Editor.GetTextRange(OffsetStart, OffsetLength)
+        End If
+    End Sub
+
+    'Adding and minusing to length.
+    Private Sub OnAdd(sender As Object, e As BeforeModificationEventArgs) Handles Editor.BeforeInsert
+        If OffsetLength <> -1 And OffsetStart <> -1 Then
+            OffsetLength += e.Text.Length
+        End If
+    End Sub
+    Private Sub OnRemove(sender As Object, e As BeforeModificationEventArgs) Handles Editor.BeforeDelete
+        If OffsetLength <> -1 And OffsetStart <> -1 Then
+            OffsetLength -= e.Text.Length
+        End If
     End Sub
 #End Region
 
@@ -196,28 +230,9 @@ Public Class EditorDock
 #End Region
 
 #Region "Refresh Worker Codes"
-    Private ReadOnly Property VisibleCode As String
-        Get
-            'This might look unreadable.. But pretty simple.
-            'Just calculate and get the visible text.
-            Return Editor.GetTextRange(Editor.Lines(Editor.FirstVisibleLine).Position, (Editor.Lines(Editor.FirstVisibleLine + Editor.LinesOnScreen).EndPosition) - (Editor.Lines(Editor.FirstVisibleLine).Position))
-        End Get
-    End Property
-
-    Public Sub scintilla_TextChangedDelayed(sender As Object, e As EventArgs)
+    Public Sub scintilla_TextChangedDelayed(visiblecode As String)
         If RefreshWorker.IsBusy = False Then
-            Dim code As String = ""
-
-            'If first parse, Do a full parse.
-            If isFirstParse Then
-                isFirstParse = False
-                code = Editor.Text
-            Else
-                'Else, Get the code chunk.
-                code = VisibleCode
-            End If
-
-            RefreshWorker.RunWorkerAsync({code, Editor.Tag, MainForm.currentProject.projectPath})
+            RefreshWorker.RunWorkerAsync({visiblecode, Editor.Tag, MainForm.currentProject.projectPath})
             MainForm.statusLabel.Text = "Parsing Code."
         End If
     End Sub
@@ -358,10 +373,10 @@ Public Class EditorDock
         End If
     End Sub
 
-    Private Sub Editor_BeforeDelete(sender As Object, e As BeforeModificationEventArgs) Handles Editor.BeforeDelete
+    Private Sub Editor_BeforeDeleteOrAddDelayed(visibleText As String)
         'Parse removed text.
         If RemoverWorker.IsBusy = False Then
-            RemoverWorker.RunWorkerAsync({e.Text, Editor.Tag, MainForm.currentProject.projectPath})
+            RemoverWorker.RunWorkerAsync({visibleText, Editor.Tag, MainForm.currentProject.projectPath})
         End If
     End Sub
     Private Sub RemoverWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RemoverWorker.DoWork
