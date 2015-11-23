@@ -150,6 +150,6 @@ Public Class MainForm
         Next
 
         'Update. (YES ALL TEXT.)
-        CurrentEditor.scintilla_TextChangedDelayed(CurrentEditor.Editor.Text)
+        CurrentEditor.scintilla_TextChangedDelayed("", CurrentEditor.Editor.Text)
     End Sub
 End Class

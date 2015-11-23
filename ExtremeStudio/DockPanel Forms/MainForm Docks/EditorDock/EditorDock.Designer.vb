@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class EditorDock
     Inherits WeifenLuo.WinFormsUI.Docking.DockContent
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class EditorDock
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EditorDock))
@@ -28,7 +28,6 @@ Partial Class EditorDock
         Me.RefreshWorker = New System.ComponentModel.BackgroundWorker()
         Me.AutoCompleteMenu = New AutocompleteMenuNS.AutocompleteMenu()
         Me.ACImageList = New System.Windows.Forms.ImageList(Me.components)
-        Me.RemoverWorker = New System.ComponentModel.BackgroundWorker()
         Me.SuspendLayout()
         '
         'Editor
@@ -88,6 +87,4 @@ Partial Class EditorDock
         ' Add any initialization after the InitializeComponent() call.
 
     End Sub
-
-    Friend WithEvents RemoverWorker As System.ComponentModel.BackgroundWorker
 End Class

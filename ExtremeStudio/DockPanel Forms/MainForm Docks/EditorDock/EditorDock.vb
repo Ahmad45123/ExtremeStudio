@@ -170,11 +170,9 @@ Public Class EditorDock
     Private oldVisible As String = "" 'This is just a key that I am going to use as empty!..
     Private Sub idleTimer_Tick(sender As Object, e As EventArgs) Handles idleTimer.Tick
         idleTimer.Stop()
-        'Call the before first.
-        Editor_BeforeDeleteOrAddDelayed(oldVisible)
 
         'Get the new visible text and call the func.
-        scintilla_TextChangedDelayed(Editor.GetTextRange(OffsetStart, OffsetLength))
+        scintilla_TextChangedDelayed(oldVisible, Editor.GetTextRange(OffsetStart, OffsetLength))
 
         'Reset: 
         oldVisible = "" : OffsetStart = -1 : OffsetLength = -1
@@ -205,12 +203,31 @@ Public Class EditorDock
     'Adding and minusing to length.
     Private Sub OnAdd(sender As Object, e As BeforeModificationEventArgs) Handles Editor.BeforeInsert
         If OffsetLength <> -1 And OffsetStart <> -1 Then
-            OffsetLength += e.Text.Length
+            Dim len As Integer = e.Text.Length
+            'Dim newEndPos As Integer = e.Position + len
+            'Dim OffsetEnd As Integer = OffsetStart + OffsetLength
+
+            'If e.Position < OffsetStart Then
+            '    OffsetStart += len : OffsetLength += len
+            'ElseIf e.Position > OffsetStart Then
+            OffsetLength += len
+            'End If
         End If
     End Sub
     Private Sub OnRemove(sender As Object, e As BeforeModificationEventArgs) Handles Editor.BeforeDelete
         If OffsetLength <> -1 And OffsetStart <> -1 Then
-            OffsetLength -= e.Text.Length
+            Dim len As Integer = e.Text.Length
+            'Dim newEndPos As Integer = e.Position + len
+            'Dim oldEndPos As Integer = OffsetStart + OffsetLength
+
+            'If e.Position < OffsetStart Then
+            '    OffsetStart -= len : OffsetLength -= len
+            'ElseIf e.Position > OffsetStart Then
+            OffsetLength -= len
+            'End If
+
+            'TO MAKE SURE THIS IS GOING TO BE REMOVED: 
+            oldVisible += vbCrLf + vbCrLf + e.Text + vbCrLf + vbCrLf
         End If
     End Sub
 #End Region
@@ -230,15 +247,20 @@ Public Class EditorDock
 #End Region
 
 #Region "Refresh Worker Codes"
-    Public Sub scintilla_TextChangedDelayed(visiblecode As String)
+    Public Sub scintilla_TextChangedDelayed(oldcode As String, newcode As String)
         If RefreshWorker.IsBusy = False Then
-            RefreshWorker.RunWorkerAsync({visiblecode, Editor.Tag, MainForm.currentProject.projectPath})
+            RefreshWorker.RunWorkerAsync({oldcode, newcode, Editor.Tag, MainForm.currentProject.projectPath})
             MainForm.statusLabel.Text = "Parsing Code."
         End If
     End Sub
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork
         If Editor.IsHandleCreated Then
-            e.Result = New Parser(e.Argument(0), e.Argument(1), e.Argument(2))
+            'Parse old.
+            Dim old = New Parser(e.Argument(0), e.Argument(2), e.Argument(3))
+            codeParts -= old 'Remove from list.. Yes just do it from inside the thread.
+
+            'Save the new to the result.
+            e.Result = New Parser(e.Argument(1), e.Argument(2), e.Argument(3))
         End If
     End Sub
 
@@ -371,24 +393,6 @@ Public Class EditorDock
         If ObjectExplorerDock.Visible Then
             ObjectExplorerDock.refreshTreeView(codeParts)
         End If
-    End Sub
-
-    Private Sub Editor_BeforeDeleteOrAddDelayed(visibleText As String)
-        'Parse removed text.
-        If RemoverWorker.IsBusy = False Then
-            RemoverWorker.RunWorkerAsync({visibleText, Editor.Tag, MainForm.currentProject.projectPath})
-        End If
-    End Sub
-    Private Sub RemoverWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RemoverWorker.DoWork
-        If Editor.IsHandleCreated Then
-            'Parse the removed code.
-            e.Result = New Parser(e.Argument(0), e.Argument(1), e.Argument(2))
-        End If
-    End Sub
-    Private Sub RemoverWorker_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles RemoverWorker.RunWorkerCompleted
-        'Remove the removed code from the lists.
-        Dim toRemoveParts = DirectCast(e.Result, Parser)
-        codeParts -= toRemoveParts
     End Sub
 #End Region
 
