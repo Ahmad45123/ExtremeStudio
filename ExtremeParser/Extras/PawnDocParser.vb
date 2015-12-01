@@ -1,4 +1,4 @@
-﻿Public Class PawnDoc
+﻿Public Class PawnDocParser
 
 #Region "Public Properties"
     Public ReadOnly Property Summary As String

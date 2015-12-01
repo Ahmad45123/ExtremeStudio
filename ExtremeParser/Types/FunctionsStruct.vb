@@ -4,14 +4,12 @@ Imports ExtremeParser
 Public Structure FunctionsStruct
     Public FuncName As String
     Public FuncParameters As FunctionParameters
-    Public FuncRegexMatch As Match
-    Public FuncPawnDoc As PawnDoc
+    Public FuncPawnDoc As PawnDocParser
     Public ReturnTag As String
 
-    Public Sub New(funcNam As String, funcPars As String, _funcRegexMatch As Match, ret As String, pwnDoc As PawnDoc)
+    Public Sub New(funcNam As String, funcPars As String, ret As String, pwnDoc As PawnDocParser)
         FuncName = funcNam
         FuncParameters = New FunctionParameters(funcPars)
-        FuncRegexMatch = _funcRegexMatch
         FuncPawnDoc = pwnDoc
         ReturnTag = ret
     End Sub

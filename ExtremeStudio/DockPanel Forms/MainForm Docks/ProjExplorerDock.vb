@@ -4,7 +4,7 @@ Public Class ProjExplorerDock
 
     Private nodeState As ExtremeCore.treeNodeStateSaving = New ExtremeCore.treeNodeStateSaving
 
-    Public Includes As Dictionary(Of String, ExtremeParser.Parser).KeyCollection
+    Public Includes As List(Of String)
 
     Public Sub RefreshList(Optional firstTime As Boolean = False)
         If firstTime = False Then nodeState.SaveTreeState(treeView.Nodes) 'Save current expanded nodes.

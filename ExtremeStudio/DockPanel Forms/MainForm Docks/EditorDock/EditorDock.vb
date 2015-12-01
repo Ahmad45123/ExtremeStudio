@@ -13,7 +13,7 @@ Public Class EditorDock
         INDICATOR_CODEERROR
         INDICATOR_PHPDOCERROR
     End Enum
-    Public codeParts As New Parser(Nothing, Nothing, Nothing)
+    Public codeParts As New CodeParts()
     Dim autoCompleteList As New List(Of AutoCompleteItemEx)
 
     Public isFirstParse As Boolean = True
@@ -168,11 +168,51 @@ Public Class EditorDock
 
     Private WithEvents idleTimer As New Timer
     Private oldVisible As String = "" 'This is just a key that I am going to use as empty!..
+
+    Private Sub checkIfDefines(ByRef code As String, line As Integer)
+        'Get all the visible If's and ends.
+        Dim allIfs As Integer = 0
+        Dim allEnds As Integer = 0
+        For Each mtch In Regex.Matches(code, "#if\s+defined")
+            allIfs += 1
+        Next
+        For Each mtch In Regex.Matches(code, "#endif")
+            allEnds += 1
+        Next
+
+        'Check if the ifs are more then the ends.
+        If allIfs > allEnds Then
+            'Aslong as they're not equal, Keep going!
+            While (allIfs <> allEnds)
+                line += 1
+
+                Dim newLine As String = Editor.Lines(line).Text
+                code += newLine
+
+                If Regex.IsMatch(newLine, "#endif") Then allEnds += 1
+            End While
+        ElseIf allEnds > allIfs
+            'Aslong as they're not equal, Keep going!
+            While (allIfs <> allEnds)
+                line += 1
+
+                Dim newLine As String = Editor.Lines(line).Text
+                code += newLine
+
+                If Regex.IsMatch(newLine, "#if\s+defined") Then allIfs += 1
+            End While
+        End If
+    End Sub
+
     Private Sub idleTimer_Tick(sender As Object, e As EventArgs) Handles idleTimer.Tick
         idleTimer.Stop()
+        Dim newCode As String = Editor.GetTextRange(OffsetStart, OffsetLength)
+
+        'Make sure the current code is valid from if defines.
+        checkIfDefines(newCode, Editor.LineFromPosition(OffsetStart + OffsetLength))
 
         'Get the new visible text and call the func.
-        scintilla_TextChangedDelayed(oldVisible, Editor.GetTextRange(OffsetStart, OffsetLength))
+        scintilla_TextChangedDelayed(oldVisible, newCode)
 
         'Reset: 
         oldVisible = "" : OffsetStart = -1 : OffsetLength = -1
@@ -190,44 +230,53 @@ Public Class EditorDock
 
     'This for on first time.
     Private Sub BeforeTextChangedDelayed_Timer(sender As Object, e As BeforeModificationEventArgs) Handles Editor.BeforeDelete, Editor.BeforeInsert
-        If OffsetStart = -1 And OffsetLength = -1 Then
-            'Get positions of visible text and store them.
-            OffsetStart = Editor.Lines(Editor.FirstVisibleLine).Position
-            OffsetLength = (Editor.Lines(Editor.FirstVisibleLine + Editor.LinesOnScreen).EndPosition) - OffsetStart
+        If e.Text IsNot Nothing Then
+            If OffsetStart = -1 And OffsetLength = -1 Then
+                'Get positions of visible text and store them.
+                OffsetStart = Editor.Lines(Editor.FirstVisibleLine).Position
+                OffsetLength = (Editor.Lines(Editor.FirstVisibleLine + Editor.LinesOnScreen).EndPosition) - OffsetStart
 
-            'Store the text.
-            oldVisible = Editor.GetTextRange(OffsetStart, OffsetLength)
+                'Store the text.
+                oldVisible = Editor.GetTextRange(OffsetStart, OffsetLength)
+
+                'Make sure its valid.
+                checkIfDefines(oldVisible, Editor.LineFromPosition(OffsetStart + OffsetLength))
+            End If
         End If
     End Sub
 
     'Adding and minusing to length.
     Private Sub OnAdd(sender As Object, e As BeforeModificationEventArgs) Handles Editor.BeforeInsert
-        If OffsetLength <> -1 And OffsetStart <> -1 Then
-            Dim len As Integer = e.Text.Length
-            'Dim newEndPos As Integer = e.Position + len
-            'Dim OffsetEnd As Integer = OffsetStart + OffsetLength
+        If e.Text IsNot Nothing Then
+            If OffsetLength <> -1 And OffsetStart <> -1 Then
+                Dim len As Integer = e.Text.Length
+                'Dim newEndPos As Integer = e.Position + len
+                'Dim OffsetEnd As Integer = OffsetStart + OffsetLength
 
-            'If e.Position < OffsetStart Then
-            '    OffsetStart += len : OffsetLength += len
-            'ElseIf e.Position > OffsetStart Then
-            OffsetLength += len
-            'End If
+                'If e.Position < OffsetStart Then
+                '    OffsetStart += len : OffsetLength += len
+                'ElseIf e.Position > OffsetStart Then
+                OffsetLength += len
+                'End If
+            End If
         End If
     End Sub
     Private Sub OnRemove(sender As Object, e As BeforeModificationEventArgs) Handles Editor.BeforeDelete
-        If OffsetLength <> -1 And OffsetStart <> -1 Then
-            Dim len As Integer = e.Text.Length
-            'Dim newEndPos As Integer = e.Position + len
-            'Dim oldEndPos As Integer = OffsetStart + OffsetLength
+        If e.Text IsNot Nothing Then
+            If OffsetLength <> -1 And OffsetStart <> -1 Then
+                Dim len As Integer = e.Text.Length
+                'Dim newEndPos As Integer = e.Position + len
+                'Dim oldEndPos As Integer = OffsetStart + OffsetLength
 
-            'If e.Position < OffsetStart Then
-            '    OffsetStart -= len : OffsetLength -= len
-            'ElseIf e.Position > OffsetStart Then
-            OffsetLength -= len
-            'End If
+                'If e.Position < OffsetStart Then
+                '    OffsetStart -= len : OffsetLength -= len
+                'ElseIf e.Position > OffsetStart Then
+                OffsetLength -= len
+                'End If
 
-            'TO MAKE SURE THIS IS GOING TO BE REMOVED: 
-            oldVisible += vbCrLf + vbCrLf + e.Text + vbCrLf + vbCrLf
+                'TO MAKE SURE THIS IS GOING TO BE REMOVED: 
+                oldVisible += vbCrLf + vbCrLf + e.Text + vbCrLf + vbCrLf
+            End If
         End If
     End Sub
 #End Region
@@ -255,53 +304,52 @@ Public Class EditorDock
     End Sub
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork
         If Editor.IsHandleCreated Then
-            'Parse old.
-            Dim old = New Parser(e.Argument(0), e.Argument(2), e.Argument(3))
-            codeParts -= old 'Remove from list.. Yes just do it from inside the thread.
+            'Parse old. [False to remove.]
+            Dim null = New RemoveParser(codeParts, e.Argument(0), e.Argument(2), e.Argument(3))
 
-            'Save the new to the result.
-            e.Result = New Parser(e.Argument(1), e.Argument(2), e.Argument(3))
+            'Save the new to the result. [True to add].
+            e.Result = New AddParser(codeParts, e.Argument(1), e.Argument(2), e.Argument(3))
         End If
     End Sub
 
-    Private Sub parseFileWithIncludes(include As Parser, ByRef setString As StringBuilder, ByRef definesText As StringBuilder, ByRef autoList As List(Of AutoCompleteItemEx))
-        For Each stock In include.Stocks
-            setString.Append(" " + stock.FuncName)
+    Private Sub parseCodeParts(ByRef setString As StringBuilder, ByRef definesText As StringBuilder, ByRef autoList As List(Of AutoCompleteItemEx))
+        For Each stock In codeParts.Stocks
+            setString.Append(" " + stock.Value.FuncName)
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, stock)
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, stock.Value)
             autoList.Add(newitm)
         Next
-        For Each publicFunc In include.Publics
-            setString.Append(" " + publicFunc.FuncName)
+        For Each publicFunc In codeParts.Publics
+            setString.Append(" " + publicFunc.Value.FuncName)
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, publicFunc)
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, publicFunc.Value)
             autoList.Add(newitm)
         Next
-        For Each func In include.Functions
-            setString.Append(" " + func.FuncName)
+        For Each func In codeParts.Functions
+            setString.Append(" " + func.Value.FuncName)
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, func)
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, func.Value)
             autoList.Add(newitm)
         Next
-        For Each native In include.Natives
-            setString.Append(" " + native.FuncName)
+        For Each native In codeParts.Natives
+            setString.Append(" " + native.Value.FuncName)
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, native)
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, native.Value)
             autoList.Add(newitm)
         Next
-        For Each def In include.Defines
-            definesText.Append(" " + def.DefineName)
+        For Each def In codeParts.Defines
+            definesText.Append(" " + def.Value.DefineName)
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, def.DefineName, def.DefineValue)
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, def.Value.DefineName, def.Value.DefineValue)
             autoList.Add(newitm)
         Next
-        For Each parentEnm In include.Enums
-            For Each enm In parentEnm.EnumContents
+        For Each parentEnm In codeParts.Enums
+            For Each enm In parentEnm.Value.EnumContents
                 definesText.Append(" " + enm.Content)
 
                 'AutoComplete
@@ -317,29 +365,16 @@ Public Class EditorDock
                     type = "tagged"
                 End If
 
-                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, enm.Content, "This is an enum item with the type: `" + type + "` that is in the enum: `" + parentEnm.EnumName + "`")
+                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, enm.Content, "This is an enum item with the type: `" + type + "` that is in the enum: `" + parentEnm.Value.EnumName + "`")
                 autoList.Add(newitm)
             Next
         Next
-        For Each var In include.publicVariables
-            definesText.Append(" " + var.VarName)
+        For Each var In codeParts.publicVariables
+            definesText.Append(" " + var.Value.VarName)
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, var.VarName, "This is a global variable declared in one of the includes.")
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, var.Value.VarName, "This is a global variable declared in one of the includes.")
             autoList.Add(newitm)
-        Next
-
-        For Each inc As String In include.Includes.Keys
-            Dim newSetString As New StringBuilder
-            Dim newDefinesText As New StringBuilder
-            Dim NewAutoList As New List(Of AutoCompleteItemEx)
-            parseFileWithIncludes(include.Includes(inc), newSetString, newDefinesText, NewAutoList)
-
-            setString.Append(" " + newSetString.ToString)
-            definesText.Append(" " + newDefinesText.ToString)
-            For Each itm In NewAutoList
-                autoList.Add(itm)
-            Next
         Next
     End Sub
 
@@ -347,10 +382,9 @@ Public Class EditorDock
         MainForm.statusLabel.Text = "Idle."
         ErrorsDock.parserErrors.Rows.Clear()
 
-        codeParts += DirectCast(e.Result, Parser)
-
 #Region "Error Showing"
-        For Each obj In codeParts.errors.exceptionsList
+        Dim errors As ExceptionsList = DirectCast(e.Result, IParser).errors
+        For Each obj In errors.exceptionsList
             If TypeOf (obj) Is IncludeNotFoundException Then
                 Dim tmpObj = DirectCast(obj, IncludeNotFoundException)
                 Dim Msg As String = "The include `" + tmpObj.includeName + "` is not found, Please make sure it exists."
@@ -367,7 +401,7 @@ Public Class EditorDock
         Dim definesText As New StringBuilder()
         autoCompleteList.Clear()
 
-        parseFileWithIncludes(codeParts, setString, definesText, autoCompleteList)
+        parseCodeParts(setString, definesText, autoCompleteList)
 
         Try
             Dim seta As String = setString.ToString
@@ -387,7 +421,7 @@ Public Class EditorDock
 #End Region
 
         If ProjExplorerDock.Visible Then
-            ProjExplorerDock.Includes = codeParts.Includes.Keys
+            ProjExplorerDock.Includes = codeParts.Includes
             ProjExplorerDock.RefreshIncludes()
         End If
         If ObjectExplorerDock.Visible Then

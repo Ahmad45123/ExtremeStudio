@@ -5,12 +5,10 @@ Public Structure DefinesStruct
     'No properties for speed.
     Public DefineName As String
     Public DefineValue As String
-    Public RegexMatch As Match
 
-    Public Sub New(_defineName As String, _defineValue As String, _RegexMatch As Match)
+    Public Sub New(_defineName As String, _defineValue As String)
         DefineName = _defineName
         DefineValue = _defineValue
-        RegexMatch = _RegexMatch
     End Sub
 
     Public Shared Operator =(ByVal first As DefinesStruct, second As DefinesStruct)

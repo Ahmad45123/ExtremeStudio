@@ -9,7 +9,7 @@
     Public Integers As New Dictionary(Of String, String)
     Public Arrays As New Dictionary(Of String, String)
     Public Floats As New Dictionary(Of String, String)
-    Public pawnDoc As PawnDoc
+    Public pawnDoc As PawnDocParser
 
     Private OthersVar As New Dictionary(Of String, String) 'A function is created to handle this.
     Private paramText As String

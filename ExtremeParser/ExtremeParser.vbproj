@@ -63,9 +63,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddParser.vb" />
     <Compile Include="Exceptions\IncludeNotFoundException.vb" />
     <Compile Include="Extras\defineReplacer.vb" />
     <Compile Include="Exceptions\ExceptionsList.vb" />
+    <Compile Include="IfDefinedParser.vb" />
+    <Compile Include="IParser.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -82,9 +85,19 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Extras\FunctionParameters.vb" />
-    <Compile Include="Parser.vb" />
     <Compile Include="Exceptions\ParserException.vb" />
-    <Compile Include="PawnDoc.vb" />
+    <Compile Include="CodeParts.vb" />
+    <Compile Include="Parsers\Cleaner.vb" />
+    <Compile Include="Parsers\Defines.vb" />
+    <Compile Include="Parsers\DefReplacer.vb" />
+    <Compile Include="Parsers\Enums.vb" />
+    <Compile Include="Parsers\Functions.vb" />
+    <Compile Include="Parsers\globalVariables.vb" />
+    <Compile Include="Parsers\IfDefines.vb" />
+    <Compile Include="Parsers\Includes.vb" />
+    <Compile Include="Parsers\PawnDoc.vb" />
+    <Compile Include="Extras\PawnDocParser.vb" />
+    <Compile Include="RemoveParser.vb" />
     <Compile Include="Types\DefinesStruct.vb" />
     <Compile Include="Types\EnumsStruct.vb" />
     <Compile Include="Types\FunctionsStruct.vb" />

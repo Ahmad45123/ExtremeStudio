@@ -7,7 +7,7 @@ Public Class defineReplacer
 
         'Setup find regex.
         findRegex = Regex.Replace(findRegex, "%([0-9])", "(.*)")
-        findRegex = "(?<!#.*)\b" + findRegex
+        findRegex = "(?<!#.*)\b" + findRegex + "\b"
 
         'Setup replace regex.
         Dim replaceRegex As String = defineReplace
