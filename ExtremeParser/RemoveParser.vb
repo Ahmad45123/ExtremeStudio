@@ -6,7 +6,12 @@ Public Class RemoveParser
 
     Public Property errors As New ExceptionsList Implements IParser.errors
 
-    Public Sub New(ByRef codeParts As CodeParts, code As String, filePath As String, projectPath As String)
+    Public Enum RemovalMethods
+        METHOD_PARSE
+        METHOD_FULL
+    End Enum
+
+    Public Sub New(ByRef codeParts As CodeParts, code As String, filePath As String, projectPath As String, Optional removeMethod As RemovalMethods = RemovalMethods.METHOD_PARSE)
         'Make sure then code is not nothing.
         If code = Nothing Then Exit Sub
 
@@ -17,8 +22,20 @@ Public Class RemoveParser
         If codeParts.Includes.Contains(name) = False Then
             Exit Sub
         Else
-            'Else, Remove it to the list.
+            'Else, Remove it from the list.
             codeParts.Includes.Remove(name)
+
+            'If its set to remove full, Remove full and parse for includes and then exit the SUB.
+            If removeMethod = RemovalMethods.METHOD_FULL Then
+                'First, Remove all parts that are in this file.
+                codeParts.RemoveFromAll(Path.GetFileNameWithoutExtension(filePath))
+
+                'Parse for includes.
+                Includes.Parse(code, filePath, projectPath, codeParts, errors, False)
+
+                'Exit.
+                Exit Sub
+            End If
         End If
 
         'Remove singline comments.

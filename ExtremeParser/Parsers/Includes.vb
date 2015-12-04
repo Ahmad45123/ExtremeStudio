@@ -45,7 +45,8 @@ Public Class Includes
                     End Try
                 Else
                     Try
-                        Dim prs As New RemoveParser(parts, My.Computer.FileSystem.ReadAllText(fullPath), fullPath, prjPath)
+                        'Here if the include is REMOVED, There is no need to parse it all again cause we already know that we just need to remove the whole include.
+                        Dim prs As New RemoveParser(parts, My.Computer.FileSystem.ReadAllText(fullPath), fullPath, prjPath, RemoveParser.RemovalMethods.METHOD_FULL)
                     Catch ex As Exception
                     End Try
                 End If

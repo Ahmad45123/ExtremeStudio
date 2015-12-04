@@ -14,4 +14,16 @@
 
     'This just stores the name of includes.
     Public Includes As New List(Of String)
+
+    Public Sub RemoveFromAll(fileName As String)
+        Defines.RemoveAll(Function(x) x.Key = fileName)
+        Macros.RemoveAll(Function(x) x.Key = fileName)
+        Functions.RemoveAll(Function(x) x.Key = fileName)
+        Stocks.RemoveAll(Function(x) x.Key = fileName)
+        Publics.RemoveAll(Function(x) x.Key = fileName)
+        Natives.RemoveAll(Function(x) x.Key = fileName)
+        Enums.RemoveAll(Function(x) x.Key = fileName)
+        publicVariables.RemoveAll(Function(x) x.Key = fileName)
+        pawnDocs.RemoveAll(Function(x) x.Key = fileName)
+    End Sub
 End Class

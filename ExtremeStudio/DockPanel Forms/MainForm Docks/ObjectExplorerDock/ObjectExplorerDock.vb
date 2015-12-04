@@ -16,7 +16,7 @@ Public Class ObjectExplorerDock
         Dim stocks = treeView.Nodes.Add("Stocks") : stocks.Tag = "Root"
         Dim natives = treeView.Nodes.Add("Natives") : natives.Tag = "Root"
 
-        Dim filename As String = Path.GetFileName(MainForm.CurrentScintilla.Tag)
+        Dim filename As String = Path.GetFileNameWithoutExtension(MainForm.CurrentScintilla.Tag)
         For Each key In parser.Defines.FindAll(Function(x) x.Key = filename)
             Dim nde = defines.Nodes.Add(key.Value.DefineName)
             nde.Tag = key.Value.DefineValue
