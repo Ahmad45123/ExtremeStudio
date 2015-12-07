@@ -65,7 +65,7 @@
   <ItemGroup>
     <Compile Include="AddParser.vb" />
     <Compile Include="Exceptions\IncludeNotFoundException.vb" />
-    <Compile Include="Extras\defineReplacer.vb" />
+    <Compile Include="Global\defineReplacer.vb" />
     <Compile Include="Exceptions\ExceptionsList.vb" />
     <Compile Include="IfDefinedParser.vb" />
     <Compile Include="IParser.vb" />
@@ -84,7 +84,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Extras\FunctionParameters.vb" />
+    <Compile Include="Global\FunctionParameters.vb" />
     <Compile Include="Exceptions\ParserException.vb" />
     <Compile Include="CodeParts.vb" />
     <Compile Include="Parsers\Cleaner.vb" />
@@ -96,7 +96,7 @@
     <Compile Include="Parsers\IfDefines.vb" />
     <Compile Include="Parsers\Includes.vb" />
     <Compile Include="Parsers\PawnDoc.vb" />
-    <Compile Include="Extras\PawnDocParser.vb" />
+    <Compile Include="Parsers\PawnDocParser.vb" />
     <Compile Include="RemoveParser.vb" />
     <Compile Include="Types\DefinesStruct.vb" />
     <Compile Include="Types\EnumsStruct.vb" />

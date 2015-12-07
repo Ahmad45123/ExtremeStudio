@@ -115,7 +115,6 @@ Partial Class MainForm
         DockPaneStripToolWindowGradient1.InactiveTabGradient = TabGradient7
         DockPaneStripSkin1.ToolWindowGradient = DockPaneStripToolWindowGradient1
         DockPanelSkin1.DockPaneStripSkin = DockPaneStripSkin1
-        Me.MainDock.Skin = DockPanelSkin1
         Me.MainDock.TabIndex = 0
         '
         'ToolStrip1

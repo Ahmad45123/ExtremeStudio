@@ -50,6 +50,11 @@ Public Class MainForm
     End Function
 
     Private Sub DockSavingLoading_Mainform_Load(sendr As Object, e As EventArgs) Handles MyBase.Load
+        'Setup DockPanelSuite theme.
+        'Has to be here so its applied before anything.
+        Dim theme As New VS2012LightTheme
+        MainDock.Theme = theme
+
         Try
             m_deserlise = New DeserializeDockContent(AddressOf GetContentFromPersistString)
             Try
@@ -150,6 +155,6 @@ Public Class MainForm
         Next
 
         'Update. (YES ALL TEXT.)
-        CurrentEditor.scintilla_TextChangedDelayed("", CurrentEditor.Editor.Text)
+        If CurrentEditor IsNot Nothing Then CurrentEditor.scintilla_TextChangedDelayed("", CurrentEditor.Editor.Text)
     End Sub
 End Class
