@@ -14,15 +14,15 @@ Public Class Defines
             Try
                 If defineName.Contains("%") Then
                     If add Then
-                        parts.Macros.Insert(0, New KeyValuePair(Of String, DefinesStruct)(fileName, New DefinesStruct(defineName.Trim, defineValue.Trim)))
+                        parts.Macros.Insert(0, New DefinesStruct(defineName.Trim, defineValue.Trim))
                     Else
-                        parts.Macros.RemoveAll(Function(x) x.Key = fileName And x.Value.DefineName = defineName)
+                        parts.Macros.RemoveAll(Function(x) x.DefineName = defineName)
                     End If
                 Else
                     If add Then
-                        parts.Defines.Insert(0, New KeyValuePair(Of String, DefinesStruct)(fileName, New DefinesStruct(defineName.Trim, defineValue.Trim)))
+                        parts.Defines.Insert(0, New DefinesStruct(defineName.Trim, defineValue.Trim))
                     Else
-                        parts.Defines.RemoveAll(Function(x) x.Key = fileName And x.Value.DefineName = defineName)
+                        parts.Defines.RemoveAll(Function(x) x.DefineName = defineName)
                     End If
                 End If
 

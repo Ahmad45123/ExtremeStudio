@@ -1,29 +1,35 @@
-﻿Public Class CodeParts
-    'NOTE: The below KeyValuePairs is to store the filename of which the certain func is stored to.
-    'Use this to access stuff in a certain include: 'Defines.FindAll(Function(x) x.Key = "FILE_NAME")'
-    'And to access all available includes: Just use the list.
-    Public Defines As New List(Of KeyValuePair(Of String, DefinesStruct))
-    Public Macros As New List(Of KeyValuePair(Of String, DefinesStruct))
-    Public Functions As New List(Of KeyValuePair(Of String, FunctionsStruct))
-    Public Stocks As New List(Of KeyValuePair(Of String, FunctionsStruct))
-    Public Publics As New List(Of KeyValuePair(Of String, FunctionsStruct))
-    Public Natives As New List(Of KeyValuePair(Of String, FunctionsStruct))
-    Public Enums As New List(Of KeyValuePair(Of String, EnumsStruct))
-    Public publicVariables As New List(Of KeyValuePair(Of String, VarStruct))
-    Public pawnDocs As New List(Of KeyValuePair(Of String, PawnDocParser))
+﻿Imports ExtremeParser
+
+Public Class CodeParts
+    Public _fileName As String
+
+    Public parentPart As CodeParts
+
+    Public Defines As New List(Of DefinesStruct)
+    Public Macros As New List(Of DefinesStruct)
+    Public Functions As New List(Of FunctionsStruct)
+    Public Stocks As New List(Of FunctionsStruct)
+    Public Publics As New List(Of FunctionsStruct)
+    Public Natives As New List(Of FunctionsStruct)
+    Public Enums As New List(Of EnumsStruct)
+    Public publicVariables As New List(Of VarStruct)
+    Public pawnDocs As New List(Of PawnDocParser)
 
     'This just stores the name of includes.
-    Public Includes As New List(Of String)
+    Public Includes As New List(Of CodeParts)
 
-    Public Sub RemoveFromAll(fileName As String)
-        Defines.RemoveAll(Function(x) x.Key = fileName)
-        Macros.RemoveAll(Function(x) x.Key = fileName)
-        Functions.RemoveAll(Function(x) x.Key = fileName)
-        Stocks.RemoveAll(Function(x) x.Key = fileName)
-        Publics.RemoveAll(Function(x) x.Key = fileName)
-        Natives.RemoveAll(Function(x) x.Key = fileName)
-        Enums.RemoveAll(Function(x) x.Key = fileName)
-        publicVariables.RemoveAll(Function(x) x.Key = fileName)
-        pawnDocs.RemoveAll(Function(x) x.Key = fileName)
+    'Helper Funcs.
+    Public Sub IsAlreadyParsed(ByRef res As Boolean, ByVal str As String, Optional parts As CodeParts = Nothing)
+        If parts Is Nothing Then parts = Me
+
+        For Each inc In parts.Includes
+            If inc._fileName = str Then res = True : Exit Sub
+
+            If inc.Includes.Count <> 0 Then
+                IsAlreadyParsed(res, str, inc)
+            End If
+        Next
+
     End Sub
+
 End Class

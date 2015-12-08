@@ -17,14 +17,14 @@ Public Class ObjectExplorerDock
         Dim natives = treeView.Nodes.Add("Natives") : natives.Tag = "Root"
 
         Dim filename As String = Path.GetFileNameWithoutExtension(MainForm.CurrentScintilla.Tag)
-        For Each key In parser.Defines.FindAll(Function(x) x.Key = filename)
-            Dim nde = defines.Nodes.Add(key.Value.DefineName)
-            nde.Tag = key.Value.DefineValue
+        For Each key In parser.Defines
+            Dim nde = defines.Nodes.Add(key.DefineName)
+            nde.Tag = key.DefineValue
         Next
 
-        For Each key In parser.Macros.FindAll(Function(x) x.Key = filename)
-            Dim nde = macros.Nodes.Add(key.Value.DefineName)
-            nde.Tag = key.Value.DefineValue
+        For Each key In parser.Macros
+            Dim nde = macros.Nodes.Add(key.DefineName)
+            nde.Tag = key.DefineValue
         Next
 
         'Create the custom Roots (Must be done before the Functions so its used inside it.)
@@ -34,14 +34,14 @@ Public Class ObjectExplorerDock
             listCustom.Add(bla)
         Next
 
-        For Each funcs In parser.Functions.FindAll(Function(x) x.Key = filename)
+        For Each funcs In parser.Functions
             Dim done As Boolean = False
 
             'Check if it crosponds to a custom one first.
             For Each itm In listCustom
-                If funcs.Value.FuncName.StartsWith(itm.Tag) Then
-                    Dim node = itm.Nodes.Add(funcs.Value.FuncName)
-                    node.Tag = funcs.Value.FuncParameters
+                If funcs.FuncName.StartsWith(itm.Tag) Then
+                    Dim node = itm.Nodes.Add(funcs.FuncName)
+                    node.Tag = funcs.FuncParameters
                     done = True 'To skip the `Else if it wasn't used.`
                     Exit For
                 End If
@@ -50,18 +50,18 @@ Public Class ObjectExplorerDock
             If done = True Then Continue For
 
             'Else if it wasn't used.
-            Dim nde = functions.Nodes.Add(funcs.Value.FuncName)
-            nde.Tag = funcs.Value.FuncParameters
+            Dim nde = functions.Nodes.Add(funcs.FuncName)
+            nde.Tag = funcs.FuncParameters
         Next
 
-        For Each publicFunc In parser.Publics.FindAll(Function(x) x.Key = filename)
+        For Each publicFunc In parser.Publics
             Dim done As Boolean = False
 
             'Check if it crosponds to a custom one first.
             For Each itm In listCustom
-                If publicFunc.Value.FuncName.StartsWith(itm.Tag) Then
-                    Dim node = itm.Nodes.Add(publicFunc.Value.FuncName)
-                    node.Tag = publicFunc.Value.FuncParameters
+                If publicFunc.FuncName.StartsWith(itm.Tag) Then
+                    Dim node = itm.Nodes.Add(publicFunc.FuncName)
+                    node.Tag = publicFunc.FuncParameters
                     done = True 'To skip the `Else if it wasn't used.`
                     Exit For
                 End If
@@ -70,18 +70,18 @@ Public Class ObjectExplorerDock
             If done = True Then Continue For
 
             'Else if it wasn't used.
-            Dim nde = publics.Nodes.Add(publicFunc.Value.FuncName)
-            nde.Tag = publicFunc.Value.FuncParameters
+            Dim nde = publics.Nodes.Add(publicFunc.FuncName)
+            nde.Tag = publicFunc.FuncParameters
         Next
 
-        For Each stock In parser.Stocks.FindAll(Function(x) x.Key = filename)
+        For Each stock In parser.Stocks
             Dim done As Boolean = False
 
             'Check if it crosponds to a custom one first.
             For Each itm In listCustom
-                If stock.Value.FuncName.StartsWith(itm.Tag) Then
-                    Dim node = itm.Nodes.Add(stock.Value.FuncName)
-                    node.Tag = stock.Value.FuncParameters
+                If stock.FuncName.StartsWith(itm.Tag) Then
+                    Dim node = itm.Nodes.Add(stock.FuncName)
+                    node.Tag = stock.FuncParameters
                     done = True 'To skip the `Else if it wasn't used.`
                     Exit For
                 End If
@@ -90,18 +90,18 @@ Public Class ObjectExplorerDock
             If done = True Then Continue For
 
             'Else if it wasn't used.
-            Dim nde = stocks.Nodes.Add(stock.Value.FuncName)
-            nde.Tag = stock.Value.FuncParameters
+            Dim nde = stocks.Nodes.Add(stock.FuncName)
+            nde.Tag = stock.FuncParameters
         Next
 
-        For Each native In parser.Natives.FindAll(Function(x) x.Key = filename)
+        For Each native In parser.Natives
             Dim done As Boolean = False
 
             'Check if it crosponds to a custom one first.
             For Each itm In listCustom
-                If native.Value.FuncName.StartsWith(itm.Tag) Then
-                    Dim node = itm.Nodes.Add(native.Value.FuncName)
-                    node.Tag = native.Value.FuncParameters
+                If native.FuncName.StartsWith(itm.Tag) Then
+                    Dim node = itm.Nodes.Add(native.FuncName)
+                    node.Tag = native.FuncParameters
                     done = True 'To skip the `Else if it wasn't used.`
                     Exit For
                 End If
@@ -110,8 +110,8 @@ Public Class ObjectExplorerDock
             If done = True Then Continue For
 
             'Else if it wasn't used.
-            Dim nde = natives.Nodes.Add(native.Value.FuncName)
-            nde.Tag = native.Value.FuncParameters
+            Dim nde = natives.Nodes.Add(native.FuncName)
+            nde.Tag = native.FuncParameters
         Next
 
         'Set the Root tags.

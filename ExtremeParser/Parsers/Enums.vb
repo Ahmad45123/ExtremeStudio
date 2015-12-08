@@ -33,9 +33,9 @@ Public Class Enums
 
             'Now add it to the actual list.
             If add Then
-                parts.Enums.Add(New KeyValuePair(Of String, EnumsStruct)(fileName, New EnumsStruct(Match.Groups(1).Value.Trim, enumStuff)))
+                parts.Enums.Add(New EnumsStruct(Match.Groups(1).Value.Trim, enumStuff))
             Else
-                parts.Enums.RemoveAll(Function(x) x.Key = fileName And x.Value.EnumName = Match.Groups(1).Value.Trim)
+                parts.Enums.RemoveAll(Function(x) x.EnumName = Match.Groups(1).Value.Trim)
             End If
         Next
     End Sub

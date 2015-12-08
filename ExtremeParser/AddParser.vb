@@ -14,11 +14,16 @@ Public Class AddParser
         Dim name As String = Path.GetFileNameWithoutExtension(filePath)
 
         'Now exit if already parsed.
-        If codeParts.Includes.Contains(name) Then
-            Exit Sub
+        If codeParts.parentPart IsNot Nothing Then
+            Dim res As Boolean = False : codeParts.parentPart.IsAlreadyParsed(res, name)
+            If res = True Then
+                Exit Sub
+            End If
         Else
-            'Else, Add it to the list :D
-            codeParts.Includes.Add(name)
+            Dim res As Boolean = False : codeParts.IsAlreadyParsed(res, name)
+            If Res = True Then
+                Exit Sub
+            End If
         End If
 
         'Remove singline comments.

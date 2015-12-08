@@ -147,14 +147,9 @@ Public Class MainForm
     End Sub
 
     Private Sub MainDock_ActiveDocumentChanged(sender As Object, e As EventArgs) Handles MainDock.ActiveDocumentChanged
-        'Make sure there isn't any running processes.
-        For Each doc As EditorDock In MainDock.Documents
-            If doc.RefreshWorker.IsBusy Then
-                doc.RefreshWorker.CancelAsync()
-            End If
-        Next
-
-        'Update. (YES ALL TEXT.)
-        If CurrentEditor IsNot Nothing Then CurrentEditor.scintilla_TextChangedDelayed("", CurrentEditor.Editor.Text)
+        'Update.
+        If ObjectExplorerDock.Visible And CurrentEditor IsNot Nothing Then
+            ObjectExplorerDock.refreshTreeView(CurrentEditor.codeParts)
+        End If
     End Sub
 End Class

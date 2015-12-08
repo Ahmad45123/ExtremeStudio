@@ -67,7 +67,7 @@
     <Compile Include="Exceptions\IncludeNotFoundException.vb" />
     <Compile Include="Global\defineReplacer.vb" />
     <Compile Include="Exceptions\ExceptionsList.vb" />
-    <Compile Include="IfDefinedParser.vb" />
+    <Compile Include="RemoveParser.vb" />
     <Compile Include="IParser.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -97,7 +97,6 @@
     <Compile Include="Parsers\Includes.vb" />
     <Compile Include="Parsers\PawnDoc.vb" />
     <Compile Include="Parsers\PawnDocParser.vb" />
-    <Compile Include="RemoveParser.vb" />
     <Compile Include="Types\DefinesStruct.vb" />
     <Compile Include="Types\EnumsStruct.vb" />
     <Compile Include="Types\FunctionsStruct.vb" />

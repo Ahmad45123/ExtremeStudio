@@ -40,13 +40,19 @@ Public Class Includes
                 'Create a new codeparts object for the includes cause they are needed.
                 If add Then
                     Try
-                        Dim prs As New AddParser(parts, My.Computer.FileSystem.ReadAllText(fullPath), fullPath, prjPath)
+                        Dim part As New CodeParts
+                        part.parentPart = parts
+
+                        Dim prs As New AddParser(part, My.Computer.FileSystem.ReadAllText(fullPath), fullPath, prjPath)
+
+                        part._fileName = Path.GetFileNameWithoutExtension(fullPath)
+                        parts.Includes.Add(part)
                     Catch ex As Exception
                     End Try
                 Else
                     Try
                         'Here if the include is REMOVED, There is no need to parse it all again cause we already know that we just need to remove the whole include.
-                        Dim prs As New RemoveParser(parts, My.Computer.FileSystem.ReadAllText(fullPath), fullPath, prjPath, RemoveParser.RemovalMethods.METHOD_FULL)
+                        parts.Includes.RemoveAll(Function(x) x._fileName = Path.GetFileNameWithoutExtension(fullPath))
                     Catch ex As Exception
                     End Try
                 End If

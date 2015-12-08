@@ -43,9 +43,9 @@ Public Class globalVariables
 
                 'Add
                 If add Then
-                    parts.publicVariables.Add(New KeyValuePair(Of String, VarStruct)(fileName, New VarStruct(str, tag, def, arrays)))
+                    parts.publicVariables.Add(New VarStruct(str, tag, def, arrays))
                 Else
-                    parts.publicVariables.RemoveAll(Function(x) x.Key = fileName And x.Value.VarName = str)
+                    parts.publicVariables.RemoveAll(Function(x) x.VarName = str)
                 End If
             Next
         Next

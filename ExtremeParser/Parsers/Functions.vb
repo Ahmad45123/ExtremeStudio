@@ -26,13 +26,13 @@ Public Class Functions
                 'Get the PawnDoc for it.
                 Dim pwndoc As PawnDocParser = Nothing
                 If parts.pawnDocs IsNot Nothing Then
-                    pwndoc = parts.pawnDocs.Find(Function(x) x.Value.Summary = funcName).Value
+                    pwndoc = parts.pawnDocs.Find(Function(x) x.Summary = funcName)
                 End If
 
                 If add Then
-                    parts.Publics.Add(New KeyValuePair(Of String, FunctionsStruct)(fileName, New FunctionsStruct(funcName, funcParams, tag, pwndoc)))
+                    parts.Publics.Add(New FunctionsStruct(funcName, funcParams, tag, pwndoc))
                 Else
-                    parts.Publics.RemoveAll(Function(x) x.Key = fileName And x.Value.FuncName = funcName)
+                    parts.Publics.RemoveAll(Function(x) x.FuncName = funcName)
                 End If
             Catch ex As Exception
             End Try
@@ -53,13 +53,13 @@ Public Class Functions
                 'Get the PawnDoc for it.
                 Dim pwndoc As PawnDocParser = Nothing
                 If parts.pawnDocs IsNot Nothing Then
-                    pwndoc = parts.pawnDocs.Find(Function(x) x.Value.Summary = funcName).Value
+                    pwndoc = parts.pawnDocs.Find(Function(x) x.Summary = funcName)
                 End If
 
                 If add Then
-                    parts.Stocks.Add(New KeyValuePair(Of String, FunctionsStruct)(fileName, New FunctionsStruct(funcName, funcParams, tag, pwndoc)))
+                    parts.Stocks.Add(New FunctionsStruct(funcName, funcParams, tag, pwndoc))
                 Else
-                    parts.Stocks.RemoveAll(Function(x) x.Key = fileName And x.Value.FuncName = funcName)
+                    parts.Stocks.RemoveAll(Function(x) x.FuncName = funcName)
                 End If
             Catch ex As Exception
             End Try
@@ -80,13 +80,13 @@ Public Class Functions
                 'Get the PawnDoc for it.
                 Dim pwndoc As PawnDocParser = Nothing
                 If parts.pawnDocs IsNot Nothing Then
-                    pwndoc = parts.pawnDocs.Find(Function(x) x.Value.Summary = funcName).Value
+                    pwndoc = parts.pawnDocs.Find(Function(x) x.Summary = funcName)
                 End If
 
                 If add Then
-                    parts.Functions.Add(New KeyValuePair(Of String, FunctionsStruct)(fileName, New FunctionsStruct(funcName, funcParams, tag, pwndoc)))
+                    parts.Functions.Add(New FunctionsStruct(funcName, funcParams, tag, pwndoc))
                 Else
-                    parts.Functions.RemoveAll(Function(x) x.Key = fileName And x.Value.FuncName = funcName)
+                    parts.Functions.RemoveAll(Function(x) x.FuncName = funcName)
                 End If
             Catch ex As Exception
             End Try
@@ -107,13 +107,13 @@ Public Class Functions
                 'Get the PawnDoc for it.
                 Dim pwndoc As PawnDocParser = Nothing
                 If parts.pawnDocs IsNot Nothing Then
-                    pwndoc = parts.pawnDocs.Find(Function(x) x.Value.Summary = funcName).Value
+                    pwndoc = parts.pawnDocs.Find(Function(x) x.Summary = funcName)
                 End If
 
                 If add Then
-                    parts.Natives.Add(New KeyValuePair(Of String, FunctionsStruct)(fileName, New FunctionsStruct(funcName, funcParams, tag, pwndoc)))
+                    parts.Natives.Add(New FunctionsStruct(funcName, funcParams, tag, pwndoc))
                 Else
-                    parts.Natives.RemoveAll(Function(x) x.Key = fileName And x.Value.FuncName = funcName)
+                    parts.Natives.RemoveAll(Function(x) x.FuncName = funcName)
                 End If
             Catch ex As Exception
             End Try

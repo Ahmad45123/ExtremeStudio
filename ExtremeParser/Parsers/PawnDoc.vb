@@ -10,9 +10,9 @@ Public Class PawnDoc
             Try
                 Dim pwn = New PawnDocParser(val)
                 If add Then
-                    parts.pawnDocs.Add(New KeyValuePair(Of String, PawnDocParser)(fileName, pwn))
+                    parts.pawnDocs.Add(pwn)
                 Else
-                    parts.pawnDocs.RemoveAll(Function(x) x.Key = fileName And x.Value.Summary = pwn.Summary)
+                    parts.pawnDocs.RemoveAll(Function(x) x.Summary = pwn.Summary)
                 End If
             Catch ex As ParserException
                 Throw New ParserException(ex.Message, "")

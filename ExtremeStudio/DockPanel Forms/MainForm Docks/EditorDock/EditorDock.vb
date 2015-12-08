@@ -304,52 +304,52 @@ Public Class EditorDock
     End Sub
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork
         If Editor.IsHandleCreated Then
-            'Parse old. [False to remove.]
-            Dim null = New RemoveParser(codeParts, e.Argument(0), e.Argument(2), e.Argument(3))
+            'Parse old.
+            Dim null = New RemoveParser(codeParts, e.Argument(0), e.Argument(2), e.Argument(3), False)
 
-            'Save the new to the result. [True to add].
+            'Save the new to the result.
             e.Result = New AddParser(codeParts, e.Argument(1), e.Argument(2), e.Argument(3))
         End If
     End Sub
 
     Private Sub parseCodeParts(ByRef setString As StringBuilder, ByRef definesText As StringBuilder, ByRef autoList As List(Of AutoCompleteItemEx))
         For Each stock In codeParts.Stocks
-            setString.Append(" " + stock.Value.FuncName)
+            setString.Append(" " + stock.FuncName)
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, stock.Value)
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, stock)
             autoList.Add(newitm)
         Next
         For Each publicFunc In codeParts.Publics
-            setString.Append(" " + publicFunc.Value.FuncName)
+            setString.Append(" " + publicFunc.FuncName)
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, publicFunc.Value)
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, publicFunc)
             autoList.Add(newitm)
         Next
         For Each func In codeParts.Functions
-            setString.Append(" " + func.Value.FuncName)
+            setString.Append(" " + func.FuncName)
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, func.Value)
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, func)
             autoList.Add(newitm)
         Next
         For Each native In codeParts.Natives
-            setString.Append(" " + native.Value.FuncName)
+            setString.Append(" " + native.FuncName)
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, native.Value)
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, native)
             autoList.Add(newitm)
         Next
         For Each def In codeParts.Defines
-            definesText.Append(" " + def.Value.DefineName)
+            definesText.Append(" " + def.DefineName)
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, def.Value.DefineName, def.Value.DefineValue)
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, def.DefineName, def.DefineValue)
             autoList.Add(newitm)
         Next
         For Each parentEnm In codeParts.Enums
-            For Each enm In parentEnm.Value.EnumContents
+            For Each enm In parentEnm.EnumContents
                 definesText.Append(" " + enm.Content)
 
                 'AutoComplete
@@ -365,15 +365,15 @@ Public Class EditorDock
                     type = "tagged"
                 End If
 
-                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, enm.Content, "This is an enum item with the type: `" + type + "` that is in the enum: `" + parentEnm.Value.EnumName + "`")
+                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, enm.Content, "This is an enum item with the type: `" + type + "` that is in the enum: `" + parentEnm.EnumName + "`")
                 autoList.Add(newitm)
             Next
         Next
         For Each var In codeParts.publicVariables
-            definesText.Append(" " + var.Value.VarName)
+            definesText.Append(" " + var.VarName)
 
             'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, var.Value.VarName, "This is a global variable declared in one of the includes.")
+            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, var.VarName, "This is a global variable declared in one of the includes.")
             autoList.Add(newitm)
         Next
     End Sub
