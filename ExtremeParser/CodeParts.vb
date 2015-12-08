@@ -1,10 +1,9 @@
-﻿Imports ExtremeParser
+﻿Imports ExtremeCore
+Imports ExtremeParser
 
 Public Class CodeParts
-    Public _fileName As String
-
-    Public parentPart As CodeParts
-
+    'The Object Itself: 
+    Public FileName As String
     Public Defines As New List(Of DefinesStruct)
     Public Macros As New List(Of DefinesStruct)
     Public Functions As New List(Of FunctionsStruct)
@@ -15,21 +14,34 @@ Public Class CodeParts
     Public publicVariables As New List(Of VarStruct)
     Public pawnDocs As New List(Of PawnDocParser)
 
-    'This just stores the name of includes.
-    Public Includes As New List(Of CodeParts)
+#Region "Includes Codes"
+    'Properties.
+    Public Property ParentInclude As CodeParts
+    Public Property RootInclude As CodeParts
+    Public Property Includes As ICollection(Of CodeParts)
 
-    'Helper Funcs.
-    Public Sub IsAlreadyParsed(ByRef res As Boolean, ByVal str As String, Optional parts As CodeParts = Nothing)
-        If parts Is Nothing Then parts = Me
+    Public Sub New()
+        Me.Includes = New LinkedList(Of CodeParts)()
+        RootInclude = Me
+    End Sub
 
-        For Each inc In parts.Includes
-            If inc._fileName = str Then res = True : Exit Sub
-
-            If inc.Includes.Count <> 0 Then
-                IsAlreadyParsed(res, str, inc)
-            End If
-        Next
+    Public Sub AddInclude(child As CodeParts)
+        child.ParentInclude = Me
+        Me.Includes.Add(child)
 
     End Sub
 
+    Public Function Flatten() As IEnumerable(Of CodeParts)
+        Return {Me}.Union(Includes.SelectMany(Function(x) x.Flatten()))
+    End Function
+
+    Public Sub RemoveIncludeByName(inc As String)
+        For Each part As CodeParts In Flatten()
+            If part.FileName = inc Then
+                Includes.Remove(part)
+                Exit For
+            End If
+        Next
+    End Sub
+#End Region
 End Class

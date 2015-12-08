@@ -4,7 +4,7 @@ Public Class ProjExplorerDock
 
     Private nodeState As ExtremeCore.treeNodeStateSaving = New ExtremeCore.treeNodeStateSaving
 
-    Public Includes As List(Of ExtremeParser.CodeParts)
+    Public Includes As LinkedList(Of ExtremeParser.CodeParts)
 
     Public Sub RefreshList(Optional firstTime As Boolean = False)
         If firstTime = False Then nodeState.SaveTreeState(treeView.Nodes) 'Save current expanded nodes.
@@ -47,7 +47,7 @@ Public Class ProjExplorerDock
         treeView.Nodes(2).Nodes.Clear()
         treeView.Nodes(2).Tag = "IncludeRoot"
         For Each inc In Includes
-            Dim nde As TreeNode = treeView.Nodes(2).Nodes.Add(inc._fileName)
+            Dim nde As TreeNode = treeView.Nodes(2).Nodes.Add(inc.FileName)
             nde.ImageIndex = 1
             nde.Tag = "Include"
         Next

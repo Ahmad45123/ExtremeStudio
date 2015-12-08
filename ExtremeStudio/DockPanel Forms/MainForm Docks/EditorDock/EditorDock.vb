@@ -13,7 +13,8 @@ Public Class EditorDock
         INDICATOR_CODEERROR
         INDICATOR_PHPDOCERROR
     End Enum
-    Public codeParts As New CodeParts()
+    Public codeParts As New CodeParts
+
     Dim autoCompleteList As New List(Of AutoCompleteItemEx)
 
     Public isFirstParse As Boolean = True
@@ -305,76 +306,78 @@ Public Class EditorDock
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork
         If Editor.IsHandleCreated Then
             'Parse old.
-            Dim null = New RemoveParser(codeParts, e.Argument(0), e.Argument(2), e.Argument(3), False)
+            Dim null = New Parser(codeParts, e.Argument(0), e.Argument(2), e.Argument(3), False)
 
             'Save the new to the result.
-            e.Result = New AddParser(codeParts, e.Argument(1), e.Argument(2), e.Argument(3))
+            e.Result = New Parser(codeParts, e.Argument(1), e.Argument(2), e.Argument(3), True)
         End If
     End Sub
 
     Private Sub parseCodeParts(ByRef setString As StringBuilder, ByRef definesText As StringBuilder, ByRef autoList As List(Of AutoCompleteItemEx))
-        For Each stock In codeParts.Stocks
-            setString.Append(" " + stock.FuncName)
-
-            'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, stock)
-            autoList.Add(newitm)
-        Next
-        For Each publicFunc In codeParts.Publics
-            setString.Append(" " + publicFunc.FuncName)
-
-            'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, publicFunc)
-            autoList.Add(newitm)
-        Next
-        For Each func In codeParts.Functions
-            setString.Append(" " + func.FuncName)
-
-            'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, func)
-            autoList.Add(newitm)
-        Next
-        For Each native In codeParts.Natives
-            setString.Append(" " + native.FuncName)
-
-            'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, native)
-            autoList.Add(newitm)
-        Next
-        For Each def In codeParts.Defines
-            definesText.Append(" " + def.DefineName)
-
-            'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, def.DefineName, def.DefineValue)
-            autoList.Add(newitm)
-        Next
-        For Each parentEnm In codeParts.Enums
-            For Each enm In parentEnm.EnumContents
-                definesText.Append(" " + enm.Content)
+        For Each part In codeParts.Flatten
+            For Each stock In part.Stocks
+                setString.Append(" " + stock.FuncName)
 
                 'AutoComplete
-                Dim type As String = ""
-
-                If enm.Type = FunctionParameters.varTypes.TYPE_ARRAY Then
-                    type = "array/string"
-                ElseIf enm.Type = FunctionParameters.varTypes.TYPE_FLOAT Then
-                    type = "float"
-                ElseIf enm.Type = FunctionParameters.varTypes.TYPE_INTEGER Then
-                    type = "integer"
-                ElseIf enm.Type = FunctionParameters.varTypes.TYPE_FLOAT Then
-                    type = "tagged"
-                End If
-
-                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, enm.Content, "This is an enum item with the type: `" + type + "` that is in the enum: `" + parentEnm.EnumName + "`")
+                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, stock)
                 autoList.Add(newitm)
             Next
-        Next
-        For Each var In codeParts.publicVariables
-            definesText.Append(" " + var.VarName)
+            For Each publicFunc In part.Publics
+                setString.Append(" " + publicFunc.FuncName)
 
-            'AutoComplete
-            Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, var.VarName, "This is a global variable declared in one of the includes.")
-            autoList.Add(newitm)
+                'AutoComplete
+                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, publicFunc)
+                autoList.Add(newitm)
+            Next
+            For Each func In part.Functions
+                setString.Append(" " + func.FuncName)
+
+                'AutoComplete
+                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, func)
+                autoList.Add(newitm)
+            Next
+            For Each native In part.Natives
+                setString.Append(" " + native.FuncName)
+
+                'AutoComplete
+                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, native)
+                autoList.Add(newitm)
+            Next
+            For Each def In part.Defines
+                definesText.Append(" " + def.DefineName)
+
+                'AutoComplete
+                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, def.DefineName, def.DefineValue)
+                autoList.Add(newitm)
+            Next
+            For Each parentEnm In part.Enums
+                For Each enm In parentEnm.EnumContents
+                    definesText.Append(" " + enm.Content)
+
+                    'AutoComplete
+                    Dim type As String = ""
+
+                    If enm.Type = FunctionParameters.varTypes.TYPE_ARRAY Then
+                        type = "array/string"
+                    ElseIf enm.Type = FunctionParameters.varTypes.TYPE_FLOAT Then
+                        type = "float"
+                    ElseIf enm.Type = FunctionParameters.varTypes.TYPE_INTEGER Then
+                        type = "integer"
+                    ElseIf enm.Type = FunctionParameters.varTypes.TYPE_FLOAT Then
+                        type = "tagged"
+                    End If
+
+                    Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, enm.Content, "This is an enum item with the type: `" + type + "` that is in the enum: `" + parentEnm.EnumName + "`")
+                    autoList.Add(newitm)
+                Next
+            Next
+            For Each var In part.publicVariables
+                definesText.Append(" " + var.VarName)
+
+                'AutoComplete
+                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, var.VarName, "This is a global variable declared in one of the includes.")
+                autoList.Add(newitm)
+            Next
         Next
     End Sub
 
@@ -383,7 +386,7 @@ Public Class EditorDock
         ErrorsDock.parserErrors.Rows.Clear()
 
 #Region "Error Showing"
-        Dim errors As ExceptionsList = DirectCast(e.Result, IParser).errors
+        Dim errors As ExceptionsList = DirectCast(e.Result, Parser).errors
         For Each obj In errors.exceptionsList
             If TypeOf (obj) Is IncludeNotFoundException Then
                 Dim tmpObj = DirectCast(obj, IncludeNotFoundException)

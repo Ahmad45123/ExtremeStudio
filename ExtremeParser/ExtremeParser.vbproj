@@ -46,6 +46,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -63,12 +64,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddParser.vb" />
     <Compile Include="Exceptions\IncludeNotFoundException.vb" />
     <Compile Include="Global\defineReplacer.vb" />
     <Compile Include="Exceptions\ExceptionsList.vb" />
-    <Compile Include="RemoveParser.vb" />
-    <Compile Include="IParser.vb" />
+    <Compile Include="Parser.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

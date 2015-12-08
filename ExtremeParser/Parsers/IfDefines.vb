@@ -19,26 +19,26 @@ Public Class IfDefines
             End If
 
             'The result of the parse will be saved here for deletion.
-            Dim result As RemoveParser = Nothing
+            Dim result As Parser = Nothing
 
             'Now check which part needs to be parsed by seeing isNt and the else.
             If isNt = False Then
                 'Here the thing should BE defined
                 If isDefined(parts, condition) = False Then
                     'Parse the main.
-                    result = New RemoveParser(parts, mainCode, filePath, prjPath, False)
+                    result = New Parser(parts, mainCode, filePath, prjPath, False)
                 Else
                     'Parse the else.
-                    result = New RemoveParser(parts, elseClode, filePath, prjPath, False)
+                    result = New Parser(parts, elseClode, filePath, prjPath, False)
                 End If
             Else
                 'It should NOT be defined.
                 If isDefined(parts, condition) = True Then
                     'Parse the main.
-                    result = New RemoveParser(parts, mainCode, filePath, prjPath, False)
+                    result = New Parser(parts, mainCode, filePath, prjPath, False)
                 Else
                     'Parse the else.
-                    result = New RemoveParser(parts, elseClode, filePath, prjPath, False)
+                    result = New Parser(parts, elseClode, filePath, prjPath, False)
                 End If
             End If
         Next

@@ -1,10 +1,10 @@
 ﻿Imports System.IO
 Imports ExtremeParser
+Imports ExtremeCore
 
-Public Class RemoveParser
-    Implements IParser
+Public Class Parser
 
-    Public Property errors As New ExceptionsList Implements IParser.errors
+    Public Property errors As New ExceptionsList
 
     Public Sub New(ByRef codeParts As CodeParts, code As String, filePath As String, projectPath As String, add As Boolean)
         'Make sure then code is not nothing.
@@ -12,6 +12,9 @@ Public Class RemoveParser
 
         'Get the name
         Dim name As String = Path.GetFileNameWithoutExtension(filePath)
+
+        'Debug.
+        Debug.WriteLine("Started Parser on the file: '" + name + "' Status: " + add.ToString)
 
         'Remove singline comments.
         Cleaner.Parse(code, True, False, False, False)
@@ -56,4 +59,11 @@ Public Class RemoveParser
         'Parse if defines.
         IfDefines.Parse(code, filePath, projectPath, codeParts, add)
     End Sub
+
+    Public Shared Function IsParsed(parts As CodeParts, name As String)
+        For Each part In parts.Flatten
+            If part.FileName = name Then Return True
+        Next
+        Return False
+    End Function
 End Class

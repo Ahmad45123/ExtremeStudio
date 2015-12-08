@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Text.RegularExpressions
+Imports ExtremeCore
 
 Public Class Includes
     Public Shared Sub Parse(ByRef code As String, filePath As String, prjPath As String, ByRef parts As CodeParts, ByRef errors As ExceptionsList, Optional add As Boolean = True)
@@ -40,19 +41,27 @@ Public Class Includes
                 'Create a new codeparts object for the includes cause they are needed.
                 If add Then
                     Try
+                        'Check if was already parsed or not.
+                        If Parser.IsParsed(parts.RootInclude, Path.GetFileNameWithoutExtension(fullPath)) Then
+                            Continue For
+                        End If
+
+                        'Else: 
                         Dim part As New CodeParts
-                        part.parentPart = parts
 
-                        Dim prs As New AddParser(part, My.Computer.FileSystem.ReadAllText(fullPath), fullPath, prjPath)
+                        part.FileName = Path.GetFileNameWithoutExtension(fullPath)
+                        part.RootInclude = parts.RootInclude
 
-                        part._fileName = Path.GetFileNameWithoutExtension(fullPath)
-                        parts.Includes.Add(part)
+                        parts.AddInclude(part)
+
+                        Dim prs As New Parser(part, My.Computer.FileSystem.ReadAllText(fullPath), fullPath, prjPath, True)
                     Catch ex As Exception
+                        errors.exceptionsList.Add(New IncludeNotFoundException(Path.GetFileNameWithoutExtension(fullPath)))
                     End Try
                 Else
                     Try
                         'Here if the include is REMOVED, There is no need to parse it all again cause we already know that we just need to remove the whole include.
-                        parts.Includes.RemoveAll(Function(x) x._fileName = Path.GetFileNameWithoutExtension(fullPath))
+                        parts.RemoveIncludeByName(Path.GetFileNameWithoutExtension(fullPath))
                     Catch ex As Exception
                     End Try
                 End If
