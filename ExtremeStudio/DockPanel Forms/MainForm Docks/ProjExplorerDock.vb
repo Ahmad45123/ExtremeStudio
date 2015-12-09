@@ -1,10 +1,11 @@
 ﻿Imports System.IO
+Imports ExtremeParser
 
 Public Class ProjExplorerDock
 
     Private nodeState As ExtremeCore.treeNodeStateSaving = New ExtremeCore.treeNodeStateSaving
 
-    Public Includes As LinkedList(Of ExtremeParser.CodeParts)
+    Public Includes As LinkedList(Of CodeParts)
 
     Public Sub RefreshList(Optional firstTime As Boolean = False)
         If firstTime = False Then nodeState.SaveTreeState(treeView.Nodes) 'Save current expanded nodes.
@@ -43,15 +44,33 @@ Public Class ProjExplorerDock
 
         If firstTime = False Then nodeState.RestoreTreeState(treeView) 'Load the last opened nodes.
     End Sub
+
+#Region "Includes"
     Public Sub RefreshIncludes()
         treeView.Nodes(2).Nodes.Clear()
         treeView.Nodes(2).Tag = "IncludeRoot"
+
+        'Loop through all includes and create their main then call AddInc to get rest.
         For Each inc In Includes
             Dim nde As TreeNode = treeView.Nodes(2).Nodes.Add(inc.FileName)
             nde.ImageIndex = 1
             nde.Tag = "Include"
+
+            AddInc(inc.Includes, nde)
         Next
     End Sub
+    Sub AddInc(part As LinkedList(Of CodeParts), ByRef mainNode As TreeNode)
+        For Each inc In part
+            Dim nde As TreeNode = mainNode.Nodes.Add(inc.FileName)
+            nde.ImageIndex = 1
+            nde.Tag = "Include"
+
+            If inc.Includes.Count <> 0 Then
+                AddInc(inc.Includes, nde)
+            End If
+        Next
+    End Sub
+#End Region
 
     Private Sub treeView_BeforeLabelEdit(sender As Object, e As NodeLabelEditEventArgs) Handles treeView.BeforeLabelEdit
         If e.Node.Tag = "IncludeRoot" Or e.Node.Tag = "GamemodeFilterRoot" Then
