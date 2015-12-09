@@ -184,7 +184,7 @@ Public Class EditorDock
         'Check if the ifs are more then the ends.
         If allIfs > allEnds Then
             'Aslong as they're not equal, Keep going!
-            While (allIfs <> allEnds)
+            While (allIfs <> allEnds And Editor.Lines.Count > line)
                 line += 1
 
                 Dim newLine As String = Editor.Lines(line).Text
@@ -194,7 +194,7 @@ Public Class EditorDock
             End While
         ElseIf allEnds > allIfs
             'Aslong as they're not equal, Keep going!
-            While (allIfs <> allEnds)
+            While (allIfs <> allEnds And Editor.Lines.Count > line)
                 line += 1
 
                 Dim newLine As String = Editor.Lines(line).Text
