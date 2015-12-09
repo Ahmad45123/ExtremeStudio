@@ -6,7 +6,7 @@ Public Class Parser
 
     Public Property errors As New ExceptionsList
 
-    Public Sub New(ByRef codeParts As CodeParts, code As String, filePath As String, projectPath As String, add As Boolean)
+    Public Sub New(ByRef codeParts As CodeParts, code As String, filePath As String, projectPath As String, add As Boolean, Optional isIfDefine As Boolean = False)
         'Make sure then code is not nothing.
         If code = Nothing Then Exit Sub
 
@@ -14,7 +14,7 @@ Public Class Parser
         Dim name As String = Path.GetFileNameWithoutExtension(filePath)
 
         'Debug.
-        Debug.WriteLine("Started Parser on the file: '" + name + "' Status: " + add.ToString)
+        If isIfDefine = False Then Debug.WriteLine("Started Parser on the file: '" + name + "' Status: " + add.ToString)
 
         'Remove singline comments.
         Cleaner.Parse(code, True, False, False, False)
@@ -31,16 +31,16 @@ Public Class Parser
         'Now remove braces.
         Cleaner.Parse(code, False, False, True, False)
 
+        If add = False Then
+            'Replace defines and macros.
+            DefReplacer.Parse(code, name, codeParts, add)
+        End If
+
         'Parse for includes. (BEFORE REMOVING STRINGS)
         Includes.Parse(code, filePath, projectPath, codeParts, errors, add)
 
         'Remove strings
         Cleaner.Parse(code, False, False, False, True)
-
-        If add = False Then
-            'Replace defines and macros.
-            DefReplacer.Parse(code, name, codeParts, add)
-        End If
 
         'Parse defines and macros.
         Defines.Parse(code, name, codeParts, add)

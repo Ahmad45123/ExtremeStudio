@@ -26,19 +26,19 @@ Public Class IfDefines
                 'Here the thing should BE defined
                 If isDefined(parts, condition) = False Then
                     'Parse the main.
-                    result = New Parser(parts, mainCode, filePath, prjPath, False)
+                    result = New Parser(parts, mainCode, filePath, prjPath, False, True)
                 Else
                     'Parse the else.
-                    result = New Parser(parts, elseClode, filePath, prjPath, False)
+                    result = New Parser(parts, elseClode, filePath, prjPath, False, True)
                 End If
             Else
                 'It should NOT be defined.
                 If isDefined(parts, condition) = True Then
                     'Parse the main.
-                    result = New Parser(parts, mainCode, filePath, prjPath, False)
+                    result = New Parser(parts, mainCode, filePath, prjPath, False, True)
                 Else
                     'Parse the else.
-                    result = New Parser(parts, elseClode, filePath, prjPath, False)
+                    result = New Parser(parts, elseClode, filePath, prjPath, False, True)
                 End If
             End If
         Next

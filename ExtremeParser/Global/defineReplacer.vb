@@ -1,13 +1,14 @@
 ﻿Imports System.Text.RegularExpressions
 
 Public Class defineReplacer
-    Public Shared Sub Replace(ByRef Code As String, ByVal defineName As String, ByVal defineReplace As String)
+    Public Shared Sub Replace(ByRef Code As String, ByVal defineName As String, ByVal defineReplace As String, isMacro As Boolean)
         'First start building the regex for the find.
         Dim findRegex As String = Regex.Escape(defineName)
 
         'Setup find regex.
         findRegex = Regex.Replace(findRegex, "%([0-9])", "(.*)")
-        findRegex = "(?<!#.*)\b" + findRegex + "\b"
+        findRegex = "(?<!#.*)\b" + findRegex
+        If isMacro = False Then findRegex += "\b"
 
         'Setup replace regex.
         Dim replaceRegex As String = defineReplace
