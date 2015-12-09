@@ -4,6 +4,7 @@ Imports ExtremeParser
 Public Class CodeParts
     'The Object Itself: 
     Public FileName As String
+    Public FilePath As String
     Public Defines As New List(Of DefinesStruct)
     Public Macros As New List(Of DefinesStruct)
     Public Functions As New List(Of FunctionsStruct)
@@ -28,7 +29,6 @@ Public Class CodeParts
     Public Sub AddInclude(child As CodeParts)
         child.ParentInclude = Me
         Me.Includes.Add(child)
-
     End Sub
 
     Public Function Flatten() As IEnumerable(Of CodeParts)

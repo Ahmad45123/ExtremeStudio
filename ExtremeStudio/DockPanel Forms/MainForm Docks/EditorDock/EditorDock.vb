@@ -423,10 +423,6 @@ Public Class EditorDock
         End Try
 #End Region
 
-        If ProjExplorerDock.Visible Then
-            ProjExplorerDock.Includes = codeParts.Includes
-            ProjExplorerDock.RefreshIncludes()
-        End If
         If ObjectExplorerDock.Visible Then
             ObjectExplorerDock.refreshTreeView(codeParts)
         End If

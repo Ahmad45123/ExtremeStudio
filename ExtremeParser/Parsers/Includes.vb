@@ -50,6 +50,7 @@ Public Class Includes
                         Dim part As New CodeParts
 
                         part.FileName = Path.GetFileNameWithoutExtension(fullPath)
+                        part.FilePath = fullPath
                         part.RootInclude = parts.RootInclude
 
                         parts.AddInclude(part)
