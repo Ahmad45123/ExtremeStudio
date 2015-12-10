@@ -32,7 +32,7 @@ Public Class EditorDock
         End If
         idleTimer.Stop()
 
-        If RefreshWorker.IsBusy Then RefreshWorker.CancelAsync()
+        If RefreshWorker.IsBusy Then MainForm.statusLabel.Text = "Idle."
     End Sub
     Private Sub Editor_KeyDown(sender As Object, e As KeyEventArgs) Handles Editor.KeyDown
         If e.Control = True And e.KeyCode = Keys.S Then
@@ -382,6 +382,8 @@ Public Class EditorDock
     End Sub
 
     Private Sub RefreshWorker_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles RefreshWorker.RunWorkerCompleted
+        If Me.IsDisposed Then Exit Sub
+
         MainForm.statusLabel.Text = "Idle."
         ErrorsDock.parserErrors.Rows.Clear()
 
