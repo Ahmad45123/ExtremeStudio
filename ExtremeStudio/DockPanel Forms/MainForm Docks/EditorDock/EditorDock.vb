@@ -150,17 +150,6 @@ Public Class EditorDock
     End Sub
 #End Region
 
-#Region "CodeIndent Handlers"
-    Const SCI_SETLINEINDENTATION As Integer = 2126
-    Const SCI_GETLINEINDENTATION As Integer = 2127
-    Private Sub SetIndent(scin As ScintillaNET.Scintilla, line As Integer, indent As Integer)
-        scin.DirectMessage(SCI_SETLINEINDENTATION, New IntPtr(line), New IntPtr(indent))
-    End Sub
-    Private Function GetIndent(scin As ScintillaNET.Scintilla, line As Integer) As Integer
-        Return (scin.DirectMessage(SCI_GETLINEINDENTATION, New IntPtr(line), Nothing).ToInt32)
-    End Function
-#End Region
-
 #Region "TextChangedDelayed WITH VISIBLE Setup Code"
     'Variables to save parsing offsets.
     'Will be -1 if done.
@@ -493,7 +482,7 @@ Public Class EditorDock
         If e.Char = 125 Then  'The '}' char.
             Dim curLine As Integer = Editor.LineFromPosition(Editor.CurrentPosition)
             If Editor.Lines(curLine).Text.Trim() = "}" Then 'Check whether the bracket is the only thing on the line.. For cases like "if() { }".
-                SetIndent(Editor, curLine, GetIndent(Editor, curLine) - 4)
+                Editor.Lines(curLine).Indentation -= 4
             End If
         End If
     End Sub
