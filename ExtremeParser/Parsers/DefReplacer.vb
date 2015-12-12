@@ -1,6 +1,6 @@
 ﻿Public Class DefReplacer
     Public Shared Sub Parse(ByRef code As String, fileName As String, ByRef parts As CodeParts, Optional add As Boolean = True)
-        For Each part In parts.Flatten
+        For Each part In parts.FlattenIncludes
             For i As Integer = 0 To part.Defines.Count - 1
                 defineReplacer.Replace(code, part.Defines(i).DefineName, part.Defines(i).DefineValue, False)
             Next

@@ -31,12 +31,12 @@ Public Class CodeParts
         Me.Includes.Add(child)
     End Sub
 
-    Public Function Flatten() As IEnumerable(Of CodeParts)
-        Return {Me}.Union(Includes.SelectMany(Function(x) x.Flatten()))
+    Public Function FlattenIncludes() As IEnumerable(Of CodeParts)
+        Return {Me}.Union(Includes.SelectMany(Function(x) x.FlattenIncludes()))
     End Function
 
     Public Sub RemoveIncludeByName(inc As String)
-        For Each part As CodeParts In Flatten()
+        For Each part As CodeParts In FlattenIncludes()
             If part.FileName = inc Then
                 Includes.Remove(part)
                 Exit For

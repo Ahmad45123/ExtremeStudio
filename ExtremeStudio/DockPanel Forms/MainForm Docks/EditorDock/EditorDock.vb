@@ -303,7 +303,7 @@ Public Class EditorDock
     End Sub
 
     Private Sub parseCodeParts(ByRef setString As StringBuilder, ByRef definesText As StringBuilder, ByRef autoList As List(Of AutoCompleteItemEx))
-        For Each part In codeParts.Flatten
+        For Each part In codeParts.FlattenIncludes
             For Each stock In part.Stocks
                 setString.Append(" " + stock.FuncName)
 

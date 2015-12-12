@@ -61,7 +61,7 @@ Public Class Parser
     End Sub
 
     Public Shared Function IsParsed(parts As CodeParts, name As String)
-        For Each part In parts.Flatten
+        For Each part In parts.FlattenIncludes
             If part.FileName = name Then Return True
         Next
         Return False
