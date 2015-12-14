@@ -7,3 +7,11 @@ ExtremeStudio is a PAWN editor and is designed to be used in SA-MP development.
 **Project still under early development.**
 
 *Make sure to watch the project on github to get notified when the beta version is released. :)*
+
+## Credits
+* Microsoft for .NET ofcourse.
+* [ScintillaNET](https://github.com/jacobslusser/ScintillaNET) for the wrapper for Scintilla.
+* [DockPanelSuite](http://dockpanelsuite.com/) for the tabbing control.
+* [AutoCompleteMenu](http://www.codeproject.com/Articles/365974/Autocomplete-Menu) for the auto-complete menu used along with ScintillaNET using [this](https://github.com/JohnyMac/AutoCompleteMenu-ScintillaNET) wrapper by me.
+* [DotNetZIP](https://dotnetzip.codeplex.com/), A class library that add support for handling ZIP files. 
+* Pretty much everything else is by me.
