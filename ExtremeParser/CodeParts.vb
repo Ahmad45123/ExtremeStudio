@@ -1,10 +1,13 @@
-﻿Imports ExtremeCore
+﻿Imports System.IO
+Imports ExtremeCore
 Imports ExtremeParser
 
 Public Class CodeParts
-    'The Object Itself: 
     Public FileName As String
     Public FilePath As String
+    Public fileHash As String
+
+    'The Object Itself: 
     Public Defines As New List(Of DefinesStruct)
     Public Macros As New List(Of DefinesStruct)
     Public Functions As New List(Of FunctionsStruct)
@@ -27,7 +30,12 @@ Public Class CodeParts
     End Sub
 
     Public Sub AddInclude(child As CodeParts)
+        'Set its info.
         child.ParentInclude = Me
+        child.RootInclude = Me.RootInclude
+        child.FileName = Path.GetFileNameWithoutExtension(child.FilePath)
+        child.fileHash = getFileHash(child.FilePath)
+
         Me.Includes.Add(child)
     End Sub
 
@@ -35,9 +43,9 @@ Public Class CodeParts
         Return {Me}.Union(Includes.SelectMany(Function(x) x.FlattenIncludes()))
     End Function
 
-    Public Sub RemoveIncludeByName(inc As String)
+    Public Sub RemoveIncludeByHash(incHash As String)
         For Each part As CodeParts In FlattenIncludes()
-            If part.FileName = inc Then
+            If part.fileHash = incHash Then
                 Includes.Remove(part)
                 Exit For
             End If

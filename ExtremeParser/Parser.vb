@@ -60,9 +60,11 @@ Public Class Parser
         IfDefines.Parse(code, filePath, projectPath, codeParts, add)
     End Sub
 
-    Public Shared Function IsParsed(parts As CodeParts, name As String)
+    Public Shared Function IsParsed(parts As CodeParts, filePath As String)
         For Each part In parts.FlattenIncludes
-            If part.FileName = name Then Return True
+            If part.fileHash Is Nothing Then Continue For
+
+            If part.fileHash = ExtremeCore.getFileHash(filePath) Then Return True
         Next
         Return False
     End Function

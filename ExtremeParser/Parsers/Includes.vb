@@ -42,27 +42,27 @@ Public Class Includes
                 If add Then
                     Try
                         'Check if was already parsed or not.
-                        If Parser.IsParsed(parts.RootInclude, Path.GetFileNameWithoutExtension(fullPath)) Then
+                        If Parser.IsParsed(parts.RootInclude, fullPath) Then
                             Continue For
                         End If
 
                         'Else: 
                         Dim part As New CodeParts
 
-                        part.FileName = Path.GetFileNameWithoutExtension(fullPath)
+                        'Setup and add to list.
                         part.FilePath = fullPath
-                        part.RootInclude = parts.RootInclude
-
                         parts.AddInclude(part)
 
                         Dim prs As New Parser(part, My.Computer.FileSystem.ReadAllText(fullPath), fullPath, prjPath, True)
+                        errors.exceptionsList.AddRange(prs.errors.exceptionsList)
+
                     Catch ex As Exception
                         errors.exceptionsList.Add(New IncludeNotFoundException(Path.GetFileNameWithoutExtension(fullPath)))
                     End Try
                 Else
                     Try
                         'Here if the include is REMOVED, There is no need to parse it all again cause we already know that we just need to remove the whole include.
-                        parts.RemoveIncludeByName(Path.GetFileNameWithoutExtension(fullPath))
+                        parts.RemoveIncludeByHash(getFileHash(fullPath))
                     Catch ex As Exception
                     End Try
                 End If
