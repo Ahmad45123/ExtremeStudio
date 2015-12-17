@@ -2,7 +2,6 @@
 
 Public Class Defines
     Public Shared Sub Parse(ByRef code As String, fileName As String, ByRef parts As CodeParts, Optional add As Boolean = True)
-        Dim tmpDefines As New List(Of DefinesStruct)
         For Each Match As Match In Regex.Matches(code, "^[ \t]*[#]define[ \t]+(?<name>[^\s\\;]+)[ \t]*(?:\\\s+)?(?>(?<value>[^\\\n\r]+)[ \t]*(?:\\\s+)?)*", RegexOptions.Multiline)
             Dim defineName As String = Match.Groups(1).Value
             Dim defineValue As String = ""
