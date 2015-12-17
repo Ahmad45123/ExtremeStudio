@@ -41,6 +41,7 @@ Partial Class ObjectExplorerDock
         Me.treeView.ContextMenuStrip = Me.MenuStrip
         Me.treeView.Location = New System.Drawing.Point(0, 21)
         Me.treeView.Name = "treeView"
+        Me.treeView.ShowNodeToolTips = True
         Me.treeView.Size = New System.Drawing.Size(270, 381)
         Me.treeView.TabIndex = 0
         '

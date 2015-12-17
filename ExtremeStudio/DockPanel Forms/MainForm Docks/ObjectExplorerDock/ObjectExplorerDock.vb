@@ -31,12 +31,12 @@ Public Class ObjectExplorerDock
         'Start
         For Each key In parser.Defines.FindAll(Function(x) x.DefineName.Contains(searchTerm))
             Dim nde = defines.Nodes.Add(key.DefineName)
-            nde.Tag = key.DefineValue
+            nde.ToolTipText = "Define Value: " + vbCrLf + key.DefineValue
         Next
 
         For Each key In parser.Macros.FindAll(Function(x) x.DefineName.Contains(searchTerm))
             Dim nde = macros.Nodes.Add(key.DefineName)
-            nde.Tag = key.DefineValue
+            nde.ToolTipText = "Define Value: " + vbCrLf + key.DefineValue
         Next
 
         For Each funcs In parser.Functions.FindAll(Function(x) x.FuncName.Contains(searchTerm))
@@ -46,7 +46,7 @@ Public Class ObjectExplorerDock
             For Each itm In listCustom
                 If funcs.FuncName.StartsWith(itm.Tag) Then
                     Dim node = itm.Nodes.Add(funcs.FuncName)
-                    node.Tag = funcs.FuncParameters
+                    node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TYPE_FUNCTION, funcs).ToolTipText
                     done = True 'To skip the `Else if it wasn't used.`
                     Exit For
                 End If
@@ -56,7 +56,7 @@ Public Class ObjectExplorerDock
 
             'Else if it wasn't used.
             Dim nde = functions.Nodes.Add(funcs.FuncName)
-            nde.Tag = funcs.FuncParameters
+            nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TYPE_FUNCTION, funcs).ToolTipText
         Next
 
         For Each publicFunc In parser.Publics.FindAll(Function(x) x.FuncName.Contains(searchTerm))
@@ -66,7 +66,7 @@ Public Class ObjectExplorerDock
             For Each itm In listCustom
                 If publicFunc.FuncName.StartsWith(itm.Tag) Then
                     Dim node = itm.Nodes.Add(publicFunc.FuncName)
-                    node.Tag = publicFunc.FuncParameters
+                    node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TYPE_FUNCTION, publicFunc).ToolTipText
                     done = True 'To skip the `Else if it wasn't used.`
                     Exit For
                 End If
@@ -76,7 +76,7 @@ Public Class ObjectExplorerDock
 
             'Else if it wasn't used.
             Dim nde = publics.Nodes.Add(publicFunc.FuncName)
-            nde.Tag = publicFunc.FuncParameters
+            nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TYPE_FUNCTION, publicFunc).ToolTipText
         Next
 
         For Each stock In parser.Stocks.FindAll(Function(x) x.FuncName.Contains(searchTerm))
@@ -86,7 +86,7 @@ Public Class ObjectExplorerDock
             For Each itm In listCustom
                 If stock.FuncName.StartsWith(itm.Tag) Then
                     Dim node = itm.Nodes.Add(stock.FuncName)
-                    node.Tag = stock.FuncParameters
+                    node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TYPE_FUNCTION, stock).ToolTipText
                     done = True 'To skip the `Else if it wasn't used.`
                     Exit For
                 End If
@@ -96,7 +96,7 @@ Public Class ObjectExplorerDock
 
             'Else if it wasn't used.
             Dim nde = stocks.Nodes.Add(stock.FuncName)
-            nde.Tag = stock.FuncParameters
+            nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TYPE_FUNCTION, stock).ToolTipText
         Next
 
         For Each native In parser.Natives.FindAll(Function(x) x.FuncName.Contains(searchTerm))
@@ -106,7 +106,7 @@ Public Class ObjectExplorerDock
             For Each itm In listCustom
                 If native.FuncName.StartsWith(itm.Tag) Then
                     Dim node = itm.Nodes.Add(native.FuncName)
-                    node.Tag = native.FuncParameters
+                    node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TYPE_FUNCTION, native).ToolTipText
                     done = True 'To skip the `Else if it wasn't used.`
                     Exit For
                 End If
@@ -116,7 +116,7 @@ Public Class ObjectExplorerDock
 
             'Else if it wasn't used.
             Dim nde = natives.Nodes.Add(native.FuncName)
-            nde.Tag = native.FuncParameters
+            nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TYPE_FUNCTION, native).ToolTipText
         Next
 
         'Set the Root tags.
