@@ -32,12 +32,18 @@ Partial Class EditorDock
         '
         'Editor
         '
+        Me.Editor.AdditionalSelectionTyping = True
         Me.Editor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Editor.Location = New System.Drawing.Point(0, 0)
+        Me.Editor.MouseDwellTime = 1000
+        Me.Editor.MouseSelectionRectangularSwitch = True
+        Me.Editor.MultiPaste = ScintillaNET.MultiPaste.[Each]
+        Me.Editor.MultipleSelection = True
         Me.Editor.Name = "Editor"
         Me.Editor.Size = New System.Drawing.Size(566, 417)
         Me.Editor.TabIndex = 0
         Me.Editor.UseTabs = False
+        Me.Editor.VirtualSpaceOptions = ScintillaNET.VirtualSpace.RectangularSelection
         '
         'RefreshWorker
         '
