@@ -86,7 +86,7 @@ Public Class MainForm
         StartupForm.Close()
     End Sub
 
-    Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs)
+    Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles newFileButton.Click
         Dim newFile As New NewProjectFile
         newFile.ShowDialog()
     End Sub
@@ -110,7 +110,7 @@ Public Class MainForm
             ObjectExplorerDock.Visible = False
         End If
     End Sub
-    Private Sub ErrorsAndWarningsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles errorsWarningsView.Click
+    Private Sub ErrorsAndWarningsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles errorsWarningsView.Click 
         If ErrorsDock.Visible = False Then
             ErrorsDock.Visible = True
             ErrorsDock.Show(MainDock)
@@ -121,28 +121,28 @@ Public Class MainForm
     End Sub
 #End Region
 
-    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs)
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles saveFileButton.Click
         If CurrentScintilla Is Nothing Then Exit Sub
         SaveFile(CurrentScintilla)
     End Sub
 
-    Public Sub SaveAllFiles(sender As Object, e As EventArgs)
+    Public Sub SaveAllFiles(sender As Object, e As EventArgs) Handles saveAllButton.Click
         For Each Dock As DockContent In MainDock.Documents
             SaveFile(Dock.Controls("Editor"))
         Next
     End Sub
 
-    Private Sub ToolStripButton4_Click(sender As Object, e As EventArgs)
+    Private Sub ToolStripButton4_Click(sender As Object, e As EventArgs) Handles includesButton.Click
         Dim frm As New IncludesForm
         frm.Show()
     End Sub
 
-    Private Sub ToolStripButton5_Click(sender As Object, e As EventArgs)
+    Private Sub ToolStripButton5_Click(sender As Object, e As EventArgs) Handles pluginsButton.Click
         Dim frm As New PluginsForm
         frm.Show()
     End Sub
 
-    Private Sub ToolStripButton6_Click(sender As Object, e As EventArgs)
+    Private Sub ToolStripButton6_Click(sender As Object, e As EventArgs) Handles syntaxHighPanel.Click
         SettingsForm.ShowDialog()
     End Sub
 
