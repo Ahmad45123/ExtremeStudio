@@ -6,6 +6,13 @@ Imports ExtremeCore
 
 Public Class StartupForm
 
+    ''' <summary>
+    ''' To know whether to extract the SQL files or not.
+    ''' </summary>
+    Public isFirst As Boolean = True
+
+    Private isClosedProgram As Boolean = False
+
 #Region "RecentCode"
     Public Recent As New List(Of String)
     Const MAX_LIST_ITEMS = 30
@@ -38,7 +45,7 @@ Public Class StartupForm
 
     Private Sub StartupForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'If the interop files don't exist, Extract the files.
-        If Not My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Or Not My.Computer.FileSystem.FileExists(MainForm.APPLICATION_FILES + "/x86/SQLite.Interop.dll") Then
+        If isFirst And (Not My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Or Not My.Computer.FileSystem.FileExists(MainForm.APPLICATION_FILES + "/x86/SQLite.Interop.dll")) Then
             'Remove old.
             If My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Then My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/x64/SQLite.Interop.dll")
             If My.Computer.FileSystem.FileExists(Application.StartupPath + "/x86/SQLite.Interop.dll") Then My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/x86/SQLite.Interop.dll")
@@ -137,7 +144,7 @@ Public Class StartupForm
                 MainForm.currentProject.SaveInfo() 'Write the default extremeStudio config.
                 AddNewRecent(MainForm.currentProject.projectPath) 'Add it to the recent list.
                 MainForm.Show()
-                Me.Hide()
+                isClosedProgram = True : Close()
             Else
                 MsgBox("You haven't selected a SAMP version to use.")
             End If
@@ -182,7 +189,7 @@ Public Class StartupForm
         AddNewRecent(MainForm.currentProject.projectPath) 'Add it to the recent list.
         versionHandler.doIfUpdateNeeded(MainForm.currentProject)
         MainForm.Show()
-        Hide()
+        isClosedProgram = True : Close()
     End Sub
 
     Private Sub TabControl1_Selected(sender As Object, e As TabControlEventArgs) Handles TabControl1.Selected
@@ -223,5 +230,11 @@ Public Class StartupForm
 
     Private Sub recentListBox_DoubleClick(sender As Object, e As EventArgs) Handles recentListBox.DoubleClick
         Button1.PerformClick() 'Press the load button.
+    End Sub
+
+    Private Sub StartupForm_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        If isClosedProgram = False Then
+            Application.Exit()
+        End If
     End Sub
 End Class

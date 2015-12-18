@@ -82,8 +82,12 @@ Public Class MainForm
     End Sub
 
     Private Sub MainForm_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        'Save all info.
         currentProject.SaveInfo()
-        StartupForm.Close()
+
+        If isClosedProgrammitcly = False Then
+            Application.Exit()
+        End If
     End Sub
 
     Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles newFileButton.Click
@@ -151,5 +155,19 @@ Public Class MainForm
         If ObjectExplorerDock.Visible And CurrentEditor IsNot Nothing Then
             ObjectExplorerDock.refreshTreeView(CurrentEditor.codeParts)
         End If
+    End Sub
+
+    Private isClosedProgrammitcly As Boolean = False
+    Private Sub closeProjectButton_Click(sender As Object, e As EventArgs) Handles closeProjectButton.Click
+        'Save
+        currentProject.SaveInfo()
+
+        'Then close ourself.
+        isClosedProgrammitcly = True : Close()
+
+        'Open the form
+        Dim str As New StartupForm
+        str.isFirst = False
+        str.Show()
     End Sub
 End Class
