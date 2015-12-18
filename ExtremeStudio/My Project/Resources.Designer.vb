@@ -130,26 +130,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property includes_icon_toolstrip() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("includes_icon_toolstrip", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property new_file_toolstrip() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("new_file_toolstrip", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Looks up a localized string similar to // This is a comment
         '''// uncomment the line below if you want to write a filterscript
         '''//#define FILTERSCRIPT
@@ -187,9 +167,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property plugins_icon_toolstrip() As System.Drawing.Bitmap
+        Friend ReadOnly Property ribbob_errors() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("plugins_icon_toolstrip", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("ribbob_errors", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -197,9 +177,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property save_file_toolstrip() As System.Drawing.Bitmap
+        Friend ReadOnly Property ribbon_closeProject() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("save_file_toolstrip", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("ribbon_closeProject", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -207,9 +187,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property saveall_file_toolstrip() As System.Drawing.Bitmap
+        Friend ReadOnly Property ribbon_copy() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("saveall_file_toolstrip", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("ribbon_copy", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -217,9 +197,129 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property settings_icon_toolstrip() As System.Drawing.Bitmap
+        Friend ReadOnly Property ribbon_cut() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("settings_icon_toolstrip", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("ribbon_cut", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ribbon_esPlugins() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ribbon_esPlugins", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ribbon_goto() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ribbon_goto", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ribbon_includes() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ribbon_includes", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ribbon_newFile() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ribbon_newFile", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ribbon_objectExplrer() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ribbon_objectExplrer", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ribbon_paste() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ribbon_paste", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ribbon_plugins() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ribbon_plugins", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ribbon_saveFile() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ribbon_saveFile", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ribbon_saveFileAll() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ribbon_saveFileAll", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ribbon_search() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ribbon_search", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ribbon_searchAndReplace() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ribbon_searchAndReplace", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ribbon_syntax() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ribbon_syntax", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

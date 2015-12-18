@@ -127,31 +127,61 @@
   <data name="file_projexplorer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\file_projexplorer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="new_file_toolstrip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\new_file_toolstrip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="saveall_file_toolstrip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\saveall_file_toolstrip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="save_file_toolstrip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\save_file_toolstrip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="includes_icon_toolstrip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\includes_icon_toolstrip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="plugins_icon_toolstrip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\plugins_icon_toolstrip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="newfileTemplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\newfileTemplate.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="settings_icon_toolstrip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\settings_icon_toolstrip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="defaultThemeInfo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\defaultThemeInfo.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="SQLite_Interop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SQLite.Interop.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ribbon_closeProject" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_closeProject.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbon_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbon_cut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_cut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbon_goto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_goto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbon_newFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_newFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbon_paste" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_paste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbon_saveFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_saveFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbon_saveFileAll" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_saveFileAll.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbon_search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbon_searchAndReplace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_searchAndReplace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbob_errors" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbob_errors.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbon_esPlugins" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_esPlugins.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbon_includes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_includes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbon_objectExplrer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_objectExplrer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbon_plugins" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_plugins.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbon_syntax" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_syntax.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

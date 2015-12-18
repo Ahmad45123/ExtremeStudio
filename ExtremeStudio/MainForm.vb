@@ -86,13 +86,13 @@ Public Class MainForm
         StartupForm.Close()
     End Sub
 
-    Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
+    Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs)
         Dim newFile As New NewProjectFile
         newFile.ShowDialog()
     End Sub
 
 #Region "View Codes"
-    Private Sub ProjectExplorerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProjectExplorerToolStripMenuItem.Click
+    Private Sub ProjectExplorerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles prjExplrerView.Click
         If ProjExplorerDock.Visible = False Then
             ProjExplorerDock.Visible = True
             ProjExplorerDock.Show(MainDock)
@@ -101,7 +101,7 @@ Public Class MainForm
             ProjExplorerDock.Visible = False
         End If
     End Sub
-    Private Sub ObjectExplorerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ObjectExplorerToolStripMenuItem.Click
+    Private Sub ObjectExplorerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles objExplorerView.Click
         If ObjectExplorerDock.Visible = False Then
             ObjectExplorerDock.Visible = True
             ObjectExplorerDock.Show(MainDock)
@@ -110,7 +110,7 @@ Public Class MainForm
             ObjectExplorerDock.Visible = False
         End If
     End Sub
-    Private Sub ErrorsAndWarningsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ErrorsAndWarningsToolStripMenuItem.Click
+    Private Sub ErrorsAndWarningsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles errorsWarningsView.Click
         If ErrorsDock.Visible = False Then
             ErrorsDock.Visible = True
             ErrorsDock.Show(MainDock)
@@ -121,28 +121,28 @@ Public Class MainForm
     End Sub
 #End Region
 
-    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs)
         If CurrentScintilla Is Nothing Then Exit Sub
         SaveFile(CurrentScintilla)
     End Sub
 
-    Public Sub SaveAllFiles(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
+    Public Sub SaveAllFiles(sender As Object, e As EventArgs)
         For Each Dock As DockContent In MainDock.Documents
             SaveFile(Dock.Controls("Editor"))
         Next
     End Sub
 
-    Private Sub ToolStripButton4_Click(sender As Object, e As EventArgs) Handles ToolStripButton4.Click
+    Private Sub ToolStripButton4_Click(sender As Object, e As EventArgs)
         Dim frm As New IncludesForm
         frm.Show()
     End Sub
 
-    Private Sub ToolStripButton5_Click(sender As Object, e As EventArgs) Handles ToolStripButton5.Click
+    Private Sub ToolStripButton5_Click(sender As Object, e As EventArgs)
         Dim frm As New PluginsForm
         frm.Show()
     End Sub
 
-    Private Sub ToolStripButton6_Click(sender As Object, e As EventArgs) Handles ToolStripButton6.Click
+    Private Sub ToolStripButton6_Click(sender As Object, e As EventArgs)
         SettingsForm.ShowDialog()
     End Sub
 
