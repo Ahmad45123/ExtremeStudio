@@ -170,4 +170,16 @@ Public Class MainForm
         str.isFirst = False
         str.Show()
     End Sub
+
+    Private Sub cutButton_Click(sender As Object, e As EventArgs) Handles cutButton.Click
+        CurrentScintilla.Cut()
+    End Sub
+
+    Private Sub copyButton_Click(sender As Object, e As EventArgs) Handles copyButton.Click
+        CurrentScintilla.Copy()
+    End Sub
+
+    Private Sub pasteButton_Click(sender As Object, e As EventArgs) Handles pasteButton.Click
+        CurrentScintilla.Paste()
+    End Sub
 End Class
