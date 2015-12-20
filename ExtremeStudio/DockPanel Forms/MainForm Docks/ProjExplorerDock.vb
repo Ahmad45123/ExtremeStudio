@@ -207,11 +207,6 @@ Public Class ProjExplorerDock
 
         Dim selNode As TreeNode = treeView.SelectedNode
 
-        'Setup the path.
-        If selNode.Tag = "Root" Then
-            Exit Sub
-        End If
-
         If selNode.Tag = "Folder" Or selNode.Tag = "Root" Then
             Dim path As String = selNode.FullPath
             If path.StartsWith("Gamemode Parts") Then
