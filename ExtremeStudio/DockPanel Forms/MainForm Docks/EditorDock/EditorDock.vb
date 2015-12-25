@@ -57,42 +57,48 @@ Public Class EditorDock
         Editor.SetFoldMarginHighlightColor(True, clr)
     End Sub
 
+    Private Sub Editor_StyleNeeded(sender As Object, e As StyleNeededEventArgs) Handles Editor.StyleNeeded
+        'Call the func.
+        codeHighlighting.Highlight(Editor, Editor.Lines(Editor.LineFromPosition(Editor.GetEndStyled())).Position, e.Position)
+    End Sub
+
     Public Sub OnSetsChange()
         'Set-Up the syntax highlighting.
-        Editor.StyleResetDefault()
-        Editor.Styles(Style.[Default]).Font = SettingsForm.FontDialog.Font.FontFamily.Name
-        Editor.Styles(Style.[Default]).Size = SettingsForm.FontDialog.Font.Size
-        Editor.Styles(Style.[Default]).ForeColor = SettingsForm.defaultColor.Color
-        Editor.StyleClearAll()
+        'Editor.StyleResetDefault()
+        'Editor.Styles(Style.[Default]).Font = SettingsForm.FontDialog.Font.FontFamily.Name
+        'Editor.Styles(Style.[Default]).Size = SettingsForm.FontDialog.Font.Size
+        'Editor.Styles(Style.[Default]).ForeColor = SettingsForm.defaultColor.Color
+        'Editor.StyleClearAll()
 
-        'Set the code part styles.
-        Editor.Styles(Style.LineNumber).ForeColor = SettingsForm.lineNumberColor.Color
-        Editor.CaretForeColor = SettingsForm.caretColor.Color
+        ''Set the code part styles.
+        'Editor.Styles(Style.LineNumber).ForeColor = SettingsForm.lineNumberColor.Color
+        'Editor.CaretForeColor = SettingsForm.caretColor.Color
 
-        SetBackColor(SettingsForm.backgroundColor.Color)
-        Editor.Styles(Style.Cpp.Comment).ForeColor = SettingsForm.commentColor.Color
-        Editor.Styles(Style.Cpp.CommentLine).ForeColor = SettingsForm.commentColor.Color
-        Editor.Styles(Style.Cpp.CommentDoc).ForeColor = SettingsForm.pawndocColor.Color
-        Editor.Styles(Style.Cpp.Number).ForeColor = SettingsForm.numberColor.Color
+        'SetBackColor(SettingsForm.backgroundColor.Color)
+        'Editor.Styles(Style.Cpp.Comment).ForeColor = SettingsForm.commentColor.Color
+        'Editor.Styles(Style.Cpp.CommentLine).ForeColor = SettingsForm.commentColor.Color
+        'Editor.Styles(Style.Cpp.CommentDoc).ForeColor = SettingsForm.pawndocColor.Color
+        'Editor.Styles(Style.Cpp.Number).ForeColor = SettingsForm.numberColor.Color
 
-        'Custom Keywords.
-        Editor.Styles(Style.Cpp.Word).ForeColor = SettingsForm.pawnColor.Color 'For the PAWN keywords
-        Editor.Styles(Style.Cpp.Word2).ForeColor = SettingsForm.functionsColor.Color 'For the functions.
-        Editor.Styles(Style.Cpp.GlobalClass).ForeColor = SettingsForm.definesColor.Color 'For the defines and enums.
+        ''Custom Keywords.
+        'Editor.Styles(Style.Cpp.Word).ForeColor = SettingsForm.pawnColor.Color 'For the PAWN keywords
+        'Editor.Styles(Style.Cpp.Word2).ForeColor = SettingsForm.functionsColor.Color 'For the functions.
+        'Editor.Styles(Style.Cpp.GlobalClass).ForeColor = SettingsForm.definesColor.Color 'For the defines and enums.
 
-        Editor.Styles(Style.Cpp.[String]).ForeColor = SettingsForm.stringColor.Color
-        Editor.Styles(Style.Cpp.Character).ForeColor = SettingsForm.stringColor.Color
-        Editor.Styles(Style.Cpp.Verbatim).ForeColor = SettingsForm.stringColor.Color
-        Editor.Styles(Style.Cpp.StringEol).BackColor = Color.Pink
-        Editor.Styles(Style.Cpp.[Operator]).ForeColor = SettingsForm.operatorColor.Color
-        Editor.Styles(Style.Cpp.Preprocessor).ForeColor = SettingsForm.preproccessColor.Color
-        Editor.Styles(Style.BraceLight).BackColor = Color.LightGray
-        Editor.Styles(Style.BraceLight).ForeColor = Color.BlueViolet
-        Editor.Styles(Style.BraceBad).ForeColor = Color.Red
+        'Editor.Styles(Style.Cpp.[String]).ForeColor = SettingsForm.stringColor.Color
+        'Editor.Styles(Style.Cpp.Character).ForeColor = SettingsForm.stringColor.Color
+        'Editor.Styles(Style.Cpp.Verbatim).ForeColor = SettingsForm.stringColor.Color
+        'Editor.Styles(Style.Cpp.StringEol).BackColor = Color.Pink
+        'Editor.Styles(Style.Cpp.[Operator]).ForeColor = SettingsForm.operatorColor.Color
+        'Editor.Styles(Style.Cpp.Preprocessor).ForeColor = SettingsForm.preproccessColor.Color
+        'Editor.Styles(Style.BraceLight).BackColor = Color.LightGray
+        'Editor.Styles(Style.BraceLight).ForeColor = Color.BlueViolet
+        'Editor.Styles(Style.BraceBad).ForeColor = Color.Red
+
+        Editor.Styles(codeHighlighting.Styles.Default).ForeColor = Color.Black
+        Editor.Styles(codeHighlighting.Styles.Integer).ForeColor = Color.Red
 
         Editor.IndentationGuides = IndentView.LookBoth
-
-        Editor.Lexer = Lexer.Cpp
 
         'Set the folding configs.
         Editor.SetProperty("fold", "1")
