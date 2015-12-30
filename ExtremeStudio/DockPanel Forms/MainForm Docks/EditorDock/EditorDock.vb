@@ -59,44 +59,18 @@ Public Class EditorDock
 
     Private Sub Editor_StyleNeeded(sender As Object, e As StyleNeededEventArgs) Handles Editor.StyleNeeded
         'Call the func.
-        codeHighlighting.Highlight(Editor, Editor.Lines(Editor.LineFromPosition(Editor.GetEndStyled())).Position, e.Position)
+        codeHighlighting.Highlight(Editor, codeParts, Editor.Lines(Editor.LineFromPosition(Editor.GetEndStyled())).Position, e.Position)
     End Sub
 
     Public Sub OnSetsChange()
-        'Set-Up the syntax highlighting.
-        'Editor.StyleResetDefault()
-        'Editor.Styles(Style.[Default]).Font = SettingsForm.FontDialog.Font.FontFamily.Name
-        'Editor.Styles(Style.[Default]).Size = SettingsForm.FontDialog.Font.Size
-        'Editor.Styles(Style.[Default]).ForeColor = SettingsForm.defaultColor.Color
-        'Editor.StyleClearAll()
+        'Setup font.
+        Editor.StyleResetDefault()
+        Editor.Styles(Style.[Default]).Font = SettingsForm.FontDialog.Font.FontFamily.Name
+        Editor.Styles(Style.[Default]).Size = SettingsForm.FontDialog.Font.Size
+        Editor.StyleClearAll()
 
-        ''Set the code part styles.
-        'Editor.Styles(Style.LineNumber).ForeColor = SettingsForm.lineNumberColor.Color
-        'Editor.CaretForeColor = SettingsForm.caretColor.Color
-
-        'SetBackColor(SettingsForm.backgroundColor.Color)
-        'Editor.Styles(Style.Cpp.Comment).ForeColor = SettingsForm.commentColor.Color
-        'Editor.Styles(Style.Cpp.CommentLine).ForeColor = SettingsForm.commentColor.Color
-        'Editor.Styles(Style.Cpp.CommentDoc).ForeColor = SettingsForm.pawndocColor.Color
-        'Editor.Styles(Style.Cpp.Number).ForeColor = SettingsForm.numberColor.Color
-
-        ''Custom Keywords.
-        'Editor.Styles(Style.Cpp.Word).ForeColor = SettingsForm.pawnColor.Color 'For the PAWN keywords
-        'Editor.Styles(Style.Cpp.Word2).ForeColor = SettingsForm.functionsColor.Color 'For the functions.
-        'Editor.Styles(Style.Cpp.GlobalClass).ForeColor = SettingsForm.definesColor.Color 'For the defines and enums.
-
-        'Editor.Styles(Style.Cpp.[String]).ForeColor = SettingsForm.stringColor.Color
-        'Editor.Styles(Style.Cpp.Character).ForeColor = SettingsForm.stringColor.Color
-        'Editor.Styles(Style.Cpp.Verbatim).ForeColor = SettingsForm.stringColor.Color
-        'Editor.Styles(Style.Cpp.StringEol).BackColor = Color.Pink
-        'Editor.Styles(Style.Cpp.[Operator]).ForeColor = SettingsForm.operatorColor.Color
-        'Editor.Styles(Style.Cpp.Preprocessor).ForeColor = SettingsForm.preproccessColor.Color
-        'Editor.Styles(Style.BraceLight).BackColor = Color.LightGray
-        'Editor.Styles(Style.BraceLight).ForeColor = Color.BlueViolet
-        'Editor.Styles(Style.BraceBad).ForeColor = Color.Red
-
-        Editor.Styles(codeHighlighting.Styles.Default).ForeColor = Color.Black
-        Editor.Styles(codeHighlighting.Styles.Integer).ForeColor = Color.Red
+        'Setup Colors: 
+        'TODO: Add to set the colors after doing the new settings.
 
         Editor.IndentationGuides = IndentView.LookBoth
 
@@ -308,48 +282,30 @@ Public Class EditorDock
         End If
     End Sub
 
-    Private Sub parseCodeParts(ByRef setString As StringBuilder, ByRef definesText As StringBuilder, ByRef autoList As List(Of AutoCompleteItemEx))
+    Private Sub parseCodeParts(ByRef autoList As List(Of AutoCompleteItemEx))
         For Each part In codeParts.FlattenIncludes
             For Each stock In part.Stocks
-                setString.Append(" " + stock.FuncName)
-
-                'AutoComplete
                 Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, stock)
                 autoList.Add(newitm)
             Next
             For Each publicFunc In part.Publics
-                setString.Append(" " + publicFunc.FuncName)
-
-                'AutoComplete
                 Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, publicFunc)
                 autoList.Add(newitm)
             Next
             For Each func In part.Functions
-                setString.Append(" " + func.FuncName)
-
-                'AutoComplete
                 Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, func)
                 autoList.Add(newitm)
             Next
             For Each native In part.Natives
-                setString.Append(" " + native.FuncName)
-
-                'AutoComplete
                 Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, native)
                 autoList.Add(newitm)
             Next
             For Each def In part.Defines
-                definesText.Append(" " + def.DefineName)
-
-                'AutoComplete
                 Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, def.DefineName, def.DefineValue)
                 autoList.Add(newitm)
             Next
             For Each parentEnm In part.Enums
                 For Each enm In parentEnm.EnumContents
-                    definesText.Append(" " + enm.Content)
-
-                    'AutoComplete
                     Dim type As String = ""
 
                     If enm.Type = FunctionParameters.varTypes.TYPE_ARRAY Then
@@ -367,9 +323,6 @@ Public Class EditorDock
                 Next
             Next
             For Each var In part.publicVariables
-                definesText.Append(" " + var.VarName)
-
-                'AutoComplete
                 Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, var.VarName, "This is a global variable declared in one of the includes.")
                 autoList.Add(newitm)
             Next
@@ -396,31 +349,15 @@ Public Class EditorDock
         Next
 #End Region
 
-#Region "Refresh Functions KeyWord Set"
-        Dim setString As New StringBuilder()
-        Dim definesText As New StringBuilder()
+#Region "AutoComplete Refresh."
         autoCompleteList.Clear()
 
-        parseCodeParts(setString, definesText, autoCompleteList)
+        parseCodeParts(autoCompleteList)
 
-        Try
-            Dim seta As String = setString.ToString
-            Dim defa As String = definesText.ToString
-
-            If seta <> "" Then
-                Editor.SetKeywords(1, seta)
-            End If
-            If defa <> "" Then
-                Editor.SetKeywords(3, defa)
-            End If
-
-            'Set autoComplete List.
-            AutoCompleteMenu.SetAutocompleteItems(autoCompleteList)
-        Catch ex As Exception
-        End Try
+        AutoCompleteMenu.SetAutocompleteItems(autoCompleteList)
 #End Region
 
-        If ObjectExplorerDock.Visible Then
+            If ObjectExplorerDock.Visible Then
             ObjectExplorerDock.refreshTreeView(codeParts)
         End If
     End Sub
