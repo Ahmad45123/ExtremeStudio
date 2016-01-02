@@ -110,9 +110,6 @@ Public Class EditorDock
         Editor.Indicators(indicatorIDs.INDICATOR_PARSERERROR).ForeColor = Color.DarkGreen
         Editor.Indicators(indicatorIDs.INDICATOR_PARSERERROR).Under = True
 
-        'Set the PAWN language keywords.
-        Editor.SetKeywords(0, "static break case enum continue do else false for goto public stock if is new null return sizeof switch true while forward native")
-
         'Set up auto-complete.
         AutoCompleteMenu.TargetControlWrapper = New ScintillaWrapper(Editor)
     End Sub

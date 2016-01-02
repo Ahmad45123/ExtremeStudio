@@ -15,6 +15,7 @@ Public Class codeHighlighting
         [SingleLineComment]
         [MultiLineComment]
         [PawnDOC]
+        [PawnPre]
         [PAWNKeywords]
         [Functions]
         [Publics]
@@ -49,6 +50,9 @@ Public Class codeHighlighting
 
         'PawnDoc: 
         DoColor(Editor, startPos, code, "/\*\*([\s\S]*?)\*/", Styles.PawnDOC)
+
+        'Pawn Preprocessor: 
+        DoColor(Editor, startPos, code, "\s*#.+", Styles.PawnPre)
 
         'PawnKeywords: 
         DoColor(Editor, startPos, code, "\b(?:static|break|case|enum|continue|do|else|false|for|goto|public|stock|if|is|new|null|return|sizeof|switch|true|while|forward|native)\b", Styles.PAWNKeywords)
