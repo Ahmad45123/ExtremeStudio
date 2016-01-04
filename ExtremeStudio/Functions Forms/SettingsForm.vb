@@ -23,7 +23,7 @@ Public Class SettingsForm
             My.Computer.FileSystem.WriteAllText(MainForm.APPLICATION_FILES + "/configs/themeInfo.xml", My.Resources.defaultThemeInfo, False)
         End If
 
-        'colorsInfo = ObjectSerializer.Deserialize(Of syntaxInfo)(My.Computer.FileSystem.ReadAllText(MainForm.APPLICATION_FILES + "/configs/themeInfo.xml"))
+        colorsInfo.LoadInfo(MainForm.APPLICATION_FILES + "/configs/themeInfo.xml")
 
         colorsSettings.SelectedObject = colorsInfo
         If hasFInished = False Then hasFInished = True
@@ -33,15 +33,11 @@ Public Class SettingsForm
         ReloadInfo()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs)
-        FontDialog.ShowDialog()
-    End Sub
-
     Private Sub SettingsForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         colorsInfo.SaveInfo(MainForm.APPLICATION_FILES + "/configs/themeInfo.xml")
     End Sub
 
-    Private Sub defaultColor_onColorChange()
+    Private Sub colorsSettings_PropertyValueChanged(s As Object, e As PropertyValueChangedEventArgs) Handles colorsSettings.PropertyValueChanged
         RaiseEvent OnSettingsChange()
     End Sub
 End Class
@@ -132,10 +128,46 @@ Public Class syntaxInfo
     End Sub
     Private Sub WriteColor(ByRef writer As XmlWriter, name As String, clr As Color)
         writer.WriteStartElement(name)
+        writer.WriteElementString("A", clr.A)
         writer.WriteElementString("R", clr.R)
         writer.WriteElementString("G", clr.G)
         writer.WriteElementString("B", clr.B)
-        writer.WriteElementString("A", clr.A)
         writer.WriteEndElement()
     End Sub
+
+    Public Sub LoadInfo(path As String)
+        Dim doc As New XmlDocument()
+        doc.Load(path)
+
+        'Font: 
+        If doc.SelectSingleNode("/themeInfo/FontInfo/FontBold").InnerText = "True" Then
+            sFont = New Font(New FontFamily(doc.SelectSingleNode("/themeInfo/FontInfo/FontName").InnerText), Convert.ToSingle(doc.SelectSingleNode("/themeInfo/FontInfo/FontSize").InnerText), FontStyle.Bold)
+        Else
+            sFont = New Font(New FontFamily(doc.SelectSingleNode("/themeInfo/FontInfo/FontName").InnerText), Convert.ToSingle(doc.SelectSingleNode("/themeInfo/FontInfo/FontSize").InnerText), FontStyle.Regular)
+        End If
+
+        'LanguageSyntaxHighlighting
+        sDefault = GetColor(doc.SelectSingleNode("/themeInfo/LanguageSyntaxHighlighting/" + NameOf(sDefault)))
+        sInteger = GetColor(doc.SelectSingleNode("/themeInfo/LanguageSyntaxHighlighting/" + NameOf(sInteger)))
+        sString = GetColor(doc.SelectSingleNode("/themeInfo/LanguageSyntaxHighlighting/" + NameOf(sString)))
+        sSymbols = GetColor(doc.SelectSingleNode("/themeInfo/LanguageSyntaxHighlighting/" + NameOf(sSymbols)))
+        sSLComments = GetColor(doc.SelectSingleNode("/themeInfo/LanguageSyntaxHighlighting/" + NameOf(sSLComments)))
+        sMLComments = GetColor(doc.SelectSingleNode("/themeInfo/LanguageSyntaxHighlighting/" + NameOf(sMLComments)))
+        sPawnDoc = GetColor(doc.SelectSingleNode("/themeInfo/LanguageSyntaxHighlighting/" + NameOf(sPawnDoc)))
+        sPawnPre = GetColor(doc.SelectSingleNode("/themeInfo/LanguageSyntaxHighlighting/" + NameOf(sPawnPre)))
+
+        'WordSetsSyntaxHighlighting
+        sFunctions = GetColor(doc.SelectSingleNode("/themeInfo/WordSetsSyntaxHighlighting/" + NameOf(sFunctions)))
+        sPublics = GetColor(doc.SelectSingleNode("/themeInfo/WordSetsSyntaxHighlighting/" + NameOf(sPublics)))
+        sStocks = GetColor(doc.SelectSingleNode("/themeInfo/WordSetsSyntaxHighlighting/" + NameOf(sStocks)))
+        sNatives = GetColor(doc.SelectSingleNode("/themeInfo/WordSetsSyntaxHighlighting/" + NameOf(sNatives)))
+        sDefines = GetColor(doc.SelectSingleNode("/themeInfo/WordSetsSyntaxHighlighting/" + NameOf(sDefines)))
+        sMacros = GetColor(doc.SelectSingleNode("/themeInfo/WordSetsSyntaxHighlighting/" + NameOf(sMacros)))
+        sEnums = GetColor(doc.SelectSingleNode("/themeInfo/WordSetsSyntaxHighlighting/" + NameOf(sEnums)))
+        sGlobalVars = GetColor(doc.SelectSingleNode("/themeInfo/WordSetsSyntaxHighlighting/" + NameOf(sGlobalVars)))
+    End Sub
+
+    Public Function GetColor(nde As XmlNode) As Color
+        Return Color.FromArgb(Convert.ToInt32(nde.Item("A").InnerText), Convert.ToInt32(nde.Item("R").InnerText), Convert.ToInt32(nde.Item("G").InnerText), Convert.ToInt32(nde.Item("B").InnerText))
+    End Function
 End Class
