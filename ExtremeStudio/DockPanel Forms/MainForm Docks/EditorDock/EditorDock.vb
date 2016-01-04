@@ -65,12 +65,29 @@ Public Class EditorDock
     Public Sub OnSetsChange()
         'Setup font.
         Editor.StyleResetDefault()
-        Editor.Styles(Style.[Default]).Font = SettingsForm.FontDialog.Font.FontFamily.Name
-        Editor.Styles(Style.[Default]).Size = SettingsForm.FontDialog.Font.Size
+        Editor.Styles(Style.[Default]).Font = SettingsForm.colorsInfo.sFont.FontFamily.Name
+        Editor.Styles(Style.[Default]).Size = SettingsForm.colorsInfo.sFont.Size
+        Editor.Styles(Style.[Default]).Bold = SettingsForm.colorsInfo.sFont.Bold
         Editor.StyleClearAll()
 
         'Setup Colors: 
-        'TODO: Add to set the colors after doing the new settings.
+        Editor.Styles(codeHighlighting.Styles.Default).ForeColor = SettingsForm.colorsInfo.sDefault
+        Editor.Styles(codeHighlighting.Styles.Integer).ForeColor = SettingsForm.colorsInfo.sInteger
+        Editor.Styles(codeHighlighting.Styles.String).ForeColor = SettingsForm.colorsInfo.sString
+        Editor.Styles(codeHighlighting.Styles.Symbols).ForeColor = SettingsForm.colorsInfo.sSymbols
+        Editor.Styles(codeHighlighting.Styles.SingleLineComment).ForeColor = SettingsForm.colorsInfo.sSLComments
+        Editor.Styles(codeHighlighting.Styles.MultiLineComment).ForeColor = SettingsForm.colorsInfo.sMLComments
+        Editor.Styles(codeHighlighting.Styles.PawnDOC).ForeColor = SettingsForm.colorsInfo.sPawnDoc
+        Editor.Styles(codeHighlighting.Styles.PawnPre).ForeColor = SettingsForm.colorsInfo.sPawnPre
+
+        Editor.Styles(codeHighlighting.Styles.Functions).ForeColor = SettingsForm.colorsInfo.sFunctions
+        Editor.Styles(codeHighlighting.Styles.Publics).ForeColor = SettingsForm.colorsInfo.sPublics
+        Editor.Styles(codeHighlighting.Styles.Stocks).ForeColor = SettingsForm.colorsInfo.sStocks
+        Editor.Styles(codeHighlighting.Styles.Natives).ForeColor = SettingsForm.colorsInfo.sNatives
+        Editor.Styles(codeHighlighting.Styles.Defines).ForeColor = SettingsForm.colorsInfo.sDefines
+        Editor.Styles(codeHighlighting.Styles.Macros).ForeColor = SettingsForm.colorsInfo.sMacros
+        Editor.Styles(codeHighlighting.Styles.Enums).ForeColor = SettingsForm.colorsInfo.sEnums
+        Editor.Styles(codeHighlighting.Styles.PublicVars).ForeColor = SettingsForm.colorsInfo.sGlobalVars
 
         Editor.IndentationGuides = IndentView.LookBoth
 
