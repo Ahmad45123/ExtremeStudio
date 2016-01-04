@@ -44,15 +44,8 @@ Public Class codeHighlighting
         'Strings: 
         DoColor(Editor, startPos, code, "'[^'\\]*(?:\\[^\n\r\x85\u2028\u2029][^'\\]*)*", Styles.String)
 
-        'Comments: 
-        DoColor(Editor, startPos, code, "//.*", Styles.SingleLineComment)
-        DoColor(Editor, startPos, code, "\/\*[\s\S]*?\*\/*", Styles.MultiLineComment, True)
-
         'PawnDoc: 
         DoColor(Editor, startPos, code, "/\*\*([\s\S]*?)\*/", Styles.PawnDOC)
-
-        'Pawn Preprocessor: 
-        DoColor(Editor, startPos, code, "\s*#.+", Styles.PawnPre)
 
         'PawnKeywords: 
         DoColor(Editor, startPos, code, "\b(?:static|break|case|enum|continue|do|else|false|for|goto|public|stock|if|is|new|null|return|sizeof|switch|true|while|forward|native)\b", Styles.PAWNKeywords)
@@ -61,6 +54,13 @@ Public Class codeHighlighting
         For Each dat In parts.FlattenIncludes
             ColorizeCodeParts(dat, Editor, startPos, code)
         Next
+
+        'Pawn Preprocessor: 
+        DoColor(Editor, startPos, code, "\s*#.+", Styles.PawnPre)
+
+        'Comments: 
+        DoColor(Editor, startPos, code, "//.*", Styles.SingleLineComment)
+        DoColor(Editor, startPos, code, "\/\*[\s\S]*?\*\/*", Styles.MultiLineComment, True)
     End Sub
 
     Private Shared Sub DoColor(ByRef Editor As Scintilla, startPos As Integer, ByVal code As String, rgx As String, style As Styles, Optional isMultiLine As Boolean = False)
@@ -76,67 +76,67 @@ Public Class codeHighlighting
         'Functions: 
         rgx.Clear() : rgx.Append("\b(?:")
         For Each item In parts.Functions
-            rgx.Append(item.FuncName + "|")
+            rgx.Append(Regex.Escape(item.FuncName) + "|")
         Next
-        rgx.Remove(rgx.Length - 1, 1) 'Remove the last |
+        If rgx(rgx.Length - 1) = "|" Then rgx.Remove(rgx.Length - 1, 1) 'Remove the last |
         rgx.Append(")\b") : DoColor(Editor, startPos, code, rgx.ToString, Styles.Functions)
 
         'Publics: 
         rgx.Clear() : rgx.Append("\b(?:")
         For Each item In parts.Publics
-            rgx.Append(item.FuncName + "|")
+            rgx.Append(Regex.Escape(item.FuncName) + "|")
         Next
-        rgx.Remove(rgx.Length - 1, 1) 'Remove the last |
+        If rgx(rgx.Length - 1) = "|" Then rgx.Remove(rgx.Length - 1, 1) 'Remove the last |
         rgx.Append(")\b") : DoColor(Editor, startPos, code, rgx.ToString, Styles.Publics)
 
         'Stocks: 
         rgx.Clear() : rgx.Append("\b(?:")
         For Each item In parts.Stocks
-            rgx.Append(item.FuncName + "|")
+            rgx.Append(Regex.Escape(item.FuncName) + "|")
         Next
-        rgx.Remove(rgx.Length - 1, 1) 'Remove the last |
+        If rgx(rgx.Length - 1) = "|" Then rgx.Remove(rgx.Length - 1, 1) 'Remove the last |
         rgx.Append(")\b") : DoColor(Editor, startPos, code, rgx.ToString, Styles.Stocks)
 
         'Natives: 
         rgx.Clear() : rgx.Append("\b(?:")
         For Each item In parts.Natives
-            rgx.Append(item.FuncName + "|")
+            rgx.Append(Regex.Escape(item.FuncName) + "|")
         Next
-        rgx.Remove(rgx.Length - 1, 1) 'Remove the last |
+        If rgx(rgx.Length - 1) = "|" Then rgx.Remove(rgx.Length - 1, 1) 'Remove the last |
         rgx.Append(")\b") : DoColor(Editor, startPos, code, rgx.ToString, Styles.Natives)
 
         'Defines: 
         rgx.Clear() : rgx.Append("\b(?:")
         For Each item In parts.Defines
-            rgx.Append(item.DefineName + "|")
+            rgx.Append(Regex.Escape(item.DefineName) + "|")
         Next
-        rgx.Remove(rgx.Length - 1, 1) 'Remove the last |
+        If rgx(rgx.Length - 1) = "|" Then rgx.Remove(rgx.Length - 1, 1) 'Remove the last |
         rgx.Append(")\b") : DoColor(Editor, startPos, code, rgx.ToString, Styles.Defines)
 
         'Macros: 
         rgx.Clear() : rgx.Append("\b(?:")
         For Each item In parts.Macros
-            rgx.Append(item.DefineName + "|")
+            rgx.Append(Regex.Escape(item.DefineName) + "|")
         Next
-        rgx.Remove(rgx.Length - 1, 1) 'Remove the last |
+        If rgx(rgx.Length - 1) = "|" Then rgx.Remove(rgx.Length - 1, 1) 'Remove the last |
         rgx.Append(")\b") : DoColor(Editor, startPos, code, rgx.ToString, Styles.Macros)
 
         'Enums: 
         rgx.Clear() : rgx.Append("\b(?:")
         For Each item In parts.Enums
             For Each cntn In item.EnumContents
-                rgx.Append(cntn.Content + "|")
+                rgx.Append(Regex.Escape(cntn.Content) + "|")
             Next
         Next
-        rgx.Remove(rgx.Length - 1, 1) 'Remove the last |
+        If rgx(rgx.Length - 1) = "|" Then rgx.Remove(rgx.Length - 1, 1) 'Remove the last |
         rgx.Append(")\b") : DoColor(Editor, startPos, code, rgx.ToString, Styles.Enums)
 
         'Public Variables: 
         rgx.Clear() : rgx.Append("\b(?:")
         For Each item In parts.publicVariables
-            rgx.Append(item.VarName + "|")
+            rgx.Append(Regex.Escape(item.VarName) + "|")
         Next
-        rgx.Remove(rgx.Length - 1, 1) 'Remove the last |
+        If rgx(rgx.Length - 1) = "|" Then rgx.Remove(rgx.Length - 1, 1) 'Remove the last |
         rgx.Append(")\b") : DoColor(Editor, startPos, code, rgx.ToString, Styles.PublicVars)
     End Sub
 End Class

@@ -25,7 +25,6 @@ Partial Class SettingsForm
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.colorsSettings = New System.Windows.Forms.PropertyGrid()
-        Me.FontDialog = New System.Windows.Forms.FontDialog()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.SuspendLayout()
@@ -77,6 +76,5 @@ Partial Class SettingsForm
 
     Public WithEvents TabControl1 As TabControl
     Public WithEvents TabPage1 As TabPage
-    Public WithEvents FontDialog As FontDialog
     Friend WithEvents colorsSettings As PropertyGrid
 End Class
