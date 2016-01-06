@@ -63,6 +63,8 @@ Public Class syntaxInfo
     Public Property sPawnDoc As Color = Color.Black
     <DisplayName("Pawn PreProcessor"), Category("Language Syntax Highlighting")>
     Public Property sPawnPre As Color = Color.Black
+    <DisplayName("Pawn KeyWords"), Category("Language Syntax Highlighting")>
+    Public Property sPawnKeys As Color = Color.Black
 
     <DisplayName("Functions"), Category("WordSets Syntax Highlighting")>
     Public Property sFunctions As Color = Color.Black
@@ -106,6 +108,7 @@ Public Class syntaxInfo
         WriteColor(writer, NameOf(sMLComments), sMLComments)
         WriteColor(writer, NameOf(sPawnDoc), sPawnDoc)
         WriteColor(writer, NameOf(sPawnPre), sPawnPre)
+        WriteColor(writer, NameOf(sPawnKeys), sPawnKeys)
         writer.WriteEndElement()
 
 
@@ -155,6 +158,7 @@ Public Class syntaxInfo
         sMLComments = GetColor(doc.SelectSingleNode("/themeInfo/LanguageSyntaxHighlighting/" + NameOf(sMLComments)))
         sPawnDoc = GetColor(doc.SelectSingleNode("/themeInfo/LanguageSyntaxHighlighting/" + NameOf(sPawnDoc)))
         sPawnPre = GetColor(doc.SelectSingleNode("/themeInfo/LanguageSyntaxHighlighting/" + NameOf(sPawnPre)))
+        sPawnKeys = GetColor(doc.SelectSingleNode("/themeInfo/LanguageSyntaxHighlighting/" + NameOf(sPawnKeys)))
 
         'WordSetsSyntaxHighlighting
         sFunctions = GetColor(doc.SelectSingleNode("/themeInfo/WordSetsSyntaxHighlighting/" + NameOf(sFunctions)))
