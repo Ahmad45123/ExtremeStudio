@@ -18,6 +18,24 @@ Public Class CodeParts
     Public publicVariables As New List(Of VarStruct)
     Public pawnDocs As New List(Of PawnDocParser)
 
+    Public Function Clone() As CodeParts
+        Dim ret As New CodeParts
+        ret.FileName = FileName
+        ret.FilePath = FilePath
+        ret.fileHash = fileHash
+        ret.Defines = Defines.ToList
+        ret.Macros = Macros.ToList
+        ret.Functions = Functions.ToList
+        ret.Stocks = Stocks.ToList
+        ret.Publics = Publics.ToList
+        ret.Natives = Natives.ToList
+        ret.Enums = Enums.ToList
+        ret.publicVariables = publicVariables.ToList
+        ret.pawnDocs = pawnDocs.ToList
+
+        Return ret
+    End Function
+
 #Region "Includes Codes"
     'Properties.
     Public Property ParentInclude As CodeParts

@@ -59,7 +59,7 @@ Public Class EditorDock
 
     Private Sub Editor_StyleNeeded(sender As Object, e As StyleNeededEventArgs) Handles Editor.StyleNeeded
         'Call the func.
-        codeHighlighting.Highlight(Editor, codeParts, Editor.Lines(Editor.LineFromPosition(Editor.GetEndStyled())).Position, e.Position)
+        codeHighlighting.Highlight(Editor, codeParts.Clone(), Editor.Lines(Editor.LineFromPosition(Editor.GetEndStyled())).Position, e.Position)
     End Sub
 
     Public Sub OnSetsChange()
@@ -79,6 +79,7 @@ Public Class EditorDock
         Editor.Styles(codeHighlighting.Styles.MultiLineComment).ForeColor = SettingsForm.colorsInfo.sMLComments
         Editor.Styles(codeHighlighting.Styles.PawnDOC).ForeColor = SettingsForm.colorsInfo.sPawnDoc
         Editor.Styles(codeHighlighting.Styles.PawnPre).ForeColor = SettingsForm.colorsInfo.sPawnPre
+        Editor.Styles(codeHighlighting.Styles.PAWNKeywords).ForeColor = SettingsForm.colorsInfo.sPawnKeys
 
         Editor.Styles(codeHighlighting.Styles.Functions).ForeColor = SettingsForm.colorsInfo.sFunctions
         Editor.Styles(codeHighlighting.Styles.Publics).ForeColor = SettingsForm.colorsInfo.sPublics
@@ -90,10 +91,6 @@ Public Class EditorDock
         Editor.Styles(codeHighlighting.Styles.PublicVars).ForeColor = SettingsForm.colorsInfo.sGlobalVars
 
         Editor.IndentationGuides = IndentView.LookBoth
-
-        'Set the folding configs.
-        Editor.SetProperty("fold", "1")
-        Editor.SetProperty("fold.compact", "0")
 
         ' Configure a margin to display folding symbols.
         Editor.Margins(2).Type = MarginType.Symbol
