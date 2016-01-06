@@ -39,10 +39,11 @@ Public Class codeHighlighting
         DoColor(Editor, startPos, code, "[0-9]+", Styles.Integer)
 
         'Symbols: 
-        DoColor(Editor, startPos, code, "(?:[_+\-\*\\\/\^!|<>%&#\(\);@$.,""'])+", Styles.Symbols)
+        DoColor(Editor, startPos, code, "(?:[_+\-\*\\\/\^!|<>%&#\(\);@$.,""'\[\]\{\}])+", Styles.Symbols)
 
         'Strings: 
         DoColor(Editor, startPos, code, "'[^'\\]*(?:\\[^\n\r\x85\u2028\u2029][^'\\]*)*", Styles.String)
+        DoColor(Editor, startPos, code, Chr(34) + "[^" + Chr(34) + "\\]*(?:\\[^\n\r\x85\u2028\u2029][^" + Chr(34) + "\\]*)*" + Chr(34), Styles.String)
 
         'PawnDoc: 
         DoColor(Editor, startPos, code, "/\*\*([\s\S]*?)\*/", Styles.PawnDOC)
