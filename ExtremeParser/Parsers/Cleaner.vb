@@ -9,7 +9,7 @@ Public Class Cleaner
 
         'Remove multiline comments.
         If mComments Then
-            code = Regex.Replace(code, "\/\*[\s\S]*?\*\/", "", RegexOptions.Multiline)
+            code = Regex.Replace(code, "\/\*([^*]*(?:\*(?!\/)[^*]*)*)\*\/", "", RegexOptions.Multiline)
         End If
 
         'Remove child codes.

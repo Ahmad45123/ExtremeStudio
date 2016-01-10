@@ -28,6 +28,7 @@ Partial Class EditorDock
         Me.RefreshWorker = New System.ComponentModel.BackgroundWorker()
         Me.AutoCompleteMenu = New AutocompleteMenuNS.AutocompleteMenu()
         Me.ACImageList = New System.Windows.Forms.ImageList(Me.components)
+        Me.colorizingWorker = New System.ComponentModel.BackgroundWorker()
         Me.SuspendLayout()
         '
         'Editor
@@ -66,6 +67,9 @@ Partial Class EditorDock
         Me.ACImageList.Images.SetKeyName(0, "Functions")
         Me.ACImageList.Images.SetKeyName(1, "Defines")
         '
+        'colorizingWorker
+        '
+        '
         'EditorDock
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -93,4 +97,6 @@ Partial Class EditorDock
         ' Add any initialization after the InitializeComponent() call.
 
     End Sub
+
+    Friend WithEvents colorizingWorker As System.ComponentModel.BackgroundWorker
 End Class

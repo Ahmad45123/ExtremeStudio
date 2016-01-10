@@ -40,13 +40,14 @@ Public Class Includes
 
                 'Create a new codeparts object for the includes cause they are needed.
                 If add Then
-                    Try
-                        'Check if was already parsed or not.
-                        If Parser.IsParsed(parts.RootInclude, fullPath) Then
-                            Continue For
-                        End If
+                    'Check if was already parsed or not.
+                    If Parser.IsParsed(parts.RootInclude, fullPath) Then
+                        Continue For
+                    End If
 
-                        'Else: 
+                    'Else: 
+                    'Check if exists or not: 
+                    If (File.Exists(fullPath)) Then
                         Dim part As New CodeParts
 
                         'Setup and add to list.
@@ -55,10 +56,10 @@ Public Class Includes
 
                         Dim prs As New Parser(part, My.Computer.FileSystem.ReadAllText(fullPath), fullPath, prjPath, True)
                         errors.exceptionsList.AddRange(prs.errors.exceptionsList)
-
-                    Catch ex As Exception
+                    Else
                         errors.exceptionsList.Add(New IncludeNotFoundException(Path.GetFileNameWithoutExtension(fullPath)))
-                    End Try
+                    End If
+
                 Else
                     Try
                         'Here if the include is REMOVED, There is no need to parse it all again cause we already know that we just need to remove the whole include.
