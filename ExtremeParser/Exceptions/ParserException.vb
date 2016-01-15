@@ -1,10 +1,10 @@
 ﻿Public Class ParserException
     Inherits Exception
 
-    Public iden As String
+    Public Iden As String
 
-    Public Sub New(message As String, iden_b As String)
+    Public Sub New(message As String, idenB As String)
         MyBase.New(message)
-        iden = iden_b
+        iden = idenB
     End Sub
 End Class

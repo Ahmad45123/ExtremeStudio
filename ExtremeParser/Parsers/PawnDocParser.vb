@@ -3,30 +3,30 @@
 #Region "Public Properties"
     Public ReadOnly Property Summary As String
         Get
-            Return p_summary
+            Return _pSummary
         End Get
     End Property
     Public ReadOnly Property Parameters As List(Of KeyValuePair(Of String, String))
         Get
-            Return p_params
+            Return _pParams
         End Get
     End Property
     Public ReadOnly Property Returns As String
         Get
-            Return p_returns
+            Return _pReturns
         End Get
     End Property
     Public ReadOnly Property Remarks As String
         Get
-            Return p_remarks
+            Return _pRemarks
         End Get
     End Property
 #End Region
 
-    Private p_summary As String
-    Private p_params As New List(Of KeyValuePair(Of String, String))
-    Private p_returns As String
-    Private p_remarks As String
+    Private _pSummary As String
+    Private _pParams As New List(Of KeyValuePair(Of String, String))
+    Private _pReturns As String
+    Private _pRemarks As String
 
     Public Sub New(text As String)
         'Prepare the text for parsing.
@@ -50,7 +50,7 @@
                 currentSummary = currentSummary + IIf(line = "", "", line + vbCrLf) 'Add the old one.
                 If currentSummary.EndsWith("</summary>" + vbCrLf) Then
                     currentSummary = currentSummary.Replace("</summary>" + vbCrLf, "")
-                    p_summary = currentSummary.Trim()
+                    _pSummary = currentSummary.Trim()
                     isInSummary = False
                 End If
                 Continue For
@@ -69,7 +69,7 @@
                 currentReturn = currentReturn + IIf(line = "", "", line + vbCrLf) 'Add the old one.
                 If currentReturn.EndsWith("</returns>" + vbCrLf) Then
                     currentReturn = currentReturn.Replace("</returns>" + vbCrLf, "")
-                    p_returns = currentReturn.Trim()
+                    _pReturns = currentReturn.Trim()
                     isInReturn = False
                 End If
                 Continue For
@@ -77,7 +77,7 @@
                 currentRemark = currentRemark + IIf(line = "", "", line + vbCrLf) 'Add the old one.
                 If currentRemark.EndsWith("</remarks>" + vbCrLf) Then
                     currentRemark = currentRemark.Replace("</remarks>" + vbCrLf, "")
-                    p_remarks = currentRemark.Trim()
+                    _pRemarks = currentRemark.Trim()
                     isInRemarks = False
                 End If
                 Continue For
@@ -89,7 +89,7 @@
 
                 If line.EndsWith("</summary>") Then
                     line = line.Replace("</summary>", "")
-                    p_summary = line.Trim()
+                    _pSummary = line.Trim()
                 Else
                     isInSummary = True
                 End If
@@ -115,7 +115,7 @@
 
                 If line.EndsWith("</returns>") Then
                     line = line.Replace("</rturns>", "")
-                    p_returns = line.Trim()
+                    _pReturns = line.Trim()
                 Else
                     isInReturn = True
                 End If
@@ -126,7 +126,7 @@
 
                 If line.EndsWith("</remarks>") Then
                     line = line.Replace("</remarks>", "")
-                    p_remarks = line.Trim()
+                    _pRemarks = line.Trim()
                 Else
                     isInRemarks = True
                 End If

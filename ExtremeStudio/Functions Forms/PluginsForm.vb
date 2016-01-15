@@ -7,7 +7,7 @@ Public Class PluginsForm
     Public Plugins As New List(Of PluginData)
 
 
-    Public Sub refreshList(Optional searchPattern As String = "", Optional isInstalledOnly As Boolean = False)
+    Public Sub RefreshList(Optional searchPattern As String = "", Optional isInstalledOnly As Boolean = False)
         pluginsList.Items.Clear()
 
         'Show the list.
@@ -42,7 +42,7 @@ Public Class PluginsForm
                 Plugins.Add(plug)
             Next
         Else 'List all available cached includes.
-            For Each file In Directory.GetDirectories(MainForm.APPLICATION_FILES + "/cache/plugins")
+            For Each file In Directory.GetDirectories(MainForm.ApplicationFiles + "/cache/plugins")
                 Dim plug As New PluginData
                 plug.Name = Path.GetFileNameWithoutExtension(file)
                 plug.Download = "local"
@@ -63,7 +63,7 @@ Public Class PluginsForm
         refreshList(TextBox1.Text, showInstalledOnlyCheck.Checked)
     End Sub
 
-    Private Function getPluginInfo(name As String) As PluginData
+    Private Function GetPluginInfo(name As String) As PluginData
         For Each plug As PluginData In Plugins
             If plug.Name = name Then
                 Return plug
@@ -89,9 +89,9 @@ Public Class PluginsForm
             Button1.Text = "Reinstall Plugin"
             actionsGroup.Visible = True
 
-            Dim curVer As String = My.Computer.FileSystem.ReadAllText(MainForm.APPLICATION_FILES + "/cache/plugins/" + Path.GetFileNameWithoutExtension(sel.Download) + "/version.cfg")
+            Dim curVer As String = My.Computer.FileSystem.ReadAllText(MainForm.ApplicationFiles + "/cache/plugins/" + Path.GetFileNameWithoutExtension(sel.Download) + "/version.cfg")
             Dim res = ExtremeCore.versionReader.CompareVersions(curVer, pluginVersion.Text)
-            If res = ExtremeCore.versionReader.CompareVersionResult.VERSION_NEW Then
+            If res = ExtremeCore.versionReader.CompareVersionResult.VersionNew Then
                 updateAvilableLabel.Visible = True
             End If
 
@@ -114,7 +114,7 @@ Public Class PluginsForm
         If plug Is Nothing Then Exit Sub
 
         'Setup the paths.
-        Dim plugFolder As String = MainForm.APPLICATION_FILES + "/cache/plugins/" + Path.GetFileNameWithoutExtension(plug.Download)
+        Dim plugFolder As String = MainForm.ApplicationFiles + "/cache/plugins/" + Path.GetFileNameWithoutExtension(plug.Download)
         Dim plugFile As String = plugFolder + "/" + Path.GetFileName(plug.Download)
 
         Dim web As New WebClient
@@ -123,7 +123,7 @@ Public Class PluginsForm
                 'If there is a version in the cache, Compare the versions and download if neceseary.
                 Dim curVer As String = My.Computer.FileSystem.ReadAllText(plugFolder + "/version.cfg")
                 Dim res = ExtremeCore.versionReader.CompareVersions(curVer, pluginVersion.Text)
-                If res = ExtremeCore.versionReader.CompareVersionResult.VERSION_NEW Then
+                If res = ExtremeCore.versionReader.CompareVersionResult.VersionNew Then
                     'If new download: 
                     web.DownloadFile(plug.Download, plugFile)
                     My.Computer.FileSystem.WriteAllText(plugFolder + "/version.cfg", pluginVersion.Text, False)
@@ -179,7 +179,7 @@ Public Class PluginsForm
         If plug Is Nothing Then Exit Sub
 
         'Setup the paths to ZIP.plug
-        Dim plugFolder As String = MainForm.APPLICATION_FILES + "/cache/plugins/" + Path.GetFileNameWithoutExtension(plug.Download)
+        Dim plugFolder As String = MainForm.ApplicationFiles + "/cache/plugins/" + Path.GetFileNameWithoutExtension(plug.Download)
         Dim plugFile As String = plugFolder + "/" + Path.GetFileName(plug.Download)
 
         'Remove existing first.
@@ -236,6 +236,6 @@ Public Class PluginData
     Public Property Desc As String
     Public Property Version As String
     Public Property Download As String
-    Public Property relatedInclude As String
-    Public Property isInstalled As Boolean
+    Public Property RelatedInclude As String
+    Public Property IsInstalled As Boolean
 End Class

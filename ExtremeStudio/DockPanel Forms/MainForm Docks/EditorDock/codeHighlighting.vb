@@ -3,7 +3,7 @@ Imports System.Text.RegularExpressions
 Imports ExtremeParser
 Imports ScintillaNET
 
-Public Class codeHighlighting
+Public Class CodeHighlighting
 
     Public Enum Styles
         [Default]
@@ -12,9 +12,9 @@ Public Class codeHighlighting
         [Symbols]
         [SingleLineComment]
         [MultiLineComment]
-        [PawnDOC]
+        PawnDoc
         [PawnPre]
-        [PAWNKeywords]
+        PawnKeywords
         [Functions]
         [Publics]
         [Stocks]
@@ -34,35 +34,35 @@ Public Class codeHighlighting
     End Enum
 
     'Global State Variables: 
-    Shared gState As States
-    Shared commentState As Integer '0 = / | 1 = comment multiline | 2 = comment single line.
-    Shared stringState As Integer '0 = out | 1 = in
+    Shared _gState As States
+    Shared _commentState As Integer '0 = / | 1 = comment multiline | 2 = comment single line.
+    Shared _stringState As Integer '0 = out | 1 = in
 
-    Public Shared Sub Highlight(ByRef Editor As Scintilla, parts As CodeParts, startPos As Integer, endPos As Integer)
+    Public Shared Sub Highlight(ByRef editor As Scintilla, parts As CodeParts, startPos As Integer, endPos As Integer)
         'Some needed var: 
         Dim length As Integer = 0
 
         'Loop: 
-        Editor.StartStyling(startPos)
+        editor.StartStyling(startPos)
         While startPos < endPos
-            Dim c As Char = ChrW(Editor.GetCharAt(startPos))
+            Dim c As Char = ChrW(editor.GetCharAt(startPos))
 
 ReProcess:
-            Select Case (gState)
+            Select Case (_gState)
                 Case States.Unknown
                     If Char.IsDigit(c) Then
-                        gState = States.Number
+                        _gState = States.Number
                         GoTo ReProcess
                     Else
-                        Editor.SetStyling(1, Styles.Default)
+                        editor.SetStyling(1, Styles.Default)
                     End If
 
                 Case States.Number
                     If Char.IsDigit(c) Then
                         length += 1
                     Else
-                        Editor.SetStyling(length, Styles.Integer)
-                        gState = States.Unknown
+                        editor.SetStyling(length, Styles.Integer)
+                        _gState = States.Unknown
                         length = 0
                         GoTo ReProcess
                     End If

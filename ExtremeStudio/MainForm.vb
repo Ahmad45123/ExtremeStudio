@@ -6,7 +6,7 @@ Imports System.Environment
 
 Public Class MainForm
 
-    Public ReadOnly APPLICATION_FILES As String = Environment.GetFolderPath(SpecialFolder.ApplicationData) + "/ExtremeStudio"
+    Public ReadOnly ApplicationFiles As String = Environment.GetFolderPath(SpecialFolder.ApplicationData) + "/ExtremeStudio"
 
 #Region "Properties"
     Public ReadOnly Property CurrentScintilla As Scintilla
@@ -37,7 +37,7 @@ Public Class MainForm
     End Sub
 #End Region
 #Region "DocksSavingLoading"
-    Dim m_deserlise As DeserializeDockContent
+    Dim _mDeserlise As DeserializeDockContent
     Private Function GetContentFromPersistString(ByVal persistString As String) As IDockContent
         If persistString = GetType(ProjExplorerDock).ToString Then
             Return ProjExplorerDock
@@ -56,9 +56,9 @@ Public Class MainForm
         MainDock.Theme = theme
 
         Try
-            m_deserlise = New DeserializeDockContent(AddressOf GetContentFromPersistString)
+            _mDeserlise = New DeserializeDockContent(AddressOf GetContentFromPersistString)
             Try
-                MainDock.LoadFromXml(APPLICATION_FILES + "/configs/docksInfo.xml", m_deserlise)
+                MainDock.LoadFromXml(ApplicationFiles + "/configs/docksInfo.xml", _mDeserlise)
             Catch ex As Exception
                 'Do nothing if there isn't any file.
                 'Even though, A default one will be included.
@@ -69,12 +69,12 @@ Public Class MainForm
     End Sub
 
     Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        MainDock.SaveAsXml(APPLICATION_FILES + "/configs/docksInfo.xml")
+        MainDock.SaveAsXml(ApplicationFiles + "/configs/docksInfo.xml")
     End Sub
 #End Region
 
     'Global variables that are used through the whole program: 
-    Public currentProject As New currentProjectClass
+    Public CurrentProject As New currentProjectClass
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = "ExtremeStudio - " + currentProject.projectName
@@ -85,7 +85,7 @@ Public Class MainForm
         'Save all info.
         currentProject.SaveInfo()
 
-        If isClosedProgrammitcly = False Then
+        If _isClosedProgrammitcly = False Then
             Application.Exit()
         End If
     End Sub
@@ -157,13 +157,13 @@ Public Class MainForm
         End If
     End Sub
 
-    Private isClosedProgrammitcly As Boolean = False
+    Private _isClosedProgrammitcly As Boolean = False
     Private Sub closeProjectButton_Click(sender As Object, e As EventArgs) Handles closeProjectButton.Click
         'Save
         currentProject.SaveInfo()
 
         'Then close ourself.
-        isClosedProgrammitcly = True : Close()
+        _isClosedProgrammitcly = True : Close()
 
         'Open the form
         Dim str As New StartupForm

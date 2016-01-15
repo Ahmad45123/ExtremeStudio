@@ -6,27 +6,27 @@ Imports ExtremeCore
 Public Class SettingsForm
 
     'The main colors info: 
-    Public colorsInfo As New syntaxInfo
+    Public ColorsInfo As New syntaxInfo
 
     'This is to avoid to Reload the colors when its already loaded and no mods are done.. 
-    Public ReadOnly Property hasBeenLoadedBefore As Boolean
+    Public ReadOnly Property HasBeenLoadedBefore As Boolean
         Get
-            Return hasFInished
+            Return _hasFInished
         End Get
     End Property
-    Dim hasFInished As Boolean = False
+    Dim _hasFInished As Boolean = False
 
     Public Event OnSettingsChange()
 
     Public Sub ReloadInfo()
-        If Not My.Computer.FileSystem.FileExists(MainForm.APPLICATION_FILES + "/configs/themeInfo.xml") Then
-            My.Computer.FileSystem.WriteAllText(MainForm.APPLICATION_FILES + "/configs/themeInfo.xml", My.Resources.defaultThemeInfo, False)
+        If Not My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/configs/themeInfo.xml") Then
+            My.Computer.FileSystem.WriteAllText(MainForm.ApplicationFiles + "/configs/themeInfo.xml", My.Resources.defaultThemeInfo, False)
         End If
 
-        colorsInfo.LoadInfo(MainForm.APPLICATION_FILES + "/configs/themeInfo.xml")
+        colorsInfo.LoadInfo(MainForm.ApplicationFiles + "/configs/themeInfo.xml")
 
         colorsSettings.SelectedObject = colorsInfo
-        If hasFInished = False Then hasFInished = True
+        If _hasFInished = False Then _hasFInished = True
     End Sub
 
     Private Sub SettingsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -34,7 +34,7 @@ Public Class SettingsForm
     End Sub
 
     Private Sub SettingsForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        colorsInfo.SaveInfo(MainForm.APPLICATION_FILES + "/configs/themeInfo.xml")
+        colorsInfo.SaveInfo(MainForm.ApplicationFiles + "/configs/themeInfo.xml")
     End Sub
 
     Private Sub colorsSettings_PropertyValueChanged(s As Object, e As PropertyValueChangedEventArgs) Handles colorsSettings.PropertyValueChanged
@@ -42,46 +42,46 @@ Public Class SettingsForm
     End Sub
 End Class
 
-Public Class syntaxInfo
+Public Class SyntaxInfo
 
     <DisplayName("Code Font"), Category("Font Settings")>
-    Public Property sFont As Font
+    Public Property SFont As Font
 
     <DisplayName("Default"), Category("Language Syntax Highlighting")>
-    Public Property sDefault As Color = Color.Black
+    Public Property SDefault As Color = Color.Black
     <DisplayName("Integers"), Category("Language Syntax Highlighting")>
-    Public Property sInteger As Color = Color.Black
+    Public Property SInteger As Color = Color.Black
     <DisplayName("Strings"), Category("Language Syntax Highlighting")>
-    Public Property sString As Color = Color.Black
+    Public Property SString As Color = Color.Black
     <DisplayName("Symbols"), Category("Language Syntax Highlighting")>
-    Public Property sSymbols As Color = Color.Black
+    Public Property SSymbols As Color = Color.Black
     <DisplayName("SingleLine Comments"), Category("Language Syntax Highlighting")>
-    Public Property sSLComments As Color = Color.Black
+    Public Property SSlComments As Color = Color.Black
     <DisplayName("MultiLine Comments"), Category("Language Syntax Highlighting")>
-    Public Property sMLComments As Color = Color.Black
+    Public Property SMlComments As Color = Color.Black
     <DisplayName("PawnDoc"), Category("Language Syntax Highlighting")>
-    Public Property sPawnDoc As Color = Color.Black
+    Public Property SPawnDoc As Color = Color.Black
     <DisplayName("Pawn PreProcessor"), Category("Language Syntax Highlighting")>
-    Public Property sPawnPre As Color = Color.Black
+    Public Property SPawnPre As Color = Color.Black
     <DisplayName("Pawn KeyWords"), Category("Language Syntax Highlighting")>
-    Public Property sPawnKeys As Color = Color.Black
+    Public Property SPawnKeys As Color = Color.Black
 
     <DisplayName("Functions"), Category("WordSets Syntax Highlighting")>
-    Public Property sFunctions As Color = Color.Black
+    Public Property SFunctions As Color = Color.Black
     <DisplayName("Publics"), Category("WordSets Syntax Highlighting")>
-    Public Property sPublics As Color = Color.Black
+    Public Property SPublics As Color = Color.Black
     <DisplayName("Stocks"), Category("WordSets Syntax Highlighting")>
-    Public Property sStocks As Color = Color.Black
+    Public Property SStocks As Color = Color.Black
     <DisplayName("Natives"), Category("WordSets Syntax Highlighting")>
-    Public Property sNatives As Color = Color.Black
+    Public Property SNatives As Color = Color.Black
     <DisplayName("Defines"), Category("WordSets Syntax Highlighting")>
-    Public Property sDefines As Color = Color.Black
+    Public Property SDefines As Color = Color.Black
     <DisplayName("Macros"), Category("WordSets Syntax Highlighting")>
-    Public Property sMacros As Color = Color.Black
+    Public Property SMacros As Color = Color.Black
     <DisplayName("Enums"), Category("WordSets Syntax Highlighting")>
-    Public Property sEnums As Color = Color.Black
+    Public Property SEnums As Color = Color.Black
     <DisplayName("Global Variables"), Category("WordSets Syntax Highlighting")>
-    Public Property sGlobalVars As Color = Color.Black
+    Public Property SGlobalVars As Color = Color.Black
 
     Public Sub SaveInfo(path As String)
         Dim settings As New XmlWriterSettings()

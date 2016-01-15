@@ -7,23 +7,23 @@ Imports ExtremeParser
 Public Class AutoCompleteItemEx
     Inherits AutocompleteItem
 
-    Private p_funcPars As FunctionParameters = Nothing
+    Private _pFuncPars As FunctionParameters = Nothing
     Public ReadOnly Property Parameters As FunctionParameters
         Get
-            Return p_funcPars
+            Return _pFuncPars
         End Get
     End Property
 
-    Private p_type As AutoCompeleteTypes
+    Private _pType As AutoCompeleteTypes
     Public ReadOnly Property Type As AutoCompeleteTypes
         Get
-            Return p_type
+            Return _pType
         End Get
     End Property
 
     Public Enum AutoCompeleteTypes
-        TYPE_FUNCTION 'It equals ZERO which means that it will be the functions icon in the image index.
-        TYPE_DEFINE 'It equals ONE which means that it will be the define icon in the image index.
+        TypeFunction 'It equals ZERO which means that it will be the functions icon in the image index.
+        TypeDefine 'It equals ONE which means that it will be the define icon in the image index.
     End Enum
 
     Public Sub New(type As AutoCompeleteTypes, funcName As String, toolTip As String)
@@ -36,7 +36,7 @@ Public Class AutoCompleteItemEx
         ToolTipText = toolTip
 
         'Save the type.
-        p_type = type
+        _pType = type
     End Sub
 
     Public Function AutoTab(str As String) As String
@@ -69,7 +69,7 @@ Public Class AutoCompleteItemEx
                 Dim par As String = itm.Key
                 Dim desc As String = itm.Value
 
-                Dim parType As String = func.FuncParameters.GetParameterType(par, FunctionParameters.returnType.AS_STRING)
+                Dim parType As String = func.FuncParameters.GetParameterType(par, FunctionParameters.returnType.AsString)
 
                 allText += vbTab + "(" + parType + ") " + par + ": " + desc + vbCrLf
             Next
@@ -82,8 +82,8 @@ Public Class AutoCompleteItemEx
             ToolTipText = allText
 
             'Save the stuff.
-            p_type = type
-            p_funcPars = func.FuncParameters
+            _pType = type
+            _pFuncPars = func.FuncParameters
         Else
             'there is no PawnDoc.. Setup our own.
             Dim allText As String = "Function Name: " + func.FuncName + vbCrLf
@@ -93,8 +93,8 @@ Public Class AutoCompleteItemEx
             ToolTipText = allText
 
             'Save the stuff.
-            p_type = type
-            p_funcPars = func.FuncParameters
+            _pType = type
+            _pFuncPars = func.FuncParameters
         End If
     End Sub
 End Class

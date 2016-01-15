@@ -44,7 +44,7 @@ Public Class IfDefines
         Next
     End Sub
 
-    Private Shared Function isDefined(ByRef parts As CodeParts, str As String)
+    Private Shared Function IsDefined(ByRef parts As CodeParts, str As String)
         If parts.Defines.FindIndex(Function(x) x.DefineName = str) <> -1 Then Return True
         If parts.Macros.FindIndex(Function(x) x.DefineName = str) <> -1 Then Return True
         If parts.Enums.FindIndex(Function(x) x.EnumName = str) <> -1 Then Return True

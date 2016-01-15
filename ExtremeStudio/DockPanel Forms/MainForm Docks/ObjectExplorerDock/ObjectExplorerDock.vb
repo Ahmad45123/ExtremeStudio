@@ -2,10 +2,10 @@
 Imports ExtremeParser
 
 Public Class ObjectExplorerDock
-    Dim nodeState As ExtremeCore.treeNodeStateSaving = New ExtremeCore.treeNodeStateSaving
+    Dim _nodeState As ExtremeCore.treeNodeStateSaving = New ExtremeCore.treeNodeStateSaving
 
 #Region "Funcs"
-    Public Function getTreeViewPart(parser As ExtremeParser.CodeParts, searchTerm As String)
+    Public Function GetTreeViewPart(parser As ExtremeParser.CodeParts, searchTerm As String)
         If parser Is Nothing Then Return Nothing
 
         Dim mainNode As New TreeNode With {
@@ -46,7 +46,7 @@ Public Class ObjectExplorerDock
             For Each itm In listCustom
                 If funcs.FuncName.StartsWith(itm.Tag) Then
                     Dim node = itm.Nodes.Add(funcs.FuncName)
-                    node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TYPE_FUNCTION, funcs).ToolTipText
+                    node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, funcs).ToolTipText
                     done = True 'To skip the `Else if it wasn't used.`
                     Exit For
                 End If
@@ -56,7 +56,7 @@ Public Class ObjectExplorerDock
 
             'Else if it wasn't used.
             Dim nde = functions.Nodes.Add(funcs.FuncName)
-            nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TYPE_FUNCTION, funcs).ToolTipText
+            nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, funcs).ToolTipText
         Next
 
         For Each publicFunc In parser.Publics.FindAll(Function(x) x.FuncName.Contains(searchTerm))
@@ -66,7 +66,7 @@ Public Class ObjectExplorerDock
             For Each itm In listCustom
                 If publicFunc.FuncName.StartsWith(itm.Tag) Then
                     Dim node = itm.Nodes.Add(publicFunc.FuncName)
-                    node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TYPE_FUNCTION, publicFunc).ToolTipText
+                    node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, publicFunc).ToolTipText
                     done = True 'To skip the `Else if it wasn't used.`
                     Exit For
                 End If
@@ -76,7 +76,7 @@ Public Class ObjectExplorerDock
 
             'Else if it wasn't used.
             Dim nde = publics.Nodes.Add(publicFunc.FuncName)
-            nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TYPE_FUNCTION, publicFunc).ToolTipText
+            nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, publicFunc).ToolTipText
         Next
 
         For Each stock In parser.Stocks.FindAll(Function(x) x.FuncName.Contains(searchTerm))
@@ -86,7 +86,7 @@ Public Class ObjectExplorerDock
             For Each itm In listCustom
                 If stock.FuncName.StartsWith(itm.Tag) Then
                     Dim node = itm.Nodes.Add(stock.FuncName)
-                    node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TYPE_FUNCTION, stock).ToolTipText
+                    node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, stock).ToolTipText
                     done = True 'To skip the `Else if it wasn't used.`
                     Exit For
                 End If
@@ -96,7 +96,7 @@ Public Class ObjectExplorerDock
 
             'Else if it wasn't used.
             Dim nde = stocks.Nodes.Add(stock.FuncName)
-            nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TYPE_FUNCTION, stock).ToolTipText
+            nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, stock).ToolTipText
         Next
 
         For Each native In parser.Natives.FindAll(Function(x) x.FuncName.Contains(searchTerm))
@@ -106,7 +106,7 @@ Public Class ObjectExplorerDock
             For Each itm In listCustom
                 If native.FuncName.StartsWith(itm.Tag) Then
                     Dim node = itm.Nodes.Add(native.FuncName)
-                    node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TYPE_FUNCTION, native).ToolTipText
+                    node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, native).ToolTipText
                     done = True 'To skip the `Else if it wasn't used.`
                     Exit For
                 End If
@@ -116,7 +116,7 @@ Public Class ObjectExplorerDock
 
             'Else if it wasn't used.
             Dim nde = natives.Nodes.Add(native.FuncName)
-            nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TYPE_FUNCTION, native).ToolTipText
+            nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, native).ToolTipText
         Next
 
         'Set the Root tags.
@@ -126,9 +126,9 @@ Public Class ObjectExplorerDock
         Return mainNode
     End Function
 
-    Public Sub refreshTreeView(parts As CodeParts)
+    Public Sub RefreshTreeView(parts As CodeParts)
         'Save.
-        nodeState.SaveTreeState(treeView.Nodes)
+        _nodeState.SaveTreeState(treeView.Nodes)
 
         'Clear All.
         treeView.Nodes.Clear()
@@ -150,7 +150,7 @@ Public Class ObjectExplorerDock
         'Add to list.
         treeView.Nodes.Add(parentNode)
 
-        nodeState.RestoreTreeState(treeView) 'Restore
+        _nodeState.RestoreTreeState(treeView) 'Restore
     End Sub
 #End Region
 

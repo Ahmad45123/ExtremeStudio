@@ -1,2 +1,2 @@
-﻿Public Class funcsHandler
+﻿Public Class FuncsHandler
 End Class

@@ -4,7 +4,7 @@ Imports ExtremeCore
 
 Public Class Parser
 
-    Public Property errors As New ExceptionsList
+    Public Property Errors As New ExceptionsList
 
     Public Sub New(ByRef codeParts As CodeParts, code As String, filePath As String, projectPath As String, add As Boolean, Optional isIfDefine As Boolean = False)
         'Make sure then code is not nothing.

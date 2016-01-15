@@ -2,7 +2,7 @@
 
 Public Class Enums
     Public Shared Sub Parse(ByRef code As String, fileName As String, ByRef parts As CodeParts, Optional add As Boolean = True)
-        For Each Match As Match In Regex.Matches(code, "enum\s+([^\n;\(\)\{\}\s]*)\s+(?:(?:[{])([^}]+)(?:[}]))")
+        For Each match As Match In Regex.Matches(code, "enum\s+([^\n;\(\)\{\}\s]*)\s+(?:(?:[{])([^}]+)(?:[}]))")
             Dim enumds As String() = Match.Groups(2).Value.Split(",")
 
             'Variable to store the enums contents.
@@ -17,11 +17,11 @@ Public Class Enums
                 Dim type = FunctionParameters.getVarType(enuma)
 
                 'Do what needs to be changed
-                If type = FunctionParameters.varTypes.TYPE_FLOAT Then
+                If type = FunctionParameters.varTypes.TypeFloat Then
                     enuma = enuma.Remove(0, 6)
-                ElseIf type = FunctionParameters.varTypes.TYPE_ARRAY Then
+                ElseIf type = FunctionParameters.varTypes.TypeArray Then
                     enuma = enuma.Remove(enuma.IndexOf("["), (enuma.IndexOf("]") - enuma.IndexOf("[")) + 1)
-                ElseIf type = FunctionParameters.varTypes.TYPE_TAGGED Then
+                ElseIf type = FunctionParameters.varTypes.TypeTagged Then
                     enuma = enuma.Remove(0, enuma.IndexOf(":") + 1)
                 End If
 

@@ -1,11 +1,11 @@
 ﻿Public Class AdvacnedInputBox
-    Public Enum returnValue
-        INPUT_RESULT_OK
-        INPUT_RESULT_CANCEL
+    Public Enum ReturnValue
+        InputResultOk
+        InputResultCancel
     End Enum
 
-    Public resResult As returnValue
-    Public resText As String
+    Public ResResult As ReturnValue
+    Public ResText As String
 
     Public Sub New(title As String, message As String, Optional cancelButton As String = "&Cancel", Optional okButton As String = "&Ok", Optional defaultText As String = "")
 
@@ -19,16 +19,16 @@
         Button2.Text = okButton
         TextBox1.Text = defaultText
         Me.ShowDialog()
-        resText = TextBox1.Text
-        If resText = "" Then resResult = returnValue.INPUT_RESULT_CANCEL
+        ResText = TextBox1.Text
+        If ResText = "" Then ResResult = ReturnValue.InputResultCancel
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        resResult = returnValue.INPUT_RESULT_OK
+        ResResult = ReturnValue.InputResultOk
         Me.Close()
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        resResult = returnValue.INPUT_RESULT_CANCEL
+        ResResult = ReturnValue.InputResultCancel
         Me.Close()
     End Sub
 End Class

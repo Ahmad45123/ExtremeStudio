@@ -5,7 +5,7 @@ Imports ExtremeParser
 Public Class CodeParts
     Public FileName As String
     Public FilePath As String
-    Public fileHash As String
+    Public FileHash As String
 
     'The Object Itself: 
     Public Defines As New List(Of DefinesStruct)
@@ -15,8 +15,8 @@ Public Class CodeParts
     Public Publics As New List(Of FunctionsStruct)
     Public Natives As New List(Of FunctionsStruct)
     Public Enums As New List(Of EnumsStruct)
-    Public publicVariables As New List(Of VarStruct)
-    Public pawnDocs As New List(Of PawnDocParser)
+    Public PublicVariables As New List(Of VarStruct)
+    Public PawnDocs As New List(Of PawnDocParser)
 
     Public Function Clone() As CodeParts
         Dim ret As New CodeParts

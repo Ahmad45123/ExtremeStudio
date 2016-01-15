@@ -4,9 +4,9 @@ Imports System.Windows.Forms
 Imports ScintillaNET
 Imports Ionic.Zip
 
-Public Module generalFunctions
-    Function FilenameIsOK(ByVal fileName As String, _
-                                        Optional ByVal allowPathDefinition As Boolean = False, _
+Public Module GeneralFunctions
+    Function FilenameIsOk(ByVal fileName As String,
+                                        Optional ByVal allowPathDefinition As Boolean = False,
                                         Optional ByRef firstCharIndex As Integer = Nothing) As Boolean
 
         Dim file As String = String.Empty
@@ -36,12 +36,12 @@ Public Module generalFunctions
             End If
         Else
             Return Not (file.Intersect(Path.GetInvalidFileNameChars()).Any() _
-                        OrElse _
+                        OrElse
                         directory.Intersect(Path.GetInvalidPathChars()).Any())
         End If
     End Function
 
-    Public Function isNetAvailable() As Boolean 'Custom function due to a bug in my.computer.network.isavailable.
+    Public Function IsNetAvailable() As Boolean 'Custom function due to a bug in my.computer.network.isavailable.
         Dim webClient As New WebClient
         Try
             Dim fileText As String = webClient.DownloadString("http://johnymac.github.io/esfiles/serverPackages.xml")
@@ -51,13 +51,13 @@ Public Module generalFunctions
         End Try
     End Function
 
-    Public Function getAllFolders(ByVal directory As String) As String()
+    Public Function GetAllFolders(ByVal directory As String) As String()
         Dim fi As New IO.DirectoryInfo(directory)
         Dim path() As String = {}
         For Each subfolder As IO.DirectoryInfo In fi.GetDirectories()
             Array.Resize(path, path.Length + 1)
             path(path.Length - 1) = subfolder.FullName
-            For Each s As String In getAllFolders(subfolder.FullName)
+            For Each s As String In GetAllFolders(subfolder.FullName)
                 Array.Resize(path, path.Length + 1)
                 path(path.Length - 1) = s
             Next
@@ -65,19 +65,19 @@ Public Module generalFunctions
         Return path
     End Function
 
-    Dim getAllFiles_treeNode As TreeNode
-    Public Function getAllFilesInFolders(ByVal dir As String, Optional ByVal extension As String = "", Optional ByRef parentNode As TreeNode = Nothing) As TreeNode
+    Dim _getAllFilesTreeNode As TreeNode
+    Public Function GetAllFilesInFolders(ByVal dir As String, Optional ByVal extension As String = "", Optional ByRef parentNode As TreeNode = Nothing) As TreeNode
         Dim currentDir As TreeNode
 
         If parentNode Is Nothing Then
-            getAllFiles_treeNode = New TreeNode
+            _getAllFilesTreeNode = New TreeNode
         End If
 
         Dim dirs() As String = Directory.GetDirectories(dir)
 
         For Each Str As String In dirs
             If parentNode Is Nothing Then
-                currentDir = getAllFiles_treeNode.Nodes.Add(Str.Remove(0, Str.LastIndexOf("\") + 1))
+                currentDir = _getAllFilesTreeNode.Nodes.Add(Str.Remove(0, Str.LastIndexOf("\") + 1))
                 currentDir.Tag = "Folder"
             Else
                 currentDir = parentNode.Nodes.Add(Str.Remove(0, Str.LastIndexOf("\") + 1))
@@ -85,11 +85,11 @@ Public Module generalFunctions
             End If
 
             'Get all directories.
-            For Each Strb As String In Directory.GetDirectories(Str)
-                Dim tmpDir As TreeNode = currentDir.Nodes.Add(Strb.Remove(0, Strb.LastIndexOf("\") + 1))
+            For Each strb As String In Directory.GetDirectories(Str)
+                Dim tmpDir As TreeNode = currentDir.Nodes.Add(strb.Remove(0, strb.LastIndexOf("\") + 1))
                 tmpDir.Tag = "Folder"
 
-                For Each stra As String In Directory.GetFiles(Strb)
+                For Each stra As String In Directory.GetFiles(strb)
                     If Not extension = "" Then
                         If Not stra.EndsWith(extension) Then
                             Continue For
@@ -100,7 +100,7 @@ Public Module generalFunctions
                     node.ImageIndex = 1
                     node.Tag = "File"
                 Next
-                getAllFilesInFolders(Strb, extension, tmpDir)
+                GetAllFilesInFolders(strb, extension, tmpDir)
             Next
 
             'Get files.
@@ -117,10 +117,10 @@ Public Module generalFunctions
             Next
 
         Next
-        Return getAllFiles_treeNode
+        Return _getAllFilesTreeNode
     End Function
 
-    Public Function isValidExtremeProject(path As String)
+    Public Function IsValidExtremeProject(path As String)
         If Not My.Computer.FileSystem.DirectoryExists(path) Then Return False
         If Not My.Computer.FileSystem.DirectoryExists(path + "/filterscripts") Then Return False
         If Not My.Computer.FileSystem.DirectoryExists(path + "/gamemodes") Then Return False
@@ -138,7 +138,7 @@ Public Module generalFunctions
         Return True
     End Function
 
-    Public Function getLinesFromRange(scin As Scintilla, ByVal startPos As Integer, ByVal endPos As Integer) As List(Of Integer)
+    Public Function GetLinesFromRange(scin As Scintilla, ByVal startPos As Integer, ByVal endPos As Integer) As List(Of Integer)
         Dim lines As New List(Of Integer)
 
         For i = 0 To 1 Step 0
@@ -174,11 +174,11 @@ Public Module generalFunctions
         My.Computer.FileSystem.DeleteDirectory(tmpPath, FileIO.DeleteDirectoryOption.DeleteAllContents)
     End Sub
 
-    Public Sub FastZipUnpack(ByVal ZipToUnpack As String, ByVal TargetDir As String)
-        Using zip1 As ZipFile = ZipFile.Read(ZipToUnpack)
+    Public Sub FastZipUnpack(ByVal zipToUnpack As String, ByVal targetDir As String)
+        Using zip1 As ZipFile = ZipFile.Read(zipToUnpack)
             Dim e As ZipEntry
             For Each e In zip1
-                e.Extract(TargetDir, ExtractExistingFileAction.OverwriteSilently)
+                e.Extract(targetDir, ExtractExistingFileAction.OverwriteSilently)
             Next
         End Using
     End Sub

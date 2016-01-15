@@ -5,7 +5,7 @@
         includeName = name
     End Sub
 
-    Public Property includeName As String
+    Public Property IncludeName As String
 
 
 End Class

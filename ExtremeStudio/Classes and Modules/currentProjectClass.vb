@@ -1,29 +1,29 @@
 ﻿Imports System.Data.SQLite
 
-Public Class currentProjectClass
-    Public Property projectName As String
-    Public Property projectVersion As String
+Public Class CurrentProjectClass
+    Public Property ProjectName As String
+    Public Property ProjectVersion As String
 
-    Private projectPathB As String
-    Public Property projectPath As String
+    Private _projectPathB As String
+    Public Property ProjectPath As String
         Set(value As String)
-            sqlCon = New SQLiteDatabase(value + "/extremeStudio.config")
-            projectPathB = value
+            _sqlCon = New SQLiteDatabase(value + "/extremeStudio.config")
+            _projectPathB = value
         End Set
         Get
-            Return projectPathB
+            Return _projectPathB
         End Get
     End Property
 
-    Public Property objectExplorerItems As New List(Of objectExplorerItem)
+    Public Property ObjectExplorerItems As New List(Of objectExplorerItem)
 
 #Region "SQL Funcs"
-    Dim sqlCon As SQLiteDatabase
+    Dim _sqlCon As SQLiteDatabase
     Public Sub CreateTables()
-        sqlCon.ExecuteNonQuery("CREATE TABLE MainConfig(`name` STRING(50), `value` STRING(50));")
-        sqlCon.ExecuteNonQuery("CREATE TABLE ObjectExplorerItems(`name` STRING(50), `identifier` STRING(50));")
-        sqlCon.ExecuteNonQuery("CREATE TABLE Includes(`incName` STRING(50));")
-        sqlCon.ExecuteNonQuery("CREATE TABLE Plugins(`plugName` STRING(50));")
+        _sqlCon.ExecuteNonQuery("CREATE TABLE MainConfig(`name` STRING(50), `value` STRING(50));")
+        _sqlCon.ExecuteNonQuery("CREATE TABLE ObjectExplorerItems(`name` STRING(50), `identifier` STRING(50));")
+        _sqlCon.ExecuteNonQuery("CREATE TABLE Includes(`incName` STRING(50));")
+        _sqlCon.ExecuteNonQuery("CREATE TABLE Plugins(`plugName` STRING(50));")
     End Sub
 #End Region
 
@@ -35,35 +35,35 @@ Public Class currentProjectClass
 
 #Region "MainConfig"
         'Save projects name.
-        dic.Clear() : sqlCon.ClearTable("MainConfig")
+        dic.Clear() : _sqlCon.ClearTable("MainConfig")
         dic.Add("name", "ProjectName")
         dic.Add("value", projectName)
-        sqlCon.Insert("MainConfig", dic)
+        _sqlCon.Insert("MainConfig", dic)
 
         'Save projects version.
         dic.Clear()  'Table already cleared once. :P
         dic.Add("name", "ProjectVersion")
         dic.Add("value", projectVersion)
-        sqlCon.Insert("MainConfig", dic)
+        _sqlCon.Insert("MainConfig", dic)
 #End Region
 
         'Save the objectexporleritems.
-        sqlCon.ClearTable("ObjectExplorerItems")
+        _sqlCon.ClearTable("ObjectExplorerItems")
         For Each itm In objectExplorerItems
             dic.Clear()
             dic.Add("name", itm.Name)
             dic.Add("identifier", itm.Identifier)
-            sqlCon.Insert("ObjectExplorerItems", dic)
+            _sqlCon.Insert("ObjectExplorerItems", dic)
         Next
     End Sub
 
     Public Sub ReadInfo() 'Will only work if the projectPath is set to valid ExtremeStudio project.
         'Read main info like project name and version.
-        projectName = sqlCon.ExecuteScalar("SELECT value FROM MainConfig WHERE name='ProjectName'")
-        projectVersion = sqlCon.ExecuteScalar("SELECT value FROM MainConfig WHERE name='ProjectVersion'")
+        projectName = _sqlCon.ExecuteScalar("SELECT value FROM MainConfig WHERE name='ProjectName'")
+        projectVersion = _sqlCon.ExecuteScalar("SELECT value FROM MainConfig WHERE name='ProjectVersion'")
 
         'Get all the objectexpolreritems.
-        Dim dt As DataTable = sqlCon.GetDataTable("SELECT * FROM `ObjectExplorerItems`")
+        Dim dt As DataTable = _sqlCon.GetDataTable("SELECT * FROM `ObjectExplorerItems`")
         For Each row As DataRow In dt.Rows
             objectExplorerItems.Add(New objectExplorerItem(row(0), row(1)))
         Next
@@ -71,27 +71,27 @@ Public Class currentProjectClass
 
 #Region "Includes Codes"
     Public Sub AddInclude(inc As String)
-        Dim dt = sqlCon.GetDataTable("SELECT * FROM `Includes` WHERE `incName` = '" + inc + "'")
-        If dt.Rows.Count > 0 Then sqlCon.ExecuteNonQuery("DELETE FROM `Includes` WHERE `incName` = '" + inc + "'")
-        sqlCon.ExecuteNonQuery("INSERT INTO `Includes` VALUES('" + inc + "');")
+        Dim dt = _sqlCon.GetDataTable("SELECT * FROM `Includes` WHERE `incName` = '" + inc + "'")
+        If dt.Rows.Count > 0 Then _sqlCon.ExecuteNonQuery("DELETE FROM `Includes` WHERE `incName` = '" + inc + "'")
+        _sqlCon.ExecuteNonQuery("INSERT INTO `Includes` VALUES('" + inc + "');")
     End Sub
     Public Sub RemoveInclude(inc As String)
-        sqlCon.ExecuteNonQuery("DELETE FROM `Includes` WHERE `incName` = '" + inc + "'")
+        _sqlCon.ExecuteNonQuery("DELETE FROM `Includes` WHERE `incName` = '" + inc + "'")
     End Sub
     Public Function IncludeExists(inc As String) As Boolean
-        Dim dt = sqlCon.GetDataTable("SELECT * FROM `Includes` WHERE `incName` = '" + inc + "'")
+        Dim dt = _sqlCon.GetDataTable("SELECT * FROM `Includes` WHERE `incName` = '" + inc + "'")
         If dt.Rows.Count > 0 Then Return True
         Return False
     End Function
 #End Region
 
 #Region "server.cfg"
-    Public Sub EditSAMPConfig(key As String, value As String)
+    Public Sub EditSampConfig(key As String, value As String)
         'Variables
         Dim allInfo As New List(Of String)
 
         'Reading
-        Dim TextLine As String
+        Dim textLine As String
         If System.IO.File.Exists(projectPath + "/server.cfg") = True Then
             Dim objReader As New System.IO.StreamReader(projectPath + "/server.cfg")
             Do While objReader.Peek() <> -1
@@ -122,8 +122,8 @@ Public Class currentProjectClass
         'Writing
         My.Computer.FileSystem.WriteAllText(projectPath + "/server.cfg", allText, False)
     End Sub
-    Public Function GetSAMPConfig(key As String) As String
-        Dim TextLine As String
+    Public Function GetSampConfig(key As String) As String
+        Dim textLine As String
         If IO.File.Exists(projectPath + "/server.cfg") = True Then
             Dim objReader As New System.IO.StreamReader(projectPath + "/server.cfg")
             Do While objReader.Peek() <> -1
@@ -144,21 +144,21 @@ Public Class currentProjectClass
 
 #Region "PluginsHandler"
     Public Sub AddPlugin(inc As String)
-        Dim dt = sqlCon.GetDataTable("SELECT * FROM `Plugins` WHERE `plugName` = '" + inc + "'")
-        If dt.Rows.Count > 0 Then sqlCon.ExecuteNonQuery("DELETE FROM `Plugins` WHERE `plugName` = '" + inc + "'")
-        sqlCon.ExecuteNonQuery("INSERT INTO `Plugins` VALUES('" + inc + "');")
+        Dim dt = _sqlCon.GetDataTable("SELECT * FROM `Plugins` WHERE `plugName` = '" + inc + "'")
+        If dt.Rows.Count > 0 Then _sqlCon.ExecuteNonQuery("DELETE FROM `Plugins` WHERE `plugName` = '" + inc + "'")
+        _sqlCon.ExecuteNonQuery("INSERT INTO `Plugins` VALUES('" + inc + "');")
     End Sub
     Public Sub RemovePlugin(inc As String)
-        sqlCon.ExecuteNonQuery("DELETE FROM `Plugins` WHERE `plugName` = '" + inc + "'")
+        _sqlCon.ExecuteNonQuery("DELETE FROM `Plugins` WHERE `plugName` = '" + inc + "'")
     End Sub
     Public Function PluginExists(inc As String) As Boolean
-        Dim dt = sqlCon.GetDataTable("SELECT * FROM `Plugins` WHERE `plugName` = '" + inc + "'")
+        Dim dt = _sqlCon.GetDataTable("SELECT * FROM `Plugins` WHERE `plugName` = '" + inc + "'")
         If dt.Rows.Count > 0 Then Return True
         Return False
     End Function
 
     'Server.cfg stuff for plugins.
-    Private Function getPluginsListInServerCFG() As List(Of String)
+    Private Function GetPluginsListInServerCfg() As List(Of String)
         getPluginsListInServerCFG = New List(Of String)
 
         Dim st As String = GetSAMPConfig("plugins")
@@ -176,7 +176,7 @@ Public Class currentProjectClass
 
         Return getPluginsListInServerCFG
     End Function
-    Private Sub savePluginsInServerCFG(plugs As List(Of String))
+    Private Sub SavePluginsInServerCfg(plugs As List(Of String))
         Dim str As String = Nothing
         For Each plug As String In plugs
             str += " " + plug
@@ -186,7 +186,7 @@ Public Class currentProjectClass
         EditSAMPConfig("plugins", str)
     End Sub
 
-    Public Function isPluginInServerCFG(pluginName As String)
+    Public Function IsPluginInServerCfg(pluginName As String)
         Dim lst As List(Of String) = getPluginsListInServerCFG()
         For Each str As String In lst
             If str = pluginName Then
@@ -196,7 +196,7 @@ Public Class currentProjectClass
 
         Return False
     End Function
-    Public Sub TogglePluginInServerCFG(pluginName As String)
+    Public Sub TogglePluginInServerCfg(pluginName As String)
         Dim lst As List(Of String) = getPluginsListInServerCFG()
         For Each str As String In lst
             If str = pluginName Then
@@ -216,14 +216,14 @@ Public Class currentProjectClass
 End Class
 
 
-Class SQLiteDatabase
-    Private dbConnection As [String]
+Class SqLiteDatabase
+    Private _dbConnection As [String]
 
     ''' <summary>
     '''     Default Constructor for SQLiteDatabase Class.
     ''' </summary>
     Public Sub New()
-        dbConnection = "Data Source=recipes.s3db"
+        _dbConnection = "Data Source=recipes.s3db"
     End Sub
 
     ''' <summary>
@@ -231,7 +231,7 @@ Class SQLiteDatabase
     ''' </summary>
     ''' <param name="inputFile">The File containing the DB</param>
     Public Sub New(inputFile As [String])
-        dbConnection = [String].Format("Data Source={0}", inputFile)
+        _dbConnection = [String].Format("Data Source={0}", inputFile)
     End Sub
 
     ''' <summary>
@@ -244,7 +244,7 @@ Class SQLiteDatabase
             str += [String].Format("{0}={1}; ", row.Key, row.Value)
         Next
         str = str.Trim().Substring(0, str.Length - 1)
-        dbConnection = str
+        _dbConnection = str
     End Sub
 
     ''' <summary>
@@ -255,7 +255,7 @@ Class SQLiteDatabase
     Public Function GetDataTable(sql As String) As DataTable
         Dim dt As New DataTable()
         Try
-            Dim cnn As New SQLiteConnection(dbConnection)
+            Dim cnn As New SQLiteConnection(_dbConnection)
             cnn.Open()
             Dim mycommand As New SQLiteCommand(cnn)
             mycommand.CommandText = sql
@@ -275,7 +275,7 @@ Class SQLiteDatabase
     ''' <param name="sql">The SQL to be run.</param>
     ''' <returns>An Integer containing the number of rows updated.</returns>
     Public Function ExecuteNonQuery(sql As String) As Integer
-        Dim cnn As New SQLiteConnection(dbConnection)
+        Dim cnn As New SQLiteConnection(_dbConnection)
         cnn.Open()
         Dim mycommand As New SQLiteCommand(cnn)
         mycommand.CommandText = sql
@@ -290,7 +290,7 @@ Class SQLiteDatabase
     ''' <param name="sql">The query to run.</param>
     ''' <returns>A string.</returns>
     Public Function ExecuteScalar(sql As String) As String
-        Dim cnn As New SQLiteConnection(dbConnection)
+        Dim cnn As New SQLiteConnection(_dbConnection)
         cnn.Open()
         Dim mycommand As New SQLiteCommand(cnn)
         mycommand.CommandText = sql
@@ -372,7 +372,7 @@ Class SQLiteDatabase
     '''     Allows the programmer to easily delete all data from the DB.
     ''' </summary>
     ''' <returns>A boolean true or false to signify success or failure.</returns>
-    Public Function ClearDB() As Boolean
+    Public Function ClearDb() As Boolean
         Dim tables As DataTable
         Try
             tables = Me.GetDataTable("select NAME from SQLITE_MASTER where type='table' order by NAME;")

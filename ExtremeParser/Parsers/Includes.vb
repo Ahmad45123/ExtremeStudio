@@ -4,8 +4,8 @@ Imports ExtremeCore
 
 Public Class Includes
     Public Shared Sub Parse(ByRef code As String, filePath As String, prjPath As String, ByRef parts As CodeParts, ByRef errors As ExceptionsList, Optional add As Boolean = True)
-        For Each Match As Match In Regex.Matches(code, "\#include[ \t]+([^\s]+)", RegexOptions.Multiline)
-            Dim text As String = Match.Groups(1).Value
+        For Each match As Match In Regex.Matches(code, "\#include[ \t]+([^\s]+)", RegexOptions.Multiline)
+            Dim text As String = match.Groups(1).Value
             Dim fullPath As String = ""
 
             Dim type = text.Substring(0, 1)
@@ -55,7 +55,7 @@ Public Class Includes
                         parts.AddInclude(part)
 
                         Dim prs As New Parser(part, My.Computer.FileSystem.ReadAllText(fullPath), fullPath, prjPath, True)
-                        errors.exceptionsList.AddRange(prs.errors.exceptionsList)
+                        errors.exceptionsList.AddRange(prs.Errors.exceptionsList)
                     Else
                         errors.exceptionsList.Add(New IncludeNotFoundException(Path.GetFileNameWithoutExtension(fullPath)))
                     End If
@@ -63,7 +63,7 @@ Public Class Includes
                 Else
                     Try
                         'Here if the include is REMOVED, There is no need to parse it all again cause we already know that we just need to remove the whole include.
-                        parts.RemoveIncludeByHash(getFileHash(fullPath))
+                        parts.RemoveIncludeByHash(GetFileHash(fullPath))
                     Catch ex As Exception
                     End Try
                 End If

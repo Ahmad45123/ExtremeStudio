@@ -3,12 +3,12 @@ Imports ExtremeParser
 
 Public Class ProjExplorerDock
 
-    Private nodeState As ExtremeCore.treeNodeStateSaving = New ExtremeCore.treeNodeStateSaving
+    Private _nodeState As ExtremeCore.treeNodeStateSaving = New ExtremeCore.treeNodeStateSaving
 
     Public Includes As LinkedList(Of CodeParts)
 
     Public Sub RefreshList(Optional firstTime As Boolean = False)
-        If firstTime = False Then nodeState.SaveTreeState(treeView.Nodes) 'Save current expanded nodes.
+        If firstTime = False Then _nodeState.SaveTreeState(treeView.Nodes) 'Save current expanded nodes.
 
         treeView.Nodes(0).Nodes.Clear()
         treeView.Nodes(1).Nodes.Clear()
@@ -55,7 +55,7 @@ Public Class ProjExplorerDock
             node.ImageIndex = 1
         Next
 
-        If firstTime = False Then nodeState.RestoreTreeState(treeView) 'Load the last opened nodes.
+        If firstTime = False Then _nodeState.RestoreTreeState(treeView) 'Load the last opened nodes.
     End Sub
 
     Private Sub treeView_BeforeLabelEdit(sender As Object, e As NodeLabelEditEventArgs) Handles treeView.BeforeLabelEdit
@@ -245,7 +245,7 @@ Public Class ProjExplorerDock
 
             'Select the item after showing the form.
             Dim input As New ExtremeCore.AdvacnedInputBox("Folder Name", "Enter a name for the new folder: ")
-            If input.resResult = ExtremeCore.AdvacnedInputBox.returnValue.INPUT_RESULT_OK Then
+            If input.resResult = ExtremeCore.AdvacnedInputBox.returnValue.InputResultOk Then
                 If ExtremeCore.FilenameIsOK(input.resResult) Then
                     My.Computer.FileSystem.CreateDirectory(MainForm.currentProject.projectPath + "/" + path + "/" + input.resText)
                     RefreshList()

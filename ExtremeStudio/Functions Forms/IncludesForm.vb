@@ -6,7 +6,7 @@ Public Class IncludesForm
     Public Includes As New List(Of IncludeData)
 
 
-    Public Sub refreshList(Optional searchPattern As String = "", Optional isInstalledOnly As Boolean = False)
+    Public Sub RefreshList(Optional searchPattern As String = "", Optional isInstalledOnly As Boolean = False)
         includesList.Items.Clear()
 
         'Show the list.
@@ -41,7 +41,7 @@ Public Class IncludesForm
                 Includes.Add(include)
             Next
         Else 'List all available cached includes.
-            For Each file In Directory.GetDirectories(MainForm.APPLICATION_FILES + "/cache/includes")
+            For Each file In Directory.GetDirectories(MainForm.ApplicationFiles + "/cache/includes")
                 Dim inc As New IncludeData
                 inc.Name = Path.GetFileNameWithoutExtension(file)
                 inc.Download = "local"
@@ -62,7 +62,7 @@ Public Class IncludesForm
         refreshList(TextBox1.Text, showInstalledOnlyCheck.Checked)
     End Sub
 
-    Private Function getIncludeInfo(name As String) As IncludeData
+    Private Function GetIncludeInfo(name As String) As IncludeData
         For Each include As IncludeData In Includes
             If include.Name = name Then
                 Return include
@@ -88,9 +88,9 @@ Public Class IncludesForm
             Button1.Text = "Reinstall Include"
             actionsGroup.Visible = True
 
-            Dim curVer As String = My.Computer.FileSystem.ReadAllText(MainForm.APPLICATION_FILES + "/cache/includes/" + Path.GetFileNameWithoutExtension(sel.Download) + "/version.cfg")
+            Dim curVer As String = My.Computer.FileSystem.ReadAllText(MainForm.ApplicationFiles + "/cache/includes/" + Path.GetFileNameWithoutExtension(sel.Download) + "/version.cfg")
             Dim res = ExtremeCore.versionReader.CompareVersions(curVer, includeVersion.Text)
-            If res = ExtremeCore.versionReader.CompareVersionResult.VERSION_NEW Then
+            If res = ExtremeCore.versionReader.CompareVersionResult.VersionNew Then
                 updateAvilableLabel.Visible = True
             End If
         Else
@@ -107,7 +107,7 @@ Public Class IncludesForm
         If inc Is Nothing Then Exit Sub
 
         'Setup the paths.
-        Dim incFolder As String = MainForm.APPLICATION_FILES + "/cache/includes/" + Path.GetFileNameWithoutExtension(inc.Download)
+        Dim incFolder As String = MainForm.ApplicationFiles + "/cache/includes/" + Path.GetFileNameWithoutExtension(inc.Download)
         Dim incFile As String = incFolder + "/" + Path.GetFileName(inc.Download)
 
         Dim web As New WebClient
@@ -116,7 +116,7 @@ Public Class IncludesForm
                 'If there is a version in the cache, Compare the versions and download if neceseary.
                 Dim curVer As String = My.Computer.FileSystem.ReadAllText(incFolder + "/version.cfg")
                 Dim res = ExtremeCore.versionReader.CompareVersions(curVer, includeVersion.Text)
-                If res = ExtremeCore.versionReader.CompareVersionResult.VERSION_NEW Then
+                If res = ExtremeCore.versionReader.CompareVersionResult.VersionNew Then
                     'If new download: 
                     web.DownloadFile(inc.Download, incFile)
                     My.Computer.FileSystem.WriteAllText(incFolder + "/version.cfg", includeVersion.Text, False)
@@ -175,7 +175,7 @@ Public Class IncludesForm
             My.Computer.FileSystem.DeleteFile(MainForm.currentProject.projectPath + "pawno/include/" + Path.GetFileName(inc.Download))
         ElseIf Path.GetExtension(inc.Download) = ".zip" 'If its a ZIP file, Extract it.
             'Setup the paths to ZIP.
-            Dim incFolder As String = MainForm.APPLICATION_FILES + "/cache/includes/" + Path.GetFileNameWithoutExtension(inc.Download)
+            Dim incFolder As String = MainForm.ApplicationFiles + "/cache/includes/" + Path.GetFileNameWithoutExtension(inc.Download)
             Dim incFile As String = incFolder + "/" + Path.GetFileName(inc.Download)
 
             'Remove existing first.
@@ -215,6 +215,6 @@ Public Class IncludeData
     Public Property Desc As String
     Public Property Version As String
     Public Property Download As String
-    Public Property relatedPlugin As String
-    Public Property isInstalled As Boolean
+    Public Property RelatedPlugin As String
+    Public Property IsInstalled As Boolean
 End Class

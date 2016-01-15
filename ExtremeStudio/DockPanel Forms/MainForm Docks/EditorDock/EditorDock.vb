@@ -8,16 +8,16 @@ Imports System.Text
 Public Class EditorDock
 
     'Global Vars
-    Enum indicatorIDs
-        INDICATOR_PARSERERROR = 50 'Start from 50
-        INDICATOR_CODEERROR
-        INDICATOR_PHPDOCERROR
+    Enum IndicatorIDs
+        IndicatorParsererror = 50 'Start from 50
+        IndicatorCodeerror
+        IndicatorPhpdocerror
     End Enum
-    Public codeParts As New CodeParts
+    Public CodeParts As New CodeParts
 
-    Dim autoCompleteList As New List(Of AutoCompleteItemEx)
+    Dim _autoCompleteList As New List(Of AutoCompleteItemEx)
 
-    Public isFirstParse As Boolean = True
+    Public IsFirstParse As Boolean = True
 
     'UnRelated events here.
     Private Sub EditorDock_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -59,36 +59,36 @@ Public Class EditorDock
 
     Private Sub Editor_StyleNeeded(sender As Object, e As StyleNeededEventArgs) Handles Editor.StyleNeeded
         'Call the func.
-        codeHighlighting.Highlight(Editor, codeParts.Clone(), Editor.Lines(Editor.LineFromPosition(Editor.GetEndStyled())).Position, e.Position)
+        CodeHighlighting.Highlight(Editor, CodeParts.Clone(), Editor.Lines(Editor.LineFromPosition(Editor.GetEndStyled())).Position, e.Position)
     End Sub
 
     Public Sub OnSetsChange()
         'Setup font.
         Editor.StyleResetDefault()
-        Editor.Styles(Style.[Default]).Font = SettingsForm.colorsInfo.sFont.FontFamily.Name
-        Editor.Styles(Style.[Default]).Size = SettingsForm.colorsInfo.sFont.Size
-        Editor.Styles(Style.[Default]).Bold = SettingsForm.colorsInfo.sFont.Bold
+        Editor.Styles(Style.[Default]).Font = SettingsForm.ColorsInfo.SFont.FontFamily.Name
+        Editor.Styles(Style.[Default]).Size = SettingsForm.ColorsInfo.SFont.Size
+        Editor.Styles(Style.[Default]).Bold = SettingsForm.ColorsInfo.SFont.Bold
         Editor.StyleClearAll()
 
         'Setup Colors: 
-        Editor.Styles(codeHighlighting.Styles.Default).ForeColor = SettingsForm.colorsInfo.sDefault
-        Editor.Styles(codeHighlighting.Styles.Integer).ForeColor = SettingsForm.colorsInfo.sInteger
-        Editor.Styles(codeHighlighting.Styles.String).ForeColor = SettingsForm.colorsInfo.sString
-        Editor.Styles(codeHighlighting.Styles.Symbols).ForeColor = SettingsForm.colorsInfo.sSymbols
-        Editor.Styles(codeHighlighting.Styles.SingleLineComment).ForeColor = SettingsForm.colorsInfo.sSLComments
-        Editor.Styles(codeHighlighting.Styles.MultiLineComment).ForeColor = SettingsForm.colorsInfo.sMLComments
-        Editor.Styles(codeHighlighting.Styles.PawnDOC).ForeColor = SettingsForm.colorsInfo.sPawnDoc
-        Editor.Styles(codeHighlighting.Styles.PawnPre).ForeColor = SettingsForm.colorsInfo.sPawnPre
-        Editor.Styles(codeHighlighting.Styles.PAWNKeywords).ForeColor = SettingsForm.colorsInfo.sPawnKeys
+        Editor.Styles(CodeHighlighting.Styles.Default).ForeColor = SettingsForm.ColorsInfo.SDefault
+        Editor.Styles(CodeHighlighting.Styles.Integer).ForeColor = SettingsForm.ColorsInfo.SInteger
+        Editor.Styles(CodeHighlighting.Styles.String).ForeColor = SettingsForm.ColorsInfo.SString
+        Editor.Styles(CodeHighlighting.Styles.Symbols).ForeColor = SettingsForm.ColorsInfo.SSymbols
+        Editor.Styles(CodeHighlighting.Styles.SingleLineComment).ForeColor = SettingsForm.ColorsInfo.SSlComments
+        Editor.Styles(CodeHighlighting.Styles.MultiLineComment).ForeColor = SettingsForm.ColorsInfo.SMlComments
+        Editor.Styles(CodeHighlighting.Styles.PawnDoc).ForeColor = SettingsForm.ColorsInfo.SPawnDoc
+        Editor.Styles(CodeHighlighting.Styles.PawnPre).ForeColor = SettingsForm.ColorsInfo.SPawnPre
+        Editor.Styles(CodeHighlighting.Styles.PawnKeywords).ForeColor = SettingsForm.ColorsInfo.SPawnKeys
 
-        Editor.Styles(codeHighlighting.Styles.Functions).ForeColor = SettingsForm.colorsInfo.sFunctions
-        Editor.Styles(codeHighlighting.Styles.Publics).ForeColor = SettingsForm.colorsInfo.sPublics
-        Editor.Styles(codeHighlighting.Styles.Stocks).ForeColor = SettingsForm.colorsInfo.sStocks
-        Editor.Styles(codeHighlighting.Styles.Natives).ForeColor = SettingsForm.colorsInfo.sNatives
-        Editor.Styles(codeHighlighting.Styles.Defines).ForeColor = SettingsForm.colorsInfo.sDefines
-        Editor.Styles(codeHighlighting.Styles.Macros).ForeColor = SettingsForm.colorsInfo.sMacros
-        Editor.Styles(codeHighlighting.Styles.Enums).ForeColor = SettingsForm.colorsInfo.sEnums
-        Editor.Styles(codeHighlighting.Styles.PublicVars).ForeColor = SettingsForm.colorsInfo.sGlobalVars
+        Editor.Styles(CodeHighlighting.Styles.Functions).ForeColor = SettingsForm.ColorsInfo.SFunctions
+        Editor.Styles(CodeHighlighting.Styles.Publics).ForeColor = SettingsForm.ColorsInfo.SPublics
+        Editor.Styles(CodeHighlighting.Styles.Stocks).ForeColor = SettingsForm.ColorsInfo.SStocks
+        Editor.Styles(CodeHighlighting.Styles.Natives).ForeColor = SettingsForm.ColorsInfo.SNatives
+        Editor.Styles(CodeHighlighting.Styles.Defines).ForeColor = SettingsForm.ColorsInfo.SDefines
+        Editor.Styles(CodeHighlighting.Styles.Macros).ForeColor = SettingsForm.ColorsInfo.SMacros
+        Editor.Styles(CodeHighlighting.Styles.Enums).ForeColor = SettingsForm.ColorsInfo.SEnums
+        Editor.Styles(CodeHighlighting.Styles.PublicVars).ForeColor = SettingsForm.ColorsInfo.SGlobalVars
 
         Editor.IndentationGuides = IndentView.LookBoth
 
@@ -120,9 +120,9 @@ Public Class EditorDock
         Editor.CallTipSetForeHlt(Color.Black)
 
         'Setup the indicators
-        Editor.Indicators(indicatorIDs.INDICATOR_PARSERERROR).Style = IndicatorStyle.Squiggle
-        Editor.Indicators(indicatorIDs.INDICATOR_PARSERERROR).ForeColor = Color.DarkGreen
-        Editor.Indicators(indicatorIDs.INDICATOR_PARSERERROR).Under = True
+        Editor.Indicators(IndicatorIDs.IndicatorParsererror).Style = IndicatorStyle.Squiggle
+        Editor.Indicators(IndicatorIDs.IndicatorParsererror).ForeColor = Color.DarkGreen
+        Editor.Indicators(IndicatorIDs.IndicatorParsererror).Under = True
 
         'Set up auto-complete.
         AutoCompleteMenu.TargetControlWrapper = New ScintillaWrapper(Editor)
@@ -132,7 +132,7 @@ Public Class EditorDock
         AddHandler SettingsForm.OnSettingsChange, AddressOf OnSetsChange
 
         'ReLoad data.
-        If SettingsForm.hasBeenLoadedBefore = False Then
+        If SettingsForm.HasBeenLoadedBefore = False Then
             SettingsForm.ReloadInfo()
         End If
 
@@ -144,13 +144,13 @@ Public Class EditorDock
 #Region "TextChangedDelayed WITH VISIBLE Setup Code"
     'Variables to save parsing offsets.
     'Will be -1 if done.
-    Private OffsetStart As Integer = -1
-    Private OffsetLength As Integer = -1
+    Private _offsetStart As Integer = -1
+    Private _offsetLength As Integer = -1
 
     Private WithEvents idleTimer As New Timer
-    Private oldVisible As String = "" 'This is just a key that I am going to use as empty!..
+    Private _oldVisible As String = "" 'This is just a key that I am going to use as empty!..
 
-    Private Sub checkIfDefines(ByRef code As String, line As Integer)
+    Private Sub CheckIfDefines(ByRef code As String, line As Integer)
         'Get all the visible If's and ends.
         Dim allIfs As Integer = 0
         Dim allEnds As Integer = 0
@@ -187,16 +187,16 @@ Public Class EditorDock
 
     Private Sub idleTimer_Tick(sender As Object, e As EventArgs) Handles idleTimer.Tick
         idleTimer.Stop()
-        Dim newCode As String = Editor.GetTextRange(OffsetStart, OffsetLength)
+        Dim newCode As String = Editor.GetTextRange(_offsetStart, _offsetLength)
 
         'Make sure the current code is valid from if defines.
-        checkIfDefines(newCode, Editor.LineFromPosition(OffsetStart + OffsetLength))
+        CheckIfDefines(newCode, Editor.LineFromPosition(_offsetStart + _offsetLength))
 
         'Get the new visible text and call the func.
-        scintilla_TextChangedDelayed(oldVisible, newCode)
+        scintilla_TextChangedDelayed(_oldVisible, newCode)
 
         'Reset: 
-        oldVisible = "" : OffsetStart = -1 : OffsetLength = -1
+        _oldVisible = "" : _offsetStart = -1 : _offsetLength = -1
     End Sub
     Private Sub Editor_Load(sender As Object, e As EventArgs) Handles Me.Load
         With idleTimer
@@ -212,16 +212,16 @@ Public Class EditorDock
     'This for on first time.
     Private Sub BeforeTextChangedDelayed_Timer(sender As Object, e As BeforeModificationEventArgs) Handles Editor.BeforeDelete, Editor.BeforeInsert
         If e.Text IsNot Nothing Then
-            If OffsetStart = -1 And OffsetLength = -1 Then
+            If _offsetStart = -1 And _offsetLength = -1 Then
                 'Get positions of visible text and store them.
-                OffsetStart = Editor.Lines(Editor.FirstVisibleLine).Position
-                OffsetLength = (Editor.Lines(Editor.FirstVisibleLine + Editor.LinesOnScreen).EndPosition) - OffsetStart
+                _offsetStart = Editor.Lines(Editor.FirstVisibleLine).Position
+                _offsetLength = (Editor.Lines(Editor.FirstVisibleLine + Editor.LinesOnScreen).EndPosition) - _offsetStart
 
                 'Store the text.
-                oldVisible = Editor.GetTextRange(OffsetStart, OffsetLength)
+                _oldVisible = Editor.GetTextRange(_offsetStart, _offsetLength)
 
                 'Make sure its valid.
-                checkIfDefines(oldVisible, Editor.LineFromPosition(OffsetStart + OffsetLength))
+                CheckIfDefines(_oldVisible, Editor.LineFromPosition(_offsetStart + _offsetLength))
             End If
         End If
     End Sub
@@ -229,7 +229,7 @@ Public Class EditorDock
     'Adding and minusing to length.
     Private Sub OnAdd(sender As Object, e As BeforeModificationEventArgs) Handles Editor.BeforeInsert
         If e.Text IsNot Nothing Then
-            If OffsetLength <> -1 And OffsetStart <> -1 Then
+            If _offsetLength <> -1 And _offsetStart <> -1 Then
                 Dim len As Integer = e.Text.Length
                 'Dim newEndPos As Integer = e.Position + len
                 'Dim OffsetEnd As Integer = OffsetStart + OffsetLength
@@ -237,14 +237,14 @@ Public Class EditorDock
                 'If e.Position < OffsetStart Then
                 '    OffsetStart += len : OffsetLength += len
                 'ElseIf e.Position > OffsetStart Then
-                OffsetLength += len
+                _offsetLength += len
                 'End If
             End If
         End If
     End Sub
     Private Sub OnRemove(sender As Object, e As BeforeModificationEventArgs) Handles Editor.BeforeDelete
         If e.Text IsNot Nothing Then
-            If OffsetLength <> -1 And OffsetStart <> -1 Then
+            If _offsetLength <> -1 And _offsetStart <> -1 Then
                 Dim len As Integer = e.Text.Length
                 'Dim newEndPos As Integer = e.Position + len
                 'Dim oldEndPos As Integer = OffsetStart + OffsetLength
@@ -252,89 +252,89 @@ Public Class EditorDock
                 'If e.Position < OffsetStart Then
                 '    OffsetStart -= len : OffsetLength -= len
                 'ElseIf e.Position > OffsetStart Then
-                OffsetLength -= len
+                _offsetLength -= len
                 'End If
 
                 'TO MAKE SURE THIS IS GOING TO BE REMOVED: 
-                oldVisible += vbCrLf + vbCrLf + e.Text + vbCrLf + vbCrLf
+                _oldVisible += vbCrLf + vbCrLf + e.Text + vbCrLf + vbCrLf
             End If
         End If
     End Sub
 #End Region
 
 #Region "LineNumbers Calculation"
-    Private maxLineNumberCharLength As Integer
+    Private _maxLineNumberCharLength As Integer
     Private Sub Editor_TextChanged(sender As Object, e As EventArgs) Handles Editor.TextChanged
         Dim maxLineNumberCharLength = Editor.Lines.Count.ToString().Length
-        If maxLineNumberCharLength = Me.maxLineNumberCharLength Then
+        If maxLineNumberCharLength = Me._maxLineNumberCharLength Then
             Return
         End If
 
         Const padding As Integer = 2
         Editor.Margins(0).Width = Editor.TextWidth(Style.LineNumber, New String("9"c, maxLineNumberCharLength + 1)) + padding
-        Me.maxLineNumberCharLength = maxLineNumberCharLength
+        Me._maxLineNumberCharLength = maxLineNumberCharLength
     End Sub
 #End Region
 
 #Region "Refresh Worker Codes"
     Public Sub scintilla_TextChangedDelayed(oldcode As String, newcode As String)
         If RefreshWorker.IsBusy = False Then
-            RefreshWorker.RunWorkerAsync({oldcode, newcode, Editor.Tag, MainForm.currentProject.projectPath})
+            RefreshWorker.RunWorkerAsync({oldcode, newcode, Editor.Tag, MainForm.CurrentProject.ProjectPath})
             MainForm.statusLabel.Text = "Parsing Code."
         End If
     End Sub
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork
         If Editor.IsHandleCreated Then
             'Parse old.
-            Dim null = New Parser(codeParts, e.Argument(0), e.Argument(2), e.Argument(3), False)
+            Dim null = New Parser(CodeParts, e.Argument(0), e.Argument(2), e.Argument(3), False)
 
             'Save the new to the result.
-            e.Result = New Parser(codeParts, e.Argument(1), e.Argument(2), e.Argument(3), True)
+            e.Result = New Parser(CodeParts, e.Argument(1), e.Argument(2), e.Argument(3), True)
         End If
     End Sub
 
-    Private Sub parseCodeParts(ByRef autoList As List(Of AutoCompleteItemEx))
-        For Each part In codeParts.FlattenIncludes
+    Private Sub ParseCodeParts(ByRef autoList As List(Of AutoCompleteItemEx))
+        For Each part In CodeParts.FlattenIncludes
             For Each stock In part.Stocks
-                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, stock)
+                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TypeFunction, stock)
                 autoList.Add(newitm)
             Next
             For Each publicFunc In part.Publics
-                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, publicFunc)
+                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TypeFunction, publicFunc)
                 autoList.Add(newitm)
             Next
             For Each func In part.Functions
-                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, func)
+                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TypeFunction, func)
                 autoList.Add(newitm)
             Next
             For Each native In part.Natives
-                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_FUNCTION, native)
+                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TypeFunction, native)
                 autoList.Add(newitm)
             Next
             For Each def In part.Defines
-                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, def.DefineName, def.DefineValue)
+                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TypeDefine, def.DefineName, def.DefineValue)
                 autoList.Add(newitm)
             Next
             For Each parentEnm In part.Enums
                 For Each enm In parentEnm.EnumContents
                     Dim type As String = ""
 
-                    If enm.Type = FunctionParameters.varTypes.TYPE_ARRAY Then
+                    If enm.Type = FunctionParameters.VarTypes.TypeArray Then
                         type = "array/string"
-                    ElseIf enm.Type = FunctionParameters.varTypes.TYPE_FLOAT Then
+                    ElseIf enm.Type = FunctionParameters.VarTypes.TypeFloat Then
                         type = "float"
-                    ElseIf enm.Type = FunctionParameters.varTypes.TYPE_INTEGER Then
+                    ElseIf enm.Type = FunctionParameters.VarTypes.TypeInteger Then
                         type = "integer"
-                    ElseIf enm.Type = FunctionParameters.varTypes.TYPE_FLOAT Then
+                    ElseIf enm.Type = FunctionParameters.VarTypes.TypeFloat Then
                         type = "tagged"
                     End If
 
-                    Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, enm.Content, "This is an enum item with the type: `" + type + "` that is in the enum: `" + parentEnm.EnumName + "`")
+                    Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TypeDefine, enm.Content, "This is an enum item with the type: `" + type + "` that is in the enum: `" + parentEnm.EnumName + "`")
                     autoList.Add(newitm)
                 Next
             Next
-            For Each var In part.publicVariables
-                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TYPE_DEFINE, var.VarName, "This is a global variable declared in one of the includes.")
+            For Each var In part.PublicVariables
+                Dim newitm As New AutoCompleteItemEx(AutoCompeleteTypes.TypeDefine, var.VarName, "This is a global variable declared in one of the includes.")
                 autoList.Add(newitm)
             Next
         Next
@@ -347,29 +347,29 @@ Public Class EditorDock
         ErrorsDock.parserErrors.Rows.Clear()
 
 #Region "Error Showing"
-        Dim errors As ExceptionsList = DirectCast(e.Result, Parser).errors
+        Dim errors As ExceptionsList = DirectCast(e.Result, Parser).Errors
         For Each obj In errors.exceptionsList
             If TypeOf (obj) Is IncludeNotFoundException Then
                 Dim tmpObj = DirectCast(obj, IncludeNotFoundException)
-                Dim Msg As String = "The include `" + tmpObj.includeName + "` is not found, Please make sure it exists."
-                ErrorsDock.parserErrors.Rows.Add({Msg, tmpObj.includeName})
+                Dim msg As String = "The include `" + tmpObj.IncludeName + "` is not found, Please make sure it exists."
+                ErrorsDock.parserErrors.Rows.Add({msg, tmpObj.IncludeName})
             ElseIf TypeOf (obj) Is ParserException
                 Dim tmpObj = DirectCast(obj, ParserException)
-                ErrorsDock.parserErrors.Rows.Add({tmpObj.Message, tmpObj.iden})
+                ErrorsDock.parserErrors.Rows.Add({tmpObj.Message, tmpObj.Iden})
             End If
         Next
 #End Region
 
 #Region "AutoComplete Refresh."
-        autoCompleteList.Clear()
+        _autoCompleteList.Clear()
 
-        parseCodeParts(autoCompleteList)
+        ParseCodeParts(_autoCompleteList)
 
-        AutoCompleteMenu.SetAutocompleteItems(autoCompleteList)
+        AutoCompleteMenu.SetAutocompleteItems(_autoCompleteList)
 #End Region
 
-            If ObjectExplorerDock.Visible Then
-            ObjectExplorerDock.refreshTreeView(codeParts)
+        If ObjectExplorerDock.Visible Then
+            ObjectExplorerDock.RefreshTreeView(CodeParts)
         End If
     End Sub
 #End Region
@@ -383,12 +383,12 @@ Public Class EditorDock
         Return False
     End Function
 
-    Private lastCaretPos As Integer
+    Private _lastCaretPos As Integer
     Private Sub Editor_UpdateUI(sender As Object, e As UpdateUIEventArgs) Handles Editor.UpdateUI
         ' Has the caret changed position?
         Dim caretPos = Editor.CurrentPosition
-        If lastCaretPos <> caretPos Then
-            lastCaretPos = caretPos
+        If _lastCaretPos <> caretPos Then
+            _lastCaretPos = caretPos
             Dim bracePos1 = -1
             Dim bracePos2 = -1
 
@@ -453,8 +453,8 @@ Public Class EditorDock
 #End Region
 
 #Region "CallTip Codes"
-    Dim isCallTipShown As Boolean = False
-    Dim currentCallTipItm As AutoCompleteItemEx
+    Dim _isCallTipShown As Boolean = False
+    Dim _currentCallTipItm As AutoCompleteItemEx
 
     Private Sub CallTipMarkCurrentPar(itm As AutoCompleteItemEx)
         Dim currentLineText As String = Editor.Lines(Editor.CurrentLine).Text
@@ -467,10 +467,10 @@ Public Class EditorDock
         End If
 
         Dim extraCount As Integer = itm.Text.Length + 1 '1 for the ( and )
-        Dim wholeFunc As String = itm.Parameters.paramsText
+        Dim wholeFunc As String = itm.Parameters.ParamsText
 
-        Dim currentCommas As Integer = stringSearcher.CountChar(currentWrite, ",")
-        Dim allCommads As Integer = stringSearcher.CountChar(wholeFunc, ",")
+        Dim currentCommas As Integer = StringSearcher.CountChar(currentWrite, ",")
+        Dim allCommads As Integer = StringSearcher.CountChar(wholeFunc, ",")
 
         If currentCommas > allCommads Then Exit Sub
 
@@ -492,32 +492,32 @@ Public Class EditorDock
     Private Sub AutoCompleteMenu_Selected(sender As Object, e As AutocompleteMenuNS.SelectedEventArgs) Handles AutoCompleteMenu.Selected
         Dim itm As AutoCompleteItemEx = DirectCast(e.Item, AutoCompleteItemEx)
 
-        If itm.Type = AutoCompeleteTypes.TYPE_FUNCTION Then
-            Editor.CallTipShow(Editor.CurrentPosition, itm.Text + "(" + itm.Parameters.paramsText + ")")
-            isCallTipShown = True
-            currentCallTipItm = itm
+        If itm.Type = AutoCompeleteTypes.TypeFunction Then
+            Editor.CallTipShow(Editor.CurrentPosition, itm.Text + "(" + itm.Parameters.ParamsText + ")")
+            _isCallTipShown = True
+            _currentCallTipItm = itm
 
-            CallTipMarkCurrentPar(currentCallTipItm)
+            CallTipMarkCurrentPar(_currentCallTipItm)
         End If
     End Sub
 
     Private Sub CallTip_Editor_CharAdded(sender As Object, e As CharAddedEventArgs) Handles Editor.CharAdded
         If e.Char = 44 Then  'The ',' char.
-            If isCallTipShown And TypeOf (currentCallTipItm) Is AutoCompleteItemEx Then
-                CallTipMarkCurrentPar(currentCallTipItm)
+            If _isCallTipShown And TypeOf (_currentCallTipItm) Is AutoCompleteItemEx Then
+                CallTipMarkCurrentPar(_currentCallTipItm)
             End If
         ElseIf e.Char = 13 Then 'If he presses enter, Hide the calltip.
-            If isCallTipShown Then
-                isCallTipShown = False
-                currentCallTipItm = Nothing
+            If _isCallTipShown Then
+                _isCallTipShown = False
+                _currentCallTipItm = Nothing
             End If
         End If
     End Sub
 
     Private Sub CallTip_Editor_BeforeDelete(sender As Object, e As ModificationEventArgs) Handles Editor.Delete
-        If isCallTipShown And TypeOf (currentCallTipItm) Is AutoCompleteItemEx Then
+        If _isCallTipShown And TypeOf (_currentCallTipItm) Is AutoCompleteItemEx Then
             If e.Text.Contains(",") Then
-                CallTipMarkCurrentPar(currentCallTipItm)
+                CallTipMarkCurrentPar(_currentCallTipItm)
             End If
         End If
     End Sub
@@ -538,15 +538,15 @@ Public Class EditorDock
             End While
 
             'Now check if there is an AutoCompleteItem matching that.
-            For Each itm As AutoCompleteItemEx In autoCompleteList
+            For Each itm As AutoCompleteItemEx In _autoCompleteList
                 If itm.Text = funcText Then
                     'Found one.. Now if its a function.. Show it. :)
-                    If itm.Type = AutoCompeleteTypes.TYPE_FUNCTION Then
-                        Editor.CallTipShow(Editor.CurrentPosition, itm.Text + "(" + itm.Parameters.paramsText + ")")
-                        isCallTipShown = True
-                        currentCallTipItm = itm
+                    If itm.Type = AutoCompeleteTypes.TypeFunction Then
+                        Editor.CallTipShow(Editor.CurrentPosition, itm.Text + "(" + itm.Parameters.ParamsText + ")")
+                        _isCallTipShown = True
+                        _currentCallTipItm = itm
 
-                        CallTipMarkCurrentPar(currentCallTipItm)
+                        CallTipMarkCurrentPar(_currentCallTipItm)
                     End If
                 End If
             Next

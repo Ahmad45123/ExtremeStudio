@@ -8,11 +8,11 @@ Public Class Functions
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Shared Property funcLikeKeywords As String = "do|for|switch|while|if|foreach|else"
+    Public Shared Property FuncLikeKeywords As String = "do|for|switch|while|if|foreach|else"
 
     Public Shared Sub Parse(ByRef code As String, fileName As String, ByRef parts As CodeParts, Optional add As Boolean = True)
         'Publics.
-        For Each Match As Match In Regex.Matches(code, "public[ \t]+([a-zA-Z1-3_@: \t]+)[ \t]*\((.*)\)\s*{", RegexOptions.Multiline)
+        For Each match As Match In Regex.Matches(code, "public[ \t]+([a-zA-Z1-3_@: \t]+)[ \t]*\((.*)\)\s*{", RegexOptions.Multiline)
             Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
             Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
@@ -39,7 +39,7 @@ Public Class Functions
         Next
 
         'Stocks
-        For Each Match As Match In Regex.Matches(code, "stock[ \t]+([a-zA-Z1-3_@: \t]+)[ \t]*\((.*)\)\s*{", RegexOptions.Multiline)
+        For Each match As Match In Regex.Matches(code, "stock[ \t]+([a-zA-Z1-3_@: \t]+)[ \t]*\((.*)\)\s*{", RegexOptions.Multiline)
             Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
             Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
@@ -66,7 +66,7 @@ Public Class Functions
         Next
 
         'Functions in General.
-        For Each Match As Match In Regex.Matches(code, "^[ \t]*(?!" + funcLikeKeywords + ")(?:\sstatic\s+stock\s+|\sstock\s+static\s+|\sstatic\s+)?([^ \t\n\r]+)\((.*)\)(?!;)\s*{", RegexOptions.Multiline)
+        For Each match As Match In Regex.Matches(code, "^[ \t]*(?!" + funcLikeKeywords + ")(?:\sstatic\s+stock\s+|\sstock\s+static\s+|\sstatic\s+)?([^ \t\n\r]+)\((.*)\)(?!;)\s*{", RegexOptions.Multiline)
             Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
             Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
@@ -93,7 +93,7 @@ Public Class Functions
         Next
 
         'Natives
-        For Each Match As Match In Regex.Matches(code, "native[ \t]+([a-zA-Z1-3_@: \t]+)[ \t]*?\((.*)\);", RegexOptions.Multiline)
+        For Each match As Match In Regex.Matches(code, "native[ \t]+([a-zA-Z1-3_@: \t]+)[ \t]*?\((.*)\);", RegexOptions.Multiline)
             Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
             Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try

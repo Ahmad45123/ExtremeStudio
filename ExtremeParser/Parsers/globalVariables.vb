@@ -1,6 +1,6 @@
 ﻿Imports System.Text.RegularExpressions
 
-Public Class globalVariables
+Public Class GlobalVariables
     Public Shared Sub Parse(ByRef code As String, fileName As String, ByRef parts As CodeParts, Optional add As Boolean = True)
         For Each match As Match In Regex.Matches(code, "(?:\s?stock\s+static|\s?static\s+stock|\s?new\s+stock|\s?new|\s?static|\s?stock)\s*([\s\S]*?);", RegexOptions.Multiline)
             Dim varName As String = match.Groups(1).Value

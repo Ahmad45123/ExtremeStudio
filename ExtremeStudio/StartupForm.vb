@@ -9,13 +9,13 @@ Public Class StartupForm
     ''' <summary>
     ''' To know whether to extract the SQL files or not.
     ''' </summary>
-    Public isFirst As Boolean = True
+    Public IsFirst As Boolean = True
 
-    Private isClosedProgram As Boolean = False
+    Private _isClosedProgram As Boolean = False
 
 #Region "RecentCode"
     Public Recent As New List(Of String)
-    Const MAX_LIST_ITEMS = 30
+    Const MaxListItems = 30
     Public Sub AddNewRecent(path As String)
         For Each Str As String In Recent
             If Str = path Then
@@ -24,10 +24,10 @@ Public Class StartupForm
             End If
         Next
         Recent.Insert(0, path) 'Inset it at the very start
-        If Recent.Count - 1 = MAX_LIST_ITEMS Then 'Remove the new added stuff
-            Recent.RemoveAt(MAX_LIST_ITEMS)
+        If Recent.Count - 1 = MaxListItems Then 'Remove the new added stuff
+            Recent.RemoveAt(MaxListItems)
         End If
-        My.Computer.FileSystem.WriteAllText(MainForm.APPLICATION_FILES + "/configs/recent.xml", ExtremeCore.ObjectSerializer.Serialize(Recent), False)
+        My.Computer.FileSystem.WriteAllText(MainForm.ApplicationFiles + "/configs/recent.xml", ExtremeCore.ObjectSerializer.Serialize(Recent), False)
     End Sub
 
     Public Sub RemoveRecent(path As String)
@@ -37,15 +37,15 @@ Public Class StartupForm
                 Exit For
             End If
         Next
-        My.Computer.FileSystem.WriteAllText(MainForm.APPLICATION_FILES + "/configs/recent.xml", ExtremeCore.ObjectSerializer.Serialize(Recent), False)
+        My.Computer.FileSystem.WriteAllText(MainForm.ApplicationFiles + "/configs/recent.xml", ExtremeCore.ObjectSerializer.Serialize(Recent), False)
     End Sub
 #End Region
 
-    Dim versionHandler As New versionHandler
+    Dim _versionHandler As New versionHandler
 
     Private Sub StartupForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'If the interop files don't exist, Extract the files.
-        If isFirst And (Not My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Or Not My.Computer.FileSystem.FileExists(MainForm.APPLICATION_FILES + "/x86/SQLite.Interop.dll")) Then
+        If isFirst And (Not My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Or Not My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/x86/SQLite.Interop.dll")) Then
             'Remove old.
             If My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Then My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/x64/SQLite.Interop.dll")
             If My.Computer.FileSystem.FileExists(Application.StartupPath + "/x86/SQLite.Interop.dll") Then My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/x86/SQLite.Interop.dll")
@@ -57,26 +57,26 @@ Public Class StartupForm
         End If
 
         'Create needed folders and files.
-        If Not My.Computer.FileSystem.DirectoryExists(MainForm.APPLICATION_FILES + "/cache") Then
-            My.Computer.FileSystem.CreateDirectory(MainForm.APPLICATION_FILES + "/cache")
+        If Not My.Computer.FileSystem.DirectoryExists(MainForm.ApplicationFiles + "/cache") Then
+            My.Computer.FileSystem.CreateDirectory(MainForm.ApplicationFiles + "/cache")
         End If
-        If Not My.Computer.FileSystem.DirectoryExists(MainForm.APPLICATION_FILES + "/cache/serverPackages") Then
-            My.Computer.FileSystem.CreateDirectory(MainForm.APPLICATION_FILES + "/cache/serverPackages")
+        If Not My.Computer.FileSystem.DirectoryExists(MainForm.ApplicationFiles + "/cache/serverPackages") Then
+            My.Computer.FileSystem.CreateDirectory(MainForm.ApplicationFiles + "/cache/serverPackages")
         End If
-        If Not My.Computer.FileSystem.DirectoryExists(MainForm.APPLICATION_FILES + "/cache/includes") Then
-            My.Computer.FileSystem.CreateDirectory(MainForm.APPLICATION_FILES + "/cache/includes")
+        If Not My.Computer.FileSystem.DirectoryExists(MainForm.ApplicationFiles + "/cache/includes") Then
+            My.Computer.FileSystem.CreateDirectory(MainForm.ApplicationFiles + "/cache/includes")
         End If
 
-        If Not My.Computer.FileSystem.DirectoryExists(MainForm.APPLICATION_FILES + "/configs") Then
-            My.Computer.FileSystem.CreateDirectory(MainForm.APPLICATION_FILES + "/configs")
-            My.Computer.FileSystem.WriteAllText(MainForm.APPLICATION_FILES + "/configs/recent.xml", "", False)
+        If Not My.Computer.FileSystem.DirectoryExists(MainForm.ApplicationFiles + "/configs") Then
+            My.Computer.FileSystem.CreateDirectory(MainForm.ApplicationFiles + "/configs")
+            My.Computer.FileSystem.WriteAllText(MainForm.ApplicationFiles + "/configs/recent.xml", "", False)
         End If
 
 
         'Load all the recent.
-        If My.Computer.FileSystem.FileExists(MainForm.APPLICATION_FILES + "/configs/recent.xml") Then
+        If My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/configs/recent.xml") Then
             Try
-                Recent = ExtremeCore.ObjectSerializer.Deserialize(Of List(Of String))(My.Computer.FileSystem.ReadAllText(MainForm.APPLICATION_FILES + "/configs/recent.xml"))
+                Recent = ExtremeCore.ObjectSerializer.Deserialize(Of List(Of String))(My.Computer.FileSystem.ReadAllText(MainForm.ApplicationFiles + "/configs/recent.xml"))
             Catch ex As Exception
             End Try
         End If
@@ -95,7 +95,7 @@ Public Class StartupForm
                 verListBox.Tag.Add(cs("download").InnerText)
             Next
         Else 'Load existing from folder.
-            For Each pth As String In Directory.GetFiles(MainForm.APPLICATION_FILES + "/cache/serverPackages")
+            For Each pth As String In Directory.GetFiles(MainForm.ApplicationFiles + "/cache/serverPackages")
                 Dim newList As Integer = verListBox.Items.Add(Path.GetFileNameWithoutExtension(pth))
                 verListBox.Tag.Add(pth)
             Next
@@ -127,24 +127,24 @@ Public Class StartupForm
         'Check if entered path exist.
         If My.Computer.FileSystem.DirectoryExists(locTextBox.Text) Or My.Computer.FileSystem.FileExists(locTextBox.Text + "/extremeStudio.config") Then
             If Not verListBox.SelectedIndex = -1 Then
-                If My.Computer.FileSystem.FileExists(MainForm.APPLICATION_FILES + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip") Then 'check if that version is existing
-                    FastZipUnpack(MainForm.APPLICATION_FILES + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip", locTextBox.Text) 'Extract the zip to project folder.
+                If My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip") Then 'check if that version is existing
+                    FastZipUnpack(MainForm.ApplicationFiles + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip", locTextBox.Text) 'Extract the zip to project folder.
                 Else 'Download from net if not exist.
                     Dim client As New WebClient 'For downloading the selected file.
                     client.DownloadFile(verListBox.Tag(verListBox.SelectedIndex), My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip") 'Download the zip file.
                     FastZipUnpack(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip", locTextBox.Text) 'Extract the zip.
-                    My.Computer.FileSystem.CopyFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip", MainForm.APPLICATION_FILES + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip") 'Copy the file to be used instead of downloading
+                    My.Computer.FileSystem.CopyFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip", MainForm.ApplicationFiles + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip") 'Copy the file to be used instead of downloading
                     My.Computer.FileSystem.DeleteFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip") 'Delete the file from temp.
                 End If
                 My.Computer.FileSystem.WriteAllText(locTextBox.Text + "/gamemodes/" + nameTextBox.Text + ".pwn", My.Resources.newfileTemplate, False)
                 MainForm.currentProject.projectName = nameTextBox.Text
                 MainForm.currentProject.projectPath = locTextBox.Text
-                MainForm.currentProject.projectVersion = versionHandler.currentVersion
+                MainForm.currentProject.projectVersion = _versionHandler.currentVersion
                 MainForm.currentProject.CreateTables() 'Create the tables of the db.
                 MainForm.currentProject.SaveInfo() 'Write the default extremeStudio config.
                 AddNewRecent(MainForm.currentProject.projectPath) 'Add it to the recent list.
                 MainForm.Show()
-                isClosedProgram = True : Close()
+                _isClosedProgram = True : Close()
             Else
                 MsgBox("You haven't selected a SAMP version to use.")
             End If
@@ -165,16 +165,16 @@ Public Class StartupForm
                 projectName.Text = MainForm.currentProject.projectName
 
                 Dim projVersion As String = MainForm.currentProject.projectVersion
-                Dim progVersion As String = versionHandler.currentVersion
+                Dim progVersion As String = _versionHandler.currentVersion
 
                 Dim versionCompare As versionReader.CompareVersionResult = versionReader.CompareVersions(projVersion, progVersion)
-                If versionCompare = versionReader.CompareVersionResult.VERSION_SAME Then
+                If versionCompare = versionReader.CompareVersionResult.VersionSame Then
                     projectVersion.Text = "Project version is the same as ExtremeStudio's version, No converion is needed."
                     loadProjectBtn.Enabled = True
-                ElseIf versionCompare = versionReader.CompareVersionResult.VERSION_NEW Then
+                ElseIf versionCompare = versionReader.CompareVersionResult.VersionNew Then
                     projectVersion.Text = "Project older then ExtremeStudio, Conversion will be done however it may bug with older versions so its recommended to not try."
                     loadProjectBtn.Enabled = True
-                ElseIf versionCompare = versionReader.CompareVersionResult.VERSION_OLD Then
+                ElseIf versionCompare = versionReader.CompareVersionResult.VersionOld Then
                     projectVersion.Text = "Project version is newer then ExtremeStudio's version, Please download latest ExtremeStudio package."
                 End If
             Else
@@ -187,9 +187,9 @@ Public Class StartupForm
 
     Private Sub loadProjectBtn_Click(sender As Object, e As EventArgs) Handles loadProjectBtn.Click
         AddNewRecent(MainForm.currentProject.projectPath) 'Add it to the recent list.
-        versionHandler.doIfUpdateNeeded(MainForm.currentProject)
+        _versionHandler.doIfUpdateNeeded(MainForm.currentProject)
         MainForm.Show()
-        isClosedProgram = True : Close()
+        _isClosedProgram = True : Close()
     End Sub
 
     Private Sub TabControl1_Selected(sender As Object, e As TabControlEventArgs) Handles TabControl1.Selected
@@ -233,7 +233,7 @@ Public Class StartupForm
     End Sub
 
     Private Sub StartupForm_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
-        If isClosedProgram = False Then
+        If _isClosedProgram = False Then
             Application.Exit()
         End If
     End Sub

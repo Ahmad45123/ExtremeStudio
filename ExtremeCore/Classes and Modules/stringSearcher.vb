@@ -1,4 +1,4 @@
-﻿Public Class stringSearcher
+﻿Public Class StringSearcher
     Public Shared Function CountChar(src As String, chr As Char) As Integer
         Dim num As Integer = 0
 

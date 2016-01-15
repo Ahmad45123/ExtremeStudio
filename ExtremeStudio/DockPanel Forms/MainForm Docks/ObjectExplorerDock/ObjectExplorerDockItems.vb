@@ -8,7 +8,7 @@
         Next
     End Sub
 
-    Private Function GetID(nme As String)
+    Private Function GetId(nme As String)
         For i As Integer = 0 To MainForm.currentProject.objectExplorerItems.Count - 1
             If MainForm.currentProject.objectExplorerItems(i).Name = nme Then
                 Return i
@@ -48,7 +48,7 @@
     End Sub
 End Class
 
-Public Class objectExplorerItem
+Public Class ObjectExplorerItem
     Public Sub New(name As String, iden As String)
         Me.Name = name
         Identifier = iden
