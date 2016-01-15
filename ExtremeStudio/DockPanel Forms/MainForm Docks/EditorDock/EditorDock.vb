@@ -152,14 +152,8 @@ Public Class EditorDock
 
     Private Sub CheckIfDefines(ByRef code As String, line As Integer)
         'Get all the visible If's and ends.
-        Dim allIfs As Integer = 0
-        Dim allEnds As Integer = 0
-        For Each mtch In Regex.Matches(code, "#if\s+defined")
-            allIfs += 1
-        Next
-        For Each mtch In Regex.Matches(code, "#endif")
-            allEnds += 1
-        Next
+        Dim allIfs As Integer = Regex.Matches(code, "#if\s+defined").Cast(Of Object)().Count()
+        Dim allEnds As Integer = Regex.Matches(code, "#endif").Cast(Of Object)().Count()
 
         'Check if the ifs are more then the ends.
         If allIfs > allEnds Then

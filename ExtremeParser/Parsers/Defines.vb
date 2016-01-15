@@ -4,11 +4,7 @@ Public Class Defines
     Public Shared Sub Parse(ByRef code As String, fileName As String, ByRef parts As CodeParts, Optional add As Boolean = True)
         For Each match As Match In Regex.Matches(code, "^[ \t]*[#]define[ \t]+(?<name>[^\s\\;]+)[ \t]*(?:\\\s+)?(?>(?<value>[^\\\n\r]+)[ \t]*(?:\\\s+)?)*", RegexOptions.Multiline)
             Dim defineName As String = Match.Groups(1).Value
-            Dim defineValue As String = ""
-
-            For Each capt As Capture In Match.Groups(2).Captures
-                defineValue += capt.Value.Trim + vbCrLf
-            Next
+            Dim defineValue As String = match.Groups(2).Captures.Cast(Of Capture)().Aggregate("", Function(current, capt) current + (capt.Value.Trim + vbCrLf))
 
             Try
                 If defineName.Contains("%") Then

@@ -163,12 +163,8 @@ Public Module GeneralFunctions
         FastZipUnpack(pathtoZip, tmpPath)
 
         'Get all files and folders and put them in the lists.
-        For Each filePath In Directory.GetFiles(tmpPath)
-            files.Add(Path.GetFileName(filePath))
-        Next
-        For Each folderPath In Directory.GetDirectories(tmpPath)
-            folders.Add(Path.GetDirectoryName(folderPath))
-        Next
+        files.AddRange(From filePath In Directory.GetFiles(tmpPath) Select Path.GetFileName(filePath))
+        folders.AddRange(From folderPath In Directory.GetDirectories(tmpPath) Select Path.GetDirectoryName(folderPath))
 
         'Clean.
         My.Computer.FileSystem.DeleteDirectory(tmpPath, FileIO.DeleteDirectoryOption.DeleteAllContents)

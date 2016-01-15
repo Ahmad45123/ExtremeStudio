@@ -11,15 +11,7 @@ Public Structure EnumsStruct
 
     Public Shared Operator =(ByVal first As EnumsStruct, second As EnumsStruct)
         If first.EnumName = second.EnumName Then
-            For Each enm In first.EnumContents
-                For Each enma In second.EnumContents
-                    If enm <> enma Then
-                        Return False
-                    End If
-                Next
-            Next
-
-            Return True
+            Return Not (From enm In first.EnumContents From enma In second.EnumContents Where enm <> enma).Any()
         End If
         Return False
     End Operator

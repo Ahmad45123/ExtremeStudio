@@ -67,14 +67,7 @@
     End Sub
 
     Public Function Others(tag As String) As List(Of String)
-        Dim lst As New List(Of String)
-        For Each str As String In _othersVar.Keys
-            Dim vars As String() = _othersVar(str).Split(":", 2, StringSplitOptions.None)
-            If vars(0) = tag Then
-                lst.Add(vars(1))
-            End If
-        Next
-        Return lst
+        Return (From str In _othersVar.Keys Select vars = _othersVar(str).Split(":", 2, StringSplitOptions.None) Where vars(0) = tag Select vars(1)).ToList()
     End Function
 
     Public Enum ReturnType

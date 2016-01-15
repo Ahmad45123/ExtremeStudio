@@ -177,10 +177,7 @@ Public Class CurrentProjectClass
         Return getPluginsListInServerCFG
     End Function
     Private Sub SavePluginsInServerCfg(plugs As List(Of String))
-        Dim str As String = Nothing
-        For Each plug As String In plugs
-            str += " " + plug
-        Next
+        Dim str As String = plugs.Aggregate(Of String)(Nothing, Function(current, plug) current + (" " + plug))
         If str IsNot Nothing Then str = str.Remove(0, 1)
 
         EditSAMPConfig("plugins", str)
@@ -188,13 +185,7 @@ Public Class CurrentProjectClass
 
     Public Function IsPluginInServerCfg(pluginName As String)
         Dim lst As List(Of String) = getPluginsListInServerCFG()
-        For Each str As String In lst
-            If str = pluginName Then
-                Return True
-            End If
-        Next
-
-        Return False
+        Return lst.Any(Function(str) str = pluginName)
     End Function
     Public Sub TogglePluginInServerCfg(pluginName As String)
         Dim lst As List(Of String) = getPluginsListInServerCFG()
@@ -239,10 +230,7 @@ Class SqLiteDatabase
     ''' </summary>
     ''' <param name="connectionOpts">A dictionary containing all desired options and their values</param>
     Public Sub New(connectionOpts As Dictionary(Of [String], [String]))
-        Dim str As [String] = ""
-        For Each row As KeyValuePair(Of [String], [String]) In connectionOpts
-            str += [String].Format("{0}={1}; ", row.Key, row.Value)
-        Next
+        Dim str As [String] = connectionOpts.Aggregate("", Function(current, row) current + [String].Format("{0}={1}; ", row.Key, row.Value))
         str = str.Trim().Substring(0, str.Length - 1)
         _dbConnection = str
     End Sub
@@ -313,9 +301,7 @@ Class SqLiteDatabase
         Dim vals As [String] = ""
         Dim returnCode As [Boolean] = True
         If data.Count >= 1 Then
-            For Each val As KeyValuePair(Of [String], [String]) In data
-                vals += [String].Format(" {0} = '{1}',", val.Key.ToString(), val.Value.ToString())
-            Next
+            vals = data.Aggregate(vals, Function(current, val) current + [String].Format(" {0} = '{1}',", val.Key.ToString(), val.Value.ToString()))
             vals = vals.Substring(0, vals.Length - 1)
         End If
         Try

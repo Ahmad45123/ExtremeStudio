@@ -28,10 +28,7 @@ Public Class GlobalVariables
                 End If
 
                 'Get and Remove all arrays.
-                Dim arrays As New List(Of String)
-                For Each mtch As Match In Regex.Matches(str, "(?<=\[)(?>[^\[\]]+|\[(?<DEPTH>)|\](?<-DEPTH>))*(?(DEPTH)(?!))(?=\])")
-                    arrays.Add(mtch.Value)
-                Next
+                Dim arrays As List(Of String) = (From mtch As Match In Regex.Matches(str, "(?<=\[)(?>[^\[\]]+|\[(?<DEPTH>)|\](?<-DEPTH>))*(?(DEPTH)(?!))(?=\])") Select mtch.Value).ToList()
                 str = Regex.Replace(str, "\[(?<=\[)(?>[^\[\]]+|\[(?<DEPTH>)|\](?<-DEPTH>))*(?(DEPTH)(?!))(?=\])\]", "")
 
                 'Get then Remove default

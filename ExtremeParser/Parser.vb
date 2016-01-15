@@ -61,11 +61,6 @@ Public Class Parser
     End Sub
 
     Public Shared Function IsParsed(parts As CodeParts, filePath As String)
-        For Each part In parts.FlattenIncludes
-            If part.fileHash Is Nothing Then Continue For
-
-            If part.fileHash = ExtremeCore.getFileHash(filePath) Then Return True
-        Next
-        Return False
+        Return (From part In parts.FlattenIncludes Where part.FileHash IsNot Nothing).Any(Function(part) part.FileHash = ExtremeCore.GetFileHash(filePath))
     End Function
 End Class
