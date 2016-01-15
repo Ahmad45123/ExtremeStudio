@@ -7,8 +7,8 @@ Public Class NewProjectFile
             FolderList.Items.Clear()
             FolderList.Items.Add("gamemodes")
 
-            For Each Str As String In ExtremeCore.getAllFolders(MainForm.currentProject.projectPath + "/gamemodes")
-                FolderList.Items.Add(Str.Replace(MainForm.currentProject.projectPath + "\", ""))
+            For Each str As String In ExtremeCore.GetAllFolders(MainForm.CurrentProject.ProjectPath + "/gamemodes")
+                FolderList.Items.Add(str.Replace(MainForm.CurrentProject.ProjectPath + "\", ""))
             Next
 
             extensionLabel.Text = ".pwn"
@@ -21,8 +21,8 @@ Public Class NewProjectFile
             FolderList.Items.Clear()
             FolderList.Items.Add("include")
 
-            For Each Str As String In ExtremeCore.getAllFolders(MainForm.currentProject.projectPath + "/pawno/include")
-                FolderList.Items.Add(Str.Replace(MainForm.currentProject.projectPath + "\pawno\", ""))
+            For Each str As String In ExtremeCore.GetAllFolders(MainForm.CurrentProject.ProjectPath + "/pawno/include")
+                FolderList.Items.Add(str.Replace(MainForm.CurrentProject.ProjectPath + "\pawno\", ""))
             Next
 
             extensionLabel.Text = ".inc"
@@ -35,8 +35,8 @@ Public Class NewProjectFile
             FolderList.Items.Clear()
             FolderList.Items.Add("filterscripts")
 
-            For Each Str As String In ExtremeCore.getAllFolders(MainForm.currentProject.projectPath + "/filterscripts")
-                FolderList.Items.Add(Str.Replace(MainForm.currentProject.projectPath + "\", ""))
+            For Each str As String In ExtremeCore.GetAllFolders(MainForm.CurrentProject.ProjectPath + "/filterscripts")
+                FolderList.Items.Add(str.Replace(MainForm.CurrentProject.ProjectPath + "\", ""))
             Next
 
             extensionLabel.Text = ".pwn"

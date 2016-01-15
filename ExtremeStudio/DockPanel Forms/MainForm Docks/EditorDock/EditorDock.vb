@@ -30,7 +30,7 @@ Public Class EditorDock
                 Exit Sub
             End If
         End If
-        idleTimer.Stop()
+        _idleTimer.Stop()
 
         If RefreshWorker.IsBusy Then MainForm.statusLabel.Text = "Idle."
     End Sub
@@ -147,7 +147,7 @@ Public Class EditorDock
     Private _offsetStart As Integer = -1
     Private _offsetLength As Integer = -1
 
-    Private WithEvents idleTimer As New Timer
+    Private WithEvents _idleTimer As New Timer
     Private _oldVisible As String = "" 'This is just a key that I am going to use as empty!..
 
     Private Sub CheckIfDefines(ByRef code As String, line As Integer)
@@ -185,8 +185,8 @@ Public Class EditorDock
         End If
     End Sub
 
-    Private Sub idleTimer_Tick(sender As Object, e As EventArgs) Handles idleTimer.Tick
-        idleTimer.Stop()
+    Private Sub idleTimer_Tick(sender As Object, e As EventArgs) Handles _idleTimer.Tick
+        _idleTimer.Stop()
         Dim newCode As String = Editor.GetTextRange(_offsetStart, _offsetLength)
 
         'Make sure the current code is valid from if defines.
@@ -199,14 +199,14 @@ Public Class EditorDock
         _oldVisible = "" : _offsetStart = -1 : _offsetLength = -1
     End Sub
     Private Sub Editor_Load(sender As Object, e As EventArgs) Handles Me.Load
-        With idleTimer
+        With _idleTimer
             .Enabled = True
             .Interval = 1000
         End With
     End Sub
     Private Sub TextChangedDelayed_Editor_TextChanged(sender As Object, e As EventArgs) Handles Editor.TextChanged
-        idleTimer.Stop()
-        idleTimer.Start()
+        _idleTimer.Stop()
+        _idleTimer.Start()
     End Sub
 
     'This for on first time.

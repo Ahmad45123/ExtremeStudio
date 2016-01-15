@@ -13,20 +13,20 @@ Public Class Functions
     Public Shared Sub Parse(ByRef code As String, fileName As String, ByRef parts As CodeParts, Optional add As Boolean = True)
         'Publics.
         For Each match As Match In Regex.Matches(code, "public[ \t]+([a-zA-Z1-3_@: \t]+)[ \t]*\((.*)\)\s*{", RegexOptions.Multiline)
-            Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
-            Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
+            Dim funcName As String = Regex.Replace(match.Groups(1).Value, "\s", "")
+            Dim funcParams As String = Regex.Replace(match.Groups(2).Value, "\s", "")
             Try
                 'Get the tag if exists.
                 Dim tag As String = ""
                 If funcName.Contains(":") Then
-                    tag = funcName.Substring(0, funcName.IndexOf(":") + 1)
+                    tag = funcName.Substring(0, funcName.IndexOf(":", StringComparison.Ordinal) + 1)
                     funcName = funcName.Remove(0, funcName.IndexOf(":") + 1)
                 End If
 
                 'Get the PawnDoc for it.
                 Dim pwndoc As PawnDocParser = Nothing
-                If parts.pawnDocs IsNot Nothing Then
-                    pwndoc = parts.pawnDocs.Find(Function(x) x.Summary = funcName)
+                If parts.PawnDocs IsNot Nothing Then
+                    pwndoc = parts.PawnDocs.Find(Function(x) x.Summary = funcName)
                 End If
 
                 If add Then

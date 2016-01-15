@@ -1,4 +1,4 @@
 ﻿Public Class ExceptionsList
     Inherits Exception
-    Public Property exceptionsList As New List(Of Exception)
+    Public Property ExceptionsList As New List(Of Exception)
 End Class

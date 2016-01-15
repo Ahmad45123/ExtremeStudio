@@ -6,9 +6,9 @@ Public Structure DefinesStruct
     Public DefineName As String
     Public DefineValue As String
 
-    Public Sub New(_defineName As String, _defineValue As String)
-        DefineName = _defineName
-        DefineValue = _defineValue
+    Public Sub New(defName As String, defValue As String)
+        DefineName = defName
+        DefineValue = defValue
     End Sub
 
     Public Shared Operator =(ByVal first As DefinesStruct, second As DefinesStruct)

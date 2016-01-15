@@ -105,14 +105,14 @@ Public Class CurrentProjectClass
         'Editing
         Dim allText As String = Nothing 'To short the loops :P
         Dim done As Boolean = False 'This is to know if it was edited or not.
-        For Each Str As String In allInfo
-            Dim values() As String = Str.Split(" ", 2, StringSplitOptions.None)
+        For Each str As String In allInfo
+            Dim values() As String = str.Split(" ", 2, StringSplitOptions.None)
             If values(0) = key Then
-                Str = values(0) + " " + value
-                allText += Str + vbCrLf
+                str = values(0) + " " + value
+                allText += str + vbCrLf
                 done = True
             Else
-                allText += Str + vbCrLf
+                allText += str + vbCrLf
             End If
         Next
 

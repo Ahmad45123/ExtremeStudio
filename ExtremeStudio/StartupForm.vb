@@ -17,9 +17,9 @@ Public Class StartupForm
     Public Recent As New List(Of String)
     Const MaxListItems = 30
     Public Sub AddNewRecent(path As String)
-        For Each Str As String In Recent
-            If Str = path Then
-                Recent.Remove(Str)
+        For Each str As String In Recent
+            If str = path Then
+                Recent.Remove(str)
                 Exit For
             End If
         Next
@@ -31,9 +31,9 @@ Public Class StartupForm
     End Sub
 
     Public Sub RemoveRecent(path As String)
-        For Each Str As String In Recent
-            If Str = path Then
-                Recent.Remove(Str)
+        For Each str As String In Recent
+            If str = path Then
+                Recent.Remove(str)
                 Exit For
             End If
         Next
@@ -41,7 +41,7 @@ Public Class StartupForm
     End Sub
 #End Region
 
-    Dim _versionHandler As New versionHandler
+    Dim _versionHandler As New VersionHandler
 
     Private Sub StartupForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'If the interop files don't exist, Extract the files.
@@ -197,9 +197,9 @@ Public Class StartupForm
             recentListBox.Items.Clear()
 
             'Get recent list.
-            For Each Str As String In Recent
-                If Str Is Nothing Then Continue For
-                recentListBox.Items.Add(Str)
+            For Each str As String In Recent
+                If str Is Nothing Then Continue For
+                recentListBox.Items.Add(str)
             Next
         End If
     End Sub
