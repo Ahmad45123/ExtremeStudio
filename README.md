@@ -14,4 +14,5 @@ ExtremeStudio is a PAWN editor and is designed to be used in SA-MP development.
 * [DockPanelSuite](http://dockpanelsuite.com/) for the tabbing control.
 * [AutoCompleteMenu](http://www.codeproject.com/Articles/365974/Autocomplete-Menu) for the auto-complete menu used along with ScintillaNET using [this](https://github.com/JohnyMac/AutoCompleteMenu-ScintillaNET) wrapper by me.
 * [DotNetZIP](https://dotnetzip.codeplex.com/), A class library that add support for handling ZIP files. 
+* [JetBrains](https://www.jetbrains.com/) for supporting ES by providing [ReSharper](https://www.jetbrains.com/resharper/) free of charge.
 * Pretty much everything else is by me.
