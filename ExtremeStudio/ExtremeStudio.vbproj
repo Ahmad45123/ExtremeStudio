@@ -179,7 +179,6 @@
     <Compile Include="Classes and Modules\funcsHandler.vb" />
     <Compile Include="Classes and Modules\versionHandler.vb" />
     <Compile Include="DockPanel Forms\MainForm Docks\EditorDock\AutoComplete\AutoCompleteItemEx.vb" />
-    <Compile Include="DockPanel Forms\MainForm Docks\EditorDock\codeHighlighting.vb" />
     <Compile Include="DockPanel Forms\MainForm Docks\EditorDock\EditorDock.Designer.vb">
       <DependentUpon>EditorDock.vb</DependentUpon>
     </Compile>

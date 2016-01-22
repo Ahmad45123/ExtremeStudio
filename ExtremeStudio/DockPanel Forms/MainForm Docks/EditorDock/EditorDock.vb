@@ -57,11 +57,6 @@ Public Class EditorDock
         Editor.SetFoldMarginHighlightColor(True, clr)
     End Sub
 
-    Private Sub Editor_StyleNeeded(sender As Object, e As StyleNeededEventArgs) Handles Editor.StyleNeeded
-        'Call the func.
-        CodeHighlighting.Highlight(Editor, CodeParts.Clone(), Editor.Lines(Editor.LineFromPosition(Editor.GetEndStyled())).Position, e.Position)
-    End Sub
-
     Public Sub OnSetsChange()
         'Setup font.
         Editor.StyleResetDefault()
@@ -70,25 +65,27 @@ Public Class EditorDock
         Editor.Styles(Style.[Default]).Bold = SettingsForm.ColorsInfo.SFont.Bold
         Editor.StyleClearAll()
 
-        'Setup Colors: 
-        Editor.Styles(CodeHighlighting.Styles.Default).ForeColor = SettingsForm.ColorsInfo.SDefault
-        Editor.Styles(CodeHighlighting.Styles.Integer).ForeColor = SettingsForm.ColorsInfo.SInteger
-        Editor.Styles(CodeHighlighting.Styles.String).ForeColor = SettingsForm.ColorsInfo.SString
-        Editor.Styles(CodeHighlighting.Styles.Symbols).ForeColor = SettingsForm.ColorsInfo.SSymbols
-        Editor.Styles(CodeHighlighting.Styles.SingleLineComment).ForeColor = SettingsForm.ColorsInfo.SSlComments
-        Editor.Styles(CodeHighlighting.Styles.MultiLineComment).ForeColor = SettingsForm.ColorsInfo.SMlComments
-        Editor.Styles(CodeHighlighting.Styles.PawnDoc).ForeColor = SettingsForm.ColorsInfo.SPawnDoc
-        Editor.Styles(CodeHighlighting.Styles.PawnPre).ForeColor = SettingsForm.ColorsInfo.SPawnPre
-        Editor.Styles(CodeHighlighting.Styles.PawnKeywords).ForeColor = SettingsForm.ColorsInfo.SPawnKeys
+        'Setup Default CPP similar Colors: 
+        Editor.Styles(Style.Cpp.Default).ForeColor = SettingsForm.ColorsInfo.SDefault
+        Editor.Styles(Style.Cpp.Number).ForeColor = SettingsForm.ColorsInfo.SInteger
+        Editor.Styles(Style.Cpp.String).ForeColor = SettingsForm.ColorsInfo.SString
+        Editor.Styles(Style.Cpp.Character).ForeColor = SettingsForm.ColorsInfo.SString
+        Editor.Styles(Style.Cpp.Operator).ForeColor = SettingsForm.ColorsInfo.SSymbols
+        Editor.Styles(Style.Cpp.CommentLine).ForeColor = SettingsForm.ColorsInfo.SSlComments
+        Editor.Styles(Style.Cpp.Comment).ForeColor = SettingsForm.ColorsInfo.SMlComments
+        Editor.Styles(Style.Cpp.CommentDoc).ForeColor = SettingsForm.ColorsInfo.SPawnDoc
+        Editor.Styles(Style.Cpp.Preprocessor).ForeColor = SettingsForm.ColorsInfo.SPawnPre
+        Editor.Styles(Style.Cpp.Word).ForeColor = SettingsForm.ColorsInfo.SPawnKeys
+        Editor.SetKeywords(0, "static break case enum continue do else false for goto public stock if is new null return sizeof switch true while forward native")
 
-        Editor.Styles(CodeHighlighting.Styles.Functions).ForeColor = SettingsForm.ColorsInfo.SFunctions
-        Editor.Styles(CodeHighlighting.Styles.Publics).ForeColor = SettingsForm.ColorsInfo.SPublics
-        Editor.Styles(CodeHighlighting.Styles.Stocks).ForeColor = SettingsForm.ColorsInfo.SStocks
-        Editor.Styles(CodeHighlighting.Styles.Natives).ForeColor = SettingsForm.ColorsInfo.SNatives
-        Editor.Styles(CodeHighlighting.Styles.Defines).ForeColor = SettingsForm.ColorsInfo.SDefines
-        Editor.Styles(CodeHighlighting.Styles.Macros).ForeColor = SettingsForm.ColorsInfo.SMacros
-        Editor.Styles(CodeHighlighting.Styles.Enums).ForeColor = SettingsForm.ColorsInfo.SEnums
-        Editor.Styles(CodeHighlighting.Styles.PublicVars).ForeColor = SettingsForm.ColorsInfo.SGlobalVars
+        Editor.Styles(Styles.Functions).ForeColor = SettingsForm.ColorsInfo.SFunctions
+        Editor.Styles(Styles.Publics).ForeColor = SettingsForm.ColorsInfo.SPublics
+        Editor.Styles(Styles.Stocks).ForeColor = SettingsForm.ColorsInfo.SStocks
+        Editor.Styles(Styles.Natives).ForeColor = SettingsForm.ColorsInfo.SNatives
+        Editor.Styles(Styles.Defines).ForeColor = SettingsForm.ColorsInfo.SDefines
+        Editor.Styles(Styles.Macros).ForeColor = SettingsForm.ColorsInfo.SMacros
+        Editor.Styles(Styles.Enums).ForeColor = SettingsForm.ColorsInfo.SEnums
+        Editor.Styles(Styles.PublicVars).ForeColor = SettingsForm.ColorsInfo.SGlobalVars
 
         Editor.IndentationGuides = IndentView.LookBoth
 
@@ -362,6 +359,9 @@ Public Class EditorDock
         AutoCompleteMenu.SetAutocompleteItems(_autoCompleteList)
 #End Region
 
+        'Update Visible Style: 
+        Editor_UpdateStyle(Me, New UpdateUIEventArgs(New UpdateChange()))
+
         If ObjectExplorerDock.Visible Then
             ObjectExplorerDock.RefreshTreeView(CodeParts)
         End If
@@ -548,4 +548,99 @@ Public Class EditorDock
     End Sub
 #End Region
 
+#Region "WordSet Colorizer"
+    Private Enum Styles
+        Functions = 100
+        Publics
+        Stocks
+        Natives
+        Defines
+        Macros
+        Enums
+        PublicVars
+    End Enum
+    Private Sub DoColor(startPos As Integer, ByVal code As String, rgx As String, style As Styles, Optional isMultiLine As Boolean = False)
+        For Each mtch As Match In Regex.Matches(code, rgx, IIf(isMultiLine, RegexOptions.Multiline, Nothing))
+            Editor.StartStyling(mtch.Index + startPos)
+            Editor.SetStyling(mtch.Length, style)
+        Next
+    End Sub
+    Private Sub ReColorize(startPos As Integer, endPos As Integer)
+        'Setup vars: 
+        Dim code As String = Editor.GetTextRange(startPos, endPos - startPos)
+
+        Dim rgx As New StringBuilder()
+        'Functions: 
+        rgx.Clear() : rgx.Append("\b(?:")
+        For i As Integer = 0 To CodeParts.Functions.Count - 1
+            rgx.Append(Regex.Escape(CodeParts.Functions(i).FuncName))
+            If (i < CodeParts.Functions.Count - 1) Then rgx.Append("|")
+        Next
+        If CodeParts.Functions.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Functions)
+
+        'Publics: 
+        rgx.Clear() : rgx.Append("\b(?:")
+        For i As Integer = 0 To CodeParts.Publics.Count - 1
+            rgx.Append(Regex.Escape(CodeParts.Publics(i).FuncName))
+            If (i < CodeParts.Publics.Count - 1) Then rgx.Append("|")
+        Next
+        If CodeParts.Publics.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Publics)
+
+        'Stocks: 
+        rgx.Clear() : rgx.Append("\b(?:")
+        For i As Integer = 0 To CodeParts.Stocks.Count - 1
+            rgx.Append(Regex.Escape(CodeParts.Stocks(i).FuncName))
+            If (i < CodeParts.Stocks.Count - 1) Then rgx.Append("|")
+        Next
+        If CodeParts.Stocks.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Stocks)
+
+        'Natives: 
+        rgx.Clear() : rgx.Append("\b(?:")
+        For i As Integer = 0 To CodeParts.Natives.Count - 1
+            rgx.Append(Regex.Escape(CodeParts.Natives(i).FuncName))
+            If (i < CodeParts.Natives.Count - 1) Then rgx.Append("|")
+        Next
+        If CodeParts.Natives.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Natives)
+
+        'Defines: 
+        rgx.Clear() : rgx.Append("\b(?:")
+        For i As Integer = 0 To CodeParts.Defines.Count - 1
+            rgx.Append(Regex.Escape(CodeParts.Defines(i).DefineName))
+            If (i < CodeParts.Defines.Count - 1) Then rgx.Append("|")
+        Next
+        If CodeParts.Defines.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Defines)
+
+        'Macros: 
+        rgx.Clear() : rgx.Append("\b(?:")
+        For i As Integer = 0 To CodeParts.Macros.Count - 1
+            rgx.Append(Regex.Escape(CodeParts.Macros(i).DefineName))
+            If (i < CodeParts.Macros.Count - 1) Then rgx.Append("|")
+        Next
+        If CodeParts.Macros.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Macros)
+
+        'Enums: 
+        rgx.Clear() : rgx.Append("\b(?:")
+        For i As Integer = 0 To CodeParts.Enums.Count - 1
+            For Each cntn In CodeParts.Enums(i).EnumContents
+                rgx.Append(Regex.Escape(cntn.Content))
+                If (i < CodeParts.Enums.Count - 1) Then rgx.Append("|")
+            Next
+        Next
+        If CodeParts.Enums.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Enums)
+
+        'Public Variables: 
+        rgx.Clear() : rgx.Append("\b(?:")
+        For i As Integer = 0 To CodeParts.PublicVariables.Count - 1
+            rgx.Append(Regex.Escape(CodeParts.PublicVariables(i).VarName))
+            If (i < CodeParts.PublicVariables.Count - 1) Then rgx.Append("|")
+        Next
+        If CodeParts.PublicVariables.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.PublicVars)
+    End Sub
+
+    Private Sub Editor_UpdateStyle(sender As Object, e As UpdateUIEventArgs) Handles Editor.UpdateUI
+        Dim startPos = Editor.Lines(Editor.FirstVisibleLine).Position
+        Dim endPos = Editor.Lines(Editor.FirstVisibleLine + Editor.LinesOnScreen).EndPosition
+        ReColorize(startPos, endPos)
+    End Sub
+#End Region
 End Class

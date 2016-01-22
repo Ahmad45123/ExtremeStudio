@@ -35,6 +35,7 @@ Partial Class EditorDock
         '
         Me.Editor.AdditionalSelectionTyping = True
         Me.Editor.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Editor.Lexer = ScintillaNET.Lexer.Cpp
         Me.Editor.Location = New System.Drawing.Point(0, 0)
         Me.Editor.MouseDwellTime = 1000
         Me.Editor.MouseSelectionRectangularSwitch = True
@@ -66,9 +67,6 @@ Partial Class EditorDock
         Me.ACImageList.TransparentColor = System.Drawing.Color.Transparent
         Me.ACImageList.Images.SetKeyName(0, "Functions")
         Me.ACImageList.Images.SetKeyName(1, "Defines")
-        '
-        'colorizingWorker
-        '
         '
         'EditorDock
         '
