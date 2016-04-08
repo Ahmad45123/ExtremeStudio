@@ -3,6 +3,7 @@ Imports System.Xml
 Imports System.IO
 Imports System.IO.Compression
 Imports ExtremeCore
+Imports Newtonsoft.Json
 
 Public Class StartupForm
 
@@ -27,7 +28,7 @@ Public Class StartupForm
         If Recent.Count - 1 = MaxListItems Then 'Remove the new added stuff
             Recent.RemoveAt(MaxListItems)
         End If
-        My.Computer.FileSystem.WriteAllText(MainForm.ApplicationFiles + "/configs/recent.xml", ExtremeCore.ObjectSerializer.Serialize(Recent), False)
+        My.Computer.FileSystem.WriteAllText(MainForm.ApplicationFiles + "/configs/recent.json", JsonConvert.SerializeObject(Recent), False)
     End Sub
 
     Public Sub RemoveRecent(path As String)
@@ -37,7 +38,7 @@ Public Class StartupForm
                 Exit For
             End If
         Next
-        My.Computer.FileSystem.WriteAllText(MainForm.ApplicationFiles + "/configs/recent.xml", ExtremeCore.ObjectSerializer.Serialize(Recent), False)
+        My.Computer.FileSystem.WriteAllText(MainForm.ApplicationFiles + "/configs/recent.json", JsonConvert.SerializeObject(Recent), False)
     End Sub
 #End Region
 
@@ -45,7 +46,7 @@ Public Class StartupForm
 
     Private Sub StartupForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'If the interop files don't exist, Extract the files.
-        If isFirst And (Not My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Or Not My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/x86/SQLite.Interop.dll")) Then
+        If IsFirst And (Not My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Or Not My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/x86/SQLite.Interop.dll")) Then
             'Remove old.
             If My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Then My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/x64/SQLite.Interop.dll")
             If My.Computer.FileSystem.FileExists(Application.StartupPath + "/x86/SQLite.Interop.dll") Then My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/x86/SQLite.Interop.dll")
@@ -69,14 +70,14 @@ Public Class StartupForm
 
         If Not My.Computer.FileSystem.DirectoryExists(MainForm.ApplicationFiles + "/configs") Then
             My.Computer.FileSystem.CreateDirectory(MainForm.ApplicationFiles + "/configs")
-            My.Computer.FileSystem.WriteAllText(MainForm.ApplicationFiles + "/configs/recent.xml", "", False)
+            My.Computer.FileSystem.WriteAllText(MainForm.ApplicationFiles + "/configs/recent.json", "", False)
         End If
 
 
         'Load all the recent.
-        If My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/configs/recent.xml") Then
+        If My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/configs/recent.json") Then
             Try
-                Recent = ExtremeCore.ObjectSerializer.Deserialize(Of List(Of String))(My.Computer.FileSystem.ReadAllText(MainForm.ApplicationFiles + "/configs/recent.xml"))
+                Recent = JsonConvert.DeserializeObject(Of List(Of String))(My.Computer.FileSystem.ReadAllText(MainForm.ApplicationFiles + "/configs/recent.json"))
             Catch ex As Exception
             End Try
         End If
@@ -84,7 +85,7 @@ Public Class StartupForm
         'Load samp versions into list.
         Dim str As New List(Of String)
         verListBox.Tag = str
-        If ExtremeCore.isNetAvailable() Then 'Download latest from internet if there is internet.
+        If ExtremeCore.IsNetAvailable() Then 'Download latest from internet if there is internet.
             Dim webClient As New WebClient
             Dim xmlFile As New XmlDocument()
             Dim fileText As String = webClient.DownloadString("http://johnymac.github.io/esfiles/serverPackages.xml")
@@ -106,7 +107,7 @@ Public Class StartupForm
     Private Sub nameTextBox_TextChanged(sender As Object, e As EventArgs) Handles nameTextBox.TextChanged
         If nameTextBox.Text = "" Then Exit Sub
 
-        If FilenameIsOK(nameTextBox.Text) Then
+        If FilenameIsOk(nameTextBox.Text) Then
         Else
             Beep()
 
@@ -137,12 +138,12 @@ Public Class StartupForm
                     My.Computer.FileSystem.DeleteFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip") 'Delete the file from temp.
                 End If
                 My.Computer.FileSystem.WriteAllText(locTextBox.Text + "/gamemodes/" + nameTextBox.Text + ".pwn", My.Resources.newfileTemplate, False)
-                MainForm.currentProject.projectName = nameTextBox.Text
-                MainForm.currentProject.projectPath = locTextBox.Text
-                MainForm.currentProject.projectVersion = _versionHandler.currentVersion
-                MainForm.currentProject.CreateTables() 'Create the tables of the db.
-                MainForm.currentProject.SaveInfo() 'Write the default extremeStudio config.
-                AddNewRecent(MainForm.currentProject.projectPath) 'Add it to the recent list.
+                MainForm.CurrentProject.ProjectName = nameTextBox.Text
+                MainForm.CurrentProject.ProjectPath = locTextBox.Text
+                MainForm.CurrentProject.ProjectVersion = _versionHandler.CurrentVersion
+                MainForm.CurrentProject.CreateTables() 'Create the tables of the db.
+                MainForm.CurrentProject.SaveInfo() 'Write the default extremeStudio config.
+                AddNewRecent(MainForm.CurrentProject.ProjectPath) 'Add it to the recent list.
                 MainForm.Show()
                 _isClosedProgram = True : Close()
             Else
@@ -158,23 +159,23 @@ Public Class StartupForm
         projectName.Text = "None"
         projectVersion.Text = "None"
 
-        If isValidExtremeProject(pathTextBox.Text) Then
-            MainForm.currentProject.projectPath = pathTextBox.Text
-            MainForm.currentProject.ReadInfo()
-            If My.Computer.FileSystem.FileExists(pathTextBox.Text + "/gamemodes/" + MainForm.currentProject.projectName + ".pwn") Then
-                projectName.Text = MainForm.currentProject.projectName
+        If IsValidExtremeProject(pathTextBox.Text) Then
+            MainForm.CurrentProject.ProjectPath = pathTextBox.Text
+            MainForm.CurrentProject.ReadInfo()
+            If My.Computer.FileSystem.FileExists(pathTextBox.Text + "/gamemodes/" + MainForm.CurrentProject.ProjectName + ".pwn") Then
+                projectName.Text = MainForm.CurrentProject.ProjectName
 
-                Dim projVersion As String = MainForm.currentProject.projectVersion
-                Dim progVersion As String = _versionHandler.currentVersion
+                Dim projVersion As String = MainForm.CurrentProject.ProjectVersion
+                Dim progVersion As String = _versionHandler.CurrentVersion
 
-                Dim versionCompare As versionReader.CompareVersionResult = versionReader.CompareVersions(projVersion, progVersion)
-                If versionCompare = versionReader.CompareVersionResult.VersionSame Then
+                Dim versionCompare As VersionReader.CompareVersionResult = VersionReader.CompareVersions(projVersion, progVersion)
+                If versionCompare = VersionReader.CompareVersionResult.VersionSame Then
                     projectVersion.Text = "Project version is the same as ExtremeStudio's version, No converion is needed."
                     loadProjectBtn.Enabled = True
-                ElseIf versionCompare = versionReader.CompareVersionResult.VersionNew Then
+                ElseIf versionCompare = VersionReader.CompareVersionResult.VersionNew Then
                     projectVersion.Text = "Project older then ExtremeStudio, Conversion will be done however it may bug with older versions so its recommended to not try."
                     loadProjectBtn.Enabled = True
-                ElseIf versionCompare = versionReader.CompareVersionResult.VersionOld Then
+                ElseIf versionCompare = VersionReader.CompareVersionResult.VersionOld Then
                     projectVersion.Text = "Project version is newer then ExtremeStudio's version, Please download latest ExtremeStudio package."
                 End If
             Else
@@ -186,8 +187,8 @@ Public Class StartupForm
     End Sub
 
     Private Sub loadProjectBtn_Click(sender As Object, e As EventArgs) Handles loadProjectBtn.Click
-        AddNewRecent(MainForm.currentProject.projectPath) 'Add it to the recent list.
-        _versionHandler.doIfUpdateNeeded(MainForm.currentProject)
+        AddNewRecent(MainForm.CurrentProject.ProjectPath) 'Add it to the recent list.
+        _versionHandler.DoIfUpdateNeeded(MainForm.CurrentProject)
         MainForm.Show()
         _isClosedProgram = True : Close()
     End Sub
