@@ -67,7 +67,7 @@ Public Class SettingsForm
     End Sub
 
     Private Sub resetBtn_Click(sender As Object, e As EventArgs) Handles resetBtn.Click
-        If msgbox("Are you sure you want to reset to default ?", MsgBoxStyle.Critical or MsgBoxStyle.YesNo) then
+        If msgbox("Are you sure you want to reset to default ?", MsgBoxStyle.Exclamation or MsgBoxStyle.YesNo) then
            ColorsInfo = JsonConvert.DeserializeObject(Of SyntaxInfo)(my.Resources.defaultThemeInfo)
             colorsSettings.SelectedObject = ColorsInfo
         End If
