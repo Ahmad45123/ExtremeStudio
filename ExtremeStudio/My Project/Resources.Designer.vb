@@ -71,37 +71,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
-        '''&lt;allStuffClass&gt;
-        '''  &lt;defaultColor&gt;
-        '''    &lt;R&gt;0&lt;/R&gt;
-        '''    &lt;G&gt;0&lt;/G&gt;
-        '''    &lt;B&gt;0&lt;/B&gt;
-        '''    &lt;A&gt;255&lt;/A&gt;
-        '''  &lt;/defaultColor&gt;
-        '''  &lt;pawnDocColor&gt;
-        '''    &lt;R&gt;225&lt;/R&gt;
-        '''    &lt;G&gt;0&lt;/G&gt;
-        '''    &lt;B&gt;0&lt;/B&gt;
-        '''    &lt;A&gt;255&lt;/A&gt;
-        '''  &lt;/pawnDocColor&gt;
-        '''  &lt;pawnColor&gt;
-        '''    &lt;R&gt;0&lt;/R&gt;
-        '''    &lt;G&gt;0&lt;/G&gt;
-        '''    &lt;B&gt;225&lt;/B&gt;
-        '''    &lt;A&gt;255&lt;/A&gt;
-        '''  &lt;/pawnColor&gt;
-        '''  &lt;definesColor&gt;
-        '''    &lt;R&gt;199&lt;/R&gt;
-        '''    &lt;G&gt;21&lt;/G&gt;
-        '''    &lt;B&gt;133&lt;/B&gt;
-        '''    &lt;A&gt;255&lt;/A&gt;
-        '''  &lt;/definesColor&gt;
-        '''  &lt;operatorColor&gt;
-        '''    &lt;R&gt;128&lt;/R&gt;
-        '''    &lt;G&gt;0&lt;/G&gt;
-        '''    &lt;B&gt;128&lt;/B&gt;
-        '''    &lt;A [rest of string was truncated]&quot;;.
+        '''  Looks up a localized string similar to .
         '''</summary>
         Friend ReadOnly Property defaultThemeInfo() As String
             Get

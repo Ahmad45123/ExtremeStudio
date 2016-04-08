@@ -131,7 +131,7 @@
     <value>..\Resources\newfileTemplate.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="defaultThemeInfo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\defaultThemeInfo.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\Resources\defaultThemeInfo.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="SQLite_Interop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SQLite.Interop.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

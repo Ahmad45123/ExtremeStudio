@@ -57,35 +57,45 @@ Public Class EditorDock
         Editor.SetFoldMarginHighlightColor(True, clr)
     End Sub
 
+    Private Sub DoStyle(style As Integer, clr As StyleItem)
+        Editor.Styles(style).ForeColor = IIf(clr.ForeColor = Color.Transparent, nothing, clr.ForeColor)
+        Editor.Styles(style).BackColor = IIf(clr.BackColor = Color.Transparent, nothing, clr.BackColor)
+
+        If clr.Font Isnot Nothing
+            Editor.Styles(style).Font = clr.Font?.FontFamily.Name
+            Editor.Styles(style).Size = clr.Font?.Size
+            Editor.Styles(style).Bold = clr.Font?.Bold
+            Editor.Styles(style).Underline = clr.Font?.Underline
+            Editor.Styles(style).Italic = clr.Font?.Italic
+            Editor.Styles(style).Underline = clr.Font?.Underline
+        End If
+    End Sub
     Public Sub OnSetsChange()
         'Setup font.
         Editor.StyleResetDefault()
-        Editor.Styles(Style.[Default]).Font = SettingsForm.ColorsInfo.SFont.FontFamily.Name
-        Editor.Styles(Style.[Default]).Size = SettingsForm.ColorsInfo.SFont.Size
-        Editor.Styles(Style.[Default]).Bold = SettingsForm.ColorsInfo.SFont.Bold
         Editor.StyleClearAll()
 
         'Setup Default CPP similar Colors: 
-        Editor.Styles(Style.Cpp.Default).ForeColor = SettingsForm.ColorsInfo.SDefault
-        Editor.Styles(Style.Cpp.Number).ForeColor = SettingsForm.ColorsInfo.SInteger
-        Editor.Styles(Style.Cpp.String).ForeColor = SettingsForm.ColorsInfo.SString
-        Editor.Styles(Style.Cpp.Character).ForeColor = SettingsForm.ColorsInfo.SString
-        Editor.Styles(Style.Cpp.Operator).ForeColor = SettingsForm.ColorsInfo.SSymbols
-        Editor.Styles(Style.Cpp.CommentLine).ForeColor = SettingsForm.ColorsInfo.SSlComments
-        Editor.Styles(Style.Cpp.Comment).ForeColor = SettingsForm.ColorsInfo.SMlComments
-        Editor.Styles(Style.Cpp.CommentDoc).ForeColor = SettingsForm.ColorsInfo.SPawnDoc
-        Editor.Styles(Style.Cpp.Preprocessor).ForeColor = SettingsForm.ColorsInfo.SPawnPre
-        Editor.Styles(Style.Cpp.Word).ForeColor = SettingsForm.ColorsInfo.SPawnKeys
+        DoStyle(Style.Cpp.Default, SettingsForm.ColorsInfo.SDefault)
+        DoStyle(Style.Cpp.Number, SettingsForm.ColorsInfo.SInteger)
+        DoStyle(Style.Cpp.String, SettingsForm.ColorsInfo.SString)
+        DoStyle(Style.Cpp.Character, SettingsForm.ColorsInfo.SString)
+        DoStyle(Style.Cpp.Operator, SettingsForm.ColorsInfo.SSymbols)
+        DoStyle(Style.Cpp.CommentLine, SettingsForm.ColorsInfo.SSlComments)
+        DoStyle(Style.Cpp.Comment, SettingsForm.ColorsInfo.SMlComments)
+        DoStyle(Style.Cpp.CommentDoc, SettingsForm.ColorsInfo.SPawnDoc)
+        DoStyle(Style.Cpp.Preprocessor, SettingsForm.ColorsInfo.SPawnPre)
+        DoStyle(Style.Cpp.Word, SettingsForm.ColorsInfo.SPawnKeys)
         Editor.SetKeywords(0, "static break case enum continue do else false for goto public stock if is new null return sizeof switch true while forward native")
 
-        Editor.Styles(Styles.Functions).ForeColor = SettingsForm.ColorsInfo.SFunctions
-        Editor.Styles(Styles.Publics).ForeColor = SettingsForm.ColorsInfo.SPublics
-        Editor.Styles(Styles.Stocks).ForeColor = SettingsForm.ColorsInfo.SStocks
-        Editor.Styles(Styles.Natives).ForeColor = SettingsForm.ColorsInfo.SNatives
-        Editor.Styles(Styles.Defines).ForeColor = SettingsForm.ColorsInfo.SDefines
-        Editor.Styles(Styles.Macros).ForeColor = SettingsForm.ColorsInfo.SMacros
-        Editor.Styles(Styles.Enums).ForeColor = SettingsForm.ColorsInfo.SEnums
-        Editor.Styles(Styles.PublicVars).ForeColor = SettingsForm.ColorsInfo.SGlobalVars
+        DoStyle(Styles.Functions, SettingsForm.ColorsInfo.SFunctions)
+        DoStyle(Styles.Publics, SettingsForm.ColorsInfo.SPublics)
+        DoStyle(Styles.Stocks, SettingsForm.ColorsInfo.SStocks)
+        DoStyle(Styles.Natives, SettingsForm.ColorsInfo.SNatives)
+        DoStyle(Styles.Defines, SettingsForm.ColorsInfo.SDefines)
+        DoStyle(Styles.Macros, SettingsForm.ColorsInfo.SMacros)
+        DoStyle(Styles.Enums, SettingsForm.ColorsInfo.SEnums)
+        DoStyle(Styles.PublicVars, SettingsForm.ColorsInfo.SGlobalVars)
 
         Editor.IndentationGuides = IndentView.LookBoth
 
