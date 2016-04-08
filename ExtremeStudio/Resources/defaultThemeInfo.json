@@ -1,1 +1,87 @@
-﻿
+﻿{
+  "SDefault": {
+    "Font": "Courier New, 9.75pt",
+    "ForeColor": "Black",
+    "BackColor": "Transparent"
+  },
+  "SDefines": {
+    "Font": null,
+    "ForeColor": "192, 64, 0",
+    "BackColor": "Transparent"
+  },
+  "SEnums": {
+    "Font": null,
+    "ForeColor": "192, 64, 0",
+    "BackColor": "Transparent"
+  },
+  "SFunctions": {
+    "Font": null,
+    "ForeColor": "DarkOrange",
+    "BackColor": "Transparent"
+  },
+  "SGlobalVars": {
+    "Font": null,
+    "ForeColor": "Cyan",
+    "BackColor": "Transparent"
+  },
+  "SInteger": {
+    "Font": null,
+    "ForeColor": "64, 0, 64",
+    "BackColor": "Transparent"
+  },
+  "SMacros": {
+    "Font": null,
+    "ForeColor": "IndianRed",
+    "BackColor": "Transparent"
+  },
+  "SMlComments": {
+    "Font": null,
+    "ForeColor": "Green",
+    "BackColor": "Transparent"
+  },
+  "SNatives": {
+    "Font": null,
+    "ForeColor": "DarkOrange",
+    "BackColor": "Transparent"
+  },
+  "SPawnDoc": {
+    "Font": null,
+    "ForeColor": "Red",
+    "BackColor": "Transparent"
+  },
+  "SPawnKeys": {
+    "Font": null,
+    "ForeColor": "0, 0, 192",
+    "BackColor": "Transparent"
+  },
+  "SPawnPre": {
+    "Font": null,
+    "ForeColor": "192, 64, 0",
+    "BackColor": "Transparent"
+  },
+  "SPublics": {
+    "Font": null,
+    "ForeColor": "DarkOrange",
+    "BackColor": "Transparent"
+  },
+  "SSlComments": {
+    "Font": null,
+    "ForeColor": "Green",
+    "BackColor": "Transparent"
+  },
+  "SStocks": {
+    "Font": null,
+    "ForeColor": "DarkOrange",
+    "BackColor": "Transparent"
+  },
+  "SString": {
+    "Font": null,
+    "ForeColor": "192, 0, 0",
+    "BackColor": "Transparent"
+  },
+  "SSymbols": {
+    "Font": null,
+    "ForeColor": "64, 0, 64",
+    "BackColor": "Transparent"
+  }
+}

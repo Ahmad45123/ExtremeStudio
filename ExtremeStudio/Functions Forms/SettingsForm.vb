@@ -43,6 +43,35 @@ Public Class SettingsForm
     Private Sub colorsSettings_PropertyValueChanged(s As Object, e As PropertyValueChangedEventArgs) Handles colorsSettings.PropertyValueChanged
         RaiseEvent OnSettingsChange()
     End Sub
+
+    Private Sub exportBtn_Click(sender As Object, e As EventArgs) Handles exportBtn.Click
+        Dim dlg As new SaveFileDialog()
+        dlg.Title = "Select Target."
+        dlg.Filter = "ExtremeStudio Theme (*.estheme) |*.estheme"
+
+        if dlg.ShowDialog() = DialogResult.OK
+            My.Computer.FileSystem.WriteAllText(dlg.FileName, JsonConvert.SerializeObject(ColorsInfo, Formatting.Indented), false)
+            MsgBox("Exported Successfully!", MsgBoxStyle.Information)
+        End If
+    End Sub
+
+    Private Sub importBtn_Click(sender As Object, e As EventArgs) Handles importBtn.Click
+        dim dlg as New OpenFileDialog()
+        dlg.Title = "Select Source."
+        dlg.Filter = "ExtremeStudio Theme (*.estheme) |*.estheme"
+
+        if dlg.ShowDialog() = DialogResult.OK
+            ColorsInfo = JsonConvert.DeserializeObject(Of SyntaxInfo)(my.Computer.FileSystem.ReadAlltext(dlg.FileName))
+            colorsSettings.SelectedObject = ColorsInfo
+        End If
+    End Sub
+
+    Private Sub resetBtn_Click(sender As Object, e As EventArgs) Handles resetBtn.Click
+        If msgbox("Are you sure you want to reset to default ?", MsgBoxStyle.Critical & MsgBoxStyle.YesNo) then
+            ColorsInfo = JsonConvert.DeserializeObject(Of SyntaxInfo)(my.Computer.FileSystem.ReadAlltext(my.Resources.defaultThemeInfo))
+            colorsSettings.SelectedObject = ColorsInfo
+        End If
+    End Sub
 End Class
 
 #Region "NoTypeConverterJsonConverter"
