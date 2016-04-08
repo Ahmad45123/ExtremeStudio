@@ -1,5 +1,3 @@
-##### *NOTE:* Project paused for school, Will be back soon. (Promised Date: 10/4/2016)
-
 # ![Logo](http://i.imgur.com/Jmxy3lc.png)
 
 [![Join the chat at https://gitter.im/JohnyMac/ExtremeStudio](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/JohnyMac/ExtremeStudio?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
