@@ -88,7 +88,7 @@ Public Class IncludesForm
             Button1.Text = "Reinstall Include"
             actionsGroup.Visible = True
 
-            Dim curVer As String = My.Computer.FileSystem.ReadAllText(MainForm.ApplicationFiles + "/cache/includes/" + Path.GetFileNameWithoutExtension(sel.Download) + "/version.cfg")
+            Dim curVer As String = MainForm.CurrentProject.IncludeVersion(sel.Name)
             Dim res = ExtremeCore.versionReader.CompareVersions(curVer, includeVersion.Text)
             If res = ExtremeCore.versionReader.CompareVersionResult.VersionNew Then
                 updateAvilableLabel.Visible = True
@@ -154,7 +154,7 @@ Public Class IncludesForm
             'Now extract
             ExtremeCore.FastZipUnpack(incFile, MainForm.currentProject.projectPath + "/pawno/include")
         End If
-        MainForm.currentProject.AddInclude(includeName.Text) 'Save Include to DB.
+        MainForm.currentProject.AddInclude(includeName.Text, includeVersion.Text) 'Save Include to DB.
 
         'Show/hide stuff.
         inc.isInstalled = True
@@ -190,7 +190,7 @@ Public Class IncludesForm
             Next
         End If
 
-        'Remove plugin from DB.
+        'Remove include from DB.
         MainForm.currentProject.RemoveInclude(inc.Name)
 
         'Hide stuff.

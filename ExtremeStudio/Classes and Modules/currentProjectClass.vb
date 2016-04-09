@@ -22,8 +22,8 @@ Public Class CurrentProjectClass
     Public Sub CreateTables()
         _sqlCon.ExecuteNonQuery("CREATE TABLE MainConfig(`name` STRING(50), `value` STRING(50));")
         _sqlCon.ExecuteNonQuery("CREATE TABLE ObjectExplorerItems(`name` STRING(50), `identifier` STRING(50));")
-        _sqlCon.ExecuteNonQuery("CREATE TABLE Includes(`incName` STRING(50));")
-        _sqlCon.ExecuteNonQuery("CREATE TABLE Plugins(`plugName` STRING(50));")
+        _sqlCon.ExecuteNonQuery("CREATE TABLE Includes(`incName` STRING(50), `incVer` STRING(50));")
+        _sqlCon.ExecuteNonQuery("CREATE TABLE Plugins(`plugName` STRING(50), `plugVer` STRING(50));")
     End Sub
 #End Region
 
@@ -70,10 +70,10 @@ Public Class CurrentProjectClass
     End Sub
 
 #Region "Includes Codes"
-    Public Sub AddInclude(inc As String)
+    Public Sub AddInclude(inc As String, ver as string)
         Dim dt = _sqlCon.GetDataTable("SELECT * FROM `Includes` WHERE `incName` = '" + inc + "'")
         If dt.Rows.Count > 0 Then _sqlCon.ExecuteNonQuery("DELETE FROM `Includes` WHERE `incName` = '" + inc + "'")
-        _sqlCon.ExecuteNonQuery("INSERT INTO `Includes` VALUES('" + inc + "');")
+        _sqlCon.ExecuteNonQuery("INSERT INTO `Includes` VALUES('" + inc + "', '" + ver + "');")
     End Sub
     Public Sub RemoveInclude(inc As String)
         _sqlCon.ExecuteNonQuery("DELETE FROM `Includes` WHERE `incName` = '" + inc + "'")
@@ -82,6 +82,11 @@ Public Class CurrentProjectClass
         Dim dt = _sqlCon.GetDataTable("SELECT * FROM `Includes` WHERE `incName` = '" + inc + "'")
         If dt.Rows.Count > 0 Then Return True
         Return False
+    End Function
+    public Function IncludeVersion(inc As string) As String
+        Dim dt = _sqlCon.GetDataTable("SELECT `incVer` FROM `Includes` WHERE `incName` = '" + inc + "'")
+        If dt.Rows.Count = 0 Then Return Nothing
+        return dt.Rows(0).Item(0)
     End Function
 #End Region
 
@@ -143,10 +148,10 @@ Public Class CurrentProjectClass
 #End Region
 
 #Region "PluginsHandler"
-    Public Sub AddPlugin(inc As String)
+    Public Sub AddPlugin(inc As String, ver As string)
         Dim dt = _sqlCon.GetDataTable("SELECT * FROM `Plugins` WHERE `plugName` = '" + inc + "'")
         If dt.Rows.Count > 0 Then _sqlCon.ExecuteNonQuery("DELETE FROM `Plugins` WHERE `plugName` = '" + inc + "'")
-        _sqlCon.ExecuteNonQuery("INSERT INTO `Plugins` VALUES('" + inc + "');")
+        _sqlCon.ExecuteNonQuery("INSERT INTO `Plugins` VALUES('" + inc + "', '"+ver+"');")
     End Sub
     Public Sub RemovePlugin(inc As String)
         _sqlCon.ExecuteNonQuery("DELETE FROM `Plugins` WHERE `plugName` = '" + inc + "'")
@@ -155,6 +160,11 @@ Public Class CurrentProjectClass
         Dim dt = _sqlCon.GetDataTable("SELECT * FROM `Plugins` WHERE `plugName` = '" + inc + "'")
         If dt.Rows.Count > 0 Then Return True
         Return False
+    End Function
+    public Function PluginVersion(inc As string) As String
+        Dim dt = _sqlCon.GetDataTable("SELECT `plugVer` FROM `Plugins` WHERE `plugName` = '" + inc + "'")
+        If dt.Rows.Count = 0 Then Return Nothing
+        return dt.Rows(0).Item(0)
     End Function
 
     'Server.cfg stuff for plugins.

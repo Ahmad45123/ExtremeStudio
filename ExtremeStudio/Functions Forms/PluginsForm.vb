@@ -46,7 +46,7 @@ Public Class PluginsForm
                 Dim plug As New PluginData
                 plug.Name = Path.GetFileNameWithoutExtension(file)
                 plug.Download = "local"
-                plug.Desc = "The include is cached, No description is available."
+                plug.Desc = "The plugin is cached, No description is available."
                 plug.relatedInclude = ""
                 plug.Version = My.Computer.FileSystem.ReadAllText(file + "/version.cfg")
                 Plugins.Add(plug)
@@ -89,7 +89,7 @@ Public Class PluginsForm
             Button1.Text = "Reinstall Plugin"
             actionsGroup.Visible = True
 
-            Dim curVer As String = My.Computer.FileSystem.ReadAllText(MainForm.ApplicationFiles + "/cache/plugins/" + Path.GetFileNameWithoutExtension(sel.Download) + "/version.cfg")
+            Dim curVer As String = MainForm.CurrentProject.PluginVersion(sel.Name)
             Dim res = ExtremeCore.versionReader.CompareVersions(curVer, pluginVersion.Text)
             If res = ExtremeCore.versionReader.CompareVersionResult.VersionNew Then
                 updateAvilableLabel.Visible = True
@@ -109,7 +109,7 @@ Public Class PluginsForm
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        'Get the include info.
+        'Get the plugin info.
         Dim plug = getPluginInfo(pluginName.Text)
         If plug Is Nothing Then Exit Sub
 
@@ -137,7 +137,7 @@ Public Class PluginsForm
 
         'Check is the file doesn't exist to prevent exceptions.. For example the user lost interent after he got the includes list.
         If Not My.Computer.FileSystem.FileExists(plugFile) Then
-            MsgBox("The include can't be found in the cache.")
+            MsgBox("The plugin can't be found in the cache.")
             Exit Sub
         End If
 
@@ -156,7 +156,7 @@ Public Class PluginsForm
         ExtremeCore.FastZipUnpack(plugFile, MainForm.currentProject.projectPath + "/plugins")
 
         'Save plugin to DB
-        MainForm.currentProject.AddPlugin(pluginName.Text)
+        MainForm.currentProject.AddPlugin(pluginName.Text, pluginVersion.Text)
 
         'Edit the server.cfg automaticly.
         If Not MainForm.currentProject.isPluginInServerCFG(Path.GetFileNameWithoutExtension(plug.Download)) Then
@@ -174,7 +174,7 @@ Public Class PluginsForm
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        'Get the include info.
+        'Get the plugin info.
         Dim plug = getPluginInfo(pluginName.Text)
         If plug Is Nothing Then Exit Sub
 
@@ -218,7 +218,7 @@ Public Class PluginsForm
     End Sub
 
     Private Sub serverCFGButton_Click(sender As Object, e As EventArgs) Handles serverCFGButton.Click
-        'Get the include info.
+        'Get the plugin info.
         Dim plug = getPluginInfo(pluginName.Text)
         If plug Is Nothing Then Exit Sub
 
