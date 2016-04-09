@@ -38,13 +38,13 @@ Partial Class IncludesForm
         Me.updateAvilableLabel = New System.Windows.Forms.Label()
         Me.showInstalledOnlyCheck = New System.Windows.Forms.CheckBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.GroupBox1.SuspendLayout()
-        Me.actionsGroup.SuspendLayout()
-        Me.SuspendLayout()
+        Me.GroupBox1.SuspendLayout
+        Me.actionsGroup.SuspendLayout
+        Me.SuspendLayout
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
+        Me.Label1.AutoSize = true
         Me.Label1.Location = New System.Drawing.Point(12, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(47, 13)
@@ -53,7 +53,7 @@ Partial Class IncludesForm
         '
         'includesList
         '
-        Me.includesList.FormattingEnabled = True
+        Me.includesList.FormattingEnabled = true
         Me.includesList.Location = New System.Drawing.Point(15, 51)
         Me.includesList.Name = "includesList"
         Me.includesList.Size = New System.Drawing.Size(221, 355)
@@ -71,21 +71,22 @@ Partial Class IncludesForm
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(322, 160)
         Me.GroupBox1.TabIndex = 2
-        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.TabStop = false
         Me.GroupBox1.Text = "Include Info: "
         '
         'includeDesc
         '
         Me.includeDesc.Location = New System.Drawing.Point(84, 74)
-        Me.includeDesc.Multiline = True
+        Me.includeDesc.Multiline = true
         Me.includeDesc.Name = "includeDesc"
-        Me.includeDesc.ReadOnly = True
+        Me.includeDesc.ReadOnly = true
+        Me.includeDesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.includeDesc.Size = New System.Drawing.Size(232, 80)
         Me.includeDesc.TabIndex = 5
         '
         'Label4
         '
-        Me.Label4.AutoSize = True
+        Me.Label4.AutoSize = true
         Me.Label4.Location = New System.Drawing.Point(12, 77)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(66, 13)
@@ -96,13 +97,13 @@ Partial Class IncludesForm
         '
         Me.includeVersion.Location = New System.Drawing.Point(66, 48)
         Me.includeVersion.Name = "includeVersion"
-        Me.includeVersion.ReadOnly = True
+        Me.includeVersion.ReadOnly = true
         Me.includeVersion.Size = New System.Drawing.Size(250, 20)
         Me.includeVersion.TabIndex = 3
         '
         'Label3
         '
-        Me.Label3.AutoSize = True
+        Me.Label3.AutoSize = true
         Me.Label3.Location = New System.Drawing.Point(12, 51)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(48, 13)
@@ -113,13 +114,13 @@ Partial Class IncludesForm
         '
         Me.includeName.Location = New System.Drawing.Point(97, 22)
         Me.includeName.Name = "includeName"
-        Me.includeName.ReadOnly = True
+        Me.includeName.ReadOnly = true
         Me.includeName.Size = New System.Drawing.Size(219, 20)
         Me.includeName.TabIndex = 1
         '
         'Label2
         '
-        Me.Label2.AutoSize = True
+        Me.Label2.AutoSize = true
         Me.Label2.Location = New System.Drawing.Point(12, 25)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(79, 13)
@@ -133,17 +134,17 @@ Partial Class IncludesForm
         Me.Button1.Size = New System.Drawing.Size(131, 23)
         Me.Button1.TabIndex = 3
         Me.Button1.Text = "Install Include"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = true
         '
         'includeInstalledLabel
         '
-        Me.includeInstalledLabel.AutoSize = True
+        Me.includeInstalledLabel.AutoSize = true
         Me.includeInstalledLabel.Location = New System.Drawing.Point(242, 195)
         Me.includeInstalledLabel.Name = "includeInstalledLabel"
         Me.includeInstalledLabel.Size = New System.Drawing.Size(154, 13)
         Me.includeInstalledLabel.TabIndex = 4
         Me.includeInstalledLabel.Text = "The include is already installed."
-        Me.includeInstalledLabel.Visible = False
+        Me.includeInstalledLabel.Visible = false
         '
         'actionsGroup
         '
@@ -152,9 +153,9 @@ Partial Class IncludesForm
         Me.actionsGroup.Name = "actionsGroup"
         Me.actionsGroup.Size = New System.Drawing.Size(120, 59)
         Me.actionsGroup.TabIndex = 5
-        Me.actionsGroup.TabStop = False
+        Me.actionsGroup.TabStop = false
         Me.actionsGroup.Text = "Actions: "
-        Me.actionsGroup.Visible = False
+        Me.actionsGroup.Visible = false
         '
         'Button2
         '
@@ -163,27 +164,27 @@ Partial Class IncludesForm
         Me.Button2.Size = New System.Drawing.Size(105, 23)
         Me.Button2.TabIndex = 0
         Me.Button2.Text = "Uninstall Include"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.UseVisualStyleBackColor = true
         '
         'updateAvilableLabel
         '
-        Me.updateAvilableLabel.AutoSize = True
+        Me.updateAvilableLabel.AutoSize = true
         Me.updateAvilableLabel.Location = New System.Drawing.Point(242, 211)
         Me.updateAvilableLabel.Name = "updateAvilableLabel"
         Me.updateAvilableLabel.Size = New System.Drawing.Size(198, 13)
         Me.updateAvilableLabel.TabIndex = 6
         Me.updateAvilableLabel.Text = "An update is available, Reinstall to get it."
-        Me.updateAvilableLabel.Visible = False
+        Me.updateAvilableLabel.Visible = false
         '
         'showInstalledOnlyCheck
         '
-        Me.showInstalledOnlyCheck.AutoSize = True
+        Me.showInstalledOnlyCheck.AutoSize = true
         Me.showInstalledOnlyCheck.Location = New System.Drawing.Point(239, 390)
         Me.showInstalledOnlyCheck.Name = "showInstalledOnlyCheck"
         Me.showInstalledOnlyCheck.Size = New System.Drawing.Size(162, 17)
         Me.showInstalledOnlyCheck.TabIndex = 7
         Me.showInstalledOnlyCheck.Text = "Show Installed Includes Only"
-        Me.showInstalledOnlyCheck.UseVisualStyleBackColor = True
+        Me.showInstalledOnlyCheck.UseVisualStyleBackColor = true
         '
         'TextBox1
         '
@@ -194,7 +195,7 @@ Partial Class IncludesForm
         '
         'IncludesForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(576, 419)
         Me.Controls.Add(Me.TextBox1)
@@ -207,16 +208,16 @@ Partial Class IncludesForm
         Me.Controls.Add(Me.includesList)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.MaximizeBox = False
+        Me.MaximizeBox = false
         Me.Name = "IncludesForm"
         Me.Text = "Includes"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.actionsGroup.ResumeLayout(False)
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        Me.GroupBox1.ResumeLayout(false)
+        Me.GroupBox1.PerformLayout
+        Me.actionsGroup.ResumeLayout(false)
+        Me.ResumeLayout(false)
+        Me.PerformLayout
 
-    End Sub
+End Sub
 
     Friend WithEvents Label1 As Label
     Friend WithEvents includesList As ListBox

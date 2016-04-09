@@ -79,7 +79,7 @@ Public Class IncludesForm
 
         includeName.Text = sel.Name
         includeVersion.Text = sel.Version
-        includeDesc.Text = sel.Desc
+        includeDesc.Text = sel.Desc + vbCrLf + vbCrLf + IIf(sel.RelatedPlugin = "", "", "This include needs the " + sel.RelatedPlugin + " plugin to work.")
 
         'Check for updates if already installed.
         If sel.isInstalled Then

@@ -80,7 +80,7 @@ Public Class PluginsForm
 
         pluginName.Text = sel.Name
         pluginVersion.Text = sel.Version
-        pluginDesc.Text = sel.Desc
+        pluginDesc.Text = sel.Desc + vbCrLf + vbCrLf + IIf(sel.RelatedInclude = "", "", "This plugin needs the " + sel.RelatedInclude + " include to work.")
 
         'Check for updates if already installed.
         If sel.isInstalled Then

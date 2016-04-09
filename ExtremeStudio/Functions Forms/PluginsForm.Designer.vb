@@ -81,6 +81,7 @@ Partial Class PluginsForm
         Me.pluginDesc.Multiline = true
         Me.pluginDesc.Name = "pluginDesc"
         Me.pluginDesc.ReadOnly = true
+        Me.pluginDesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.pluginDesc.Size = New System.Drawing.Size(232, 80)
         Me.pluginDesc.TabIndex = 5
         '
