@@ -189,6 +189,12 @@
     <Compile Include="DockPanel Forms\MainForm Docks\EditorDock\EditorDock.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DockPanel Forms\MainForm Docks\EditorDock\EditorFunctions\GotoForm.Designer.vb">
+      <DependentUpon>GotoForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockPanel Forms\MainForm Docks\EditorDock\EditorFunctions\GotoForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DockPanel Forms\MainForm Docks\ErrorsDock.Designer.vb">
       <DependentUpon>ErrorsDock.vb</DependentUpon>
     </Compile>
@@ -268,6 +274,9 @@
   <ItemGroup>
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\EditorDock\EditorDock.resx">
       <DependentUpon>EditorDock.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\EditorDock\EditorFunctions\GotoForm.resx">
+      <DependentUpon>GotoForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ErrorsDock.resx">
       <DependentUpon>ErrorsDock.vb</DependentUpon>
