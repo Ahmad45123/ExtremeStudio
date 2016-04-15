@@ -58,14 +58,14 @@ Partial Class MainForm
         Me.pluginManagePanel = New System.Windows.Forms.RibbonPanel()
         Me.esPluginsManage = New System.Windows.Forms.RibbonButton()
         Me.installedPlugins = New System.Windows.Forms.RibbonPanel()
-        Me.StatusStrip1.SuspendLayout()
-        Me.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout
+        Me.SuspendLayout
         '
         'MainDock
         '
-        Me.MainDock.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.MainDock.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
+            Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.MainDock.BackColor = System.Drawing.SystemColors.ButtonShadow
         Me.MainDock.DockBackColor = System.Drawing.SystemColors.Control
         Me.MainDock.Location = New System.Drawing.Point(0, 99)
@@ -90,9 +90,9 @@ Partial Class MainForm
         '
         'mainRibbon
         '
-        Me.mainRibbon.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.mainRibbon.Font = New System.Drawing.Font("Segoe UI", 9!)
         Me.mainRibbon.Location = New System.Drawing.Point(0, 0)
-        Me.mainRibbon.Minimized = False
+        Me.mainRibbon.Minimized = false
         Me.mainRibbon.Name = "mainRibbon"
         '
         '
@@ -107,12 +107,12 @@ Partial Class MainForm
         Me.mainRibbon.OrbImage = Nothing
         Me.mainRibbon.OrbStyle = System.Windows.Forms.RibbonOrbStyle.Office_2013
         Me.mainRibbon.OrbText = "File"
-        Me.mainRibbon.OrbVisible = False
+        Me.mainRibbon.OrbVisible = false
         '
         '
         '
         Me.mainRibbon.QuickAcessToolbar.Items.Add(Me.closeProjectButton)
-        Me.mainRibbon.RibbonTabFont = New System.Drawing.Font("Trebuchet MS", 9.0!)
+        Me.mainRibbon.RibbonTabFont = New System.Drawing.Font("Trebuchet MS", 9!)
         Me.mainRibbon.Size = New System.Drawing.Size(610, 100)
         Me.mainRibbon.TabIndex = 13
         Me.mainRibbon.Tabs.Add(Me.fileTab)
@@ -125,15 +125,15 @@ Partial Class MainForm
         'RibbonOrbMenuItem1
         '
         Me.RibbonOrbMenuItem1.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left
-        Me.RibbonOrbMenuItem1.Image = CType(resources.GetObject("RibbonOrbMenuItem1.Image"), System.Drawing.Image)
-        Me.RibbonOrbMenuItem1.SmallImage = CType(resources.GetObject("RibbonOrbMenuItem1.SmallImage"), System.Drawing.Image)
+        Me.RibbonOrbMenuItem1.Image = CType(resources.GetObject("RibbonOrbMenuItem1.Image"),System.Drawing.Image)
+        Me.RibbonOrbMenuItem1.SmallImage = CType(resources.GetObject("RibbonOrbMenuItem1.SmallImage"),System.Drawing.Image)
         Me.RibbonOrbMenuItem1.Text = "Project"
         '
         'RibbonOrbRecentItem1
         '
         Me.RibbonOrbRecentItem1.AltKey = ""
         Me.RibbonOrbRecentItem1.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_closeProject
-        Me.RibbonOrbRecentItem1.SmallImage = CType(resources.GetObject("RibbonOrbRecentItem1.SmallImage"), System.Drawing.Image)
+        Me.RibbonOrbRecentItem1.SmallImage = CType(resources.GetObject("RibbonOrbRecentItem1.SmallImage"),System.Drawing.Image)
         Me.RibbonOrbRecentItem1.Text = "Close Current Project"
         '
         'closeProjectButton
@@ -152,7 +152,7 @@ Partial Class MainForm
         '
         'prjPanel
         '
-        Me.prjPanel.ButtonMoreVisible = False
+        Me.prjPanel.ButtonMoreVisible = false
         Me.prjPanel.Items.Add(Me.newFileButton)
         Me.prjPanel.Items.Add(Me.saveFileButton)
         Me.prjPanel.Items.Add(Me.saveAllButton)
@@ -161,27 +161,27 @@ Partial Class MainForm
         'newFileButton
         '
         Me.newFileButton.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_newFile
-        Me.newFileButton.SmallImage = CType(resources.GetObject("newFileButton.SmallImage"), System.Drawing.Image)
+        Me.newFileButton.SmallImage = CType(resources.GetObject("newFileButton.SmallImage"),System.Drawing.Image)
         Me.newFileButton.Text = ""
         Me.newFileButton.ToolTip = "New File"
         '
         'saveFileButton
         '
         Me.saveFileButton.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_saveFile
-        Me.saveFileButton.SmallImage = CType(resources.GetObject("saveFileButton.SmallImage"), System.Drawing.Image)
+        Me.saveFileButton.SmallImage = CType(resources.GetObject("saveFileButton.SmallImage"),System.Drawing.Image)
         Me.saveFileButton.Text = ""
         Me.saveFileButton.ToolTip = "Save File"
         '
         'saveAllButton
         '
         Me.saveAllButton.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_saveFileAll
-        Me.saveAllButton.SmallImage = CType(resources.GetObject("saveAllButton.SmallImage"), System.Drawing.Image)
+        Me.saveAllButton.SmallImage = CType(resources.GetObject("saveAllButton.SmallImage"),System.Drawing.Image)
         Me.saveAllButton.Text = ""
         Me.saveAllButton.ToolTip = "Save All Files"
         '
         'downloadPanel
         '
-        Me.downloadPanel.ButtonMoreVisible = False
+        Me.downloadPanel.ButtonMoreVisible = false
         Me.downloadPanel.Items.Add(Me.includesButton)
         Me.downloadPanel.Items.Add(Me.pluginsButton)
         Me.downloadPanel.Text = "Downloadables"
@@ -189,14 +189,14 @@ Partial Class MainForm
         'includesButton
         '
         Me.includesButton.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_includes
-        Me.includesButton.SmallImage = CType(resources.GetObject("includesButton.SmallImage"), System.Drawing.Image)
+        Me.includesButton.SmallImage = CType(resources.GetObject("includesButton.SmallImage"),System.Drawing.Image)
         Me.includesButton.Text = ""
         Me.includesButton.ToolTip = "Download SAMP Includes"
         '
         'pluginsButton
         '
         Me.pluginsButton.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_plugins
-        Me.pluginsButton.SmallImage = CType(resources.GetObject("pluginsButton.SmallImage"), System.Drawing.Image)
+        Me.pluginsButton.SmallImage = CType(resources.GetObject("pluginsButton.SmallImage"),System.Drawing.Image)
         Me.pluginsButton.Text = ""
         Me.pluginsButton.ToolTip = "Download SAMP Plugins"
         '
@@ -208,8 +208,8 @@ Partial Class MainForm
         '
         'clipboardPanel
         '
-        Me.clipboardPanel.ButtonMoreEnabled = False
-        Me.clipboardPanel.ButtonMoreVisible = False
+        Me.clipboardPanel.ButtonMoreEnabled = false
+        Me.clipboardPanel.ButtonMoreVisible = false
         Me.clipboardPanel.Items.Add(Me.cutButton)
         Me.clipboardPanel.Items.Add(Me.copyButton)
         Me.clipboardPanel.Items.Add(Me.pasteButton)
@@ -218,27 +218,27 @@ Partial Class MainForm
         'cutButton
         '
         Me.cutButton.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_cut
-        Me.cutButton.SmallImage = CType(resources.GetObject("cutButton.SmallImage"), System.Drawing.Image)
+        Me.cutButton.SmallImage = CType(resources.GetObject("cutButton.SmallImage"),System.Drawing.Image)
         Me.cutButton.Text = ""
         Me.cutButton.ToolTip = "Cut"
         '
         'copyButton
         '
         Me.copyButton.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_copy
-        Me.copyButton.SmallImage = CType(resources.GetObject("copyButton.SmallImage"), System.Drawing.Image)
+        Me.copyButton.SmallImage = CType(resources.GetObject("copyButton.SmallImage"),System.Drawing.Image)
         Me.copyButton.Text = ""
         Me.copyButton.ToolTip = "Copy"
         '
         'pasteButton
         '
         Me.pasteButton.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_paste
-        Me.pasteButton.SmallImage = CType(resources.GetObject("pasteButton.SmallImage"), System.Drawing.Image)
+        Me.pasteButton.SmallImage = CType(resources.GetObject("pasteButton.SmallImage"),System.Drawing.Image)
         Me.pasteButton.Text = ""
         Me.pasteButton.ToolTip = "Paste"
         '
         'searchPanel
         '
-        Me.searchPanel.ButtonMoreVisible = False
+        Me.searchPanel.ButtonMoreVisible = false
         Me.searchPanel.Items.Add(Me.searchButton)
         Me.searchPanel.Items.Add(Me.replaceButton)
         Me.searchPanel.Items.Add(Me.gotoButton)
@@ -247,21 +247,22 @@ Partial Class MainForm
         'searchButton
         '
         Me.searchButton.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_search
-        Me.searchButton.SmallImage = CType(resources.GetObject("searchButton.SmallImage"), System.Drawing.Image)
+        Me.searchButton.SmallImage = CType(resources.GetObject("searchButton.SmallImage"),System.Drawing.Image)
         Me.searchButton.Text = ""
         Me.searchButton.ToolTip = "Search"
         '
         'replaceButton
         '
         Me.replaceButton.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_searchAndReplace
-        Me.replaceButton.SmallImage = CType(resources.GetObject("replaceButton.SmallImage"), System.Drawing.Image)
+        Me.replaceButton.SmallImage = CType(resources.GetObject("replaceButton.SmallImage"),System.Drawing.Image)
         Me.replaceButton.Text = ""
         Me.replaceButton.ToolTip = "Replace"
         '
         'gotoButton
         '
+        Me.gotoButton.AltKey = ""
         Me.gotoButton.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_goto
-        Me.gotoButton.SmallImage = CType(resources.GetObject("gotoButton.SmallImage"), System.Drawing.Image)
+        Me.gotoButton.SmallImage = CType(resources.GetObject("gotoButton.SmallImage"),System.Drawing.Image)
         Me.gotoButton.Text = ""
         Me.gotoButton.ToolTip = "GoTo"
         '
@@ -273,7 +274,7 @@ Partial Class MainForm
         '
         'viewPanel
         '
-        Me.viewPanel.ButtonMoreVisible = False
+        Me.viewPanel.ButtonMoreVisible = false
         Me.viewPanel.Items.Add(Me.prjExplrerView)
         Me.viewPanel.Items.Add(Me.objExplorerView)
         Me.viewPanel.Items.Add(Me.errorsWarningsView)
@@ -282,34 +283,34 @@ Partial Class MainForm
         'prjExplrerView
         '
         Me.prjExplrerView.Image = Global.ExtremeStudio.My.Resources.Resources.dirs_projexplorer
-        Me.prjExplrerView.SmallImage = CType(resources.GetObject("prjExplrerView.SmallImage"), System.Drawing.Image)
+        Me.prjExplrerView.SmallImage = CType(resources.GetObject("prjExplrerView.SmallImage"),System.Drawing.Image)
         Me.prjExplrerView.Text = ""
         Me.prjExplrerView.ToolTipTitle = "Project Explorer"
         '
         'objExplorerView
         '
         Me.objExplorerView.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_objectExplrer
-        Me.objExplorerView.SmallImage = CType(resources.GetObject("objExplorerView.SmallImage"), System.Drawing.Image)
+        Me.objExplorerView.SmallImage = CType(resources.GetObject("objExplorerView.SmallImage"),System.Drawing.Image)
         Me.objExplorerView.Text = ""
         Me.objExplorerView.ToolTip = "Object Explorer"
         '
         'errorsWarningsView
         '
         Me.errorsWarningsView.Image = Global.ExtremeStudio.My.Resources.Resources.ribbob_errors
-        Me.errorsWarningsView.SmallImage = CType(resources.GetObject("errorsWarningsView.SmallImage"), System.Drawing.Image)
+        Me.errorsWarningsView.SmallImage = CType(resources.GetObject("errorsWarningsView.SmallImage"),System.Drawing.Image)
         Me.errorsWarningsView.Text = ""
         Me.errorsWarningsView.ToolTip = "Errors & Warnings"
         '
         'syntaxHighPanel
         '
-        Me.syntaxHighPanel.ButtonMoreVisible = False
+        Me.syntaxHighPanel.ButtonMoreVisible = false
         Me.syntaxHighPanel.Items.Add(Me.RibbonButton1)
         Me.syntaxHighPanel.Text = "Syntax Highlighting"
         '
         'RibbonButton1
         '
         Me.RibbonButton1.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_syntax
-        Me.RibbonButton1.SmallImage = CType(resources.GetObject("RibbonButton1.SmallImage"), System.Drawing.Image)
+        Me.RibbonButton1.SmallImage = CType(resources.GetObject("RibbonButton1.SmallImage"),System.Drawing.Image)
         Me.RibbonButton1.Text = ""
         Me.RibbonButton1.ToolTip = "Modify Syntax Highlighting"
         '
@@ -321,40 +322,40 @@ Partial Class MainForm
         '
         'pluginManagePanel
         '
-        Me.pluginManagePanel.ButtonMoreVisible = False
+        Me.pluginManagePanel.ButtonMoreVisible = false
         Me.pluginManagePanel.Items.Add(Me.esPluginsManage)
         Me.pluginManagePanel.Text = "Plugin Managment"
         '
         'esPluginsManage
         '
         Me.esPluginsManage.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_esPlugins
-        Me.esPluginsManage.SmallImage = CType(resources.GetObject("esPluginsManage.SmallImage"), System.Drawing.Image)
+        Me.esPluginsManage.SmallImage = CType(resources.GetObject("esPluginsManage.SmallImage"),System.Drawing.Image)
         Me.esPluginsManage.Text = ""
         Me.esPluginsManage.ToolTip = "Manage ES Plugins"
         '
         'installedPlugins
         '
-        Me.installedPlugins.ButtonMoreVisible = False
+        Me.installedPlugins.ButtonMoreVisible = false
         Me.installedPlugins.Text = "Installed Plugins"
         '
         'MainForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(610, 462)
         Me.Controls.Add(Me.mainRibbon)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MainDock)
-        Me.IsMdiContainer = True
+        Me.IsMdiContainer = true
         Me.Name = "MainForm"
         Me.Text = "ExtremeStudio - Project"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        Me.StatusStrip1.ResumeLayout(False)
-        Me.StatusStrip1.PerformLayout()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        Me.StatusStrip1.ResumeLayout(false)
+        Me.StatusStrip1.PerformLayout
+        Me.ResumeLayout(false)
+        Me.PerformLayout
 
-    End Sub
+End Sub
     Friend WithEvents MainDock As WeifenLuo.WinFormsUI.Docking.DockPanel
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Friend WithEvents statusLabel As System.Windows.Forms.ToolStripStatusLabel

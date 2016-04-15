@@ -109,6 +109,7 @@ Partial Class GotoForm
         '
         'GotoForm
         '
+        Me.AcceptButton = Me.Button1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(351, 134)
@@ -124,6 +125,7 @@ Partial Class GotoForm
         Me.MaximizeBox = false
         Me.MinimizeBox = false
         Me.Name = "GotoForm"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GotoForm"
         Me.ResumeLayout(false)
         Me.PerformLayout

@@ -182,4 +182,10 @@ Public Class MainForm
     Private Sub pasteButton_Click(sender As Object, e As EventArgs) Handles pasteButton.Click
         CurrentScintilla.Paste()
     End Sub
+
+    Private Sub gotoButton_Click(sender As Object, e As EventArgs) Handles gotoButton.Click
+        Dim frm As New GotoForm()
+        frm.ShowDialog()
+        frm.valueTextBox.Focus()
+    End Sub
 End Class
