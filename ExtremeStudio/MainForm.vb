@@ -186,6 +186,5 @@ Public Class MainForm
     Private Sub gotoButton_Click(sender As Object, e As EventArgs) Handles gotoButton.Click
         Dim frm As New GotoForm()
         frm.ShowDialog()
-        frm.valueTextBox.Focus()
     End Sub
 End Class

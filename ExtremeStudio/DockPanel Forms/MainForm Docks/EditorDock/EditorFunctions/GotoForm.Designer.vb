@@ -38,7 +38,7 @@ Partial Class GotoForm
         Me.linenumberRadio.Checked = true
         Me.linenumberRadio.Location = New System.Drawing.Point(12, 12)
         Me.linenumberRadio.Name = "linenumberRadio"
-        Me.linenumberRadio.Size = New System.Drawing.Size(85, 17)
+        Me.linenumberRadio.Size = New System.Drawing.Size(84, 17)
         Me.linenumberRadio.TabIndex = 0
         Me.linenumberRadio.TabStop = true
         Me.linenumberRadio.Text = "Line Number"
@@ -94,7 +94,7 @@ Partial Class GotoForm
         Me.curLabel.AutoSize = true
         Me.curLabel.Location = New System.Drawing.Point(9, 111)
         Me.curLabel.Name = "curLabel"
-        Me.curLabel.Size = New System.Drawing.Size(53, 13)
+        Me.curLabel.Size = New System.Drawing.Size(57, 13)
         Me.curLabel.TabIndex = 6
         Me.curLabel.Text = "Current: 0"
         '
@@ -103,7 +103,7 @@ Partial Class GotoForm
         Me.maxLabel.AutoSize = true
         Me.maxLabel.Location = New System.Drawing.Point(248, 111)
         Me.maxLabel.Name = "maxLabel"
-        Me.maxLabel.Size = New System.Drawing.Size(63, 13)
+        Me.maxLabel.Size = New System.Drawing.Size(64, 13)
         Me.maxLabel.TabIndex = 7
         Me.maxLabel.Text = "Maximum: 0"
         '
