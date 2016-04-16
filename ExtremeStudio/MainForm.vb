@@ -185,6 +185,6 @@ Public Class MainForm
 
     Private Sub gotoButton_Click(sender As Object, e As EventArgs) Handles gotoButton.Click
         Dim frm As New GotoForm()
-        frm.ShowDialog()
+        frm.Show()
     End Sub
 End Class
