@@ -34,17 +34,25 @@ Public Class EditorDock
 
         If RefreshWorker.IsBusy Then MainForm.statusLabel.Text = "Idle."
     End Sub
-    Private Sub Editor_KeyDown(sender As Object, e As KeyEventArgs) Handles Editor.KeyDown
-        If e.Control = True And e.KeyCode = Keys.S Then
+
+    #Region "Key Handling"
+    Protected Overrides Function ProcessCmdKey(Byref msg As Message, keyData As Keys) As Boolean
+        If keyData = (Keys.Control Or Keys.G) Then
+            Dim frm as New GotoForm()
+            frm.ShowDialog()
+            Return True
+        ElseIf (keyData = (Keys.Control Or Keys.S)) Or (keyData = ((keys.Control Or Keys.Shift) Or Keys.S)) Then
             MainForm.SaveFile(Editor)
             Editor.SetSavePoint()
-            If e.Shift = True Then 'If he has shift pressed also.
+            If keyData And Keys.Shift Then 'If he has shift pressed also.
                 MainForm.SaveAllFiles(Me, EventArgs.Empty)
             End If
-
-            e.SuppressKeyPress = True
+            Return True
         End If
-    End Sub
+
+        Return MyBase.ProcessCmdKey(msg, keyData)
+    End Function
+    #End Region
 
     'All modules are here.
 #Region "Styles Handlers"
