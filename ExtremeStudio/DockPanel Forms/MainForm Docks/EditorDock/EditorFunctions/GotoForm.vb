@@ -6,14 +6,14 @@
     Private Sub linenumberRadio_CheckedChanged(sender As Object, e As EventArgs) Handles linenumberRadio.CheckedChanged
         theLabel.Text = "Line Number: "
         maxLabel.Text = "Maximum: " + MainForm.CurrentScintilla.Lines.Count.ToString()
-        curLabel.Text = "Current: " + MainForm.CurrentScintilla.CurrentLine.ToString()
+        curLabel.Text = "Current: " + (MainForm.CurrentScintilla.CurrentLine + 1).ToString()
         valueTextBox.Select()
     End Sub
 
     Private Sub positionRadio_CheckedChanged(sender As Object, e As EventArgs) Handles positionRadio.CheckedChanged
         theLabel.Text = "Position: "
         maxLabel.Text = "Maximum: " + MainForm.CurrentScintilla.Lines(MainForm.CurrentScintilla.Lines.Count - 1).EndPosition.ToString()
-        curLabel.Text = "Current: " + MainForm.CurrentScintilla.CurrentPosition.ToString()
+        curLabel.Text = "Current: " + (MainForm.CurrentScintilla.CurrentPosition + 1).ToString()
         valueTextBox.Select()
     End Sub
 
