@@ -184,7 +184,7 @@ Public Class MainForm
     End Sub
 
     Private Sub gotoButton_Click(sender As Object, e As EventArgs) Handles gotoButton.Click
-        Dim frm As New GotoForm()
-        frm.Show()
+        GotoForm = Nothing 'Reset the form.
+        GotoForm.Show()
     End Sub
 End Class

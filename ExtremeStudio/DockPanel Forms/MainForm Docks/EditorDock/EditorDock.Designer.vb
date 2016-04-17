@@ -29,33 +29,33 @@ Partial Class EditorDock
         Me.AutoCompleteMenu = New AutocompleteMenuNS.AutocompleteMenu()
         Me.ACImageList = New System.Windows.Forms.ImageList(Me.components)
         Me.colorizingWorker = New System.ComponentModel.BackgroundWorker()
-        Me.SuspendLayout()
+        Me.SuspendLayout
         '
         'Editor
         '
-        Me.Editor.AdditionalSelectionTyping = True
+        Me.Editor.AdditionalSelectionTyping = true
         Me.Editor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Editor.Lexer = ScintillaNET.Lexer.Cpp
         Me.Editor.Location = New System.Drawing.Point(0, 0)
         Me.Editor.MouseDwellTime = 1000
-        Me.Editor.MouseSelectionRectangularSwitch = True
+        Me.Editor.MouseSelectionRectangularSwitch = true
         Me.Editor.MultiPaste = ScintillaNET.MultiPaste.[Each]
-        Me.Editor.MultipleSelection = True
+        Me.Editor.MultipleSelection = true
         Me.Editor.Name = "Editor"
         Me.Editor.Size = New System.Drawing.Size(566, 417)
         Me.Editor.TabIndex = 0
-        Me.Editor.UseTabs = False
+        Me.Editor.UseTabs = false
         Me.Editor.VirtualSpaceOptions = ScintillaNET.VirtualSpace.RectangularSelection
         '
         'RefreshWorker
         '
-        Me.RefreshWorker.WorkerReportsProgress = True
-        Me.RefreshWorker.WorkerSupportsCancellation = True
+        Me.RefreshWorker.WorkerReportsProgress = true
+        Me.RefreshWorker.WorkerSupportsCancellation = true
         '
         'AutoCompleteMenu
         '
-        Me.AutoCompleteMenu.Colors = CType(resources.GetObject("AutoCompleteMenu.Colors"), AutocompleteMenuNS.Colors)
-        Me.AutoCompleteMenu.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.AutoCompleteMenu.Colors = CType(resources.GetObject("AutoCompleteMenu.Colors"),AutocompleteMenuNS.Colors)
+        Me.AutoCompleteMenu.Font = New System.Drawing.Font("Microsoft Sans Serif", 9!)
         Me.AutoCompleteMenu.ImageList = Me.ACImageList
         Me.AutoCompleteMenu.Items = New String() {"null"}
         Me.AutoCompleteMenu.TargetControlWrapper = Nothing
@@ -63,23 +63,23 @@ Partial Class EditorDock
         '
         'ACImageList
         '
-        Me.ACImageList.ImageStream = CType(resources.GetObject("ACImageList.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ACImageList.ImageStream = CType(resources.GetObject("ACImageList.ImageStream"),System.Windows.Forms.ImageListStreamer)
         Me.ACImageList.TransparentColor = System.Drawing.Color.Transparent
         Me.ACImageList.Images.SetKeyName(0, "Functions")
         Me.ACImageList.Images.SetKeyName(1, "Defines")
         '
         'EditorDock
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(566, 417)
         Me.Controls.Add(Me.Editor)
         Me.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document
-        Me.Font = New System.Drawing.Font("Tahoma", 8.0!)
+        Me.Font = New System.Drawing.Font("Tahoma", 8!)
         Me.Name = "EditorDock"
-        Me.ResumeLayout(False)
+        Me.ResumeLayout(false)
 
-    End Sub
+End Sub
     Friend WithEvents RefreshWorker As System.ComponentModel.BackgroundWorker
     Public WithEvents Editor As ScintillaNET.Scintilla
     Friend WithEvents AutoCompleteMenu As AutocompleteMenuNS.AutocompleteMenu

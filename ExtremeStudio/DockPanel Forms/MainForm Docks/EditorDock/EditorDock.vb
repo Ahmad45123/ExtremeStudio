@@ -38,8 +38,8 @@ Public Class EditorDock
     #Region "Key Handling"
     Protected Overrides Function ProcessCmdKey(Byref msg As Message, keyData As Keys) As Boolean
         If keyData = (Keys.Control Or Keys.G) Then
-            Dim frm as New GotoForm()
-            frm.Show()
+            GotoForm = Nothing 'Resets the form
+            GotoForm.Show()
             Return True
         ElseIf (keyData = (Keys.Control Or Keys.S)) Or (keyData = ((keys.Control Or Keys.Shift) Or Keys.S)) Then
             MainForm.SaveFile(Editor)
