@@ -64,4 +64,8 @@
     Private Sub GotoForm_Deactivate(sender As Object, e As EventArgs) Handles MyBase.Deactivate
         If isClosing = False Then Opacity = 0.50
     End Sub
+
+    Private Sub GotoForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        isClosing = True
+    End Sub
 End Class
