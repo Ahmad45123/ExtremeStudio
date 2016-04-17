@@ -126,7 +126,7 @@ Partial Class GotoForm
         Me.MinimizeBox = false
         Me.Name = "GotoForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "GotoForm"
+        Me.Text = "Goto"
         Me.TopMost = true
         Me.ResumeLayout(false)
         Me.PerformLayout

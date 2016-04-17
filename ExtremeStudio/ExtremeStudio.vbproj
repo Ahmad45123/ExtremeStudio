@@ -195,6 +195,12 @@
     <Compile Include="DockPanel Forms\MainForm Docks\EditorDock\EditorFunctions\GotoForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DockPanel Forms\MainForm Docks\EditorDock\EditorFunctions\SearchReplaceForm.Designer.vb">
+      <DependentUpon>SearchReplaceForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockPanel Forms\MainForm Docks\EditorDock\EditorFunctions\SearchReplaceForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DockPanel Forms\MainForm Docks\ErrorsDock.Designer.vb">
       <DependentUpon>ErrorsDock.vb</DependentUpon>
     </Compile>
@@ -277,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\EditorDock\EditorFunctions\GotoForm.resx">
       <DependentUpon>GotoForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\EditorDock\EditorFunctions\SearchReplaceForm.resx">
+      <DependentUpon>SearchReplaceForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ErrorsDock.resx">
       <DependentUpon>ErrorsDock.vb</DependentUpon>
