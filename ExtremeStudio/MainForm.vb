@@ -187,4 +187,9 @@ Public Class MainForm
         GotoForm = Nothing 'Reset the form.
         GotoForm.Show()
     End Sub
+
+    Private Sub searchButton_Click(sender As Object, e As EventArgs) Handles searchButton.Click
+        SearchReplaceForm = Nothing 'Reset the form.
+        SearchReplaceForm.Show()
+    End Sub
 End Class

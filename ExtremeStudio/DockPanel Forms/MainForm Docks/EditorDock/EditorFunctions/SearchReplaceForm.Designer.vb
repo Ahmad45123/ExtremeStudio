@@ -34,7 +34,6 @@ Partial Class SearchReplaceForm
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.replaceReplaceText = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.replaceSelectionCheck = New System.Windows.Forms.CheckBox()
         Me.replaceCloseBtn = New System.Windows.Forms.Button()
         Me.replaceReplaceAllDocsBtn = New System.Windows.Forms.Button()
         Me.replaceReplaceAllBtn = New System.Windows.Forms.Button()
@@ -44,9 +43,8 @@ Partial Class SearchReplaceForm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.matchWholeWordCheck = New System.Windows.Forms.CheckBox()
         Me.matchCaseCheck = New System.Windows.Forms.CheckBox()
-        Me.wrapCheck = New System.Windows.Forms.CheckBox()
+        Me.inSelCheck = New System.Windows.Forms.CheckBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.matchNewLineCheck = New System.Windows.Forms.CheckBox()
         Me.searchRegexRadio = New System.Windows.Forms.RadioButton()
         Me.searchNormalRadio = New System.Windows.Forms.RadioButton()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -151,7 +149,6 @@ Partial Class SearchReplaceForm
         '
         Me.TabPage2.Controls.Add(Me.replaceReplaceText)
         Me.TabPage2.Controls.Add(Me.Label3)
-        Me.TabPage2.Controls.Add(Me.replaceSelectionCheck)
         Me.TabPage2.Controls.Add(Me.replaceCloseBtn)
         Me.TabPage2.Controls.Add(Me.replaceReplaceAllDocsBtn)
         Me.TabPage2.Controls.Add(Me.replaceReplaceAllBtn)
@@ -182,16 +179,6 @@ Partial Class SearchReplaceForm
         Me.Label3.Size = New System.Drawing.Size(52, 13)
         Me.Label3.TabIndex = 16
         Me.Label3.Text = "Replace: "
-        '
-        'replaceSelectionCheck
-        '
-        Me.replaceSelectionCheck.AutoSize = true
-        Me.replaceSelectionCheck.Location = New System.Drawing.Point(310, 71)
-        Me.replaceSelectionCheck.Name = "replaceSelectionCheck"
-        Me.replaceSelectionCheck.Size = New System.Drawing.Size(82, 17)
-        Me.replaceSelectionCheck.TabIndex = 15
-        Me.replaceSelectionCheck.Text = "In Selection"
-        Me.replaceSelectionCheck.UseVisualStyleBackColor = true
         '
         'replaceCloseBtn
         '
@@ -274,21 +261,18 @@ Partial Class SearchReplaceForm
         Me.matchCaseCheck.Text = "Match Case"
         Me.matchCaseCheck.UseVisualStyleBackColor = true
         '
-        'wrapCheck
+        'inSelCheck
         '
-        Me.wrapCheck.AutoSize = true
-        Me.wrapCheck.Checked = true
-        Me.wrapCheck.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.wrapCheck.Location = New System.Drawing.Point(12, 276)
-        Me.wrapCheck.Name = "wrapCheck"
-        Me.wrapCheck.Size = New System.Drawing.Size(90, 17)
-        Me.wrapCheck.TabIndex = 3
-        Me.wrapCheck.Text = "Wrap Around"
-        Me.wrapCheck.UseVisualStyleBackColor = true
+        Me.inSelCheck.AutoSize = true
+        Me.inSelCheck.Location = New System.Drawing.Point(12, 276)
+        Me.inSelCheck.Name = "inSelCheck"
+        Me.inSelCheck.Size = New System.Drawing.Size(82, 17)
+        Me.inSelCheck.TabIndex = 3
+        Me.inSelCheck.Text = "In Selection"
+        Me.inSelCheck.UseVisualStyleBackColor = true
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.matchNewLineCheck)
         Me.GroupBox1.Controls.Add(Me.searchRegexRadio)
         Me.GroupBox1.Controls.Add(Me.searchNormalRadio)
         Me.GroupBox1.Location = New System.Drawing.Point(135, 230)
@@ -297,16 +281,6 @@ Partial Class SearchReplaceForm
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = false
         Me.GroupBox1.Text = "Search Mode"
-        '
-        'matchNewLineCheck
-        '
-        Me.matchNewLineCheck.AutoSize = true
-        Me.matchNewLineCheck.Location = New System.Drawing.Point(129, 41)
-        Me.matchNewLineCheck.Name = "matchNewLineCheck"
-        Me.matchNewLineCheck.Size = New System.Drawing.Size(115, 17)
-        Me.matchNewLineCheck.TabIndex = 2
-        Me.matchNewLineCheck.Text = "&. matches new line"
-        Me.matchNewLineCheck.UseVisualStyleBackColor = true
         '
         'searchRegexRadio
         '
@@ -372,7 +346,7 @@ Partial Class SearchReplaceForm
         Me.ClientSize = New System.Drawing.Size(499, 304)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.wrapCheck)
+        Me.Controls.Add(Me.inSelCheck)
         Me.Controls.Add(Me.matchCaseCheck)
         Me.Controls.Add(Me.matchWholeWordCheck)
         Me.Controls.Add(Me.TabControl1)
@@ -401,14 +375,13 @@ End Sub
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents matchWholeWordCheck As CheckBox
     Friend WithEvents matchCaseCheck As CheckBox
-    Friend WithEvents wrapCheck As CheckBox
+    Friend WithEvents inSelCheck As CheckBox
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents searchRegexRadio As RadioButton
     Friend WithEvents searchNormalRadio As RadioButton
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents directionDownRadio As RadioButton
     Friend WithEvents directionUpRadio As RadioButton
-    Friend WithEvents matchNewLineCheck As CheckBox
     Friend WithEvents findCloseBtn As Button
     Friend WithEvents searchFindAllBtn As Button
     Friend WithEvents FindAllInAllBtn As Button
@@ -423,7 +396,6 @@ End Sub
     Friend WithEvents replaceReplaceAllBtn As Button
     Friend WithEvents replaceReplaceBtn As Button
     Friend WithEvents replaceCloseBtn As Button
-    Friend WithEvents replaceSelectionCheck As CheckBox
     Friend WithEvents replaceReplaceText As TextBox
     Friend WithEvents Label3 As Label
 End Class
