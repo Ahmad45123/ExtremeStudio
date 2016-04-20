@@ -28,7 +28,7 @@ Partial Class SearchReplaceForm
         Me.searchFindAllBtn = New System.Windows.Forms.Button()
         Me.FindAllInAllBtn = New System.Windows.Forms.Button()
         Me.searchCountBtn = New System.Windows.Forms.Button()
-        Me.seachFindBtn = New System.Windows.Forms.Button()
+        Me.searchFindBtn = New System.Windows.Forms.Button()
         Me.searchFindText = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
@@ -73,7 +73,7 @@ Partial Class SearchReplaceForm
         Me.TabPage1.Controls.Add(Me.searchFindAllBtn)
         Me.TabPage1.Controls.Add(Me.FindAllInAllBtn)
         Me.TabPage1.Controls.Add(Me.searchCountBtn)
-        Me.TabPage1.Controls.Add(Me.seachFindBtn)
+        Me.TabPage1.Controls.Add(Me.searchFindBtn)
         Me.TabPage1.Controls.Add(Me.searchFindText)
         Me.TabPage1.Controls.Add(Me.Label1)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
@@ -120,14 +120,14 @@ Partial Class SearchReplaceForm
         Me.searchCountBtn.Text = "Count"
         Me.searchCountBtn.UseVisualStyleBackColor = true
         '
-        'seachFindBtn
+        'searchFindBtn
         '
-        Me.seachFindBtn.Location = New System.Drawing.Point(395, 9)
-        Me.seachFindBtn.Name = "seachFindBtn"
-        Me.seachFindBtn.Size = New System.Drawing.Size(87, 23)
-        Me.seachFindBtn.TabIndex = 8
-        Me.seachFindBtn.Text = "Find Next"
-        Me.seachFindBtn.UseVisualStyleBackColor = true
+        Me.searchFindBtn.Location = New System.Drawing.Point(395, 9)
+        Me.searchFindBtn.Name = "searchFindBtn"
+        Me.searchFindBtn.Size = New System.Drawing.Size(87, 23)
+        Me.searchFindBtn.TabIndex = 8
+        Me.searchFindBtn.Text = "Find Next"
+        Me.searchFindBtn.UseVisualStyleBackColor = true
         '
         'searchFindText
         '
@@ -341,6 +341,7 @@ Partial Class SearchReplaceForm
         '
         'SearchReplaceForm
         '
+        Me.AcceptButton = Me.searchFindBtn
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(499, 304)
@@ -354,6 +355,7 @@ Partial Class SearchReplaceForm
         Me.MaximizeBox = false
         Me.MinimizeBox = false
         Me.Name = "SearchReplaceForm"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Search & Replace"
         Me.TopMost = true
         Me.TabControl1.ResumeLayout(false)
@@ -386,7 +388,7 @@ End Sub
     Friend WithEvents searchFindAllBtn As Button
     Friend WithEvents FindAllInAllBtn As Button
     Friend WithEvents searchCountBtn As Button
-    Friend WithEvents seachFindBtn As Button
+    Friend WithEvents searchFindBtn As Button
     Friend WithEvents searchFindText As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents replaceFindText As TextBox

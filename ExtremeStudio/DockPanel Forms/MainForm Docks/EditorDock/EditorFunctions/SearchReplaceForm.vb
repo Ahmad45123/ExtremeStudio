@@ -48,12 +48,15 @@ Public Class SearchReplaceForm
     End Sub
 
     Private Sub searchCountBtn_Click(sender As Object, e As EventArgs) Handles searchCountBtn.Click
+        If searchFindText.Text = "" Then Exit Sub
+
         ResetSettings()
 
         Dim numberOfTimes As Integer = 0
         While MainForm.CurrentScintilla?.SearchInTarget(searchFindText.Text) <> -1
             numberOfTimes += 1
 
+            'Prepare For Next.
             MainForm.CurrentScintilla.TargetStart = MainForm.CurrentScintilla.TargetEnd 'Start from the last end and continue to end.
             MainForm.CurrentScintilla.TargetEnd = MainForm.CurrentScintilla.TextLength
         End While
@@ -61,7 +64,33 @@ Public Class SearchReplaceForm
         MsgBox("Number of items found are: " + numberOfTimes.ToString())
     End Sub
 
-    Private Sub seachFindBtn_Click(sender As Object, e As EventArgs) Handles seachFindBtn.Click
+    Dim isAlreadySearching As Boolean = False
+    Private Sub searchFindText_TextChanged(sender As Object, e As EventArgs) Handles searchFindText.TextChanged
+        'New search is being done: 
+        isAlreadySearching = False
+    End Sub
+    Private Sub seachFindBtn_Click(sender As Object, e As EventArgs) Handles searchFindBtn.Click
+        If searchFindText.Text = "" Then Exit Sub
 
+        'Only reset the settings if its new, or else: 
+        'If its old, Just go with old settings to find literally next.
+        If isAlreadySearching = False Then ResetSettings()
+
+        'No WHILE because we don't want to get all but just the next.
+        If MainForm.CurrentScintilla?.SearchInTarget(searchFindText.Text) <> -1
+            'First set the selection: 
+            MainForm.CurrentScintilla?.SetSelection(MainForm.CurrentScintilla?.TargetStart, MainForm.CurrentScintilla?.TargetEnd)
+            'Scroll to it: 
+            MainForm.CurrentScintilla?.ScrollCaret()
+            'Prepare For Next.
+            MainForm.CurrentScintilla.TargetStart = MainForm.CurrentScintilla.TargetEnd 'Start from the last end and continue to end.
+            MainForm.CurrentScintilla.TargetEnd = MainForm.CurrentScintilla.TextLength
+            'Set the var to true: 
+            isAlreadySearching = True
+        Else
+            MsgBox("Reached End Of Document, Resetting.", MsgBoxStyle.Information)
+            isAlreadySearching = False
+            seachFindBtn_Click(Me, Nothing)
+        End If
     End Sub
 End Class
