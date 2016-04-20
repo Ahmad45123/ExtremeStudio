@@ -191,5 +191,13 @@ Public Class MainForm
     Private Sub searchButton_Click(sender As Object, e As EventArgs) Handles searchButton.Click
         SearchReplaceForm = Nothing 'Reset the form.
         SearchReplaceForm.Show()
+        SearchReplaceForm.TabControl1.SelectTab(0) 'Search Tab.
+        SearchReplaceForm.searchFindText.Select()
+    End Sub
+
+    Private Sub replaceButton_Click(sender As Object, e As EventArgs) Handles replaceButton.Click
+        SearchReplaceForm = Nothing 'Reset the form.
+        SearchReplaceForm.Show()
+        SearchReplaceForm.TabControl1.SelectTab(1) 'Replace Tab.
     End Sub
 End Class

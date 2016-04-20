@@ -26,6 +26,16 @@ Public Class SearchReplaceForm
     End Sub
 #End Region
 
+    Private Sub TabControl1_Selected(sender As Object, e As TabControlEventArgs) Handles TabControl1.Selected
+        If e.TabPageIndex = 0 Then
+            searchFindText.Select()
+            AcceptButton = searchFindBtn
+        ElseIf e.TabPageIndex = 1 Then
+            replaceFindText.Select()
+            AcceptButton = replaceFindNextBtn
+        End If
+    End Sub
+
     Sub ResetSettings()
         'Set targets.
         If inSelCheck.Checked = False Then

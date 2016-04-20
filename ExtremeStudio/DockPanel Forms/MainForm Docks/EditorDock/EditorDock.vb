@@ -37,17 +37,32 @@ Public Class EditorDock
 
     #Region "Key Handling"
     Protected Overrides Function ProcessCmdKey(Byref msg As Message, keyData As Keys) As Boolean
-        If keyData = (Keys.Control Or Keys.G) Then
-            GotoForm = Nothing 'Resets the form
-            GotoForm.Show()
-            Return True
-        ElseIf (keyData = (Keys.Control Or Keys.S)) Or (keyData = ((keys.Control Or Keys.Shift) Or Keys.S)) Then
+        If (keyData = (Keys.Control Or Keys.S)) Or (keyData = ((keys.Control Or Keys.Shift) Or Keys.S)) Then
             MainForm.SaveFile(Editor)
             Editor.SetSavePoint()
             If keyData And Keys.Shift Then 'If he has shift pressed also.
                 MainForm.SaveAllFiles(Me, EventArgs.Empty)
             End If
             Return True
+
+        ElseIf keyData = (Keys.Control Or Keys.G) Then
+            GotoForm = Nothing 'Resets the form
+            GotoForm.Show()
+            Return True
+
+        ElseIf keyData = (Keys.Control Or Keys.F) Then
+            SearchReplaceForm = Nothing
+            SearchReplaceForm.Show()
+            SearchReplaceForm.TabControl1.SelectTab(0) 'Search Tab.
+            SearchReplaceForm.searchFindText.Select()
+            Return True
+
+        ElseIf keyData = (Keys.Control Or Keys.H) Then
+            SearchReplaceForm = Nothing
+            SearchReplaceForm.Show()
+            SearchReplaceForm.TabControl1.SelectTab(1) 'Replace Tab.
+            Return True
+
         End If
 
         Return MyBase.ProcessCmdKey(msg, keyData)
