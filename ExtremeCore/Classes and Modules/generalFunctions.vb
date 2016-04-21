@@ -46,7 +46,7 @@ Public Module GeneralFunctions
         Try
             Dim fileText As String = webClient.DownloadString("http://johnymac.github.io/esfiles/serverPackages.xml")
             Return True
-        Catch ex As Exception
+        Catch ex As WebException
             Return False
         End Try
     End Function

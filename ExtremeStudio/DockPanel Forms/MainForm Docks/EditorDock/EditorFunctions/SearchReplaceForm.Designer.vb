@@ -26,7 +26,6 @@ Partial Class SearchReplaceForm
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.findCloseBtn = New System.Windows.Forms.Button()
         Me.searchFindAllBtn = New System.Windows.Forms.Button()
-        Me.FindAllInAllBtn = New System.Windows.Forms.Button()
         Me.searchCountBtn = New System.Windows.Forms.Button()
         Me.searchFindBtn = New System.Windows.Forms.Button()
         Me.searchFindText = New System.Windows.Forms.TextBox()
@@ -35,7 +34,6 @@ Partial Class SearchReplaceForm
         Me.replaceReplaceText = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.replaceCloseBtn = New System.Windows.Forms.Button()
-        Me.replaceReplaceAllDocsBtn = New System.Windows.Forms.Button()
         Me.replaceReplaceAllBtn = New System.Windows.Forms.Button()
         Me.replaceReplaceBtn = New System.Windows.Forms.Button()
         Me.replaceFindNextBtn = New System.Windows.Forms.Button()
@@ -71,7 +69,6 @@ Partial Class SearchReplaceForm
         '
         Me.TabPage1.Controls.Add(Me.findCloseBtn)
         Me.TabPage1.Controls.Add(Me.searchFindAllBtn)
-        Me.TabPage1.Controls.Add(Me.FindAllInAllBtn)
         Me.TabPage1.Controls.Add(Me.searchCountBtn)
         Me.TabPage1.Controls.Add(Me.searchFindBtn)
         Me.TabPage1.Controls.Add(Me.searchFindText)
@@ -101,15 +98,6 @@ Partial Class SearchReplaceForm
         Me.searchFindAllBtn.TabIndex = 11
         Me.searchFindAllBtn.Text = "Find All In Current Doc"
         Me.searchFindAllBtn.UseVisualStyleBackColor = true
-        '
-        'FindAllInAllBtn
-        '
-        Me.FindAllInAllBtn.Location = New System.Drawing.Point(395, 114)
-        Me.FindAllInAllBtn.Name = "FindAllInAllBtn"
-        Me.FindAllInAllBtn.Size = New System.Drawing.Size(87, 39)
-        Me.FindAllInAllBtn.TabIndex = 10
-        Me.FindAllInAllBtn.Text = "Find All In All Opened Docs"
-        Me.FindAllInAllBtn.UseVisualStyleBackColor = true
         '
         'searchCountBtn
         '
@@ -150,7 +138,6 @@ Partial Class SearchReplaceForm
         Me.TabPage2.Controls.Add(Me.replaceReplaceText)
         Me.TabPage2.Controls.Add(Me.Label3)
         Me.TabPage2.Controls.Add(Me.replaceCloseBtn)
-        Me.TabPage2.Controls.Add(Me.replaceReplaceAllDocsBtn)
         Me.TabPage2.Controls.Add(Me.replaceReplaceAllBtn)
         Me.TabPage2.Controls.Add(Me.replaceReplaceBtn)
         Me.TabPage2.Controls.Add(Me.replaceFindNextBtn)
@@ -182,25 +169,16 @@ Partial Class SearchReplaceForm
         '
         'replaceCloseBtn
         '
-        Me.replaceCloseBtn.Location = New System.Drawing.Point(395, 138)
+        Me.replaceCloseBtn.Location = New System.Drawing.Point(395, 159)
         Me.replaceCloseBtn.Name = "replaceCloseBtn"
         Me.replaceCloseBtn.Size = New System.Drawing.Size(87, 23)
         Me.replaceCloseBtn.TabIndex = 14
         Me.replaceCloseBtn.Text = "Close"
         Me.replaceCloseBtn.UseVisualStyleBackColor = true
         '
-        'replaceReplaceAllDocsBtn
-        '
-        Me.replaceReplaceAllDocsBtn.Location = New System.Drawing.Point(395, 96)
-        Me.replaceReplaceAllDocsBtn.Name = "replaceReplaceAllDocsBtn"
-        Me.replaceReplaceAllDocsBtn.Size = New System.Drawing.Size(87, 36)
-        Me.replaceReplaceAllDocsBtn.TabIndex = 13
-        Me.replaceReplaceAllDocsBtn.Text = "Replace All In Opened Docs"
-        Me.replaceReplaceAllDocsBtn.UseVisualStyleBackColor = true
-        '
         'replaceReplaceAllBtn
         '
-        Me.replaceReplaceAllBtn.Location = New System.Drawing.Point(395, 67)
+        Me.replaceReplaceAllBtn.Location = New System.Drawing.Point(395, 72)
         Me.replaceReplaceAllBtn.Name = "replaceReplaceAllBtn"
         Me.replaceReplaceAllBtn.Size = New System.Drawing.Size(87, 23)
         Me.replaceReplaceAllBtn.TabIndex = 12
@@ -209,7 +187,7 @@ Partial Class SearchReplaceForm
         '
         'replaceReplaceBtn
         '
-        Me.replaceReplaceBtn.Location = New System.Drawing.Point(395, 38)
+        Me.replaceReplaceBtn.Location = New System.Drawing.Point(395, 43)
         Me.replaceReplaceBtn.Name = "replaceReplaceBtn"
         Me.replaceReplaceBtn.Size = New System.Drawing.Size(87, 23)
         Me.replaceReplaceBtn.TabIndex = 11
@@ -386,7 +364,6 @@ End Sub
     Friend WithEvents directionUpRadio As RadioButton
     Friend WithEvents findCloseBtn As Button
     Friend WithEvents searchFindAllBtn As Button
-    Friend WithEvents FindAllInAllBtn As Button
     Friend WithEvents searchCountBtn As Button
     Friend WithEvents searchFindBtn As Button
     Friend WithEvents searchFindText As TextBox
@@ -394,7 +371,6 @@ End Sub
     Friend WithEvents replaceFindText As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents replaceFindNextBtn As Button
-    Friend WithEvents replaceReplaceAllDocsBtn As Button
     Friend WithEvents replaceReplaceAllBtn As Button
     Friend WithEvents replaceReplaceBtn As Button
     Friend WithEvents replaceCloseBtn As Button

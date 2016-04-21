@@ -103,4 +103,31 @@ Public Class SearchReplaceForm
             seachFindBtn_Click(Me, Nothing)
         End If
     End Sub
+
+    Public travelList As New List(Of KeyValuePair(Of Integer, Integer))
+    Private Sub searchFindAllBtn_Click(sender As Object, e As EventArgs) Handles searchFindAllBtn.Click
+        If searchFindText.Text = "" Then Exit Sub
+
+        ResetSettings()
+        MainForm.CurrentScintilla.IndicatorClearRange(0, MainForm.CurrentScintilla.TextLength)
+        travelList.Clear()
+
+        Dim numberOfTimes As Integer = 0
+        While MainForm.CurrentScintilla?.SearchInTarget(searchFindText.Text) <> -1
+            numberOfTimes += 1
+
+            'Mark the found.
+            MainForm.CurrentScintilla.IndicatorCurrent = EditorDock.IndicatorIDs.IndicatorSearchItem
+            MainForm.CurrentScintilla.IndicatorFillRange(MainForm.CurrentScintilla.TargetStart, MainForm.CurrentScintilla.TargetEnd - MainForm.CurrentScintilla.TargetStart)
+
+            'Add to the travel list to enable CTRL+SHIFT+N fast-travelling.
+            travelList.Add(New KeyValuePair(Of Integer, Integer)(MainForm.CurrentScintilla.TargetStart, MainForm.CurrentScintilla.TargetEnd))
+
+            'Prepare For Next.
+            MainForm.CurrentScintilla.TargetStart = MainForm.CurrentScintilla.TargetEnd 'Start from the last end and continue to end.
+            MainForm.CurrentScintilla.TargetEnd = MainForm.CurrentScintilla.TextLength
+        End While
+
+        MsgBox("Number of items found are: " + numberOfTimes.ToString() + vbCrLf + vbCrLf + "Use CTRL+SHIFT+N and CTRL+SHIFT+B to fast-travel in between the finds.")
+    End Sub
 End Class

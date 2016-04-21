@@ -8,10 +8,10 @@ Imports System.Text
 Public Class EditorDock
 
     'Global Vars
-    Enum IndicatorIDs
-        IndicatorParsererror = 50 'Start from 50
-        IndicatorCodeerror
-        IndicatorPhpdocerror
+    Public Enum IndicatorIDs
+        IndicatorParserError = 50 'Start from 50
+        IndicatorPawndocError
+        IndicatorSearchItem
     End Enum
     Public CodeParts As New CodeParts
 
@@ -61,6 +61,36 @@ Public Class EditorDock
             SearchReplaceForm = Nothing
             SearchReplaceForm.Show()
             SearchReplaceForm.TabControl1.SelectTab(1) 'Replace Tab.
+            Return True
+
+        ElseIf keyData = ((keys.Control Or Keys.Shift) Or Keys.N) Then
+            If SearchReplaceForm.travelList.Count > 1 Then
+                Dim nearestNext As Long = 999999999999999999
+                Dim nearestID As Integer = 0
+                For i As Integer = 0 To SearchReplaceForm.travelList.Count - 1
+                    If SearchReplaceForm.travelList(i).Key > Editor.CurrentPosition And SearchReplaceForm.travelList(i).Key < nearestNext Then
+                        nearestNext = SearchReplaceForm.travelList(i).Key
+                        nearestID = i
+                    End If
+                Next
+                Editor.SetSelection(SearchReplaceForm.travelList(nearestID).Key, SearchReplaceForm.travelList(nearestID).Value)
+                Editor.ScrollCaret()
+            End If
+            Return True
+
+        ElseIf keyData = ((keys.Control Or Keys.Shift) Or Keys.B) Then
+            If SearchReplaceForm.travelList.Count > 1 Then
+                Dim nearestNext As Long = 0
+                Dim nearestID As Integer = 0
+                For i As Integer = 0 To SearchReplaceForm.travelList.Count - 1
+                    If SearchReplaceForm.travelList(i).Key < Editor.CurrentPosition And SearchReplaceForm.travelList(i).Key > nearestNext Then
+                        nearestNext = SearchReplaceForm.travelList(i).Key
+                        nearestID = i
+                    End If
+                Next
+                Editor.SetSelection(SearchReplaceForm.travelList(nearestID).Key, SearchReplaceForm.travelList(nearestID).Value)
+                Editor.ScrollCaret()
+            End If
             Return True
 
         End If
@@ -154,6 +184,9 @@ Public Class EditorDock
         Editor.Indicators(IndicatorIDs.IndicatorParsererror).ForeColor = Color.DarkGreen
         Editor.Indicators(IndicatorIDs.IndicatorParsererror).Under = True
 
+        Editor.Indicators(IndicatorIDs.IndicatorSearchItem).Style = IndicatorStyle.FullBox
+        Editor.Indicators(IndicatorIDs.IndicatorSearchItem).ForeColor = Color.Green
+        
         'Set up auto-complete.
         AutoCompleteMenu.TargetControlWrapper = New ScintillaWrapper(Editor)
     End Sub
