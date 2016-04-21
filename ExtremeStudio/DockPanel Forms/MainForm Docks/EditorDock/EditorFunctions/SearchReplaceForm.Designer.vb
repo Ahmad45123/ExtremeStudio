@@ -45,14 +45,10 @@ Partial Class SearchReplaceForm
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.searchRegexRadio = New System.Windows.Forms.RadioButton()
         Me.searchNormalRadio = New System.Windows.Forms.RadioButton()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.directionDownRadio = New System.Windows.Forms.RadioButton()
-        Me.directionUpRadio = New System.Windows.Forms.RadioButton()
         Me.TabControl1.SuspendLayout
         Me.TabPage1.SuspendLayout
         Me.TabPage2.SuspendLayout
         Me.GroupBox1.SuspendLayout
-        Me.GroupBox2.SuspendLayout
         Me.SuspendLayout
         '
         'TabControl1
@@ -255,7 +251,7 @@ Partial Class SearchReplaceForm
         Me.GroupBox1.Controls.Add(Me.searchNormalRadio)
         Me.GroupBox1.Location = New System.Drawing.Point(135, 230)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(259, 63)
+        Me.GroupBox1.Size = New System.Drawing.Size(354, 63)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = false
         Me.GroupBox1.Text = "Search Mode"
@@ -283,47 +279,12 @@ Partial Class SearchReplaceForm
         Me.searchNormalRadio.Text = "Normal"
         Me.searchNormalRadio.UseVisualStyleBackColor = true
         '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.directionDownRadio)
-        Me.GroupBox2.Controls.Add(Me.directionUpRadio)
-        Me.GroupBox2.Location = New System.Drawing.Point(400, 230)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(93, 63)
-        Me.GroupBox2.TabIndex = 5
-        Me.GroupBox2.TabStop = false
-        Me.GroupBox2.Text = "Direction"
-        '
-        'directionDownRadio
-        '
-        Me.directionDownRadio.AutoSize = true
-        Me.directionDownRadio.Checked = true
-        Me.directionDownRadio.Location = New System.Drawing.Point(6, 40)
-        Me.directionDownRadio.Name = "directionDownRadio"
-        Me.directionDownRadio.Size = New System.Drawing.Size(52, 17)
-        Me.directionDownRadio.TabIndex = 1
-        Me.directionDownRadio.TabStop = true
-        Me.directionDownRadio.Text = "Down"
-        Me.directionDownRadio.UseVisualStyleBackColor = true
-        '
-        'directionUpRadio
-        '
-        Me.directionUpRadio.AutoSize = true
-        Me.directionUpRadio.Location = New System.Drawing.Point(6, 19)
-        Me.directionUpRadio.Name = "directionUpRadio"
-        Me.directionUpRadio.Size = New System.Drawing.Size(38, 17)
-        Me.directionUpRadio.TabIndex = 0
-        Me.directionUpRadio.TabStop = true
-        Me.directionUpRadio.Text = "Up"
-        Me.directionUpRadio.UseVisualStyleBackColor = true
-        '
         'SearchReplaceForm
         '
         Me.AcceptButton = Me.searchFindBtn
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(499, 304)
-        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.inSelCheck)
         Me.Controls.Add(Me.matchCaseCheck)
@@ -343,8 +304,6 @@ Partial Class SearchReplaceForm
         Me.TabPage2.PerformLayout
         Me.GroupBox1.ResumeLayout(false)
         Me.GroupBox1.PerformLayout
-        Me.GroupBox2.ResumeLayout(false)
-        Me.GroupBox2.PerformLayout
         Me.ResumeLayout(false)
         Me.PerformLayout
 
@@ -359,9 +318,6 @@ End Sub
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents searchRegexRadio As RadioButton
     Friend WithEvents searchNormalRadio As RadioButton
-    Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents directionDownRadio As RadioButton
-    Friend WithEvents directionUpRadio As RadioButton
     Friend WithEvents findCloseBtn As Button
     Friend WithEvents searchFindAllBtn As Button
     Friend WithEvents searchCountBtn As Button

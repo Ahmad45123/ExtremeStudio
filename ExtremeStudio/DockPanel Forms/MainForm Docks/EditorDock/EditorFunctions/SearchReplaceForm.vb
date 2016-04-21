@@ -12,6 +12,10 @@ Public Class SearchReplaceForm
         If keyData = Keys.Escape Then
             isClosing = True
             Close()
+            Return True
+        ElseIf keyData = (Keys.Control Or Keys.Space)
+            replaceReplaceBtn.PerformClick()
+            Return True
         End If
         Return MyBase.ProcessCmdKey(msg, keyData)
     End Function
@@ -74,34 +78,38 @@ Public Class SearchReplaceForm
         MsgBox("Number of items found are: " + numberOfTimes.ToString())
     End Sub
 
-    Dim isAlreadySearching As Boolean = False
-    Private Sub searchFindText_TextChanged(sender As Object, e As EventArgs) Handles searchFindText.TextChanged
-        'New search is being done: 
-        isAlreadySearching = False
-    End Sub
-    Private Sub seachFindBtn_Click(sender As Object, e As EventArgs) Handles searchFindBtn.Click
-        If searchFindText.Text = "" Then Exit Sub
-
+    Dim _isAlreadySearching As Boolean = False
+    Private sub SearchAndMark(ByVal searchText As String)
         'Only reset the settings if its new, or else: 
         'If its old, Just go with old settings to find literally next.
-        If isAlreadySearching = False Then ResetSettings()
+        If _isAlreadySearching = False Then 
+            ResetSettings()
+        Else
+            'Prepare For Next: 
+            MainForm.CurrentScintilla.TargetStart = MainForm.CurrentScintilla.TargetEnd 'Start from the last end and continue to end.
+            MainForm.CurrentScintilla.TargetEnd = MainForm.CurrentScintilla.TextLength
+        End If
 
         'No WHILE because we don't want to get all but just the next.
-        If MainForm.CurrentScintilla?.SearchInTarget(searchFindText.Text) <> -1
+        If MainForm.CurrentScintilla?.SearchInTarget(searchText) <> -1
             'First set the selection: 
             MainForm.CurrentScintilla?.SetSelection(MainForm.CurrentScintilla?.TargetStart, MainForm.CurrentScintilla?.TargetEnd)
             'Scroll to it: 
             MainForm.CurrentScintilla?.ScrollCaret()
-            'Prepare For Next.
-            MainForm.CurrentScintilla.TargetStart = MainForm.CurrentScintilla.TargetEnd 'Start from the last end and continue to end.
-            MainForm.CurrentScintilla.TargetEnd = MainForm.CurrentScintilla.TextLength
             'Set the var to true: 
-            isAlreadySearching = True
+            _isAlreadySearching = True
         Else
-            MsgBox("Reached End Of Document, Resetting.", MsgBoxStyle.Information)
-            isAlreadySearching = False
-            seachFindBtn_Click(Me, Nothing)
+            MsgBox("Reached End Of Document.", MsgBoxStyle.Information)
+            _isAlreadySearching = False
         End If
+    End sub
+    Private Sub searchFindText_TextChanged(sender As Object, e As EventArgs) Handles searchFindText.TextChanged
+        'New search is being done: 
+        _isAlreadySearching = False
+    End Sub
+    Private Sub seachFindBtn_Click(sender As Object, e As EventArgs) Handles searchFindBtn.Click
+        If searchFindText.Text = "" Then Exit Sub
+        SearchAndMark(searchFindText.Text)
     End Sub
 
     Public travelList As New List(Of KeyValuePair(Of Integer, Integer))
@@ -129,5 +137,49 @@ Public Class SearchReplaceForm
         End While
 
         MsgBox("Number of items found are: " + numberOfTimes.ToString() + vbCrLf + vbCrLf + "Use CTRL+SHIFT+N and CTRL+SHIFT+B to fast-travel in between the finds.")
+    End Sub
+
+    Private Sub replaceFindNextBtn_Click(sender As Object, e As EventArgs) Handles replaceFindNextBtn.Click
+        If replaceFindText.Text = "" Then Exit Sub
+        SearchAndMark(replaceFindText.Text)
+    End Sub
+
+    Private Sub replaceFindText_replaceReplaceText_TextChanged(sender As Object, e As EventArgs) Handles replaceFindText.TextChanged, replaceReplaceText.TextChanged
+        _isAlreadySearching = False
+    End Sub
+
+    Private Sub replaceReplaceBtn_Click(sender As Object, e As EventArgs) Handles replaceReplaceBtn.Click
+        If _isAlreadySearching Then
+            If searchRegexRadio.Checked Then
+                MainForm.CurrentScintilla.ReplaceTargetRe(replaceReplaceText.Text)
+            Else
+                MainForm.CurrentScintilla.ReplaceTarget(replaceReplaceText.Text)
+            End If
+            replaceFindNextBtn.PerformClick()
+        End If
+    End Sub
+
+    Private Sub replaceReplaceAllBtn_Click(sender As Object, e As EventArgs) Handles replaceReplaceAllBtn.Click
+        If replaceFindText.Text = "" Then Exit Sub
+
+        ResetSettings()
+
+        Dim numberOfTimes As Integer = 0
+        While MainForm.CurrentScintilla?.SearchInTarget(replaceFindText.Text) <> -1
+            numberOfTimes += 1
+
+            'Replace
+            If searchRegexRadio.Checked Then
+                MainForm.CurrentScintilla.ReplaceTargetRe(replaceReplaceText.Text)
+            Else
+                MainForm.CurrentScintilla.ReplaceTarget(replaceReplaceText.Text)
+            End If
+
+            'Prepare For Next.
+            MainForm.CurrentScintilla.TargetStart = MainForm.CurrentScintilla.TargetEnd 'Start from the last end and continue to end.
+            MainForm.CurrentScintilla.TargetEnd = MainForm.CurrentScintilla.TextLength
+        End While
+
+        MsgBox("Number of items replaced are: " + numberOfTimes.ToString())
     End Sub
 End Class
