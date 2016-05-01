@@ -305,7 +305,7 @@ Partial Class MainForm
         '
         Me.syntaxHighPanel.ButtonMoreVisible = false
         Me.syntaxHighPanel.Items.Add(Me.RibbonButton1)
-        Me.syntaxHighPanel.Text = "Syntax Highlighting"
+        Me.syntaxHighPanel.Text = "Settings"
         '
         'RibbonButton1
         '

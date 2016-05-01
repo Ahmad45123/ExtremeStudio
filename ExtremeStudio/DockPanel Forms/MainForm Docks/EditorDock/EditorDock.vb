@@ -192,10 +192,11 @@ Public Class EditorDock
     End Sub
     Private Sub EditorDock_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Add handler.
-        AddHandler SettingsForm.OnSettingsChange, AddressOf OnSetsChange
+        AddHandler SettingsForm.OnColorsSettingsChange, AddressOf OnSetsChange
 
         'ReLoad data.
-        If SettingsForm.HasBeenLoadedBefore = False Then
+        If SettingsForm.HasColorsBeenLoadedBefore = False Then
+            SettingsForm.IsGlobal = False
             SettingsForm.ReloadInfo()
         End If
 

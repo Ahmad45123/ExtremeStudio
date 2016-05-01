@@ -73,7 +73,6 @@ Public Class StartupForm
             My.Computer.FileSystem.WriteAllText(MainForm.ApplicationFiles + "/configs/recent.json", "", False)
         End If
 
-
         'Load all the recent.
         If My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/configs/recent.json") Then
             Try
@@ -101,7 +100,6 @@ Public Class StartupForm
                 verListBox.Tag.Add(pth)
             Next
         End If
-
     End Sub
 
     Private Sub nameTextBox_TextChanged(sender As Object, e As EventArgs) Handles nameTextBox.TextChanged
@@ -143,6 +141,7 @@ Public Class StartupForm
                 MainForm.CurrentProject.ProjectVersion = _versionHandler.CurrentVersion
                 MainForm.CurrentProject.CreateTables() 'Create the tables of the db.
                 MainForm.CurrentProject.SaveInfo() 'Write the default extremeStudio config.
+                MainForm.CurrentProject.CopyGlobalConfig()
                 AddNewRecent(MainForm.CurrentProject.ProjectPath) 'Add it to the recent list.
                 MainForm.Show()
                 _isClosedProgram = True : Close()
@@ -237,5 +236,10 @@ Public Class StartupForm
         If _isClosedProgram = False Then
             Application.Exit()
         End If
+    End Sub
+
+    Private Sub OpenGlobalSettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenGlobalSettingsToolStripMenuItem.Click
+        SettingsForm.IsGlobal = True
+        SettingsForm.ShowDialog()
     End Sub
 End Class

@@ -146,10 +146,6 @@ Public Class MainForm
         frm.Show()
     End Sub
 
-    Private Sub ToolStripButton6_Click(sender As Object, e As EventArgs) Handles syntaxHighPanel.Click
-        SettingsForm.ShowDialog()
-    End Sub
-
     Private Sub MainDock_ActiveDocumentChanged(sender As Object, e As EventArgs) Handles MainDock.ActiveDocumentChanged
         'Update.
         If ObjectExplorerDock.Visible And CurrentEditor IsNot Nothing Then
@@ -199,5 +195,10 @@ Public Class MainForm
         SearchReplaceForm = Nothing 'Reset the form.
         SearchReplaceForm.Show()
         SearchReplaceForm.TabControl1.SelectTab(1) 'Replace Tab.
+    End Sub
+
+    Private Sub RibbonButton1_Click(sender As Object, e As EventArgs) Handles RibbonButton1.Click
+        SettingsForm.IsGlobal = False
+        SettingsForm.ShowDialog()
     End Sub
 End Class

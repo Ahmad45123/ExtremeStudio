@@ -69,6 +69,10 @@ Public Class CurrentProjectClass
         Next
     End Sub
 
+    Public Sub CopyGlobalConfig()
+        My.Computer.FileSystem.CopyDirectory(MainForm.ApplicationFiles + "/configs/", ProjectPath + "/configs/", True)
+    End Sub
+
 #Region "Includes Codes"
     Public Sub AddInclude(inc As String, ver as string)
         Dim dt = _sqlCon.GetDataTable("SELECT * FROM `Includes` WHERE `incName` = '" + inc + "'")

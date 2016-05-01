@@ -1,79 +1,104 @@
 ﻿Imports System.ComponentModel
-Imports System.Drawing.Text
-Imports System.Text
 Imports ExtremeCore
 Imports Newtonsoft.Json
-Imports Newtonsoft.Json.JsonConverter
 Imports Newtonsoft.Json.Serialization
 
 Public Class SettingsForm
 
-    'The main colors info: 
-    Public ColorsInfo As New SyntaxInfo
+    Dim configDirPath As String = Nothing
 
-    'This is to avoid to Reload the colors when its already loaded and no mods are done.. 
-    Public ReadOnly Property HasBeenLoadedBefore As Boolean
-        Get
-            Return _hasFInished
-        End Get
-    End Property
-    Dim _hasFInished As Boolean = False
-
-    Public Event OnSettingsChange()
-
-    Public Sub ReloadInfo()
-        If Not My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/configs/themeInfo.json") Then
-            My.Computer.FileSystem.WriteAllText(MainForm.ApplicationFiles + "/configs/themeInfo.json", My.Resources.defaultThemeInfo, False)
-        End If
-
-        SyntaxInfo.LoadInfo(ColorsInfo, MainForm.ApplicationFiles + "/configs/themeInfo.json")
-
+        Public Sub ReloadInfo()
+        'Load Colors.
+        Dim configHandler As New ConfigsHandler(configDirPath + "/themeInfo.json", My.Resources.defaultThemeInfo)
+        ColorsInfo = configHandler("Colors").ToObject(Of SyntaxInfo)
         colorsSettings.SelectedObject = ColorsInfo
-        If _hasFInished = False Then _hasFInished = True
+        If _hasColorsFinished = False Then _hasColorsFinished = True
+        RaiseEvent OnColorsSettingsChange()
     End Sub
 
     Private Sub SettingsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ReloadInfo()
     End Sub
 
+    Public WriteOnly Property IsGlobal As Boolean
+        Set
+            If Value = True Then
+                configDirPath = MainForm.ApplicationFiles + "/configs/"
+                Me.Text = "Settings. [GLOBAL]"
+                ReloadInfo()
+            Else
+                configDirPath = MainForm.CurrentProject.ProjectPath + "/configs/"
+                Me.Text = "Settings. [PROJECT]"
+                ReloadInfo()
+            End If
+        End Set
+    End Property
+
+#Region "Colorizer Stuff"
+    'The main colors info: 
+    Public ColorsInfo As New SyntaxInfo
+
+    'This is to avoid to Reload the colors when its already loaded and no mods are done.. 
+    Public ReadOnly Property HasColorsBeenLoadedBefore As Boolean
+        Get
+            Return _hasColorsFinished
+        End Get
+    End Property
+    Dim _hasColorsFinished As Boolean = False
+
+    Public Event OnColorsSettingsChange()
+
     Private Sub SettingsForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        SyntaxInfo.SaveInfo(ColorsInfo, MainForm.ApplicationFiles + "/configs/themeInfo.json")
+        Dim configHandler As New ConfigsHandler(configDirPath + "/themeInfo.json")
+        configHandler("Colors") = ColorsInfo
+        configHandler.Save()
     End Sub
 
     Private Sub colorsSettings_PropertyValueChanged(s As Object, e As PropertyValueChangedEventArgs) Handles colorsSettings.PropertyValueChanged
-        RaiseEvent OnSettingsChange()
+        RaiseEvent OnColorsSettingsChange()
     End Sub
 
     Private Sub exportBtn_Click(sender As Object, e As EventArgs) Handles exportBtn.Click
-        Dim dlg As new SaveFileDialog()
+        Dim dlg As New SaveFileDialog()
         dlg.Title = "Select Target."
         dlg.Filter = "ExtremeStudio Theme (*.estheme) |*.estheme"
 
-        if dlg.ShowDialog() = DialogResult.OK
-            My.Computer.FileSystem.WriteAllText(dlg.FileName, JsonConvert.SerializeObject(ColorsInfo, Formatting.Indented), false)
+        If dlg.ShowDialog() = DialogResult.OK
+            Dim configHandler As New ConfigsHandler(dlg.FileName)
+            configHandler("Colors") = ColorsInfo
+            configHandler.Save()
             MsgBox("Exported Successfully!", MsgBoxStyle.Information)
         End If
     End Sub
 
     Private Sub importBtn_Click(sender As Object, e As EventArgs) Handles importBtn.Click
-        dim dlg as New OpenFileDialog()
+        Dim dlg As New OpenFileDialog()
         dlg.Title = "Select Source."
         dlg.Filter = "ExtremeStudio Theme (*.estheme) |*.estheme"
 
-        if dlg.ShowDialog() = DialogResult.OK
-            ColorsInfo = JsonConvert.DeserializeObject(Of SyntaxInfo)(my.Computer.FileSystem.ReadAlltext(dlg.FileName))
+        If dlg.ShowDialog() = DialogResult.OK
+            Dim configHandler As New ConfigsHandler(dlg.FileName)
+            ColorsInfo = configHandler("Colors").ToObject(Of SyntaxInfo)
             colorsSettings.SelectedObject = ColorsInfo
         End If
     End Sub
 
     Private Sub resetBtn_Click(sender As Object, e As EventArgs) Handles resetBtn.Click
-        If msgbox("Are you sure you want to reset to default ?", MsgBoxStyle.Exclamation or MsgBoxStyle.YesNo) then
-           ColorsInfo = JsonConvert.DeserializeObject(Of SyntaxInfo)(my.Resources.defaultThemeInfo)
+        If MsgBox("Are you sure you want to reset to default settings ?", MsgBoxStyle.Exclamation Or MsgBoxStyle.YesNo) Then
+            'Delete Old: 
+            My.Computer.FileSystem.DeleteFile(configDirPath + "/themeInfo.json")
+
+            'Get New
+            Dim configHandler As New ConfigsHandler(configDirPath + "/themeInfo.json", My.Resources.defaultThemeInfo)
+            ColorsInfo = configHandler("Colors").ToObject(Of SyntaxInfo)
             colorsSettings.SelectedObject = ColorsInfo
         End If
     End Sub
+#End Region
+
 End Class
 
+#Region "Syntax Colorizing Stuff"
 #Region "NoTypeConverterJsonConverter"
 Public Class NoTypeConverterJsonConverter(Of T)
     Inherits JsonConverter
@@ -97,11 +122,11 @@ Public Class NoTypeConverterJsonConverter(Of T)
     End Function
 
     Public Overrides Function ReadJson(reader As JsonReader, objectType As Type, existingValue As Object, serializer As JsonSerializer) As Object
-        Return JsonSerializer.CreateDefault(New JsonSerializerSettings() With { .ContractResolver = resolver }).Deserialize(reader, objectType)
+        Return JsonSerializer.CreateDefault(New JsonSerializerSettings() With {.ContractResolver = resolver}).Deserialize(reader, objectType)
     End Function
 
     Public Overrides Sub WriteJson(writer As JsonWriter, value As Object, serializer As JsonSerializer)
-        JsonSerializer.CreateDefault(New JsonSerializerSettings() With { .ContractResolver = resolver }).Serialize(writer, value)
+        JsonSerializer.CreateDefault(New JsonSerializerSettings() With {.ContractResolver = resolver}).Serialize(writer, value)
     End Sub
 End Class
 #End Region
@@ -113,7 +138,6 @@ Public Class StyleItem
     Public Property BackColor As Color = Color.Transparent
 End Class
 Public Class SyntaxInfo
-
     <DisplayName("Default"), Category("Language Syntax Highlighting")>
     Public Property SDefault As New StyleItem()
     <DisplayName("Integers"), Category("Language Syntax Highlighting")>
@@ -149,11 +173,5 @@ Public Class SyntaxInfo
     Public Property SEnums As New StyleItem()
     <DisplayName("Global Variables"), Category("WordSets Syntax Highlighting")>
     Public Property SGlobalVars As New StyleItem()
-
-    Public Shared Sub SaveInfo(ByRef obj As SyntaxInfo, path As String)
-        My.Computer.FileSystem.WriteAllText(path, JsonConvert.SerializeObject(obj), False)
-    End Sub
-    Public Shared Sub LoadInfo(ByRef obj As SyntaxInfo, path As String)
-        obj = JsonConvert.DeserializeObject(Of SyntaxInfo)(My.Computer.FileSystem.ReadAllText(path))
-    End Sub
 End Class
+#End Region

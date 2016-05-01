@@ -45,21 +45,24 @@ Partial Class StartupForm
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.recentListBox = New System.Windows.Forms.ListBox()
-        Me.TabControl1.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
-        Me.TabPage3.SuspendLayout()
-        Me.SuspendLayout()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.OpenGlobalSettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TabControl1.SuspendLayout
+        Me.TabPage1.SuspendLayout
+        Me.TabPage2.SuspendLayout
+        Me.TabPage3.SuspendLayout
+        Me.MenuStrip1.SuspendLayout
+        Me.SuspendLayout
         '
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.TabPage3)
-        Me.TabControl1.Location = New System.Drawing.Point(12, 12)
+        Me.TabControl1.Location = New System.Drawing.Point(12, 27)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(775, 215)
+        Me.TabControl1.Size = New System.Drawing.Size(775, 200)
         Me.TabControl1.TabIndex = 0
         '
         'TabPage1
@@ -75,10 +78,10 @@ Partial Class StartupForm
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(767, 189)
+        Me.TabPage1.Size = New System.Drawing.Size(767, 174)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Create new project"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.TabPage1.UseVisualStyleBackColor = true
         '
         'FolderBrowserDialog1
         '
@@ -102,20 +105,20 @@ Partial Class StartupForm
         Me.Button2.Size = New System.Drawing.Size(752, 30)
         Me.Button2.TabIndex = 7
         Me.Button2.Text = "Create Project"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.UseVisualStyleBackColor = true
         '
         'Label3
         '
-        Me.Label3.AutoSize = True
+        Me.Label3.AutoSize = true
         Me.Label3.Location = New System.Drawing.Point(6, 127)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(86, 13)
+        Me.Label3.Size = New System.Drawing.Size(88, 13)
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "Project location: "
         '
         'verListBox
         '
-        Me.verListBox.FormattingEnabled = True
+        Me.verListBox.FormattingEnabled = true
         Me.verListBox.Location = New System.Drawing.Point(90, 36)
         Me.verListBox.Name = "verListBox"
         Me.verListBox.Size = New System.Drawing.Size(671, 82)
@@ -130,19 +133,19 @@ Partial Class StartupForm
         '
         'Label2
         '
-        Me.Label2.AutoSize = True
+        Me.Label2.AutoSize = true
         Me.Label2.Location = New System.Drawing.Point(6, 36)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(84, 13)
+        Me.Label2.Size = New System.Drawing.Size(83, 13)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "SA-MP Version: "
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
+        Me.Label1.AutoSize = true
         Me.Label1.Location = New System.Drawing.Point(6, 13)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(77, 13)
+        Me.Label1.Size = New System.Drawing.Size(78, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Project Name: "
         '
@@ -162,51 +165,51 @@ Partial Class StartupForm
         Me.TabPage2.Size = New System.Drawing.Size(767, 189)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Load project"
-        Me.TabPage2.UseVisualStyleBackColor = True
+        Me.TabPage2.UseVisualStyleBackColor = true
         '
         'loadProjectBtn
         '
-        Me.loadProjectBtn.Enabled = False
+        Me.loadProjectBtn.Enabled = false
         Me.loadProjectBtn.Location = New System.Drawing.Point(9, 134)
         Me.loadProjectBtn.Name = "loadProjectBtn"
         Me.loadProjectBtn.Size = New System.Drawing.Size(752, 49)
         Me.loadProjectBtn.TabIndex = 7
         Me.loadProjectBtn.Text = "Load Project"
-        Me.loadProjectBtn.UseVisualStyleBackColor = True
+        Me.loadProjectBtn.UseVisualStyleBackColor = true
         '
         'projectVersion
         '
-        Me.projectVersion.AutoSize = True
+        Me.projectVersion.AutoSize = true
         Me.projectVersion.Location = New System.Drawing.Point(87, 91)
         Me.projectVersion.Name = "projectVersion"
-        Me.projectVersion.Size = New System.Drawing.Size(33, 13)
+        Me.projectVersion.Size = New System.Drawing.Size(32, 13)
         Me.projectVersion.TabIndex = 6
         Me.projectVersion.Text = "None"
         '
         'Label6
         '
-        Me.Label6.AutoSize = True
+        Me.Label6.AutoSize = true
         Me.Label6.Location = New System.Drawing.Point(6, 90)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(84, 13)
+        Me.Label6.Size = New System.Drawing.Size(86, 13)
         Me.Label6.TabIndex = 5
         Me.Label6.Text = "Project Version: "
         '
         'projectName
         '
-        Me.projectName.AutoSize = True
+        Me.projectName.AutoSize = true
         Me.projectName.Location = New System.Drawing.Point(79, 53)
         Me.projectName.Name = "projectName"
-        Me.projectName.Size = New System.Drawing.Size(33, 13)
+        Me.projectName.Size = New System.Drawing.Size(32, 13)
         Me.projectName.TabIndex = 4
         Me.projectName.Text = "None"
         '
         'Label5
         '
-        Me.Label5.AutoSize = True
+        Me.Label5.AutoSize = true
         Me.Label5.Location = New System.Drawing.Point(6, 52)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(77, 13)
+        Me.Label5.Size = New System.Drawing.Size(78, 13)
         Me.Label5.TabIndex = 3
         Me.Label5.Text = "Project Name: "
         '
@@ -214,16 +217,16 @@ Partial Class StartupForm
         '
         Me.pathTextBox.Location = New System.Drawing.Point(106, 10)
         Me.pathTextBox.Name = "pathTextBox"
-        Me.pathTextBox.ReadOnly = True
+        Me.pathTextBox.ReadOnly = true
         Me.pathTextBox.Size = New System.Drawing.Size(581, 20)
         Me.pathTextBox.TabIndex = 1
         '
         'Label4
         '
-        Me.Label4.AutoSize = True
+        Me.Label4.AutoSize = true
         Me.Label4.Location = New System.Drawing.Point(6, 13)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(89, 13)
+        Me.Label4.Size = New System.Drawing.Size(94, 13)
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "Project directory: "
         '
@@ -246,7 +249,7 @@ Partial Class StartupForm
         Me.TabPage3.Size = New System.Drawing.Size(767, 189)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Recent"
-        Me.TabPage3.UseVisualStyleBackColor = True
+        Me.TabPage3.UseVisualStyleBackColor = true
         '
         'Button3
         '
@@ -255,7 +258,7 @@ Partial Class StartupForm
         Me.Button3.Size = New System.Drawing.Size(101, 23)
         Me.Button3.TabIndex = 2
         Me.Button3.Text = "Delete Selected"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.Button3.UseVisualStyleBackColor = true
         '
         'Button1
         '
@@ -264,36 +267,55 @@ Partial Class StartupForm
         Me.Button1.Size = New System.Drawing.Size(101, 23)
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "Load Selected"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = true
         '
         'recentListBox
         '
-        Me.recentListBox.FormattingEnabled = True
-        Me.recentListBox.HorizontalScrollbar = True
+        Me.recentListBox.FormattingEnabled = true
+        Me.recentListBox.HorizontalScrollbar = true
         Me.recentListBox.Location = New System.Drawing.Point(6, 6)
         Me.recentListBox.Name = "recentListBox"
         Me.recentListBox.Size = New System.Drawing.Size(648, 173)
         Me.recentListBox.TabIndex = 0
         '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenGlobalSettingsToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(799, 24)
+        Me.MenuStrip1.TabIndex = 1
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'OpenGlobalSettingsToolStripMenuItem
+        '
+        Me.OpenGlobalSettingsToolStripMenuItem.Name = "OpenGlobalSettingsToolStripMenuItem"
+        Me.OpenGlobalSettingsToolStripMenuItem.Size = New System.Drawing.Size(130, 20)
+        Me.OpenGlobalSettingsToolStripMenuItem.Text = "Open Global Settings"
+        '
         'StartupForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(799, 237)
         Me.Controls.Add(Me.TabControl1)
+        Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.MaximizeBox = False
+        Me.MaximizeBox = false
         Me.Name = "StartupForm"
         Me.Text = "Load / Create Project"
-        Me.TabControl1.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
-        Me.TabPage2.ResumeLayout(False)
-        Me.TabPage2.PerformLayout()
-        Me.TabPage3.ResumeLayout(False)
-        Me.ResumeLayout(False)
+        Me.TabControl1.ResumeLayout(false)
+        Me.TabPage1.ResumeLayout(false)
+        Me.TabPage1.PerformLayout
+        Me.TabPage2.ResumeLayout(false)
+        Me.TabPage2.PerformLayout
+        Me.TabPage3.ResumeLayout(false)
+        Me.MenuStrip1.ResumeLayout(false)
+        Me.MenuStrip1.PerformLayout
+        Me.ResumeLayout(false)
+        Me.PerformLayout
 
-    End Sub
+End Sub
     Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
     Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
@@ -317,4 +339,6 @@ Partial Class StartupForm
     Friend WithEvents recentListBox As System.Windows.Forms.ListBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents OpenGlobalSettingsToolStripMenuItem As ToolStripMenuItem
 End Class
