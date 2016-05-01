@@ -62,7 +62,7 @@ Partial Class StartupForm
         Me.TabControl1.Location = New System.Drawing.Point(12, 27)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(775, 200)
+        Me.TabControl1.Size = New System.Drawing.Size(775, 212)
         Me.TabControl1.TabIndex = 0
         '
         'TabPage1
@@ -78,7 +78,7 @@ Partial Class StartupForm
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(767, 174)
+        Me.TabPage1.Size = New System.Drawing.Size(767, 186)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Create new project"
         Me.TabPage1.UseVisualStyleBackColor = true
@@ -162,7 +162,7 @@ Partial Class StartupForm
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(767, 189)
+        Me.TabPage2.Size = New System.Drawing.Size(767, 174)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Load project"
         Me.TabPage2.UseVisualStyleBackColor = true
@@ -246,7 +246,7 @@ Partial Class StartupForm
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(767, 189)
+        Me.TabPage3.Size = New System.Drawing.Size(767, 174)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Recent"
         Me.TabPage3.UseVisualStyleBackColor = true
@@ -297,7 +297,7 @@ Partial Class StartupForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(799, 237)
+        Me.ClientSize = New System.Drawing.Size(799, 249)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle

@@ -70,7 +70,11 @@ Public Class CurrentProjectClass
     End Sub
 
     Public Sub CopyGlobalConfig()
-        My.Computer.FileSystem.CopyDirectory(MainForm.ApplicationFiles + "/configs/", ProjectPath + "/configs/", True)
+        'Make dir.
+        If My.Computer.FileSystem.DirectoryExists(ProjectPath + "/configs") = False Then My.Computer.FileSystem.CreateDirectory(ProjectPath + "/configs")
+
+        'We will only copy the files that is project specific and not all.
+        My.Computer.FileSystem.CopyFile(MainForm.ApplicationFiles + "/configs/themeInfo.json", ProjectPath + "/configs/themeInfo.json", True)
     End Sub
 
 #Region "Includes Codes"
