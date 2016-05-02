@@ -140,21 +140,6 @@ Public Class SettingsForm
         customArgsText.Text = configHandler("customArgs")
     End Sub
 
-    Private Sub DirTexts_DoubleClick(sender As Object, e As EventArgs) Handles ouputDirText.DoubleClick, includesDirText.DoubleClick, activeDirText.DoubleClick
-        Dim dlg As New FolderBrowserDialog()
-        If dlg.ShowDialog() = DialogResult.OK Then
-            sender.Text = dlg.SelectedPath()
-        End If
-    End Sub
-
-    Private Sub reportGenDirText_DoubleClick(sender As Object, e As EventArgs) Handles reportGenDirText.DoubleClick
-        Dim dlg as New SaveFileDialog()
-        dlg.Filter = "XML File (*.xml) |*.xml"
-        If dlg.ShowDialog() = DialogResult.OK Then
-            sender.Text = dlg.FileName
-        End If
-    End Sub
-
 #End Region
 
 End Class

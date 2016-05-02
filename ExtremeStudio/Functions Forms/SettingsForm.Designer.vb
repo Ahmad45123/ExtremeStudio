@@ -44,14 +44,14 @@ Partial Class SettingsForm
         Me.Label5 = New System.Windows.Forms.Label()
         Me.debugLevelUpDown = New System.Windows.Forms.NumericUpDown()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.reportGenDirText = New System.Windows.Forms.TextBox()
+        Me.reportGenDirText = New ExtremeCore.PathTextBox()
         Me.reportGenCheck = New System.Windows.Forms.CheckBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.ouputDirText = New System.Windows.Forms.TextBox()
+        Me.ouputDirText = New ExtremeCore.PathTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.includesDirText = New System.Windows.Forms.TextBox()
+        Me.includesDirText = New ExtremeCore.PathTextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.activeDirText = New System.Windows.Forms.TextBox()
+        Me.activeDirText = New ExtremeCore.PathTextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ToolTipHandler = New System.Windows.Forms.ToolTip(Me.components)
         Me.TabControl1.SuspendLayout
@@ -302,9 +302,12 @@ Partial Class SettingsForm
         '
         Me.reportGenDirText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
             Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.reportGenDirText.Description = "Select Save Location For The Report"
         Me.reportGenDirText.Enabled = false
+        Me.reportGenDirText.Filter = "XML File (*.xml) | *.xml"
         Me.reportGenDirText.Location = New System.Drawing.Point(130, 91)
         Me.reportGenDirText.Name = "reportGenDirText"
+        Me.reportGenDirText.PathType = ExtremeCore.PathTextBox.PathTypes.FileSave
         Me.reportGenDirText.Size = New System.Drawing.Size(221, 20)
         Me.reportGenDirText.TabIndex = 12
         Me.ToolTipHandler.SetToolTip(Me.reportGenDirText, resources.GetString("reportGenDirText.ToolTip"))
@@ -331,8 +334,11 @@ Partial Class SettingsForm
         '
         Me.ouputDirText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
             Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.ouputDirText.Description = "Select The Output Directory"
+        Me.ouputDirText.Filter = Nothing
         Me.ouputDirText.Location = New System.Drawing.Point(74, 62)
         Me.ouputDirText.Name = "ouputDirText"
+        Me.ouputDirText.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
         Me.ouputDirText.Size = New System.Drawing.Size(277, 20)
         Me.ouputDirText.TabIndex = 5
         Me.ToolTipHandler.SetToolTip(Me.ouputDirText, "Output ﬁle: set the name and path of the binary output ﬁle."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Set it to null for"& _ 
@@ -351,8 +357,11 @@ Partial Class SettingsForm
         '
         Me.includesDirText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
             Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.includesDirText.Description = "Select The Includes Directory"
+        Me.includesDirText.Filter = Nothing
         Me.includesDirText.Location = New System.Drawing.Point(74, 36)
         Me.includesDirText.Name = "includesDirText"
+        Me.includesDirText.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
         Me.includesDirText.Size = New System.Drawing.Size(277, 20)
         Me.includesDirText.TabIndex = 3
         Me.ToolTipHandler.SetToolTip(Me.includesDirText, "Include path: set the path where the compiler"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"can ﬁnd the include ﬁles."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Set i"& _ 
@@ -371,8 +380,11 @@ Partial Class SettingsForm
         '
         Me.activeDirText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
             Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.activeDirText.Description = "Select The Active Directory"
+        Me.activeDirText.Filter = Nothing
         Me.activeDirText.Location = New System.Drawing.Point(74, 10)
         Me.activeDirText.Name = "activeDirText"
+        Me.activeDirText.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
         Me.activeDirText.Size = New System.Drawing.Size(277, 20)
         Me.activeDirText.TabIndex = 1
         Me.ToolTipHandler.SetToolTip(Me.activeDirText, "Directory: the ""active"" directory, where the compiler"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"should search for its inpu"& _ 
@@ -423,13 +435,9 @@ End Sub
     Friend WithEvents resetBtn As Button
     Friend WithEvents importBtn As Button
     Friend WithEvents TabPage2 As TabPage
-    Friend WithEvents activeDirText As TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents ouputDirText As TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents includesDirText As TextBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents reportGenDirText As TextBox
     Friend WithEvents reportGenCheck As CheckBox
     Friend WithEvents Label6 As Label
     Friend WithEvents optiLevelUpDown As NumericUpDown
@@ -446,4 +454,8 @@ End Sub
     Friend WithEvents Label9 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents ToolTipHandler As ToolTip
+    Friend WithEvents reportGenDirText As ExtremeCore.PathTextBox
+    Friend WithEvents ouputDirText As ExtremeCore.PathTextBox
+    Friend WithEvents includesDirText As ExtremeCore.PathTextBox
+    Friend WithEvents activeDirText As ExtremeCore.PathTextBox
 End Class

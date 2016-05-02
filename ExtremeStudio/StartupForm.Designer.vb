@@ -24,9 +24,8 @@ Partial Class StartupForm
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.FolderBrowserDialog1 = New ExtremeCore.FolderBrowserButton()
-        Me.locTextBox = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.locTextBox = New ExtremeCore.PathTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.verListBox = New System.Windows.Forms.ListBox()
         Me.nameTextBox = New System.Windows.Forms.TextBox()
@@ -38,9 +37,8 @@ Partial Class StartupForm
         Me.Label6 = New System.Windows.Forms.Label()
         Me.projectName = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.pathTextBox = New System.Windows.Forms.TextBox()
+        Me.pathTextBox = New ExtremeCore.PathTextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.FolderBrowserButton1 = New ExtremeCore.FolderBrowserButton()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -67,7 +65,6 @@ Partial Class StartupForm
         '
         'TabPage1
         '
-        Me.TabPage1.Controls.Add(Me.FolderBrowserDialog1)
         Me.TabPage1.Controls.Add(Me.Button2)
         Me.TabPage1.Controls.Add(Me.locTextBox)
         Me.TabPage1.Controls.Add(Me.Label3)
@@ -83,21 +80,6 @@ Partial Class StartupForm
         Me.TabPage1.Text = "Create new project"
         Me.TabPage1.UseVisualStyleBackColor = true
         '
-        'FolderBrowserDialog1
-        '
-        Me.FolderBrowserDialog1.Location = New System.Drawing.Point(698, 124)
-        Me.FolderBrowserDialog1.Name = "FolderBrowserDialog1"
-        Me.FolderBrowserDialog1.Size = New System.Drawing.Size(63, 21)
-        Me.FolderBrowserDialog1.TabIndex = 8
-        Me.FolderBrowserDialog1.TextControl = Me.locTextBox
-        '
-        'locTextBox
-        '
-        Me.locTextBox.Location = New System.Drawing.Point(90, 124)
-        Me.locTextBox.Name = "locTextBox"
-        Me.locTextBox.Size = New System.Drawing.Size(602, 20)
-        Me.locTextBox.TabIndex = 5
-        '
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(9, 151)
@@ -106,6 +88,16 @@ Partial Class StartupForm
         Me.Button2.TabIndex = 7
         Me.Button2.Text = "Create Project"
         Me.Button2.UseVisualStyleBackColor = true
+        '
+        'locTextBox
+        '
+        Me.locTextBox.Description = "Select the folder where to create the project."
+        Me.locTextBox.Filter = Nothing
+        Me.locTextBox.Location = New System.Drawing.Point(90, 124)
+        Me.locTextBox.Name = "locTextBox"
+        Me.locTextBox.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
+        Me.locTextBox.Size = New System.Drawing.Size(671, 20)
+        Me.locTextBox.TabIndex = 5
         '
         'Label3
         '
@@ -158,11 +150,10 @@ Partial Class StartupForm
         Me.TabPage2.Controls.Add(Me.Label5)
         Me.TabPage2.Controls.Add(Me.pathTextBox)
         Me.TabPage2.Controls.Add(Me.Label4)
-        Me.TabPage2.Controls.Add(Me.FolderBrowserButton1)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(767, 174)
+        Me.TabPage2.Size = New System.Drawing.Size(767, 186)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Load project"
         Me.TabPage2.UseVisualStyleBackColor = true
@@ -215,10 +206,12 @@ Partial Class StartupForm
         '
         'pathTextBox
         '
+        Me.pathTextBox.Description = "Select the project's folder."
+        Me.pathTextBox.Filter = Nothing
         Me.pathTextBox.Location = New System.Drawing.Point(106, 10)
         Me.pathTextBox.Name = "pathTextBox"
-        Me.pathTextBox.ReadOnly = true
-        Me.pathTextBox.Size = New System.Drawing.Size(581, 20)
+        Me.pathTextBox.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
+        Me.pathTextBox.Size = New System.Drawing.Size(655, 20)
         Me.pathTextBox.TabIndex = 1
         '
         'Label4
@@ -230,14 +223,6 @@ Partial Class StartupForm
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "Project directory: "
         '
-        'FolderBrowserButton1
-        '
-        Me.FolderBrowserButton1.Location = New System.Drawing.Point(693, 10)
-        Me.FolderBrowserButton1.Name = "FolderBrowserButton1"
-        Me.FolderBrowserButton1.Size = New System.Drawing.Size(68, 20)
-        Me.FolderBrowserButton1.TabIndex = 2
-        Me.FolderBrowserButton1.TextControl = Me.pathTextBox
-        '
         'TabPage3
         '
         Me.TabPage3.Controls.Add(Me.Button3)
@@ -246,7 +231,7 @@ Partial Class StartupForm
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(767, 174)
+        Me.TabPage3.Size = New System.Drawing.Size(767, 186)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Recent"
         Me.TabPage3.UseVisualStyleBackColor = true
@@ -323,12 +308,8 @@ End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents nameTextBox As System.Windows.Forms.TextBox
     Friend WithEvents verListBox As System.Windows.Forms.ListBox
-    Friend WithEvents locTextBox As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents FolderBrowserDialog1 As ExtremeCore.FolderBrowserButton
-    Friend WithEvents FolderBrowserButton1 As ExtremeCore.FolderBrowserButton
-    Friend WithEvents pathTextBox As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents projectName As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
@@ -341,4 +322,6 @@ End Sub
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents OpenGlobalSettingsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents locTextBox As ExtremeCore.PathTextBox
+    Friend WithEvents pathTextBox As ExtremeCore.PathTextBox
 End Class
