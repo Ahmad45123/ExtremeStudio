@@ -422,9 +422,6 @@
     <None Include="Resources\ribbon_includes.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ribbon_syntax.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\ribbon_objectExplrer.png" />
   </ItemGroup>
   <ItemGroup>
@@ -432,6 +429,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ribbon_esPlugins.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ribbon_settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ribbon_compile.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.98.1\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.98.1\build\net40\System.Data.SQLite.Core.targets')" />

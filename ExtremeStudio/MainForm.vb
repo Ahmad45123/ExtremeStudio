@@ -201,4 +201,56 @@ Public Class MainForm
         SettingsForm.IsGlobal = False
         SettingsForm.ShowDialog()
     End Sub
+
+    Private Sub compileScriptBtn_Click(sender As Object, e As EventArgs) Handles compileScriptBtn.Click
+        CompilerWorker.RunWorkerAsync(CurrentScintilla.Tag) 'The file path is the parameter.
+    End Sub
+
+    #Region "Compiler Stuff"
+    Private Sub CompilerWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles CompilerWorker.DoWork
+        'First of all, Try and save all docs.
+        Dim msgRslt = MsgBox("Would you like to save all files ?", MsgBoxStyle.YesNoCancel Or MsgBoxStyle.Exclamation)
+        If msgRslt = DialogResult.Cancel Then Exit Sub
+        If msgRslt = DialogResult.Yes Then
+            CompilerWorker.ReportProgress(1) 'Save all files.
+        End If
+
+        'Next, Create the compiler process.
+        If File.Exists(CurrentProject.ProjectPath + "/pawno/pawncc.exe") Then
+            'Start compilation process and wait till exit.
+            Dim compiler as New Process()
+            compiler.StartInfo.FileName = CurrentProject.ProjectPath + "/pawno/pawncc.exe"
+            compiler.StartInfo.Arguments = """" + e.Argument + """" + Space(1) + SettingsForm.GetCompilerArgs()
+            compiler.StartInfo.CreateNoWindow = False
+            compiler.StartInfo.RedirectStandardError = True
+            compiler.StartInfo.UseShellExecute = False
+            CompilerWorker.ReportProgress(2) 'Compiling
+            compiler.Start()
+            compiler.WaitForExit()
+
+            'Now, Get the errors/warning then parse them and return.
+            Dim errs As String = compiler.StandardError.ReadToEnd()
+            MsgBox(errs)
+        Else
+            MsgBox("The file pawncc.exe hasn't been found at the path """ + CurrentProject.ProjectPath + "/pawno/pawncc.exe" + """" + VbCrlf + "Please verify its there.")
+        End If
+    End Sub
+
+    Private Sub CompilerWorker_ProgressChanged(sender As Object, e As System.ComponentModel.ProgressChangedEventArgs) Handles CompilerWorker.ProgressChanged
+        'We will use the progress event to do stuff in the UI.
+
+        '1 = Save
+        If e.ProgressPercentage = 1 Then
+            SaveAllFiles(Me, Nothing)
+        End If
+
+        '2 = Started Compiling
+
+        '3 = Failed Compiling With Errors/Warnings.
+
+        '4 = Finished Compiling With Warnings.
+
+        '5 = Finished Compiling.
+    End Sub
+#End Region
 End Class

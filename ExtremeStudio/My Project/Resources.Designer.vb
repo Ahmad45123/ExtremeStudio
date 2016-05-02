@@ -71,7 +71,30 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to {
+        '''  &quot;Colors&quot;: {
+        '''    &quot;SDefault&quot;: {
+        '''      &quot;Font&quot;: &quot;Courier New, 10pt&quot;,
+        '''      &quot;ForeColor&quot;: &quot;Black&quot;,
+        '''      &quot;BackColor&quot;: &quot;Transparent&quot;
+        '''    },
+        '''    &quot;SInteger&quot;: {
+        '''      &quot;Font&quot;: null,
+        '''      &quot;ForeColor&quot;: &quot;Purple&quot;,
+        '''      &quot;BackColor&quot;: &quot;Transparent&quot;
+        '''    },
+        '''    &quot;SString&quot;: {
+        '''      &quot;Font&quot;: null,
+        '''      &quot;ForeColor&quot;: &quot;Firebrick&quot;,
+        '''      &quot;BackColor&quot;: &quot;Transparent&quot;
+        '''    },
+        '''    &quot;SSymbols&quot;: {
+        '''      &quot;Font&quot;: null,
+        '''      &quot;ForeColor&quot;: &quot;Purple&quot;,
+        '''      &quot;BackColor&quot;: &quot;Transparent&quot;
+        '''    },
+        '''    &quot;SSlComments&quot;: {
+        '''      &quot;F [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property defaultThemeInfo() As String
             Get
@@ -150,6 +173,16 @@ Namespace My.Resources
         Friend ReadOnly Property ribbon_closeProject() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("ribbon_closeProject", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ribbon_compile() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ribbon_compile", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -287,9 +320,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property ribbon_syntax() As System.Drawing.Bitmap
+        Friend ReadOnly Property ribbon_settings() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("ribbon_syntax", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("ribbon_settings", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

@@ -181,7 +181,10 @@
   <data name="ribbon_plugins" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ribbon_plugins.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ribbon_syntax" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ribbon_syntax.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ribbon_compile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_compile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbon_settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

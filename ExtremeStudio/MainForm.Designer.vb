@@ -58,6 +58,9 @@ Partial Class MainForm
         Me.pluginManagePanel = New System.Windows.Forms.RibbonPanel()
         Me.esPluginsManage = New System.Windows.Forms.RibbonButton()
         Me.installedPlugins = New System.Windows.Forms.RibbonPanel()
+        Me.BuildPanel = New System.Windows.Forms.RibbonPanel()
+        Me.compileScriptBtn = New System.Windows.Forms.RibbonButton()
+        Me.CompilerWorker = New System.ComponentModel.BackgroundWorker()
         Me.StatusStrip1.SuspendLayout
         Me.SuspendLayout
         '
@@ -270,6 +273,7 @@ Partial Class MainForm
         '
         Me.ideTab.Panels.Add(Me.viewPanel)
         Me.ideTab.Panels.Add(Me.syntaxHighPanel)
+        Me.ideTab.Panels.Add(Me.BuildPanel)
         Me.ideTab.Text = "IDE"
         '
         'viewPanel
@@ -309,7 +313,7 @@ Partial Class MainForm
         '
         'RibbonButton1
         '
-        Me.RibbonButton1.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_syntax
+        Me.RibbonButton1.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_settings
         Me.RibbonButton1.SmallImage = CType(resources.GetObject("RibbonButton1.SmallImage"),System.Drawing.Image)
         Me.RibbonButton1.Text = ""
         Me.RibbonButton1.ToolTip = "Modify Syntax Highlighting"
@@ -337,6 +341,23 @@ Partial Class MainForm
         '
         Me.installedPlugins.ButtonMoreVisible = false
         Me.installedPlugins.Text = "Installed Plugins"
+        '
+        'BuildPanel
+        '
+        Me.BuildPanel.ButtonMoreVisible = false
+        Me.BuildPanel.Items.Add(Me.compileScriptBtn)
+        Me.BuildPanel.Text = "Build"
+        '
+        'compileScriptBtn
+        '
+        Me.compileScriptBtn.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_compile
+        Me.compileScriptBtn.SmallImage = CType(resources.GetObject("compileScriptBtn.SmallImage"),System.Drawing.Image)
+        Me.compileScriptBtn.Text = ""
+        Me.compileScriptBtn.ToolTip = "Compile Opened Script"
+        '
+        'CompilerWorker
+        '
+        Me.CompilerWorker.WorkerReportsProgress = true
         '
         'MainForm
         '
@@ -391,4 +412,7 @@ End Sub
     Friend WithEvents objExplorerView As RibbonButton
     Friend WithEvents errorsWarningsView As RibbonButton
     Friend WithEvents esPluginsManage As RibbonButton
+    Friend WithEvents BuildPanel As RibbonPanel
+    Friend WithEvents compileScriptBtn As RibbonButton
+    Friend WithEvents CompilerWorker As System.ComponentModel.BackgroundWorker
 End Class
