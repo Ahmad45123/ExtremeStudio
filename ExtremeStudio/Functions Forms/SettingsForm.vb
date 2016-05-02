@@ -5,15 +5,12 @@ Imports Newtonsoft.Json.Serialization
 
 Public Class SettingsForm
 
-    Dim configDirPath As String = Nothing
+    Dim _configDirPath As String = Nothing
 
-        Public Sub ReloadInfo()
-        'Load Colors.
-        Dim configHandler As New ConfigsHandler(configDirPath + "/themeInfo.json", My.Resources.defaultThemeInfo)
-        ColorsInfo = configHandler("Colors").ToObject(Of SyntaxInfo)
-        colorsSettings.SelectedObject = ColorsInfo
-        If _hasColorsFinished = False Then _hasColorsFinished = True
-        RaiseEvent OnColorsSettingsChange()
+    'A function for external execution.
+    Public Sub ReloadInfo()
+        LoadColors()
+        LoadCompiler()
     End Sub
 
     Private Sub SettingsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -23,11 +20,11 @@ Public Class SettingsForm
     Public WriteOnly Property IsGlobal As Boolean
         Set
             If Value = True Then
-                configDirPath = MainForm.ApplicationFiles + "/configs/"
+                _configDirPath = MainForm.ApplicationFiles + "/configs/"
                 Me.Text = "Settings. [GLOBAL]"
                 ReloadInfo()
             Else
-                configDirPath = MainForm.CurrentProject.ProjectPath + "/configs/"
+                _configDirPath = MainForm.CurrentProject.ProjectPath + "/configs/"
                 Me.Text = "Settings. [PROJECT]"
                 ReloadInfo()
             End If
@@ -49,7 +46,7 @@ Public Class SettingsForm
     Public Event OnColorsSettingsChange()
 
     Private Sub SettingsForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        Dim configHandler As New ConfigsHandler(configDirPath + "/themeInfo.json")
+        Dim configHandler As New ConfigsHandler(_configDirPath + "/themeInfo.json")
         configHandler("Colors") = ColorsInfo
         configHandler.Save()
     End Sub
@@ -86,14 +83,72 @@ Public Class SettingsForm
     Private Sub resetBtn_Click(sender As Object, e As EventArgs) Handles resetBtn.Click
         If MsgBox("Are you sure you want to reset to default settings ?", MsgBoxStyle.Exclamation Or MsgBoxStyle.YesNo) Then
             'Delete Old: 
-            My.Computer.FileSystem.DeleteFile(configDirPath + "/themeInfo.json")
+            My.Computer.FileSystem.DeleteFile(_configDirPath + "/themeInfo.json")
 
             'Get New
-            Dim configHandler As New ConfigsHandler(configDirPath + "/themeInfo.json", My.Resources.defaultThemeInfo)
+            Dim configHandler As New ConfigsHandler(_configDirPath + "/themeInfo.json", My.Resources.defaultThemeInfo)
             ColorsInfo = configHandler("Colors").ToObject(Of SyntaxInfo)
             colorsSettings.SelectedObject = ColorsInfo
         End If
     End Sub
+
+    Private Sub LoadColors()
+        Dim configHandler As New ConfigsHandler(_configDirPath + "/themeInfo.json", My.Resources.defaultThemeInfo)
+        ColorsInfo = configHandler("Colors").ToObject(Of SyntaxInfo)
+        colorsSettings.SelectedObject = ColorsInfo
+        If _hasColorsFinished = False Then _hasColorsFinished = True
+        RaiseEvent OnColorsSettingsChange()
+    End Sub
+#End Region
+
+#Region "Compiler Stuff"
+
+    Private Sub reportGenCheck_CheckedChanged(sender As Object, e As EventArgs) Handles reportGenCheck.CheckedChanged
+        reportGenDirText.Enabled = reportGenCheck.Checked
+    End Sub
+
+    Private Sub FormClosingCompiler(sender As Object, e As EventArgs) Handles MyBase.FormClosing
+        Dim configHandler As New ConfigsHandler(_configDirPath + "/compiler.json")
+        configHandler("activeDir") = activeDirText.Text
+        configHandler("includesDir") = includesDirText.Text
+        configHandler("ouputDir") = ouputDirText.Text
+        configHandler("reportGenDir") = reportGenDirText.Text
+        configHandler("debugLevel") = debugLevelUpDown.Value
+        configHandler("optiLevel") = optiLevelUpDown.Value
+        configHandler("tabSize") = tabSizeUpDown.Value
+        configHandler("skipLines") = skipLinesUpDown.Value
+        configHandler("parentheses") = parenthesesCheck.Checked
+        configHandler("semicolon") = semiColonCheck.Checked
+        configHandler("customArgs") = customArgsText.Text
+        configHandler.Save()
+    End Sub
+
+    Private Sub LoadCompiler()
+        Dim configHandler As New ConfigsHandler(_configDirPath + "/compiler.json")
+        activeDirText.Text = configHandler("activeDir")
+        includesDirText.Text = configHandler("includesDir")
+        ouputDirText.Text = configHandler("ouputDir")
+        reportGenDirText.Text = configHandler("reportGenDir")
+        debugLevelUpDown.Value = configHandler("debugLevel")
+        optiLevelUpDown.Value = configHandler("optiLevel")
+        tabSizeUpDown.Value = configHandler("tabSize")
+        skipLinesUpDown.Value = configHandler("skipLines")
+        parenthesesCheck.Checked = configHandler("parentheses")
+        semiColonCheck.Checked = configHandler("semicolon")
+        customArgsText.Text = configHandler("customArgs")
+    End Sub
+
+    Private Sub DirTexts_DoubleClick(sender As Object, e As EventArgs) Handles reportGenDirText.DoubleClick, ouputDirText.DoubleClick, includesDirText.DoubleClick, activeDirText.DoubleClick
+        Dim dlg As New FolderBrowserDialog()
+        If dlg.ShowDialog() = DialogResult.OK Then
+            sender.Text = dlg.SelectedPath()
+        End If
+    End Sub
+
+    Private Sub activeDirText_MouseHover(sender As Object, e As EventArgs) Handles ouputDirText.MouseHover, includesDirText.MouseHover, activeDirText.MouseHover
+        'HelpToolTip.Show("Leave the textbox empty for default.", sender)
+    End Sub
+
 #End Region
 
 End Class

@@ -117,4 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="ToolTipHandler.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="optiLevelUpDown.ToolTip" xml:space="preserve">
+    <value>Optimization level: 0 = no optimizations, 1 = core instructions only, 
+2 = core &amp; supplemental instructions, 3 = core, supplemental &amp; packed instructions. 
+Optimization level 1 is compatible with JIT implementations
+(JIT = “Just In Time” compiler, a high-performance abstract machine).</value>
+  </data>
+  <data name="reportGenDirText.ToolTip" xml:space="preserve">
+    <value>Report: enable the creation of the report and optionally set
+the ﬁlename to which the extracted documentation and a
+cross-reference report will be written.
+
+Set the path to default to create report in output dir.</value>
+  </data>
 </root>

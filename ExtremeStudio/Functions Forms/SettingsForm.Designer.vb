@@ -22,6 +22,8 @@ Partial Class SettingsForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SettingsForm))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.resetBtn = New System.Windows.Forms.Button()
@@ -30,35 +32,35 @@ Partial Class SettingsForm
         Me.colorsSettings = New System.Windows.Forms.PropertyGrid()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.customArgsText = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.NumericUpDown4 = New System.Windows.Forms.NumericUpDown()
+        Me.parenthesesCheck = New System.Windows.Forms.CheckBox()
+        Me.semiColonCheck = New System.Windows.Forms.CheckBox()
+        Me.skipLinesUpDown = New System.Windows.Forms.NumericUpDown()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.NumericUpDown3 = New System.Windows.Forms.NumericUpDown()
+        Me.tabSizeUpDown = New System.Windows.Forms.NumericUpDown()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
+        Me.optiLevelUpDown = New System.Windows.Forms.NumericUpDown()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
+        Me.debugLevelUpDown = New System.Windows.Forms.NumericUpDown()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.reportGenDirText = New System.Windows.Forms.TextBox()
+        Me.reportGenCheck = New System.Windows.Forms.CheckBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.ouputDirText = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.includesDirText = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.activeDirText = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.ToolTipHandler = New System.Windows.Forms.ToolTip(Me.components)
         Me.TabControl1.SuspendLayout
         Me.TabPage1.SuspendLayout
         Me.TabPage2.SuspendLayout
-        CType(Me.NumericUpDown4,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.NumericUpDown3,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.NumericUpDown2,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.NumericUpDown1,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.skipLinesUpDown,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tabSizeUpDown,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.optiLevelUpDown,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.debugLevelUpDown,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'TabControl1
@@ -131,51 +133,56 @@ Partial Class SettingsForm
         'TabPage2
         '
         Me.TabPage2.Controls.Add(Me.Button1)
-        Me.TabPage2.Controls.Add(Me.TextBox4)
+        Me.TabPage2.Controls.Add(Me.customArgsText)
         Me.TabPage2.Controls.Add(Me.Label9)
-        Me.TabPage2.Controls.Add(Me.CheckBox4)
-        Me.TabPage2.Controls.Add(Me.CheckBox3)
-        Me.TabPage2.Controls.Add(Me.CheckBox2)
-        Me.TabPage2.Controls.Add(Me.NumericUpDown4)
+        Me.TabPage2.Controls.Add(Me.parenthesesCheck)
+        Me.TabPage2.Controls.Add(Me.semiColonCheck)
+        Me.TabPage2.Controls.Add(Me.skipLinesUpDown)
         Me.TabPage2.Controls.Add(Me.Label8)
-        Me.TabPage2.Controls.Add(Me.NumericUpDown3)
+        Me.TabPage2.Controls.Add(Me.tabSizeUpDown)
         Me.TabPage2.Controls.Add(Me.Label7)
-        Me.TabPage2.Controls.Add(Me.NumericUpDown2)
+        Me.TabPage2.Controls.Add(Me.optiLevelUpDown)
         Me.TabPage2.Controls.Add(Me.Label5)
-        Me.TabPage2.Controls.Add(Me.NumericUpDown1)
+        Me.TabPage2.Controls.Add(Me.debugLevelUpDown)
         Me.TabPage2.Controls.Add(Me.Label4)
-        Me.TabPage2.Controls.Add(Me.TextBox6)
-        Me.TabPage2.Controls.Add(Me.CheckBox1)
+        Me.TabPage2.Controls.Add(Me.reportGenDirText)
+        Me.TabPage2.Controls.Add(Me.reportGenCheck)
         Me.TabPage2.Controls.Add(Me.Label6)
-        Me.TabPage2.Controls.Add(Me.TextBox3)
+        Me.TabPage2.Controls.Add(Me.ouputDirText)
         Me.TabPage2.Controls.Add(Me.Label3)
-        Me.TabPage2.Controls.Add(Me.TextBox2)
+        Me.TabPage2.Controls.Add(Me.includesDirText)
         Me.TabPage2.Controls.Add(Me.Label2)
-        Me.TabPage2.Controls.Add(Me.TextBox1)
+        Me.TabPage2.Controls.Add(Me.activeDirText)
         Me.TabPage2.Controls.Add(Me.Label1)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(359, 406)
+        Me.TabPage2.Size = New System.Drawing.Size(359, 433)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Compiler"
         Me.TabPage2.UseVisualStyleBackColor = true
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(3, 410)
+        Me.Button1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.Button1.Location = New System.Drawing.Point(130, 402)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(86, 23)
         Me.Button1.TabIndex = 26
         Me.Button1.Text = "Reset Defaults"
         Me.Button1.UseVisualStyleBackColor = true
         '
-        'TextBox4
+        'customArgsText
         '
-        Me.TextBox4.Location = New System.Drawing.Point(11, 354)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(340, 20)
-        Me.TextBox4.TabIndex = 25
+        Me.customArgsText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.customArgsText.Location = New System.Drawing.Point(11, 354)
+        Me.customArgsText.Name = "customArgsText"
+        Me.customArgsText.Size = New System.Drawing.Size(340, 20)
+        Me.customArgsText.TabIndex = 25
+        Me.ToolTipHandler.SetToolTip(Me.customArgsText, "If there is some args that you want to compile with that aren't above, Write them"& _ 
+        " here.")
         '
         'Label9
         '
@@ -186,42 +193,39 @@ Partial Class SettingsForm
         Me.Label9.TabIndex = 24
         Me.Label9.Text = "Extra Custom Args: "
         '
-        'CheckBox4
+        'parenthesesCheck
         '
-        Me.CheckBox4.AutoSize = true
-        Me.CheckBox4.Location = New System.Drawing.Point(11, 263)
-        Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(166, 17)
-        Me.CheckBox4.TabIndex = 23
-        Me.CheckBox4.Text = "Functions need parentheses."
-        Me.CheckBox4.UseVisualStyleBackColor = true
+        Me.parenthesesCheck.AutoSize = true
+        Me.parenthesesCheck.Location = New System.Drawing.Point(11, 255)
+        Me.parenthesesCheck.Name = "parenthesesCheck"
+        Me.parenthesesCheck.Size = New System.Drawing.Size(166, 17)
+        Me.parenthesesCheck.TabIndex = 23
+        Me.parenthesesCheck.Text = "Functions need parentheses."
+        Me.ToolTipHandler.SetToolTip(Me.parenthesesCheck, "If checked, parameters passed in a function must be enclosed in parentheses.")
+        Me.parenthesesCheck.UseVisualStyleBackColor = true
         '
-        'CheckBox3
+        'semiColonCheck
         '
-        Me.CheckBox3.AutoSize = true
-        Me.CheckBox3.Location = New System.Drawing.Point(11, 286)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(182, 17)
-        Me.CheckBox3.TabIndex = 22
-        Me.CheckBox3.Text = "Lines must end with a semicolon."
-        Me.CheckBox3.UseVisualStyleBackColor = true
+        Me.semiColonCheck.AutoSize = true
+        Me.semiColonCheck.Location = New System.Drawing.Point(11, 278)
+        Me.semiColonCheck.Name = "semiColonCheck"
+        Me.semiColonCheck.Size = New System.Drawing.Size(182, 17)
+        Me.semiColonCheck.TabIndex = 22
+        Me.semiColonCheck.Text = "Lines must end with a semicolon."
+        Me.ToolTipHandler.SetToolTip(Me.semiColonCheck, "If checked, lines must end with a semi-colon.")
+        Me.semiColonCheck.UseVisualStyleBackColor = true
         '
-        'CheckBox2
+        'skipLinesUpDown
         '
-        Me.CheckBox2.AutoSize = true
-        Me.CheckBox2.Location = New System.Drawing.Point(11, 240)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(138, 17)
-        Me.CheckBox2.TabIndex = 21
-        Me.CheckBox2.Text = "Generate Assembly File"
-        Me.CheckBox2.UseVisualStyleBackColor = true
-        '
-        'NumericUpDown4
-        '
-        Me.NumericUpDown4.Location = New System.Drawing.Point(130, 195)
-        Me.NumericUpDown4.Name = "NumericUpDown4"
-        Me.NumericUpDown4.Size = New System.Drawing.Size(221, 20)
-        Me.NumericUpDown4.TabIndex = 20
+        Me.skipLinesUpDown.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.skipLinesUpDown.Location = New System.Drawing.Point(130, 195)
+        Me.skipLinesUpDown.Name = "skipLinesUpDown"
+        Me.skipLinesUpDown.Size = New System.Drawing.Size(221, 20)
+        Me.skipLinesUpDown.TabIndex = 20
+        Me.ToolTipHandler.SetToolTip(Me.skipLinesUpDown, "Skip count: the number of lines to skip in the input ﬁle before starting to compi"& _ 
+        "le; "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"for example, to skip a ““header”” in the source ﬁle which is not in a valid "& _ 
+        "pawn syntax.")
         '
         'Label8
         '
@@ -232,12 +236,16 @@ Partial Class SettingsForm
         Me.Label8.TabIndex = 19
         Me.Label8.Text = "Number of lines to skip: "
         '
-        'NumericUpDown3
+        'tabSizeUpDown
         '
-        Me.NumericUpDown3.Location = New System.Drawing.Point(68, 169)
-        Me.NumericUpDown3.Name = "NumericUpDown3"
-        Me.NumericUpDown3.Size = New System.Drawing.Size(283, 20)
-        Me.NumericUpDown3.TabIndex = 18
+        Me.tabSizeUpDown.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.tabSizeUpDown.Location = New System.Drawing.Point(68, 169)
+        Me.tabSizeUpDown.Name = "tabSizeUpDown"
+        Me.tabSizeUpDown.Size = New System.Drawing.Size(283, 20)
+        Me.tabSizeUpDown.TabIndex = 18
+        Me.ToolTipHandler.SetToolTip(Me.tabSizeUpDown, "Tab size: the number of space characters to use for a tab character. "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Without th"& _ 
+        "is option, the pawn parser will autodetect the tab.")
         '
         'Label7
         '
@@ -248,13 +256,16 @@ Partial Class SettingsForm
         Me.Label7.TabIndex = 17
         Me.Label7.Text = "Tab Size: "
         '
-        'NumericUpDown2
+        'optiLevelUpDown
         '
-        Me.NumericUpDown2.Location = New System.Drawing.Point(107, 143)
-        Me.NumericUpDown2.Maximum = New Decimal(New Integer() {3, 0, 0, 0})
-        Me.NumericUpDown2.Name = "NumericUpDown2"
-        Me.NumericUpDown2.Size = New System.Drawing.Size(244, 20)
-        Me.NumericUpDown2.TabIndex = 16
+        Me.optiLevelUpDown.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.optiLevelUpDown.Location = New System.Drawing.Point(107, 143)
+        Me.optiLevelUpDown.Maximum = New Decimal(New Integer() {3, 0, 0, 0})
+        Me.optiLevelUpDown.Name = "optiLevelUpDown"
+        Me.optiLevelUpDown.Size = New System.Drawing.Size(244, 20)
+        Me.optiLevelUpDown.TabIndex = 16
+        Me.ToolTipHandler.SetToolTip(Me.optiLevelUpDown, resources.GetString("optiLevelUpDown.ToolTip"))
         '
         'Label5
         '
@@ -265,13 +276,18 @@ Partial Class SettingsForm
         Me.Label5.TabIndex = 15
         Me.Label5.Text = "Optimization Level: "
         '
-        'NumericUpDown1
+        'debugLevelUpDown
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(107, 117)
-        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {3, 0, 0, 0})
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(244, 20)
-        Me.NumericUpDown1.TabIndex = 14
+        Me.debugLevelUpDown.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.debugLevelUpDown.Location = New System.Drawing.Point(107, 117)
+        Me.debugLevelUpDown.Maximum = New Decimal(New Integer() {3, 0, 0, 0})
+        Me.debugLevelUpDown.Name = "debugLevelUpDown"
+        Me.debugLevelUpDown.Size = New System.Drawing.Size(244, 20)
+        Me.debugLevelUpDown.TabIndex = 14
+        Me.ToolTipHandler.SetToolTip(Me.debugLevelUpDown, "Debug level: 0 = none, 1 = bounds checking and assertions only, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"2 = full symbol"& _ 
+        "ic information, 3 = full symbolic information and"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"optimizations disabled (same "& _ 
+        "as the combination -d2 and -O0).")
         '
         'Label4
         '
@@ -282,21 +298,25 @@ Partial Class SettingsForm
         Me.Label4.TabIndex = 13
         Me.Label4.Text = "Debugging Level: "
         '
-        'TextBox6
+        'reportGenDirText
         '
-        Me.TextBox6.Location = New System.Drawing.Point(130, 91)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(221, 20)
-        Me.TextBox6.TabIndex = 12
+        Me.reportGenDirText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.reportGenDirText.Enabled = false
+        Me.reportGenDirText.Location = New System.Drawing.Point(130, 91)
+        Me.reportGenDirText.Name = "reportGenDirText"
+        Me.reportGenDirText.Size = New System.Drawing.Size(221, 20)
+        Me.reportGenDirText.TabIndex = 12
+        Me.ToolTipHandler.SetToolTip(Me.reportGenDirText, resources.GetString("reportGenDirText.ToolTip"))
         '
-        'CheckBox1
+        'reportGenCheck
         '
-        Me.CheckBox1.AutoSize = true
-        Me.CheckBox1.Location = New System.Drawing.Point(109, 94)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBox1.TabIndex = 11
-        Me.CheckBox1.UseVisualStyleBackColor = true
+        Me.reportGenCheck.AutoSize = true
+        Me.reportGenCheck.Location = New System.Drawing.Point(109, 94)
+        Me.reportGenCheck.Name = "reportGenCheck"
+        Me.reportGenCheck.Size = New System.Drawing.Size(15, 14)
+        Me.reportGenCheck.TabIndex = 11
+        Me.reportGenCheck.UseVisualStyleBackColor = true
         '
         'Label6
         '
@@ -307,12 +327,16 @@ Partial Class SettingsForm
         Me.Label6.TabIndex = 10
         Me.Label6.Text = "Report Generation: "
         '
-        'TextBox3
+        'ouputDirText
         '
-        Me.TextBox3.Location = New System.Drawing.Point(74, 62)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(277, 20)
-        Me.TextBox3.TabIndex = 5
+        Me.ouputDirText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.ouputDirText.Location = New System.Drawing.Point(74, 62)
+        Me.ouputDirText.Name = "ouputDirText"
+        Me.ouputDirText.Size = New System.Drawing.Size(277, 20)
+        Me.ouputDirText.TabIndex = 5
+        Me.ToolTipHandler.SetToolTip(Me.ouputDirText, "Output ﬁle: set the name and path of the binary output ﬁle."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Set it to null for"& _ 
+        " default.")
         '
         'Label3
         '
@@ -323,12 +347,16 @@ Partial Class SettingsForm
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "Output Dir: "
         '
-        'TextBox2
+        'includesDirText
         '
-        Me.TextBox2.Location = New System.Drawing.Point(74, 36)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(277, 20)
-        Me.TextBox2.TabIndex = 3
+        Me.includesDirText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.includesDirText.Location = New System.Drawing.Point(74, 36)
+        Me.includesDirText.Name = "includesDirText"
+        Me.includesDirText.Size = New System.Drawing.Size(277, 20)
+        Me.includesDirText.TabIndex = 3
+        Me.ToolTipHandler.SetToolTip(Me.includesDirText, "Include path: set the path where the compiler"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"can ﬁnd the include ﬁles."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Set i"& _ 
+        "t to null for default.")
         '
         'Label2
         '
@@ -339,12 +367,16 @@ Partial Class SettingsForm
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Includes Dir: "
         '
-        'TextBox1
+        'activeDirText
         '
-        Me.TextBox1.Location = New System.Drawing.Point(74, 10)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(277, 20)
-        Me.TextBox1.TabIndex = 1
+        Me.activeDirText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.activeDirText.Location = New System.Drawing.Point(74, 10)
+        Me.activeDirText.Name = "activeDirText"
+        Me.activeDirText.Size = New System.Drawing.Size(277, 20)
+        Me.activeDirText.TabIndex = 1
+        Me.ToolTipHandler.SetToolTip(Me.activeDirText, "Directory: the ““active”” directory, where the compiler"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"should search for its inpu"& _ 
+        "t ﬁles and store its output ﬁles."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Set it to null for default.")
         '
         'Label1
         '
@@ -354,6 +386,15 @@ Partial Class SettingsForm
         Me.Label1.Size = New System.Drawing.Size(60, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Active Dir: "
+        '
+        'ToolTipHandler
+        '
+        Me.ToolTipHandler.AutomaticDelay = 0
+        Me.ToolTipHandler.AutoPopDelay = 10000
+        Me.ToolTipHandler.InitialDelay = 100
+        Me.ToolTipHandler.ReshowDelay = 100
+        Me.ToolTipHandler.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
+        Me.ToolTipHandler.ToolTipTitle = "Help"
         '
         'SettingsForm
         '
@@ -367,10 +408,10 @@ Partial Class SettingsForm
         Me.TabPage1.ResumeLayout(false)
         Me.TabPage2.ResumeLayout(false)
         Me.TabPage2.PerformLayout
-        CType(Me.NumericUpDown4,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.NumericUpDown3,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.NumericUpDown2,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.NumericUpDown1,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.skipLinesUpDown,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tabSizeUpDown,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.optiLevelUpDown,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.debugLevelUpDown,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
 
 End Sub
@@ -382,27 +423,27 @@ End Sub
     Friend WithEvents resetBtn As Button
     Friend WithEvents importBtn As Button
     Friend WithEvents TabPage2 As TabPage
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents activeDirText As TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents ouputDirText As TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents includesDirText As TextBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents TextBox6 As TextBox
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents reportGenDirText As TextBox
+    Friend WithEvents reportGenCheck As CheckBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents NumericUpDown2 As NumericUpDown
+    Friend WithEvents optiLevelUpDown As NumericUpDown
     Friend WithEvents Label5 As Label
-    Friend WithEvents NumericUpDown1 As NumericUpDown
+    Friend WithEvents debugLevelUpDown As NumericUpDown
     Friend WithEvents Label4 As Label
-    Friend WithEvents NumericUpDown3 As NumericUpDown
+    Friend WithEvents tabSizeUpDown As NumericUpDown
     Friend WithEvents Label7 As Label
-    Friend WithEvents NumericUpDown4 As NumericUpDown
+    Friend WithEvents skipLinesUpDown As NumericUpDown
     Friend WithEvents Label8 As Label
-    Friend WithEvents CheckBox3 As CheckBox
-    Friend WithEvents CheckBox2 As CheckBox
-    Friend WithEvents CheckBox4 As CheckBox
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents semiColonCheck As CheckBox
+    Friend WithEvents parenthesesCheck As CheckBox
+    Friend WithEvents customArgsText As TextBox
     Friend WithEvents Label9 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents ToolTipHandler As ToolTip
 End Class

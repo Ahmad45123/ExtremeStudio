@@ -75,6 +75,7 @@ Public Class CurrentProjectClass
 
         'We will only copy the files that is project specific and not all.
         My.Computer.FileSystem.CopyFile(MainForm.ApplicationFiles + "/configs/themeInfo.json", ProjectPath + "/configs/themeInfo.json", True)
+        My.Computer.FileSystem.CopyFile(MainForm.ApplicationFiles + "/configs/compiler.json", ProjectPath + "/configs/compiler.json", True)
     End Sub
 
 #Region "Includes Codes"
