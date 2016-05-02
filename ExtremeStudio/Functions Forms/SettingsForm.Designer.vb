@@ -224,7 +224,7 @@ Partial Class SettingsForm
         Me.skipLinesUpDown.Size = New System.Drawing.Size(221, 20)
         Me.skipLinesUpDown.TabIndex = 20
         Me.ToolTipHandler.SetToolTip(Me.skipLinesUpDown, "Skip count: the number of lines to skip in the input ﬁle before starting to compi"& _ 
-        "le; "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"for example, to skip a ““header”” in the source ﬁle which is not in a valid "& _ 
+        "le; "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"for example, to skip a ""header"" in the source ﬁle which is not in a valid "& _ 
         "pawn syntax.")
         '
         'Label8
@@ -375,7 +375,7 @@ Partial Class SettingsForm
         Me.activeDirText.Name = "activeDirText"
         Me.activeDirText.Size = New System.Drawing.Size(277, 20)
         Me.activeDirText.TabIndex = 1
-        Me.ToolTipHandler.SetToolTip(Me.activeDirText, "Directory: the ““active”” directory, where the compiler"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"should search for its inpu"& _ 
+        Me.ToolTipHandler.SetToolTip(Me.activeDirText, "Directory: the ""active"" directory, where the compiler"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"should search for its inpu"& _ 
         "t ﬁles and store its output ﬁles."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Set it to null for default.")
         '
         'Label1

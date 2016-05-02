@@ -112,6 +112,7 @@ Public Class SettingsForm
         configHandler("activeDir") = activeDirText.Text
         configHandler("includesDir") = includesDirText.Text
         configHandler("ouputDir") = ouputDirText.Text
+        configHandler("reportGenCheck") = reportGenCheck.Checked
         configHandler("reportGenDir") = reportGenDirText.Text
         configHandler("debugLevel") = debugLevelUpDown.Value
         configHandler("optiLevel") = optiLevelUpDown.Value
@@ -128,6 +129,7 @@ Public Class SettingsForm
         activeDirText.Text = configHandler("activeDir")
         includesDirText.Text = configHandler("includesDir")
         ouputDirText.Text = configHandler("ouputDir")
+        reportGenCheck.Checked = configHandler("reportGenCheck")
         reportGenDirText.Text = configHandler("reportGenDir")
         debugLevelUpDown.Value = configHandler("debugLevel")
         optiLevelUpDown.Value = configHandler("optiLevel")
@@ -138,15 +140,19 @@ Public Class SettingsForm
         customArgsText.Text = configHandler("customArgs")
     End Sub
 
-    Private Sub DirTexts_DoubleClick(sender As Object, e As EventArgs) Handles reportGenDirText.DoubleClick, ouputDirText.DoubleClick, includesDirText.DoubleClick, activeDirText.DoubleClick
+    Private Sub DirTexts_DoubleClick(sender As Object, e As EventArgs) Handles ouputDirText.DoubleClick, includesDirText.DoubleClick, activeDirText.DoubleClick
         Dim dlg As New FolderBrowserDialog()
         If dlg.ShowDialog() = DialogResult.OK Then
             sender.Text = dlg.SelectedPath()
         End If
     End Sub
 
-    Private Sub activeDirText_MouseHover(sender As Object, e As EventArgs) Handles ouputDirText.MouseHover, includesDirText.MouseHover, activeDirText.MouseHover
-        'HelpToolTip.Show("Leave the textbox empty for default.", sender)
+    Private Sub reportGenDirText_DoubleClick(sender As Object, e As EventArgs) Handles reportGenDirText.DoubleClick
+        Dim dlg as New SaveFileDialog()
+        dlg.Filter = "XML File (*.xml) |*.xml"
+        If dlg.ShowDialog() = DialogResult.OK Then
+            sender.Text = dlg.FileName
+        End If
     End Sub
 
 #End Region
