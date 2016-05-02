@@ -125,19 +125,39 @@ Public Class SettingsForm
     End Sub
 
     Private Sub LoadCompiler()
-        Dim configHandler As New ConfigsHandler(_configDirPath + "/compiler.json")
-        activeDirText.Text = configHandler("activeDir")
-        includesDirText.Text = configHandler("includesDir")
-        ouputDirText.Text = configHandler("ouputDir")
-        reportGenCheck.Checked = configHandler("reportGenCheck")
-        reportGenDirText.Text = configHandler("reportGenDir")
-        debugLevelUpDown.Value = configHandler("debugLevel")
-        optiLevelUpDown.Value = configHandler("optiLevel")
-        tabSizeUpDown.Value = configHandler("tabSize")
-        skipLinesUpDown.Value = configHandler("skipLines")
-        parenthesesCheck.Checked = configHandler("parentheses")
-        semiColonCheck.Checked = configHandler("semicolon")
-        customArgsText.Text = configHandler("customArgs")
+        'Basically, If its not been found, We will set the boxes with the default ourselves.
+        Try
+            Dim configHandler As New ConfigsHandler(_configDirPath + "/compiler.json")
+            activeDirText.Text = configHandler("activeDir")
+            includesDirText.Text = configHandler("includesDir")
+            ouputDirText.Text = configHandler("ouputDir")
+            reportGenCheck.Checked = configHandler("reportGenCheck")
+            reportGenDirText.Text = configHandler("reportGenDir")
+            debugLevelUpDown.Value = configHandler("debugLevel")
+            optiLevelUpDown.Value = configHandler("optiLevel")
+            tabSizeUpDown.Value = configHandler("tabSize")
+            skipLinesUpDown.Value = configHandler("skipLines")
+            parenthesesCheck.Checked = configHandler("parentheses")
+            semiColonCheck.Checked = configHandler("semicolon")
+            customArgsText.Text = configHandler("customArgs")
+        Catch ex as KeyNotFoundException
+            ResetDefault(Me, Nothing)
+        End Try
+    End Sub
+
+    Private Sub ResetDefault(sender As Object, e As EventArgs) Handles Button1.Click
+            activeDirText.Text = ""
+            includesDirText.Text = ""
+            ouputDirText.Text = ""
+            reportGenCheck.Checked = False
+            reportGenDirText.Text = ""
+            debugLevelUpDown.Value = 0.0
+            optiLevelUpDown.Value = 3.0
+            tabSizeUpDown.Value = 4.0
+            skipLinesUpDown.Value = 0.0
+            parenthesesCheck.Checked = True
+            semiColonCheck.Checked = True
+            customArgsText.Text = ""
     End Sub
 
 #End Region
