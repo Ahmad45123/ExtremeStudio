@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports System.Text
 Imports ExtremeCore
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Serialization
@@ -159,6 +160,40 @@ Public Class SettingsForm
             semiColonCheck.Checked = True
             customArgsText.Text = ""
     End Sub
+
+    Public Function GetCompilerArgs()
+        Dim allArgs As New StringBuilder
+
+        If activeDirText.Text <> "" Then
+            allArgs.Append(Space(1) + "-D=" + """" + activeDirText.Text + """")
+        End If
+        If includesDirText.Text <> "" Then
+            allArgs.Append(Space(1) + "-i=" + """" + includesDirText.Text + """")
+        End If
+        If ouputDirText.Text <> "" Then
+            allArgs.Append(Space(1) + "-o=" + """" + ouputDirText.Text + """")
+        End If
+        If reportGenCheck.Checked Then
+            allArgs.Append(Space(1) + "-r=" + """" + reportGenDirText.Text + """")
+        End If
+        allArgs.Append(Space(1) + "-d=" + debugLevelUpDown.Text)
+        allArgs.Append(Space(1) + "-O=" + optiLevelUpDown.Text)
+        allArgs.Append(Space(1) + "-t=" + tabSizeUpDown.Text)
+        allArgs.Append(Space(1) + "-s=" + skipLinesUpDown.Text)
+        If parenthesesCheck.Checked Then
+            allArgs.Append(Space(1) + "-(+")
+        Else
+            allArgs.Append(Space(1) + "-(-")
+        End If
+        If semiColonCheck.Checked Then
+            allArgs.Append(Space(1) + "-;+")
+        Else
+            allArgs.Append(Space(1) + "-;-")
+        End If
+        allArgs.Append(Space(1) + customArgsText.Text)
+
+        Return allArgs.ToString()
+    End Function
 
 #End Region
 
