@@ -167,7 +167,7 @@ Public Class SettingsForm
             reportGenCheck.Checked = False
             reportGenDirText.Text = ""
             debugLevelUpDown.Value = 0.0
-            optiLevelUpDown.Value = 3.0
+            optiLevelUpDown.Value = 2.0
             tabSizeUpDown.Value = 4.0
             skipLinesUpDown.Value = 0.0
             parenthesesCheck.Checked = True
