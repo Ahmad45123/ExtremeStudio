@@ -211,6 +211,7 @@ Partial Class StartupForm
         Me.pathTextBox.Location = New System.Drawing.Point(106, 10)
         Me.pathTextBox.Name = "pathTextBox"
         Me.pathTextBox.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
+        Me.pathTextBox.ReadOnly = true
         Me.pathTextBox.Size = New System.Drawing.Size(655, 20)
         Me.pathTextBox.TabIndex = 1
         '

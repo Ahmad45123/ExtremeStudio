@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports System.IO
 Imports System.Text
 Imports ExtremeCore
 Imports Newtonsoft.Json
@@ -9,13 +10,22 @@ Public Class SettingsForm
     Dim _configDirPath As String = Nothing
 
     'A function for external execution.
-    Public Sub ReloadInfo()
+    Public Sub ReloadInfoAll()
+        CheckPath()
+
         LoadColors()
         LoadCompiler()
     End Sub
 
+    Private Sub CheckPath()
+        'Just make sure the _configDirPath is not null.
+        If Directory.Exists(_configDirPath) = False Then
+            _configDirPath = MainForm.CurrentProject.ProjectPath + "/configs/"
+        End If
+    End Sub
+
     Private Sub SettingsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ReloadInfo()
+        ReloadInfoAll()
     End Sub
 
     Public WriteOnly Property IsGlobal As Boolean
@@ -23,11 +33,11 @@ Public Class SettingsForm
             If Value = True Then
                 _configDirPath = MainForm.ApplicationFiles + "/configs/"
                 Me.Text = "Settings. [GLOBAL]"
-                ReloadInfo()
+                ReloadInfoAll()
             Else
                 _configDirPath = MainForm.CurrentProject.ProjectPath + "/configs/"
                 Me.Text = "Settings. [PROJECT]"
-                ReloadInfo()
+                ReloadInfoAll()
             End If
         End Set
     End Property
@@ -94,6 +104,8 @@ Public Class SettingsForm
     End Sub
 
     Private Sub LoadColors()
+        CheckPath()
+
         Dim configHandler As New ConfigsHandler(_configDirPath + "/themeInfo.json", My.Resources.defaultThemeInfo)
         ColorsInfo = configHandler("Colors").ToObject(Of SyntaxInfo)
         colorsSettings.SelectedObject = ColorsInfo
@@ -126,6 +138,8 @@ Public Class SettingsForm
     End Sub
 
     Private Sub LoadCompiler()
+        CheckPath()
+
         'Basically, If its not been found, We will set the boxes with the default ourselves.
         Try
             Dim configHandler As New ConfigsHandler(_configDirPath + "/compiler.json")
@@ -162,8 +176,9 @@ Public Class SettingsForm
     End Sub
 
     Public Function GetCompilerArgs()
-        Dim allArgs As New StringBuilder
+        LoadCompiler()
 
+        Dim allArgs As New StringBuilder
         If activeDirText.Text <> "" Then
             allArgs.Append(Space(1) + "-D=" + """" + activeDirText.Text + """")
         End If

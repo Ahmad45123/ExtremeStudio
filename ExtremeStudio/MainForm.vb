@@ -3,6 +3,7 @@ Imports WeifenLuo.WinFormsUI.Docking
 Imports ScintillaNET
 Imports System.Text
 Imports System.Environment
+Imports System.Text.RegularExpressions
 
 Public Class MainForm
 
@@ -70,6 +71,22 @@ Public Class MainForm
 
     Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         MainDock.SaveAsXml(ApplicationFiles + "/configs/docksInfo.xml")
+    End Sub
+#End Region
+
+#Region "StatusStripStuff"
+    Public Sub ShowStatus(textToShow As String, msInterval As Integer, isBeep As Boolean)
+        statusLabel.Text = textToShow
+        If isBeep Then Beep()
+
+        if msInterval <> -1 Then
+            statusStripTimer.Interval = msInterval
+            statusStripTimer.Stop() : statusStripTimer.Start()
+        End If
+    End Sub
+    Private Sub statusStripTimer_Tick(sender As Object, e As EventArgs) Handles statusStripTimer.Tick
+        statusStripTimer.Stop()
+        statusLabel.Text = "Idle"
     End Sub
 #End Region
 
@@ -203,7 +220,7 @@ Public Class MainForm
     End Sub
 
     Private Sub compileScriptBtn_Click(sender As Object, e As EventArgs) Handles compileScriptBtn.Click
-        CompilerWorker.RunWorkerAsync(CurrentScintilla.Tag) 'The file path is the parameter.
+        CompilerWorker.RunWorkerAsync({CurrentScintilla.Tag, SettingsForm.GetCompilerArgs()}) 'The file path is the parameter.
     End Sub
 
     #Region "Compiler Stuff"
@@ -220,7 +237,8 @@ Public Class MainForm
             'Start compilation process and wait till exit.
             Dim compiler as New Process()
             compiler.StartInfo.FileName = CurrentProject.ProjectPath + "/pawno/pawncc.exe"
-            compiler.StartInfo.Arguments = """" + e.Argument + """" + Space(1) + SettingsForm.GetCompilerArgs()
+            compiler.StartInfo.WorkingDirectory = CurrentProject.ProjectPath + "/gamemodes/"
+            compiler.StartInfo.Arguments = """" + e.Argument(0).ToString().Replace("/", "\") + """" + Space(1) + e.Argument(1)
             compiler.StartInfo.CreateNoWindow = False
             compiler.StartInfo.RedirectStandardError = True
             compiler.StartInfo.UseShellExecute = False
@@ -230,7 +248,39 @@ Public Class MainForm
 
             'Now, Get the errors/warning then parse them and return.
             Dim errs As String = compiler.StandardError.ReadToEnd()
-            MsgBox(errs)
+            If errs = "" Then
+                CompilerWorker.ReportProgress(5) 'Done sucessfully.
+            Else
+                'Parse the list for the errors and warnings first.
+                Dim errorLevel = 0
+                Dim errorList As New List(Of ErrorsDock.ScriptErrorInfo)
+                For Each match As Match In Regex.Matches(errs, "(.*)\(([0-9]+)\)\s:\s(error|warning)\s([0-9]+):\s(.*)")
+                    Dim err As New ErrorsDock.ScriptErrorInfo
+                    err.FileName = Path.GetFileName(match.Groups(1).Value)
+                    err.LineNumber = match.Groups(2).Value
+                    If match.Groups(3).Value = "error" Then
+                        err.ErrorType = ErrorsDock.ScriptErrorInfo.ErrorTypes.Error
+                        errorLevel = 2
+                    Else
+                        err.ErrorType = ErrorsDock.ScriptErrorInfo.ErrorTypes.Warning
+                        If errorLevel < 2 Then errorLevel = 1
+                    End If
+                    err.ErrorNumber = match.Groups(4).Value
+                    err.ErrorMessage = match.Groups(5).Value
+
+                    errorList.Add(err)
+                Next
+
+                'Set result as the list.
+                e.Result = errorList
+
+                'Report status.
+                If errorLevel = 2 Then
+                    CompilerWorker.ReportProgress(3) 'Failed with errors and possible warnings.
+                ElseIf errorLevel = 1 Then
+                    CompilerWorker.ReportProgress(4) 'Sucess but warnings..
+                End If
+            End If
         Else
             MsgBox("The file pawncc.exe hasn't been found at the path """ + CurrentProject.ProjectPath + "/pawno/pawncc.exe" + """" + VbCrlf + "Please verify its there.")
         End If
@@ -245,12 +295,27 @@ Public Class MainForm
         End If
 
         '2 = Started Compiling
+        If e.ProgressPercentage = 2 Then
+            ShowStatus("Compiling...", -1, False)
 
         '3 = Failed Compiling With Errors/Warnings.
+        ElseIf e.ProgressPercentage = 3 Then
+            ShowStatus("Compiling failed with errors/warnings.", 5000, True)
 
         '4 = Finished Compiling With Warnings.
+        ElseIf e.ProgressPercentage = 4 Then
+            ShowStatus("Compiling finished successfully but there are warning(s).", 5000, True)
 
         '5 = Finished Compiling.
+        ElseIf e.ProgressPercentage = 5 Then
+            ShowStatus("Compiling finished sucessfully with no errors/warnings.", 5000, True)
+        End If
+    End Sub
+
+    Private Sub CompilerWorker_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles CompilerWorker.RunWorkerCompleted
+        'Once done, Report result to ErrorsDock.
+        ErrorsDock.ErrorWarningList = e.Result
+        ErrorsDock.RefreshErrorWarnings()
     End Sub
 #End Region
 End Class

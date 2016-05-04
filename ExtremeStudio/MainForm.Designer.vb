@@ -22,6 +22,7 @@ Partial Class MainForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
         Me.MainDock = New WeifenLuo.WinFormsUI.Docking.DockPanel()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
@@ -54,13 +55,14 @@ Partial Class MainForm
         Me.errorsWarningsView = New System.Windows.Forms.RibbonButton()
         Me.syntaxHighPanel = New System.Windows.Forms.RibbonPanel()
         Me.RibbonButton1 = New System.Windows.Forms.RibbonButton()
+        Me.BuildPanel = New System.Windows.Forms.RibbonPanel()
+        Me.compileScriptBtn = New System.Windows.Forms.RibbonButton()
         Me.customTab = New System.Windows.Forms.RibbonTab()
         Me.pluginManagePanel = New System.Windows.Forms.RibbonPanel()
         Me.esPluginsManage = New System.Windows.Forms.RibbonButton()
         Me.installedPlugins = New System.Windows.Forms.RibbonPanel()
-        Me.BuildPanel = New System.Windows.Forms.RibbonPanel()
-        Me.compileScriptBtn = New System.Windows.Forms.RibbonButton()
         Me.CompilerWorker = New System.ComponentModel.BackgroundWorker()
+        Me.statusStripTimer = New System.Windows.Forms.Timer(Me.components)
         Me.StatusStrip1.SuspendLayout
         Me.SuspendLayout
         '
@@ -318,6 +320,19 @@ Partial Class MainForm
         Me.RibbonButton1.Text = ""
         Me.RibbonButton1.ToolTip = "Modify Syntax Highlighting"
         '
+        'BuildPanel
+        '
+        Me.BuildPanel.ButtonMoreVisible = false
+        Me.BuildPanel.Items.Add(Me.compileScriptBtn)
+        Me.BuildPanel.Text = "Build"
+        '
+        'compileScriptBtn
+        '
+        Me.compileScriptBtn.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_compile
+        Me.compileScriptBtn.SmallImage = CType(resources.GetObject("compileScriptBtn.SmallImage"),System.Drawing.Image)
+        Me.compileScriptBtn.Text = ""
+        Me.compileScriptBtn.ToolTip = "Compile Opened Script"
+        '
         'customTab
         '
         Me.customTab.Panels.Add(Me.pluginManagePanel)
@@ -342,22 +357,12 @@ Partial Class MainForm
         Me.installedPlugins.ButtonMoreVisible = false
         Me.installedPlugins.Text = "Installed Plugins"
         '
-        'BuildPanel
-        '
-        Me.BuildPanel.ButtonMoreVisible = false
-        Me.BuildPanel.Items.Add(Me.compileScriptBtn)
-        Me.BuildPanel.Text = "Build"
-        '
-        'compileScriptBtn
-        '
-        Me.compileScriptBtn.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_compile
-        Me.compileScriptBtn.SmallImage = CType(resources.GetObject("compileScriptBtn.SmallImage"),System.Drawing.Image)
-        Me.compileScriptBtn.Text = ""
-        Me.compileScriptBtn.ToolTip = "Compile Opened Script"
-        '
         'CompilerWorker
         '
         Me.CompilerWorker.WorkerReportsProgress = true
+        '
+        'statusStripTimer
+        '
         '
         'MainForm
         '
@@ -415,4 +420,5 @@ End Sub
     Friend WithEvents BuildPanel As RibbonPanel
     Friend WithEvents compileScriptBtn As RibbonButton
     Friend WithEvents CompilerWorker As System.ComponentModel.BackgroundWorker
+    Friend WithEvents statusStripTimer As Timer
 End Class

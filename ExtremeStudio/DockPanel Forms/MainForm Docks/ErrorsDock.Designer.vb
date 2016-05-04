@@ -29,10 +29,10 @@ Partial Class ErrorsDock
         Me.parserErrors = New System.Windows.Forms.DataGridView()
         Me.ErrorMsg = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TabControl1.SuspendLayout()
-        Me.TabPage3.SuspendLayout()
-        CType(Me.parserErrors, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
+        Me.TabControl1.SuspendLayout
+        Me.TabPage3.SuspendLayout
+        CType(Me.parserErrors,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.SuspendLayout
         '
         'TabControl1
         '
@@ -54,7 +54,7 @@ Partial Class ErrorsDock
         Me.TabPage1.Size = New System.Drawing.Size(660, 137)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Script Errors"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.TabPage1.UseVisualStyleBackColor = true
         '
         'TabPage2
         '
@@ -64,7 +64,7 @@ Partial Class ErrorsDock
         Me.TabPage2.Size = New System.Drawing.Size(660, 137)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Script Warnings"
-        Me.TabPage2.UseVisualStyleBackColor = True
+        Me.TabPage2.UseVisualStyleBackColor = true
         '
         'TabPage3
         '
@@ -74,12 +74,12 @@ Partial Class ErrorsDock
         Me.TabPage3.Size = New System.Drawing.Size(660, 137)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Parser Errors"
-        Me.TabPage3.UseVisualStyleBackColor = True
+        Me.TabPage3.UseVisualStyleBackColor = true
         '
         'parserErrors
         '
-        Me.parserErrors.AllowUserToAddRows = False
-        Me.parserErrors.AllowUserToDeleteRows = False
+        Me.parserErrors.AllowUserToAddRows = false
+        Me.parserErrors.AllowUserToDeleteRows = false
         Me.parserErrors.BackgroundColor = System.Drawing.Color.White
         Me.parserErrors.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
         Me.parserErrors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -88,9 +88,9 @@ Partial Class ErrorsDock
         Me.parserErrors.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.parserErrors.GridColor = System.Drawing.SystemColors.AppWorkspace
         Me.parserErrors.Location = New System.Drawing.Point(0, 0)
-        Me.parserErrors.MultiSelect = False
+        Me.parserErrors.MultiSelect = false
         Me.parserErrors.Name = "parserErrors"
-        Me.parserErrors.ReadOnly = True
+        Me.parserErrors.ReadOnly = true
         Me.parserErrors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.parserErrors.Size = New System.Drawing.Size(660, 137)
         Me.parserErrors.TabIndex = 1
@@ -99,33 +99,33 @@ Partial Class ErrorsDock
         '
         Me.ErrorMsg.HeaderText = "Message"
         Me.ErrorMsg.Name = "ErrorMsg"
-        Me.ErrorMsg.ReadOnly = True
+        Me.ErrorMsg.ReadOnly = true
         '
         'Column1
         '
         Me.Column1.HeaderText = "Error Identifier"
         Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
+        Me.Column1.ReadOnly = true
         '
         'ErrorsDock
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(668, 163)
         Me.Controls.Add(Me.TabControl1)
-        Me.DockAreas = CType(((((WeifenLuo.WinFormsUI.Docking.DockAreas.Float Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft) _
-            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight) _
-            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop) _
-            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom), WeifenLuo.WinFormsUI.Docking.DockAreas)
-        Me.Font = New System.Drawing.Font("Tahoma", 8.0!)
+        Me.DockAreas = CType(((((WeifenLuo.WinFormsUI.Docking.DockAreas.Float Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft)  _
+            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight)  _
+            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop)  _
+            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom),WeifenLuo.WinFormsUI.Docking.DockAreas)
+        Me.Font = New System.Drawing.Font("Tahoma", 8!)
         Me.Name = "ErrorsDock"
         Me.Text = "Warnings & Errors"
-        Me.TabControl1.ResumeLayout(False)
-        Me.TabPage3.ResumeLayout(False)
-        CType(Me.parserErrors, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
+        Me.TabControl1.ResumeLayout(false)
+        Me.TabPage3.ResumeLayout(false)
+        CType(Me.parserErrors,System.ComponentModel.ISupportInitialize).EndInit
+        Me.ResumeLayout(false)
 
-    End Sub
+End Sub
     Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
     Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage

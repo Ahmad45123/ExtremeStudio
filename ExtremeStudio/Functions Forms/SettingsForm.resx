@@ -122,7 +122,7 @@
   </metadata>
   <data name="optiLevelUpDown.ToolTip" xml:space="preserve">
     <value>Optimization level: 0 = no optimizations, 1 = core instructions only, 
-2 = core &amp; supplemental instructions, 3 = core, supplemental &amp; packed instructions. 
+2 = core &amp; supplemental instructions. 
 Optimization level 1 is compatible with JIT implementations
 (JIT = “Just In Time” compiler, a high-performance abstract machine).</value>
   </data>

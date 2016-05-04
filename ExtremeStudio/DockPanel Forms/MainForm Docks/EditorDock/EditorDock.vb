@@ -196,8 +196,7 @@ Public Class EditorDock
 
         'ReLoad data.
         If SettingsForm.HasColorsBeenLoadedBefore = False Then
-            SettingsForm.IsGlobal = False
-            SettingsForm.ReloadInfo()
+            SettingsForm.ReloadInfoAll()
         End If
 
         'Call the function.
