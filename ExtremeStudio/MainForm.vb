@@ -220,7 +220,11 @@ Public Class MainForm
     End Sub
 
     Private Sub compileScriptBtn_Click(sender As Object, e As EventArgs) Handles compileScriptBtn.Click
-        CompilerWorker.RunWorkerAsync({CurrentScintilla.Tag, SettingsForm.GetCompilerArgs()}) 'The file path is the parameter.
+        If CompilerWorker.IsBusy Then
+            MsgBox("A compilation is already in-process.")
+        Else
+            CompilerWorker.RunWorkerAsync({CurrentScintilla.Tag, SettingsForm.GetCompilerArgs()}) 'The file path is the parameter.
+        End If
     End Sub
 
     #Region "Compiler Stuff"
@@ -250,6 +254,7 @@ Public Class MainForm
             Dim errs As String = compiler.StandardError.ReadToEnd()
             If errs = "" Then
                 CompilerWorker.ReportProgress(5) 'Done sucessfully.
+                e.Result = New List(Of ErrorsDock.ScriptErrorInfo)
             Else
                 'Parse the list for the errors and warnings first.
                 Dim errorLevel = 0
@@ -273,7 +278,7 @@ Public Class MainForm
 
                 'Set result as the list.
                 e.Result = errorList
-
+                
                 'Report status.
                 If errorLevel = 2 Then
                     CompilerWorker.ReportProgress(3) 'Failed with errors and possible warnings.
