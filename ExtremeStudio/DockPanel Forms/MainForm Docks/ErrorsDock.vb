@@ -14,7 +14,7 @@
     End Class
     
 
-    Public ErrorWarningList As List(Of ScriptErrorInfo)
+    Public ErrorWarningList As New List(Of ScriptErrorInfo)
     Public Sub RefreshErrorWarnings()
         errorsWarnsGrid.Rows.Clear()
 
@@ -34,5 +34,12 @@
 
     Private Sub showWarnsCheck_CheckedChanged(sender As Object, e As EventArgs) Handles showWarnsCheck.CheckedChanged, showErrorsCheck.CheckedChanged
         RefreshErrorWarnings()
+    End Sub
+
+    Private Sub errorsWarnsGrid_CellMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles errorsWarnsGrid.CellMouseDoubleClick
+        If e.RowIndex = -1 Then Exit Sub
+
+        MainForm.CurrentScintilla?.Lines(errorsWarnsGrid.Rows(e.RowIndex).Cells(2).Value - 1).Goto()
+        MainForm.CurrentScintilla?.Select()
     End Sub
 End Class

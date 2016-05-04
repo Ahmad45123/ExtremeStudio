@@ -243,7 +243,7 @@ Public Class MainForm
             compiler.StartInfo.FileName = CurrentProject.ProjectPath + "/pawno/pawncc.exe"
             compiler.StartInfo.WorkingDirectory = CurrentProject.ProjectPath + "/gamemodes/"
             compiler.StartInfo.Arguments = """" + e.Argument(0).ToString().Replace("/", "\") + """" + Space(1) + e.Argument(1)
-            compiler.StartInfo.CreateNoWindow = False
+            compiler.StartInfo.CreateNoWindow = True
             compiler.StartInfo.RedirectStandardError = True
             compiler.StartInfo.UseShellExecute = False
             CompilerWorker.ReportProgress(2) 'Compiling
