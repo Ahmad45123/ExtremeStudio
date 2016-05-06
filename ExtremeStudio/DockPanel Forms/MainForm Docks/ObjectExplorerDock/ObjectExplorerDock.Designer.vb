@@ -30,18 +30,18 @@ Partial Class ObjectExplorerDock
         Me.EditItemsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SearchTextBox = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.MenuStrip.SuspendLayout()
-        Me.SuspendLayout()
+        Me.MenuStrip.SuspendLayout
+        Me.SuspendLayout
         '
         'treeView
         '
-        Me.treeView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.treeView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
+            Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.treeView.ContextMenuStrip = Me.MenuStrip
         Me.treeView.Location = New System.Drawing.Point(0, 21)
         Me.treeView.Name = "treeView"
-        Me.treeView.ShowNodeToolTips = True
+        Me.treeView.ShowNodeToolTips = true
         Me.treeView.Size = New System.Drawing.Size(270, 381)
         Me.treeView.TabIndex = 0
         '
@@ -77,7 +77,7 @@ Partial Class ObjectExplorerDock
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
+        Me.Label1.AutoSize = true
         Me.Label1.BackColor = System.Drawing.Color.White
         Me.Label1.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.Label1.ForeColor = System.Drawing.Color.DarkGray
@@ -89,24 +89,24 @@ Partial Class ObjectExplorerDock
         '
         'ObjectExplorerDock
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(270, 402)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.SearchTextBox)
         Me.Controls.Add(Me.treeView)
-        Me.DockAreas = CType(((((WeifenLuo.WinFormsUI.Docking.DockAreas.Float Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft) _
-            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight) _
-            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop) _
-            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom), WeifenLuo.WinFormsUI.Docking.DockAreas)
-        Me.Font = New System.Drawing.Font("Tahoma", 8.0!)
+        Me.DockAreas = CType(((((WeifenLuo.WinFormsUI.Docking.DockAreas.Float Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft)  _
+            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight)  _
+            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop)  _
+            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom),WeifenLuo.WinFormsUI.Docking.DockAreas)
+        Me.Font = New System.Drawing.Font("Tahoma", 8!)
         Me.Name = "ObjectExplorerDock"
         Me.Text = "Object Explorer"
-        Me.MenuStrip.ResumeLayout(False)
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        Me.MenuStrip.ResumeLayout(false)
+        Me.ResumeLayout(false)
+        Me.PerformLayout
 
-    End Sub
+End Sub
     Friend WithEvents treeView As System.Windows.Forms.TreeView
     Friend WithEvents MenuStrip As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents EditItemsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem

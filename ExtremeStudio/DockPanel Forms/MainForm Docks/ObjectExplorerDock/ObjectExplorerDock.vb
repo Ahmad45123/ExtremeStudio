@@ -1,5 +1,7 @@
 ﻿Imports System.IO
+Imports System.Text.RegularExpressions
 Imports ExtremeParser
+Imports ScintillaNET
 
 Public Class ObjectExplorerDock
     Dim _nodeState As ExtremeCore.treeNodeStateSaving = New ExtremeCore.treeNodeStateSaving
@@ -32,11 +34,13 @@ Public Class ObjectExplorerDock
         For Each key In parser.Defines.FindAll(Function(x) x.DefineName.Contains(searchTerm))
             Dim nde = defines.Nodes.Add(key.DefineName)
             nde.ToolTipText = "Define Value: " + vbCrLf + key.DefineValue
+            nde.Tag = "define"
         Next
 
         For Each key In parser.Macros.FindAll(Function(x) x.DefineName.Contains(searchTerm))
             Dim nde = macros.Nodes.Add(key.DefineName)
             nde.ToolTipText = "Define Value: " + vbCrLf + key.DefineValue
+            nde.Tag = "define"
         Next
 
         For Each funcs In parser.Functions.FindAll(Function(x) x.FuncName.Contains(searchTerm))
@@ -48,6 +52,7 @@ Public Class ObjectExplorerDock
                     Dim node = itm.Nodes.Add(funcs.FuncName)
                     node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, funcs).ToolTipText
                     done = True 'To skip the `Else if it wasn't used.`
+                    node.Tag = "function"
                     Exit For
                 End If
             Next
@@ -57,6 +62,7 @@ Public Class ObjectExplorerDock
             'Else if it wasn't used.
             Dim nde = functions.Nodes.Add(funcs.FuncName)
             nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, funcs).ToolTipText
+            nde.Tag = "function"
         Next
 
         For Each publicFunc In parser.Publics.FindAll(Function(x) x.FuncName.Contains(searchTerm))
@@ -68,6 +74,7 @@ Public Class ObjectExplorerDock
                     Dim node = itm.Nodes.Add(publicFunc.FuncName)
                     node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, publicFunc).ToolTipText
                     done = True 'To skip the `Else if it wasn't used.`
+                    node.Tag = "public"
                     Exit For
                 End If
             Next
@@ -77,6 +84,7 @@ Public Class ObjectExplorerDock
             'Else if it wasn't used.
             Dim nde = publics.Nodes.Add(publicFunc.FuncName)
             nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, publicFunc).ToolTipText
+            nde.Tag = "public"
         Next
 
         For Each stock In parser.Stocks.FindAll(Function(x) x.FuncName.Contains(searchTerm))
@@ -88,6 +96,7 @@ Public Class ObjectExplorerDock
                     Dim node = itm.Nodes.Add(stock.FuncName)
                     node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, stock).ToolTipText
                     done = True 'To skip the `Else if it wasn't used.`
+                    node.Tag = "stock"
                     Exit For
                 End If
             Next
@@ -97,6 +106,7 @@ Public Class ObjectExplorerDock
             'Else if it wasn't used.
             Dim nde = stocks.Nodes.Add(stock.FuncName)
             nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, stock).ToolTipText
+            nde.Tag = "stock"
         Next
 
         For Each native In parser.Natives.FindAll(Function(x) x.FuncName.Contains(searchTerm))
@@ -108,6 +118,7 @@ Public Class ObjectExplorerDock
                     Dim node = itm.Nodes.Add(native.FuncName)
                     node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, native).ToolTipText
                     done = True 'To skip the `Else if it wasn't used.`
+                    node.Tag = "native"
                     Exit For
                 End If
             Next
@@ -117,6 +128,7 @@ Public Class ObjectExplorerDock
             'Else if it wasn't used.
             Dim nde = natives.Nodes.Add(native.FuncName)
             nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, native).ToolTipText
+            nde.Tag = "native"
         Next
 
         'Set the Root tags.
@@ -184,6 +196,31 @@ Public Class ObjectExplorerDock
         If e.KeyChar = ChrW(Keys.Return) Then
             refreshTreeView(MainForm.CurrentEditor.codeParts)
             e.Handled = True
+        End If
+    End Sub
+
+    Private Sub FindAndGoto(rgx As string)
+        If Mainform.CurrentScintilla Is Nothing Then Exit Sub
+        Dim match = Regex.Match(Mainform.CurrentScintilla.GetTextRange(0, Mainform.CurrentScintilla.TextLength), rgx, RegexOptions.Multiline)
+        If match.Index <> 0 And match.Length <> 0 Then
+            MainForm.CurrentScintilla.SetSelection(match.Index, match.Index + match.Length)
+            Mainform.CurrentScintilla.ScrollCaret()
+        End If
+        'I could have just used ScintillaNEts regex here but it for some reason doesn't provide multiline regex which is needed for accurancy.
+    End Sub
+
+    Private Sub treeView_NodeMouseDoubleClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles treeView.NodeMouseDoubleClick
+        If e.Node.Tag = "define" Then
+            FindAndGoto("^[ \t]*[#]define[ \t]+" + Regex.Escape(e.Node.Text) + "[ \t]+(?:\\\s+)?(?>(?<value>[^\\\n\r]+)[ \t]*(?:\\\s+)?)*")
+        ElseIf e.Node.Tag = "function" Then
+            FindAndGoto("^[ \t]*(?:\sstatic\s+stock\s+|\sstock\s+static\s+|\sstatic\s+)?" + Regex.Escape(e.Node.Text) + "\((.*)\)(?!;)\s*{")
+        ElseIf e.Node.Tag = "public" Then
+            FindAndGoto("public[ \t]+" + Regex.Escape(e.Node.Text) + "[ \t]*\((.*)\)\s*{")
+        ElseIf e.Node.Tag = "stock" Then
+            FindAndGoto("stock[ \t]+" + Regex.Escape(e.Node.Text) + "[ \t]*\((.*)\)\s*{")
+        ElseIf e.Node.Tag = "native" Then
+            FIndAndGoto("native[ \t]+" + Regex.Escape(e.Node.Text) + "[ \t]*?\((.*)\);")
+            
         End If
     End Sub
 End Class

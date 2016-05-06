@@ -66,7 +66,7 @@ Public Class Functions
         Next
 
         'Functions in General.
-        For Each match As Match In Regex.Matches(code, "^[ \t]*(?!" + funcLikeKeywords + ")(?:\sstatic\s+stock\s+|\sstock\s+static\s+|\sstatic\s+)?([^ \t\n\r]+)\((.*)\)(?!;)\s*{", RegexOptions.Multiline)
+        For Each match As Match In Regex.Matches(code, "^[ \t]*(?!" + funcLikeKeywords + ")(?:\sstatic\s+stock\s+|\sstock\s+static\s+|\sstatic\s+)?([a-zA-Z1-3_@:]+)\((.*)\)(?!;)\s*{", RegexOptions.Multiline)
             Dim funcName As String = Regex.Replace(Match.Groups(1).Value, "\s", "")
             Dim funcParams As String = Regex.Replace(Match.Groups(2).Value, "\s", "")
             Try
