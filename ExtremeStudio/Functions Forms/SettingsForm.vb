@@ -156,11 +156,12 @@ Public Class SettingsForm
             semiColonCheck.Checked = configHandler("semicolon")
             customArgsText.Text = configHandler("customArgs")
         Catch ex as KeyNotFoundException
-            ResetDefault(Me, Nothing)
+            ResetDefaultCompiler(Me, Nothing)
+            FormClosingCompiler(Me, Nothing)
         End Try
     End Sub
 
-    Private Sub ResetDefault(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub ResetDefaultCompiler(sender As Object, e As EventArgs) Handles Button1.Click
             activeDirText.Text = ""
             includesDirText.Text = ""
             ouputDirText.Text = ""

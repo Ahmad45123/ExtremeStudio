@@ -73,10 +73,14 @@ Public Class StartupForm
             My.Computer.FileSystem.WriteAllText(MainForm.ApplicationFiles + "/configs/recent.json", "", False)
         End If
 
+        'Setting the IsGlobal in Settings will make sure the settings are in place and correct.
+        SettingsForm.IsGlobal = True
+
         'Load all the recent.
         If My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/configs/recent.json") Then
             Try
                 Recent = JsonConvert.DeserializeObject(Of List(Of String))(My.Computer.FileSystem.ReadAllText(MainForm.ApplicationFiles + "/configs/recent.json"))
+                If Recent Is Nothing Then Recent = New List(Of String)
             Catch ex As Exception
             End Try
         End If
@@ -197,10 +201,12 @@ Public Class StartupForm
             recentListBox.Items.Clear()
 
             'Get recent list.
-            For Each str As String In Recent
-                If str Is Nothing Then Continue For
-                recentListBox.Items.Add(str)
-            Next
+            If recent IsNot Nothing Then
+                For Each str As String In Recent
+                    If str Is Nothing Then Continue For
+                    recentListBox.Items.Add(str)
+                Next
+            End If
         End If
     End Sub
 
