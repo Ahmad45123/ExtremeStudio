@@ -7,7 +7,7 @@ Public Class ObjectExplorerDock
     Dim _nodeState As ExtremeCore.treeNodeStateSaving = New ExtremeCore.treeNodeStateSaving
 
 #Region "Funcs"
-    Public Function GetTreeViewPart(parser As ExtremeParser.CodeParts, searchTerm As String)
+    Public Function GetTreeViewPart(parser As ExtremeParser.CodeParts, searchTerm As String, tag as String)
         If parser Is Nothing Then Return Nothing
 
         Dim mainNode As New TreeNode With {
@@ -21,8 +21,6 @@ Public Class ObjectExplorerDock
         Dim stocks = mainNode.Nodes.Add("Stocks") : stocks.Tag = "Root"
         Dim natives = mainNode.Nodes.Add("Natives") : natives.Tag = "Root"
 
-        Dim filename As String = Path.GetFileNameWithoutExtension(MainForm.CurrentScintilla.Tag)
-
         'Create the custom Roots.
         Dim listCustom As New List(Of TreeNode)
         For Each itm In MainForm.currentProject.objectExplorerItems
@@ -34,13 +32,13 @@ Public Class ObjectExplorerDock
         For Each key In parser.Defines.FindAll(Function(x) x.DefineName.Contains(searchTerm))
             Dim nde = defines.Nodes.Add(key.DefineName)
             nde.ToolTipText = "Define Value: " + vbCrLf + key.DefineValue
-            nde.Tag = "define"
+            nde.Tag = "define|" + tag
         Next
 
         For Each key In parser.Macros.FindAll(Function(x) x.DefineName.Contains(searchTerm))
             Dim nde = macros.Nodes.Add(key.DefineName)
             nde.ToolTipText = "Define Value: " + vbCrLf + key.DefineValue
-            nde.Tag = "define"
+            nde.Tag = "define|" + tag
         Next
 
         For Each funcs In parser.Functions.FindAll(Function(x) x.FuncName.Contains(searchTerm))
@@ -52,7 +50,7 @@ Public Class ObjectExplorerDock
                     Dim node = itm.Nodes.Add(funcs.FuncName)
                     node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, funcs).ToolTipText
                     done = True 'To skip the `Else if it wasn't used.`
-                    node.Tag = "function"
+                    node.Tag = "function|" + tag
                     Exit For
                 End If
             Next
@@ -62,7 +60,7 @@ Public Class ObjectExplorerDock
             'Else if it wasn't used.
             Dim nde = functions.Nodes.Add(funcs.FuncName)
             nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, funcs).ToolTipText
-            nde.Tag = "function"
+            nde.Tag = "function|" + tag
         Next
 
         For Each publicFunc In parser.Publics.FindAll(Function(x) x.FuncName.Contains(searchTerm))
@@ -74,7 +72,7 @@ Public Class ObjectExplorerDock
                     Dim node = itm.Nodes.Add(publicFunc.FuncName)
                     node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, publicFunc).ToolTipText
                     done = True 'To skip the `Else if it wasn't used.`
-                    node.Tag = "public"
+                    node.Tag = "public|" + tag
                     Exit For
                 End If
             Next
@@ -84,7 +82,7 @@ Public Class ObjectExplorerDock
             'Else if it wasn't used.
             Dim nde = publics.Nodes.Add(publicFunc.FuncName)
             nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, publicFunc).ToolTipText
-            nde.Tag = "public"
+            nde.Tag = "public|" + tag
         Next
 
         For Each stock In parser.Stocks.FindAll(Function(x) x.FuncName.Contains(searchTerm))
@@ -96,7 +94,7 @@ Public Class ObjectExplorerDock
                     Dim node = itm.Nodes.Add(stock.FuncName)
                     node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, stock).ToolTipText
                     done = True 'To skip the `Else if it wasn't used.`
-                    node.Tag = "stock"
+                    node.Tag = "stock|" + tag
                     Exit For
                 End If
             Next
@@ -106,7 +104,7 @@ Public Class ObjectExplorerDock
             'Else if it wasn't used.
             Dim nde = stocks.Nodes.Add(stock.FuncName)
             nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, stock).ToolTipText
-            nde.Tag = "stock"
+            nde.Tag = "stock|" + tag
         Next
 
         For Each native In parser.Natives.FindAll(Function(x) x.FuncName.Contains(searchTerm))
@@ -118,7 +116,7 @@ Public Class ObjectExplorerDock
                     Dim node = itm.Nodes.Add(native.FuncName)
                     node.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, native).ToolTipText
                     done = True 'To skip the `Else if it wasn't used.`
-                    node.Tag = "native"
+                    node.Tag = "native|" + tag
                     Exit For
                 End If
             Next
@@ -128,7 +126,7 @@ Public Class ObjectExplorerDock
             'Else if it wasn't used.
             Dim nde = natives.Nodes.Add(native.FuncName)
             nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, native).ToolTipText
-            nde.Tag = "native"
+            nde.Tag = "native|" + tag
         Next
 
         'Set the Root tags.
@@ -146,7 +144,7 @@ Public Class ObjectExplorerDock
         treeView.Nodes.Clear()
 
         'Start by adding the current file.
-        Dim node As TreeNode = getTreeViewPart(parts, SearchTextBox.Text)
+        Dim node As TreeNode = getTreeViewPart(parts, SearchTextBox.Text, "current")
         node.Text = "Current File"
         treeView.Nodes.Add(node)
 
@@ -156,7 +154,7 @@ Public Class ObjectExplorerDock
         }
         Dim allIncs = parts.FlattenIncludes
         For i As Integer = 1 To allIncs.Count - 1 'Loop through all skipping ID 0.
-            parentNode.Nodes.Add(getTreeViewPart(allIncs(i), SearchTextBox.Text))
+            parentNode.Nodes.Add(getTreeViewPart(allIncs(i), SearchTextBox.Text, allIncs(i).FilePath))
         Next
 
         'Add to list.
@@ -210,17 +208,33 @@ Public Class ObjectExplorerDock
     End Sub
 
     Private Sub treeView_NodeMouseDoubleClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles treeView.NodeMouseDoubleClick
-        If e.Node.Tag = "define" Then
+        Dim filepath As String = e.Node.Tag.Split("|")(1)
+        If filepath <> "current" Then
+            'First, Loop throuhg all opened tabs and see if its already opened there.
+            Dim isFound as Boolean = False
+            For Each doc In Mainform.MainDock.Documents
+                If doc.DockHandler.Form.Controls("Editor").Tag = filepath Then
+                    doc.DockHandler.Activate()
+                    isFound = True
+                End If
+            Next
+
+            If isFound = False Then
+                'If not found, Open that file.
+                Mainform.OpenFile(filepath)
+            End If
+        End If
+
+        If e.Node.Tag.StartsWith("define") Then
             FindAndGoto("^[ \t]*[#]define[ \t]+" + Regex.Escape(e.Node.Text) + "[ \t]+(?:\\\s+)?(?>(?<value>[^\\\n\r]+)[ \t]*(?:\\\s+)?)*")
-        ElseIf e.Node.Tag = "function" Then
+        ElseIf e.Node.Tag.StartsWith("function") Then
             FindAndGoto("^[ \t]*(?:\sstatic\s+stock\s+|\sstock\s+static\s+|\sstatic\s+)?" + Regex.Escape(e.Node.Text) + "\((.*)\)(?!;)\s*{")
-        ElseIf e.Node.Tag = "public" Then
+        ElseIf e.Node.Tag.StartsWith("public") Then
             FindAndGoto("public[ \t]+" + Regex.Escape(e.Node.Text) + "[ \t]*\((.*)\)\s*{")
-        ElseIf e.Node.Tag = "stock" Then
+        ElseIf e.Node.Tag.StartsWith("stock") Then
             FindAndGoto("stock[ \t]+" + Regex.Escape(e.Node.Text) + "[ \t]*\((.*)\)\s*{")
-        ElseIf e.Node.Tag = "native" Then
+        ElseIf e.Node.Tag.StartsWith("native") Then
             FIndAndGoto("native[ \t]+" + Regex.Escape(e.Node.Text) + "[ \t]*?\((.*)\);")
-            
         End If
     End Sub
 End Class
