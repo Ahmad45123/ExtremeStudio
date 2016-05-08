@@ -4,6 +4,7 @@ Imports System.Text.RegularExpressions
 Imports ExtremeStudio.AutoCompleteItemEx
 Imports ExtremeCore
 Imports System.Text
+Imports System.IO
 
 Public Class EditorDock
 
@@ -35,9 +36,9 @@ Public Class EditorDock
         If RefreshWorker.IsBusy Then MainForm.statusLabel.Text = "Idle."
     End Sub
 
-    #Region "Key Handling"
-    Protected Overrides Function ProcessCmdKey(Byref msg As Message, keyData As Keys) As Boolean
-        If (keyData = (Keys.Control Or Keys.S)) Or (keyData = ((keys.Control Or Keys.Shift) Or Keys.S)) Then
+#Region "Key Handling"
+    Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
+        If (keyData = (Keys.Control Or Keys.S)) Or (keyData = ((Keys.Control Or Keys.Shift) Or Keys.S)) Then
             MainForm.SaveFile(Editor)
             Editor.SetSavePoint()
             If keyData And Keys.Shift Then 'If he has shift pressed also.
@@ -63,7 +64,7 @@ Public Class EditorDock
             SearchReplaceForm.TabControl1.SelectTab(1) 'Replace Tab.
             Return True
 
-        ElseIf keyData = ((keys.Control Or Keys.Shift) Or Keys.N) Then
+        ElseIf keyData = ((Keys.Control Or Keys.Shift) Or Keys.N) Then
             If SearchReplaceForm.travelList.Count > 1 Then
                 Dim nearestNext As Long = 999999999999999999
                 Dim nearestID As Integer = 0
@@ -78,7 +79,7 @@ Public Class EditorDock
             End If
             Return True
 
-        ElseIf keyData = ((keys.Control Or Keys.Shift) Or Keys.B) Then
+        ElseIf keyData = ((Keys.Control Or Keys.Shift) Or Keys.B) Then
             If SearchReplaceForm.travelList.Count > 1 Then
                 Dim nearestNext As Long = 0
                 Dim nearestID As Integer = 0
@@ -97,7 +98,7 @@ Public Class EditorDock
 
         Return MyBase.ProcessCmdKey(msg, keyData)
     End Function
-    #End Region
+#End Region
 
     'All modules are here.
 #Region "Styles Handlers"
@@ -111,10 +112,10 @@ Public Class EditorDock
     End Sub
 
     Private Sub DoStyle(style As Integer, clr As StyleItem)
-        Editor.Styles(style).ForeColor = IIf(clr.ForeColor = Color.Transparent, nothing, clr.ForeColor)
-        Editor.Styles(style).BackColor = IIf(clr.BackColor = Color.Transparent, nothing, clr.BackColor)
+        Editor.Styles(style).ForeColor = IIf(clr.ForeColor = Color.Transparent, Nothing, clr.ForeColor)
+        Editor.Styles(style).BackColor = IIf(clr.BackColor = Color.Transparent, Nothing, clr.BackColor)
 
-        If clr.Font Isnot Nothing
+        If clr.Font IsNot Nothing
             Editor.Styles(style).Font = clr.Font?.FontFamily.Name
             Editor.Styles(style).Size = clr.Font?.Size
             Editor.Styles(style).Bold = clr.Font?.Bold
@@ -180,13 +181,13 @@ Public Class EditorDock
         Editor.CallTipSetForeHlt(Color.Black)
 
         'Setup the indicators
-        Editor.Indicators(IndicatorIDs.IndicatorParsererror).Style = IndicatorStyle.Squiggle
-        Editor.Indicators(IndicatorIDs.IndicatorParsererror).ForeColor = Color.DarkGreen
-        Editor.Indicators(IndicatorIDs.IndicatorParsererror).Under = True
+        Editor.Indicators(IndicatorIDs.IndicatorParserError).Style = IndicatorStyle.Squiggle
+        Editor.Indicators(IndicatorIDs.IndicatorParserError).ForeColor = Color.DarkGreen
+        Editor.Indicators(IndicatorIDs.IndicatorParserError).Under = True
 
         Editor.Indicators(IndicatorIDs.IndicatorSearchItem).Style = IndicatorStyle.FullBox
         Editor.Indicators(IndicatorIDs.IndicatorSearchItem).ForeColor = Color.Green
-        
+
         'Set up auto-complete.
         AutoCompleteMenu.TargetControlWrapper = New ScintillaWrapper(Editor)
     End Sub
@@ -405,7 +406,7 @@ Public Class EditorDock
 
 #Region "Error Showing"
         Dim errors As ExceptionsList = DirectCast(e.Result, Parser).Errors
-        For Each obj In errors.exceptionsList
+        For Each obj In errors.ExceptionsList
             If TypeOf (obj) Is IncludeNotFoundException Then
                 Dim tmpObj = DirectCast(obj, IncludeNotFoundException)
                 Dim msg As String = "The include `" + tmpObj.IncludeName + "` is not found, Please make sure it exists."
@@ -707,6 +708,28 @@ Public Class EditorDock
         Dim startPos = Editor.Lines(Editor.FirstVisibleLine).Position
         Dim endPos = Editor.Lines(Editor.FirstVisibleLine + Editor.LinesOnScreen).EndPosition
         ReColorize(startPos, endPos)
+    End Sub
+#End Region
+
+#Region "DragDrop"
+    Private Sub MainDock_DragEnter(sender As Object, e As DragEventArgs) Handles Editor.DragEnter
+        Dim files() As String = e.Data.GetData(DataFormats.FileDrop)
+        For Each file In files
+            If Path.GetExtension(file) <> ".pwn" Or Path.GetExtension(file) <> ".inc" Then
+                e.Effect = DragDropEffects.None
+            End If
+        Next
+        e.Effect = DragDropEffects.Copy
+    End Sub
+
+    Private Sub MainDock_DragDrop(sender As Object, e As DragEventArgs) Handles Editor.DragDrop
+        Dim files() As String = e.Data.GetData(DataFormats.FileDrop)
+
+        For Each file In files
+            If Path.GetExtension(file) = ".pwn" Or Path.GetExtension(file) = ".inc" Then
+                Mainform.OpenFile(file)
+            End If
+        Next
     End Sub
 #End Region
 End Class

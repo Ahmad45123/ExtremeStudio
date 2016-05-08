@@ -34,6 +34,7 @@ Partial Class EditorDock
         'Editor
         '
         Me.Editor.AdditionalSelectionTyping = true
+        Me.Editor.AllowDrop = true
         Me.Editor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Editor.Lexer = ScintillaNET.Lexer.Cpp
         Me.Editor.Location = New System.Drawing.Point(0, 0)

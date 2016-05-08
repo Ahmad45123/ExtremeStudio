@@ -24,9 +24,9 @@ Public Class MainForm
     End Property
 #End Region
 #Region "Functions"
-    Public Sub OpenFile(ByVal targetPath As String)
+    Public Sub OpenFile(ByVal targetPath As String, Optional isExternal As Boolean = False)
         Dim newEditor As New EditorDock
-        newEditor.Text = Path.GetFileName(targetPath)
+        newEditor.Text = Path.GetFileName(targetPath) + IIf(isExternal, " [EXTERNAL]", "")
         newEditor.Editor.Tag = targetPath
         newEditor.Editor.Text = My.Computer.FileSystem.ReadAllText(targetPath)
         newEditor.Show(MainDock)
