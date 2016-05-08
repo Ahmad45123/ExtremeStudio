@@ -727,7 +727,7 @@ Public Class EditorDock
 
         For Each file In files
             If Path.GetExtension(file) = ".pwn" Or Path.GetExtension(file) = ".inc" Then
-                Mainform.OpenFile(file)
+                Mainform.OpenFile(file, True)
             End If
         Next
     End Sub
