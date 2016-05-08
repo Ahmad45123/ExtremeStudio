@@ -101,7 +101,6 @@ Partial Class ProjExplorerDock
         Me.filesList.Location = New System.Drawing.Point(0, 0)
         Me.filesList.MainDir = "C:/"
         Me.filesList.Name = "filesList"
-        Me.filesList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
         Me.filesList.Size = New System.Drawing.Size(254, 382)
         Me.filesList.TabIndex = 1
         '
