@@ -23,45 +23,23 @@ Partial Class ProjExplorerDock
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim TreeNode4 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Gamemode Parts")
-        Dim TreeNode5 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Filterscripts")
-        Dim TreeNode6 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Includes")
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ProjExplorerDock))
-        Me.treeView = New System.Windows.Forms.TreeView()
         Me.ImageList = New System.Windows.Forms.ImageList(Me.components)
         Me.mouseRightClick = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.RefreshToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.RenameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.NewFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewDirectoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RefreshToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mouseRightClick.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'treeView
-        '
-        Me.treeView.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.treeView.ImageIndex = 0
-        Me.treeView.ImageList = Me.ImageList
-        Me.treeView.LabelEdit = True
-        Me.treeView.Location = New System.Drawing.Point(0, 0)
-        Me.treeView.Name = "treeView"
-        TreeNode4.Name = "Node0"
-        TreeNode4.Text = "Gamemode Parts"
-        TreeNode5.Name = "Node2"
-        TreeNode5.Text = "Filterscripts"
-        TreeNode6.Name = "Node1"
-        TreeNode6.Text = "Includes"
-        Me.treeView.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode4, TreeNode5, TreeNode6})
-        Me.treeView.SelectedImageIndex = 2
-        Me.treeView.Size = New System.Drawing.Size(254, 382)
-        Me.treeView.TabIndex = 0
+        Me.filesList = New ExtremeCore.FilesListBox()
+        Me.mouseRightClick.SuspendLayout
+        Me.SuspendLayout
         '
         'ImageList
         '
-        Me.ImageList.ImageStream = CType(resources.GetObject("ImageList.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList.ImageStream = CType(resources.GetObject("ImageList.ImageStream"),System.Windows.Forms.ImageListStreamer)
         Me.ImageList.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList.Images.SetKeyName(0, "dirs_projexplorer.png")
         Me.ImageList.Images.SetKeyName(1, "file_projexplorer.png")
@@ -71,66 +49,79 @@ Partial Class ProjExplorerDock
         '
         Me.mouseRightClick.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RefreshToolStripMenuItem, Me.ToolStripSeparator1, Me.RenameToolStripMenuItem, Me.DeleteToolStripMenuItem, Me.ToolStripMenuItem1, Me.NewFileToolStripMenuItem, Me.NewDirectoryToolStripMenuItem})
         Me.mouseRightClick.Name = "mouseRightClick"
-        Me.mouseRightClick.Size = New System.Drawing.Size(153, 148)
-        '
-        'RenameToolStripMenuItem
-        '
-        Me.RenameToolStripMenuItem.Name = "RenameToolStripMenuItem"
-        Me.RenameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.RenameToolStripMenuItem.Text = "Rename"
-        '
-        'DeleteToolStripMenuItem
-        '
-        Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.DeleteToolStripMenuItem.Text = "Delete"
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(149, 6)
-        '
-        'NewFileToolStripMenuItem
-        '
-        Me.NewFileToolStripMenuItem.Name = "NewFileToolStripMenuItem"
-        Me.NewFileToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.NewFileToolStripMenuItem.Text = "New File"
-        '
-        'NewDirectoryToolStripMenuItem
-        '
-        Me.NewDirectoryToolStripMenuItem.Name = "NewDirectoryToolStripMenuItem"
-        Me.NewDirectoryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.NewDirectoryToolStripMenuItem.Text = "New Directory"
+        Me.mouseRightClick.Size = New System.Drawing.Size(150, 126)
         '
         'RefreshToolStripMenuItem
         '
         Me.RefreshToolStripMenuItem.Name = "RefreshToolStripMenuItem"
-        Me.RefreshToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.RefreshToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.RefreshToolStripMenuItem.Text = "Refresh"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(146, 6)
+        '
+        'RenameToolStripMenuItem
+        '
+        Me.RenameToolStripMenuItem.Name = "RenameToolStripMenuItem"
+        Me.RenameToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
+        Me.RenameToolStripMenuItem.Text = "Rename"
+        '
+        'DeleteToolStripMenuItem
+        '
+        Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
+        Me.DeleteToolStripMenuItem.Text = "Delete"
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(146, 6)
+        '
+        'NewFileToolStripMenuItem
+        '
+        Me.NewFileToolStripMenuItem.Name = "NewFileToolStripMenuItem"
+        Me.NewFileToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
+        Me.NewFileToolStripMenuItem.Text = "New File"
+        '
+        'NewDirectoryToolStripMenuItem
+        '
+        Me.NewDirectoryToolStripMenuItem.Name = "NewDirectoryToolStripMenuItem"
+        Me.NewDirectoryToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
+        Me.NewDirectoryToolStripMenuItem.Text = "New Directory"
+        '
+        'filesList
+        '
+        Me.filesList.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.filesList.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.filesList.FileIconSize = ExtremeCore.IconSize.Small
+        Me.filesList.FormattingEnabled = true
+        Me.filesList.ItemHeight = 16
+        Me.filesList.Location = New System.Drawing.Point(0, 0)
+        Me.filesList.MainDir = "C:/"
+        Me.filesList.Name = "filesList"
+        Me.filesList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
+        Me.filesList.Size = New System.Drawing.Size(254, 382)
+        Me.filesList.TabIndex = 1
         '
         'ProjExplorerDock
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(254, 382)
-        Me.Controls.Add(Me.treeView)
-        Me.DockAreas = CType(((((WeifenLuo.WinFormsUI.Docking.DockAreas.Float Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft) _
-            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight) _
-            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop) _
-            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom), WeifenLuo.WinFormsUI.Docking.DockAreas)
-        Me.Font = New System.Drawing.Font("Tahoma", 8.0!)
+        Me.Controls.Add(Me.filesList)
+        Me.DockAreas = CType(((((WeifenLuo.WinFormsUI.Docking.DockAreas.Float Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft)  _
+            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight)  _
+            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop)  _
+            Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom),WeifenLuo.WinFormsUI.Docking.DockAreas)
+        Me.Font = New System.Drawing.Font("Tahoma", 8!)
         Me.Name = "ProjExplorerDock"
         Me.Text = "Project Explorer"
-        Me.mouseRightClick.ResumeLayout(False)
-        Me.ResumeLayout(False)
+        Me.mouseRightClick.ResumeLayout(false)
+        Me.ResumeLayout(false)
 
-    End Sub
-    Friend WithEvents treeView As System.Windows.Forms.TreeView
+End Sub
     Friend WithEvents ImageList As System.Windows.Forms.ImageList
     Friend WithEvents mouseRightClick As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents RenameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -140,4 +131,5 @@ Partial Class ProjExplorerDock
     Friend WithEvents NewDirectoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RefreshToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents filesList As ExtremeCore.FilesListBox
 End Class

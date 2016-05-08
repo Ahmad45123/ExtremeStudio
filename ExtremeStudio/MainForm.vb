@@ -107,11 +107,6 @@ Public Class MainForm
         End If
     End Sub
 
-    Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles newFileButton.Click
-        Dim newFile As New NewProjectFile
-        newFile.ShowDialog()
-    End Sub
-
 #Region "View Codes"
     Private Sub ProjectExplorerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles prjExplrerView.Click
         If ProjExplorerDock.Visible = False Then

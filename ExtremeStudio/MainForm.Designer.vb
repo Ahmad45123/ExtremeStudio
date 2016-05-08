@@ -33,7 +33,6 @@ Partial Class MainForm
         Me.closeProjectButton = New System.Windows.Forms.RibbonButton()
         Me.fileTab = New System.Windows.Forms.RibbonTab()
         Me.prjPanel = New System.Windows.Forms.RibbonPanel()
-        Me.newFileButton = New System.Windows.Forms.RibbonButton()
         Me.saveFileButton = New System.Windows.Forms.RibbonButton()
         Me.saveAllButton = New System.Windows.Forms.RibbonButton()
         Me.downloadPanel = New System.Windows.Forms.RibbonPanel()
@@ -158,17 +157,9 @@ Partial Class MainForm
         'prjPanel
         '
         Me.prjPanel.ButtonMoreVisible = false
-        Me.prjPanel.Items.Add(Me.newFileButton)
         Me.prjPanel.Items.Add(Me.saveFileButton)
         Me.prjPanel.Items.Add(Me.saveAllButton)
         Me.prjPanel.Text = "Files"
-        '
-        'newFileButton
-        '
-        Me.newFileButton.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_newFile
-        Me.newFileButton.SmallImage = CType(resources.GetObject("newFileButton.SmallImage"),System.Drawing.Image)
-        Me.newFileButton.Text = ""
-        Me.newFileButton.ToolTip = "New File"
         '
         'saveFileButton
         '
@@ -400,7 +391,6 @@ End Sub
     Friend WithEvents gotoButton As RibbonButton
     Friend WithEvents fileTab As RibbonTab
     Friend WithEvents prjPanel As RibbonPanel
-    Friend WithEvents newFileButton As RibbonButton
     Friend WithEvents saveFileButton As RibbonButton
     Friend WithEvents saveAllButton As RibbonButton
     Friend WithEvents downloadPanel As RibbonPanel
