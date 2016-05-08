@@ -20,7 +20,6 @@ Public Class Includes
                 End Try
 
                 fullPath = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(filePath)), text)
-                If Not fullPath.EndsWith(".inc") Then fullPath += ".inc"
             ElseIf type = "<"
                 'Remove the brackets.
                 Try
