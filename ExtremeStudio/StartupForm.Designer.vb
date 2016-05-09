@@ -24,7 +24,9 @@ Partial Class StartupForm
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.preExistCheck = New System.Windows.Forms.CheckBox()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.locTextBox = New ExtremeCore.PathTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.verListBox = New System.Windows.Forms.ListBox()
         Me.nameTextBox = New System.Windows.Forms.TextBox()
@@ -37,15 +39,13 @@ Partial Class StartupForm
         Me.projectName = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.pathTextBox = New ExtremeCore.PathTextBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.recentListBox = New System.Windows.Forms.ListBox()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.OpenGlobalSettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.preExistCheck = New System.Windows.Forms.CheckBox()
-        Me.locTextBox = New ExtremeCore.PathTextBox()
-        Me.pathTextBox = New ExtremeCore.PathTextBox()
         Me.TabControl1.SuspendLayout
         Me.TabPage1.SuspendLayout
         Me.TabPage2.SuspendLayout
@@ -82,6 +82,16 @@ Partial Class StartupForm
         Me.TabPage1.Text = "Create new project"
         Me.TabPage1.UseVisualStyleBackColor = true
         '
+        'preExistCheck
+        '
+        Me.preExistCheck.AutoSize = true
+        Me.preExistCheck.Location = New System.Drawing.Point(601, 107)
+        Me.preExistCheck.Name = "preExistCheck"
+        Me.preExistCheck.Size = New System.Drawing.Size(170, 17)
+        Me.preExistCheck.TabIndex = 8
+        Me.preExistCheck.Text = "Create from pre-existing files."
+        Me.preExistCheck.UseVisualStyleBackColor = true
+        '
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(9, 151)
@@ -91,12 +101,22 @@ Partial Class StartupForm
         Me.Button2.Text = "Create Project"
         Me.Button2.UseVisualStyleBackColor = true
         '
+        'locTextBox
+        '
+        Me.locTextBox.Description = "Select the folder where to create the project."
+        Me.locTextBox.Filter = Nothing
+        Me.locTextBox.Location = New System.Drawing.Point(90, 124)
+        Me.locTextBox.Name = "locTextBox"
+        Me.locTextBox.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
+        Me.locTextBox.Size = New System.Drawing.Size(671, 20)
+        Me.locTextBox.TabIndex = 5
+        '
         'Label3
         '
         Me.Label3.AutoSize = true
         Me.Label3.Location = New System.Drawing.Point(6, 127)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(86, 13)
+        Me.Label3.Size = New System.Drawing.Size(88, 13)
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "Project location: "
         '
@@ -120,7 +140,7 @@ Partial Class StartupForm
         Me.Label2.AutoSize = true
         Me.Label2.Location = New System.Drawing.Point(6, 36)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(84, 13)
+        Me.Label2.Size = New System.Drawing.Size(83, 13)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "SA-MP Version: "
         '
@@ -129,7 +149,7 @@ Partial Class StartupForm
         Me.Label1.AutoSize = true
         Me.Label1.Location = New System.Drawing.Point(6, 13)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(77, 13)
+        Me.Label1.Size = New System.Drawing.Size(78, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Project Name: "
         '
@@ -165,7 +185,7 @@ Partial Class StartupForm
         Me.projectVersion.AutoSize = true
         Me.projectVersion.Location = New System.Drawing.Point(87, 91)
         Me.projectVersion.Name = "projectVersion"
-        Me.projectVersion.Size = New System.Drawing.Size(33, 13)
+        Me.projectVersion.Size = New System.Drawing.Size(32, 13)
         Me.projectVersion.TabIndex = 6
         Me.projectVersion.Text = "None"
         '
@@ -174,7 +194,7 @@ Partial Class StartupForm
         Me.Label6.AutoSize = true
         Me.Label6.Location = New System.Drawing.Point(6, 90)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(84, 13)
+        Me.Label6.Size = New System.Drawing.Size(86, 13)
         Me.Label6.TabIndex = 5
         Me.Label6.Text = "Project Version: "
         '
@@ -183,7 +203,7 @@ Partial Class StartupForm
         Me.projectName.AutoSize = true
         Me.projectName.Location = New System.Drawing.Point(79, 53)
         Me.projectName.Name = "projectName"
-        Me.projectName.Size = New System.Drawing.Size(33, 13)
+        Me.projectName.Size = New System.Drawing.Size(32, 13)
         Me.projectName.TabIndex = 4
         Me.projectName.Text = "None"
         '
@@ -192,7 +212,7 @@ Partial Class StartupForm
         Me.Label5.AutoSize = true
         Me.Label5.Location = New System.Drawing.Point(6, 52)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(77, 13)
+        Me.Label5.Size = New System.Drawing.Size(78, 13)
         Me.Label5.TabIndex = 3
         Me.Label5.Text = "Project Name: "
         '
@@ -201,9 +221,20 @@ Partial Class StartupForm
         Me.Label4.AutoSize = true
         Me.Label4.Location = New System.Drawing.Point(6, 13)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(89, 13)
+        Me.Label4.Size = New System.Drawing.Size(94, 13)
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "Project directory: "
+        '
+        'pathTextBox
+        '
+        Me.pathTextBox.Description = "Select the project's folder."
+        Me.pathTextBox.Filter = Nothing
+        Me.pathTextBox.Location = New System.Drawing.Point(106, 10)
+        Me.pathTextBox.Name = "pathTextBox"
+        Me.pathTextBox.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
+        Me.pathTextBox.ReadOnly = true
+        Me.pathTextBox.Size = New System.Drawing.Size(655, 20)
+        Me.pathTextBox.TabIndex = 1
         '
         'TabPage3
         '
@@ -259,37 +290,6 @@ Partial Class StartupForm
         Me.OpenGlobalSettingsToolStripMenuItem.Name = "OpenGlobalSettingsToolStripMenuItem"
         Me.OpenGlobalSettingsToolStripMenuItem.Size = New System.Drawing.Size(130, 20)
         Me.OpenGlobalSettingsToolStripMenuItem.Text = "Open Global Settings"
-        '
-        'preExistCheck
-        '
-        Me.preExistCheck.AutoSize = true
-        Me.preExistCheck.Location = New System.Drawing.Point(601, 107)
-        Me.preExistCheck.Name = "preExistCheck"
-        Me.preExistCheck.Size = New System.Drawing.Size(160, 17)
-        Me.preExistCheck.TabIndex = 8
-        Me.preExistCheck.Text = "Create from pre-existing files."
-        Me.preExistCheck.UseVisualStyleBackColor = true
-        '
-        'locTextBox
-        '
-        Me.locTextBox.Description = "Select the folder where to create the project."
-        Me.locTextBox.Filter = Nothing
-        Me.locTextBox.Location = New System.Drawing.Point(90, 124)
-        Me.locTextBox.Name = "locTextBox"
-        Me.locTextBox.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
-        Me.locTextBox.Size = New System.Drawing.Size(671, 20)
-        Me.locTextBox.TabIndex = 5
-        '
-        'pathTextBox
-        '
-        Me.pathTextBox.Description = "Select the project's folder."
-        Me.pathTextBox.Filter = Nothing
-        Me.pathTextBox.Location = New System.Drawing.Point(106, 10)
-        Me.pathTextBox.Name = "pathTextBox"
-        Me.pathTextBox.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
-        Me.pathTextBox.ReadOnly = true
-        Me.pathTextBox.Size = New System.Drawing.Size(655, 20)
-        Me.pathTextBox.TabIndex = 1
         '
         'StartupForm
         '

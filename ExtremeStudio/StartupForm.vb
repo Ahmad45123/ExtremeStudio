@@ -263,4 +263,12 @@ Public Class StartupForm
         SettingsForm.IsGlobal = True
         SettingsForm.ShowDialog()
     End Sub
+
+    Private Sub preExistCheck_CheckedChanged(sender As Object, e As EventArgs) Handles preExistCheck.CheckedChanged
+        If preExistCheck.Checked Then
+            verListBox.Enabled = False
+        Else
+            verListBox.Enabled = True
+        End If
+    End Sub
 End Class
