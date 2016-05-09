@@ -93,6 +93,10 @@ Public Class EditorDock
                 Editor.ScrollCaret()
             End If
             Return True
+        
+        ElseIf keyData = Keys.F5 Then
+            MainForm.CompileScriptBtn.PerformClick()
+            Return True
 
         End If
 
