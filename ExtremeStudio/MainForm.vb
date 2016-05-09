@@ -214,8 +214,8 @@ Public Class MainForm
     End Sub
 
     Private Sub compileScriptBtn_Click(sender As Object, e As EventArgs) Handles compileScriptBtn.Click
-        If CompilerWorker.IsBusy Then
-            MsgBox("A compilation is already in-process.")
+        If CompilerWorker.IsBusy Or CurrentEditor.RefreshWorker.IsBusy Then
+            MsgBox("Please wait until the current compilation or parsing process is finished.")
         Else
             CompilerWorker.RunWorkerAsync({CurrentScintilla.Tag, SettingsForm.GetCompilerArgs()}) 'The file path is the parameter.
         End If

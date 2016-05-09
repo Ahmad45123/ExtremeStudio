@@ -337,10 +337,10 @@ Public Class EditorDock
         Me._maxLineNumberCharLength = maxLineNumberCharLength
     End Sub
 #End Region
-
+    
 #Region "Refresh Worker Codes"
     Public Sub scintilla_TextChangedDelayed(oldcode As String, newcode As String)
-        If RefreshWorker.IsBusy = False Then
+        If RefreshWorker.IsBusy = False And MainForm.CompilerWorker.IsBusy = False Then
             RefreshWorker.RunWorkerAsync({oldcode, newcode, Editor.Tag, MainForm.CurrentProject.ProjectPath})
             MainForm.statusLabel.Text = "Parsing Code."
         End If
