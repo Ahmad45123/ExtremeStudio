@@ -3,6 +3,17 @@ Imports System.Text.RegularExpressions
 Imports ExtremeCore
 
 Public Class Includes
+
+    Private Shared Sub AddExtension(ByRef pth As String)
+        If Path.GetExtension(pth) = Nothing Then
+            If File.Exists(pth + ".pwn") Then
+                pth += ".pwn"
+            ElseIf File.Exists(pth + ".inc") Then
+                pth += ".inc"
+            End If
+        End If
+    End Sub
+
     Public Shared Sub Parse(ByRef code As String, filePath As String, prjPath As String, ByRef parts As CodeParts, ByRef errors As ExceptionsList, Optional add As Boolean = True)
         For Each match As Match In Regex.Matches(code, "\#include[ \t]+([^\s]+)", RegexOptions.Multiline)
             Dim text As String = match.Groups(1).Value
@@ -20,6 +31,7 @@ Public Class Includes
                 End Try
 
                 fullPath = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(filePath)), text)
+                AddExtension(fullPath)
             ElseIf type = "<"
                 'Remove the brackets.
                 Try
@@ -30,10 +42,10 @@ Public Class Includes
                 End Try
 
                 fullPath = prjPath + "\pawno\include\" + text
-                If Not fullPath.EndsWith(".inc") Then fullPath += ".inc"
+                AddExtension(fullPath)
             Else
                 fullPath = prjPath + "\pawno\include\" + text
-                If Not fullPath.EndsWith(".inc") Then fullPath += ".inc"
+                AddExtension(fullPath)
             End If
             Try
 
