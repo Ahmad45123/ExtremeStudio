@@ -208,6 +208,8 @@ Public Class ObjectExplorerDock
     End Sub
 
     Private Sub treeView_NodeMouseDoubleClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles treeView.NodeMouseDoubleClick
+        If e.Node.Tag = Nothing Then Exit Sub
+
         Dim filepath As String = e.Node.Tag.Split("|")(1)
         If filepath <> "current" Then
             'First, Loop throuhg all opened tabs and see if its already opened there.
