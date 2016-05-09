@@ -70,6 +70,8 @@ Partial Class ObjectExplorerDock
         '
         'SearchTextBox
         '
+        Me.SearchTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.SearchTextBox.Location = New System.Drawing.Point(0, 0)
         Me.SearchTextBox.Name = "SearchTextBox"
         Me.SearchTextBox.Size = New System.Drawing.Size(270, 20)

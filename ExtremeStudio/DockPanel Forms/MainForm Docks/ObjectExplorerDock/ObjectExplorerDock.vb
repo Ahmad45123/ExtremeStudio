@@ -7,19 +7,26 @@ Public Class ObjectExplorerDock
     Dim _nodeState As ExtremeCore.treeNodeStateSaving = New ExtremeCore.treeNodeStateSaving
 
 #Region "Funcs"
-    Public Function GetTreeViewPart(parser As ExtremeParser.CodeParts, searchTerm As String, tag as String)
+    Private Function GetTreeViewPart(parser As ExtremeParser.CodeParts, searchTerm As String, tag as String)
         If parser Is Nothing Then Return Nothing
 
         Dim mainNode As New TreeNode With {
             .Text = Path.GetFileNameWithoutExtension(parser.FilePath)
         }
 
-        Dim defines = mainNode.Nodes.Add("Defines") : defines.Tag = "Root"
-        Dim macros = mainNode.Nodes.Add("Macros") : macros.Tag = "Root"
-        Dim functions = mainNode.Nodes.Add("Functions") : functions.Tag = "Root"
-        Dim publics = mainNode.Nodes.Add("Publics") : publics.Tag = "Root"
-        Dim stocks = mainNode.Nodes.Add("Stocks") : stocks.Tag = "Root"
-        Dim natives = mainNode.Nodes.Add("Natives") : natives.Tag = "Root"
+        Dim defines As TreeNode
+        Dim macros As TreeNode
+        Dim functions As TreeNode
+        Dim publics As TreeNode
+        Dim stocks As TreeNode
+        Dim natives As TreeNode
+
+        If parser.Defines.FindAll(Function(x) x.DefineName.Contains(searchTerm)).Count > 0 Then defines = mainNode.Nodes.Add("Defines")
+        If parser.Macros.FindAll(Function(x) x.DefineName.Contains(searchTerm)).Count > 0 Then macros = mainNode.Nodes.Add("Macros")
+        If parser.Functions.FindAll(Function(x) x.FuncName.Contains(searchTerm)).Count > 0 Then functions = mainNode.Nodes.Add("Functions")
+        If parser.Publics.FindAll(Function(x) x.FuncName.Contains(searchTerm)).Count > 0 Then publics = mainNode.Nodes.Add("Publics")
+        If parser.Stocks.FindAll(Function(x) x.FuncName.Contains(searchTerm)).Count > 0 Then stocks = mainNode.Nodes.Add("Stocks")
+        If parser.Natives.FindAll(Function(x) x.FuncName.Contains(searchTerm)).Count > 0 Then natives = mainNode.Nodes.Add("Natives")
 
         'Create the custom Roots.
         Dim listCustom As New List(Of TreeNode)
@@ -128,11 +135,6 @@ Public Class ObjectExplorerDock
             nde.ToolTipText = New AutoCompleteItemEx(AutoCompleteItemEx.AutoCompeleteTypes.TypeFunction, native).ToolTipText
             nde.Tag = "native|" + tag
         Next
-
-        'Set the Root tags.
-        For Each itm In listCustom
-            itm.Tag = "Root"
-        Next
         Return mainNode
     End Function
 
@@ -146,7 +148,7 @@ Public Class ObjectExplorerDock
         'Start by adding the current file.
         Dim node As TreeNode = getTreeViewPart(parts, SearchTextBox.Text, "current")
         node.Text = "Current File"
-        treeView.Nodes.Add(node)
+        If node.Nodes.Count > 0 Then treeView.Nodes.Add(node)
 
         'Loop through all includes and put them.
         Dim parentNode As New TreeNode With {
@@ -154,11 +156,12 @@ Public Class ObjectExplorerDock
         }
         Dim allIncs = parts.FlattenIncludes
         For i As Integer = 1 To allIncs.Count - 1 'Loop through all skipping ID 0.
-            parentNode.Nodes.Add(getTreeViewPart(allIncs(i), SearchTextBox.Text, allIncs(i).FilePath))
+            Dim nds = getTreeViewPart(allIncs(i), SearchTextBox.Text, allIncs(i).FilePath)
+            If nds.Nodes.Count > 0 Then parentNode.Nodes.Add(nds)
         Next
 
         'Add to list.
-        treeView.Nodes.Add(parentNode)
+        If parentNode.Nodes.Count > 0 Then treeView.Nodes.Add(parentNode)
 
         _nodeState.RestoreTreeState(treeView) 'Restore
     End Sub
