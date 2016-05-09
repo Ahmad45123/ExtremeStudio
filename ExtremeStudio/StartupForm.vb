@@ -127,42 +127,53 @@ Public Class StartupForm
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        'Add to the path folder name.
-        If FilenameIsOk(nameTextBox.Text) = False Then
-            MsgBox("Invalid Name.")
-            Exit Sub
-        End If
-        locTextBox.Text = Path.Combine(locTextBox.Text, nameTextBox.Text)
-        If My.Computer.FileSystem.DirectoryExists(locTextBox.Text) = False Then My.Computer.FileSystem.CreateDirectory(locTextBox.Text)
-
-        'Check if entered path exist.
-        If My.Computer.FileSystem.DirectoryExists(locTextBox.Text) And My.Computer.FileSystem.FileExists(locTextBox.Text + "/extremeStudio.config") = False Then
-            If Not verListBox.SelectedIndex = -1 Then
-                If My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip") Then 'check if that version is existing
-                    FastZipUnpack(MainForm.ApplicationFiles + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip", locTextBox.Text) 'Extract the zip to project folder.
-                Else 'Download from net if not exist.
-                    Dim client As New WebClient 'For downloading the selected file.
-                    client.DownloadFile(verListBox.Tag(verListBox.SelectedIndex), My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip") 'Download the zip file.
-                    FastZipUnpack(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip", locTextBox.Text) 'Extract the zip.
-                    My.Computer.FileSystem.CopyFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip", MainForm.ApplicationFiles + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip") 'Copy the file to be used instead of downloading
-                    My.Computer.FileSystem.DeleteFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip") 'Delete the file from temp.
-                End If
-                My.Computer.FileSystem.WriteAllText(locTextBox.Text + "/gamemodes/" + nameTextBox.Text + ".pwn", My.Resources.newfileTemplate, False)
-                MainForm.CurrentProject.ProjectName = nameTextBox.Text
-                MainForm.CurrentProject.ProjectPath = locTextBox.Text
-                MainForm.CurrentProject.ProjectVersion = _versionHandler.CurrentVersion
-                MainForm.CurrentProject.CreateTables() 'Create the tables of the db.
-                MainForm.CurrentProject.SaveInfo() 'Write the default extremeStudio config.
-                MainForm.CurrentProject.CopyGlobalConfig()
-                AddNewRecent(MainForm.CurrentProject.ProjectPath) 'Add it to the recent list.
-                MainForm.Show()
-                _isClosedProgram = True : Close()
-            Else
-                MsgBox("You haven't selected a SAMP version to use.")
+        Dim newPath As String = locTextBox.Text
+        If preExistCheck.Checked Then
+            If Not My.Computer.FileSystem.DirectoryExists(newPath) Or IsValidExtremeProject(newPath) Or Not IsValidSAMPFolder(newPath) Then
+                MsgBox("Invalid SAMP Folder.. Must contain the pawno folder, gamemodes folder, plugins folder, all executables and the server config.")
+                Exit Sub
             End If
         Else
-            MsgBox("That directory doesn't exist or there is a project with that name already there.")
+            'Add to the path folder name.
+            If FilenameIsOk(nameTextBox.Text) = False Then
+                MsgBox("Invalid Name.")
+                Exit Sub
+            End If
+            newPath = Path.Combine(locTextBox.Text, nameTextBox.Text)
+            If My.Computer.FileSystem.DirectoryExists(newPath) = False Then My.Computer.FileSystem.CreateDirectory(newPath)
+
+            'Check if entered path exist.
+            If My.Computer.FileSystem.DirectoryExists(newPath) And My.Computer.FileSystem.FileExists(newPath + "/extremeStudio.config") = False Then
+                If Not verListBox.SelectedIndex = -1 Then
+                    If My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip") Then 'check if that version is existing
+                        FastZipUnpack(MainForm.ApplicationFiles + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip", newPath) 'Extract the zip to project folder.
+                    Else 'Download from net if not exist.
+                        Dim client As New WebClient 'For downloading the selected file.
+                        client.DownloadFile(verListBox.Tag(verListBox.SelectedIndex), My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip") 'Download the zip file.
+                        FastZipUnpack(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip", newPath) 'Extract the zip.
+                        My.Computer.FileSystem.CopyFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip", MainForm.ApplicationFiles + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip") 'Copy the file to be used instead of downloading
+                        My.Computer.FileSystem.DeleteFile(My.Computer.FileSystem.SpecialDirectories.Temp + "/" + nameTextBox.Text + ".zip") 'Delete the file from temp.
+                    End If
+                    My.Computer.FileSystem.WriteAllText(newPath + "/gamemodes/" + nameTextBox.Text + ".pwn", My.Resources.newfileTemplate, False)
+                Else
+                    MsgBox("You haven't selected a SAMP version to use.")
+                    Exit Sub
+                End If
+            Else
+                MsgBox("That directory doesn't exist or there is a project with that name already there.")
+                Exit Sub
+            End If
         End If
+
+        MainForm.CurrentProject.ProjectName = nameTextBox.Text
+        MainForm.CurrentProject.ProjectPath = newPath
+        MainForm.CurrentProject.ProjectVersion = _versionHandler.CurrentVersion
+        MainForm.CurrentProject.CreateTables() 'Create the tables of the db.
+        MainForm.CurrentProject.SaveInfo() 'Write the default extremeStudio config.
+        MainForm.CurrentProject.CopyGlobalConfig()
+        AddNewRecent(MainForm.CurrentProject.ProjectPath) 'Add it to the recent list.
+        MainForm.Show()
+        _isClosedProgram = True : Close()
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles pathTextBox.TextChanged
@@ -173,24 +184,20 @@ Public Class StartupForm
         If IsValidExtremeProject(pathTextBox.Text) Then
             MainForm.CurrentProject.ProjectPath = pathTextBox.Text
             MainForm.CurrentProject.ReadInfo()
-            If My.Computer.FileSystem.FileExists(pathTextBox.Text + "/gamemodes/" + MainForm.CurrentProject.ProjectName + ".pwn") Then
-                projectName.Text = MainForm.CurrentProject.ProjectName
+            projectName.Text = MainForm.CurrentProject.ProjectName
 
-                Dim projVersion As String = MainForm.CurrentProject.ProjectVersion
-                Dim progVersion As String = _versionHandler.CurrentVersion
+            Dim projVersion As String = MainForm.CurrentProject.ProjectVersion
+            Dim progVersion As String = _versionHandler.CurrentVersion
 
-                Dim versionCompare As VersionReader.CompareVersionResult = VersionReader.CompareVersions(projVersion, progVersion)
-                If versionCompare = VersionReader.CompareVersionResult.VersionSame Then
-                    projectVersion.Text = "Project version is the same as ExtremeStudio's version, No converion is needed."
-                    loadProjectBtn.Enabled = True
-                ElseIf versionCompare = VersionReader.CompareVersionResult.VersionNew Then
-                    projectVersion.Text = "Project older then ExtremeStudio, Conversion will be done however it may bug with older versions so its recommended to not try."
-                    loadProjectBtn.Enabled = True
-                ElseIf versionCompare = VersionReader.CompareVersionResult.VersionOld Then
-                    projectVersion.Text = "Project version is newer then ExtremeStudio's version, Please download latest ExtremeStudio package."
-                End If
-            Else
-                MsgBox("The main .pwn file is either renamed or deleted, Please manually create it or rename it back.")
+            Dim versionCompare As VersionReader.CompareVersionResult = VersionReader.CompareVersions(projVersion, progVersion)
+            If versionCompare = VersionReader.CompareVersionResult.VersionSame Then
+                projectVersion.Text = "Project version is the same as ExtremeStudio's version, No converion is needed."
+                loadProjectBtn.Enabled = True
+            ElseIf versionCompare = VersionReader.CompareVersionResult.VersionNew Then
+                projectVersion.Text = "Project older then ExtremeStudio, Conversion will be done however it may bug with older versions so its recommended to not try."
+                loadProjectBtn.Enabled = True
+            ElseIf versionCompare = VersionReader.CompareVersionResult.VersionOld Then
+                projectVersion.Text = "Project version is newer then ExtremeStudio's version, Please download latest ExtremeStudio package."
             End If
         Else
             MsgBox("ERROR: That folder isn't a valid ExtremeStudio project." + vbCrLf + "Make sure you haven't deleted or modified any file manually.")

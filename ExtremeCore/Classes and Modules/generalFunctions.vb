@@ -121,13 +121,18 @@ Public Module GeneralFunctions
     End Function
 
     Public Function IsValidExtremeProject(path As String)
+        If Not IsValidSAMPFolder(path) Then Return False
+        If Not My.Computer.FileSystem.FileExists(path + "/extremeStudio.config") Then Return False
+        If Not My.Computer.FileSystem.DirectoryExists(path + "/configs") Then Return False
+        Return True
+    End Function
+
+    Public Function IsValidSAMPFolder(path As String)
         If Not My.Computer.FileSystem.DirectoryExists(path) Then Return False
-        If Not My.Computer.FileSystem.DirectoryExists(path + "/filterscripts") Then Return False
         If Not My.Computer.FileSystem.DirectoryExists(path + "/gamemodes") Then Return False
         If Not My.Computer.FileSystem.DirectoryExists(path + "/pawno") Then Return False
         If Not My.Computer.FileSystem.DirectoryExists(path + "/pawno/include") Then Return False
         If Not My.Computer.FileSystem.DirectoryExists(path + "/plugins") Then Return False
-        If Not My.Computer.FileSystem.FileExists(path + "/extremeStudio.config") Then Return False
         If Not My.Computer.FileSystem.FileExists(path + "/announce.exe") Then Return False
         If Not My.Computer.FileSystem.FileExists(path + "/samp-npc.exe") Then Return False
         If Not My.Computer.FileSystem.FileExists(path + "/samp-server.exe") Then Return False

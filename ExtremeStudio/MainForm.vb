@@ -95,7 +95,6 @@ Public Class MainForm
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = "ExtremeStudio - " + currentProject.projectName
-        OpenFile(currentProject.projectPath + "/gamemodes/" + currentProject.projectName + ".pwn")
     End Sub
 
     Private Sub MainForm_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
