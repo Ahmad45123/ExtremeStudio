@@ -8,6 +8,27 @@ Public Class ProjExplorerDock
         filesList.SelectedPath = filesList.SelectedPath
     End Sub
 
+    Public Function IsProtected(pPath As String) As Boolean
+        If pPath.StartsWith(Path.Combine(MainForm.CurrentProject.ProjectPath, "configs")) _
+            Or pPath = (Path.Combine(MainForm.CurrentProject.ProjectPath, "gamemodes")) _
+            Or pPath = (Path.Combine(MainForm.CurrentProject.ProjectPath, "pawno")) _
+            Or pPath = (Path.Combine(MainForm.CurrentProject.ProjectPath, "pawno\libpawnc.dll")) _
+            Or pPath = (Path.Combine(MainForm.CurrentProject.ProjectPath, "pawno\pawn.ico")) _
+            Or pPath = (Path.Combine(MainForm.CurrentProject.ProjectPath, "pawno\pawnc.dll")) _
+            Or pPath = (Path.Combine(MainForm.CurrentProject.ProjectPath, "pawno\pawncc.exe")) _
+            Or pPath = (Path.Combine(MainForm.CurrentProject.ProjectPath, "pawno\include")) _
+            Or pPath = (Path.Combine(MainForm.CurrentProject.ProjectPath, "plugins")) _
+            Or pPath = (Path.Combine(MainForm.CurrentProject.ProjectPath, "extremeStudio.config")) _
+            Or pPath = (Path.Combine(MainForm.CurrentProject.ProjectPath, "server.cfg")) _
+            Or pPath = (Path.Combine(MainForm.CurrentProject.ProjectPath, "samp-server.exe")) _
+            Or pPath = (Path.Combine(MainForm.CurrentProject.ProjectPath, "samp-npc.exe")) _
+            Or pPath = (Path.Combine(MainForm.CurrentProject.ProjectPath, "announce.exe")) _
+        Then
+            Return True
+        End If 
+        Return False
+    End Function
+
     Private Sub ProjExplorerDock_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Wont be called multiple times: 
         filesList.MainDir = MainForm.CurrentProject.ProjectPath
@@ -19,8 +40,14 @@ Public Class ProjExplorerDock
 
     Private Sub filesList_MouseDown(sender As Object, e As MouseEventArgs) Handles filesList.MouseDown
         If e.Button = MouseButtons.Right Then
-            filesList.ClearSelected()
             filesList.SelectedIndex = filesList.IndexFromPoint(e.Location)
+            If filesList.SelectedItem <> Nothing AndAlso IsProtected(Path.Combine(filesList.SelectedPath, filesList.SelectedItem)) Then
+                DeleteToolStripMenuItem.Enabled = False
+                RenameToolStripMenuItem.Enabled = False
+            Else
+                DeleteToolStripMenuItem.Enabled = True
+                RenameToolStripMenuItem.Enabled = True
+            End If
             mouseRightClick.Show(MousePosition)
         End If
     End Sub
@@ -131,7 +158,9 @@ Public Class ProjExplorerDock
 
     Private Sub filesList_KeyDown(sender As Object, e As KeyEventArgs) Handles filesList.KeyDown
         If e.KeyCode = Keys.Delete Then
-            DeleteToolStripMenuItem_Click(Me, Nothing)
+            If IsProtected(Path.Combine(filesList.SelectedPath, filesList.SelectedItem)) = False Then
+                DeleteToolStripMenuItem_Click(Me, Nothing)
+            End If
         End If
     End Sub
 End Class
