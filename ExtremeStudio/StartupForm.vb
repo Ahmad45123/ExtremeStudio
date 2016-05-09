@@ -127,8 +127,16 @@ Public Class StartupForm
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        'Add to the path folder name.
+        If FilenameIsOk(nameTextBox.Text) = False Then
+            MsgBox("Invalid Name.")
+            Exit Sub
+        End If
+        locTextBox.Text = Path.Combine(locTextBox.Text, nameTextBox.Text)
+        If My.Computer.FileSystem.DirectoryExists(locTextBox.Text) = False Then My.Computer.FileSystem.CreateDirectory(locTextBox.Text)
+
         'Check if entered path exist.
-        If My.Computer.FileSystem.DirectoryExists(locTextBox.Text) Or My.Computer.FileSystem.FileExists(locTextBox.Text + "/extremeStudio.config") Then
+        If My.Computer.FileSystem.DirectoryExists(locTextBox.Text) And My.Computer.FileSystem.FileExists(locTextBox.Text + "/extremeStudio.config") = False Then
             If Not verListBox.SelectedIndex = -1 Then
                 If My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip") Then 'check if that version is existing
                     FastZipUnpack(MainForm.ApplicationFiles + "/cache/serverPackages/" + verListBox.SelectedItem + ".zip", locTextBox.Text) 'Extract the zip to project folder.
@@ -153,7 +161,7 @@ Public Class StartupForm
                 MsgBox("You haven't selected a SAMP version to use.")
             End If
         Else
-            MsgBox("That directory doesn't exist or contains a project.")
+            MsgBox("That directory doesn't exist or there is a project with that name already there.")
         End If
     End Sub
 
