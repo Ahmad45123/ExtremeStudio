@@ -642,82 +642,84 @@ Public Class EditorDock
             Editor.SetStyling(mtch.Length, style)
         Next
     End Sub
-    Private Sub ReColorize(startPos As Integer, endPos As Integer)
+    Private Sub ReColorize(parts As CodeParts, startPos As Integer, endPos As Integer)
         'Setup vars: 
         Dim code As String = Editor.GetTextRange(startPos, endPos - startPos)
 
         Dim rgx As New StringBuilder()
         'Functions: 
         rgx.Clear() : rgx.Append("\b(?:")
-        For i As Integer = 0 To CodeParts.Functions.Count - 1
-            rgx.Append(Regex.Escape(CodeParts.Functions(i).FuncName))
-            If (i < CodeParts.Functions.Count - 1) Then rgx.Append("|")
+        For i As Integer = 0 To parts.Functions.Count - 1
+            rgx.Append(Regex.Escape(parts.Functions(i).FuncName))
+            If (i < parts.Functions.Count - 1) Then rgx.Append("|")
         Next
-        If CodeParts.Functions.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Functions)
+        If parts.Functions.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Functions)
 
         'Publics: 
         rgx.Clear() : rgx.Append("\b(?:")
-        For i As Integer = 0 To CodeParts.Publics.Count - 1
-            rgx.Append(Regex.Escape(CodeParts.Publics(i).FuncName))
-            If (i < CodeParts.Publics.Count - 1) Then rgx.Append("|")
+        For i As Integer = 0 To parts.Publics.Count - 1
+            rgx.Append(Regex.Escape(parts.Publics(i).FuncName))
+            If (i < parts.Publics.Count - 1) Then rgx.Append("|")
         Next
-        If CodeParts.Publics.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Publics)
+        If parts.Publics.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Publics)
 
         'Stocks: 
         rgx.Clear() : rgx.Append("\b(?:")
-        For i As Integer = 0 To CodeParts.Stocks.Count - 1
-            rgx.Append(Regex.Escape(CodeParts.Stocks(i).FuncName))
-            If (i < CodeParts.Stocks.Count - 1) Then rgx.Append("|")
+        For i As Integer = 0 To parts.Stocks.Count - 1
+            rgx.Append(Regex.Escape(parts.Stocks(i).FuncName))
+            If (i < parts.Stocks.Count - 1) Then rgx.Append("|")
         Next
-        If CodeParts.Stocks.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Stocks)
+        If parts.Stocks.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Stocks)
 
         'Natives: 
         rgx.Clear() : rgx.Append("\b(?:")
-        For i As Integer = 0 To CodeParts.Natives.Count - 1
-            rgx.Append(Regex.Escape(CodeParts.Natives(i).FuncName))
-            If (i < CodeParts.Natives.Count - 1) Then rgx.Append("|")
+        For i As Integer = 0 To parts.Natives.Count - 1
+            rgx.Append(Regex.Escape(parts.Natives(i).FuncName))
+            If (i < parts.Natives.Count - 1) Then rgx.Append("|")
         Next
-        If CodeParts.Natives.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Natives)
+        If parts.Natives.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Natives)
 
         'Defines: 
         rgx.Clear() : rgx.Append("\b(?:")
-        For i As Integer = 0 To CodeParts.Defines.Count - 1
-            rgx.Append(Regex.Escape(CodeParts.Defines(i).DefineName))
-            If (i < CodeParts.Defines.Count - 1) Then rgx.Append("|")
+        For i As Integer = 0 To parts.Defines.Count - 1
+            rgx.Append(Regex.Escape(parts.Defines(i).DefineName))
+            If (i < parts.Defines.Count - 1) Then rgx.Append("|")
         Next
-        If CodeParts.Defines.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Defines)
+        If parts.Defines.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Defines)
 
         'Macros: 
         rgx.Clear() : rgx.Append("\b(?:")
-        For i As Integer = 0 To CodeParts.Macros.Count - 1
-            rgx.Append(Regex.Escape(CodeParts.Macros(i).DefineName))
-            If (i < CodeParts.Macros.Count - 1) Then rgx.Append("|")
+        For i As Integer = 0 To parts.Macros.Count - 1
+            rgx.Append(Regex.Escape(parts.Macros(i).DefineName))
+            If (i < parts.Macros.Count - 1) Then rgx.Append("|")
         Next
-        If CodeParts.Macros.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Macros)
+        If parts.Macros.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Macros)
 
         'Enums: 
         rgx.Clear() : rgx.Append("\b(?:")
-        For i As Integer = 0 To CodeParts.Enums.Count - 1
-            For Each cntn In CodeParts.Enums(i).EnumContents
+        For i As Integer = 0 To parts.Enums.Count - 1
+            For Each cntn In parts.Enums(i).EnumContents
                 rgx.Append(Regex.Escape(cntn.Content))
-                If (i < CodeParts.Enums.Count - 1) Then rgx.Append("|")
+                If (i < parts.Enums.Count - 1) Then rgx.Append("|")
             Next
         Next
-        If CodeParts.Enums.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Enums)
+        If parts.Enums.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.Enums)
 
         'Public Variables: 
         rgx.Clear() : rgx.Append("\b(?:")
-        For i As Integer = 0 To CodeParts.PublicVariables.Count - 1
-            rgx.Append(Regex.Escape(CodeParts.PublicVariables(i).VarName))
-            If (i < CodeParts.PublicVariables.Count - 1) Then rgx.Append("|")
+        For i As Integer = 0 To parts.PublicVariables.Count - 1
+            rgx.Append(Regex.Escape(parts.PublicVariables(i).VarName))
+            If (i < parts.PublicVariables.Count - 1) Then rgx.Append("|")
         Next
-        If CodeParts.PublicVariables.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.PublicVars)
+        If parts.PublicVariables.Count Then rgx.Append(")\b") : DoColor(startPos, code, rgx.ToString, Styles.PublicVars)
     End Sub
 
     Private Sub Editor_UpdateStyle(sender As Object, e As UpdateUIEventArgs) Handles Editor.UpdateUI
         Dim startPos = Editor.Lines(Editor.FirstVisibleLine).Position
         Dim endPos = Editor.Lines(Editor.FirstVisibleLine + Editor.LinesOnScreen).EndPosition
-        ReColorize(startPos, endPos)
+        For Each inc In CodeParts.FlattenIncludes()
+            ReColorize(inc, startPos, endPos)
+        Next
     End Sub
 #End Region
 
@@ -809,7 +811,6 @@ Public Class EditorDock
             _foundItem = New KeyValuePair(Of Integer,Integer)(0, 0)
             _foundItemFile = ""
         End If
-        MainForm.ShowStatus("Found File: " + _foundItemFile, 1000, False)
     End Sub
     Private Sub Editor_KeyDown(sender As Object, e As KeyEventArgs) Handles Editor.KeyDown
         If e.KeyCode = Keys.ControlKey Then
