@@ -157,6 +157,11 @@ Public Class EditorDock
 
         Editor.IndentationGuides = IndentView.LookBoth
 
+        'Setup Hotspot Stuff
+        Editor.Styles(Styles.Hotspot).Hotspot = True
+        Editor.Styles(Styles.Hotspot).Underline = True
+        Editor.Styles(Styles.Hotspot).ForeColor = Color.DarkBlue
+
         ' Configure a margin to display folding symbols.
         Editor.Margins(2).Type = MarginType.Symbol
         Editor.Margins(2).Mask = Marker.MaskFolders
@@ -621,7 +626,8 @@ Public Class EditorDock
 
 #Region "WordSet Colorizer"
     Private Enum Styles
-        Functions = 100
+        Hotspot = 100
+        Functions
         Publics
         Stocks
         Natives
@@ -734,6 +740,121 @@ Public Class EditorDock
                 Mainform.OpenFile(file, True)
             End If
         Next
+    End Sub
+#End Region
+
+#Region "CTRL+CLICK"
+    Dim _foundItem As New KeyValuePair(Of Integer, Integer)
+    Dim _foundItemFile As String = ""
+    Private Sub LoadPart(part As CodeParts, fileContent As String, item As String, Optional current As Boolean = False)
+        _foundItemFile = IIf(current, "current", part.FilePath)
+        
+        'Do enums first.
+         For Each Enm In part.Enums
+           For Each cntn In Enm.EnumContents
+               If cntn.Content = item Then
+                   Dim allText As String = fileContent
+                    Dim mtch = Regex.Match(allText, "enum\s+"+ Regex.Escape(Enm.EnumName) +"\s+(?:(?:[{])([^}]+)(?:[}]))", RegexOptions.Multiline)
+                    If  mtch.Length <> 0 Then
+                        _foundItem = New KeyValuePair(Of Integer,Integer)(mtch.Index, mtch.Index + mtch.Length)
+                    End If
+                    Exit Sub 
+               End If
+           Next
+         Next
+
+        If part.Defines.FindAll(Function(x) x.DefineName = item).Count > 0 Then
+            Dim allText As String = fileContent
+            Dim mtch = Regex.Match(allText, "^[ \t]*[#]define[ \t]+" + Regex.Escape(item) + "[ \t]*(?:\\\s+)?(?>(?<value>[^\\\n\r]+)[ \t]*(?:\\\s+)?)*", RegexOptions.Multiline)
+            If  mtch.Length <> 0 Then
+                _foundItem = New KeyValuePair(Of Integer,Integer)(mtch.Index, mtch.Index + mtch.Length)    
+            End If 
+
+        ElseIf part.Functions.FindAll(Function(x) x.FuncName = item).Count > 0 Then
+            Dim allText As String = fileContent
+            Dim mtch = Regex.Match(allText, "^[ \t]*(?:\sstatic\s+stock\s+|\sstock\s+static\s+|\sstatic\s+)?" + Regex.Escape(item) + "\((.*)\)(?!;)\s*{", RegexOptions.Multiline)
+            If  mtch.Length <> 0 Then
+                _foundItem = New KeyValuePair(Of Integer,Integer)(mtch.Index, mtch.Index + mtch.Length)
+            End If
+
+        ElseIf part.Natives.FindAll(Function(x) x.FuncName = item).Count > 0 Then
+            Dim allText As String = fileContent
+            Dim mtch = Regex.Match(allText, "native[ \t]+" + Regex.Escape(item) + "[ \t]*?\((.*)\);", RegexOptions.Multiline)
+            If  mtch.Length <> 0 Then
+                _foundItem = New KeyValuePair(Of Integer,Integer)(mtch.Index, mtch.Index + mtch.Length)
+            End If
+
+        ElseIf part.PublicVariables.FindAll(Function(x) x.VarName = item).Count > 0 Then
+            Dim allText As String = fileContent
+            Dim mtch = Regex.Match(allText, "(?:\s?stock\s+static|\s?static\s+stock|\s?new\s+stock|\s?new|\s?static|\s?stock)\s*" + Regex.Escape(item) + ";", RegexOptions.Multiline)
+            If  mtch.Length <> 0 Then
+                _foundItem = New KeyValuePair(Of Integer,Integer)(mtch.Index, mtch.Index + mtch.Length)
+            End If
+
+        ElseIf part.Publics.FindAll(Function(x) x.FuncName = item).Count > 0 Then
+            Dim allText As String = fileContent
+            Dim mtch = Regex.Match(allText, "public[ \t]+" + Regex.Escape(item) + "[ \t]*\((.*)\)\s*{", RegexOptions.Multiline)
+            If  mtch.Length <> 0 Then
+                _foundItem = New KeyValuePair(Of Integer,Integer)(mtch.Index, mtch.Index + mtch.Length)
+            End If
+
+        ElseIf part.Stocks.FindAll(Function(x) x.FuncName = item).Count > 0 Then
+            Dim allText As String = fileContent
+            Dim mtch = Regex.Match(allText, "stock[ \t]+" + Regex.Escape(item) + "[ \t]*\((.*)\)\s*{", RegexOptions.Multiline)
+            If  mtch.Length <> 0 Then
+                _foundItem = New KeyValuePair(Of Integer,Integer)(mtch.Index, mtch.Index + mtch.Length)
+            End If
+
+        Else
+            _foundItem = New KeyValuePair(Of Integer,Integer)(0, 0)
+            _foundItemFile = ""
+        End If
+        MainForm.ShowStatus("Found File: " + _foundItemFile, 1000, False)
+    End Sub
+    Private Sub Editor_KeyDown(sender As Object, e As KeyEventArgs) Handles Editor.KeyDown
+        If e.KeyCode = Keys.ControlKey Then
+            'The pos.
+            Dim pos = Editor.CharPositionFromPointClose(Editor.PointToClient(MousePosition).X, Editor.PointToClient(MousePosition).Y)
+
+            'Get what is there.
+            Dim item As String = Editor.GetWordFromPosition(pos)
+
+            'Loop in all for it.
+            LoadPart(CodeParts, Editor.GetTextRange(0, Editor.TextLength), item, True)
+            If _foundItem.Key = _foundItem.Value Then
+                Dim allIncs = CodeParts.FlattenIncludes()
+                For i = 1 To allIncs.Count - 1
+                    If _foundItem.Key = _foundItem.Value Then LoadPart(allIncs(i), File.ReadAllText(allIncs(i).FilePath), item)
+                Next
+            End If
+
+            'Now if found, Make the mouse cursor a click.
+            If _foundItem.Key <> _foundItem.Value Then
+                Cursor = Cursors.Hand
+            ElseIf Cursor = Cursors.Hand Then
+                Cursor = Cursors.Default
+            End If
+        End If
+    End Sub
+
+    Private Sub Editor_KeyUp(sender As Object, e As KeyEventArgs) Handles Editor.KeyUp
+        If e.KeyCode = Keys.ControlKey And Cursor = Cursors.Hand Then
+            Cursor = Cursors.Default
+        End If
+    End Sub
+
+    Private Sub Editor_MouseClick(sender As Object, e As MouseEventArgs) Handles Editor.MouseClick
+        'Small check to make sure he is over a navigateable place.
+        If Cursor = Cursors.Hand And _foundItemFile <> "" And _foundItem.Key <> _foundItem.Value Then
+            'Make sure that certain file is opened.
+            If _foundItemFile <> "current" Then Mainform.OpenFile(_foundItemFile)
+            'Goto
+            Mainform.CurrentScintilla.SetSelection(_foundItem.Key, _foundItem.Value)
+            Mainform.CurrentScintilla.ScrollCaret()
+            'Clear
+            _foundItemFile = ""
+            _foundItem = New KeyValuePair(Of Integer,Integer)(0, 0)
+        End If
     End Sub
 #End Region
 End Class

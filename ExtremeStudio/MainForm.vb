@@ -25,6 +25,14 @@ Public Class MainForm
 #End Region
 #Region "Functions"
     Public Sub OpenFile(ByVal targetPath As String, Optional isExternal As Boolean = False)
+        'We gotta make sure there is no file opened with that path first.
+        For Each doc In MainDock.Documents
+            If doc.DockHandler.Form.Controls("Editor").Tag = targetPath Then
+                doc.DockHandler.Activate()
+                Exit Sub
+            End If
+        Next
+
         Dim newEditor As New EditorDock
         newEditor.Text = Path.GetFileName(targetPath) + IIf(isExternal, " [EXTERNAL]", "")
         newEditor.Editor.Tag = targetPath
