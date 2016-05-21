@@ -90,6 +90,9 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.Ribbon35">
+      <HintPath>..\lib\System.Windows.Forms.Ribbon35.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -133,7 +136,8 @@
     <Compile Include="Controls\PathTextBox.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="extremePlugin.vb" />
+    <Compile Include="IExtremePlugin.vb" />
+    <Compile Include="IPluginContext.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

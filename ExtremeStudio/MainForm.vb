@@ -4,6 +4,8 @@ Imports ScintillaNET
 Imports System.Text
 Imports System.Environment
 Imports System.Text.RegularExpressions
+Imports System.Reflection
+Imports ExtremeCore
 
 Public Class MainForm
 
@@ -87,7 +89,7 @@ Public Class MainForm
         statusLabel.Text = textToShow
         If isBeep Then Beep()
 
-        if msInterval <> -1 Then
+        If msInterval <> -1 Then
             statusStripTimer.Interval = msInterval
             statusStripTimer.Stop() : statusStripTimer.Start()
         End If
@@ -99,15 +101,15 @@ Public Class MainForm
 #End Region
 
     'Global variables that are used through the whole program: 
-    Public CurrentProject As New currentProjectClass
+    Public CurrentProject As New CurrentProjectClass
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Text = "ExtremeStudio - " + currentProject.projectName
+        Me.Text = "ExtremeStudio - " + CurrentProject.ProjectName
     End Sub
 
     Private Sub MainForm_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         'Save all info.
-        currentProject.SaveInfo()
+        CurrentProject.SaveInfo()
 
         If _isClosedProgrammitcly = False Then
             Application.Exit()
@@ -133,7 +135,7 @@ Public Class MainForm
             ObjectExplorerDock.Visible = False
         End If
     End Sub
-    Private Sub ErrorsAndWarningsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles errorsWarningsView.Click 
+    Private Sub ErrorsAndWarningsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles errorsWarningsView.Click
         If ErrorsDock.Visible = False Then
             ErrorsDock.Visible = True
             ErrorsDock.Show(MainDock)
@@ -168,21 +170,21 @@ Public Class MainForm
     Private Sub MainDock_ActiveDocumentChanged(sender As Object, e As EventArgs) Handles MainDock.ActiveDocumentChanged
         'Update.
         If ObjectExplorerDock.Visible And CurrentEditor IsNot Nothing Then
-            ObjectExplorerDock.refreshTreeView(CurrentEditor.codeParts)
+            ObjectExplorerDock.RefreshTreeView(CurrentEditor.CodeParts)
         End If
     End Sub
 
     Private _isClosedProgrammitcly As Boolean = False
     Private Sub closeProjectButton_Click(sender As Object, e As EventArgs) Handles closeProjectButton.Click
         'Save
-        currentProject.SaveInfo()
+        CurrentProject.SaveInfo()
 
         'Then close ourself.
         _isClosedProgrammitcly = True : Close()
 
         'Open the form
         Dim str As New StartupForm
-        str.isFirst = False
+        str.IsFirst = False
         str.Show()
     End Sub
 
@@ -229,7 +231,7 @@ Public Class MainForm
         End If
     End Sub
 
-    #Region "Compiler Stuff"
+#Region "Compiler Stuff"
     Private Sub CompilerWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles CompilerWorker.DoWork
         'First of all, Try and save all docs.
         Dim msgRslt = MsgBox("Would you like to save all files ?", MsgBoxStyle.YesNoCancel Or MsgBoxStyle.Exclamation)
@@ -241,7 +243,7 @@ Public Class MainForm
         'Next, Create the compiler process.
         If File.Exists(CurrentProject.ProjectPath + "/pawno/pawncc.exe") Then
             'Start compilation process and wait till exit.
-            Dim compiler as New Process()
+            Dim compiler As New Process()
             compiler.StartInfo.FileName = CurrentProject.ProjectPath + "/pawno/pawncc.exe"
             compiler.StartInfo.WorkingDirectory = CurrentProject.ProjectPath + "/gamemodes/"
             compiler.StartInfo.Arguments = """" + e.Argument(0).ToString().Replace("/", "\") + """" + Space(1) + e.Argument(1)
@@ -280,7 +282,7 @@ Public Class MainForm
 
                 'Set result as the list.
                 e.Result = errorList
-                
+
                 'Report status.
                 If errorLevel = 2 Then
                     CompilerWorker.ReportProgress(3) 'Failed with errors and possible warnings.
@@ -289,7 +291,7 @@ Public Class MainForm
                 End If
             End If
         Else
-            MsgBox("The file pawncc.exe hasn't been found at the path """ + CurrentProject.ProjectPath + "/pawno/pawncc.exe" + """" + VbCrlf + "Please verify its there.")
+            MsgBox("The file pawncc.exe hasn't been found at the path """ + CurrentProject.ProjectPath + "/pawno/pawncc.exe" + """" + vbCrLf + "Please verify its there.")
         End If
     End Sub
 
@@ -305,15 +307,15 @@ Public Class MainForm
         If e.ProgressPercentage = 2 Then
             ShowStatus("Compiling...", -1, False)
 
-        '3 = Failed Compiling With Errors/Warnings.
+            '3 = Failed Compiling With Errors/Warnings.
         ElseIf e.ProgressPercentage = 3 Then
             ShowStatus("Compiling failed with errors/warnings.", 5000, True)
 
-        '4 = Finished Compiling With Warnings.
+            '4 = Finished Compiling With Warnings.
         ElseIf e.ProgressPercentage = 4 Then
             ShowStatus("Compiling finished successfully but there are warning(s).", 5000, True)
 
-        '5 = Finished Compiling.
+            '5 = Finished Compiling.
         ElseIf e.ProgressPercentage = 5 Then
             ShowStatus("Compiling finished sucessfully with no errors/warnings.", 5000, True)
         End If
@@ -323,6 +325,56 @@ Public Class MainForm
         'Once done, Report result to ErrorsDock.
         ErrorsDock.ErrorWarningList = e.Result
         ErrorsDock.RefreshErrorWarnings()
+    End Sub
+#End Region
+
+#Region "Plugin System"
+    Private Sub OnFormLoadPlugin(sender As Object, e As EventArgs) Handles MyBase.Load
+        'First, Get all *.dll files.
+        Dim dllFileNames As String() = Nothing
+        If Directory.Exists(ApplicationFiles + "/plugins") Then
+            dllFileNames = Directory.GetFiles(ApplicationFiles + "/plugins", "*.dll")
+        End If
+
+        'Load all assemblies.
+        Dim assemblies As ICollection(Of Assembly) = New List(Of Assembly)(dllFileNames.Length)
+        For Each dllFile As String In dllFileNames
+            Dim an As AssemblyName = AssemblyName.GetAssemblyName(dllFile)
+            Dim assembly As Assembly = Assembly.Load(an)
+            assemblies.Add(assembly)
+        Next
+
+        'Check assemblies.
+        Dim pluginType As Type = GetType(IExtremePlugin)
+        Dim pluginTypes As ICollection(Of Type) = New List(Of Type)
+        For Each assembly As Assembly In assemblies
+            If assembly <> Nothing Then
+                Dim types As Type() = assembly.GetTypes()
+
+                For Each type As Type In types
+                    If type.IsInterface Or type.IsAbstract Then
+                        Continue For
+                    Else
+                        If type.GetInterface(pluginType.FullName) <> Nothing Then
+                            pluginTypes.Add(type)
+                        End If
+                    End If
+                Next
+            End If
+        Next
+
+        'Intialize each plugin.
+        For Each type As Type In pluginTypes
+            Dim plugin As IExtremePlugin = Activator.CreateInstance(type)
+
+            plugin.ExtremeStudioFuncs = New FuncsHandler()
+            plugin.OnPluginInit()
+            For Each btn In plugin.ToolStripButtons
+                installedPlugins.Items.Add(btn)
+            Next
+        Next
+
+        'I don't even need to save this shit since well, I don't even have events or such.
     End Sub
 #End Region
 End Class
