@@ -47,6 +47,9 @@ Partial Class MainForm
         Me.searchButton = New System.Windows.Forms.RibbonButton()
         Me.replaceButton = New System.Windows.Forms.RibbonButton()
         Me.gotoButton = New System.Windows.Forms.RibbonButton()
+        Me.indentPanel = New System.Windows.Forms.RibbonPanel()
+        Me.addIndentButton = New System.Windows.Forms.RibbonButton()
+        Me.removeIndentButton = New System.Windows.Forms.RibbonButton()
         Me.ideTab = New System.Windows.Forms.RibbonTab()
         Me.viewPanel = New System.Windows.Forms.RibbonPanel()
         Me.prjExplrerView = New System.Windows.Forms.RibbonButton()
@@ -200,6 +203,7 @@ Partial Class MainForm
         '
         Me.editTab.Panels.Add(Me.clipboardPanel)
         Me.editTab.Panels.Add(Me.searchPanel)
+        Me.editTab.Panels.Add(Me.indentPanel)
         Me.editTab.Text = "Edit"
         '
         'clipboardPanel
@@ -261,6 +265,27 @@ Partial Class MainForm
         Me.gotoButton.SmallImage = CType(resources.GetObject("gotoButton.SmallImage"),System.Drawing.Image)
         Me.gotoButton.Text = ""
         Me.gotoButton.ToolTip = "GoTo"
+        '
+        'indentPanel
+        '
+        Me.indentPanel.ButtonMoreVisible = false
+        Me.indentPanel.Items.Add(Me.addIndentButton)
+        Me.indentPanel.Items.Add(Me.removeIndentButton)
+        Me.indentPanel.Text = "Indentation"
+        '
+        'addIndentButton
+        '
+        Me.addIndentButton.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_addIndent
+        Me.addIndentButton.SmallImage = CType(resources.GetObject("addIndentButton.SmallImage"),System.Drawing.Image)
+        Me.addIndentButton.Text = ""
+        Me.addIndentButton.ToolTip = "Add Indentation"
+        '
+        'removeIndentButton
+        '
+        Me.removeIndentButton.Image = Global.ExtremeStudio.My.Resources.Resources.ribbon_removeIndent
+        Me.removeIndentButton.SmallImage = CType(resources.GetObject("removeIndentButton.SmallImage"),System.Drawing.Image)
+        Me.removeIndentButton.Text = ""
+        Me.removeIndentButton.ToolTip = "Remove Indentation"
         '
         'ideTab
         '
@@ -411,4 +436,7 @@ End Sub
     Friend WithEvents compileScriptBtn As RibbonButton
     Friend WithEvents CompilerWorker As System.ComponentModel.BackgroundWorker
     Friend WithEvents statusStripTimer As Timer
+    Friend WithEvents indentPanel As RibbonPanel
+    Friend WithEvents addIndentButton As RibbonButton
+    Friend WithEvents removeIndentButton As RibbonButton
 End Class

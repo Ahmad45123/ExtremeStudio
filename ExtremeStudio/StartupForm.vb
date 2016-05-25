@@ -140,7 +140,7 @@ Public Class StartupForm
                 Exit Sub
             End If
             newPath = Path.Combine(locTextBox.Text, nameTextBox.Text)
-            If My.Computer.FileSystem.DirectoryExists(newPath) = False Then My.Computer.FileSystem.CreateDirectory(newPath)
+            If newPath <> "" And My.Computer.FileSystem.DirectoryExists(newPath) = False Then My.Computer.FileSystem.CreateDirectory(newPath)
 
             'Check if entered path exist.
             If My.Computer.FileSystem.DirectoryExists(newPath) And My.Computer.FileSystem.FileExists(newPath + "/extremeStudio.config") = False Then

@@ -373,8 +373,21 @@ Public Class MainForm
                 installedPlugins.Items.Add(btn)
             Next
         Next
+    End Sub
 
-        'I don't even need to save this shit since well, I don't even have events or such.
+    Private Sub addIndentButton_Click(sender As Object, e As EventArgs) Handles addIndentButton.Click
+        If CurrentScintilla IsNot Nothing Then
+            For Each line In GetLinesFromRange(CurrentScintilla, CurrentScintilla.SelectionStart, CurrentScintilla.SelectionEnd)
+                CurrentScintilla.Lines(line).Indentation += 4
+            Next
+        End If
+    End Sub
+    Private Sub removeIndentButton_Click(sender As Object, e As EventArgs) Handles removeIndentButton.Click
+        If CurrentScintilla IsNot Nothing Then
+            For Each line In GetLinesFromRange(CurrentScintilla, CurrentScintilla.SelectionStart, CurrentScintilla.SelectionEnd)
+                If CurrentScintilla.Lines(line).Indentation >= 4 Then CurrentScintilla.Lines(line).Indentation -= 4
+            Next
+        End If
     End Sub
 #End Region
 End Class

@@ -170,6 +170,26 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property ribbon_addIndent() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ribbon_addIndent", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ribbon_autoIndent() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ribbon_autoIndent", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property ribbon_closeProject() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("ribbon_closeProject", resourceCulture)
@@ -273,6 +293,16 @@ Namespace My.Resources
         Friend ReadOnly Property ribbon_plugins() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("ribbon_plugins", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ribbon_removeIndent() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ribbon_removeIndent", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

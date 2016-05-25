@@ -190,4 +190,13 @@
   <data name="warning_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\warning_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ribbon_addIndent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_addIndent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbon_autoIndent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_autoIndent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ribbon_removeIndent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ribbon_removeIndent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
