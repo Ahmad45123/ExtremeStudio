@@ -225,6 +225,8 @@ Public Class MainForm
     End Sub
 
     Private Sub compileScriptBtn_Click(sender As Object, e As EventArgs) Handles compileScriptBtn.Click
+        If CurrentEditor Is Nothing Then Exit Sub
+
         If CompilerWorker.IsBusy Or CurrentEditor.RefreshWorker.IsBusy Then
             MsgBox("Please wait until the current compilation or parsing process is finished.")
         Else
