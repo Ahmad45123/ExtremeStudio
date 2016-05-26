@@ -174,6 +174,10 @@ Public Class EditorDock
             Editor.Markers(i).SetBackColor(SystemColors.ControlDark)
         Next
 
+        'Brace Styling
+        Editor.Styles(Style.BraceBad).ForeColor = Color.Red
+        Editor.Styles(Style.BraceLight).BackColor = Color.Gray
+
         ' Configure folding markers with respective symbols.
         Editor.Markers(Marker.Folder).Symbol = MarkerSymbol.BoxPlus
         Editor.Markers(Marker.FolderOpen).Symbol = MarkerSymbol.BoxMinus
