@@ -3,7 +3,7 @@ Imports System.Security.Cryptography
 
 Public Module FileHash
     Public Function GetFileHash(fileName As String) As String
-        Dim sha = SHA256.Create()
+        Dim sha = SHA1.Create()
 
         If File.Exists(fileName) = False Then
             Return False
