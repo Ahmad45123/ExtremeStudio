@@ -11,10 +11,13 @@ Public Class SettingsForm
 
     'A function for external execution.
     Public Sub ReloadInfoAll()
+        If IsGlobal Then serverCFGTabPage.Enabled = False Else serverCFGTabPage.Enabled = True
+
         CheckPath()
 
         LoadColors()
         LoadCompiler()
+        LoadServerCfg()
     End Sub
 
     Private Sub CheckPath()
@@ -28,18 +31,24 @@ Public Class SettingsForm
         ReloadInfoAll()
     End Sub
 
-    Public WriteOnly Property IsGlobal As Boolean
+    Dim _isGlobal As Boolean
+    Public Property IsGlobal As Boolean
         Set
             If Value = True Then
+                _isGlobal = True
                 _configDirPath = MainForm.ApplicationFiles + "/configs/"
                 Me.Text = "Settings. [GLOBAL]"
                 ReloadInfoAll()
             Else
+                _isGlobal = False
                 _configDirPath = MainForm.CurrentProject.ProjectPath + "/configs/"
                 Me.Text = "Settings. [PROJECT]"
                 ReloadInfoAll()
             End If
         End Set
+        Get
+            Return _isGlobal
+        End Get
     End Property
 
 #Region "Colorizer Stuff"
@@ -213,6 +222,36 @@ Public Class SettingsForm
 
 #End Region
 
+#Region "Server.CFG"
+    Public Sub LoadServerCfg()
+        serverCfgGrid.Rows.Clear()
+
+        Dim textLine As String
+        If IO.File.Exists(Mainform.CurrentProject.projectPath + "/server.cfg") = True Then
+            Dim objReader As New System.IO.StreamReader(Mainform.CurrentProject.projectPath + "/server.cfg")
+            Do While objReader.Peek() <> -1
+                TextLine = objReader.ReadLine()
+                Dim values() As String = TextLine.Split(" ", 2, StringSplitOptions.None)
+                If values.Length = 2 Then
+                    If values(0).Trim = "" And values(1).Trim = "" Then Continue Do
+                    serverCfgGrid.Rows.Add(New Object() {values(0).Trim, values(1).Trim})
+                End If
+            Loop
+
+            objReader.Close()
+        End If
+    End Sub
+
+    Private Sub ServerCfgFormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If IsGlobal Then Exit Sub
+
+        Dim allStr As New StringBuilder()
+        For Each row As DataGridViewRow In serverCfgGrid.Rows
+            allStr.Append(row.Cells(0).Value + " " + row.Cells(1).Value + vbCrLf)
+        Next
+        My.Computer.FileSystem.WriteAllText(Mainform.CurrentProject.projectPath + "/server.cfg", allStr.ToString(), False)
+    End Sub
+#End Region
 End Class
 
 #Region "Syntax Colorizing Stuff"

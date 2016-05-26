@@ -53,7 +53,11 @@ Partial Class SettingsForm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.activeDirText = New ExtremeCore.PathTextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.serverCFGTabPage = New System.Windows.Forms.TabPage()
         Me.ToolTipHandler = New System.Windows.Forms.ToolTip(Me.components)
+        Me.serverCfgGrid = New System.Windows.Forms.DataGridView()
+        Me.nameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.valueColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabControl1.SuspendLayout
         Me.TabPage1.SuspendLayout
         Me.TabPage2.SuspendLayout
@@ -61,12 +65,15 @@ Partial Class SettingsForm
         CType(Me.tabSizeUpDown,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.optiLevelUpDown,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.debugLevelUpDown,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.serverCFGTabPage.SuspendLayout
+        CType(Me.serverCfgGrid,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
+        Me.TabControl1.Controls.Add(Me.serverCFGTabPage)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.Name = "TabControl1"
@@ -399,6 +406,17 @@ Partial Class SettingsForm
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Active Dir: "
         '
+        'serverCFGTabPage
+        '
+        Me.serverCFGTabPage.Controls.Add(Me.serverCfgGrid)
+        Me.serverCFGTabPage.Location = New System.Drawing.Point(4, 22)
+        Me.serverCFGTabPage.Name = "serverCFGTabPage"
+        Me.serverCFGTabPage.Padding = New System.Windows.Forms.Padding(3)
+        Me.serverCFGTabPage.Size = New System.Drawing.Size(359, 433)
+        Me.serverCFGTabPage.TabIndex = 2
+        Me.serverCFGTabPage.Text = "server.cfg"
+        Me.serverCFGTabPage.UseVisualStyleBackColor = true
+        '
         'ToolTipHandler
         '
         Me.ToolTipHandler.AutomaticDelay = 0
@@ -407,6 +425,27 @@ Partial Class SettingsForm
         Me.ToolTipHandler.ReshowDelay = 100
         Me.ToolTipHandler.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
         Me.ToolTipHandler.ToolTipTitle = "Help"
+        '
+        'serverCfgGrid
+        '
+        Me.serverCfgGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.serverCfgGrid.BackgroundColor = System.Drawing.SystemColors.ControlLightLight
+        Me.serverCfgGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.serverCfgGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.nameColumn, Me.valueColumn})
+        Me.serverCfgGrid.Location = New System.Drawing.Point(8, 6)
+        Me.serverCfgGrid.Name = "serverCfgGrid"
+        Me.serverCfgGrid.Size = New System.Drawing.Size(345, 419)
+        Me.serverCfgGrid.TabIndex = 0
+        '
+        'nameColumn
+        '
+        Me.nameColumn.HeaderText = "Name"
+        Me.nameColumn.Name = "nameColumn"
+        '
+        'valueColumn
+        '
+        Me.valueColumn.HeaderText = "Value"
+        Me.valueColumn.Name = "valueColumn"
         '
         'SettingsForm
         '
@@ -424,6 +463,8 @@ Partial Class SettingsForm
         CType(Me.tabSizeUpDown,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.optiLevelUpDown,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.debugLevelUpDown,System.ComponentModel.ISupportInitialize).EndInit
+        Me.serverCFGTabPage.ResumeLayout(false)
+        CType(Me.serverCfgGrid,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
 
 End Sub
@@ -458,4 +499,8 @@ End Sub
     Friend WithEvents ouputDirText As ExtremeCore.PathTextBox
     Friend WithEvents includesDirText As ExtremeCore.PathTextBox
     Friend WithEvents activeDirText As ExtremeCore.PathTextBox
+    Friend WithEvents serverCFGTabPage As TabPage
+    Friend WithEvents serverCfgGrid As DataGridView
+    Friend WithEvents nameColumn As DataGridViewTextBoxColumn
+    Friend WithEvents valueColumn As DataGridViewTextBoxColumn
 End Class
