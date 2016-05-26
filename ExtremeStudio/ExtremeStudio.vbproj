@@ -138,6 +138,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite, Version=1.0.98.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -181,6 +182,7 @@
   <ItemGroup>
     <Compile Include="Classes and Modules\currentProjectClass.vb" />
     <Compile Include="Classes and Modules\funcsHandler.vb" />
+    <Compile Include="Classes and Modules\PluginBootstrapper.vb" />
     <Compile Include="Classes and Modules\versionHandler.vb" />
     <Compile Include="DockPanel Forms\MainForm Docks\EditorDock\AutoComplete\AutoCompleteItemEx.vb" />
     <Compile Include="DockPanel Forms\MainForm Docks\EditorDock\EditorDock.Designer.vb">

@@ -4,7 +4,8 @@ Imports ScintillaNET
 Imports System.Text
 Imports System.Environment
 Imports System.Text.RegularExpressions
-Imports System.Reflection
+Imports System.ComponentModel.Composition
+Imports System.ComponentModel.Composition.Hosting
 Imports ExtremeCore
 
 Public Class MainForm
@@ -329,50 +330,30 @@ Public Class MainForm
 #End Region
 
 #Region "Plugin System"
+
+    Dim _allPlugins As New PluginBootstrapper()
     Private Sub OnFormLoadPlugin(sender As Object, e As EventArgs) Handles MyBase.Load
-        'First, Get all *.dll files.
-        Dim dllFileNames As String() = Nothing
-        If Directory.Exists(ApplicationFiles + "/plugins") Then
-            dllFileNames = Directory.GetFiles(ApplicationFiles + "/plugins", "*.dll")
-        End If
-        If dllFileNames Is Nothing Then Exit Sub
-        
-        'Load all assemblies.
-        Dim assemblies As ICollection(Of Assembly) = New List(Of Assembly)(dllFileNames.Length)
-        For Each dllFile As String In dllFileNames
-             Dim an As AssemblyName
-            Try
-                an = AssemblyName.GetAssemblyName(dllFile)
-            Catch ex As BadImageFormatException
-                Continue For
-            End Try
-            Dim assembly As Assembly = Assembly.Load(an)
-            assemblies.Add(assembly)
-        Next
+        'I've made a thing of my own that is just like shadow copying to make sure the DLL's are accessed easily while app is running.
+        Dim tempPlugPath = Path.GetTempPath + "esplugins"
+        If Directory.Exists(tempPlugPath) Then Directory.Delete(tempPlugPath, True)
+        My.Computer.FileSystem.CopyDirectory(ApplicationFiles + "/plugins", tempPlugPath, True)
 
-        'Check assemblies.
-        Dim pluginType As Type = GetType(IExtremePlugin)
-        Dim pluginTypes As ICollection(Of Type) = New List(Of Type)
-        For Each assembly As Assembly In assemblies
-            If assembly <> Nothing Then
-                Dim types As Type() = assembly.GetTypes()
+        'An aggregate catalog that combines multiple catalogs
+        Dim catalog = New AggregateCatalog()
+        catalog.Catalogs.Add(New DirectoryCatalog(tempPlugPath))
 
-                For Each type As Type In types
-                    If type.IsInterface Or type.IsAbstract Then
-                        Continue For
-                    Else
-                        If type.GetInterface(pluginType.FullName) <> Nothing Then
-                            pluginTypes.Add(type)
-                        End If
-                    End If
-                Next
-            End If
-        Next
+        'Create the CompositionContainer with the parts in the catalog
+        Dim container = New CompositionContainer(catalog)
 
-        'Intialize each plugin.
-        For Each type As Type In pluginTypes
-            Dim plugin As IExtremePlugin = Activator.CreateInstance(type)
+        'Fill the imports of this object
+        Try
+            container.ComposeParts(_allPlugins)
+        Catch compositionException As CompositionException
+	        Debug.WriteLine(compositionException.ToString())
+        End Try
 
+        'Intialize plugins.
+        For Each plugin In _allPlugins.Plugins
             plugin.ExtremeStudioFuncs = New FuncsHandler()
             plugin.OnPluginInit()
             For Each btn In plugin.ToolStripButtons
