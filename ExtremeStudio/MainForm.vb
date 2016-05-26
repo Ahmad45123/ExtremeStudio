@@ -335,11 +335,17 @@ Public Class MainForm
         If Directory.Exists(ApplicationFiles + "/plugins") Then
             dllFileNames = Directory.GetFiles(ApplicationFiles + "/plugins", "*.dll")
         End If
-
+        If dllFileNames Is Nothing Then Exit Sub
+        
         'Load all assemblies.
         Dim assemblies As ICollection(Of Assembly) = New List(Of Assembly)(dllFileNames.Length)
         For Each dllFile As String In dllFileNames
-            Dim an As AssemblyName = AssemblyName.GetAssemblyName(dllFile)
+             Dim an As AssemblyName
+            Try
+                an = AssemblyName.GetAssemblyName(dllFile)
+            Catch ex As BadImageFormatException
+                Continue For
+            End Try
             Dim assembly As Assembly = Assembly.Load(an)
             assemblies.Add(assembly)
         Next
@@ -374,8 +380,9 @@ Public Class MainForm
             Next
         Next
     End Sub
+#End Region
 
-    Private Sub addIndentButton_Click(sender As Object, e As EventArgs) Handles addIndentButton.Click
+        Private Sub addIndentButton_Click(sender As Object, e As EventArgs) Handles addIndentButton.Click
         If CurrentScintilla IsNot Nothing Then
             For Each line In GetLinesFromRange(CurrentScintilla, CurrentScintilla.SelectionStart, CurrentScintilla.SelectionEnd)
                 CurrentScintilla.Lines(line).Indentation += 4
@@ -389,5 +396,9 @@ Public Class MainForm
             Next
         End If
     End Sub
-#End Region
+
+    Private Sub esPluginsManage_Click(sender As Object, e As EventArgs) Handles esPluginsManage.Click
+        Dim dlg As New ESPluginsForm
+        dlg.ShowDialog()
+    End Sub
 End Class

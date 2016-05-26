@@ -9,8 +9,8 @@ Public Module FileHash
             Return False
         End If
 
-        Using fs As FileStream = File.Open(fileName, FileMode.Open)
-            Return Convert.ToBase64String(sha.ComputeHash(fs))
-        End Using
+        'To skipe file being used shit.
+        Dim fle As Byte() = File.ReadAllBytes(fileName)
+        Return Convert.ToBase64String(sha.ComputeHash(fle))
     End Function
 End Module
