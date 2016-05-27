@@ -158,7 +158,11 @@ Public Class SettingsForm
             reportGenCheck.Checked = configHandler("reportGenCheck")
             reportGenDirText.Text = configHandler("reportGenDir")
             debugLevelUpDown.Value = configHandler("debugLevel")
+            Try 'For version 1.0.0.1 when the default was 2.
             optiLevelUpDown.Value = configHandler("optiLevel")
+            Catch ex As ArgumentOutOfRangeException
+                optiLevelUpDown.Value = 1
+            End Try
             tabSizeUpDown.Value = configHandler("tabSize")
             skipLinesUpDown.Value = configHandler("skipLines")
             parenthesesCheck.Checked = configHandler("parentheses")
@@ -177,7 +181,7 @@ Public Class SettingsForm
             reportGenCheck.Checked = False
             reportGenDirText.Text = ""
             debugLevelUpDown.Value = 0.0
-            optiLevelUpDown.Value = 2.0
+            optiLevelUpDown.Value = 1.0
             tabSizeUpDown.Value = 4.0
             skipLinesUpDown.Value = 0.0
             parenthesesCheck.Checked = True

@@ -268,7 +268,7 @@ Partial Class SettingsForm
         Me.optiLevelUpDown.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
             Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.optiLevelUpDown.Location = New System.Drawing.Point(107, 143)
-        Me.optiLevelUpDown.Maximum = New Decimal(New Integer() {2, 0, 0, 0})
+        Me.optiLevelUpDown.Maximum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.optiLevelUpDown.Name = "optiLevelUpDown"
         Me.optiLevelUpDown.Size = New System.Drawing.Size(244, 20)
         Me.optiLevelUpDown.TabIndex = 16
