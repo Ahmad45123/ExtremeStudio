@@ -70,10 +70,10 @@ Public Class MainForm
         Try
             _mDeserlise = New DeserializeDockContent(AddressOf GetContentFromPersistString)
             Try
+                If File.Exists(ApplicationFiles + "/configs/docksInfo.xml") = False Then File.WriteAllText(ApplicationFiles + "/configs/docksInfo.xml", My.Resources.docksInfo, Encoding.Unicode)
                 MainDock.LoadFromXml(ApplicationFiles + "/configs/docksInfo.xml", _mDeserlise)
             Catch ex As Exception
-                'Do nothing if there isn't any file.
-                'Even though, A default one will be included.
+                'None.
             End Try
         Catch ex As Exception
             MsgBox("Error Loading Docks: " + vbCrLf + ex.Message)
@@ -338,6 +338,7 @@ Public Class MainForm
         'I've made a thing of my own that is just like shadow copying to make sure the DLL's are accessed easily while app is running.
         Dim tempPlugPath = Path.GetTempPath + "esplugins"
         If Directory.Exists(tempPlugPath) Then Directory.Delete(tempPlugPath, True)
+        If Directory.Exists(ApplicationFiles + "/plugins") = False Then My.Computer.FileSystem.CreateDirectory(ApplicationFiles + "/plugins")
         My.Computer.FileSystem.CopyDirectory(ApplicationFiles + "/plugins", tempPlugPath, True)
 
         'An aggregate catalog that combines multiple catalogs
