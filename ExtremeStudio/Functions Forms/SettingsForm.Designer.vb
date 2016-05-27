@@ -54,10 +54,10 @@ Partial Class SettingsForm
         Me.activeDirText = New ExtremeCore.PathTextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.serverCFGTabPage = New System.Windows.Forms.TabPage()
-        Me.ToolTipHandler = New System.Windows.Forms.ToolTip(Me.components)
         Me.serverCfgGrid = New System.Windows.Forms.DataGridView()
         Me.nameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.valueColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ToolTipHandler = New System.Windows.Forms.ToolTip(Me.components)
         Me.TabControl1.SuspendLayout
         Me.TabPage1.SuspendLayout
         Me.TabPage2.SuspendLayout
@@ -417,24 +417,16 @@ Partial Class SettingsForm
         Me.serverCFGTabPage.Text = "server.cfg"
         Me.serverCFGTabPage.UseVisualStyleBackColor = true
         '
-        'ToolTipHandler
-        '
-        Me.ToolTipHandler.AutomaticDelay = 0
-        Me.ToolTipHandler.AutoPopDelay = 10000
-        Me.ToolTipHandler.InitialDelay = 100
-        Me.ToolTipHandler.ReshowDelay = 100
-        Me.ToolTipHandler.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
-        Me.ToolTipHandler.ToolTipTitle = "Help"
-        '
         'serverCfgGrid
         '
         Me.serverCfgGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.serverCfgGrid.BackgroundColor = System.Drawing.SystemColors.ControlLightLight
         Me.serverCfgGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.serverCfgGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.nameColumn, Me.valueColumn})
-        Me.serverCfgGrid.Location = New System.Drawing.Point(8, 6)
+        Me.serverCfgGrid.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.serverCfgGrid.Location = New System.Drawing.Point(3, 3)
         Me.serverCfgGrid.Name = "serverCfgGrid"
-        Me.serverCfgGrid.Size = New System.Drawing.Size(345, 419)
+        Me.serverCfgGrid.Size = New System.Drawing.Size(353, 427)
         Me.serverCfgGrid.TabIndex = 0
         '
         'nameColumn
@@ -446,6 +438,15 @@ Partial Class SettingsForm
         '
         Me.valueColumn.HeaderText = "Value"
         Me.valueColumn.Name = "valueColumn"
+        '
+        'ToolTipHandler
+        '
+        Me.ToolTipHandler.AutomaticDelay = 0
+        Me.ToolTipHandler.AutoPopDelay = 10000
+        Me.ToolTipHandler.InitialDelay = 100
+        Me.ToolTipHandler.ReshowDelay = 100
+        Me.ToolTipHandler.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
+        Me.ToolTipHandler.ToolTipTitle = "Help"
         '
         'SettingsForm
         '
