@@ -65,6 +65,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Install Plugin.
+        '''</summary>
+        Public Shared ReadOnly Property EsPluginsForm_PluginList_Click_InstallPlugin() As String
+            Get
+                Return ResourceManager.GetString("EsPluginsForm_PluginList_Click_InstallPlugin", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to ReInstall Plugin.
+        '''</summary>
+        Public Shared ReadOnly Property EsPluginsForm_PluginList_Click_ReInstallPlugin() As String
+            Get
+                Return ResourceManager.GetString("EsPluginsForm_PluginList_Click_ReInstallPlugin", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to The include &apos;{0}&apos; has been successfully installed..
         '''</summary>
         Public Shared ReadOnly Property IncludesForm_Button1_Click_IncludeInstalled() As String

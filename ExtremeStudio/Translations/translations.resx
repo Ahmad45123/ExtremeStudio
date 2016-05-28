@@ -234,4 +234,10 @@ Would you like to continue ?</value>
   <data name="IncludesForm_Button1_Click_IncludeInstalled" xml:space="preserve">
     <value>The include '{0}' has been successfully installed.</value>
   </data>
+  <data name="EsPluginsForm_PluginList_Click_ReInstallPlugin" xml:space="preserve">
+    <value>ReInstall Plugin</value>
+  </data>
+  <data name="EsPluginsForm_PluginList_Click_InstallPlugin" xml:space="preserve">
+    <value>Install Plugin</value>
+  </data>
 </root>

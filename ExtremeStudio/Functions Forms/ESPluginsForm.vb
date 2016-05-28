@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Net
 Imports System.Xml
+Imports ExtremeStudio.My.Resources
 
 Public Class EsPluginsForm
     Dim _plugins As New List(Of EsPluginData)
@@ -66,14 +67,14 @@ Public Class EsPluginsForm
                             PluginNameText.Text = plug.PluginName
                             PluginDescText.Text = plug.PluginDesc
                             If IsPluginInstalled(plug)
-                                installBtn.Text = "ReInstall Plugin"
+                                installBtn.Text = translations.EsPluginsForm_PluginList_Click_ReInstallPlugin
                                 installBtn.Enabled = True
                                 deleteBtn.Visible = True
                                 If IsPluginDifferent(plug)
                                     updateLabel.Visible = True
                                 End If
                             Else
-                                installBtn.Text = "Install Plugin"
+                                installBtn.Text = translations.EsPluginsForm_PluginList_Click_InstallPlugin
                                 installBtn.Enabled = True
                                 deleteBtn.Visible = False
                                 updateLabel.Visible = False
