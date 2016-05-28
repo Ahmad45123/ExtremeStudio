@@ -174,4 +174,22 @@ Would you like to continue ?</value>
   <data name="MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithNoErrorsWarnings" xml:space="preserve">
     <value>Compiling finished sucessfully with no errors/warnings.</value>
   </data>
+  <data name="SettingsForm_resetBtn_Click_ResetDefaultSettings" xml:space="preserve">
+    <value>Are you sure you want to reset to default settings ?</value>
+  </data>
+  <data name="SettingsForm_importBtn_Click_OpenFileDialogTitle" xml:space="preserve">
+    <value>Select Source.</value>
+  </data>
+  <data name="SettingsForm_exportBtn_Click_OpenFileDialogTitle" xml:space="preserve">
+    <value>Select Target.</value>
+  </data>
+  <data name="SettingsForm_exportBtn_Click_ExporteSuccess" xml:space="preserve">
+    <value>Exported Successfully!</value>
+  </data>
+  <data name="SettingsForm_IsGlobal_SettingsGLOBAL" xml:space="preserve">
+    <value>Settings. [GLOBAL]</value>
+  </data>
+  <data name="SettingsForm_IsGlobal_SettingsPROJECT" xml:space="preserve">
+    <value>Settings. [PROJECT]</value>
+  </data>
 </root>

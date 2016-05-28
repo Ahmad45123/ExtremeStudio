@@ -137,6 +137,60 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Exported Successfully!.
+        '''</summary>
+        Public Shared ReadOnly Property SettingsForm_exportBtn_Click_ExporteSuccess() As String
+            Get
+                Return ResourceManager.GetString("SettingsForm_exportBtn_Click_ExporteSuccess", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Select Target..
+        '''</summary>
+        Public Shared ReadOnly Property SettingsForm_exportBtn_Click_OpenFileDialogTitle() As String
+            Get
+                Return ResourceManager.GetString("SettingsForm_exportBtn_Click_OpenFileDialogTitle", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Select Source..
+        '''</summary>
+        Public Shared ReadOnly Property SettingsForm_importBtn_Click_OpenFileDialogTitle() As String
+            Get
+                Return ResourceManager.GetString("SettingsForm_importBtn_Click_OpenFileDialogTitle", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Settings. [GLOBAL].
+        '''</summary>
+        Public Shared ReadOnly Property SettingsForm_IsGlobal_SettingsGLOBAL() As String
+            Get
+                Return ResourceManager.GetString("SettingsForm_IsGlobal_SettingsGLOBAL", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Settings. [PROJECT].
+        '''</summary>
+        Public Shared ReadOnly Property SettingsForm_IsGlobal_SettingsPROJECT() As String
+            Get
+                Return ResourceManager.GetString("SettingsForm_IsGlobal_SettingsPROJECT", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Are you sure you want to reset to default settings ?.
+        '''</summary>
+        Public Shared ReadOnly Property SettingsForm_resetBtn_Click_ResetDefaultSettings() As String
+            Get
+                Return ResourceManager.GetString("SettingsForm_resetBtn_Click_ResetDefaultSettings", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to 
         '''
         '''Would you like to continue ?.
