@@ -65,6 +65,60 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to The include &apos;{0}&apos; has been successfully installed..
+        '''</summary>
+        Public Shared ReadOnly Property IncludesForm_Button1_Click_IncludeInstalled() As String
+            Get
+                Return ResourceManager.GetString("IncludesForm_Button1_Click_IncludeInstalled", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to The include can&apos;t be found in the cache..
+        '''</summary>
+        Public Shared ReadOnly Property IncludesForm_Button1_Click_IncludeNotFoundCache() As String
+            Get
+                Return ResourceManager.GetString("IncludesForm_Button1_Click_IncludeNotFoundCache", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to The include is cached, No description is available..
+        '''</summary>
+        Public Shared ReadOnly Property IncludesForm_IncludesForm_Load_IncludeCached() As String
+            Get
+                Return ResourceManager.GetString("IncludesForm_IncludesForm_Load_IncludeCached", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to This include needs the {0} plugin to work..
+        '''</summary>
+        Public Shared ReadOnly Property IncludesForm_includesList_SelectedIndexChanged_IncludeNeedsPlugin() As String
+            Get
+                Return ResourceManager.GetString("IncludesForm_includesList_SelectedIndexChanged_IncludeNeedsPlugin", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Install Include.
+        '''</summary>
+        Public Shared ReadOnly Property IncludesForm_includesList_SelectedIndexChanged_InstallInclude() As String
+            Get
+                Return ResourceManager.GetString("IncludesForm_includesList_SelectedIndexChanged_InstallInclude", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Reinstall Include.
+        '''</summary>
+        Public Shared ReadOnly Property IncludesForm_includesList_SelectedIndexChanged_ReinstallInclude() As String
+            Get
+                Return ResourceManager.GetString("IncludesForm_includesList_SelectedIndexChanged_ReinstallInclude", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to The file pawncc.exe hasn&apos;t been found at the path.
         '''</summary>
         Public Shared ReadOnly Property MainForm_CompilerWorker_DoWork_PawnccNotFound() As String

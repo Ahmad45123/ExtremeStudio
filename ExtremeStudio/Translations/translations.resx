@@ -216,4 +216,22 @@ Would you like to continue ?</value>
   <data name="PluginsForm_Button1_Click_PluginInstalled" xml:space="preserve">
     <value>The plugin '{0}' has been successfully installed.</value>
   </data>
+  <data name="IncludesForm_IncludesForm_Load_IncludeCached" xml:space="preserve">
+    <value>The include is cached, No description is available.</value>
+  </data>
+  <data name="IncludesForm_includesList_SelectedIndexChanged_IncludeNeedsPlugin" xml:space="preserve">
+    <value>This include needs the {0} plugin to work.</value>
+  </data>
+  <data name="IncludesForm_includesList_SelectedIndexChanged_ReinstallInclude" xml:space="preserve">
+    <value>Reinstall Include</value>
+  </data>
+  <data name="IncludesForm_includesList_SelectedIndexChanged_InstallInclude" xml:space="preserve">
+    <value>Install Include</value>
+  </data>
+  <data name="IncludesForm_Button1_Click_IncludeNotFoundCache" xml:space="preserve">
+    <value>The include can't be found in the cache.</value>
+  </data>
+  <data name="IncludesForm_Button1_Click_IncludeInstalled" xml:space="preserve">
+    <value>The include '{0}' has been successfully installed.</value>
+  </data>
 </root>
