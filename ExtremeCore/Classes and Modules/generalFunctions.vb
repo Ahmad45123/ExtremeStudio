@@ -129,10 +129,10 @@ Public Module GeneralFunctions
 
     Public Function IsValidSAMPFolder(path As String)
         If Not My.Computer.FileSystem.DirectoryExists(path) Then Return False
-        If Not My.Computer.FileSystem.DirectoryExists(path + "/gamemodes") Then Return False
-        If Not My.Computer.FileSystem.DirectoryExists(path + "/pawno") Then Return False
-        If Not My.Computer.FileSystem.DirectoryExists(path + "/pawno/include") Then Return False
-        If Not My.Computer.FileSystem.DirectoryExists(path + "/plugins") Then Return False
+        If Not My.Computer.FileSystem.DirectoryExists(path + "/gamemodes") Then Directory.CreateDirectory(path + "/gamemodes")
+        If Not My.Computer.FileSystem.DirectoryExists(path + "/pawno") Then Directory.CreateDirectory(path + "/pawno")
+        If Not My.Computer.FileSystem.DirectoryExists(path + "/pawno/include") Then Directory.CreateDirectory(path + "/pawno/include")
+        If Not My.Computer.FileSystem.DirectoryExists(path + "/plugins") Then Directory.CreateDirectory(path + "/plugins")
         If Not My.Computer.FileSystem.FileExists(path + "/announce.exe") Then Return False
         If Not My.Computer.FileSystem.FileExists(path + "/samp-npc.exe") Then Return False
         If Not My.Computer.FileSystem.FileExists(path + "/samp-server.exe") Then Return False
