@@ -65,6 +65,78 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to The file pawncc.exe hasn&apos;t been found at the path.
+        '''</summary>
+        Public Shared ReadOnly Property MainForm_CompilerWorker_DoWork_PawnccNotFound() As String
+            Get
+                Return ResourceManager.GetString("MainForm_CompilerWorker_DoWork_PawnccNotFound", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Please verify its there..
+        '''</summary>
+        Public Shared ReadOnly Property MainForm_CompilerWorker_DoWork_VerifyPawnccIsThere() As String
+            Get
+                Return ResourceManager.GetString("MainForm_CompilerWorker_DoWork_VerifyPawnccIsThere", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Would you like to save all files ?.
+        '''</summary>
+        Public Shared ReadOnly Property MainForm_CompilerWorker_DoWork_WouldYouLikeToSaveFiles() As String
+            Get
+                Return ResourceManager.GetString("MainForm_CompilerWorker_DoWork_WouldYouLikeToSaveFiles", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Compiling....
+        '''</summary>
+        Public Shared ReadOnly Property MainForm_CompilerWorker_ProgressChanged_Compiling() As String
+            Get
+                Return ResourceManager.GetString("MainForm_CompilerWorker_ProgressChanged_Compiling", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Compiling finished sucessfully with no errors/warnings..
+        '''</summary>
+        Public Shared ReadOnly Property MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithNoErrorsWarnings() As String
+            Get
+                Return ResourceManager.GetString("MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithNoErrorsWarnings", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Compiling finished successfully but there are warning(s)..
+        '''</summary>
+        Public Shared ReadOnly Property MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithWarnings() As String
+            Get
+                Return ResourceManager.GetString("MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithWarnings", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Compiling failed with errors/warnings..
+        '''</summary>
+        Public Shared ReadOnly Property MainForm_CompilerWorker_ProgressChanged_CompilingFailedWithErrors() As String
+            Get
+                Return ResourceManager.GetString("MainForm_CompilerWorker_ProgressChanged_CompilingFailedWithErrors", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Please wait until the current compilation or parsing process is finished..
+        '''</summary>
+        Public Shared ReadOnly Property MainForm_compileScriptBtn_Click_WaitForCompile() As String
+            Get
+                Return ResourceManager.GetString("MainForm_compileScriptBtn_Click_WaitForCompile", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to 
         '''
         '''Would you like to continue ?.

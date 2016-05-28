@@ -150,4 +150,28 @@ Must contain the pawno folder, gamemodes folder, plugins folder, all executables
 
 Would you like to continue ?</value>
   </data>
+  <data name="MainForm_compileScriptBtn_Click_WaitForCompile" xml:space="preserve">
+    <value>Please wait until the current compilation or parsing process is finished.</value>
+  </data>
+  <data name="MainForm_CompilerWorker_DoWork_WouldYouLikeToSaveFiles" xml:space="preserve">
+    <value>Would you like to save all files ?</value>
+  </data>
+  <data name="MainForm_CompilerWorker_DoWork_PawnccNotFound" xml:space="preserve">
+    <value>The file pawncc.exe hasn't been found at the path</value>
+  </data>
+  <data name="MainForm_CompilerWorker_DoWork_VerifyPawnccIsThere" xml:space="preserve">
+    <value>Please verify its there.</value>
+  </data>
+  <data name="MainForm_CompilerWorker_ProgressChanged_Compiling" xml:space="preserve">
+    <value>Compiling...</value>
+  </data>
+  <data name="MainForm_CompilerWorker_ProgressChanged_CompilingFailedWithErrors" xml:space="preserve">
+    <value>Compiling failed with errors/warnings.</value>
+  </data>
+  <data name="MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithWarnings" xml:space="preserve">
+    <value>Compiling finished successfully but there are warning(s).</value>
+  </data>
+  <data name="MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithNoErrorsWarnings" xml:space="preserve">
+    <value>Compiling finished sucessfully with no errors/warnings.</value>
+  </data>
 </root>
