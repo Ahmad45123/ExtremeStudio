@@ -367,16 +367,24 @@ Public Class MainForm
 
         Private Sub addIndentButton_Click(sender As Object, e As EventArgs) Handles addIndentButton.Click
         If CurrentScintilla IsNot Nothing Then
-            For Each line In GetLinesFromRange(CurrentScintilla, CurrentScintilla.SelectionStart, CurrentScintilla.SelectionEnd)
-                CurrentScintilla.Lines(line).Indentation += 4
-            Next
+            If CurrentScintilla.SelectionStart = CurrentScintilla.SelectionEnd Then
+                CurrentScintilla.Lines(CurrentScintilla.CurrentLine).Indentation += 4
+            Else
+                For Each line In GetLinesFromRange(CurrentScintilla, CurrentScintilla.SelectionStart, CurrentScintilla.SelectionEnd)
+                    CurrentScintilla.Lines(line).Indentation += 4
+                Next
+            End If
         End If
     End Sub
     Private Sub removeIndentButton_Click(sender As Object, e As EventArgs) Handles removeIndentButton.Click
         If CurrentScintilla IsNot Nothing Then
-            For Each line In GetLinesFromRange(CurrentScintilla, CurrentScintilla.SelectionStart, CurrentScintilla.SelectionEnd)
-                If CurrentScintilla.Lines(line).Indentation >= 4 Then CurrentScintilla.Lines(line).Indentation -= 4
-            Next
+            If CurrentScintilla.SelectionStart = CurrentScintilla.SelectionEnd Then
+                If CurrentScintilla.Lines(CurrentScintilla.CurrentLine).Indentation >= 4 Then CurrentScintilla.Lines(CurrentScintilla.CurrentLine).Indentation -= 4
+            Else
+                For Each line In GetLinesFromRange(CurrentScintilla, CurrentScintilla.SelectionStart, CurrentScintilla.SelectionEnd)
+                    If CurrentScintilla.Lines(line).Indentation >= 4 Then CurrentScintilla.Lines(line).Indentation -= 4
+                Next
+            End If
         End If
     End Sub
 

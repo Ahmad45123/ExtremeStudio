@@ -152,7 +152,7 @@ Public Module GeneralFunctions
             startPos += scin.Lines(lne).Length
 
             If startPos = endPos Or startPos >= scin.CurrentPosition Then
-                i = 1 'End the loop
+                Exit For
             End If
         Next
 
