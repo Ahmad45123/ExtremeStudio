@@ -137,6 +137,78 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to The plugin can&apos;t be found in the cache..
+        '''</summary>
+        Public Shared ReadOnly Property PluginsForm_Button1_Click_PluginCantBeFoundInCache() As String
+            Get
+                Return ResourceManager.GetString("PluginsForm_Button1_Click_PluginCantBeFoundInCache", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to The plugin &apos;{0}&apos; has been successfully installed..
+        '''</summary>
+        Public Shared ReadOnly Property PluginsForm_Button1_Click_PluginInstalled() As String
+            Get
+                Return ResourceManager.GetString("PluginsForm_Button1_Click_PluginInstalled", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Add to server.cfg.
+        '''</summary>
+        Public Shared ReadOnly Property PluginsForm_includesList_SelectedIndexChanged_AddToServerCfg() As String
+            Get
+                Return ResourceManager.GetString("PluginsForm_includesList_SelectedIndexChanged_AddToServerCfg", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Install Plugin.
+        '''</summary>
+        Public Shared ReadOnly Property PluginsForm_includesList_SelectedIndexChanged_InstallPlugin() As String
+            Get
+                Return ResourceManager.GetString("PluginsForm_includesList_SelectedIndexChanged_InstallPlugin", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Reinstall Plugin.
+        '''</summary>
+        Public Shared ReadOnly Property PluginsForm_includesList_SelectedIndexChanged_ReinstallPlugin() As String
+            Get
+                Return ResourceManager.GetString("PluginsForm_includesList_SelectedIndexChanged_ReinstallPlugin", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Remove from server.cfg.
+        '''</summary>
+        Public Shared ReadOnly Property PluginsForm_includesList_SelectedIndexChanged_RemoveFromServerCfg() As String
+            Get
+                Return ResourceManager.GetString("PluginsForm_includesList_SelectedIndexChanged_RemoveFromServerCfg", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to This plugin needs the {0} include to work..
+        '''</summary>
+        Public Shared ReadOnly Property PluginsForm_includesList_SelectedIndexChanged_ThisPluginNeedsTheIncludeToWork() As String
+            Get
+                Return ResourceManager.GetString("PluginsForm_includesList_SelectedIndexChanged_ThisPluginNeedsTheIncludeToWork", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to The plugin is cached, No description is available..
+        '''</summary>
+        Public Shared ReadOnly Property PluginsForm_PluginsForm_Load_PluginCached() As String
+            Get
+                Return ResourceManager.GetString("PluginsForm_PluginsForm_Load_PluginCached", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Exported Successfully!.
         '''</summary>
         Public Shared ReadOnly Property SettingsForm_exportBtn_Click_ExporteSuccess() As String

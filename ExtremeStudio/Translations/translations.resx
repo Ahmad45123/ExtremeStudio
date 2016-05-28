@@ -192,4 +192,28 @@ Would you like to continue ?</value>
   <data name="SettingsForm_IsGlobal_SettingsPROJECT" xml:space="preserve">
     <value>Settings. [PROJECT]</value>
   </data>
+  <data name="PluginsForm_PluginsForm_Load_PluginCached" xml:space="preserve">
+    <value>The plugin is cached, No description is available.</value>
+  </data>
+  <data name="PluginsForm_includesList_SelectedIndexChanged_ThisPluginNeedsTheIncludeToWork" xml:space="preserve">
+    <value>This plugin needs the {0} include to work.</value>
+  </data>
+  <data name="PluginsForm_includesList_SelectedIndexChanged_ReinstallPlugin" xml:space="preserve">
+    <value>Reinstall Plugin</value>
+  </data>
+  <data name="PluginsForm_includesList_SelectedIndexChanged_RemoveFromServerCfg" xml:space="preserve">
+    <value>Remove from server.cfg</value>
+  </data>
+  <data name="PluginsForm_includesList_SelectedIndexChanged_AddToServerCfg" xml:space="preserve">
+    <value>Add to server.cfg</value>
+  </data>
+  <data name="PluginsForm_includesList_SelectedIndexChanged_InstallPlugin" xml:space="preserve">
+    <value>Install Plugin</value>
+  </data>
+  <data name="PluginsForm_Button1_Click_PluginCantBeFoundInCache" xml:space="preserve">
+    <value>The plugin can't be found in the cache.</value>
+  </data>
+  <data name="PluginsForm_Button1_Click_PluginInstalled" xml:space="preserve">
+    <value>The plugin '{0}' has been successfully installed.</value>
+  </data>
 </root>

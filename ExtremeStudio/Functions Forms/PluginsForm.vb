@@ -2,12 +2,13 @@
 Imports System.IO.Compression
 Imports System.Net
 Imports System.Xml
+Imports ExtremeStudio.My.Resources
 
 Public Class PluginsForm
-    Public Plugins As New List(Of PluginData)
+    Private Plugins As New List(Of PluginData)
 
-
-    Public Sub RefreshList(Optional searchPattern As String = "", Optional isInstalledOnly As Boolean = False)
+    
+    Private Sub RefreshList(Optional searchPattern As String = "", Optional isInstalledOnly As Boolean = False)
         pluginsList.Items.Clear()
 
         'Show the list.
@@ -46,7 +47,7 @@ Public Class PluginsForm
                 Dim plug As New PluginData
                 plug.Name = Path.GetFileNameWithoutExtension(file)
                 plug.Download = "local"
-                plug.Desc = "The plugin is cached, No description is available."
+                plug.Desc = translations.PluginsForm_PluginsForm_Load_PluginCached
                 plug.relatedInclude = ""
                 plug.Version = My.Computer.FileSystem.ReadAllText(file + "/version.cfg")
                 Plugins.Add(plug)
@@ -80,13 +81,13 @@ Public Class PluginsForm
 
         pluginName.Text = sel.Name
         pluginVersion.Text = sel.Version
-        pluginDesc.Text = sel.Desc + vbCrLf + vbCrLf + IIf(sel.RelatedInclude = "", "", "This plugin needs the " + sel.RelatedInclude + " include to work.")
+        pluginDesc.Text = sel.Desc + vbCrLf + vbCrLf + IIf(sel.RelatedInclude = "", "", String.Format(translations.PluginsForm_includesList_SelectedIndexChanged_ThisPluginNeedsTheIncludeToWork, sel.RelatedInclude))
 
         'Check for updates if already installed.
         If sel.isInstalled Then
             'Set as already installed.
             includeInstalledLabel.Visible = True
-            Button1.Text = "Reinstall Plugin"
+            Button1.Text = translations.PluginsForm_includesList_SelectedIndexChanged_ReinstallPlugin
             actionsGroup.Visible = True
 
             Dim curVer As String = MainForm.CurrentProject.PluginVersion(sel.Name)
@@ -96,14 +97,14 @@ Public Class PluginsForm
             End If
 
             If MainForm.currentProject.isPluginInServerCFG(Path.GetFileNameWithoutExtension(sel.Download)) Then
-                serverCFGButton.Text = "Remove from server.cfg"
+                serverCFGButton.Text = translations.PluginsForm_includesList_SelectedIndexChanged_RemoveFromServerCfg
             Else
-                serverCFGButton.Text = "Add to server.cfg"
+                serverCFGButton.Text = translations.PluginsForm_includesList_SelectedIndexChanged_AddToServerCfg
             End If
         Else
             includeInstalledLabel.Visible = False
             updateAvilableLabel.Visible = False
-            Button1.Text = "Install Plugin"
+            Button1.Text = translations.PluginsForm_includesList_SelectedIndexChanged_InstallPlugin
             actionsGroup.Visible = False
         End If
     End Sub
@@ -137,7 +138,7 @@ Public Class PluginsForm
 
         'Check is the file doesn't exist to prevent exceptions.. For example the user lost interent after he got the includes list.
         If Not My.Computer.FileSystem.FileExists(plugFile) Then
-            MsgBox("The plugin can't be found in the cache.")
+            MsgBox(translations.PluginsForm_Button1_Click_PluginCantBeFoundInCache)
             Exit Sub
         End If
 
@@ -161,7 +162,7 @@ Public Class PluginsForm
         'Edit the server.cfg automaticly.
         If Not MainForm.currentProject.isPluginInServerCFG(Path.GetFileNameWithoutExtension(plug.Download)) Then
             MainForm.currentProject.TogglePluginInServerCFG(Path.GetFileNameWithoutExtension(plug.Download))
-            serverCFGButton.Text = "Remove from server.cfg"
+            serverCFGButton.Text = translations.PluginsForm_includesList_SelectedIndexChanged_RemoveFromServerCfg
         End If
 
         'Show/hide stuff.
@@ -170,7 +171,7 @@ Public Class PluginsForm
         includeInstalledLabel.Visible = True
         actionsGroup.Visible = True
 
-        MsgBox("The plugin '" + pluginName.Text + "' has been successfully installed.")
+        MsgBox(String.Format(translations.PluginsForm_Button1_Click_PluginInstalled, pluginName.Text))
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -206,7 +207,7 @@ Public Class PluginsForm
         updateAvilableLabel.Visible = False
         includeInstalledLabel.Visible = False
         actionsGroup.Visible = False
-        Button1.Text = "Install Plugin"
+        Button1.Text = translations.PluginsForm_includesList_SelectedIndexChanged_InstallPlugin
     End Sub
 
     Private Sub showInstalledOnlyCheck_CheckedChanged(sender As Object, e As EventArgs) Handles showInstalledOnlyCheck.CheckedChanged
@@ -224,9 +225,9 @@ Public Class PluginsForm
 
         MainForm.currentProject.TogglePluginInServerCFG(Path.GetFileNameWithoutExtension(plug.Download))
         If MainForm.currentProject.isPluginInServerCFG(Path.GetFileNameWithoutExtension(plug.Download)) Then
-            serverCFGButton.Text = "Remove from server.cfg"
+            serverCFGButton.Text = translations.PluginsForm_includesList_SelectedIndexChanged_RemoveFromServerCfg
         Else
-            serverCFGButton.Text = "Add to server.cfg"
+            serverCFGButton.Text = translations.PluginsForm_includesList_SelectedIndexChanged_AddToServerCfg
         End If
     End Sub
 End Class
