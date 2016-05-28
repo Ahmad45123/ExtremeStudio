@@ -22,10 +22,11 @@ Partial Class StartupForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(StartupForm))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.preExistCheck = New System.Windows.Forms.CheckBox()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.CreateProjectBtn = New System.Windows.Forms.Button()
         Me.locTextBox = New ExtremeCore.PathTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.verListBox = New System.Windows.Forms.ListBox()
@@ -58,100 +59,69 @@ Partial Class StartupForm
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.TabPage3)
-        Me.TabControl1.Location = New System.Drawing.Point(12, 27)
+        resources.ApplyResources(Me.TabControl1, "TabControl1")
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(775, 212)
-        Me.TabControl1.TabIndex = 0
         '
         'TabPage1
         '
         Me.TabPage1.Controls.Add(Me.preExistCheck)
-        Me.TabPage1.Controls.Add(Me.Button2)
+        Me.TabPage1.Controls.Add(Me.CreateProjectBtn)
         Me.TabPage1.Controls.Add(Me.locTextBox)
         Me.TabPage1.Controls.Add(Me.Label3)
         Me.TabPage1.Controls.Add(Me.verListBox)
         Me.TabPage1.Controls.Add(Me.nameTextBox)
         Me.TabPage1.Controls.Add(Me.Label2)
         Me.TabPage1.Controls.Add(Me.Label1)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+        resources.ApplyResources(Me.TabPage1, "TabPage1")
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(767, 186)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Create new project"
         Me.TabPage1.UseVisualStyleBackColor = true
         '
         'preExistCheck
         '
-        Me.preExistCheck.AutoSize = true
-        Me.preExistCheck.Location = New System.Drawing.Point(601, 107)
+        resources.ApplyResources(Me.preExistCheck, "preExistCheck")
         Me.preExistCheck.Name = "preExistCheck"
-        Me.preExistCheck.Size = New System.Drawing.Size(170, 17)
-        Me.preExistCheck.TabIndex = 8
-        Me.preExistCheck.Text = "Create from pre-existing files."
         Me.preExistCheck.UseVisualStyleBackColor = true
         '
-        'Button2
+        'CreateProjectBtn
         '
-        Me.Button2.Location = New System.Drawing.Point(9, 151)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(752, 30)
-        Me.Button2.TabIndex = 7
-        Me.Button2.Text = "Create Project"
-        Me.Button2.UseVisualStyleBackColor = true
+        resources.ApplyResources(Me.CreateProjectBtn, "CreateProjectBtn")
+        Me.CreateProjectBtn.Name = "CreateProjectBtn"
+        Me.CreateProjectBtn.UseVisualStyleBackColor = true
         '
         'locTextBox
         '
         Me.locTextBox.Description = "Select the folder where to create the project."
         Me.locTextBox.Filter = Nothing
-        Me.locTextBox.Location = New System.Drawing.Point(90, 124)
+        resources.ApplyResources(Me.locTextBox, "locTextBox")
         Me.locTextBox.Name = "locTextBox"
         Me.locTextBox.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
-        Me.locTextBox.Size = New System.Drawing.Size(671, 20)
-        Me.locTextBox.TabIndex = 5
         '
         'Label3
         '
-        Me.Label3.AutoSize = true
-        Me.Label3.Location = New System.Drawing.Point(6, 127)
+        resources.ApplyResources(Me.Label3, "Label3")
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(88, 13)
-        Me.Label3.TabIndex = 4
-        Me.Label3.Text = "Project location: "
         '
         'verListBox
         '
         Me.verListBox.FormattingEnabled = true
-        Me.verListBox.Location = New System.Drawing.Point(90, 36)
+        resources.ApplyResources(Me.verListBox, "verListBox")
         Me.verListBox.Name = "verListBox"
-        Me.verListBox.Size = New System.Drawing.Size(671, 69)
-        Me.verListBox.TabIndex = 3
         '
         'nameTextBox
         '
-        Me.nameTextBox.Location = New System.Drawing.Point(90, 10)
+        resources.ApplyResources(Me.nameTextBox, "nameTextBox")
         Me.nameTextBox.Name = "nameTextBox"
-        Me.nameTextBox.Size = New System.Drawing.Size(671, 20)
-        Me.nameTextBox.TabIndex = 2
         '
         'Label2
         '
-        Me.Label2.AutoSize = true
-        Me.Label2.Location = New System.Drawing.Point(6, 36)
+        resources.ApplyResources(Me.Label2, "Label2")
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(83, 13)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "SA-MP Version: "
         '
         'Label1
         '
-        Me.Label1.AutoSize = true
-        Me.Label1.Location = New System.Drawing.Point(6, 13)
+        resources.ApplyResources(Me.Label1, "Label1")
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(78, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Project Name: "
         '
         'TabPage2
         '
@@ -162,146 +132,97 @@ Partial Class StartupForm
         Me.TabPage2.Controls.Add(Me.Label5)
         Me.TabPage2.Controls.Add(Me.Label4)
         Me.TabPage2.Controls.Add(Me.pathTextBox)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        resources.ApplyResources(Me.TabPage2, "TabPage2")
         Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(767, 186)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Load project"
         Me.TabPage2.UseVisualStyleBackColor = true
         '
         'loadProjectBtn
         '
-        Me.loadProjectBtn.Enabled = false
-        Me.loadProjectBtn.Location = New System.Drawing.Point(9, 134)
+        resources.ApplyResources(Me.loadProjectBtn, "loadProjectBtn")
         Me.loadProjectBtn.Name = "loadProjectBtn"
-        Me.loadProjectBtn.Size = New System.Drawing.Size(752, 49)
-        Me.loadProjectBtn.TabIndex = 7
-        Me.loadProjectBtn.Text = "Load Project"
         Me.loadProjectBtn.UseVisualStyleBackColor = true
         '
         'projectVersion
         '
-        Me.projectVersion.AutoSize = true
-        Me.projectVersion.Location = New System.Drawing.Point(87, 91)
+        resources.ApplyResources(Me.projectVersion, "projectVersion")
         Me.projectVersion.Name = "projectVersion"
-        Me.projectVersion.Size = New System.Drawing.Size(32, 13)
-        Me.projectVersion.TabIndex = 6
-        Me.projectVersion.Text = "None"
         '
         'Label6
         '
-        Me.Label6.AutoSize = true
-        Me.Label6.Location = New System.Drawing.Point(6, 90)
+        resources.ApplyResources(Me.Label6, "Label6")
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(86, 13)
-        Me.Label6.TabIndex = 5
-        Me.Label6.Text = "Project Version: "
         '
         'projectName
         '
-        Me.projectName.AutoSize = true
-        Me.projectName.Location = New System.Drawing.Point(79, 53)
+        resources.ApplyResources(Me.projectName, "projectName")
         Me.projectName.Name = "projectName"
-        Me.projectName.Size = New System.Drawing.Size(32, 13)
-        Me.projectName.TabIndex = 4
-        Me.projectName.Text = "None"
         '
         'Label5
         '
-        Me.Label5.AutoSize = true
-        Me.Label5.Location = New System.Drawing.Point(6, 52)
+        resources.ApplyResources(Me.Label5, "Label5")
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(78, 13)
-        Me.Label5.TabIndex = 3
-        Me.Label5.Text = "Project Name: "
         '
         'Label4
         '
-        Me.Label4.AutoSize = true
-        Me.Label4.Location = New System.Drawing.Point(6, 13)
+        resources.ApplyResources(Me.Label4, "Label4")
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(94, 13)
-        Me.Label4.TabIndex = 0
-        Me.Label4.Text = "Project directory: "
         '
         'pathTextBox
         '
         Me.pathTextBox.Description = "Select the project's folder."
         Me.pathTextBox.Filter = Nothing
-        Me.pathTextBox.Location = New System.Drawing.Point(106, 10)
+        resources.ApplyResources(Me.pathTextBox, "pathTextBox")
         Me.pathTextBox.Name = "pathTextBox"
         Me.pathTextBox.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
         Me.pathTextBox.ReadOnly = true
-        Me.pathTextBox.Size = New System.Drawing.Size(655, 20)
-        Me.pathTextBox.TabIndex = 1
         '
         'TabPage3
         '
         Me.TabPage3.Controls.Add(Me.Button3)
         Me.TabPage3.Controls.Add(Me.Button1)
         Me.TabPage3.Controls.Add(Me.recentListBox)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        resources.ApplyResources(Me.TabPage3, "TabPage3")
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(767, 186)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "Recent"
         Me.TabPage3.UseVisualStyleBackColor = true
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(660, 35)
+        resources.ApplyResources(Me.Button3, "Button3")
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(101, 23)
-        Me.Button3.TabIndex = 2
-        Me.Button3.Text = "Delete Selected"
         Me.Button3.UseVisualStyleBackColor = true
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(660, 6)
+        resources.ApplyResources(Me.Button1, "Button1")
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(101, 23)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Load Selected"
         Me.Button1.UseVisualStyleBackColor = true
         '
         'recentListBox
         '
         Me.recentListBox.FormattingEnabled = true
-        Me.recentListBox.HorizontalScrollbar = true
-        Me.recentListBox.Location = New System.Drawing.Point(6, 6)
+        resources.ApplyResources(Me.recentListBox, "recentListBox")
         Me.recentListBox.Name = "recentListBox"
-        Me.recentListBox.Size = New System.Drawing.Size(648, 173)
-        Me.recentListBox.TabIndex = 0
         '
         'MenuStrip1
         '
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenGlobalSettingsToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        resources.ApplyResources(Me.MenuStrip1, "MenuStrip1")
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(799, 24)
-        Me.MenuStrip1.TabIndex = 1
-        Me.MenuStrip1.Text = "MenuStrip1"
         '
         'OpenGlobalSettingsToolStripMenuItem
         '
         Me.OpenGlobalSettingsToolStripMenuItem.Name = "OpenGlobalSettingsToolStripMenuItem"
-        Me.OpenGlobalSettingsToolStripMenuItem.Size = New System.Drawing.Size(130, 20)
-        Me.OpenGlobalSettingsToolStripMenuItem.Text = "Open Global Settings"
+        resources.ApplyResources(Me.OpenGlobalSettingsToolStripMenuItem, "OpenGlobalSettingsToolStripMenuItem")
         '
         'StartupForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(799, 243)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = false
         Me.Name = "StartupForm"
-        Me.Text = "Load / Create Project"
         Me.TabControl1.ResumeLayout(false)
         Me.TabPage1.ResumeLayout(false)
         Me.TabPage1.PerformLayout
@@ -322,7 +243,7 @@ End Sub
     Friend WithEvents nameTextBox As System.Windows.Forms.TextBox
     Friend WithEvents verListBox As System.Windows.Forms.ListBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents CreateProjectBtn As System.Windows.Forms.Button
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents projectName As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
