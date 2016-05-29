@@ -209,6 +209,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Please enter any details..
+        '''</summary>
+        Public Shared ReadOnly Property ObjectExplorerDockItems_addBtn_Click_PleaseEnterDetials() As String
+            Get
+                Return ResourceManager.GetString("ObjectExplorerDockItems_addBtn_Click_PleaseEnterDetials", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Are you sure you want to delete this ?.
+        '''</summary>
+        Public Shared ReadOnly Property ObjectExplorerDockItems_deleteBtn_Click_YouWantDelete() As String
+            Get
+                Return ResourceManager.GetString("ObjectExplorerDockItems_deleteBtn_Click_YouWantDelete", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to The plugin can&apos;t be found in the cache..
         '''</summary>
         Public Shared ReadOnly Property PluginsForm_Button1_Click_PluginCantBeFoundInCache() As String

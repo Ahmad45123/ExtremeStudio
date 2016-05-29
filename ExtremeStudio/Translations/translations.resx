@@ -262,4 +262,10 @@ NOTE: INCLUDE THE EXTENSION!</value>
 
 NOTE: INCLUDE THE EXTENSION!</value>
   </data>
+  <data name="ObjectExplorerDockItems_deleteBtn_Click_YouWantDelete" xml:space="preserve">
+    <value>Are you sure you want to delete this ?</value>
+  </data>
+  <data name="ObjectExplorerDockItems_addBtn_Click_PleaseEnterDetials" xml:space="preserve">
+    <value>Please enter any details.</value>
+  </data>
 </root>
