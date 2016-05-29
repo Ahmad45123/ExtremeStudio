@@ -1,4 +1,6 @@
-﻿Public Class ObjectExplorerDockItems
+﻿Imports ExtremeStudio.My.Resources
+
+Public Class ObjectExplorerDockItems
 
     Private Sub Ref()
         itemsList.Items.Clear()
@@ -28,8 +30,8 @@
         infoIden.Text = MainForm.currentProject.objectExplorerItems(GetID(itemsList.SelectedItem)).Identifier
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If MsgBox("Are you sure you want to delete this ?", MsgBoxStyle.YesNo) = MsgBoxResult.No Then Exit Sub
+    Private Sub deleteBtn_Click(sender As Object, e As EventArgs) Handles deleteBtn.Click
+        If MsgBox(translations.ObjectExplorerDockItems_deleteBtn_Click_YouWantDelete, MsgBoxStyle.YesNo) = MsgBoxResult.No Then Exit Sub
 
         Try
             MainForm.currentProject.objectExplorerItems.RemoveAt(GetID(infoName.Text))
@@ -38,9 +40,9 @@
         End Try
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub addBtn_Click(sender As Object, e As EventArgs) Handles addBtn.Click
         If addName.Text = "" Or addIden.Text = "" Then
-            MsgBox("Please enter any details.")
+            MsgBox(translations.ObjectExplorerDockItems_addBtn_Click_PleaseEnterDetials)
         Else
             MainForm.currentProject.objectExplorerItems.Add(New objectExplorerItem(addName.Text, addIden.Text))
             Ref()

@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.ComponentModel
+Imports System.IO
 Imports System.Text.RegularExpressions
 Imports ExtremeParser
 Imports ScintillaNET
@@ -7,6 +8,8 @@ Public Class ObjectExplorerDock
     Dim _nodeState As ExtremeCore.treeNodeStateSaving = New ExtremeCore.treeNodeStateSaving
 
 #Region "Funcs"
+
+    <Localizable(False)>
     Private Function GetTreeViewPart(parser As ExtremeParser.CodeParts, searchTerm As String, tag as String)
         If parser Is Nothing Then Return Nothing
 
@@ -14,12 +17,12 @@ Public Class ObjectExplorerDock
             .Text = Path.GetFileNameWithoutExtension(parser.FilePath)
         }
 
-        Dim defines As TreeNode
-        Dim macros As TreeNode
-        Dim functions As TreeNode
-        Dim publics As TreeNode
-        Dim stocks As TreeNode
-        Dim natives As TreeNode
+        Dim defines As TreeNode = Nothing
+        Dim macros As TreeNode = Nothing
+        Dim functions As TreeNode = Nothing
+        Dim publics As TreeNode = Nothing
+        Dim stocks As TreeNode = Nothing
+        Dim natives As TreeNode = Nothing
 
         If parser.Defines.FindAll(Function(x) x.DefineName.Contains(searchTerm)).Count > 0 Then defines = mainNode.Nodes.Add("Defines")
         If parser.Macros.FindAll(Function(x) x.DefineName.Contains(searchTerm)).Count > 0 Then macros = mainNode.Nodes.Add("Macros")
@@ -138,6 +141,7 @@ Public Class ObjectExplorerDock
         Return mainNode
     End Function
 
+    <Localizable(False)>
     Public Sub RefreshTreeView(parts As CodeParts)
         'Save.
         _nodeState.SaveTreeState(treeView.Nodes)
@@ -210,6 +214,7 @@ Public Class ObjectExplorerDock
         'I could have just used ScintillaNEts regex here but it for some reason doesn't provide multiline regex which is needed for accurancy.
     End Sub
 
+    <Localizable(False)>
     Private Sub treeView_NodeMouseDoubleClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles treeView.NodeMouseDoubleClick
         If e.Node.Tag = Nothing Then Exit Sub
 

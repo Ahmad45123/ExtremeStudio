@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.ComponentModel
+Imports System.IO
 Imports WeifenLuo.WinFormsUI.Docking
 Imports ScintillaNET
 Imports System.Text
@@ -7,6 +8,7 @@ Imports System.Text.RegularExpressions
 Imports System.ComponentModel.Composition
 Imports System.ComponentModel.Composition.Hosting
 Imports ExtremeCore
+Imports ExtremeStudio.My.Resources
 
 Public Class MainForm
 
@@ -27,6 +29,7 @@ Public Class MainForm
     End Property
 #End Region
 #Region "Functions"
+    <Localizable(False)>
     Public Sub OpenFile(ByVal targetPath As String, Optional isExternal As Boolean = False)
         'We gotta make sure there is no file opened with that path first.
         For Each doc In MainDock.Documents
@@ -104,6 +107,7 @@ Public Class MainForm
     'Global variables that are used through the whole program: 
     Public CurrentProject As New CurrentProjectClass
 
+    <Localizable(False)>
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = "ExtremeStudio - " + CurrentProject.ProjectName
     End Sub
@@ -152,6 +156,7 @@ Public Class MainForm
         SaveFile(CurrentScintilla)
     End Sub
 
+    <Localizable(False)>
     Public Sub SaveAllFiles(sender As Object, e As EventArgs) Handles saveAllButton.Click
         For Each Dock As DockContent In MainDock.Documents
             SaveFile(Dock.Controls("Editor"))
@@ -228,7 +233,7 @@ Public Class MainForm
         If CurrentEditor Is Nothing Then Exit Sub
 
         If CompilerWorker.IsBusy Or CurrentEditor.RefreshWorker.IsBusy Then
-            MsgBox("Please wait until the current compilation or parsing process is finished.")
+            MsgBox(translations.MainForm_compileScriptBtn_Click_WaitForCompile)
         Else
             CompilerWorker.RunWorkerAsync({CurrentScintilla.Tag, SettingsForm.GetCompilerArgs()}) 'The file path is the parameter.
         End If
@@ -237,7 +242,7 @@ Public Class MainForm
 #Region "Compiler Stuff"
     Private Sub CompilerWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles CompilerWorker.DoWork
         'First of all, Try and save all docs.
-        Dim msgRslt = MsgBox("Would you like to save all files ?", MsgBoxStyle.YesNoCancel Or MsgBoxStyle.Exclamation)
+        Dim msgRslt = MsgBox(translations.MainForm_CompilerWorker_DoWork_WouldYouLikeToSaveFiles, MsgBoxStyle.YesNoCancel Or MsgBoxStyle.Exclamation)
         If msgRslt = DialogResult.Cancel Then Exit Sub
         If msgRslt = DialogResult.Yes Then
             CompilerWorker.ReportProgress(1) 'Save all files.
@@ -294,7 +299,7 @@ Public Class MainForm
                 End If
             End If
         Else
-            MsgBox("The file pawncc.exe hasn't been found at the path """ + CurrentProject.ProjectPath + "/pawno/pawncc.exe" + """" + vbCrLf + "Please verify its there.")
+            MsgBox(translations.MainForm_CompilerWorker_DoWork_PawnccNotFound +  " """ + CurrentProject.ProjectPath + "/pawno/pawncc.exe" + """" + vbCrLf + translations.MainForm_CompilerWorker_DoWork_VerifyPawnccIsThere)
         End If
     End Sub
 
@@ -308,19 +313,19 @@ Public Class MainForm
 
         '2 = Started Compiling
         If e.ProgressPercentage = 2 Then
-            ShowStatus("Compiling...", -1, False)
+            ShowStatus(translations.MainForm_CompilerWorker_ProgressChanged_Compiling, -1, False)
 
             '3 = Failed Compiling With Errors/Warnings.
         ElseIf e.ProgressPercentage = 3 Then
-            ShowStatus("Compiling failed with errors/warnings.", 5000, True)
+            ShowStatus(translations.MainForm_CompilerWorker_ProgressChanged_CompilingFailedWithErrors, 5000, True)
 
             '4 = Finished Compiling With Warnings.
         ElseIf e.ProgressPercentage = 4 Then
-            ShowStatus("Compiling finished successfully but there are warning(s).", 5000, True)
+            ShowStatus(translations.MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithWarnings, 5000, True)
 
             '5 = Finished Compiling.
         ElseIf e.ProgressPercentage = 5 Then
-            ShowStatus("Compiling finished sucessfully with no errors/warnings.", 5000, True)
+            ShowStatus(translations.MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithNoErrorsWarnings, 5000, True)
         End If
     End Sub
 
@@ -334,6 +339,8 @@ Public Class MainForm
 #Region "Plugin System"
 
     Dim _allPlugins As New PluginBootstrapper()
+
+    <Localizable(False)>
     Private Sub OnFormLoadPlugin(sender As Object, e As EventArgs) Handles MyBase.Load
         'I've made a thing of my own that is just like shadow copying to make sure the DLL's are accessed easily while app is running.
         Dim tempPlugPath = Path.GetTempPath + "esplugins"

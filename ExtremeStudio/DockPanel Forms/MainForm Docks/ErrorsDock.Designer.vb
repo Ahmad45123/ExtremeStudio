@@ -22,6 +22,7 @@ Partial Class ErrorsDock
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ErrorsDock))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.showWarnsCheck = New System.Windows.Forms.CheckBox()
@@ -47,111 +48,86 @@ Partial Class ErrorsDock
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage3)
-        Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TabControl1.Location = New System.Drawing.Point(0, 0)
+        resources.ApplyResources(Me.TabControl1, "TabControl1")
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(668, 163)
-        Me.TabControl1.TabIndex = 0
         '
         'TabPage1
         '
         Me.TabPage1.Controls.Add(Me.showWarnsCheck)
         Me.TabPage1.Controls.Add(Me.showErrorsCheck)
         Me.TabPage1.Controls.Add(Me.errorsWarnsGrid)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+        resources.ApplyResources(Me.TabPage1, "TabPage1")
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(660, 137)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Script Errors & Warnings"
         Me.TabPage1.UseVisualStyleBackColor = true
         '
         'showWarnsCheck
         '
-        Me.showWarnsCheck.Appearance = System.Windows.Forms.Appearance.Button
-        Me.showWarnsCheck.AutoSize = true
+        resources.ApplyResources(Me.showWarnsCheck, "showWarnsCheck")
         Me.showWarnsCheck.Checked = true
         Me.showWarnsCheck.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.showWarnsCheck.Location = New System.Drawing.Point(89, 6)
         Me.showWarnsCheck.Name = "showWarnsCheck"
-        Me.showWarnsCheck.Size = New System.Drawing.Size(91, 23)
-        Me.showWarnsCheck.TabIndex = 4
-        Me.showWarnsCheck.Text = "Show Warnings"
         Me.showWarnsCheck.UseVisualStyleBackColor = true
         '
         'showErrorsCheck
         '
-        Me.showErrorsCheck.Appearance = System.Windows.Forms.Appearance.Button
-        Me.showErrorsCheck.AutoSize = true
+        resources.ApplyResources(Me.showErrorsCheck, "showErrorsCheck")
         Me.showErrorsCheck.Checked = true
         Me.showErrorsCheck.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.showErrorsCheck.Location = New System.Drawing.Point(8, 6)
         Me.showErrorsCheck.Name = "showErrorsCheck"
-        Me.showErrorsCheck.Size = New System.Drawing.Size(75, 23)
-        Me.showErrorsCheck.TabIndex = 3
-        Me.showErrorsCheck.Text = "Show Errors"
         Me.showErrorsCheck.UseVisualStyleBackColor = true
         '
         'errorsWarnsGrid
         '
         Me.errorsWarnsGrid.AllowUserToAddRows = false
         Me.errorsWarnsGrid.AllowUserToDeleteRows = false
-        Me.errorsWarnsGrid.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.errorsWarnsGrid, "errorsWarnsGrid")
         Me.errorsWarnsGrid.BackgroundColor = System.Drawing.Color.White
         Me.errorsWarnsGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
         Me.errorsWarnsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.errorsWarnsGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.typeColumn, Me.fileColumn, Me.lineColumn, Me.errNumberColumn, Me.errortextColumn})
         Me.errorsWarnsGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.errorsWarnsGrid.GridColor = System.Drawing.SystemColors.AppWorkspace
-        Me.errorsWarnsGrid.Location = New System.Drawing.Point(0, 35)
         Me.errorsWarnsGrid.MultiSelect = false
         Me.errorsWarnsGrid.Name = "errorsWarnsGrid"
         Me.errorsWarnsGrid.ReadOnly = true
         Me.errorsWarnsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.errorsWarnsGrid.Size = New System.Drawing.Size(660, 102)
-        Me.errorsWarnsGrid.TabIndex = 2
         '
         'typeColumn
         '
-        Me.typeColumn.HeaderText = "Type"
+        resources.ApplyResources(Me.typeColumn, "typeColumn")
         Me.typeColumn.Name = "typeColumn"
         Me.typeColumn.ReadOnly = true
         '
         'fileColumn
         '
-        Me.fileColumn.HeaderText = "File"
+        resources.ApplyResources(Me.fileColumn, "fileColumn")
         Me.fileColumn.Name = "fileColumn"
         Me.fileColumn.ReadOnly = true
         '
         'lineColumn
         '
-        Me.lineColumn.HeaderText = "Line Number"
+        resources.ApplyResources(Me.lineColumn, "lineColumn")
         Me.lineColumn.Name = "lineColumn"
         Me.lineColumn.ReadOnly = true
         '
         'errNumberColumn
         '
-        Me.errNumberColumn.HeaderText = "Error Number"
+        resources.ApplyResources(Me.errNumberColumn, "errNumberColumn")
         Me.errNumberColumn.Name = "errNumberColumn"
         Me.errNumberColumn.ReadOnly = true
         '
         'errortextColumn
         '
-        Me.errortextColumn.HeaderText = "Error Text"
+        resources.ApplyResources(Me.errortextColumn, "errortextColumn")
         Me.errortextColumn.Name = "errortextColumn"
         Me.errortextColumn.ReadOnly = true
         '
         'TabPage3
         '
         Me.TabPage3.Controls.Add(Me.parserErrors)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        resources.ApplyResources(Me.TabPage3, "TabPage3")
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(660, 137)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "Parser Errors"
         Me.TabPage3.UseVisualStyleBackColor = true
         '
         'parserErrors
@@ -162,42 +138,36 @@ Partial Class ErrorsDock
         Me.parserErrors.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
         Me.parserErrors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.parserErrors.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ErrorMsg, Me.Column1})
-        Me.parserErrors.Dock = System.Windows.Forms.DockStyle.Fill
+        resources.ApplyResources(Me.parserErrors, "parserErrors")
         Me.parserErrors.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.parserErrors.GridColor = System.Drawing.SystemColors.AppWorkspace
-        Me.parserErrors.Location = New System.Drawing.Point(0, 0)
         Me.parserErrors.MultiSelect = false
         Me.parserErrors.Name = "parserErrors"
         Me.parserErrors.ReadOnly = true
         Me.parserErrors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.parserErrors.Size = New System.Drawing.Size(660, 137)
-        Me.parserErrors.TabIndex = 1
         '
         'ErrorMsg
         '
-        Me.ErrorMsg.HeaderText = "Message"
+        resources.ApplyResources(Me.ErrorMsg, "ErrorMsg")
         Me.ErrorMsg.Name = "ErrorMsg"
         Me.ErrorMsg.ReadOnly = true
         '
         'Column1
         '
-        Me.Column1.HeaderText = "Error Identifier"
+        resources.ApplyResources(Me.Column1, "Column1")
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = true
         '
         'ErrorsDock
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(668, 163)
         Me.Controls.Add(Me.TabControl1)
         Me.DockAreas = CType(((((WeifenLuo.WinFormsUI.Docking.DockAreas.Float Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft)  _
             Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight)  _
             Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop)  _
             Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom),WeifenLuo.WinFormsUI.Docking.DockAreas)
-        Me.Font = New System.Drawing.Font("Tahoma", 8!)
         Me.Name = "ErrorsDock"
-        Me.Text = "Warnings & Errors"
         Me.TabControl1.ResumeLayout(false)
         Me.TabPage1.ResumeLayout(false)
         Me.TabPage1.PerformLayout

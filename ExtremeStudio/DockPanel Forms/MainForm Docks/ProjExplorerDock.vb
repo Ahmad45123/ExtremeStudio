@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports ExtremeParser
 Imports ExtremeCore
+Imports ExtremeStudio.My.Resources
 
 Public Class ProjExplorerDock
 
@@ -59,7 +60,7 @@ Public Class ProjExplorerDock
         If ext = ".inc" Or ext = ".pwn" Then
             MainForm.OpenFile(fse.FileName)
         Else
-            MainForm.ShowStatus("This filetype is not supported to be veiwed by ExtremeStudio so it will be opened normally.", 5000, False)
+            MainForm.ShowStatus(translations.ProjExplorerDock_filesList_FileSelected_FileNotSupported, 5000, False)
             Process.Start(New ProcessStartInfo With { .WorkingDirectory = Path.GetDirectoryName(fse.FileName), .FileName = fse.FileName })
         End If
     End Sub
@@ -67,7 +68,7 @@ Public Class ProjExplorerDock
     Private Sub RenameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RenameToolStripMenuItem.Click
         If Directory.Exists(filesList.SelectedFile) Then
             ResetFolder:
-            Dim input As New AdvacnedInputBox("Enter new name.", "Please enter a new name for the directory.")
+            Dim input As New AdvacnedInputBox(translations.ProjExplorerDock_RenameToolStripMenuItem_Click_EnterNewNameTitle, translations.ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNewDirName)
             If input.ResResult = AdvacnedInputBox.ReturnValue.InputResultOk Then
                 If FilenameIsOk(input.ResText) Then
                     Try
@@ -83,7 +84,7 @@ Public Class ProjExplorerDock
 
         ElseIf File.Exists(filesList.SelectedFile) Then
             ResetFile:
-            Dim input As New AdvacnedInputBox("Enter new name.", "Please enter a new name for the file.", defaultText:= Path.GetFileName(filesList.SelectedFile))
+            Dim input As New AdvacnedInputBox(translations.ProjExplorerDock_RenameToolStripMenuItem_Click_EnterNewNameTitle, translations.ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNameForFile, defaultText:= Path.GetFileName(filesList.SelectedFile))
             If input.ResResult = AdvacnedInputBox.ReturnValue.InputResultOk Then
                 If FilenameIsOk(input.ResText) Then
                     Try
@@ -119,7 +120,7 @@ Public Class ProjExplorerDock
         End If
 
         ResetChoose:
-            Dim input As New AdvacnedInputBox("Enter new name.", "Please enter a name for the directory.")
+            Dim input As New AdvacnedInputBox(translations.ProjExplorerDock_RenameToolStripMenuItem_Click_EnterNewNameTitle, translations.ProjExplorerDock_NewDirectoryToolStripMenuItem_Click_PleaseEnterNameForDir)
             If input.ResResult = AdvacnedInputBox.ReturnValue.InputResultOk Then
                 If FilenameIsOk(input.ResText) Then
                     Try
@@ -141,7 +142,7 @@ Public Class ProjExplorerDock
         End If
 
         ResetChoose:
-            Dim input As New AdvacnedInputBox("Enter new name.", "Please enter a name for the file." + vbCrLf + "NOTE: INCLUDE THE EXTENSION!", defaultText:= "example.pwn")
+            Dim input As New AdvacnedInputBox(translations.ProjExplorerDock_RenameToolStripMenuItem_Click_EnterNewNameTitle, translations.ProjExplorerDock_NewFileToolStripMenuItem_Click_PleaseEnterNameForFile, defaultText:= "example.pwn")
             If input.ResResult = AdvacnedInputBox.ReturnValue.InputResultOk Then
                 If FilenameIsOk(input.ResText) Then
                     Try

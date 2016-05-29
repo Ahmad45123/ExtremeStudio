@@ -1,8 +1,11 @@
-﻿Imports System.Net
+﻿Imports System.ComponentModel
+Imports System.Globalization
+Imports System.Net
 Imports System.Xml
 Imports System.IO
 Imports System.IO.Compression
 Imports ExtremeCore
+Imports ExtremeStudio.My.Resources
 Imports Newtonsoft.Json
 
 Public Class StartupForm
@@ -17,6 +20,8 @@ Public Class StartupForm
 #Region "RecentCode"
     Public Recent As New List(Of String)
     Const MaxListItems = 30
+
+    <Localizable(False)>
     Public Sub AddNewRecent(path As String)
         For Each str As String In Recent
             If str = path Then
@@ -31,6 +36,7 @@ Public Class StartupForm
         My.Computer.FileSystem.WriteAllText(MainForm.ApplicationFiles + "/configs/recent.json", JsonConvert.SerializeObject(Recent), False)
     End Sub
 
+    <Localizable(False)>
     Public Sub RemoveRecent(path As String)
         For Each str As String In Recent
             If str = path Then
@@ -44,6 +50,7 @@ Public Class StartupForm
 
     Dim _versionHandler As New VersionHandler
 
+    <Localizable(False)>
     Private Sub StartupForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'If the interop files don't exist, Extract the files.
         If IsFirst And (Not My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Or Not My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/x86/SQLite.Interop.dll")) Then
@@ -106,6 +113,7 @@ Public Class StartupForm
         End If
     End Sub
 
+    <Localizable(False)>
     Private Sub nameTextBox_TextChanged(sender As Object, e As EventArgs) Handles nameTextBox.TextChanged
         If nameTextBox.Text = "" Then Exit Sub
 
@@ -126,17 +134,17 @@ Public Class StartupForm
         End If
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub CreateProjectBtn_Click(sender As Object, e As EventArgs) Handles CreateProjectBtn.Click
         Dim newPath As String = locTextBox.Text
         If preExistCheck.Checked Then
             If Not My.Computer.FileSystem.DirectoryExists(newPath) Or IsValidExtremeProject(newPath) Or Not IsValidSAMPFolder(newPath) Then
-                MsgBox("Invalid SAMP Folder.. Must contain the pawno folder, gamemodes folder, plugins folder, all executables and the server config.")
+                MsgBox(translations.StartupForm_CreateProjectBtn_Click_InvalidSampFolder)
                 Exit Sub
             End If
         Else
             'Add to the path folder name.
             If FilenameIsOk(nameTextBox.Text) = False Then
-                MsgBox("Invalid Name.")
+                MsgBox(translations.StartupForm_CreateProjectBtn_Click_InvalidName)
                 Exit Sub
             End If
             newPath = Path.Combine(locTextBox.Text, nameTextBox.Text)
@@ -156,11 +164,11 @@ Public Class StartupForm
                     End If
                     My.Computer.FileSystem.WriteAllText(newPath + "/gamemodes/" + nameTextBox.Text + ".pwn", My.Resources.newfileTemplate, False)
                 Else
-                    MsgBox("You haven't selected a SAMP version to use.")
+                    MsgBox(translations.StartupForm_CreateProjectBtn_Click_NoSampSelected)
                     Exit Sub
                 End If
             Else
-                MsgBox("That directory doesn't exist or there is a project with that name already there.")
+                MsgBox(translations.StartupForm_CreateProjectBtn_Click_DirError)
                 Exit Sub
             End If
         End If
@@ -176,10 +184,10 @@ Public Class StartupForm
         _isClosedProgram = True : Close()
     End Sub
 
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles pathTextBox.TextChanged
+    Private Sub pathTextBox_TextChanged(sender As Object, e As EventArgs) Handles pathTextBox.TextChanged
         loadProjectBtn.Enabled = False
-        projectName.Text = "None"
-        projectVersion.Text = "None"
+        projectName.Text = translations.StartupForm_pathTextBox_TextChanged_None
+        projectVersion.Text = translations.StartupForm_pathTextBox_TextChanged_None
 
         If IsValidExtremeProject(pathTextBox.Text) Then
             MainForm.CurrentProject.ProjectPath = pathTextBox.Text
@@ -191,16 +199,16 @@ Public Class StartupForm
 
             Dim versionCompare As VersionReader.CompareVersionResult = VersionReader.CompareVersions(projVersion, progVersion)
             If versionCompare = VersionReader.CompareVersionResult.VersionSame Then
-                projectVersion.Text = "Project version is the same as ExtremeStudio's version, No converion is needed."
+                projectVersion.Text = translations.StartupForm_pathTextBox_TextChanged_ProjectVersionSame
                 loadProjectBtn.Enabled = True
             ElseIf versionCompare = VersionReader.CompareVersionResult.VersionNew Then
-                projectVersion.Text = "Project older then ExtremeStudio, Conversion will be done however it may bug with older versions so its recommended to not try."
+                projectVersion.Text = translations.StartupForm_pathTextBox_TextChanged_ProjectVersionOlder
                 loadProjectBtn.Enabled = True
             ElseIf versionCompare = VersionReader.CompareVersionResult.VersionOld Then
-                projectVersion.Text = "Project version is newer then ExtremeStudio's version, Please download latest ExtremeStudio package."
+                projectVersion.Text = translations.StartupForm_pathTextBox_TextChanged_ProjectVersionNewer
             End If
         Else
-            MsgBox("ERROR: That folder isn't a valid ExtremeStudio project." + vbCrLf + "Make sure you haven't deleted or modified any file manually.")
+            MsgBox(translations.StartupForm_pathTextBox_TextChanged_InvalidESPrj)
         End If
     End Sub
 
@@ -229,15 +237,15 @@ Public Class StartupForm
         If recentListBox.SelectedIndex = -1 Then Exit Sub
         pathTextBox.Text = recentListBox.SelectedItem
         If loadProjectBtn.Enabled = True Then
-            If Not projectVersion.Text.StartsWith("Project version is the same") Then
-                If MsgBox(projectVersion.Text + vbCrLf + vbCrLf + "Would you like to continue ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+            If Not projectVersion.Text = translations.StartupForm_pathTextBox_TextChanged_ProjectVersionSame Then
+                If MsgBox(projectVersion.Text + vbCrLf + vbCrLf + translations.StartupForm_Button1_Click_WouldYouLikeToContinue, MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
                     loadProjectBtn_Click(loadProjectBtn, EventArgs.Empty) 'Click `Load Project` button.
                 End If
             Else
                 loadProjectBtn_Click(loadProjectBtn, EventArgs.Empty) 'Click `Load Project` button.
             End If
         Else
-            If Not projectVersion.Text.StartsWith("Project version is the same") Then
+            If Not projectVersion.Text = translations.StartupForm_pathTextBox_TextChanged_ProjectVersionSame Then
                 MsgBox(projectVersion.Text)
             End If
         End If

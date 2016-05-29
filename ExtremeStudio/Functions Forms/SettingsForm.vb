@@ -2,6 +2,7 @@
 Imports System.IO
 Imports System.Text
 Imports ExtremeCore
+Imports ExtremeStudio.My.Resources
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Serialization
 
@@ -20,6 +21,7 @@ Public Class SettingsForm
         LoadServerCfg()
     End Sub
 
+    <Localizable(False)>
     Private Sub CheckPath()
         'Just make sure the _configDirPath is not null.
         If Directory.Exists(_configDirPath) = False Then
@@ -37,12 +39,12 @@ Public Class SettingsForm
             If Value = True Then
                 _isGlobal = True
                 _configDirPath = MainForm.ApplicationFiles + "/configs/"
-                Me.Text = "Settings. [GLOBAL]"
+                Me.Text = translations.SettingsForm_IsGlobal_SettingsGLOBAL
                 ReloadInfoAll()
             Else
                 _isGlobal = False
                 _configDirPath = MainForm.CurrentProject.ProjectPath + "/configs/"
-                Me.Text = "Settings. [PROJECT]"
+                Me.Text = translations.SettingsForm_IsGlobal_SettingsPROJECT
                 ReloadInfoAll()
             End If
         End Set
@@ -77,20 +79,20 @@ Public Class SettingsForm
 
     Private Sub exportBtn_Click(sender As Object, e As EventArgs) Handles exportBtn.Click
         Dim dlg As New SaveFileDialog()
-        dlg.Title = "Select Target."
+        dlg.Title = translations.SettingsForm_exportBtn_Click_OpenFileDialogTitle
         dlg.Filter = "ExtremeStudio Theme (*.estheme) |*.estheme"
 
         If dlg.ShowDialog() = DialogResult.OK
             Dim configHandler As New ConfigsHandler(dlg.FileName)
             configHandler("Colors") = ColorsInfo
             configHandler.Save()
-            MsgBox("Exported Successfully!", MsgBoxStyle.Information)
+            MsgBox(translations.SettingsForm_exportBtn_Click_ExporteSuccess, MsgBoxStyle.Information)
         End If
     End Sub
 
     Private Sub importBtn_Click(sender As Object, e As EventArgs) Handles importBtn.Click
         Dim dlg As New OpenFileDialog()
-        dlg.Title = "Select Source."
+        dlg.Title = translations.SettingsForm_importBtn_Click_OpenFileDialogTitle
         dlg.Filter = "ExtremeStudio Theme (*.estheme) |*.estheme"
 
         If dlg.ShowDialog() = DialogResult.OK
@@ -101,7 +103,7 @@ Public Class SettingsForm
     End Sub
 
     Private Sub resetBtn_Click(sender As Object, e As EventArgs) Handles resetBtn.Click
-        If MsgBox("Are you sure you want to reset to default settings ?", MsgBoxStyle.Exclamation Or MsgBoxStyle.YesNo) Then
+        If MsgBox(translations.SettingsForm_resetBtn_Click_ResetDefaultSettings, MsgBoxStyle.Exclamation Or MsgBoxStyle.YesNo) Then
             'Delete Old: 
             My.Computer.FileSystem.DeleteFile(_configDirPath + "/themeInfo.json")
 
@@ -112,6 +114,7 @@ Public Class SettingsForm
         End If
     End Sub
 
+    <Localizable(False)>
     Private Sub LoadColors()
         CheckPath()
 
@@ -129,6 +132,7 @@ Public Class SettingsForm
         reportGenDirText.Enabled = reportGenCheck.Checked
     End Sub
 
+    <Localizable(False)>
     Private Sub FormClosingCompiler(sender As Object, e As EventArgs) Handles MyBase.FormClosing
         Dim configHandler As New ConfigsHandler(_configDirPath + "/compiler.json")
         configHandler("activeDir") = activeDirText.Text
@@ -146,6 +150,7 @@ Public Class SettingsForm
         configHandler.Save()
     End Sub
 
+    <Localizable(False)>
     Private Sub LoadCompiler()
         CheckPath()
 
@@ -189,6 +194,7 @@ Public Class SettingsForm
             customArgsText.Text = ""
     End Sub
 
+    <Localizable(False)>
     Public Function GetCompilerArgs()
         LoadCompiler()
 
@@ -227,7 +233,9 @@ Public Class SettingsForm
 #End Region
 
 #Region "Server.CFG"
-    Public Sub LoadServerCfg()
+
+    <Localizable(False)>
+    Sub LoadServerCfg()
         serverCfgGrid.Rows.Clear()
 
         Dim textLine As String
@@ -246,6 +254,7 @@ Public Class SettingsForm
         End If
     End Sub
 
+    <Localizable(False)>
     Private Sub ServerCfgFormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If IsGlobal Then Exit Sub
 

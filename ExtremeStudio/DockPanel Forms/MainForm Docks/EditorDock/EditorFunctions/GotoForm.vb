@@ -1,25 +1,27 @@
-﻿Public Class GotoForm
+﻿Imports ExtremeStudio.My.Resources
+
+Public Class GotoForm
     Private isClosing as Boolean = False
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles CancelBtn.Click
         isClosing = True
         Me.Close()
     End Sub
 
     Private Sub linenumberRadio_CheckedChanged(sender As Object, e As EventArgs) Handles linenumberRadio.CheckedChanged
-        theLabel.Text = "Line Number: "
-        maxLabel.Text = "Maximum: " + MainForm.CurrentScintilla?.Lines.Count.ToString()
-        curLabel.Text = "Current: " + (MainForm.CurrentScintilla?.CurrentLine + 1).ToString()
+        theLabel.Text = translations.GotoForm_linenumberRadio_CheckedChanged_LineNumberLabel
+        maxLabel.Text = translations.GotoForm_linenumberRadio_CheckedChanged_MaximumLabel + MainForm.CurrentScintilla?.Lines.Count.ToString()
+        curLabel.Text = translations.GotoForm_linenumberRadio_CheckedChanged_CurrentLabel + (MainForm.CurrentScintilla?.CurrentLine + 1).ToString()
         valueTextBox.Select()
     End Sub
 
     Private Sub positionRadio_CheckedChanged(sender As Object, e As EventArgs) Handles positionRadio.CheckedChanged
-        theLabel.Text = "Position: "
-        maxLabel.Text = "Maximum: " + MainForm.CurrentScintilla?.Lines(MainForm.CurrentScintilla?.Lines.Count - 1).EndPosition.ToString()
-        curLabel.Text = "Current: " + (MainForm.CurrentScintilla?.CurrentPosition + 1).ToString()
+        theLabel.Text = translations.GotoForm_positionRadio_CheckedChanged_PositionLabel
+        maxLabel.Text = translations.GotoForm_linenumberRadio_CheckedChanged_MaximumLabel + MainForm.CurrentScintilla?.Lines(MainForm.CurrentScintilla?.Lines.Count - 1).EndPosition.ToString()
+        curLabel.Text = translations.GotoForm_linenumberRadio_CheckedChanged_CurrentLabel + (MainForm.CurrentScintilla?.CurrentPosition + 1).ToString()
         valueTextBox.Select()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub GoBtn_Click(sender As Object, e As EventArgs) Handles GoBtn.Click
         if valueTextBox.Text = "" Or IsNumeric(valueTextBox.Text) = False Then Exit Sub
 
         If linenumberRadio.Checked then
@@ -29,7 +31,7 @@
                 Close()
 
             Else
-                MsgBox("Please check your value, It seems to be wrong.")
+                MsgBox(translations.GotoForm_GoBtn_Click_CheckYourValues)
             End If 
 
         Else If positionRadio.Checked Then
@@ -39,7 +41,7 @@
                 Close()
                 
             Else
-                MsgBox("Please check your value, It seems to be wrong.")
+                MsgBox(translations.GotoForm_GoBtn_Click_CheckYourValues)
             End If
 
         End If

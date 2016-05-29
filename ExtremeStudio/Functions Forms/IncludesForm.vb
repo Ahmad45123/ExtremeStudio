@@ -1,12 +1,13 @@
 ﻿Imports System.IO
 Imports System.Net
 Imports System.Xml
+Imports ExtremeStudio.My.Resources
 
 Public Class IncludesForm
-    Public Includes As New List(Of IncludeData)
+    Private Includes As New List(Of IncludeData)
 
 
-    Public Sub RefreshList(Optional searchPattern As String = "", Optional isInstalledOnly As Boolean = False)
+    Private Sub RefreshList(Optional searchPattern As String = "", Optional isInstalledOnly As Boolean = False)
         includesList.Items.Clear()
 
         'Show the list.
@@ -45,7 +46,7 @@ Public Class IncludesForm
                 Dim inc As New IncludeData
                 inc.Name = Path.GetFileNameWithoutExtension(file)
                 inc.Download = "local"
-                inc.Desc = "The include is cached, No description is available."
+                inc.Desc = translations.IncludesForm_IncludesForm_Load_IncludeCached
                 inc.relatedPlugin = ""
                 inc.Version = My.Computer.FileSystem.ReadAllText(file + "/version.cfg")
                 Includes.Add(inc)
@@ -79,13 +80,13 @@ Public Class IncludesForm
 
         includeName.Text = sel.Name
         includeVersion.Text = sel.Version
-        includeDesc.Text = sel.Desc + vbCrLf + vbCrLf + IIf(sel.RelatedPlugin = "", "", "This include needs the " + sel.RelatedPlugin + " plugin to work.")
+        includeDesc.Text = sel.Desc + vbCrLf + vbCrLf + IIf(sel.RelatedPlugin = "", "", String.Format(translations.IncludesForm_includesList_SelectedIndexChanged_IncludeNeedsPlugin, sel.RelatedPlugin))
 
         'Check for updates if already installed.
         If sel.isInstalled Then
             'Set as already installed.
             includeInstalledLabel.Visible = True
-            Button1.Text = "Reinstall Include"
+            Button1.Text = translations.IncludesForm_includesList_SelectedIndexChanged_ReinstallInclude
             actionsGroup.Visible = True
 
             Dim curVer As String = MainForm.CurrentProject.IncludeVersion(sel.Name)
@@ -96,7 +97,7 @@ Public Class IncludesForm
         Else
             includeInstalledLabel.Visible = False
             updateAvilableLabel.Visible = False
-            Button1.Text = "Install Include"
+            Button1.Text = translations.IncludesForm_includesList_SelectedIndexChanged_InstallInclude
             actionsGroup.Visible = False
         End If
     End Sub
@@ -130,7 +131,7 @@ Public Class IncludesForm
 
         'Check is the file doesn't exist to prevent exceptions.. For example the user lost interent after he got the includes list.
         If Not My.Computer.FileSystem.FileExists(incFile) Then
-            MsgBox("The include can't be found in the cache.")
+            MsgBox(translations.IncludesForm_Button1_Click_IncludeNotFoundCache)
             Exit Sub
         End If
 
@@ -162,7 +163,7 @@ Public Class IncludesForm
         includeInstalledLabel.Visible = True
         actionsGroup.Visible = True
 
-        MsgBox("The include '" + includeName.Text + "' has been successfully installed.")
+        MsgBox(String.Format(translations.IncludesForm_Button1_Click_IncludeInstalled, includeName.Text))
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -198,7 +199,7 @@ Public Class IncludesForm
         updateAvilableLabel.Visible = False
         includeInstalledLabel.Visible = False
         actionsGroup.Visible = False
-        Button1.Text = "Install Include"
+        Button1.Text = translations.IncludesForm_includesList_SelectedIndexChanged_InstallInclude
     End Sub
 
     Private Sub showInstalledOnlyCheck_CheckedChanged(sender As Object, e As EventArgs) Handles showInstalledOnlyCheck.CheckedChanged

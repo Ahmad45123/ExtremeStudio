@@ -1,5 +1,6 @@
 ﻿Imports AutocompleteMenuNS
 Imports ExtremeParser
+Imports ExtremeStudio.My.Resources
 
 'This is a custom AutoCompleteItem to store all info about a certain item here.
 'Like PawnDoc.
@@ -32,7 +33,7 @@ Public Class AutoCompleteItemEx
         ImageIndex = type
 
         'Setup the tooltip.
-        ToolTipTitle = "PawnDoc Help: "
+        ToolTipTitle = translations.AutoCompleteItemEx_New_PawnDocHelp
         ToolTipText = toolTip
 
         'Save the type.
@@ -53,17 +54,17 @@ Public Class AutoCompleteItemEx
         ImageIndex = type
 
         'Setup the tooltip.
-        ToolTipTitle = "PawnDoc Help: "
+        ToolTipTitle = translations.AutoCompleteItemEx_New_PawnDocHelp
 
         'If there is pawnDoc, use it.
         If func.FuncPawnDoc IsNot Nothing Then
             Dim allText As String = ""
 
             'Do the remarks
-            allText += "Remarks: " + vbCrLf + AutoTab(func.FuncPawnDoc.Remarks) + vbCrLf + vbCrLf
+            allText += translations.AutoCompleteItemEx_New_Remarks + vbCrLf + AutoTab(func.FuncPawnDoc.Remarks) + vbCrLf + vbCrLf
 
             'Do the Parameters. (HARDEST ONE)
-            allText += "Parameters :" + vbCrLf
+            allText += translations.AutoCompleteItemEx_New_Parameters + vbCrLf
 
             For Each itm As KeyValuePair(Of String, String) In func.FuncPawnDoc.Parameters
                 Dim par As String = itm.Key
@@ -76,7 +77,7 @@ Public Class AutoCompleteItemEx
             allText += vbCrLf
 
             'Do the returns.
-            allText += "Returns: " + vbCrLf + AutoTab(func.FuncPawnDoc.Returns) + vbCrLf + vbCrLf
+            allText += translations.AutoCompleteItemEx_New_Returns + vbCrLf + AutoTab(func.FuncPawnDoc.Returns) + vbCrLf + vbCrLf
 
             'Then simply set it.
             ToolTipText = allText
@@ -86,9 +87,9 @@ Public Class AutoCompleteItemEx
             _pFuncPars = func.FuncParameters
         Else
             'there is no PawnDoc.. Setup our own.
-            Dim allText As String = "Function Name: " + func.FuncName + vbCrLf
-            allText += "Parameters: " + func.FuncParameters.paramsText + vbCrLf
-            allText += "Return Tag: " + func.ReturnTag + vbCrLf
+            Dim allText As String = translations.AutoCompleteItemEx_New_FunctionName + func.FuncName + vbCrLf
+            allText += translations.AutoCompleteItemEx_New_Parameters + func.FuncParameters.paramsText + vbCrLf
+            allText += translations.AutoCompleteItemEx_New_ReturnTag + func.ReturnTag + vbCrLf
 
             ToolTipText = allText
 

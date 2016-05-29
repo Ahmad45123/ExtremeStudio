@@ -251,6 +251,12 @@
     <Compile Include="Functions Forms\SettingsForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LanguagesForm.Designer.vb">
+      <DependentUpon>LanguagesForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LanguagesForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
@@ -277,6 +283,11 @@
     </Compile>
     <Compile Include="StartupForm.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Translations\translations.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>translations.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -313,6 +324,9 @@
     <EmbeddedResource Include="Functions Forms\SettingsForm.resx">
       <DependentUpon>SettingsForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LanguagesForm.resx">
+      <DependentUpon>LanguagesForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -324,6 +338,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StartupForm.resx">
       <DependentUpon>StartupForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\translations.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>translations.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

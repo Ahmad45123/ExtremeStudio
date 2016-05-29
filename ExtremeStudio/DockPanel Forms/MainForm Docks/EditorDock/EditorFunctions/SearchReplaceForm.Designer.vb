@@ -22,6 +22,7 @@ Partial Class SearchReplaceForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SearchReplaceForm))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.findCloseBtn = New System.Windows.Forms.Button()
@@ -55,11 +56,9 @@ Partial Class SearchReplaceForm
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Location = New System.Drawing.Point(-3, 1)
+        resources.ApplyResources(Me.TabControl1, "TabControl1")
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(496, 223)
-        Me.TabControl1.TabIndex = 0
         '
         'TabPage1
         '
@@ -69,65 +68,43 @@ Partial Class SearchReplaceForm
         Me.TabPage1.Controls.Add(Me.searchFindBtn)
         Me.TabPage1.Controls.Add(Me.searchFindText)
         Me.TabPage1.Controls.Add(Me.Label1)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+        resources.ApplyResources(Me.TabPage1, "TabPage1")
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(488, 197)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Search"
         Me.TabPage1.UseVisualStyleBackColor = true
         '
         'findCloseBtn
         '
-        Me.findCloseBtn.Location = New System.Drawing.Point(395, 159)
+        resources.ApplyResources(Me.findCloseBtn, "findCloseBtn")
         Me.findCloseBtn.Name = "findCloseBtn"
-        Me.findCloseBtn.Size = New System.Drawing.Size(87, 23)
-        Me.findCloseBtn.TabIndex = 12
-        Me.findCloseBtn.Text = "Close"
         Me.findCloseBtn.UseVisualStyleBackColor = true
         '
         'searchFindAllBtn
         '
-        Me.searchFindAllBtn.Location = New System.Drawing.Point(395, 67)
+        resources.ApplyResources(Me.searchFindAllBtn, "searchFindAllBtn")
         Me.searchFindAllBtn.Name = "searchFindAllBtn"
-        Me.searchFindAllBtn.Size = New System.Drawing.Size(87, 41)
-        Me.searchFindAllBtn.TabIndex = 11
-        Me.searchFindAllBtn.Text = "Find All In Current Doc"
         Me.searchFindAllBtn.UseVisualStyleBackColor = true
         '
         'searchCountBtn
         '
-        Me.searchCountBtn.Location = New System.Drawing.Point(395, 38)
+        resources.ApplyResources(Me.searchCountBtn, "searchCountBtn")
         Me.searchCountBtn.Name = "searchCountBtn"
-        Me.searchCountBtn.Size = New System.Drawing.Size(87, 23)
-        Me.searchCountBtn.TabIndex = 9
-        Me.searchCountBtn.Text = "Count"
         Me.searchCountBtn.UseVisualStyleBackColor = true
         '
         'searchFindBtn
         '
-        Me.searchFindBtn.Location = New System.Drawing.Point(395, 9)
+        resources.ApplyResources(Me.searchFindBtn, "searchFindBtn")
         Me.searchFindBtn.Name = "searchFindBtn"
-        Me.searchFindBtn.Size = New System.Drawing.Size(87, 23)
-        Me.searchFindBtn.TabIndex = 8
-        Me.searchFindBtn.Text = "Find Next"
         Me.searchFindBtn.UseVisualStyleBackColor = true
         '
         'searchFindText
         '
-        Me.searchFindText.Location = New System.Drawing.Point(55, 11)
+        resources.ApplyResources(Me.searchFindText, "searchFindText")
         Me.searchFindText.Name = "searchFindText"
-        Me.searchFindText.Size = New System.Drawing.Size(338, 20)
-        Me.searchFindText.TabIndex = 7
         '
         'Label1
         '
-        Me.Label1.AutoSize = true
-        Me.Label1.Location = New System.Drawing.Point(1, 14)
+        resources.ApplyResources(Me.Label1, "Label1")
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(61, 13)
-        Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Find what: "
         '
         'TabPage2
         '
@@ -139,152 +116,100 @@ Partial Class SearchReplaceForm
         Me.TabPage2.Controls.Add(Me.replaceFindNextBtn)
         Me.TabPage2.Controls.Add(Me.replaceFindText)
         Me.TabPage2.Controls.Add(Me.Label2)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        resources.ApplyResources(Me.TabPage2, "TabPage2")
         Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(488, 197)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Replace"
         Me.TabPage2.UseVisualStyleBackColor = true
         '
         'replaceReplaceText
         '
-        Me.replaceReplaceText.Location = New System.Drawing.Point(46, 45)
+        resources.ApplyResources(Me.replaceReplaceText, "replaceReplaceText")
         Me.replaceReplaceText.Name = "replaceReplaceText"
-        Me.replaceReplaceText.Size = New System.Drawing.Size(347, 20)
-        Me.replaceReplaceText.TabIndex = 17
         '
         'Label3
         '
-        Me.Label3.AutoSize = true
-        Me.Label3.Location = New System.Drawing.Point(1, 48)
+        resources.ApplyResources(Me.Label3, "Label3")
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(52, 13)
-        Me.Label3.TabIndex = 16
-        Me.Label3.Text = "Replace: "
         '
         'replaceCloseBtn
         '
-        Me.replaceCloseBtn.Location = New System.Drawing.Point(395, 159)
+        resources.ApplyResources(Me.replaceCloseBtn, "replaceCloseBtn")
         Me.replaceCloseBtn.Name = "replaceCloseBtn"
-        Me.replaceCloseBtn.Size = New System.Drawing.Size(87, 23)
-        Me.replaceCloseBtn.TabIndex = 14
-        Me.replaceCloseBtn.Text = "Close"
         Me.replaceCloseBtn.UseVisualStyleBackColor = true
         '
         'replaceReplaceAllBtn
         '
-        Me.replaceReplaceAllBtn.Location = New System.Drawing.Point(395, 72)
+        resources.ApplyResources(Me.replaceReplaceAllBtn, "replaceReplaceAllBtn")
         Me.replaceReplaceAllBtn.Name = "replaceReplaceAllBtn"
-        Me.replaceReplaceAllBtn.Size = New System.Drawing.Size(87, 23)
-        Me.replaceReplaceAllBtn.TabIndex = 12
-        Me.replaceReplaceAllBtn.Text = "Replace All"
         Me.replaceReplaceAllBtn.UseVisualStyleBackColor = true
         '
         'replaceReplaceBtn
         '
-        Me.replaceReplaceBtn.Location = New System.Drawing.Point(395, 43)
+        resources.ApplyResources(Me.replaceReplaceBtn, "replaceReplaceBtn")
         Me.replaceReplaceBtn.Name = "replaceReplaceBtn"
-        Me.replaceReplaceBtn.Size = New System.Drawing.Size(87, 23)
-        Me.replaceReplaceBtn.TabIndex = 11
-        Me.replaceReplaceBtn.Text = "Replace"
         Me.replaceReplaceBtn.UseVisualStyleBackColor = true
         '
         'replaceFindNextBtn
         '
-        Me.replaceFindNextBtn.Location = New System.Drawing.Point(395, 9)
+        resources.ApplyResources(Me.replaceFindNextBtn, "replaceFindNextBtn")
         Me.replaceFindNextBtn.Name = "replaceFindNextBtn"
-        Me.replaceFindNextBtn.Size = New System.Drawing.Size(87, 23)
-        Me.replaceFindNextBtn.TabIndex = 10
-        Me.replaceFindNextBtn.Text = "Find Next"
         Me.replaceFindNextBtn.UseVisualStyleBackColor = true
         '
         'replaceFindText
         '
-        Me.replaceFindText.Location = New System.Drawing.Point(55, 11)
+        resources.ApplyResources(Me.replaceFindText, "replaceFindText")
         Me.replaceFindText.Name = "replaceFindText"
-        Me.replaceFindText.Size = New System.Drawing.Size(338, 20)
-        Me.replaceFindText.TabIndex = 9
         '
         'Label2
         '
-        Me.Label2.AutoSize = true
-        Me.Label2.Location = New System.Drawing.Point(1, 14)
+        resources.ApplyResources(Me.Label2, "Label2")
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(61, 13)
-        Me.Label2.TabIndex = 8
-        Me.Label2.Text = "Find what: "
         '
         'matchWholeWordCheck
         '
-        Me.matchWholeWordCheck.AutoSize = true
-        Me.matchWholeWordCheck.Location = New System.Drawing.Point(12, 230)
+        resources.ApplyResources(Me.matchWholeWordCheck, "matchWholeWordCheck")
         Me.matchWholeWordCheck.Name = "matchWholeWordCheck"
-        Me.matchWholeWordCheck.Size = New System.Drawing.Size(117, 17)
-        Me.matchWholeWordCheck.TabIndex = 1
-        Me.matchWholeWordCheck.Text = "Match Whole Word"
         Me.matchWholeWordCheck.UseVisualStyleBackColor = true
         '
         'matchCaseCheck
         '
-        Me.matchCaseCheck.AutoSize = true
-        Me.matchCaseCheck.Location = New System.Drawing.Point(12, 253)
+        resources.ApplyResources(Me.matchCaseCheck, "matchCaseCheck")
         Me.matchCaseCheck.Name = "matchCaseCheck"
-        Me.matchCaseCheck.Size = New System.Drawing.Size(82, 17)
-        Me.matchCaseCheck.TabIndex = 2
-        Me.matchCaseCheck.Text = "Match Case"
         Me.matchCaseCheck.UseVisualStyleBackColor = true
         '
         'inSelCheck
         '
-        Me.inSelCheck.AutoSize = true
-        Me.inSelCheck.Location = New System.Drawing.Point(12, 276)
+        resources.ApplyResources(Me.inSelCheck, "inSelCheck")
         Me.inSelCheck.Name = "inSelCheck"
-        Me.inSelCheck.Size = New System.Drawing.Size(82, 17)
-        Me.inSelCheck.TabIndex = 3
-        Me.inSelCheck.Text = "In Selection"
         Me.inSelCheck.UseVisualStyleBackColor = true
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.searchRegexRadio)
         Me.GroupBox1.Controls.Add(Me.searchNormalRadio)
-        Me.GroupBox1.Location = New System.Drawing.Point(135, 230)
+        resources.ApplyResources(Me.GroupBox1, "GroupBox1")
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(354, 63)
-        Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = false
-        Me.GroupBox1.Text = "Search Mode"
         '
         'searchRegexRadio
         '
-        Me.searchRegexRadio.AutoSize = true
-        Me.searchRegexRadio.Location = New System.Drawing.Point(6, 40)
+        resources.ApplyResources(Me.searchRegexRadio, "searchRegexRadio")
         Me.searchRegexRadio.Name = "searchRegexRadio"
-        Me.searchRegexRadio.Size = New System.Drawing.Size(117, 17)
-        Me.searchRegexRadio.TabIndex = 1
         Me.searchRegexRadio.TabStop = true
-        Me.searchRegexRadio.Text = "Regular Expression"
         Me.searchRegexRadio.UseVisualStyleBackColor = true
         '
         'searchNormalRadio
         '
-        Me.searchNormalRadio.AutoSize = true
+        resources.ApplyResources(Me.searchNormalRadio, "searchNormalRadio")
         Me.searchNormalRadio.Checked = true
-        Me.searchNormalRadio.Location = New System.Drawing.Point(6, 19)
         Me.searchNormalRadio.Name = "searchNormalRadio"
-        Me.searchNormalRadio.Size = New System.Drawing.Size(58, 17)
-        Me.searchNormalRadio.TabIndex = 0
         Me.searchNormalRadio.TabStop = true
-        Me.searchNormalRadio.Text = "Normal"
         Me.searchNormalRadio.UseVisualStyleBackColor = true
         '
         'SearchReplaceForm
         '
         Me.AcceptButton = Me.searchFindBtn
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(499, 304)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.inSelCheck)
         Me.Controls.Add(Me.matchCaseCheck)
@@ -294,8 +219,6 @@ Partial Class SearchReplaceForm
         Me.MaximizeBox = false
         Me.MinimizeBox = false
         Me.Name = "SearchReplaceForm"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Search & Replace"
         Me.TopMost = true
         Me.TabControl1.ResumeLayout(false)
         Me.TabPage1.ResumeLayout(false)
