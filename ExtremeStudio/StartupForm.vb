@@ -52,6 +52,9 @@ Public Class StartupForm
 
     <Localizable(False)>
     Private Sub StartupForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Add event.
+        AddHandler pathTextBox.PathText.TextChanged, AddressOf pathTextBox_TextChanged
+        
         'If the interop files don't exist, Extract the files.
         If IsFirst And (Not My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Or Not My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/x86/SQLite.Interop.dll")) Then
             'Remove old.
@@ -135,7 +138,7 @@ Public Class StartupForm
     End Sub
 
     Private Sub CreateProjectBtn_Click(sender As Object, e As EventArgs) Handles CreateProjectBtn.Click
-        Dim newPath As String = locTextBox.Text
+        Dim newPath As String = locTextBox.PathText.Text
         If preExistCheck.Checked Then
             If Not My.Computer.FileSystem.DirectoryExists(newPath) Or IsValidExtremeProject(newPath) Or Not IsValidSAMPFolder(newPath) Then
                 MsgBox(translations.StartupForm_CreateProjectBtn_Click_InvalidSampFolder)
@@ -147,7 +150,7 @@ Public Class StartupForm
                 MsgBox(translations.StartupForm_CreateProjectBtn_Click_InvalidName)
                 Exit Sub
             End If
-            newPath = Path.Combine(locTextBox.Text, nameTextBox.Text)
+            newPath = Path.Combine(locTextBox.PathText.Text, nameTextBox.Text)
             If newPath <> "" And My.Computer.FileSystem.DirectoryExists(newPath) = False Then My.Computer.FileSystem.CreateDirectory(newPath)
 
             'Check if entered path exist.
@@ -184,13 +187,13 @@ Public Class StartupForm
         _isClosedProgram = True : Close()
     End Sub
 
-    Private Sub pathTextBox_TextChanged(sender As Object, e As EventArgs) Handles pathTextBox.TextChanged
+    Private Sub pathTextBox_TextChanged(sender As Object, e As EventArgs)
         loadProjectBtn.Enabled = False
         projectName.Text = translations.StartupForm_pathTextBox_TextChanged_None
         projectVersion.Text = translations.StartupForm_pathTextBox_TextChanged_None
 
-        If IsValidExtremeProject(pathTextBox.Text) Then
-            MainForm.CurrentProject.ProjectPath = pathTextBox.Text
+        If IsValidExtremeProject(pathTextBox.PathText.Text) Then
+            MainForm.CurrentProject.ProjectPath = pathTextBox.PathText.Text
             MainForm.CurrentProject.ReadInfo()
             projectName.Text = MainForm.CurrentProject.ProjectName
 
@@ -235,7 +238,7 @@ Public Class StartupForm
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If recentListBox.SelectedIndex = -1 Then Exit Sub
-        pathTextBox.Text = recentListBox.SelectedItem
+        pathTextBox.PathText.Text = recentListBox.SelectedItem
         If loadProjectBtn.Enabled = True Then
             If Not projectVersion.Text = translations.StartupForm_pathTextBox_TextChanged_ProjectVersionSame Then
                 If MsgBox(projectVersion.Text + vbCrLf + vbCrLf + translations.StartupForm_Button1_Click_WouldYouLikeToContinue, MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then

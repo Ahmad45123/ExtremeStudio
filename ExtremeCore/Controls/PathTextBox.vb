@@ -1,7 +1,6 @@
 ﻿Imports System.Windows.Forms
 
 Public Class PathTextBox
-    Inherits TextBox
 
     Public Enum PathTypes
         Folder
@@ -22,12 +21,12 @@ Public Class PathTextBox
     ''' <returns></returns>
     Public Property Filter As String
 
-    Private Sub i_OnDoubleClick(sender As Object, e As EventArgs) Handles MyBase.MouseDoubleClick
+    Private Sub BrowseBtn_Click(sender As Object, e As EventArgs) Handles BrowseBtn.Click
         If PathType = PathTypes.Folder Then
             Dim dlg As New FolderBrowserDialog()
             dlg.Description = Description
             If dlg.ShowDialog() = DialogResult.OK Then
-                sender.Text = dlg.SelectedPath
+                PathText.Text = dlg.SelectedPath
             End If
 
         ElseIf PathType = PathTypes.FileOpen Then
@@ -35,7 +34,7 @@ Public Class PathTextBox
             dlg.Title = Description
             dlg.Filter = Filter
             If dlg.ShowDialog() = DialogResult.OK Then
-                sender.Text = dlg.FileName
+                PathText.Text = dlg.FileName
             End If
 
         ElseIf PathType = PathTypes.FileSave Then
@@ -43,10 +42,13 @@ Public Class PathTextBox
             dlg.Title = Description
             dlg.Filter = Filter
             If dlg.ShowDialog() = DialogResult.OK Then
-                sender.Text = dlg.FileName
+                PathText.Text = dlg.FileName
             End If
 
         End If
     End Sub
 
+    Private Sub PathText_MouseDoubleClick(sender As Object, e As Windows.Forms.MouseEventArgs) Handles PathText.MouseDoubleClick
+        BrowseBtn.PerformClick()
+    End Sub
 End Class

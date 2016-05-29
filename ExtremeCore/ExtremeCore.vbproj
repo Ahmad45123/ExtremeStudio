@@ -134,7 +134,7 @@
       <DependentUpon>PathTextBox.vb</DependentUpon>
     </Compile>
     <Compile Include="Controls\PathTextBox.vb">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="IExtremePlugin.vb" />
     <Compile Include="IPluginContext.vb" />
@@ -157,6 +157,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Controls\AdvacnedInputBox.resx">
       <DependentUpon>AdvacnedInputBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PathTextBox.resx">
+      <DependentUpon>PathTextBox.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

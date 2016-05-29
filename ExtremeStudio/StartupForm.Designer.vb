@@ -27,7 +27,6 @@ Partial Class StartupForm
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.preExistCheck = New System.Windows.Forms.CheckBox()
         Me.CreateProjectBtn = New System.Windows.Forms.Button()
-        Me.locTextBox = New ExtremeCore.PathTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.verListBox = New System.Windows.Forms.ListBox()
         Me.nameTextBox = New System.Windows.Forms.TextBox()
@@ -40,13 +39,14 @@ Partial Class StartupForm
         Me.projectName = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.pathTextBox = New ExtremeCore.PathTextBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.recentListBox = New System.Windows.Forms.ListBox()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.OpenGlobalSettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.pathTextBox = New ExtremeCore.PathTextBox()
+        Me.locTextBox = New ExtremeCore.PathTextBox()
         Me.TabControl1.SuspendLayout
         Me.TabPage1.SuspendLayout
         Me.TabPage2.SuspendLayout
@@ -65,9 +65,9 @@ Partial Class StartupForm
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.locTextBox)
         Me.TabPage1.Controls.Add(Me.preExistCheck)
         Me.TabPage1.Controls.Add(Me.CreateProjectBtn)
-        Me.TabPage1.Controls.Add(Me.locTextBox)
         Me.TabPage1.Controls.Add(Me.Label3)
         Me.TabPage1.Controls.Add(Me.verListBox)
         Me.TabPage1.Controls.Add(Me.nameTextBox)
@@ -88,14 +88,6 @@ Partial Class StartupForm
         resources.ApplyResources(Me.CreateProjectBtn, "CreateProjectBtn")
         Me.CreateProjectBtn.Name = "CreateProjectBtn"
         Me.CreateProjectBtn.UseVisualStyleBackColor = true
-        '
-        'locTextBox
-        '
-        Me.locTextBox.Description = "Select the folder where to create the project."
-        Me.locTextBox.Filter = Nothing
-        resources.ApplyResources(Me.locTextBox, "locTextBox")
-        Me.locTextBox.Name = "locTextBox"
-        Me.locTextBox.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
         '
         'Label3
         '
@@ -167,15 +159,6 @@ Partial Class StartupForm
         resources.ApplyResources(Me.Label4, "Label4")
         Me.Label4.Name = "Label4"
         '
-        'pathTextBox
-        '
-        Me.pathTextBox.Description = "Select the project's folder."
-        Me.pathTextBox.Filter = Nothing
-        resources.ApplyResources(Me.pathTextBox, "pathTextBox")
-        Me.pathTextBox.Name = "pathTextBox"
-        Me.pathTextBox.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
-        Me.pathTextBox.ReadOnly = true
-        '
         'TabPage3
         '
         Me.TabPage3.Controls.Add(Me.Button3)
@@ -213,6 +196,22 @@ Partial Class StartupForm
         '
         Me.OpenGlobalSettingsToolStripMenuItem.Name = "OpenGlobalSettingsToolStripMenuItem"
         resources.ApplyResources(Me.OpenGlobalSettingsToolStripMenuItem, "OpenGlobalSettingsToolStripMenuItem")
+        '
+        'pathTextBox
+        '
+        Me.pathTextBox.Description = "Select the project's folder."
+        Me.pathTextBox.Filter = Nothing
+        resources.ApplyResources(Me.pathTextBox, "pathTextBox")
+        Me.pathTextBox.Name = "pathTextBox"
+        Me.pathTextBox.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
+        '
+        'locTextBox
+        '
+        Me.locTextBox.Description = Nothing
+        Me.locTextBox.Filter = Nothing
+        resources.ApplyResources(Me.locTextBox, "locTextBox")
+        Me.locTextBox.Name = "locTextBox"
+        Me.locTextBox.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
         '
         'StartupForm
         '
@@ -256,7 +255,7 @@ End Sub
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents OpenGlobalSettingsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents locTextBox As ExtremeCore.PathTextBox
     Friend WithEvents pathTextBox As ExtremeCore.PathTextBox
     Friend WithEvents preExistCheck As CheckBox
+    Friend WithEvents locTextBox As ExtremeCore.PathTextBox
 End Class

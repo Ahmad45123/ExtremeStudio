@@ -22,63 +22,51 @@ Partial Class AdvacnedInputBox
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AdvacnedInputBox))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.SuspendLayout()
+        Me.SuspendLayout
         '
         'Label1
         '
-        Me.Label1.Location = New System.Drawing.Point(15, 9)
+        resources.ApplyResources(Me.Label1, "Label1")
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(382, 73)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Label1"
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(15, 85)
+        resources.ApplyResources(Me.TextBox1, "TextBox1")
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(382, 20)
-        Me.TextBox1.TabIndex = 1
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(241, 112)
+        resources.ApplyResources(Me.Button1, "Button1")
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "&Cancel"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = true
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(322, 112)
+        resources.ApplyResources(Me.Button2, "Button2")
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 3
-        Me.Button2.Text = "&Ok"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.UseVisualStyleBackColor = true
         '
         'AdvacnedInputBox
         '
         Me.AcceptButton = Me.Button2
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(409, 147)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.MaximizeBox = False
+        Me.MaximizeBox = false
         Me.Name = "AdvacnedInputBox"
-        Me.Text = "AdvacnedInputBox"
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        Me.ResumeLayout(false)
+        Me.PerformLayout
 
-    End Sub
+End Sub
     Private WithEvents Label1 As System.Windows.Forms.Label
     Private WithEvents TextBox1 As System.Windows.Forms.TextBox
     Private WithEvents Button1 As System.Windows.Forms.Button
