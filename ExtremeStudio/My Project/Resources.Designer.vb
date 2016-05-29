@@ -113,6 +113,20 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+        '''&lt;!--DockPanel configuration file. Author: Weifen Luo, all rights reserved.--&gt;
+        '''&lt;!--!!! AUTOMATICALLY GENERATED FILE. DO NOT MODIFY !!!--&gt;
+        '''&lt;DockPanel FormatVersion=&quot;1.0&quot; DockLeftPortion=&quot;0.162884333821376&quot; DockRightPortion=&quot;0.181918008784773&quot; DockTopPortion=&quot;0.25&quot; DockBottomPortion=&quot;0.306198347107438&quot; ActiveDocumentPane=&quot;-1&quot; ActivePane=&quot;1&quot;&gt;
+        '''  &lt;Contents Count=&quot;3&quot;&gt;
+        '''    &lt;Content ID=&quot;0&quot; PersistString=&quot;ExtremeStudio.ProjExplorerDock&quot; AutoHidePortion=&quot;0.25&quot; IsHidden=&quot;Fal [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property docksInfo() As String
+            Get
+                Return ResourceManager.GetString("docksInfo", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property file_projexplorer() As System.Drawing.Bitmap
