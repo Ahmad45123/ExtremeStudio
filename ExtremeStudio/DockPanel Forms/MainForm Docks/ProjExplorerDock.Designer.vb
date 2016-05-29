@@ -49,74 +49,62 @@ Partial Class ProjExplorerDock
         '
         Me.mouseRightClick.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RefreshToolStripMenuItem, Me.ToolStripSeparator1, Me.RenameToolStripMenuItem, Me.DeleteToolStripMenuItem, Me.ToolStripMenuItem1, Me.NewFileToolStripMenuItem, Me.NewDirectoryToolStripMenuItem})
         Me.mouseRightClick.Name = "mouseRightClick"
-        Me.mouseRightClick.Size = New System.Drawing.Size(150, 126)
+        resources.ApplyResources(Me.mouseRightClick, "mouseRightClick")
         '
         'RefreshToolStripMenuItem
         '
         Me.RefreshToolStripMenuItem.Name = "RefreshToolStripMenuItem"
-        Me.RefreshToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
-        Me.RefreshToolStripMenuItem.Text = "Refresh"
+        resources.ApplyResources(Me.RefreshToolStripMenuItem, "RefreshToolStripMenuItem")
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(146, 6)
+        resources.ApplyResources(Me.ToolStripSeparator1, "ToolStripSeparator1")
         '
         'RenameToolStripMenuItem
         '
         Me.RenameToolStripMenuItem.Name = "RenameToolStripMenuItem"
-        Me.RenameToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
-        Me.RenameToolStripMenuItem.Text = "Rename"
+        resources.ApplyResources(Me.RenameToolStripMenuItem, "RenameToolStripMenuItem")
         '
         'DeleteToolStripMenuItem
         '
         Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
-        Me.DeleteToolStripMenuItem.Text = "Delete"
+        resources.ApplyResources(Me.DeleteToolStripMenuItem, "DeleteToolStripMenuItem")
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(146, 6)
+        resources.ApplyResources(Me.ToolStripMenuItem1, "ToolStripMenuItem1")
         '
         'NewFileToolStripMenuItem
         '
         Me.NewFileToolStripMenuItem.Name = "NewFileToolStripMenuItem"
-        Me.NewFileToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
-        Me.NewFileToolStripMenuItem.Text = "New File"
+        resources.ApplyResources(Me.NewFileToolStripMenuItem, "NewFileToolStripMenuItem")
         '
         'NewDirectoryToolStripMenuItem
         '
         Me.NewDirectoryToolStripMenuItem.Name = "NewDirectoryToolStripMenuItem"
-        Me.NewDirectoryToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
-        Me.NewDirectoryToolStripMenuItem.Text = "New Directory"
+        resources.ApplyResources(Me.NewDirectoryToolStripMenuItem, "NewDirectoryToolStripMenuItem")
         '
         'filesList
         '
-        Me.filesList.Dock = System.Windows.Forms.DockStyle.Fill
+        resources.ApplyResources(Me.filesList, "filesList")
         Me.filesList.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.filesList.FileIconSize = ExtremeCore.IconSize.Small
         Me.filesList.FormattingEnabled = true
-        Me.filesList.ItemHeight = 16
-        Me.filesList.Location = New System.Drawing.Point(0, 0)
         Me.filesList.MainDir = "C:/"
         Me.filesList.Name = "filesList"
-        Me.filesList.Size = New System.Drawing.Size(254, 382)
-        Me.filesList.TabIndex = 1
         '
         'ProjExplorerDock
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(254, 382)
         Me.Controls.Add(Me.filesList)
         Me.DockAreas = CType(((((WeifenLuo.WinFormsUI.Docking.DockAreas.Float Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft)  _
             Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight)  _
             Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop)  _
             Or WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom),WeifenLuo.WinFormsUI.Docking.DockAreas)
-        Me.Font = New System.Drawing.Font("Tahoma", 8!)
         Me.Name = "ProjExplorerDock"
-        Me.Text = "Project Explorer"
         Me.mouseRightClick.ResumeLayout(false)
         Me.ResumeLayout(false)
 

@@ -281,6 +281,64 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to This filetype is not supported to be veiwed by ExtremeStudio so it will be opened normally..
+        '''</summary>
+        Public Shared ReadOnly Property ProjExplorerDock_filesList_FileSelected_FileNotSupported() As String
+            Get
+                Return ResourceManager.GetString("ProjExplorerDock_filesList_FileSelected_FileNotSupported", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Please enter a name for the directory..
+        '''</summary>
+        Public Shared ReadOnly Property ProjExplorerDock_NewDirectoryToolStripMenuItem_Click_PleaseEnterNameForDir() As String
+            Get
+                Return ResourceManager.GetString("ProjExplorerDock_NewDirectoryToolStripMenuItem_Click_PleaseEnterNameForDir", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Please enter a name for the file.
+        '''
+        '''NOTE: INCLUDE THE EXTENSION!.
+        '''</summary>
+        Public Shared ReadOnly Property ProjExplorerDock_NewFileToolStripMenuItem_Click_PleaseEnterNameForFile() As String
+            Get
+                Return ResourceManager.GetString("ProjExplorerDock_NewFileToolStripMenuItem_Click_PleaseEnterNameForFile", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Enter new name..
+        '''</summary>
+        Public Shared ReadOnly Property ProjExplorerDock_RenameToolStripMenuItem_Click_EnterNewNameTitle() As String
+            Get
+                Return ResourceManager.GetString("ProjExplorerDock_RenameToolStripMenuItem_Click_EnterNewNameTitle", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Please enter a new name for the file.
+        '''
+        '''NOTE: INCLUDE THE EXTENSION!.
+        '''</summary>
+        Public Shared ReadOnly Property ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNameForFile() As String
+            Get
+                Return ResourceManager.GetString("ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNameForFile", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Please enter a new name for the directory..
+        '''</summary>
+        Public Shared ReadOnly Property ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNewDirName() As String
+            Get
+                Return ResourceManager.GetString("ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNewDirName", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Exported Successfully!.
         '''</summary>
         Public Shared ReadOnly Property SettingsForm_exportBtn_Click_ExporteSuccess() As String

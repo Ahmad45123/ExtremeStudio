@@ -240,4 +240,26 @@ Would you like to continue ?</value>
   <data name="EsPluginsForm_PluginList_Click_InstallPlugin" xml:space="preserve">
     <value>Install Plugin</value>
   </data>
+  <data name="ProjExplorerDock_filesList_FileSelected_FileNotSupported" xml:space="preserve">
+    <value>This filetype is not supported to be veiwed by ExtremeStudio so it will be opened normally.</value>
+  </data>
+  <data name="ProjExplorerDock_RenameToolStripMenuItem_Click_EnterNewNameTitle" xml:space="preserve">
+    <value>Enter new name.</value>
+  </data>
+  <data name="ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNewDirName" xml:space="preserve">
+    <value>Please enter a new name for the directory.</value>
+  </data>
+  <data name="ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNameForFile" xml:space="preserve">
+    <value>Please enter a new name for the file.
+
+NOTE: INCLUDE THE EXTENSION!</value>
+  </data>
+  <data name="ProjExplorerDock_NewDirectoryToolStripMenuItem_Click_PleaseEnterNameForDir" xml:space="preserve">
+    <value>Please enter a name for the directory.</value>
+  </data>
+  <data name="ProjExplorerDock_NewFileToolStripMenuItem_Click_PleaseEnterNameForFile" xml:space="preserve">
+    <value>Please enter a name for the file.
+
+NOTE: INCLUDE THE EXTENSION!</value>
+  </data>
 </root>
