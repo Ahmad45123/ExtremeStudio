@@ -251,6 +251,12 @@
     <Compile Include="Functions Forms\SettingsForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LanguagesForm.Designer.vb">
+      <DependentUpon>LanguagesForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LanguagesForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
@@ -317,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Functions Forms\SettingsForm.resx">
       <DependentUpon>SettingsForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LanguagesForm.resx">
+      <DependentUpon>LanguagesForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
