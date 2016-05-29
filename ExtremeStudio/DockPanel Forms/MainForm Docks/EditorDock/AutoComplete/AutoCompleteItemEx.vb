@@ -33,7 +33,7 @@ Public Class AutoCompleteItemEx
         ImageIndex = type
 
         'Setup the tooltip.
-        ToolTipTitle = translations.AutoCompleteItemEx_PawnDocHelp
+        ToolTipTitle = translations.AutoCompleteItemEx_New_PawnDocHelp
         ToolTipText = toolTip
 
         'Save the type.
