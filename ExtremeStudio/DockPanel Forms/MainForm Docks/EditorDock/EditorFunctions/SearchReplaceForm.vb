@@ -1,4 +1,5 @@
-﻿Imports ScintillaNET
+﻿Imports ExtremeStudio.My.Resources
+Imports ScintillaNET
 
 Public Class SearchReplaceForm
 
@@ -75,7 +76,7 @@ Public Class SearchReplaceForm
             MainForm.CurrentScintilla.TargetEnd = MainForm.CurrentScintilla.TextLength
         End While
 
-        MsgBox("Number of items found are: " + numberOfTimes.ToString())
+        MsgBox(translations.SearchReplaceForm_searchCountBtn_Click_NumberItemsFound + numberOfTimes.ToString())
     End Sub
 
     Dim _isAlreadySearching As Boolean = False
@@ -99,7 +100,7 @@ Public Class SearchReplaceForm
             'Set the var to true: 
             _isAlreadySearching = True
         Else
-            MsgBox("Reached End Of Document.", MsgBoxStyle.Information)
+            MsgBox(translations.SearchReplaceForm_SearchAndMark_ReachedEndDocument, MsgBoxStyle.Information)
             _isAlreadySearching = False
         End If
     End sub
@@ -136,7 +137,7 @@ Public Class SearchReplaceForm
             MainForm.CurrentScintilla.TargetEnd = MainForm.CurrentScintilla.TextLength
         End While
 
-        MsgBox("Number of items found are: " + numberOfTimes.ToString() + vbCrLf + vbCrLf + "Use CTRL+SHIFT+N and CTRL+SHIFT+B to fast-travel in between the finds.")
+        MsgBox(translations.SearchReplaceForm_searchCountBtn_Click_NumberItemsFound + numberOfTimes.ToString() + vbCrLf + vbCrLf + translations.SearchReplaceForm_searchFindAllBtn_Click_UseKeysForTravel)
     End Sub
 
     Private Sub replaceFindNextBtn_Click(sender As Object, e As EventArgs) Handles replaceFindNextBtn.Click
@@ -180,6 +181,6 @@ Public Class SearchReplaceForm
             MainForm.CurrentScintilla.TargetEnd = MainForm.CurrentScintilla.TextLength
         End While
 
-        MsgBox("Number of items replaced are: " + numberOfTimes.ToString())
+        MsgBox(translations.SearchReplaceForm_replaceReplaceAllBtn_Click_NumberItemsReplaced + numberOfTimes.ToString())
     End Sub
 End Class

@@ -22,101 +22,73 @@ Partial Class GotoForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GotoForm))
         Me.linenumberRadio = New System.Windows.Forms.RadioButton()
         Me.positionRadio = New System.Windows.Forms.RadioButton()
         Me.theLabel = New System.Windows.Forms.Label()
         Me.valueTextBox = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.GoBtn = New System.Windows.Forms.Button()
+        Me.CancelBtn = New System.Windows.Forms.Button()
         Me.curLabel = New System.Windows.Forms.Label()
         Me.maxLabel = New System.Windows.Forms.Label()
         Me.SuspendLayout
         '
         'linenumberRadio
         '
-        Me.linenumberRadio.AutoSize = true
+        resources.ApplyResources(Me.linenumberRadio, "linenumberRadio")
         Me.linenumberRadio.Checked = true
-        Me.linenumberRadio.Location = New System.Drawing.Point(12, 12)
         Me.linenumberRadio.Name = "linenumberRadio"
-        Me.linenumberRadio.Size = New System.Drawing.Size(84, 17)
-        Me.linenumberRadio.TabIndex = 0
         Me.linenumberRadio.TabStop = true
-        Me.linenumberRadio.Text = "Line Number"
         Me.linenumberRadio.UseVisualStyleBackColor = true
         '
         'positionRadio
         '
-        Me.positionRadio.AutoSize = true
-        Me.positionRadio.Location = New System.Drawing.Point(277, 12)
+        resources.ApplyResources(Me.positionRadio, "positionRadio")
         Me.positionRadio.Name = "positionRadio"
-        Me.positionRadio.Size = New System.Drawing.Size(62, 17)
-        Me.positionRadio.TabIndex = 1
         Me.positionRadio.TabStop = true
-        Me.positionRadio.Text = "Position"
         Me.positionRadio.UseVisualStyleBackColor = true
         '
         'theLabel
         '
-        Me.theLabel.AutoSize = true
-        Me.theLabel.Location = New System.Drawing.Point(9, 36)
+        resources.ApplyResources(Me.theLabel, "theLabel")
         Me.theLabel.Name = "theLabel"
-        Me.theLabel.Size = New System.Drawing.Size(73, 13)
-        Me.theLabel.TabIndex = 2
-        Me.theLabel.Text = "Line Number: "
         '
         'valueTextBox
         '
-        Me.valueTextBox.Location = New System.Drawing.Point(88, 33)
+        resources.ApplyResources(Me.valueTextBox, "valueTextBox")
         Me.valueTextBox.Name = "valueTextBox"
-        Me.valueTextBox.Size = New System.Drawing.Size(248, 20)
-        Me.valueTextBox.TabIndex = 3
         '
-        'Button1
+        'GoBtn
         '
-        Me.Button1.Location = New System.Drawing.Point(7, 66)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "&Go"
-        Me.Button1.UseVisualStyleBackColor = true
+        resources.ApplyResources(Me.GoBtn, "GoBtn")
+        Me.GoBtn.Name = "GoBtn"
+        Me.GoBtn.UseVisualStyleBackColor = true
         '
-        'Button2
+        'CancelBtn
         '
-        Me.Button2.Location = New System.Drawing.Point(261, 66)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 5
-        Me.Button2.Text = "&Cancel"
-        Me.Button2.UseVisualStyleBackColor = true
+        resources.ApplyResources(Me.CancelBtn, "CancelBtn")
+        Me.CancelBtn.Name = "CancelBtn"
+        Me.CancelBtn.UseVisualStyleBackColor = true
         '
         'curLabel
         '
-        Me.curLabel.AutoSize = true
-        Me.curLabel.Location = New System.Drawing.Point(9, 111)
+        resources.ApplyResources(Me.curLabel, "curLabel")
         Me.curLabel.Name = "curLabel"
-        Me.curLabel.Size = New System.Drawing.Size(57, 13)
-        Me.curLabel.TabIndex = 6
-        Me.curLabel.Text = "Current: 0"
         '
         'maxLabel
         '
-        Me.maxLabel.AutoSize = true
-        Me.maxLabel.Location = New System.Drawing.Point(248, 111)
+        resources.ApplyResources(Me.maxLabel, "maxLabel")
         Me.maxLabel.Name = "maxLabel"
-        Me.maxLabel.Size = New System.Drawing.Size(64, 13)
-        Me.maxLabel.TabIndex = 7
-        Me.maxLabel.Text = "Maximum: 0"
         '
         'GotoForm
         '
-        Me.AcceptButton = Me.Button1
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AcceptButton = Me.GoBtn
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(351, 134)
         Me.Controls.Add(Me.maxLabel)
         Me.Controls.Add(Me.curLabel)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.CancelBtn)
+        Me.Controls.Add(Me.GoBtn)
         Me.Controls.Add(Me.valueTextBox)
         Me.Controls.Add(Me.theLabel)
         Me.Controls.Add(Me.positionRadio)
@@ -125,8 +97,6 @@ Partial Class GotoForm
         Me.MaximizeBox = false
         Me.MinimizeBox = false
         Me.Name = "GotoForm"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Goto"
         Me.TopMost = true
         Me.ResumeLayout(false)
         Me.PerformLayout
@@ -137,8 +107,8 @@ End Sub
     Friend WithEvents positionRadio As RadioButton
     Friend WithEvents theLabel As Label
     Friend WithEvents valueTextBox As TextBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents GoBtn As Button
+    Friend WithEvents CancelBtn As Button
     Friend WithEvents curLabel As Label
     Friend WithEvents maxLabel As Label
 End Class

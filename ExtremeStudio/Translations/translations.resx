@@ -268,4 +268,61 @@ NOTE: INCLUDE THE EXTENSION!</value>
   <data name="ObjectExplorerDockItems_addBtn_Click_PleaseEnterDetials" xml:space="preserve">
     <value>Please enter any details.</value>
   </data>
+  <data name="EditorDock_EditorDock_FormClosing_FileContainsUnSavedContent" xml:space="preserve">
+    <value>The file contains un-saved content, Would you like to save it ?</value>
+  </data>
+  <data name="EditorDock_scintilla_TextChangedDelayed_ParsingCode" xml:space="preserve">
+    <value>Parsing Code.</value>
+  </data>
+  <data name="EditorDock_RefreshWorker_RunWorkerCompleted_Idle" xml:space="preserve">
+    <value>Idle.</value>
+  </data>
+  <data name="EditorDock_RefreshWorker_RunWorkerCompleted_IncludeNotFoundError" xml:space="preserve">
+    <value>The include `{0}` is not found, Please make sure it exists.</value>
+  </data>
+  <data name="GotoForm_linenumberRadio_CheckedChanged_LineNumberLabel" xml:space="preserve">
+    <value>Line Number: </value>
+  </data>
+  <data name="GotoForm_linenumberRadio_CheckedChanged_MaximumLabel" xml:space="preserve">
+    <value>Maximum: </value>
+  </data>
+  <data name="GotoForm_linenumberRadio_CheckedChanged_CurrentLabel" xml:space="preserve">
+    <value>Current: </value>
+  </data>
+  <data name="GotoForm_positionRadio_CheckedChanged_PositionLabel" xml:space="preserve">
+    <value>Position: </value>
+  </data>
+  <data name="GotoForm_GoBtn_Click_CheckYourValues" xml:space="preserve">
+    <value>Please check your value, It seems to be wrong.</value>
+  </data>
+  <data name="SearchReplaceForm_searchCountBtn_Click_NumberItemsFound" xml:space="preserve">
+    <value>Number of items found are: </value>
+  </data>
+  <data name="SearchReplaceForm_SearchAndMark_ReachedEndDocument" xml:space="preserve">
+    <value>Reached End Of Document.</value>
+  </data>
+  <data name="SearchReplaceForm_searchFindAllBtn_Click_UseKeysForTravel" xml:space="preserve">
+    <value>Use CTRL+SHIFT+N and CTRL+SHIFT+B to fast-travel in between the finds.</value>
+  </data>
+  <data name="SearchReplaceForm_replaceReplaceAllBtn_Click_NumberItemsReplaced" xml:space="preserve">
+    <value>Number of items replaced are: </value>
+  </data>
+  <data name="AutoCompleteItemEx_New_PawnDocHelp" xml:space="preserve">
+    <value>PawnDoc Help: </value>
+  </data>
+  <data name="AutoCompleteItemEx_New_Remarks" xml:space="preserve">
+    <value>Remarks: </value>
+  </data>
+  <data name="AutoCompleteItemEx_New_Parameters" xml:space="preserve">
+    <value>Parameters :</value>
+  </data>
+  <data name="AutoCompleteItemEx_New_Returns" xml:space="preserve">
+    <value>Returns: </value>
+  </data>
+  <data name="AutoCompleteItemEx_New_FunctionName" xml:space="preserve">
+    <value>Function Name: </value>
+  </data>
+  <data name="AutoCompleteItemEx_New_ReturnTag" xml:space="preserve">
+    <value>Return Tag: </value>
+  </data>
 </root>

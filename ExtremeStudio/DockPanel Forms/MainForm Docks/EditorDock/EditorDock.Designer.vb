@@ -35,16 +35,13 @@ Partial Class EditorDock
         '
         Me.Editor.AdditionalSelectionTyping = true
         Me.Editor.AllowDrop = true
-        Me.Editor.Dock = System.Windows.Forms.DockStyle.Fill
+        resources.ApplyResources(Me.Editor, "Editor")
         Me.Editor.Lexer = ScintillaNET.Lexer.Cpp
-        Me.Editor.Location = New System.Drawing.Point(0, 0)
         Me.Editor.MouseDwellTime = 1000
         Me.Editor.MouseSelectionRectangularSwitch = true
         Me.Editor.MultiPaste = ScintillaNET.MultiPaste.[Each]
         Me.Editor.MultipleSelection = true
         Me.Editor.Name = "Editor"
-        Me.Editor.Size = New System.Drawing.Size(566, 417)
-        Me.Editor.TabIndex = 0
         Me.Editor.UseTabs = false
         Me.Editor.VirtualSpaceOptions = ScintillaNET.VirtualSpace.RectangularSelection
         '
@@ -71,12 +68,10 @@ Partial Class EditorDock
         '
         'EditorDock
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(566, 417)
         Me.Controls.Add(Me.Editor)
         Me.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document
-        Me.Font = New System.Drawing.Font("Tahoma", 8!)
         Me.Name = "EditorDock"
         Me.ResumeLayout(false)
 

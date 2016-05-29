@@ -128,18 +128,6 @@
   <data name="itemsList.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;itemsList.Name" xml:space="preserve">
-    <value>itemsList</value>
-  </data>
-  <data name="&gt;&gt;itemsList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;itemsList.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;itemsList.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="deleteBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 55</value>
   </data>
@@ -151,18 +139,6 @@
   </data>
   <data name="deleteBtn.Text" xml:space="preserve">
     <value>X</value>
-  </data>
-  <data name="&gt;&gt;deleteBtn.Name" xml:space="preserve">
-    <value>deleteBtn</value>
-  </data>
-  <data name="&gt;&gt;deleteBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;deleteBtn.Parent" xml:space="preserve">
-    <value>selinfo</value>
-  </data>
-  <data name="&gt;&gt;deleteBtn.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="infoIden.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -179,18 +155,6 @@
   <data name="infoIden.Text" xml:space="preserve">
     <value>Null</value>
   </data>
-  <data name="&gt;&gt;infoIden.Name" xml:space="preserve">
-    <value>infoIden</value>
-  </data>
-  <data name="&gt;&gt;infoIden.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;infoIden.Parent" xml:space="preserve">
-    <value>selinfo</value>
-  </data>
-  <data name="&gt;&gt;infoIden.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="Label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -205,18 +169,6 @@
   </data>
   <data name="Label3.Text" xml:space="preserve">
     <value>Identifier: </value>
-  </data>
-  <data name="&gt;&gt;Label3.Name" xml:space="preserve">
-    <value>Label3</value>
-  </data>
-  <data name="&gt;&gt;Label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label3.Parent" xml:space="preserve">
-    <value>selinfo</value>
-  </data>
-  <data name="&gt;&gt;Label3.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="infoName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -233,18 +185,6 @@
   <data name="infoName.Text" xml:space="preserve">
     <value>Null</value>
   </data>
-  <data name="&gt;&gt;infoName.Name" xml:space="preserve">
-    <value>infoName</value>
-  </data>
-  <data name="&gt;&gt;infoName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;infoName.Parent" xml:space="preserve">
-    <value>selinfo</value>
-  </data>
-  <data name="&gt;&gt;infoName.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="Label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -260,18 +200,6 @@
   <data name="Label1.Text" xml:space="preserve">
     <value>Name: </value>
   </data>
-  <data name="&gt;&gt;Label1.Name" xml:space="preserve">
-    <value>Label1</value>
-  </data>
-  <data name="&gt;&gt;Label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
-    <value>selinfo</value>
-  </data>
-  <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="selinfo.Location" type="System.Drawing.Point, System.Drawing">
     <value>225, 12</value>
   </data>
@@ -283,18 +211,6 @@
   </data>
   <data name="selinfo.Text" xml:space="preserve">
     <value>Selected Info</value>
-  </data>
-  <data name="&gt;&gt;selinfo.Name" xml:space="preserve">
-    <value>selinfo</value>
-  </data>
-  <data name="&gt;&gt;selinfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;selinfo.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;selinfo.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="addBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>148, 71</value>
@@ -308,18 +224,6 @@
   <data name="addBtn.Text" xml:space="preserve">
     <value>Add</value>
   </data>
-  <data name="&gt;&gt;addBtn.Name" xml:space="preserve">
-    <value>addBtn</value>
-  </data>
-  <data name="&gt;&gt;addBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addBtn.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;addBtn.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="addIden.Location" type="System.Drawing.Point, System.Drawing">
     <value>70, 45</value>
   </data>
@@ -329,18 +233,6 @@
   <data name="addIden.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;addIden.Name" xml:space="preserve">
-    <value>addIden</value>
-  </data>
-  <data name="&gt;&gt;addIden.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addIden.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;addIden.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="addName.Location" type="System.Drawing.Point, System.Drawing">
     <value>52, 23</value>
   </data>
@@ -348,18 +240,6 @@
     <value>171, 20</value>
   </data>
   <data name="addName.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;addName.Name" xml:space="preserve">
-    <value>addName</value>
-  </data>
-  <data name="&gt;&gt;addName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addName.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;addName.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="Label6.AutoSize" type="System.Boolean, mscorlib">
@@ -377,18 +257,6 @@
   <data name="Label6.Text" xml:space="preserve">
     <value>Identifier: </value>
   </data>
-  <data name="&gt;&gt;Label6.Name" xml:space="preserve">
-    <value>Label6</value>
-  </data>
-  <data name="&gt;&gt;Label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label6.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;Label6.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="Label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -404,18 +272,6 @@
   <data name="Label5.Text" xml:space="preserve">
     <value>Name: </value>
   </data>
-  <data name="&gt;&gt;Label5.Name" xml:space="preserve">
-    <value>Label5</value>
-  </data>
-  <data name="&gt;&gt;Label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label5.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;Label5.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="GroupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>225, 254</value>
   </data>
@@ -428,21 +284,9 @@
   <data name="GroupBox1.Text" xml:space="preserve">
     <value>New: </value>
   </data>
-  <data name="&gt;&gt;GroupBox1.Name" xml:space="preserve">
-    <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;GroupBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
@@ -451,11 +295,5 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Object Explorer Items</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>ObjectExplorerDockItems</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

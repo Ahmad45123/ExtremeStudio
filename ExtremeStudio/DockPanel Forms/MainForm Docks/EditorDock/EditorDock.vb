@@ -1,10 +1,12 @@
-﻿Imports ScintillaNET
+﻿Imports System.ComponentModel
+Imports ScintillaNET
 Imports ExtremeParser
 Imports System.Text.RegularExpressions
 Imports ExtremeStudio.AutoCompleteItemEx
 Imports ExtremeCore
 Imports System.Text
 Imports System.IO
+Imports ExtremeStudio.My.Resources
 
 Public Class EditorDock
 
@@ -23,7 +25,7 @@ Public Class EditorDock
     'UnRelated events here.
     Private Sub EditorDock_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If Editor.Modified Then
-            Dim res = MsgBox("The file contains un-saved content, Would you like to save it ?", MsgBoxStyle.YesNoCancel)
+            Dim res = MsgBox(translations.EditorDock_EditorDock_FormClosing_FileContainsUnSavedContent, MsgBoxStyle.YesNoCancel)
             If res = MsgBoxResult.Yes Then
                 MainForm.SaveFile(Editor)
             ElseIf res = MsgBoxResult.Cancel Then
@@ -33,7 +35,7 @@ Public Class EditorDock
         End If
         _idleTimer.Stop()
 
-        If RefreshWorker.IsBusy Then MainForm.statusLabel.Text = "Idle."
+        If RefreshWorker.IsBusy Then MainForm.statusLabel.Text = translations.EditorDock_RefreshWorker_RunWorkerCompleted_Idle
     End Sub
 
 #Region "Key Handling"
@@ -128,6 +130,8 @@ Public Class EditorDock
             Editor.Styles(style).Underline = clr.Font?.Underline
         End If
     End Sub
+
+    <Localizable(False)>
     Public Sub OnSetsChange()
         'Setup font.
         Editor.StyleResetDefault()
@@ -227,6 +231,7 @@ Public Class EditorDock
     Private WithEvents _idleTimer As New Timer
     Private _oldVisible As String = "" 'This is just a key that I am going to use as empty!..
 
+    <Localizable(False)>
     Private Sub CheckIfDefines(ByRef code As String, line As Integer)
         'Get all the visible If's and ends.
         Dim allIfs As Integer = Regex.Matches(code, "#if\s+defined").Cast(Of Object)().Count()
@@ -351,7 +356,7 @@ Public Class EditorDock
     Public Sub scintilla_TextChangedDelayed(oldcode As String, newcode As String)
         If RefreshWorker.IsBusy = False And MainForm.CompilerWorker.IsBusy = False Then
             RefreshWorker.RunWorkerAsync({oldcode, newcode, Editor.Tag, MainForm.CurrentProject.ProjectPath})
-            MainForm.statusLabel.Text = "Parsing Code."
+            MainForm.statusLabel.Text = translations.EditorDock_scintilla_TextChangedDelayed_ParsingCode
         End If
     End Sub
     Private Sub RefreshWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles RefreshWorker.DoWork
@@ -364,6 +369,7 @@ Public Class EditorDock
         End If
     End Sub
 
+    <Localizable(False)>
     Private Sub ParseCodeParts(ByRef autoList As List(Of AutoCompleteItemEx))
         For Each part In CodeParts.FlattenIncludes
             For Each stock In part.Stocks
@@ -414,7 +420,7 @@ Public Class EditorDock
     Private Sub RefreshWorker_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles RefreshWorker.RunWorkerCompleted
         If Me.IsDisposed Then Exit Sub
 
-        MainForm.statusLabel.Text = "Idle."
+        MainForm.statusLabel.Text = translations.EditorDock_RefreshWorker_RunWorkerCompleted_Idle
         ErrorsDock.parserErrors.Rows.Clear()
 
 #Region "Error Showing"
@@ -422,7 +428,7 @@ Public Class EditorDock
         For Each obj In errors.ExceptionsList
             If TypeOf (obj) Is IncludeNotFoundException Then
                 Dim tmpObj = DirectCast(obj, IncludeNotFoundException)
-                Dim msg As String = "The include `" + tmpObj.IncludeName + "` is not found, Please make sure it exists."
+                Dim msg As String = String.Format(translations.EditorDock_RefreshWorker_RunWorkerCompleted_IncludeNotFoundError, tmpObj.IncludeName)
                 ErrorsDock.parserErrors.Rows.Add({msg, tmpObj.IncludeName})
             ElseIf TypeOf (obj) Is ParserException
                 Dim tmpObj = DirectCast(obj, ParserException)
@@ -493,6 +499,8 @@ Public Class EditorDock
 #End Region
 
 #Region "AutoIndent of new lines"
+
+    <Localizable(False)>
     Private Sub Editor_InsertCheck(sender As Object, e As InsertCheckEventArgs) Handles Editor.InsertCheck
         If (e.Text.EndsWith("" & vbCr) OrElse e.Text.EndsWith("" & vbLf)) Then
             Dim startPos As Integer = Editor.Lines(Editor.LineFromPosition(Editor.CurrentPosition)).Position
@@ -506,6 +514,7 @@ Public Class EditorDock
         End If
     End Sub
 
+    <Localizable(False)>
     Private Sub Editor_CharAdded(sender As Object, e As CharAddedEventArgs) Handles Editor.CharAdded
         If e.Char = 125 Then  'The '}' char.
             Dim curLine As Integer = Editor.LineFromPosition(Editor.CurrentPosition)
@@ -520,6 +529,8 @@ Public Class EditorDock
     Private Sub Editor_SavePointReached(sender As Object, e As EventArgs) Handles Editor.SavePointReached
         Me.TabText = Me.Text
     End Sub
+
+    <Localizable(False)>
     Private Sub Editor_SavePointLeft(sender As Object, e As EventArgs) Handles Editor.SavePointLeft
         If Me.Text = "" Then Exit Sub
         Me.TabText = "* " + Me.Text
@@ -530,6 +541,7 @@ Public Class EditorDock
     Dim _isCallTipShown As Boolean = False
     Dim _currentCallTipItm As AutoCompleteItemEx
 
+    <Localizable(False)>
     Private Sub CallTipMarkCurrentPar(itm As AutoCompleteItemEx)
         Dim currentLineText As String = Editor.Lines(Editor.CurrentLine).Text
         Dim funcOnly As Match = Regex.Match(currentLineText, itm.Text + "\(([^\n\r\);]*)")
@@ -563,6 +575,7 @@ Public Class EditorDock
         Editor.CallTipSetHlt(startPos, endPos)
     End Sub
 
+    <Localizable(False)>
     Private Sub AutoCompleteMenu_Selected(sender As Object, e As AutocompleteMenuNS.SelectedEventArgs) Handles AutoCompleteMenu.Selected
         Dim itm As AutoCompleteItemEx = DirectCast(e.Item, AutoCompleteItemEx)
 
@@ -588,6 +601,7 @@ Public Class EditorDock
         End If
     End Sub
 
+    <Localizable(False)>
     Private Sub CallTip_Editor_BeforeDelete(sender As Object, e As ModificationEventArgs) Handles Editor.Delete
         If _isCallTipShown And TypeOf (_currentCallTipItm) Is AutoCompleteItemEx Then
             If e.Text.Contains(",") Then
@@ -596,6 +610,7 @@ Public Class EditorDock
         End If
     End Sub
 
+    <Localizable(False)>
     Private Sub CallTip_Editor_Insert(sender As Object, e As ModificationEventArgs) Handles Editor.Insert
         If e.Text = "(" Then 'Which will be used to show the calltip.
             'First of all get the funcName.
@@ -646,6 +661,8 @@ Public Class EditorDock
             Editor.SetStyling(mtch.Length, style)
         Next
     End Sub
+
+    <Localizable(False)>
     Private Sub ReColorize(parts As CodeParts, startPos As Integer, endPos As Integer)
         'Setup vars: 
         Dim code As String = Editor.GetTextRange(startPos, endPos - startPos)
@@ -728,6 +745,8 @@ Public Class EditorDock
 #End Region
 
 #Region "DragDrop"
+
+    <Localizable(False)>
     Private Sub MainDock_DragEnter(sender As Object, e As DragEventArgs) Handles Editor.DragEnter
         Dim files() As String = e.Data.GetData(DataFormats.FileDrop)
         For Each file In files
@@ -738,6 +757,7 @@ Public Class EditorDock
         e.Effect = DragDropEffects.Copy
     End Sub
 
+    <Localizable(False)>
     Private Sub MainDock_DragDrop(sender As Object, e As DragEventArgs) Handles Editor.DragDrop
         Dim files() As String = e.Data.GetData(DataFormats.FileDrop)
 
@@ -752,6 +772,8 @@ Public Class EditorDock
 #Region "CTRL+CLICK"
     Dim _foundItem As New KeyValuePair(Of Integer, Integer)
     Dim _foundItemFile As String = ""
+
+    <Localizable(False)>
     Private Sub LoadPart(part As CodeParts, fileContent As String, item As String, Optional current As Boolean = False)
         _foundItemFile = IIf(current, "current", part.FilePath)
         
@@ -848,6 +870,7 @@ Public Class EditorDock
         End If
     End Sub
 
+    <Localizable(False)>
     Private Sub Editor_MouseClick(sender As Object, e As MouseEventArgs) Handles Editor.MouseClick
         'Small check to make sure he is over a navigateable place.
         If Cursor = Cursors.Hand And _foundItemFile <> "" And _foundItem.Key <> _foundItem.Value Then

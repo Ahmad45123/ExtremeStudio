@@ -65,6 +65,96 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Function Name: .
+        '''</summary>
+        Public Shared ReadOnly Property AutoCompleteItemEx_New_FunctionName() As String
+            Get
+                Return ResourceManager.GetString("AutoCompleteItemEx_New_FunctionName", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Parameters :.
+        '''</summary>
+        Public Shared ReadOnly Property AutoCompleteItemEx_New_Parameters() As String
+            Get
+                Return ResourceManager.GetString("AutoCompleteItemEx_New_Parameters", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to PawnDoc Help: .
+        '''</summary>
+        Public Shared ReadOnly Property AutoCompleteItemEx_New_PawnDocHelp() As String
+            Get
+                Return ResourceManager.GetString("AutoCompleteItemEx_New_PawnDocHelp", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Remarks: .
+        '''</summary>
+        Public Shared ReadOnly Property AutoCompleteItemEx_New_Remarks() As String
+            Get
+                Return ResourceManager.GetString("AutoCompleteItemEx_New_Remarks", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Returns: .
+        '''</summary>
+        Public Shared ReadOnly Property AutoCompleteItemEx_New_Returns() As String
+            Get
+                Return ResourceManager.GetString("AutoCompleteItemEx_New_Returns", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Return Tag: .
+        '''</summary>
+        Public Shared ReadOnly Property AutoCompleteItemEx_New_ReturnTag() As String
+            Get
+                Return ResourceManager.GetString("AutoCompleteItemEx_New_ReturnTag", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to The file contains un-saved content, Would you like to save it ?.
+        '''</summary>
+        Public Shared ReadOnly Property EditorDock_EditorDock_FormClosing_FileContainsUnSavedContent() As String
+            Get
+                Return ResourceManager.GetString("EditorDock_EditorDock_FormClosing_FileContainsUnSavedContent", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Idle..
+        '''</summary>
+        Public Shared ReadOnly Property EditorDock_RefreshWorker_RunWorkerCompleted_Idle() As String
+            Get
+                Return ResourceManager.GetString("EditorDock_RefreshWorker_RunWorkerCompleted_Idle", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to The include `{0}` is not found, Please make sure it exists..
+        '''</summary>
+        Public Shared ReadOnly Property EditorDock_RefreshWorker_RunWorkerCompleted_IncludeNotFoundError() As String
+            Get
+                Return ResourceManager.GetString("EditorDock_RefreshWorker_RunWorkerCompleted_IncludeNotFoundError", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Parsing Code..
+        '''</summary>
+        Public Shared ReadOnly Property EditorDock_scintilla_TextChangedDelayed_ParsingCode() As String
+            Get
+                Return ResourceManager.GetString("EditorDock_scintilla_TextChangedDelayed_ParsingCode", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Install Plugin.
         '''</summary>
         Public Shared ReadOnly Property EsPluginsForm_PluginList_Click_InstallPlugin() As String
@@ -79,6 +169,51 @@ Namespace My.Resources
         Public Shared ReadOnly Property EsPluginsForm_PluginList_Click_ReInstallPlugin() As String
             Get
                 Return ResourceManager.GetString("EsPluginsForm_PluginList_Click_ReInstallPlugin", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Please check your value, It seems to be wrong..
+        '''</summary>
+        Public Shared ReadOnly Property GotoForm_GoBtn_Click_CheckYourValues() As String
+            Get
+                Return ResourceManager.GetString("GotoForm_GoBtn_Click_CheckYourValues", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Current: .
+        '''</summary>
+        Public Shared ReadOnly Property GotoForm_linenumberRadio_CheckedChanged_CurrentLabel() As String
+            Get
+                Return ResourceManager.GetString("GotoForm_linenumberRadio_CheckedChanged_CurrentLabel", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Line Number: .
+        '''</summary>
+        Public Shared ReadOnly Property GotoForm_linenumberRadio_CheckedChanged_LineNumberLabel() As String
+            Get
+                Return ResourceManager.GetString("GotoForm_linenumberRadio_CheckedChanged_LineNumberLabel", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Maximum: .
+        '''</summary>
+        Public Shared ReadOnly Property GotoForm_linenumberRadio_CheckedChanged_MaximumLabel() As String
+            Get
+                Return ResourceManager.GetString("GotoForm_linenumberRadio_CheckedChanged_MaximumLabel", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Position: .
+        '''</summary>
+        Public Shared ReadOnly Property GotoForm_positionRadio_CheckedChanged_PositionLabel() As String
+            Get
+                Return ResourceManager.GetString("GotoForm_positionRadio_CheckedChanged_PositionLabel", resourceCulture)
             End Get
         End Property
         
@@ -353,6 +488,42 @@ Namespace My.Resources
         Public Shared ReadOnly Property ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNewDirName() As String
             Get
                 Return ResourceManager.GetString("ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNewDirName", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Number of items replaced are: .
+        '''</summary>
+        Public Shared ReadOnly Property SearchReplaceForm_replaceReplaceAllBtn_Click_NumberItemsReplaced() As String
+            Get
+                Return ResourceManager.GetString("SearchReplaceForm_replaceReplaceAllBtn_Click_NumberItemsReplaced", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Reached End Of Document..
+        '''</summary>
+        Public Shared ReadOnly Property SearchReplaceForm_SearchAndMark_ReachedEndDocument() As String
+            Get
+                Return ResourceManager.GetString("SearchReplaceForm_SearchAndMark_ReachedEndDocument", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Number of items found are: .
+        '''</summary>
+        Public Shared ReadOnly Property SearchReplaceForm_searchCountBtn_Click_NumberItemsFound() As String
+            Get
+                Return ResourceManager.GetString("SearchReplaceForm_searchCountBtn_Click_NumberItemsFound", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Use CTRL+SHIFT+N and CTRL+SHIFT+B to fast-travel in between the finds..
+        '''</summary>
+        Public Shared ReadOnly Property SearchReplaceForm_searchFindAllBtn_Click_UseKeysForTravel() As String
+            Get
+                Return ResourceManager.GetString("SearchReplaceForm_searchFindAllBtn_Click_UseKeysForTravel", resourceCulture)
             End Get
         End Property
         
