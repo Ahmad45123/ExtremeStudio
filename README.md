@@ -6,8 +6,10 @@
 ExtremeStudio is a PAWN editor and is designed to be used in SA-MP development.
 
 ## Download
-You can download the app by going to this page here and pressing Install.
+You can download the app along with auto-updater by going to this page here and pressing Install:
 http://bit.ly/ESDownload
+
+Or, you could also download the portable version from GitHub releases but it doesn't cotain an auto-updater.
 
 ## Credits
 * Microsoft for .NET ofcourse.
@@ -18,5 +20,6 @@ http://bit.ly/ESDownload
 * [JetBrains](https://www.jetbrains.com/) for supporting ES by providing [ReSharper](https://www.jetbrains.com/resharper/) free of charge.
 * [JSON.NET](http://www.json.net/) for the awesome JSON serializer.
 * [Ribbon](http://www.codeproject.com/Articles/364272/Easily-Add-a-Ribbon-into-a-WinForms-Application-Cs) for the awesome ribbon control.
+* [Crowdin](https://crowdin.com) for providing an open-source license for ES.
 * [Crayder](http://forum.sa-mp.com/member.php?u=214776), an amazing person who helped me throughout the development of ES from early stages of the program and specially the parser.. And also designed the logo. ;)
 * Pretty much everything else is by me.
