@@ -124,15 +124,17 @@ Public Module GeneralFunctions
         If Not IsValidSAMPFolder(path) Then Return False
         If Not My.Computer.FileSystem.FileExists(path + "/extremeStudio.config") Then Return False
         If Not My.Computer.FileSystem.DirectoryExists(path + "/configs") Then Return False
+
+        'If everything's correct, Create folders that ES requires if not already exists.
+        If Not My.Computer.FileSystem.DirectoryExists(path + "/gamemodes") Then Directory.CreateDirectory(path + "/gamemodes")
+        If Not My.Computer.FileSystem.DirectoryExists(path + "/pawno") Then Directory.CreateDirectory(path + "/pawno")
+        If Not My.Computer.FileSystem.DirectoryExists(path + "/pawno/include") Then Directory.CreateDirectory(path + "/pawno/include")
+        If Not My.Computer.FileSystem.DirectoryExists(path + "/plugins") Then Directory.CreateDirectory(path + "/plugins")
         Return True
     End Function
 
     Public Function IsValidSAMPFolder(path As String)
         If Not My.Computer.FileSystem.DirectoryExists(path) Then Return False
-        If Not My.Computer.FileSystem.DirectoryExists(path + "/gamemodes") Then Directory.CreateDirectory(path + "/gamemodes")
-        If Not My.Computer.FileSystem.DirectoryExists(path + "/pawno") Then Directory.CreateDirectory(path + "/pawno")
-        If Not My.Computer.FileSystem.DirectoryExists(path + "/pawno/include") Then Directory.CreateDirectory(path + "/pawno/include")
-        If Not My.Computer.FileSystem.DirectoryExists(path + "/plugins") Then Directory.CreateDirectory(path + "/plugins")
         If Not My.Computer.FileSystem.FileExists(path + "/announce.exe") Then Return False
         If Not My.Computer.FileSystem.FileExists(path + "/samp-npc.exe") Then Return False
         If Not My.Computer.FileSystem.FileExists(path + "/samp-server.exe") Then Return False
