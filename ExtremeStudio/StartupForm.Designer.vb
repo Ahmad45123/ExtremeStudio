@@ -25,6 +25,7 @@ Partial Class StartupForm
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(StartupForm))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.locTextBox = New ExtremeCore.PathTextBox()
         Me.preExistCheck = New System.Windows.Forms.CheckBox()
         Me.CreateProjectBtn = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -39,14 +40,13 @@ Partial Class StartupForm
         Me.projectName = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.pathTextBox = New ExtremeCore.PathTextBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.recentListBox = New System.Windows.Forms.ListBox()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.OpenGlobalSettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.pathTextBox = New ExtremeCore.PathTextBox()
-        Me.locTextBox = New ExtremeCore.PathTextBox()
         Me.TabControl1.SuspendLayout
         Me.TabPage1.SuspendLayout
         Me.TabPage2.SuspendLayout
@@ -56,15 +56,16 @@ Partial Class StartupForm
         '
         'TabControl1
         '
+        resources.ApplyResources(Me.TabControl1, "TabControl1")
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.TabPage3)
-        resources.ApplyResources(Me.TabControl1, "TabControl1")
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         '
         'TabPage1
         '
+        resources.ApplyResources(Me.TabPage1, "TabPage1")
         Me.TabPage1.Controls.Add(Me.locTextBox)
         Me.TabPage1.Controls.Add(Me.preExistCheck)
         Me.TabPage1.Controls.Add(Me.CreateProjectBtn)
@@ -73,9 +74,16 @@ Partial Class StartupForm
         Me.TabPage1.Controls.Add(Me.nameTextBox)
         Me.TabPage1.Controls.Add(Me.Label2)
         Me.TabPage1.Controls.Add(Me.Label1)
-        resources.ApplyResources(Me.TabPage1, "TabPage1")
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = true
+        '
+        'locTextBox
+        '
+        resources.ApplyResources(Me.locTextBox, "locTextBox")
+        Me.locTextBox.Description = Nothing
+        Me.locTextBox.Filter = Nothing
+        Me.locTextBox.Name = "locTextBox"
+        Me.locTextBox.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
         '
         'preExistCheck
         '
@@ -96,8 +104,8 @@ Partial Class StartupForm
         '
         'verListBox
         '
-        Me.verListBox.FormattingEnabled = true
         resources.ApplyResources(Me.verListBox, "verListBox")
+        Me.verListBox.FormattingEnabled = true
         Me.verListBox.Name = "verListBox"
         '
         'nameTextBox
@@ -117,6 +125,7 @@ Partial Class StartupForm
         '
         'TabPage2
         '
+        resources.ApplyResources(Me.TabPage2, "TabPage2")
         Me.TabPage2.Controls.Add(Me.loadProjectBtn)
         Me.TabPage2.Controls.Add(Me.projectVersion)
         Me.TabPage2.Controls.Add(Me.Label6)
@@ -124,7 +133,6 @@ Partial Class StartupForm
         Me.TabPage2.Controls.Add(Me.Label5)
         Me.TabPage2.Controls.Add(Me.Label4)
         Me.TabPage2.Controls.Add(Me.pathTextBox)
-        resources.ApplyResources(Me.TabPage2, "TabPage2")
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = true
         '
@@ -159,12 +167,20 @@ Partial Class StartupForm
         resources.ApplyResources(Me.Label4, "Label4")
         Me.Label4.Name = "Label4"
         '
+        'pathTextBox
+        '
+        resources.ApplyResources(Me.pathTextBox, "pathTextBox")
+        Me.pathTextBox.Description = "Select the project's folder."
+        Me.pathTextBox.Filter = Nothing
+        Me.pathTextBox.Name = "pathTextBox"
+        Me.pathTextBox.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
+        '
         'TabPage3
         '
+        resources.ApplyResources(Me.TabPage3, "TabPage3")
         Me.TabPage3.Controls.Add(Me.Button3)
         Me.TabPage3.Controls.Add(Me.Button1)
         Me.TabPage3.Controls.Add(Me.recentListBox)
-        resources.ApplyResources(Me.TabPage3, "TabPage3")
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.UseVisualStyleBackColor = true
         '
@@ -182,36 +198,20 @@ Partial Class StartupForm
         '
         'recentListBox
         '
-        Me.recentListBox.FormattingEnabled = true
         resources.ApplyResources(Me.recentListBox, "recentListBox")
+        Me.recentListBox.FormattingEnabled = true
         Me.recentListBox.Name = "recentListBox"
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenGlobalSettingsToolStripMenuItem})
         resources.ApplyResources(Me.MenuStrip1, "MenuStrip1")
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenGlobalSettingsToolStripMenuItem})
         Me.MenuStrip1.Name = "MenuStrip1"
         '
         'OpenGlobalSettingsToolStripMenuItem
         '
-        Me.OpenGlobalSettingsToolStripMenuItem.Name = "OpenGlobalSettingsToolStripMenuItem"
         resources.ApplyResources(Me.OpenGlobalSettingsToolStripMenuItem, "OpenGlobalSettingsToolStripMenuItem")
-        '
-        'pathTextBox
-        '
-        Me.pathTextBox.Description = "Select the project's folder."
-        Me.pathTextBox.Filter = Nothing
-        resources.ApplyResources(Me.pathTextBox, "pathTextBox")
-        Me.pathTextBox.Name = "pathTextBox"
-        Me.pathTextBox.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
-        '
-        'locTextBox
-        '
-        Me.locTextBox.Description = Nothing
-        Me.locTextBox.Filter = Nothing
-        resources.ApplyResources(Me.locTextBox, "locTextBox")
-        Me.locTextBox.Name = "locTextBox"
-        Me.locTextBox.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
+        Me.OpenGlobalSettingsToolStripMenuItem.Name = "OpenGlobalSettingsToolStripMenuItem"
         '
         'StartupForm
         '

@@ -118,92 +118,122 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="locTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>134, 124</value>
+  </data>
+  <data name="locTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>627, 21</value>
+  </data>
+  <data name="preExistCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>565, 108</value>
+  </data>
   <data name="preExistCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 17</value>
+    <value>197, 17</value>
   </data>
   <data name="preExistCheck.Text" xml:space="preserve">
-    <value>Stvori it postojeće datoteke.</value>
+    <value>Crear a partir de archivos existentes.</value>
   </data>
   <data name="CreateProjectBtn.Text" xml:space="preserve">
-    <value>Stvori projekt</value>
+    <value>Crear proyecto</value>
   </data>
   <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 13</value>
+    <value>122, 13</value>
   </data>
   <data name="Label3.Text" xml:space="preserve">
-    <value>Lokacija projekta: </value>
+    <value>Ubicación del proyecto: </value>
+  </data>
+  <data name="verListBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 36</value>
+  </data>
+  <data name="verListBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>653, 69</value>
+  </data>
+  <data name="nameTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>116, 10</value>
+  </data>
+  <data name="nameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>645, 20</value>
   </data>
   <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 13</value>
+    <value>96, 13</value>
   </data>
   <data name="Label2.Text" xml:space="preserve">
-    <value>SA-MP inačica: </value>
+    <value>Versión de SAMP: </value>
   </data>
   <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 13</value>
+    <value>111, 13</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
-    <value>Naziv projekta: </value>
+    <value>Nombre del proyecto: </value>
   </data>
   <data name="TabPage1.Text" xml:space="preserve">
-    <value>Kreiraj novi projekt</value>
+    <value>Crear nuevo proyecto</value>
   </data>
   <data name="loadProjectBtn.Text" xml:space="preserve">
-    <value>Očitaj projekt</value>
+    <value>Cargar proyecto</value>
+  </data>
+  <data name="projectVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 90</value>
   </data>
   <data name="projectVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
+    <value>47, 13</value>
   </data>
   <data name="projectVersion.Text" xml:space="preserve">
-    <value>Nema</value>
+    <value>Ninguno</value>
   </data>
   <data name="Label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 13</value>
+    <value>109, 13</value>
   </data>
   <data name="Label6.Text" xml:space="preserve">
-    <value>Inačica projekta: </value>
+    <value>Versión del proyecto: </value>
   </data>
-  <data name="projectName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
+  <data name="projectName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 52</value>
   </data>
   <data name="projectName.Text" xml:space="preserve">
-    <value>Nema</value>
+    <value>Nada</value>
   </data>
   <data name="Label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 13</value>
+    <value>111, 13</value>
   </data>
   <data name="Label5.Text" xml:space="preserve">
-    <value>Naziv projekta: </value>
+    <value>Nombre del proyecto: </value>
   </data>
   <data name="Label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 13</value>
+    <value>119, 13</value>
   </data>
   <data name="Label4.Text" xml:space="preserve">
-    <value>Mapa projekta: </value>
+    <value>Directorio del proyecto: </value>
+  </data>
+  <data name="pathTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 10</value>
+  </data>
+  <data name="pathTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>630, 20</value>
   </data>
   <data name="TabPage2.Text" xml:space="preserve">
-    <value>Učitaj projekt</value>
+    <value>Cargar proyecto</value>
   </data>
   <data name="Button3.Text" xml:space="preserve">
-    <value>Obriši označeno</value>
+    <value>Eliminar seleccionado</value>
   </data>
   <data name="Button1.Text" xml:space="preserve">
-    <value>Učitaj označeno</value>
+    <value>Cargar seleccionado</value>
   </data>
   <data name="TabPage3.Text" xml:space="preserve">
-    <value>Nedavno</value>
+    <value>Reciente</value>
   </data>
   <data name="OpenGlobalSettingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 20</value>
+    <value>137, 20</value>
   </data>
   <data name="OpenGlobalSettingsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Otvorite globalne postavke</value>
+    <value>Abrir ajustes generales</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Inherit</value>
+    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Učitaj / Kreiraj projekt</value>
+    <value>Cargar / Crear Proyecto</value>
   </data>
 </root>

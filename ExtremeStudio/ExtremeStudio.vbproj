@@ -294,7 +294,7 @@
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\EditorDock\EditorDock.resx">
       <DependentUpon>EditorDock.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\EditorDock\EditorFunctions\GotoForm.es-ES.resx">
+    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\EditorDock\EditorFunctions\GotoForm.es.resx">
       <DependentUpon>GotoForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\EditorDock\EditorFunctions\GotoForm.hr.resx">
@@ -306,7 +306,7 @@
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\EditorDock\EditorFunctions\GotoForm.resx">
       <DependentUpon>GotoForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\EditorDock\EditorFunctions\SearchReplaceForm.es-ES.resx">
+    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\EditorDock\EditorFunctions\SearchReplaceForm.es.resx">
       <DependentUpon>SearchReplaceForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\EditorDock\EditorFunctions\SearchReplaceForm.hr.resx">
@@ -318,7 +318,7 @@
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\EditorDock\EditorFunctions\SearchReplaceForm.resx">
       <DependentUpon>SearchReplaceForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ErrorsDock.es-ES.resx">
+    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ErrorsDock.es.resx">
       <DependentUpon>ErrorsDock.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ErrorsDock.hr.resx">
@@ -330,7 +330,7 @@
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ErrorsDock.resx">
       <DependentUpon>ErrorsDock.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ObjectExplorerDock\ObjectExplorerDock.es-ES.resx">
+    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ObjectExplorerDock\ObjectExplorerDock.es.resx">
       <DependentUpon>ObjectExplorerDock.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ObjectExplorerDock\ObjectExplorerDock.hr.resx">
@@ -342,7 +342,7 @@
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ObjectExplorerDock\ObjectExplorerDock.resx">
       <DependentUpon>ObjectExplorerDock.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ObjectExplorerDock\ObjectExplorerDockItems.es-ES.resx">
+    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ObjectExplorerDock\ObjectExplorerDockItems.es.resx">
       <DependentUpon>ObjectExplorerDockItems.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ObjectExplorerDock\ObjectExplorerDockItems.hr.resx">
@@ -354,7 +354,7 @@
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ObjectExplorerDock\ObjectExplorerDockItems.resx">
       <DependentUpon>ObjectExplorerDockItems.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ProjExplorerDock.es-ES.resx">
+    <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ProjExplorerDock.es.resx">
       <DependentUpon>ProjExplorerDock.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ProjExplorerDock.hr.resx">
@@ -367,7 +367,7 @@
     <EmbeddedResource Include="DockPanel Forms\MainForm Docks\ProjExplorerDock.resx">
       <DependentUpon>ProjExplorerDock.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Functions Forms\ESPluginsForm.es-ES.resx">
+    <EmbeddedResource Include="Functions Forms\ESPluginsForm.es.resx">
       <DependentUpon>ESPluginsForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Functions Forms\ESPluginsForm.hr.resx">
@@ -379,7 +379,7 @@
     <EmbeddedResource Include="Functions Forms\ESPluginsForm.resx">
       <DependentUpon>ESPluginsForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Functions Forms\IncludesForm.es-ES.resx">
+    <EmbeddedResource Include="Functions Forms\IncludesForm.es.resx">
       <DependentUpon>IncludesForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Functions Forms\IncludesForm.hr.resx">
@@ -391,7 +391,7 @@
     <EmbeddedResource Include="Functions Forms\IncludesForm.resx">
       <DependentUpon>IncludesForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Functions Forms\PluginsForm.es-ES.resx">
+    <EmbeddedResource Include="Functions Forms\PluginsForm.es.resx">
       <DependentUpon>PluginsForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Functions Forms\PluginsForm.hr.resx">
@@ -403,7 +403,7 @@
     <EmbeddedResource Include="Functions Forms\PluginsForm.resx">
       <DependentUpon>PluginsForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Functions Forms\SettingsForm.es-ES.resx">
+    <EmbeddedResource Include="Functions Forms\SettingsForm.es.resx">
       <DependentUpon>SettingsForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Functions Forms\SettingsForm.hr.resx">
@@ -418,7 +418,7 @@
     <EmbeddedResource Include="LanguagesForm.resx">
       <DependentUpon>LanguagesForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.es-ES.resx">
+    <EmbeddedResource Include="MainForm.es.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.hr.resx">
@@ -436,7 +436,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="StartupForm.es-ES.resx">
+    <EmbeddedResource Include="StartupForm.es.resx">
       <DependentUpon>StartupForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StartupForm.hr.resx">
@@ -448,7 +448,7 @@
     <EmbeddedResource Include="StartupForm.resx">
       <DependentUpon>StartupForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Translations\translations.es-ES.resx" />
+    <EmbeddedResource Include="Translations\translations.es.resx" />
     <EmbeddedResource Include="Translations\translations.hr.resx" />
     <EmbeddedResource Include="Translations\translations.pt-BR.resx" />
     <EmbeddedResource Include="Translations\translations.resx">
