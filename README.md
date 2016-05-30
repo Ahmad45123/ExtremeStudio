@@ -1,6 +1,5 @@
 # ![Logo](http://i.imgur.com/Jmxy3lc.png)
 
-[![Crowdin](https://d322cqt584bo4o.cloudfront.net/extremestudio/localized.svg)](https://crowdin.com/project/extremestudio)
 [![Join the chat at https://gitter.im/JohnyMac/ExtremeStudio](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/JohnyMac/ExtremeStudio?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ExtremeStudio is a PAWN editor and is designed to be used in SA-MP development.
@@ -10,6 +9,14 @@ You can download the app along with auto-updater by going to this page here and 
 http://bit.ly/ESDownload
 
 Or, you could also download the portable version from GitHub releases but it doesn't cotain an auto-updater.
+
+## Localization
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/extremestudio/localized.svg)](https://crowdin.com/project/extremestudio)
+
+All localization is done in Crowdin, Kindly register through this link: 
+https://crowdin.com/project/extremestudio/invite
+
+If there is a missing language, Please create an issue asking for it.
 
 ## Credits
 * Microsoft for .NET ofcourse.
