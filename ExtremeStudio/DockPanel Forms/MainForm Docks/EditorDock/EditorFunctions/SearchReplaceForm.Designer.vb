@@ -54,21 +54,21 @@ Partial Class SearchReplaceForm
         '
         'TabControl1
         '
+        resources.ApplyResources(Me.TabControl1, "TabControl1")
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
-        resources.ApplyResources(Me.TabControl1, "TabControl1")
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         '
         'TabPage1
         '
+        resources.ApplyResources(Me.TabPage1, "TabPage1")
         Me.TabPage1.Controls.Add(Me.findCloseBtn)
         Me.TabPage1.Controls.Add(Me.searchFindAllBtn)
         Me.TabPage1.Controls.Add(Me.searchCountBtn)
         Me.TabPage1.Controls.Add(Me.searchFindBtn)
         Me.TabPage1.Controls.Add(Me.searchFindText)
         Me.TabPage1.Controls.Add(Me.Label1)
-        resources.ApplyResources(Me.TabPage1, "TabPage1")
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = true
         '
@@ -108,6 +108,7 @@ Partial Class SearchReplaceForm
         '
         'TabPage2
         '
+        resources.ApplyResources(Me.TabPage2, "TabPage2")
         Me.TabPage2.Controls.Add(Me.replaceReplaceText)
         Me.TabPage2.Controls.Add(Me.Label3)
         Me.TabPage2.Controls.Add(Me.replaceCloseBtn)
@@ -116,7 +117,6 @@ Partial Class SearchReplaceForm
         Me.TabPage2.Controls.Add(Me.replaceFindNextBtn)
         Me.TabPage2.Controls.Add(Me.replaceFindText)
         Me.TabPage2.Controls.Add(Me.Label2)
-        resources.ApplyResources(Me.TabPage2, "TabPage2")
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = true
         '
@@ -184,9 +184,9 @@ Partial Class SearchReplaceForm
         '
         'GroupBox1
         '
+        resources.ApplyResources(Me.GroupBox1, "GroupBox1")
         Me.GroupBox1.Controls.Add(Me.searchRegexRadio)
         Me.GroupBox1.Controls.Add(Me.searchNormalRadio)
-        resources.ApplyResources(Me.GroupBox1, "GroupBox1")
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.TabStop = false
         '

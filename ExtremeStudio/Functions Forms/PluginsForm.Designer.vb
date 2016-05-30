@@ -51,19 +51,19 @@ Partial Class PluginsForm
         '
         'pluginsList
         '
-        Me.pluginsList.FormattingEnabled = true
         resources.ApplyResources(Me.pluginsList, "pluginsList")
+        Me.pluginsList.FormattingEnabled = true
         Me.pluginsList.Name = "pluginsList"
         '
         'GroupBox1
         '
+        resources.ApplyResources(Me.GroupBox1, "GroupBox1")
         Me.GroupBox1.Controls.Add(Me.pluginDesc)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.pluginVersion)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.pluginName)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        resources.ApplyResources(Me.GroupBox1, "GroupBox1")
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.TabStop = false
         '
@@ -113,9 +113,9 @@ Partial Class PluginsForm
         '
         'actionsGroup
         '
+        resources.ApplyResources(Me.actionsGroup, "actionsGroup")
         Me.actionsGroup.Controls.Add(Me.serverCFGButton)
         Me.actionsGroup.Controls.Add(Me.Button2)
-        resources.ApplyResources(Me.actionsGroup, "actionsGroup")
         Me.actionsGroup.Name = "actionsGroup"
         Me.actionsGroup.TabStop = false
         '

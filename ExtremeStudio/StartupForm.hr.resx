@@ -117,7 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="TabPage1.Text" xml:space="preserve">
+    <value>Kreiraj novi projekt</value>
+  </data>
+  <data name="TabPage2.Text" xml:space="preserve">
+    <value>Učitaj projekt</value>
+  </data>
+  <data name="TabPage3.Text" xml:space="preserve">
+    <value>Nedavno</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="locTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 124</value>
+  </data>
+  <data name="locTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>655, 21</value>
+  </data>
   <data name="preExistCheck.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 17</value>
   </data>
@@ -145,11 +160,11 @@
   <data name="Label1.Text" xml:space="preserve">
     <value>Naziv projekta: </value>
   </data>
-  <data name="TabPage1.Text" xml:space="preserve">
-    <value>Kreiraj novi projekt</value>
-  </data>
   <data name="loadProjectBtn.Text" xml:space="preserve">
     <value>Očitaj projekt</value>
+  </data>
+  <data name="projectVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>101, 90</value>
   </data>
   <data name="projectVersion.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 13</value>
@@ -162,6 +177,9 @@
   </data>
   <data name="Label6.Text" xml:space="preserve">
     <value>Inačica projekta: </value>
+  </data>
+  <data name="projectName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>87, 52</value>
   </data>
   <data name="projectName.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 13</value>
@@ -181,17 +199,17 @@
   <data name="Label4.Text" xml:space="preserve">
     <value>Mapa projekta: </value>
   </data>
-  <data name="TabPage2.Text" xml:space="preserve">
-    <value>Učitaj projekt</value>
+  <data name="pathTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>90, 10</value>
+  </data>
+  <data name="pathTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>671, 20</value>
   </data>
   <data name="Button3.Text" xml:space="preserve">
     <value>Obriši označeno</value>
   </data>
   <data name="Button1.Text" xml:space="preserve">
     <value>Učitaj označeno</value>
-  </data>
-  <data name="TabPage3.Text" xml:space="preserve">
-    <value>Nedavno</value>
   </data>
   <data name="OpenGlobalSettingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>161, 20</value>
@@ -201,7 +219,7 @@
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Inherit</value>
+    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Učitaj / Kreiraj projekt</value>

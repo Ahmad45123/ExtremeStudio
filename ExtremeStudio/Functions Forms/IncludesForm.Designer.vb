@@ -50,19 +50,19 @@ Partial Class IncludesForm
         '
         'includesList
         '
-        Me.includesList.FormattingEnabled = true
         resources.ApplyResources(Me.includesList, "includesList")
+        Me.includesList.FormattingEnabled = true
         Me.includesList.Name = "includesList"
         '
         'GroupBox1
         '
+        resources.ApplyResources(Me.GroupBox1, "GroupBox1")
         Me.GroupBox1.Controls.Add(Me.includeDesc)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.includeVersion)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.includeName)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        resources.ApplyResources(Me.GroupBox1, "GroupBox1")
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.TabStop = false
         '
@@ -112,8 +112,8 @@ Partial Class IncludesForm
         '
         'actionsGroup
         '
-        Me.actionsGroup.Controls.Add(Me.Button2)
         resources.ApplyResources(Me.actionsGroup, "actionsGroup")
+        Me.actionsGroup.Controls.Add(Me.Button2)
         Me.actionsGroup.Name = "actionsGroup"
         Me.actionsGroup.TabStop = false
         '

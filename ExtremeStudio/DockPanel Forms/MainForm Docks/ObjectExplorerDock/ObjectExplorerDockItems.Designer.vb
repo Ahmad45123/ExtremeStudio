@@ -42,18 +42,18 @@ Partial Class ObjectExplorerDockItems
         '
         'itemsList
         '
-        Me.itemsList.FormattingEnabled = true
         resources.ApplyResources(Me.itemsList, "itemsList")
+        Me.itemsList.FormattingEnabled = true
         Me.itemsList.Name = "itemsList"
         '
         'selinfo
         '
+        resources.ApplyResources(Me.selinfo, "selinfo")
         Me.selinfo.Controls.Add(Me.deleteBtn)
         Me.selinfo.Controls.Add(Me.infoIden)
         Me.selinfo.Controls.Add(Me.Label3)
         Me.selinfo.Controls.Add(Me.infoName)
         Me.selinfo.Controls.Add(Me.Label1)
-        resources.ApplyResources(Me.selinfo, "selinfo")
         Me.selinfo.Name = "selinfo"
         Me.selinfo.TabStop = false
         '
@@ -85,12 +85,12 @@ Partial Class ObjectExplorerDockItems
         '
         'GroupBox1
         '
+        resources.ApplyResources(Me.GroupBox1, "GroupBox1")
         Me.GroupBox1.Controls.Add(Me.addBtn)
         Me.GroupBox1.Controls.Add(Me.addIden)
         Me.GroupBox1.Controls.Add(Me.addName)
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.Label5)
-        resources.ApplyResources(Me.GroupBox1, "GroupBox1")
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.TabStop = false
         '

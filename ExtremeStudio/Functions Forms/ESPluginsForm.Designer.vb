@@ -44,17 +44,17 @@ Partial Class EsPluginsForm
         '
         'PluginList
         '
-        Me.PluginList.FormattingEnabled = true
         resources.ApplyResources(Me.PluginList, "PluginList")
+        Me.PluginList.FormattingEnabled = true
         Me.PluginList.Name = "PluginList"
         '
         'GroupBox1
         '
+        resources.ApplyResources(Me.GroupBox1, "GroupBox1")
         Me.GroupBox1.Controls.Add(Me.PluginDescText)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.PluginNameText)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        resources.ApplyResources(Me.GroupBox1, "GroupBox1")
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.TabStop = false
         '

@@ -46,18 +46,18 @@ Partial Class ErrorsDock
         '
         'TabControl1
         '
+        resources.ApplyResources(Me.TabControl1, "TabControl1")
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage3)
-        resources.ApplyResources(Me.TabControl1, "TabControl1")
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         '
         'TabPage1
         '
+        resources.ApplyResources(Me.TabPage1, "TabPage1")
         Me.TabPage1.Controls.Add(Me.showWarnsCheck)
         Me.TabPage1.Controls.Add(Me.showErrorsCheck)
         Me.TabPage1.Controls.Add(Me.errorsWarnsGrid)
-        resources.ApplyResources(Me.TabPage1, "TabPage1")
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = true
         '
@@ -79,9 +79,9 @@ Partial Class ErrorsDock
         '
         'errorsWarnsGrid
         '
+        resources.ApplyResources(Me.errorsWarnsGrid, "errorsWarnsGrid")
         Me.errorsWarnsGrid.AllowUserToAddRows = false
         Me.errorsWarnsGrid.AllowUserToDeleteRows = false
-        resources.ApplyResources(Me.errorsWarnsGrid, "errorsWarnsGrid")
         Me.errorsWarnsGrid.BackgroundColor = System.Drawing.Color.White
         Me.errorsWarnsGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
         Me.errorsWarnsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -125,20 +125,20 @@ Partial Class ErrorsDock
         '
         'TabPage3
         '
-        Me.TabPage3.Controls.Add(Me.parserErrors)
         resources.ApplyResources(Me.TabPage3, "TabPage3")
+        Me.TabPage3.Controls.Add(Me.parserErrors)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.UseVisualStyleBackColor = true
         '
         'parserErrors
         '
+        resources.ApplyResources(Me.parserErrors, "parserErrors")
         Me.parserErrors.AllowUserToAddRows = false
         Me.parserErrors.AllowUserToDeleteRows = false
         Me.parserErrors.BackgroundColor = System.Drawing.Color.White
         Me.parserErrors.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
         Me.parserErrors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.parserErrors.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ErrorMsg, Me.Column1})
-        resources.ApplyResources(Me.parserErrors, "parserErrors")
         Me.parserErrors.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.parserErrors.GridColor = System.Drawing.SystemColors.AppWorkspace
         Me.parserErrors.MultiSelect = false

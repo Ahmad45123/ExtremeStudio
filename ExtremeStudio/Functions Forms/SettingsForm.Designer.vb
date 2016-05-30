@@ -74,12 +74,9 @@ Partial Class SettingsForm
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.serverCFGTabPage)
-        Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TabControl1.Location = New System.Drawing.Point(0, 0)
+        resources.ApplyResources(Me.TabControl1, "TabControl1")
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(367, 459)
-        Me.TabControl1.TabIndex = 0
         '
         'TabPage1
         '
@@ -89,53 +86,32 @@ Partial Class SettingsForm
         Me.TabPage1.Controls.Add(Me.exportBtn)
         Me.TabPage1.Controls.Add(Me.colorsSettings)
         Me.TabPage1.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+        resources.ApplyResources(Me.TabPage1, "TabPage1")
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(359, 433)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Theme And Colors"
         '
         'resetBtn
         '
-        Me.resetBtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.resetBtn.Location = New System.Drawing.Point(268, 404)
+        resources.ApplyResources(Me.resetBtn, "resetBtn")
         Me.resetBtn.Name = "resetBtn"
-        Me.resetBtn.Size = New System.Drawing.Size(88, 23)
-        Me.resetBtn.TabIndex = 44
-        Me.resetBtn.Text = "Reset Default"
         Me.resetBtn.UseVisualStyleBackColor = true
         '
         'importBtn
         '
-        Me.importBtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.importBtn.Location = New System.Drawing.Point(87, 404)
+        resources.ApplyResources(Me.importBtn, "importBtn")
         Me.importBtn.Name = "importBtn"
-        Me.importBtn.Size = New System.Drawing.Size(75, 23)
-        Me.importBtn.TabIndex = 43
-        Me.importBtn.Text = "Import"
         Me.importBtn.UseVisualStyleBackColor = true
         '
         'exportBtn
         '
-        Me.exportBtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.exportBtn.Location = New System.Drawing.Point(6, 404)
+        resources.ApplyResources(Me.exportBtn, "exportBtn")
         Me.exportBtn.Name = "exportBtn"
-        Me.exportBtn.Size = New System.Drawing.Size(75, 23)
-        Me.exportBtn.TabIndex = 42
-        Me.exportBtn.Text = "Export"
         Me.exportBtn.UseVisualStyleBackColor = true
         '
         'colorsSettings
         '
-        Me.colorsSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.colorsSettings, "colorsSettings")
         Me.colorsSettings.CategoryForeColor = System.Drawing.SystemColors.InactiveCaptionText
-        Me.colorsSettings.Location = New System.Drawing.Point(3, 3)
         Me.colorsSettings.Name = "colorsSettings"
-        Me.colorsSettings.Size = New System.Drawing.Size(353, 395)
-        Me.colorsSettings.TabIndex = 41
         '
         'TabPage2
         '
@@ -161,260 +137,154 @@ Partial Class SettingsForm
         Me.TabPage2.Controls.Add(Me.Label2)
         Me.TabPage2.Controls.Add(Me.activeDirText)
         Me.TabPage2.Controls.Add(Me.Label1)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        resources.ApplyResources(Me.TabPage2, "TabPage2")
         Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(359, 433)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Compiler"
         Me.TabPage2.UseVisualStyleBackColor = true
         '
         'Button1
         '
-        Me.Button1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(130, 402)
+        resources.ApplyResources(Me.Button1, "Button1")
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(86, 23)
-        Me.Button1.TabIndex = 26
-        Me.Button1.Text = "Reset Defaults"
         Me.Button1.UseVisualStyleBackColor = true
         '
         'customArgsText
         '
-        Me.customArgsText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.customArgsText.Location = New System.Drawing.Point(11, 354)
+        resources.ApplyResources(Me.customArgsText, "customArgsText")
         Me.customArgsText.Name = "customArgsText"
-        Me.customArgsText.Size = New System.Drawing.Size(340, 20)
-        Me.customArgsText.TabIndex = 25
-        Me.ToolTipHandler.SetToolTip(Me.customArgsText, "If there is some args that you want to compile with that aren't above, Write them"& _ 
-        " here.")
+        Me.ToolTipHandler.SetToolTip(Me.customArgsText, resources.GetString("customArgsText.ToolTip"))
         '
         'Label9
         '
-        Me.Label9.AutoSize = true
-        Me.Label9.Location = New System.Drawing.Point(3, 338)
+        resources.ApplyResources(Me.Label9, "Label9")
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(104, 13)
-        Me.Label9.TabIndex = 24
-        Me.Label9.Text = "Extra Custom Args: "
         '
         'parenthesesCheck
         '
-        Me.parenthesesCheck.AutoSize = true
-        Me.parenthesesCheck.Location = New System.Drawing.Point(11, 255)
+        resources.ApplyResources(Me.parenthesesCheck, "parenthesesCheck")
         Me.parenthesesCheck.Name = "parenthesesCheck"
-        Me.parenthesesCheck.Size = New System.Drawing.Size(166, 17)
-        Me.parenthesesCheck.TabIndex = 23
-        Me.parenthesesCheck.Text = "Functions need parentheses."
-        Me.ToolTipHandler.SetToolTip(Me.parenthesesCheck, "If checked, parameters passed in a function must be enclosed in parentheses.")
+        Me.ToolTipHandler.SetToolTip(Me.parenthesesCheck, resources.GetString("parenthesesCheck.ToolTip"))
         Me.parenthesesCheck.UseVisualStyleBackColor = true
         '
         'semiColonCheck
         '
-        Me.semiColonCheck.AutoSize = true
-        Me.semiColonCheck.Location = New System.Drawing.Point(11, 278)
+        resources.ApplyResources(Me.semiColonCheck, "semiColonCheck")
         Me.semiColonCheck.Name = "semiColonCheck"
-        Me.semiColonCheck.Size = New System.Drawing.Size(182, 17)
-        Me.semiColonCheck.TabIndex = 22
-        Me.semiColonCheck.Text = "Lines must end with a semicolon."
-        Me.ToolTipHandler.SetToolTip(Me.semiColonCheck, "If checked, lines must end with a semi-colon.")
+        Me.ToolTipHandler.SetToolTip(Me.semiColonCheck, resources.GetString("semiColonCheck.ToolTip"))
         Me.semiColonCheck.UseVisualStyleBackColor = true
         '
         'skipLinesUpDown
         '
-        Me.skipLinesUpDown.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.skipLinesUpDown.Location = New System.Drawing.Point(130, 195)
+        resources.ApplyResources(Me.skipLinesUpDown, "skipLinesUpDown")
         Me.skipLinesUpDown.Name = "skipLinesUpDown"
-        Me.skipLinesUpDown.Size = New System.Drawing.Size(221, 20)
-        Me.skipLinesUpDown.TabIndex = 20
-        Me.ToolTipHandler.SetToolTip(Me.skipLinesUpDown, "Skip count: the number of lines to skip in the input ﬁle before starting to compi"& _ 
-        "le; "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"for example, to skip a ""header"" in the source ﬁle which is not in a valid "& _ 
-        "pawn syntax.")
+        Me.ToolTipHandler.SetToolTip(Me.skipLinesUpDown, resources.GetString("skipLinesUpDown.ToolTip"))
         '
         'Label8
         '
-        Me.Label8.AutoSize = true
-        Me.Label8.Location = New System.Drawing.Point(8, 197)
+        resources.ApplyResources(Me.Label8, "Label8")
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(122, 13)
-        Me.Label8.TabIndex = 19
-        Me.Label8.Text = "Number of lines to skip: "
         '
         'tabSizeUpDown
         '
-        Me.tabSizeUpDown.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.tabSizeUpDown.Location = New System.Drawing.Point(68, 169)
+        resources.ApplyResources(Me.tabSizeUpDown, "tabSizeUpDown")
         Me.tabSizeUpDown.Name = "tabSizeUpDown"
-        Me.tabSizeUpDown.Size = New System.Drawing.Size(283, 20)
-        Me.tabSizeUpDown.TabIndex = 18
-        Me.ToolTipHandler.SetToolTip(Me.tabSizeUpDown, "Tab size: the number of space characters to use for a tab character. "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Without th"& _ 
-        "is option, the pawn parser will autodetect the tab.")
+        Me.ToolTipHandler.SetToolTip(Me.tabSizeUpDown, resources.GetString("tabSizeUpDown.ToolTip"))
         '
         'Label7
         '
-        Me.Label7.AutoSize = true
-        Me.Label7.Location = New System.Drawing.Point(8, 171)
+        resources.ApplyResources(Me.Label7, "Label7")
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(54, 13)
-        Me.Label7.TabIndex = 17
-        Me.Label7.Text = "Tab Size: "
         '
         'optiLevelUpDown
         '
-        Me.optiLevelUpDown.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.optiLevelUpDown.Location = New System.Drawing.Point(107, 143)
+        resources.ApplyResources(Me.optiLevelUpDown, "optiLevelUpDown")
         Me.optiLevelUpDown.Maximum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.optiLevelUpDown.Name = "optiLevelUpDown"
-        Me.optiLevelUpDown.Size = New System.Drawing.Size(244, 20)
-        Me.optiLevelUpDown.TabIndex = 16
         Me.ToolTipHandler.SetToolTip(Me.optiLevelUpDown, resources.GetString("optiLevelUpDown.ToolTip"))
         '
         'Label5
         '
-        Me.Label5.AutoSize = true
-        Me.Label5.Location = New System.Drawing.Point(8, 145)
+        resources.ApplyResources(Me.Label5, "Label5")
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(101, 13)
-        Me.Label5.TabIndex = 15
-        Me.Label5.Text = "Optimization Level: "
         '
         'debugLevelUpDown
         '
-        Me.debugLevelUpDown.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.debugLevelUpDown.Location = New System.Drawing.Point(107, 117)
+        resources.ApplyResources(Me.debugLevelUpDown, "debugLevelUpDown")
         Me.debugLevelUpDown.Maximum = New Decimal(New Integer() {3, 0, 0, 0})
         Me.debugLevelUpDown.Name = "debugLevelUpDown"
-        Me.debugLevelUpDown.Size = New System.Drawing.Size(244, 20)
-        Me.debugLevelUpDown.TabIndex = 14
-        Me.ToolTipHandler.SetToolTip(Me.debugLevelUpDown, "Debug level: 0 = none, 1 = bounds checking and assertions only, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"2 = full symbol"& _ 
-        "ic information, 3 = full symbolic information and"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"optimizations disabled (same "& _ 
-        "as the combination -d2 and -O0).")
+        Me.ToolTipHandler.SetToolTip(Me.debugLevelUpDown, resources.GetString("debugLevelUpDown.ToolTip"))
         '
         'Label4
         '
-        Me.Label4.AutoSize = true
-        Me.Label4.Location = New System.Drawing.Point(8, 119)
+        resources.ApplyResources(Me.Label4, "Label4")
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(93, 13)
-        Me.Label4.TabIndex = 13
-        Me.Label4.Text = "Debugging Level: "
         '
         'reportGenDirText
         '
-        Me.reportGenDirText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.reportGenDirText, "reportGenDirText")
         Me.reportGenDirText.Description = "Select Save Location For The Report"
-        Me.reportGenDirText.Enabled = false
         Me.reportGenDirText.Filter = "XML File (*.xml) | *.xml"
-        Me.reportGenDirText.Location = New System.Drawing.Point(130, 91)
         Me.reportGenDirText.Name = "reportGenDirText"
         Me.reportGenDirText.PathType = ExtremeCore.PathTextBox.PathTypes.FileSave
-        Me.reportGenDirText.Size = New System.Drawing.Size(221, 20)
-        Me.reportGenDirText.TabIndex = 12
         Me.ToolTipHandler.SetToolTip(Me.reportGenDirText, resources.GetString("reportGenDirText.ToolTip"))
         '
         'reportGenCheck
         '
-        Me.reportGenCheck.AutoSize = true
-        Me.reportGenCheck.Location = New System.Drawing.Point(109, 94)
+        resources.ApplyResources(Me.reportGenCheck, "reportGenCheck")
         Me.reportGenCheck.Name = "reportGenCheck"
-        Me.reportGenCheck.Size = New System.Drawing.Size(15, 14)
-        Me.reportGenCheck.TabIndex = 11
         Me.reportGenCheck.UseVisualStyleBackColor = true
         '
         'Label6
         '
-        Me.Label6.AutoSize = true
-        Me.Label6.Location = New System.Drawing.Point(8, 94)
+        resources.ApplyResources(Me.Label6, "Label6")
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(103, 13)
-        Me.Label6.TabIndex = 10
-        Me.Label6.Text = "Report Generation: "
         '
         'ouputDirText
         '
-        Me.ouputDirText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.ouputDirText, "ouputDirText")
         Me.ouputDirText.Description = "Select The Output Directory"
         Me.ouputDirText.Filter = Nothing
-        Me.ouputDirText.Location = New System.Drawing.Point(74, 62)
         Me.ouputDirText.Name = "ouputDirText"
         Me.ouputDirText.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
-        Me.ouputDirText.Size = New System.Drawing.Size(277, 20)
-        Me.ouputDirText.TabIndex = 5
-        Me.ToolTipHandler.SetToolTip(Me.ouputDirText, "Output ﬁle: set the name and path of the binary output ﬁle."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Set it to null for"& _ 
-        " default.")
+        Me.ToolTipHandler.SetToolTip(Me.ouputDirText, resources.GetString("ouputDirText.ToolTip"))
         '
         'Label3
         '
-        Me.Label3.AutoSize = true
-        Me.Label3.Location = New System.Drawing.Point(8, 65)
+        resources.ApplyResources(Me.Label3, "Label3")
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(64, 13)
-        Me.Label3.TabIndex = 4
-        Me.Label3.Text = "Output Dir: "
         '
         'includesDirText
         '
-        Me.includesDirText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.includesDirText, "includesDirText")
         Me.includesDirText.Description = "Select The Includes Directory"
         Me.includesDirText.Filter = Nothing
-        Me.includesDirText.Location = New System.Drawing.Point(74, 36)
         Me.includesDirText.Name = "includesDirText"
         Me.includesDirText.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
-        Me.includesDirText.Size = New System.Drawing.Size(277, 20)
-        Me.includesDirText.TabIndex = 3
-        Me.ToolTipHandler.SetToolTip(Me.includesDirText, "Include path: set the path where the compiler"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"can ﬁnd the include ﬁles."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Set i"& _ 
-        "t to null for default.")
+        Me.ToolTipHandler.SetToolTip(Me.includesDirText, resources.GetString("includesDirText.ToolTip"))
         '
         'Label2
         '
-        Me.Label2.AutoSize = true
-        Me.Label2.Location = New System.Drawing.Point(8, 39)
+        resources.ApplyResources(Me.Label2, "Label2")
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(70, 13)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Includes Dir: "
         '
         'activeDirText
         '
-        Me.activeDirText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.activeDirText, "activeDirText")
         Me.activeDirText.Description = "Select The Active Directory"
         Me.activeDirText.Filter = Nothing
-        Me.activeDirText.Location = New System.Drawing.Point(74, 10)
         Me.activeDirText.Name = "activeDirText"
         Me.activeDirText.PathType = ExtremeCore.PathTextBox.PathTypes.Folder
-        Me.activeDirText.Size = New System.Drawing.Size(277, 20)
-        Me.activeDirText.TabIndex = 1
-        Me.ToolTipHandler.SetToolTip(Me.activeDirText, "Directory: the ""active"" directory, where the compiler"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"should search for its inpu"& _ 
-        "t ﬁles and store its output ﬁles."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Set it to null for default.")
+        Me.ToolTipHandler.SetToolTip(Me.activeDirText, resources.GetString("activeDirText.ToolTip"))
         '
         'Label1
         '
-        Me.Label1.AutoSize = true
-        Me.Label1.Location = New System.Drawing.Point(8, 13)
+        resources.ApplyResources(Me.Label1, "Label1")
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(60, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Active Dir: "
         '
         'serverCFGTabPage
         '
         Me.serverCFGTabPage.Controls.Add(Me.serverCfgGrid)
-        Me.serverCFGTabPage.Location = New System.Drawing.Point(4, 22)
+        resources.ApplyResources(Me.serverCFGTabPage, "serverCFGTabPage")
         Me.serverCFGTabPage.Name = "serverCFGTabPage"
-        Me.serverCFGTabPage.Padding = New System.Windows.Forms.Padding(3)
-        Me.serverCFGTabPage.Size = New System.Drawing.Size(359, 433)
-        Me.serverCFGTabPage.TabIndex = 2
-        Me.serverCFGTabPage.Text = "server.cfg"
         Me.serverCFGTabPage.UseVisualStyleBackColor = true
         '
         'serverCfgGrid
@@ -423,20 +293,17 @@ Partial Class SettingsForm
         Me.serverCfgGrid.BackgroundColor = System.Drawing.SystemColors.ControlLightLight
         Me.serverCfgGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.serverCfgGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.nameColumn, Me.valueColumn})
-        Me.serverCfgGrid.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.serverCfgGrid.Location = New System.Drawing.Point(3, 3)
+        resources.ApplyResources(Me.serverCfgGrid, "serverCfgGrid")
         Me.serverCfgGrid.Name = "serverCfgGrid"
-        Me.serverCfgGrid.Size = New System.Drawing.Size(353, 427)
-        Me.serverCfgGrid.TabIndex = 0
         '
         'nameColumn
         '
-        Me.nameColumn.HeaderText = "Name"
+        resources.ApplyResources(Me.nameColumn, "nameColumn")
         Me.nameColumn.Name = "nameColumn"
         '
         'valueColumn
         '
-        Me.valueColumn.HeaderText = "Value"
+        resources.ApplyResources(Me.valueColumn, "valueColumn")
         Me.valueColumn.Name = "valueColumn"
         '
         'ToolTipHandler
@@ -450,12 +317,10 @@ Partial Class SettingsForm
         '
         'SettingsForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(367, 459)
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "SettingsForm"
-        Me.Text = "Settings [Project]"
         Me.TabControl1.ResumeLayout(false)
         Me.TabPage1.ResumeLayout(false)
         Me.TabPage2.ResumeLayout(false)

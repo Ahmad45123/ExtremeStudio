@@ -77,14 +77,14 @@ Partial Class MainForm
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusLabel})
         resources.ApplyResources(Me.StatusStrip1, "StatusStrip1")
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusLabel})
         Me.StatusStrip1.Name = "StatusStrip1"
         '
         'statusLabel
         '
-        Me.statusLabel.Name = "statusLabel"
         resources.ApplyResources(Me.statusLabel, "statusLabel")
+        Me.statusLabel.Name = "statusLabel"
         '
         'mainRibbon
         '
@@ -94,11 +94,21 @@ Partial Class MainForm
         '
         '
         '
+        Me.mainRibbon.OrbDropDown.AccessibleDescription = resources.GetString("mainRibbon.OrbDropDown.AccessibleDescription")
+        Me.mainRibbon.OrbDropDown.AccessibleName = resources.GetString("mainRibbon.OrbDropDown.AccessibleName")
+        Me.mainRibbon.OrbDropDown.Anchor = CType(resources.GetObject("mainRibbon.OrbDropDown.Anchor"),System.Windows.Forms.AnchorStyles)
+        Me.mainRibbon.OrbDropDown.BackgroundImage = CType(resources.GetObject("mainRibbon.OrbDropDown.BackgroundImage"),System.Drawing.Image)
+        Me.mainRibbon.OrbDropDown.BackgroundImageLayout = CType(resources.GetObject("mainRibbon.OrbDropDown.BackgroundImageLayout"),System.Windows.Forms.ImageLayout)
         Me.mainRibbon.OrbDropDown.BorderRoundness = 8
+        Me.mainRibbon.OrbDropDown.Dock = CType(resources.GetObject("mainRibbon.OrbDropDown.Dock"),System.Windows.Forms.DockStyle)
+        Me.mainRibbon.OrbDropDown.Font = CType(resources.GetObject("mainRibbon.OrbDropDown.Font"),System.Drawing.Font)
+        Me.mainRibbon.OrbDropDown.ImeMode = CType(resources.GetObject("mainRibbon.OrbDropDown.ImeMode"),System.Windows.Forms.ImeMode)
         Me.mainRibbon.OrbDropDown.Location = CType(resources.GetObject("mainRibbon.OrbDropDown.Location"),System.Drawing.Point)
+        Me.mainRibbon.OrbDropDown.MaximumSize = CType(resources.GetObject("mainRibbon.OrbDropDown.MaximumSize"),System.Drawing.Size)
         Me.mainRibbon.OrbDropDown.MenuItems.Add(Me.RibbonOrbMenuItem1)
         Me.mainRibbon.OrbDropDown.Name = ""
         Me.mainRibbon.OrbDropDown.RecentItems.Add(Me.RibbonOrbRecentItem1)
+        Me.mainRibbon.OrbDropDown.RightToLeft = CType(resources.GetObject("mainRibbon.OrbDropDown.RightToLeft"),System.Windows.Forms.RightToLeft)
         Me.mainRibbon.OrbDropDown.Size = CType(resources.GetObject("mainRibbon.OrbDropDown.Size"),System.Drawing.Size)
         Me.mainRibbon.OrbDropDown.TabIndex = CType(resources.GetObject("mainRibbon.OrbDropDown.TabIndex"),Integer)
         Me.mainRibbon.OrbImage = Nothing
@@ -109,6 +119,9 @@ Partial Class MainForm
         '
         '
         Me.mainRibbon.QuickAcessToolbar.Items.Add(Me.closeProjectButton)
+        Me.mainRibbon.QuickAcessToolbar.Text = resources.GetString("mainRibbon.QuickAcessToolbar.Text")
+        Me.mainRibbon.QuickAcessToolbar.ToolTip = resources.GetString("mainRibbon.QuickAcessToolbar.ToolTip")
+        Me.mainRibbon.QuickAcessToolbar.ToolTipImage = CType(resources.GetObject("mainRibbon.QuickAcessToolbar.ToolTipImage"),System.Drawing.Image)
         Me.mainRibbon.RibbonTabFont = New System.Drawing.Font("Trebuchet MS", 9!)
         Me.mainRibbon.Tabs.Add(Me.fileTab)
         Me.mainRibbon.Tabs.Add(Me.editTab)
