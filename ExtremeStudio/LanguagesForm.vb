@@ -24,6 +24,12 @@ Public Class LanguagesForm
             ElseIf LangsListBox.SelectedItem = "Portuguese, Brazillian"
                 Thread.CurrentThread.CurrentUICulture = New CultureInfo("pt-BR")
                 My.Computer.FileSystem.WriteAllText(Mainform.ApplicationFiles + "\configs\lang.cfg", "pt-BR", False)
+            ElseIf LangsListBox.SelectedItem = "Croatian"
+                Thread.CurrentThread.CurrentUICulture = New CultureInfo("hr")
+                My.Computer.FileSystem.WriteAllText(Mainform.ApplicationFiles + "\configs\lang.cfg", "hr", False)
+            ElseIf LangsListBox.SelectedItem = "Spanish"
+                Thread.CurrentThread.CurrentUICulture = New CultureInfo("es")
+                My.Computer.FileSystem.WriteAllText(Mainform.ApplicationFiles + "\configs\lang.cfg", "es", False)
             End If
             Done()
         End If

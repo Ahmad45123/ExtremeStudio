@@ -29,7 +29,7 @@ Partial Class LanguagesForm
         'LangsListBox
         '
         Me.LangsListBox.FormattingEnabled = true
-        Me.LangsListBox.Items.AddRange(New Object() {"English", "Portuguese, Brazillian"})
+        Me.LangsListBox.Items.AddRange(New Object() {"Croatian", "English", "Portuguese, Brazillian", "Spanish"})
         Me.LangsListBox.Location = New System.Drawing.Point(12, 12)
         Me.LangsListBox.Name = "LangsListBox"
         Me.LangsListBox.Size = New System.Drawing.Size(302, 316)
