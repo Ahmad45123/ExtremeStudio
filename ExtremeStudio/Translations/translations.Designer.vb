@@ -582,6 +582,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Localization settings have been deleted sucessfully, please restart application and the language dialog will show..
+        '''</summary>
+        Public Shared ReadOnly Property SettingsForm_ResetLangBtn_Click_LocalizationSettingsDeleted() As String
+            Get
+                Return ResourceManager.GetString("SettingsForm_ResetLangBtn_Click_LocalizationSettingsDeleted", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to 
         '''
         '''Would you like to continue ?.

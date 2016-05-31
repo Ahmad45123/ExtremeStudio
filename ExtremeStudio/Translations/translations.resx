@@ -325,4 +325,7 @@ NOTE: INCLUDE THE EXTENSION!</value>
   <data name="AutoCompleteItemEx_New_ReturnTag" xml:space="preserve">
     <value>Return Tag: </value>
   </data>
+  <data name="SettingsForm_ResetLangBtn_Click_LocalizationSettingsDeleted" xml:space="preserve">
+    <value>Localization settings have been deleted sucessfully, please restart application and the language dialog will show.</value>
+  </data>
 </root>

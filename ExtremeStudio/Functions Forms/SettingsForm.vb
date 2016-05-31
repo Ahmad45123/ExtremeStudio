@@ -264,6 +264,13 @@ Public Class SettingsForm
         Next
         My.Computer.FileSystem.WriteAllText(Mainform.CurrentProject.projectPath + "/server.cfg", allStr.ToString(), False)
     End Sub
+
+    Private Sub ResetLangBtn_Click(sender As Object, e As EventArgs) Handles ResetLangBtn.Click
+        If File.Exists(MainForm.ApplicationFiles + "\configs\lang.cfg") Then 
+            File.Delete(MainForm.ApplicationFiles + "\configs\lang.cfg")
+            MsgBox(translations.SettingsForm_ResetLangBtn_Click_LocalizationSettingsDeleted)
+        End If
+    End Sub
 #End Region
 End Class
 
