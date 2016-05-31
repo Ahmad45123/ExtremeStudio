@@ -16,28 +16,29 @@ Public Class LanguagesForm
         Close()
     End Sub
 
+    Private ReadOnly _applicationFiles As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/ExtremeStudio"
     Private Sub Acceptbtn_Click(sender As Object, e As EventArgs) Handles Acceptbtn.Click
         If LangsListBox.SelectedIndex <> -1 Then
             If LangsListBox.SelectedItem = "English"
                 Thread.CurrentThread.CurrentUICulture = New CultureInfo("en")
-                My.Computer.FileSystem.WriteAllText(Mainform.ApplicationFiles + "\configs\lang.cfg", "en", False)
+                My.Computer.FileSystem.WriteAllText(_applicationFiles + "\configs\lang.cfg", "en", False)
             ElseIf LangsListBox.SelectedItem = "Portuguese, Brazillian"
                 Thread.CurrentThread.CurrentUICulture = New CultureInfo("pt-BR")
-                My.Computer.FileSystem.WriteAllText(Mainform.ApplicationFiles + "\configs\lang.cfg", "pt-BR", False)
+                My.Computer.FileSystem.WriteAllText(_applicationFiles + "\configs\lang.cfg", "pt-BR", False)
             ElseIf LangsListBox.SelectedItem = "Croatian"
                 Thread.CurrentThread.CurrentUICulture = New CultureInfo("hr")
-                My.Computer.FileSystem.WriteAllText(Mainform.ApplicationFiles + "\configs\lang.cfg", "hr", False)
+                My.Computer.FileSystem.WriteAllText(_applicationFiles + "\configs\lang.cfg", "hr", False)
             ElseIf LangsListBox.SelectedItem = "Spanish"
                 Thread.CurrentThread.CurrentUICulture = New CultureInfo("es")
-                My.Computer.FileSystem.WriteAllText(Mainform.ApplicationFiles + "\configs\lang.cfg", "es", False)
+                My.Computer.FileSystem.WriteAllText(_applicationFiles + "\configs\lang.cfg", "es", False)
             End If
             Done()
         End If
     End Sub
 
     Private Sub LanguagesForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If File.Exists(Mainform.ApplicationFiles + "\configs\lang.cfg") Then
-            Thread.CurrentThread.CurrentUICulture = New CultureInfo(File.ReadAllText(Mainform.ApplicationFiles + "\configs\lang.cfg"))
+        If File.Exists(_applicationFiles + "\configs\lang.cfg") Then
+            Thread.CurrentThread.CurrentUICulture = New CultureInfo(File.ReadAllText(_applicationFiles + "\configs\lang.cfg"))
             Done()
         End If
     End Sub
