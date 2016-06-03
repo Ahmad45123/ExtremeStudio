@@ -37,6 +37,8 @@ Public Class LanguagesForm
     End Sub
 
     Private Sub LanguagesForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Not Directory.Exists(_applicationFiles + "\configs") Then Directory.CreateDirectory(_applicationFiles + "\configs")
+
         If File.Exists(_applicationFiles + "\configs\lang.cfg") Then
             Thread.CurrentThread.CurrentUICulture = New CultureInfo(File.ReadAllText(_applicationFiles + "\configs\lang.cfg"))
             Done()
