@@ -130,11 +130,11 @@
   <data name="&gt;&gt;serverCfgGrid.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="$this.ToolTip" xml:space="preserve">
+  <data name="Label5.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;TabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="reportGenDirText.Enabled" type="System.Boolean, mscorlib">
@@ -189,6 +189,9 @@ Set the path to default to create report in output dir.</value>
   <data name="&gt;&gt;Label3.Parent" xml:space="preserve">
     <value>TabPage2</value>
   </data>
+  <data name="Label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 13</value>
+  </data>
   <data name="&gt;&gt;importBtn.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -198,8 +201,8 @@ Set the path to default to create report in output dir.</value>
   <data name="Label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;includesDirText.Name" xml:space="preserve">
-    <value>includesDirText</value>
+  <data name="skipLinesUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 195</value>
   </data>
   <data name="skipLinesUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -241,6 +244,9 @@ Set the path to default to create report in output dir.</value>
   <data name="&gt;&gt;optiLevelUpDown.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Label4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="&gt;&gt;includesDirText.Type" xml:space="preserve">
     <value>ExtremeCore.PathTextBox, ExtremeCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
@@ -278,14 +284,14 @@ for example, to skip a "header" in the source ﬁle which is not in a valid pawn
   <data name="&gt;&gt;TabPage1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="Label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="TabPage1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="&gt;&gt;skipLinesUpDown.Parent" xml:space="preserve">
     <value>TabPage2</value>
+  </data>
+  <data name="&gt;&gt;ResetLangBtn.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;Label4.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -296,17 +302,14 @@ for example, to skip a "header" in the source ﬁle which is not in a valid pawn
   <data name="Label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="Label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 119</value>
+  <data name="&gt;&gt;optiLevelUpDown.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="TabPage3.Size" type="System.Drawing.Size, System.Drawing">
     <value>359, 433</value>
   </data>
-  <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="&gt;&gt;debugLevelUpDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Label9.Text" xml:space="preserve">
+    <value>Extra Custom Args: </value>
   </data>
   <data name="semiColonCheck.ToolTip" xml:space="preserve">
     <value>If checked, lines must end with a semi-colon.</value>
@@ -338,8 +341,8 @@ for example, to skip a "header" in the source ﬁle which is not in a valid pawn
   <data name="TabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="&gt;&gt;Label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;includesDirText.Name" xml:space="preserve">
+    <value>includesDirText</value>
   </data>
   <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 13</value>
@@ -377,8 +380,8 @@ for example, to skip a "header" in the source ﬁle which is not in a valid pawn
   <data name="&gt;&gt;Button1.Name" xml:space="preserve">
     <value>Button1</value>
   </data>
-  <data name="&gt;&gt;ResetLangBtn.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
+    <value>21</value>
   </data>
   <data name="TabControl1.Size" type="System.Drawing.Size, System.Drawing">
     <value>367, 459</value>
@@ -402,9 +405,6 @@ optimizations disabled (same as the combination -d2 and -O0).</value>
   </data>
   <data name="ouputDirText.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
-  </data>
-  <data name="Label1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -460,9 +460,6 @@ optimizations disabled (same as the combination -d2 and -O0).</value>
   <data name="&gt;&gt;Label6.Name" xml:space="preserve">
     <value>Label6</value>
   </data>
-  <data name="serverCfgGrid.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;semiColonCheck.Name" xml:space="preserve">
     <value>semiColonCheck</value>
   </data>
@@ -477,6 +474,9 @@ optimizations disabled (same as the combination -d2 and -O0).</value>
   </data>
   <data name="&gt;&gt;includesDirText.Parent" xml:space="preserve">
     <value>TabPage2</value>
+  </data>
+  <data name="Label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 119</value>
   </data>
   <data name="optiLevelUpDown.Location" type="System.Drawing.Point, System.Drawing">
     <value>107, 143</value>
@@ -505,9 +505,6 @@ optimizations disabled (same as the combination -d2 and -O0).</value>
   <data name="resetBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 23</value>
   </data>
-  <data name="&gt;&gt;tabSizeUpDown.Parent" xml:space="preserve">
-    <value>TabPage2</value>
-  </data>
   <data name="Label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 65</value>
   </data>
@@ -523,11 +520,11 @@ optimizations disabled (same as the combination -d2 and -O0).</value>
   <data name="Label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 94</value>
   </data>
+  <data name="&gt;&gt;Label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="activeDirText.Size" type="System.Drawing.Size, System.Drawing">
     <value>277, 20</value>
-  </data>
-  <data name="activeDirText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
   </data>
   <data name="Label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -558,6 +555,9 @@ optimizations disabled (same as the combination -d2 and -O0).</value>
   </data>
   <data name="&gt;&gt;Label9.Name" xml:space="preserve">
     <value>Label9</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="serverCfgGrid.ToolTip" xml:space="preserve">
     <value />
@@ -592,9 +592,6 @@ should search for its input ﬁles and store its output ﬁles.
 
 Set it to null for default.</value>
   </data>
-  <data name="Label9.Text" xml:space="preserve">
-    <value>Extra Custom Args: </value>
-  </data>
   <data name="Label3.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -606,9 +603,6 @@ Set it to null for default.</value>
   </data>
   <data name="serverCFGTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>367, 459</value>
   </data>
   <data name="Label9.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -667,8 +661,8 @@ Optimization level 1 is compatible with JIT implementations
   <data name="semiColonCheck.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 278</value>
   </data>
-  <data name="TabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>359, 433</value>
+  <data name="serverCfgGrid.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;parenthesesCheck.Name" xml:space="preserve">
     <value>parenthesesCheck</value>
@@ -730,6 +724,9 @@ Set it to null for default.</value>
   <data name="debugLevelUpDown.Location" type="System.Drawing.Point, System.Drawing">
     <value>107, 117</value>
   </data>
+  <data name="TabPage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>359, 433</value>
+  </data>
   <data name="&gt;&gt;parenthesesCheck.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -756,6 +753,9 @@ Set it to null for default.</value>
   </data>
   <data name="Label4.Text" xml:space="preserve">
     <value>Debugging Level: </value>
+  </data>
+  <data name="&gt;&gt;customArgsText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;resetBtn.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -787,8 +787,8 @@ Set it to null for default.</value>
   <data name="reportGenCheck.Location" type="System.Drawing.Point, System.Drawing">
     <value>109, 94</value>
   </data>
-  <data name="Label5.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;debugLevelUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Label7.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -814,8 +814,8 @@ Set it to null for default.</value>
   <data name="parenthesesCheck.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;Label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="importBtn.Text" xml:space="preserve">
     <value>Import</value>
@@ -825,6 +825,9 @@ Set it to null for default.</value>
   </data>
   <data name="&gt;&gt;TabControl1.Parent" xml:space="preserve">
     <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="TabPage1.Size" type="System.Drawing.Size, System.Drawing">
     <value>359, 433</value>
@@ -841,8 +844,8 @@ Set it to null for default.</value>
   <data name="Label2.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="Label4.ToolTip" xml:space="preserve">
-    <value />
+  <data name="ResetLangBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 12</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
     <value>Active Dir: </value>
@@ -865,11 +868,14 @@ Set it to null for default.</value>
   <data name="&gt;&gt;valueColumn.Name" xml:space="preserve">
     <value>valueColumn</value>
   </data>
-  <data name="serverCFGTabPage.ToolTip" xml:space="preserve">
+  <data name="Label1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="&gt;&gt;TabPage3.Name" xml:space="preserve">
     <value>TabPage3</value>
+  </data>
+  <data name="&gt;&gt;Label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="importBtn.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -907,8 +913,8 @@ Set it to null for default.</value>
   <data name="&gt;&gt;reportGenDirText.Parent" xml:space="preserve">
     <value>TabPage2</value>
   </data>
-  <data name="skipLinesUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 195</value>
+  <data name="&gt;&gt;tabSizeUpDown.Parent" xml:space="preserve">
+    <value>TabPage2</value>
   </data>
   <data name="optiLevelUpDown.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -919,8 +925,8 @@ Set it to null for default.</value>
   <data name="&gt;&gt;ToolTipHandler.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 13</value>
+  <data name="activeDirText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="&gt;&gt;ResetLangBtn.Parent" xml:space="preserve">
     <value>TabPage3</value>
@@ -936,9 +942,6 @@ Set it to null for default.</value>
   </data>
   <data name="Button1.Text" xml:space="preserve">
     <value>Reset Defaults</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
   </data>
   <data name="serverCfgGrid.Size" type="System.Drawing.Size, System.Drawing">
     <value>353, 427</value>
@@ -992,8 +995,8 @@ Without this option, the pawn parser will autodetect the tab.</value>
   <data name="Label3.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;customArgsText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>367, 459</value>
   </data>
   <data name="&gt;&gt;Label1.Name" xml:space="preserve">
     <value>Label1</value>
@@ -1010,6 +1013,9 @@ Without this option, the pawn parser will autodetect the tab.</value>
   <data name="&gt;&gt;Label8.Parent" xml:space="preserve">
     <value>TabPage2</value>
   </data>
+  <data name="serverCFGTabPage.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="&gt;&gt;resetBtn.Name" xml:space="preserve">
     <value>resetBtn</value>
   </data>
@@ -1024,9 +1030,6 @@ Without this option, the pawn parser will autodetect the tab.</value>
   </data>
   <data name="skipLinesUpDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>221, 20</value>
-  </data>
-  <data name="&gt;&gt;optiLevelUpDown.ZOrder" xml:space="preserve">
-    <value>9</value>
   </data>
   <data name="&gt;&gt;ouputDirText.Type" xml:space="preserve">
     <value>ExtremeCore.PathTextBox, ExtremeCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
@@ -1078,9 +1081,6 @@ Without this option, the pawn parser will autodetect the tab.</value>
   </data>
   <data name="&gt;&gt;reportGenDirText.Type" xml:space="preserve">
     <value>ExtremeCore.PathTextBox, ExtremeCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="ResetLangBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 12</value>
   </data>
   <data name="ouputDirText.ToolTip" xml:space="preserve">
     <value>Output ﬁle: set the name and path of the binary output ﬁle.
@@ -1134,6 +1134,9 @@ Set it to null for default.</value>
   </metadata>
   <metadata name="nameColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>hu</value>
   </metadata>
   <metadata name="ToolTipHandler.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>

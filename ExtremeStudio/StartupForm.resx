@@ -156,9 +156,6 @@
   <data name="&gt;&gt;loadProjectBtn.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;nameTextBox.Parent" xml:space="preserve">
-    <value>TabPage1</value>
-  </data>
   <data name="&gt;&gt;pathTextBox.Type" xml:space="preserve">
     <value>ExtremeCore.PathTextBox, ExtremeCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
@@ -324,6 +321,9 @@
   <data name="projectName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="&gt;&gt;preExistCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;verListBox.Parent" xml:space="preserve">
     <value>TabPage1</value>
   </data>
@@ -332,6 +332,9 @@
   </data>
   <data name="&gt;&gt;projectVersion.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label6.Name" xml:space="preserve">
+    <value>Label6</value>
   </data>
   <data name="&gt;&gt;TabPage2.Name" xml:space="preserve">
     <value>TabPage2</value>
@@ -351,9 +354,6 @@
   <data name="&gt;&gt;locTextBox.Type" xml:space="preserve">
     <value>ExtremeCore.PathTextBox, ExtremeCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="projectName.Text" xml:space="preserve">
-    <value>None</value>
-  </data>
   <data name="&gt;&gt;OpenGlobalSettingsToolStripMenuItem.Name" xml:space="preserve">
     <value>OpenGlobalSettingsToolStripMenuItem</value>
   </data>
@@ -362,6 +362,9 @@
   </data>
   <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 13</value>
+  </data>
+  <data name="Label6.Text" xml:space="preserve">
+    <value>Project Version: </value>
   </data>
   <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -405,17 +408,14 @@
   <data name="&gt;&gt;TabPage3.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;TabPage1.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="loadProjectBtn.Text" xml:space="preserve">
+    <value>Load Project</value>
   </data>
   <data name="&gt;&gt;Button3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="TabPage3.Size" type="System.Drawing.Size, System.Drawing">
     <value>767, 186</value>
-  </data>
-  <data name="projectVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
   </data>
   <data name="&gt;&gt;projectName.Parent" xml:space="preserve">
     <value>TabPage2</value>
@@ -504,8 +504,8 @@
   <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
     <value>TabPage1</value>
   </data>
-  <data name="loadProjectBtn.Text" xml:space="preserve">
-    <value>Load Project</value>
+  <data name="MenuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;recentListBox.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -515,9 +515,6 @@
   </data>
   <data name="&gt;&gt;verListBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="MenuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
   </data>
   <data name="&gt;&gt;loadProjectBtn.Parent" xml:space="preserve">
     <value>TabPage2</value>
@@ -537,14 +534,17 @@
   <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 13</value>
   </data>
+  <data name="&gt;&gt;projectName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="nameTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>671, 20</value>
   </data>
   <data name="Label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 90</value>
   </data>
-  <data name="locTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>671, 21</value>
+  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 13</value>
   </data>
   <data name="verListBox.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -552,8 +552,8 @@
   <data name="&gt;&gt;Button3.Name" xml:space="preserve">
     <value>Button3</value>
   </data>
-  <data name="&gt;&gt;Label6.Name" xml:space="preserve">
-    <value>Label6</value>
+  <data name="loadProjectBtn.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="loadProjectBtn.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -570,8 +570,8 @@
   <data name="&gt;&gt;Button3.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;preExistCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;nameTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Label5.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -618,8 +618,8 @@
   <data name="Label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;projectName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="projectVersion.Text" xml:space="preserve">
+    <value>None</value>
   </data>
   <data name="CreateProjectBtn.Text" xml:space="preserve">
     <value>Create Project</value>
@@ -642,14 +642,11 @@
   <data name="&gt;&gt;locTextBox.Name" xml:space="preserve">
     <value>locTextBox</value>
   </data>
-  <data name="Button1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
   <data name="TabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="loadProjectBtn.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;nameTextBox.Parent" xml:space="preserve">
+    <value>TabPage1</value>
   </data>
   <data name="Label4.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -663,8 +660,8 @@
   <data name="Button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 13</value>
+  <data name="Button1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="CreateProjectBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>752, 30</value>
@@ -708,8 +705,8 @@
   <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 13</value>
   </data>
-  <data name="&gt;&gt;nameTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="projectVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
   </data>
   <data name="nameTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>90, 10</value>
@@ -717,7 +714,7 @@
   <data name="Button1.Text" xml:space="preserve">
     <value>Load Selected</value>
   </data>
-  <data name="projectVersion.Text" xml:space="preserve">
+  <data name="projectName.Text" xml:space="preserve">
     <value>None</value>
   </data>
   <data name="Button3.Location" type="System.Drawing.Point, System.Drawing">
@@ -738,8 +735,8 @@
   <data name="&gt;&gt;Label5.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="Label6.Text" xml:space="preserve">
-    <value>Project Version: </value>
+  <data name="locTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>671, 21</value>
   </data>
   <data name="&gt;&gt;TabPage3.Parent" xml:space="preserve">
     <value>TabControl1</value>
@@ -756,6 +753,9 @@
   <data name="Label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="&gt;&gt;TabPage1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;Label6.Parent" xml:space="preserve">
     <value>TabPage2</value>
   </data>
@@ -764,5 +764,8 @@
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>hu</value>
   </metadata>
 </root>

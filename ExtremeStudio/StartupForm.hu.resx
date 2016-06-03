@@ -118,43 +118,97 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="linenumberRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 17</value>
+  <data name="locTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 124</value>
   </data>
-  <data name="linenumberRadio.Text" xml:space="preserve">
-    <value>Número da linha</value>
+  <data name="locTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>655, 21</value>
   </data>
-  <data name="positionRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 17</value>
+  <data name="preExistCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>575, 111</value>
   </data>
-  <data name="positionRadio.Text" xml:space="preserve">
-    <value>Posição</value>
+  <data name="preExistCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 17</value>
   </data>
-  <data name="theLabel.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="preExistCheck.Text" xml:space="preserve">
+    <value>Létrehozás már meglévő fájlokból.</value>
+  </data>
+  <data name="CreateProjectBtn.Text" xml:space="preserve">
+    <value>Projekt létrehozása</value>
+  </data>
+  <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 13</value>
+  </data>
+  <data name="Label3.Text" xml:space="preserve">
+    <value>Projekt helyszíne: </value>
+  </data>
+  <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 13</value>
+  </data>
+  <data name="Label2.Text" xml:space="preserve">
+    <value>SA-MP verzió: </value>
+  </data>
+  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 13</value>
+  </data>
+  <data name="Label1.Text" xml:space="preserve">
+    <value>Projekt neve: </value>
+  </data>
+  <data name="TabPage1.Text" xml:space="preserve">
+    <value>Új projekt létrehozása</value>
+  </data>
+  <data name="loadProjectBtn.Text" xml:space="preserve">
+    <value>Projekt betöltése</value>
+  </data>
+  <data name="projectVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
+  </data>
+  <data name="projectVersion.Text" xml:space="preserve">
+    <value>Semmi</value>
+  </data>
+  <data name="Label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 13</value>
+  </data>
+  <data name="Label6.Text" xml:space="preserve">
+    <value>Projekt Verzió: </value>
+  </data>
+  <data name="projectName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
+  </data>
+  <data name="projectName.Text" xml:space="preserve">
+    <value>Semmi</value>
+  </data>
+  <data name="Label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 13</value>
+  </data>
+  <data name="Label5.Text" xml:space="preserve">
+    <value>Projekt neve: </value>
+  </data>
+  <data name="Label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 13</value>
   </data>
-  <data name="theLabel.Text" xml:space="preserve">
-    <value>Número da linha: </value>
+  <data name="Label4.Text" xml:space="preserve">
+    <value>Projekt könyvtár: </value>
   </data>
-  <data name="GoBtn.Text" xml:space="preserve">
-    <value>&amp;Ir</value>
+  <data name="TabPage2.Text" xml:space="preserve">
+    <value>Projekt betöltése</value>
   </data>
-  <data name="CancelBtn.Text" xml:space="preserve">
-    <value>$Cancelar</value>
+  <data name="Button3.Text" xml:space="preserve">
+    <value>Kiválasztottak törlése</value>
   </data>
-  <data name="curLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 13</value>
+  <data name="Button1.Text" xml:space="preserve">
+    <value>A kiválasztottak betöltése</value>
   </data>
-  <data name="curLabel.Text" xml:space="preserve">
-    <value>Atual: 0</value>
+  <data name="TabPage3.Text" xml:space="preserve">
+    <value>Előzmények</value>
   </data>
-  <data name="maxLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
+  <data name="OpenGlobalSettingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 20</value>
   </data>
-  <data name="maxLabel.Text" xml:space="preserve">
-    <value>Máximo: 0</value>
+  <data name="OpenGlobalSettingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Globális beállítások megnyitása</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Ir para</value>
+    <value>Projekt betöltése/készítése</value>
   </data>
 </root>

@@ -139,8 +139,8 @@
   <data name="&gt;&gt;installBtn.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;installBtn.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;Label4.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;PluginList.Name" xml:space="preserve">
     <value>PluginList</value>
@@ -154,8 +154,8 @@
   <data name="&gt;&gt;PluginNameText.Parent" xml:space="preserve">
     <value>GroupBox1</value>
   </data>
-  <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;updateLabel.Name" xml:space="preserve">
+    <value>updateLabel</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="deleteBtn.Visible" type="System.Boolean, mscorlib">
@@ -185,17 +185,14 @@
   <data name="Label2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="Label3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 13</value>
   </data>
   <data name="deleteBtn.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="&gt;&gt;Label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label4.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;Label1.Name" xml:space="preserve">
     <value>Label1</value>
@@ -232,9 +229,6 @@
   </data>
   <data name="&gt;&gt;Label3.Parent" xml:space="preserve">
     <value>GroupBox1</value>
-  </data>
-  <data name="&gt;&gt;updateLabel.Name" xml:space="preserve">
-    <value>updateLabel</value>
   </data>
   <data name="PluginDescText.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -305,6 +299,9 @@
   <data name="&gt;&gt;installBtn.Name" xml:space="preserve">
     <value>installBtn</value>
   </data>
+  <data name="deleteBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>400, 196</value>
+  </data>
   <data name="GroupBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>293, 169</value>
   </data>
@@ -323,8 +320,8 @@
   <data name="PluginNameText.Size" type="System.Drawing.Size, System.Drawing">
     <value>208, 20</value>
   </data>
-  <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 13</value>
+  <data name="Label3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="deleteBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 23</value>
@@ -335,14 +332,14 @@
   <data name="Label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 21</value>
   </data>
-  <data name="deleteBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>400, 196</value>
+  <data name="Label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="Label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>210, 425</value>
   </data>
-  <data name="Label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="PluginDescText.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -361,6 +358,9 @@
   </data>
   <data name="&gt;&gt;installBtn.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="&gt;&gt;installBtn.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;Label4.Parent" xml:space="preserve">
     <value>$this</value>
@@ -420,6 +420,6 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>pt-BR</value>
+    <value>hu</value>
   </metadata>
 </root>

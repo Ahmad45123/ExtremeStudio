@@ -120,8 +120,15 @@
   <data name="&gt;&gt;Label3.Parent" xml:space="preserve">
     <value>GroupBox1</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Label3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
   <data name="&gt;&gt;GroupBox1.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="GroupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pluginsList.Size" type="System.Drawing.Size, System.Drawing">
@@ -133,13 +140,9 @@
   <data name="updateAvilableLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>242, 211</value>
   </data>
-  <data name="GroupBox1.Text" xml:space="preserve">
-    <value>Plugin Info: </value>
-  </data>
   <data name="pluginName.Location" type="System.Drawing.Point, System.Drawing">
     <value>97, 22</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="actionsGroup.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -152,14 +155,8 @@
   <data name="Button2.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 23</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>576, 419</value>
-  </data>
   <data name="Label3.Text" xml:space="preserve">
     <value>Version: </value>
-  </data>
-  <data name="includeInstalledLabel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 9</value>
@@ -185,8 +182,8 @@
   <data name="&gt;&gt;pluginVersion.Name" xml:space="preserve">
     <value>pluginVersion</value>
   </data>
-  <data name="GroupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;pluginsList.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="showInstalledOnlyCheck.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 17</value>
@@ -221,8 +218,8 @@
   <data name="&gt;&gt;Label4.Name" xml:space="preserve">
     <value>Label4</value>
   </data>
-  <data name="&gt;&gt;pluginVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;updateAvilableLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pluginsList.Name" xml:space="preserve">
     <value>pluginsList</value>
@@ -284,9 +281,6 @@
   <data name="actionsGroup.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 80</value>
   </data>
-  <data name="&gt;&gt;pluginsList.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="updateAvilableLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 13</value>
   </data>
@@ -298,9 +292,6 @@
   </data>
   <data name="&gt;&gt;actionsGroup.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="updateAvilableLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="pluginsList.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 51</value>
@@ -335,12 +326,15 @@
   <data name="actionsGroup.Location" type="System.Drawing.Point, System.Drawing">
     <value>324, 260</value>
   </data>
+  <data name="&gt;&gt;pluginVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="pluginDesc.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
-  <data name="pluginName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 20</value>
+  <data name="&gt;&gt;showInstalledOnlyCheck.Name" xml:space="preserve">
+    <value>showInstalledOnlyCheck</value>
   </data>
   <data name="&gt;&gt;Button1.Name" xml:space="preserve">
     <value>Button1</value>
@@ -363,8 +357,8 @@
   <data name="Button1.Location" type="System.Drawing.Point, System.Drawing">
     <value>433, 185</value>
   </data>
-  <data name="actionsGroup.Text" xml:space="preserve">
-    <value>Actions: </value>
+  <data name="updateAvilableLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;GroupBox1.Name" xml:space="preserve">
     <value>GroupBox1</value>
@@ -416,6 +410,9 @@
   </data>
   <data name="Label1.Text" xml:space="preserve">
     <value>Search: </value>
+  </data>
+  <data name="&gt;&gt;Label4.Parent" xml:space="preserve">
+    <value>GroupBox1</value>
   </data>
   <data name="&gt;&gt;pluginName.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -501,8 +498,8 @@
   <data name="includeInstalledLabel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;Label4.Parent" xml:space="preserve">
-    <value>GroupBox1</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>576, 419</value>
   </data>
   <data name="Label2.Text" xml:space="preserve">
     <value>Plugin Name: </value>
@@ -531,8 +528,11 @@
   <data name="&gt;&gt;pluginDesc.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;updateAvilableLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="pluginName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 20</value>
+  </data>
+  <data name="actionsGroup.Text" xml:space="preserve">
+    <value>Actions: </value>
   </data>
   <data name="pluginName.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -552,11 +552,11 @@
   <data name="&gt;&gt;updateAvilableLabel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;showInstalledOnlyCheck.Name" xml:space="preserve">
-    <value>showInstalledOnlyCheck</value>
+  <data name="GroupBox1.Text" xml:space="preserve">
+    <value>Plugin Info: </value>
   </data>
-  <data name="Label3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="includeInstalledLabel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;Button1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -568,6 +568,6 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>pt-BR</value>
+    <value>hu</value>
   </metadata>
 </root>

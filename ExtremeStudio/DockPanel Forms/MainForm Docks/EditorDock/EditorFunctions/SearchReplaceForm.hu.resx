@@ -117,44 +117,92 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="findCloseBtn.Text" xml:space="preserve">
+    <value>Bezárás</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="linenumberRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 17</value>
+  <data name="searchFindAllBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 56</value>
   </data>
-  <data name="linenumberRadio.Text" xml:space="preserve">
-    <value>Número da linha</value>
+  <data name="searchFindAllBtn.Text" xml:space="preserve">
+    <value>Összes megkeresése a jelenlegi dokumentumban</value>
   </data>
-  <data name="positionRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 17</value>
+  <data name="searchCountBtn.Text" xml:space="preserve">
+    <value>Szám</value>
   </data>
-  <data name="positionRadio.Text" xml:space="preserve">
-    <value>Posição</value>
+  <data name="searchFindBtn.Text" xml:space="preserve">
+    <value>Következő keresése</value>
   </data>
-  <data name="theLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 13</value>
+  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
   </data>
-  <data name="theLabel.Text" xml:space="preserve">
-    <value>Número da linha: </value>
+  <data name="Label1.Text" xml:space="preserve">
+    <value>Mit keres: </value>
   </data>
-  <data name="GoBtn.Text" xml:space="preserve">
-    <value>&amp;Ir</value>
+  <data name="TabPage1.Text" xml:space="preserve">
+    <value>Keresés</value>
   </data>
-  <data name="CancelBtn.Text" xml:space="preserve">
-    <value>$Cancelar</value>
+  <data name="Label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 13</value>
   </data>
-  <data name="curLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 13</value>
+  <data name="Label3.Text" xml:space="preserve">
+    <value>Cserél: </value>
   </data>
-  <data name="curLabel.Text" xml:space="preserve">
-    <value>Atual: 0</value>
+  <data name="replaceCloseBtn.Text" xml:space="preserve">
+    <value>Bezárás</value>
   </data>
-  <data name="maxLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
+  <data name="replaceReplaceAllBtn.Text" xml:space="preserve">
+    <value>Összes cseréje</value>
   </data>
-  <data name="maxLabel.Text" xml:space="preserve">
-    <value>Máximo: 0</value>
+  <data name="replaceReplaceBtn.Text" xml:space="preserve">
+    <value>Cserél</value>
+  </data>
+  <data name="replaceFindNextBtn.Text" xml:space="preserve">
+    <value>Következő keresése</value>
+  </data>
+  <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="Label2.Text" xml:space="preserve">
+    <value>Mit keres: </value>
+  </data>
+  <data name="TabPage2.Text" xml:space="preserve">
+    <value>Cserél</value>
+  </data>
+  <data name="matchWholeWordCheck.Text" xml:space="preserve">
+    <value>Teljes szó keresése</value>
+  </data>
+  <data name="matchCaseCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 17</value>
+  </data>
+  <data name="matchCaseCheck.Text" xml:space="preserve">
+    <value>Kis- és nagybetűk megkülönböztetése</value>
+  </data>
+  <data name="inSelCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 17</value>
+  </data>
+  <data name="inSelCheck.Text" xml:space="preserve">
+    <value>Kijelölés</value>
+  </data>
+  <data name="searchRegexRadio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 17</value>
+  </data>
+  <data name="searchRegexRadio.Text" xml:space="preserve">
+    <value>Reguláris kifejezés</value>
+  </data>
+  <data name="searchNormalRadio.Text" xml:space="preserve">
+    <value>Normál</value>
+  </data>
+  <data name="GroupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>223, 230</value>
+  </data>
+  <data name="GroupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>266, 63</value>
+  </data>
+  <data name="GroupBox1.Text" xml:space="preserve">
+    <value>Keresési mód</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Ir para</value>
+    <value>Keresés &amp; Csere</value>
   </data>
 </root>

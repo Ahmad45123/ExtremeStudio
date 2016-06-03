@@ -119,42 +119,42 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="linenumberRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 17</value>
+    <value>74, 17</value>
   </data>
   <data name="linenumberRadio.Text" xml:space="preserve">
-    <value>Número da linha</value>
+    <value>Sor száma</value>
   </data>
   <data name="positionRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 17</value>
+    <value>61, 17</value>
   </data>
   <data name="positionRadio.Text" xml:space="preserve">
-    <value>Posição</value>
+    <value>Pozíció</value>
   </data>
   <data name="theLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 13</value>
+    <value>62, 13</value>
   </data>
   <data name="theLabel.Text" xml:space="preserve">
-    <value>Número da linha: </value>
+    <value>Sor száma: </value>
+  </data>
+  <data name="valueTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>77, 33</value>
+  </data>
+  <data name="valueTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>259, 20</value>
   </data>
   <data name="GoBtn.Text" xml:space="preserve">
-    <value>&amp;Ir</value>
+    <value>&amp;Ugrás</value>
   </data>
   <data name="CancelBtn.Text" xml:space="preserve">
-    <value>$Cancelar</value>
+    <value>&amp;Mégse</value>
   </data>
   <data name="curLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 13</value>
+    <value>60, 13</value>
   </data>
   <data name="curLabel.Text" xml:space="preserve">
-    <value>Atual: 0</value>
-  </data>
-  <data name="maxLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
-  </data>
-  <data name="maxLabel.Text" xml:space="preserve">
-    <value>Máximo: 0</value>
+    <value>Jelenlegi: 0</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Ir para</value>
+    <value>Ugrás</value>
   </data>
 </root>
