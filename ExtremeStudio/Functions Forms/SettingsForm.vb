@@ -269,6 +269,7 @@ Public Class SettingsForm
         If File.Exists(MainForm.ApplicationFiles + "\configs\lang.cfg") Then 
             File.Delete(MainForm.ApplicationFiles + "\configs\lang.cfg")
             MsgBox(translations.SettingsForm_ResetLangBtn_Click_LocalizationSettingsDeleted)
+            Application.Exit()
         End If
     End Sub
 #End Region
