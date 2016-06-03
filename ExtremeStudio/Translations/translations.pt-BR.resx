@@ -325,4 +325,7 @@ NOTA: INCLUA A EXTENSÃO!</value>
   <data name="AutoCompleteItemEx_New_ReturnTag" xml:space="preserve">
     <value>Etiqueta de retorno: </value>
   </data>
+  <data name="SettingsForm_ResetLangBtn_Click_LocalizationSettingsDeleted" xml:space="preserve">
+    <value>As configurações de localização foram excluídas com êxito, por favor, reinicie o aplicativo e a janela de idiomas irá aparecer.</value>
+  </data>
 </root>

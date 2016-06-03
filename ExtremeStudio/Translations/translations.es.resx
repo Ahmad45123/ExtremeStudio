@@ -323,4 +323,7 @@ NOTA: INCLUIR LA EXTENSIÓN!</value>
   <data name="AutoCompleteItemEx_New_ReturnTag" xml:space="preserve">
     <value>Tag de devolución: </value>
   </data>
+  <data name="SettingsForm_ResetLangBtn_Click_LocalizationSettingsDeleted" xml:space="preserve">
+    <value>Las opciones de localización han sido eliminadas correctamente, reinicia la aplicación y el menú de lenguaje aparecerá.</value>
+  </data>
 </root>

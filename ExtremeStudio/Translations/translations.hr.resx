@@ -324,4 +324,7 @@ NAPOMENA: UKLJUČITE PROŠIRENJE!</value>
   <data name="AutoCompleteItemEx_New_ReturnTag" xml:space="preserve">
     <value>Oznaka povratka: </value>
   </data>
+  <data name="SettingsForm_ResetLangBtn_Click_LocalizationSettingsDeleted" xml:space="preserve">
+    <value>Lokalizacijske postavke su uspješno obrisane, molimo resetirajte aplikacija i jezični dijalog će se pokazati.</value>
+  </data>
 </root>
