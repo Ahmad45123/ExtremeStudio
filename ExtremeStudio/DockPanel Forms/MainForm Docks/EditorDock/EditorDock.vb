@@ -663,10 +663,17 @@ Public Class EditorDock
         Enums
         PublicVars
     End Enum
-    Private Sub DoColor(startPos As Integer, ByVal code As String, rgx As String, style As Styles, Optional isMultiLine As Boolean = False)
+    Private Sub DoColor(startPos As Integer, ByVal code As String, rgx As String, reqstyle As Styles, Optional isMultiLine As Boolean = False)
         For Each mtch As Match In Regex.Matches(code, rgx, IIf(isMultiLine, RegexOptions.Multiline, Nothing))
-            Editor.StartStyling(mtch.Index + startPos)
-            Editor.SetStyling(mtch.Length, style)
+
+            'Make sure target isn't comment or anything...
+            Dim targetStartStyle = Editor.GetStyleAt(mtch.Index + startPos)
+            Dim targetEndStyle = Editor.GetStyleAt(mtch.Index + startPos + mtch.Length - 1)
+            
+            If targetStartStyle = Style.Cpp.Identifier And targetEndStyle = Style.Cpp.Identifier Then
+                Editor.StartStyling(mtch.Index + startPos)
+                Editor.SetStyling(mtch.Length, reqstyle)
+            End If
         Next
     End Sub
 
