@@ -132,12 +132,24 @@
   <data name="Editor.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="RefreshWorker.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;Editor.Name" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="&gt;&gt;Editor.Type" xml:space="preserve">
+    <value>ScintillaNET.Scintilla, ScintillaNET, Version=3.5.6.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Editor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Editor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="RefreshWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>32, 20</value>
-  </data>
-  <data name="AutoCompleteMenu.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="AutoCompleteMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>164, 20</value>
-  </data>
+  </metadata>
   <data name="AutoCompleteMenu.Colors" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAEdBdXRvY29tcGxldGVNZW51LCBWZXJzaW9uPTEuMy40LjAsIEN1
@@ -155,15 +167,15 @@
         +P////z///8KAAAAAAAAAACkAAEAAff////8////CgAAAAAAAAAAfwABAAs=
 </value>
   </data>
-  <data name="ACImageList.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="ACImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>326, 20</value>
-  </data>
+  </metadata>
   <data name="ACImageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABW
-        CQAAAk1TRnQBSQFMAgEBAgEAAbgBAAG8AQABEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CQAAAk1TRnQBSQFMAgEBAgEAAcQBAAHEAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -202,15 +214,15 @@
         AgAB6gMAAUMwAAGtBgAB8ALvAZIB7QPsAesCbQHqLQAB/wcAAfQB7AEOagABQgFNAT4HAAE+AwABKAMA
         AUADAAEQAwABAQEAAQEFAAGAFwAD/wEAAf4BfwLDBAAB+AEfAcEBwAQAAfABBwHBAcAEAAHAAQcB4QGA
         BAABgAEAAfMBjAQAAYABAAHxAY8EAAGAAQAB+QGPBQABAQH5AY8EAAGAAQEB+QGPBAABgAEDAfkBjwQA
-        AcMBgwG5Ac8EAAH/AYcBmQHPBAAB/wHHAYABAQQAAf8B7wHAAQEEAAH/Ae8B4AEBBAAE/xoACw==
+        AcMBgwG5Ac8EAAH/AYcBmQHPBAAB/wHHAYABAQQAAf8B7wHAAQEEAAH/Ae8B4AEBBAAE/wQACw==
 </value>
   </data>
-  <data name="colorizingWorker.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="colorizingWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>445, 20</value>
-  </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
@@ -219,5 +231,35 @@
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
+  </data>
+  <data name="&gt;&gt;RefreshWorker.Name" xml:space="preserve">
+    <value>RefreshWorker</value>
+  </data>
+  <data name="&gt;&gt;RefreshWorker.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AutoCompleteMenu.Name" xml:space="preserve">
+    <value>AutoCompleteMenu</value>
+  </data>
+  <data name="&gt;&gt;AutoCompleteMenu.Type" xml:space="preserve">
+    <value>AutocompleteMenuNS.AutocompleteMenu, AutocompleteMenu, Version=1.3.4.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ACImageList.Name" xml:space="preserve">
+    <value>ACImageList</value>
+  </data>
+  <data name="&gt;&gt;ACImageList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colorizingWorker.Name" xml:space="preserve">
+    <value>colorizingWorker</value>
+  </data>
+  <data name="&gt;&gt;colorizingWorker.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>EditorDock</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>WeifenLuo.WinFormsUI.Docking.DockContent, WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481</value>
   </data>
 </root>

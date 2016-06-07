@@ -133,6 +133,10 @@ Public Class EditorDock
 
     <Localizable(False)>
     Public Sub OnSetsChange()
+
+        'Exit if the control is disposed
+        If Editor.IsDisposed = True Then Exit Sub
+
         'Setup font.
         Editor.StyleResetDefault()
         Editor.StyleClearAll()
