@@ -139,10 +139,10 @@ Public Class EditorDock
 
         'Setup font.
         Editor.StyleResetDefault()
+        DoStyle(Style.Default, SettingsForm.ColorsInfo.SDefault)
         Editor.StyleClearAll()
 
         'Setup Default CPP similar Colors: 
-        DoStyle(Style.Default, SettingsForm.ColorsInfo.SDefault)
         DoStyle(Style.Cpp.Number, SettingsForm.ColorsInfo.SInteger)
         DoStyle(Style.Cpp.String, SettingsForm.ColorsInfo.SString)
         DoStyle(Style.Cpp.Character, SettingsForm.ColorsInfo.SString)
