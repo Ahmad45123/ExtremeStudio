@@ -186,6 +186,10 @@ Public Class EditorDock
         Editor.Styles(Style.BraceBad).ForeColor = Color.Red
         Editor.Styles(Style.BraceLight).BackColor = Color.Gray
 
+        ' Instruct the lexer to calculate folding
+        Editor.SetProperty("fold", "1")
+        Editor.SetProperty("fold.compact", "1")
+
         ' Configure folding markers with respective symbols.
         Editor.Markers(Marker.Folder).Symbol = MarkerSymbol.BoxPlus
         Editor.Markers(Marker.FolderOpen).Symbol = MarkerSymbol.BoxMinus
