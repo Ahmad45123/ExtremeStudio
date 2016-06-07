@@ -513,7 +513,7 @@ Public Class EditorDock
             Dim indent As Match = Regex.Match(curLineText, "^[ \t]*")
             e.Text = (e.Text + indent.Value)
             If Regex.IsMatch(curLineText, "{\s*$") Then
-                e.Text = (e.Text + vbTab)
+                e.Text = (e.Text + "    ")
             End If
         End If
     End Sub
@@ -523,7 +523,7 @@ Public Class EditorDock
         If e.Char = 125 Then  'The '}' char.
             Dim curLine As Integer = Editor.LineFromPosition(Editor.CurrentPosition)
             If Editor.Lines(curLine).Text.Trim() = "}" Then 'Check whether the bracket is the only thing on the line.. For cases like "if() { }".
-                Editor.Lines(curLine).Indentation -= 4
+                Editor.Lines(curLine).Indentation -= Editor.TabWidth
             End If
         End If
     End Sub
@@ -742,7 +742,7 @@ Public Class EditorDock
     Private Sub Editor_UpdateStyle(sender As Object, e As UpdateUIEventArgs) Handles Editor.UpdateUI
         Dim startPos = Editor.Lines(Editor.FirstVisibleLine).Position
         Dim endPos = Editor.Lines(Editor.FirstVisibleLine + Editor.LinesOnScreen).EndPosition
-        For Each inc In CodeParts.FlattenIncludes()
+        For Each inc In CodeParts.FlattenIncludes().ToList()
             ReColorize(inc, startPos, endPos)
         Next
     End Sub
