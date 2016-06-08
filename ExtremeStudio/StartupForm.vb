@@ -56,16 +56,16 @@ Public Class StartupForm
         AddHandler pathTextBox.PathText.TextChanged, AddressOf pathTextBox_TextChanged
         
         'If the interop files don't exist, Extract the files.
-        If IsFirst And (Not My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Or Not My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/x86/SQLite.Interop.dll")) Then
-            'Remove old.
-            If My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Then My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/x64/SQLite.Interop.dll")
-            If My.Computer.FileSystem.FileExists(Application.StartupPath + "/x86/SQLite.Interop.dll") Then My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/x86/SQLite.Interop.dll")
+        'If IsFirst And (Not My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Or Not My.Computer.FileSystem.FileExists(MainForm.ApplicationFiles + "/x86/SQLite.Interop.dll")) Then
+        '    'Remove old.
+        '    If My.Computer.FileSystem.FileExists(Application.StartupPath + "/x64/SQLite.Interop.dll") Then My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/x64/SQLite.Interop.dll")
+        '    If My.Computer.FileSystem.FileExists(Application.StartupPath + "/x86/SQLite.Interop.dll") Then My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/x86/SQLite.Interop.dll")
 
-            'Extract New
-            My.Computer.FileSystem.WriteAllBytes(Application.StartupPath + "/interop.zip", My.Resources.SQLite_Interop, False) 'Write the file.
-            ExtremeCore.FastZipUnpack(Application.StartupPath + "/interop.zip", Application.StartupPath) 'Extract it.
-            My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/interop.zip") 'Delete the temp file.
-        End If
+        '    'Extract New
+        '    My.Computer.FileSystem.WriteAllBytes(Application.StartupPath + "/interop.zip", My.Resources.SQLite_Interop, False) 'Write the file.
+        '    ExtremeCore.FastZipUnpack(Application.StartupPath + "/interop.zip", Application.StartupPath) 'Extract it.
+        '    My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/interop.zip") 'Delete the temp file.
+        'End If
 
         'Create needed folders and files.
         If Not My.Computer.FileSystem.DirectoryExists(MainForm.ApplicationFiles + "/cache") Then
