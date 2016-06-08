@@ -521,16 +521,6 @@ Public Class EditorDock
             End If
         End If
     End Sub
-
-    <Localizable(False)>
-    Private Sub Editor_CharAdded(sender As Object, e As CharAddedEventArgs) Handles Editor.CharAdded
-        If e.Char = 125 Then  'The '}' char.
-            Dim curLine As Integer = Editor.LineFromPosition(Editor.CurrentPosition)
-            If Editor.Lines(curLine).Text.Trim() = "}" Then 'Check whether the bracket is the only thing on the line.. For cases like "if() { }".
-                Editor.Lines(curLine).Indentation -= Editor.TabWidth
-            End If
-        End If
-    End Sub
 #End Region
 
 #Region "SavePoints"
@@ -593,28 +583,6 @@ Public Class EditorDock
             _currentCallTipItm = itm
 
             CallTipMarkCurrentPar(_currentCallTipItm)
-        End If
-    End Sub
-
-    Private Sub CallTip_Editor_CharAdded(sender As Object, e As CharAddedEventArgs) Handles Editor.CharAdded
-        If e.Char = 44 Then  'The ',' char.
-            If _isCallTipShown And TypeOf (_currentCallTipItm) Is AutoCompleteItemEx Then
-                CallTipMarkCurrentPar(_currentCallTipItm)
-            End If
-        ElseIf e.Char = 13 Then 'If he presses enter, Hide the calltip.
-            If _isCallTipShown Then
-                _isCallTipShown = False
-                _currentCallTipItm = Nothing
-            End If
-        End If
-    End Sub
-
-    <Localizable(False)>
-    Private Sub CallTip_Editor_BeforeDelete(sender As Object, e As ModificationEventArgs) Handles Editor.Delete
-        If _isCallTipShown And TypeOf (_currentCallTipItm) Is AutoCompleteItemEx Then
-            If e.Text.Contains(",") Then
-                CallTipMarkCurrentPar(_currentCallTipItm)
-            End If
         End If
     End Sub
 
@@ -897,6 +865,29 @@ Public Class EditorDock
             'Clear
             _foundItemFile = ""
             _foundItem = New KeyValuePair(Of Integer,Integer)(0, 0)
+        End If
+    End Sub
+
+    Private Sub CallTip_Editor_BeforeDelete(sender As Object, e As ModificationEventArgs) Handles Editor.Delete
+
+    End Sub
+
+    Private Sub Editor_CharAdded(sender As Object, e As CharAddedEventArgs) Handles Editor.CharAdded
+
+    End Sub
+#End Region
+
+#Region "Built In ColorPicker"
+    Dim WithEvents _clrPicker As ThemeColorPickerWindow
+
+    <Localizable(False)>
+    Private Sub ColorPicker_CharAdded(sender As Object, e As CharAddedEventArgs) Handles Editor.CharAdded
+        Dim line as String = Editor.Lines(Editor.CurrentLine).Text.Replace(vbCrLf, "")
+        If Regex.IsMatch(line, "#define\s+(COLOR|COLOUR)_.+\s+$") Then
+            Dim loc As Point = Editor.PointToScreen(New Point(Editor.PointXFromPosition(Editor.CurrentPosition), Editor.PointYFromPosition(Editor.CurrentPosition)))
+            loc.Y += Editor.Font.Height
+            _clrPicker = New ThemeColorPickerWindow(loc, FormBorderStyle.None, ThemeColorPickerWindow.Action.CloseWindow, ThemeColorPickerWindow.Action.CloseWindow)
+            _clrPicker.Show()
         End If
     End Sub
 #End Region
