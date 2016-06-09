@@ -16,7 +16,7 @@
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Users\Johny\Documents\GitHub\esfiles\latestProg\</PublishUrl>
+    <PublishUrl>C:\Users\Gasser Mamdouh\Documents\GitHub\esfiles\latestProg\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -28,15 +28,15 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://johnymac.github.io/esfiles/latestProg/</InstallUrl>
     <UpdateUrl>http://johnymac.github.io/esfiles/latestProg/</UpdateUrl>
-    <SupportUrl>http://forum.sa-mp.com/showthread.php%3ft=532630</SupportUrl>
-    <ErrorReportUrl>http://forum.sa-mp.com/showthread.php%3ft=532630</ErrorReportUrl>
+    <SupportUrl>http://forum.sa-mp.com/showthread.php%3ft=608037</SupportUrl>
+    <ErrorReportUrl>http://forum.sa-mp.com/showthread.php%3ft=608037</ErrorReportUrl>
     <TargetCulture>en</TargetCulture>
     <ProductName>ExtremeStudio</ProductName>
     <PublisherName>Ahmed Mamdouh</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>12</ApplicationRevision>
+    <ApplicationRevision>14</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
