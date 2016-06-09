@@ -900,4 +900,25 @@ Public Class EditorDock
         End If
     End Sub
 #End Region
+
+#Region "ColorPicker"
+    Dim WithEvents _clrPicker As ThemeColorPickerWindow
+
+    <Localizable(False)>
+    Private Sub ColorPicker_CharAdded(sender As Object, e As CharAddedEventArgs) Handles Editor.CharAdded
+        Dim line as String = Editor.Lines(Editor.CurrentLine).Text.Replace(vbCrLf, "")
+        If Regex.IsMatch(line, "#define\s+(?:COLOR|COLOUR)_(?:[^\s]+)\s+$") Then
+            Dim loc As Point = Editor.PointToScreen(New Point(Editor.PointXFromPosition(Editor.CurrentPosition), Editor.PointYFromPosition(Editor.CurrentPosition) + Editor.Font.Height))
+            _clrPicker = New ThemeColorPickerWindow(loc, FormBorderStyle.None, ThemeColorPickerWindow.Action.CloseWindow, ThemeColorPickerWindow.Action.CloseWindow)
+            _clrPicker.Show()
+        End If
+    End Sub
+
+    <Localizable(False)>
+    Private Sub _clrPickerChosen(sender As Object, e As ColorSelectedArg) Handles _clrPicker.ColorSelected
+        Editor.InsertText(Editor.CurrentPosition, ColorToHex(e.Color))
+        Editor.CurrentPosition += ColorToHex(e.Color).Length
+        Editor.AnchorPosition += ColorToHex(e.Color).Length
+    End Sub
+#End Region
 End Class

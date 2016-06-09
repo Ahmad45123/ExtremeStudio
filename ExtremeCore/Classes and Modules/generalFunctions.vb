@@ -1,4 +1,6 @@
-﻿Imports System.IO
+﻿Imports System.ComponentModel
+Imports System.Drawing
+Imports System.IO
 Imports System.Net
 Imports System.Windows.Forms
 Imports ScintillaNET
@@ -185,4 +187,8 @@ Public Module GeneralFunctions
             Next
         End Using
     End Sub
+
+    Public Function ColorToHex(color As Color) As String
+	    Return [String].Format("0x{0}{1}{2}{3}", If(color.A.ToString("X").Length = 1, [String].Format("0{0}", color.A.ToString("X")), color.A.ToString("X")), If(color.R.ToString("X").Length = 1, [String].Format("0{0}", color.R.ToString("X")), color.R.ToString("X")), If(color.G.ToString("X").Length = 1, [String].Format("0{0}", color.G.ToString("X")), color.G.ToString("X")), If(color.B.ToString("X").Length = 1, [String].Format("0{0}", color.B.ToString("X")), color.B.ToString("X")))
+    End Function
 End Module
