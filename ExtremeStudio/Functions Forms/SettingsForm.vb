@@ -57,14 +57,6 @@ Public Class SettingsForm
     'The main colors info: 
     Public ColorsInfo As New SyntaxInfo
 
-    'This is to avoid to Reload the colors when its already loaded and no mods are done.. 
-    Public ReadOnly Property HasColorsBeenLoadedBefore As Boolean
-        Get
-            Return _hasColorsFinished
-        End Get
-    End Property
-    Dim _hasColorsFinished As Boolean = False
-
     Public Event OnColorsSettingsChange()
 
     Private Sub SettingsForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -121,7 +113,6 @@ Public Class SettingsForm
         Dim configHandler As New ConfigsHandler(_configDirPath + "/themeInfo.json", My.Resources.defaultThemeInfo)
         ColorsInfo = configHandler("Colors").ToObject(Of SyntaxInfo)
         colorsSettings.SelectedObject = ColorsInfo
-        If _hasColorsFinished = False Then _hasColorsFinished = True
         RaiseEvent OnColorsSettingsChange()
     End Sub
 #End Region

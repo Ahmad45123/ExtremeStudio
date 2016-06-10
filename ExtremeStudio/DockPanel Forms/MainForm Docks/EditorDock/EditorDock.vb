@@ -221,9 +221,8 @@ Public Class EditorDock
         AddHandler SettingsForm.OnColorsSettingsChange, AddressOf OnSetsChange
 
         'ReLoad data.
-        If SettingsForm.HasColorsBeenLoadedBefore = False Then
-            SettingsForm.ReloadInfoAll()
-        End If
+        SettingsForm.IsGlobal = False
+        SettingsForm.ReloadInfoAll()
 
         'Call the function.
         OnSetsChange()
