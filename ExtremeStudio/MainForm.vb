@@ -43,12 +43,12 @@ Public Class MainForm
         Dim newEditor As New EditorDock
         newEditor.Text = Path.GetFileName(targetPath) + IIf(isExternal, " [EXTERNAL]", "")
         newEditor.Editor.Tag = targetPath
-        newEditor.Editor.Text = My.Computer.FileSystem.ReadAllText(targetPath)
+        newEditor.Editor.Text = File.ReadAllText(targetPath, Encoding.Default)
         newEditor.Show(MainDock)
         newEditor.Editor.SetSavePoint() 'Set that all data has been saved.
     End Sub
     Public Sub SaveFile(editor As Scintilla)
-        File.WriteAllText(editor.Tag, editor.Text, New UTF8Encoding(False))
+        File.WriteAllText(editor.Tag, editor.Text, Encoding.Default)
         editor.SetSavePoint() 'Set as un-modified.
     End Sub
 #End Region
