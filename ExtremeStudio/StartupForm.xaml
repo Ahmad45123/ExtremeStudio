@@ -1,0 +1,77 @@
+﻿<controls:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:controls1="clr-namespace:ExtremeStudio.Core.Controls;assembly=ExtremeStudio.Core"
+        xmlns:translations="clr-namespace:ExtremeStudio.translations"
+        xmlns:extremeStudio="clr-namespace:ExtremeStudio"
+        x:Class="ExtremeStudio.StartupForm"
+        mc:Ignorable="d"
+        Title="ExtremeStudio" Height="365" Width="893.421" ResizeMode="NoResize"
+        Loaded="StartupForm_Loaded" Closed="StartupForm_FormClosed">
+
+    <Grid>
+        <Menu x:Name="menu" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="885" Grid.ColumnSpan="2">
+            <MenuItem Header="{x:Static translations:strings.StartupForm_OpenGlobalSettingsMenuItem_Content}" Height="34" Click="OpenGlobalSettingsToolStripMenuItem_Click"/>
+        </Menu>
+        <TabControl x:Name="MainTabControl" Height="297" Margin="0,39,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="887" SelectionChanged="MainTabControl_SelectionChanged">
+            <TabItem x:Name="NewProjectTabItem" Header="{x:Static translations:strings.StartupForm_NewProjectTabItem_Header}">
+                <Grid>
+                    <Grid Margin="0,0,0,28">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Margin="10,15,10,190" Text="{x:Static translations:strings.StartupForm_ProjectNameTextBlock_Text}"/>
+                        <TextBox Grid.Column="1" x:Name="ProjectNameTextBox" Margin="0,10,10,184" TextChanged="ProjectNameTextBox_TextChanged"/>
+
+                        <TextBlock Grid.Column="0" Margin="10,51,10,157" Text="{x:Static translations:strings.StartupForm_SAMPVersionTextBlock_Text}" />
+                        <ListBox Grid.Column="1" x:Name="SampVersionListBox" Margin="0,45,10,59" BorderBrush="{DynamicResource ControlBorderBrush}" BorderThickness="1" />
+
+                        <TextBlock Grid.Column="0" Margin="10,183,10,25" Text="{x:Static translations:strings.StartupForm_ProjectLocationTextBlock_Text}" Height="16"/>
+                        <CheckBox Grid.Column="1" x:Name="PreExistFilesCheckBox" Content="{x:Static translations:strings.StartupForm_PreExistFilesCheckBox_Content}" Margin="0,170,0,36" Height="18" Checked="preExistCheck_CheckedChanged" />
+                        <controls1:PathTextBox Grid.Column="1" x:Name="ProjectLocationTextBox" Height="28" Margin="0,193,0,3" IsDirectory="True" TheDesc="{x:Static translations:strings.StartupForm_ProjectLocationTextBox_TheDesc}"/>
+                    </Grid>
+                    <Button x:Name="button1" Content="{x:Static translations:strings.StartupForm_CreateProjectBtn_Content}" Margin="10,224,10,0" VerticalAlignment="Top" Width="861" Style="{DynamicResource AccentedSquareButtonStyle}" Height="28" Click="CreateProjectBtn_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="LoadProjectTabItem" Header="{x:Static translations:strings.StartupForm_LoadProjectTabItem_Header}">
+                <Grid>
+                    <Grid Margin="0,0,0,63">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Margin="10,15,10,150" Text="{x:Static translations:strings.StartupForm_LoadPrjDirTextBlock_Text}" />
+                        <controls1:PathTextBox Grid.Column="1" x:Name="LoadProjectProjectDirTextBox" Margin="0,10,10,150" IsDirectory="True" TheDesc="{x:Static translations:strings.StartupForm_ProjectLocationTextBox_TheDesc}" />
+
+                        <TextBlock Grid.Column="0" Margin="10,72,10,93" Text="{x:Static translations:strings.StartupForm_LoadPrjNameTextBlock_Text}" />
+                        <TextBlock x:Name="ProjectNameTextBlock" Grid.Column="1" Margin="0,70,10,93" Text="" />
+
+                        <TextBlock Grid.Column="0" Margin="10,141,10,27" Text="{x:Static translations:strings.StartupForm_LoadPrjVersionTextBlock_Text}" />
+                        <TextBlock x:Name="ProjectVersionTextBlock" Grid.Column="1" Margin="0,139,10,27" Text="" />
+
+
+                    </Grid>
+                    <Button x:Name="LoadProjectButton" Content="{x:Static translations:strings.StartupForm_LoadProjectButton_Content}" Margin="10,194,10,5" Style="{DynamicResource AccentedSquareButtonStyle}" Click="loadProjectBtn_Click" />
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="RecentTabItem"  Header="{x:Static translations:strings.StartupForm_RecemtTabItem_Header}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListBox Grid.Column="0" x:Name="RecentListBox" Margin="10" BorderBrush="{DynamicResource ControlBorderBrush}" BorderThickness="1" MouseDoubleClick="recentListBox_DoubleClick" />
+                    <Button Grid.Column="1" x:Name="LoadSelectedButton" Content="{x:Static translations:strings.StartupForm_LoadSelectedButton_Content}" Margin="0,10,10,195" Click="LoadRecentProjectButton_Click" />
+                    <Button Grid.Column="1" x:Name="DeleteSelectedButton" Content="{x:Static translations:strings.StartupForm_DeleteSelectedButton_Content}" Margin="0,62,10,143" Click="DeleteRecentProject_Click" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</controls:MetroWindow>
+
