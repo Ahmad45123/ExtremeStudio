@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interactivity;
 using System.Xml;
+using ExtremeStudio.Classes;
 using ExtremeStudio.Core.Modules;
 using ExtremeStudio.translations;
 using MahApps.Metro.Controls;

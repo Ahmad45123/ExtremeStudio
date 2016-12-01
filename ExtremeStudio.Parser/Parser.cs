@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ExtremeParser;
 using ExtremeStudio.Core.Modules;
 using ExtremeStudio.Parser.Exceptions;
 using ExtremeStudio.Parser.Parsers;

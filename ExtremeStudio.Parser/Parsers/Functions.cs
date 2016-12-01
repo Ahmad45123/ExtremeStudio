@@ -1,6 +1,5 @@
 using System;
 using System.Text.RegularExpressions;
-using ExtremeParser;
 using ExtremeStudio.Parser;
 using ExtremeStudio.Parser.Types;
 
