@@ -1,9 +1,9 @@
 using ExtremeStudio.ViewModels;
+using System;
+using System.Collections.Generic;
+using Caliburn.Micro;
 
 namespace ExtremeStudio {
-    using System;
-    using System.Collections.Generic;
-    using Caliburn.Micro;
 
     public class AppBootstrapper : BootstrapperBase {
         SimpleContainer _container;
@@ -12,7 +12,8 @@ namespace ExtremeStudio {
             Initialize();
         }
 
-        protected override void Configure() {
+        protected override void Configure()
+        {
             _container = new SimpleContainer();
 
             _container.Singleton<IWindowManager, WindowManager>();
@@ -21,11 +22,7 @@ namespace ExtremeStudio {
         }
 
         protected override object GetInstance(Type service, string key) {
-            var instance = _container.GetInstance(service, key);
-            if (instance != null)
-                return instance;
-
-            throw new InvalidOperationException("Could not locate any instances.");
+            return _container.GetInstance(service, key);
         }
 
         protected override IEnumerable<object> GetAllInstances(Type service) {

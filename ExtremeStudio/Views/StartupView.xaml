@@ -5,13 +5,99 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ExtremeStudio.Views"
       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-      mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="StartupPage">
+      xmlns:cal="http://www.caliburnproject.org"
+      xmlns:Translations="clr-namespace:ExtremeStudio.Core.Translations;assembly=ExtremeStudio.Core"
+      mc:Ignorable="d" d:DesignWidth="870.677"
+      Title="ExtremeStudio" Height="319.174" MaxHeight="319" MaxWidth="870">
 
     <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Height="40" Margin="84,91,0,0" VerticalAlignment="Top" Width="127"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="88*"/>
+            <RowDefinition Height="135*"/>
+            <RowDefinition Height="76*"/>
+            <RowDefinition Height="57*"/>
+        </Grid.RowDefinitions>
+        <TabControl Grid.RowSpan="4">
+            <TabItem Header="{x:Static Translations:StartupView.NewProject_Header}">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="{x:Static Translations:StartupView.NewProject_ProjectNameLabel}" Margin="5"/>
+                    <Label Content="{x:Static Translations:StartupView.NewProject_SAMPVersionLabel}" Grid.Row="1" Grid.Column="0" Margin="5"/>
+                    <Label Content="{x:Static Translations:StartupView.NewProject_ProjectLocationlabel}" Grid.Row="2" Grid.Column="0" Margin="5"/>
+                    <TextBox x:Name="NewProject_ProjectNameTextBox" TextWrapping="Wrap" Grid.Row="0"
+                             Grid.Column="1" Margin="5"/>
+                    <ListBox x:Name="NewProjet_SampVersionListBox" Grid.Column="1" Grid.Row="1" Margin="5" Height="100"/>
+                    <Grid Grid.Column="1" Margin="0" Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <CheckBox x:Name="NewProject_CreateFromPreExisting" Content="{x:Static Translations:StartupView.NewProject_CreateFromPreExisting}" Grid.Column="1" Margin="0,0,5,5"/>
+                        <TextBox x:Name="NewProject_PathTextBox" TextWrapping="Wrap" Grid.Row="1" Padding="0"/>
+                        <Button x:Name="NewProject_BrowseButton" Content="..." Grid.Row="1" Grid.Column="1" Margin="5,0"/>
 
+                    </Grid>
+                    <Button x:Name="NewProject_CreateProject" Content="{x:Static Translations:StartupView.NewProject_CreateProject}" Grid.Column="1" Grid.Row="3" Margin="0,10,5,5"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="{x:Static Translations:StartupView.LoadProject_Header}">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Content="{x:Static Translations:StartupView.LoadProject_ProjectVersionLabel}" Grid.Row="2" Margin="5,10"/>
+                    <Label Grid.Row="0" Grid.Column="0"
+                           Content="{x:Static Translations:StartupView.LoadProject_ProjectDirLabel}" Margin="5,10"/>
+                    <Label Content="{x:Static Translations:StartupView.LoadProject_ProjectNameLabel}" Grid.Row="1"
+                           Grid.Column="0" Margin="5,10"/>
+                    <Label x:Name="LoadProject_ProjectNameLabel" Content="{x:Static Translations:StartupView.LoadProject_NoneLabel}" Grid.Row="1" Grid.Column="1" Margin="5,10"/>
+                    <Label x:Name="LoadProject_ProjectVersionLabel" Content="{x:Static Translations:StartupView.LoadProject_NoneLabel}" Grid.Row="2" Grid.Column="1" Margin="5,10"/>
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="LoadProject_ProjectPathTextBox" TextWrapping="Wrap" Margin="5"/>
+                        <Button x:Name="LoadProject_BrowseFolder" Content="..." Grid.Column="1" Margin="0,5,5,5"/>
+
+                    </Grid>
+                    <Button x:Name="LoadProject_LoadProjectButton" Content="Load Project" Grid.Column="1" Grid.Row="3" Margin="5,20"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="{x:Static Translations:StartupView.Recent_Header}">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="listBox" Margin="5"/>
+                    <StackPanel Grid.Column="1" Orientation="Vertical">
+                        <Button x:Name="Recent_LoadSelectedButton" Content="{x:Static Translations:StartupView.Recent_LoadSelectedButton}" Margin="5" Padding="10"/>
+                        <Button x:Name="Recent_DeleteSelectedButton" Content="{x:Static Translations:StartupView.Recent_DeleteSelectedButton}" Margin="5,0,5,5" Padding="10"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 
 </Controls:MetroWindow>
