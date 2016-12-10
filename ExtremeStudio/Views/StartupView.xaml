@@ -37,7 +37,7 @@
                     <Label Content="{x:Static Translations:StartupView.NewProject_ProjectLocationlabel}" Grid.Row="2" Grid.Column="0" Margin="5"/>
                     <TextBox x:Name="NewProjectProjectNameTextBox" TextWrapping="Wrap" Grid.Row="0"
                              Grid.Column="1" Margin="5" cal:Message.Attach="[Event TextChanged] = [Action OnNameTextBoxChange]"/>
-                    <ListBox x:Name="NewProjectSampVersionListBox" Grid.Column="1" Grid.Row="1" Margin="5" Height="100" SelectedItem="{Binding Path=VersionsListBoxSelectedItem, Mode=TwoWay}" SelectedIndex="{Binding Path=VersionsListBoxSelectedIndex, Mode=TwoWay}"/>
+                    <ListBox x:Name="NewProjectSampVersionListBox" Grid.Column="1" Grid.Row="1" Margin="5" Height="100" SelectedItem="{Binding Path=VersionsListBoxSelectedItem, Mode=TwoWay}" SelectedIndex="{Binding Path=VersionsListBoxSelectedIndex, Mode=TwoWay}" IsEnabled="{Binding Path=VersionsListBoxEnabled, Mode=TwoWay}"/>
                     <Grid Grid.Column="1" Margin="0" Grid.Row="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -80,11 +80,11 @@
                             <ColumnDefinition/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox x:Name="LoadProjectProjectPathTextBox" TextWrapping="Wrap" Margin="5"/>
+                        <TextBox x:Name="LoadProjectProjectPathTextBox" TextWrapping="Wrap" Margin="5" cal:Message.Attach="[Event TextChanged] = [Action OnLoadProjectPathTextBoxChanged]" IsReadOnly="True"/>
                         <Button x:Name="LoadProjectBrowseFolder" Content="..." Grid.Column="1" Margin="0,5,5,5"/>
 
                     </Grid>
-                    <Button x:Name="LoadProjectLoadProjectButton" Content="Load Project" Grid.Column="1" Grid.Row="3" Margin="5,20"/>
+                    <Button x:Name="LoadProjectLoadProjectButton" Content="Load Project" Grid.Column="1" Grid.Row="3" Margin="5,20" IsEnabled="{Binding Path=LoadProjectButtonEnabled, Mode=TwoWay}"/>
                 </Grid>
             </TabItem>
             <TabItem Header="{x:Static Translations:StartupView.Recent_Header}" cal:Message.Attach="[Event Loaded] = [Action OnRecentLoaded]">
@@ -93,7 +93,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="RecentListBox" Margin="5"/>
+                    <ListBox x:Name="RecentListBox" Margin="5" SelectedItem="{Binding Path=RecentListBoxSelectedItem, Mode=TwoWay}"/>
                     <StackPanel Grid.Column="1" Orientation="Vertical">
                         <Button x:Name="RecentLoadSelectedButton" Content="{x:Static Translations:StartupView.Recent_LoadSelectedButton}" Margin="5" Padding="10"/>
                         <Button x:Name="RecentDeleteSelectedButton" Content="{x:Static Translations:StartupView.Recent_DeleteSelectedButton}" Margin="5,0,5,5" Padding="10"/>

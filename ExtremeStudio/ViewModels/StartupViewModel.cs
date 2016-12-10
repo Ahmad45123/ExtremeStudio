@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using System.Reflection;
 using System.Windows.Interactivity;
 using ExtremeStudio.Classes;
+using ExtremeStudio.Core.Modules;
 using ExtremeStudio.Properties;
 
 namespace ExtremeStudio.ViewModels
@@ -25,7 +26,6 @@ namespace ExtremeStudio.ViewModels
         /// To know whether to extract the SQL files or not.
         /// </summary>
         public bool IsFirst = true;
-        private bool _isClosedProgram = false;
 
         private readonly IWindowManager _windowManager;
         private readonly IWindowsDialogs _dialogManager;
@@ -114,7 +114,12 @@ namespace ExtremeStudio.ViewModels
         public bool NewProjectCreateFromPreExisting
         {
             get { return _NewProjectCreateFromPreExisting; }
-            set { _NewProjectCreateFromPreExisting = value; NotifyOfPropertyChange(() => NewProjectCreateFromPreExisting); }
+            set
+            {
+                VersionsListBoxEnabled = !value;
+                _NewProjectCreateFromPreExisting = value;
+                NotifyOfPropertyChange(() => NewProjectCreateFromPreExisting);
+            }
         }
 
         private string _NewProjectPathTextBox;
@@ -136,6 +141,13 @@ namespace ExtremeStudio.ViewModels
             get { return _VersionsListBoxSelectedIndex; }
             set { _VersionsListBoxSelectedIndex = value; NotifyOfPropertyChange(() => VersionsListBoxSelectedIndex); }
         }
+        private bool _VersionsListBoxEnabled = true;
+        public bool VersionsListBoxEnabled
+        {
+            get { return _VersionsListBoxEnabled; }
+            set { _VersionsListBoxEnabled = value; NotifyOfPropertyChange(() => VersionsListBoxEnabled); }
+        }
+        
 
         //Actions
         private List<string> _versionListBoxDownloads = new List<string>();
@@ -181,7 +193,7 @@ namespace ExtremeStudio.ViewModels
             {
                 if (!Directory.Exists(newPath) | Core.Modules.GeneralFunctions.IsValidExtremeProject(newPath) | !Core.Modules.GeneralFunctions.IsValidSAMPFolder(newPath))
                 {
-                    _dialogCoordinator.ShowMessageAsync(this, "ERROR", "Invalid SAMP Folder Selected.");
+                    _dialogCoordinator.ShowMessageAsync(this, "", "Invalid SAMP Folder Selected.");
                     return;
                 }
             }
@@ -190,7 +202,7 @@ namespace ExtremeStudio.ViewModels
                 //Add to the path folder name.
                 if (Core.Modules.GeneralFunctions.FilenameIsOk(NewProjectProjectNameTextBox, false, 0) == false)
                 {
-                    _dialogCoordinator.ShowMessageAsync(this, "ERROR", "Invalid Name.");
+                    _dialogCoordinator.ShowMessageAsync(this, "", "Invalid Name.");
                     return;
                 }
                 newPath = Path.Combine(NewProjectPathTextBox, NewProjectProjectNameTextBox);
@@ -226,13 +238,13 @@ namespace ExtremeStudio.ViewModels
                     }
                     else
                     {
-                        _dialogCoordinator.ShowMessageAsync(this, "ERROR", "No SAMP version was selected.");
+                        _dialogCoordinator.ShowMessageAsync(this, "", "No SAMP version was selected.");
                         return;
                     }
                 }
                 else
                 {
-                    _dialogCoordinator.ShowMessageAsync(this, "ERROR", "The directory specified is invalid.");
+                    _dialogCoordinator.ShowMessageAsync(this, "", "The directory specified is invalid.");
                     return;
                 }
             }
@@ -248,7 +260,6 @@ namespace ExtremeStudio.ViewModels
             AddNewRecent(_currentProject.ProjectPath);
             //Add it to the recent list.
             _windowManager.ShowWindow(new MainViewModel());
-            _isClosedProgram = true;
             TryClose();
         }
 
@@ -295,10 +306,63 @@ namespace ExtremeStudio.ViewModels
             set { _LoadProjectProjectPathTextBox = value; NotifyOfPropertyChange(() => LoadProjectProjectPathTextBox); }
         }
 
+        private bool _LoadProjectButtonEnabled = false;
+        public bool LoadProjectButtonEnabled
+        {
+            get { return _LoadProjectButtonEnabled; }
+            set { _LoadProjectButtonEnabled = value; NotifyOfPropertyChange(() => LoadProjectButtonEnabled); }
+        }
+
         //Actions: 
+        public void LoadProjectBrowseFolder()
+        {
+            LoadProjectProjectPathTextBox = _dialogManager.ShowSelectFolderDialog("Select ES Project.");
+        }
 
+        public void OnLoadProjectPathTextBoxChanged()
+        {
+            LoadProjectButtonEnabled = false;
+            LoadProjectProjectNameLabel = "None";
+            LoadProjectProjectVersionLabel = "None";
+            if (Core.Modules.GeneralFunctions.IsValidExtremeProject(LoadProjectProjectPathTextBox))
+            {
+                _currentProject.ProjectPath = LoadProjectProjectPathTextBox;
+                _currentProject.ReadInfo();
+                LoadProjectProjectNameLabel = _currentProject.ProjectName;
+                string projVersion = _currentProject.ProjectVersion;
+                string progVersion = VersionHandler.CurrentVersion;
+                VersionReader.CompareVersionResult versionCompare = VersionReader.CompareVersions(projVersion, progVersion);
+                if ((versionCompare == VersionReader.CompareVersionResult.VersionSame))
+                {
+                    LoadProjectProjectVersionLabel = "The project version matches the latest project version.";
+                    LoadProjectButtonEnabled = true;
+                }
+                else if ((versionCompare == VersionReader.CompareVersionResult.VersionNew))
+                {
+                    LoadProjectProjectVersionLabel = "The project version is older then the latest project version, converting will be done.";
+                    LoadProjectButtonEnabled = true;
+                }
+                else if ((versionCompare == VersionReader.CompareVersionResult.VersionOld))
+                {
+                    LoadProjectProjectVersionLabel = "The project version is newer then the latest project version known, Please update ExtremeStudio.";
+                }
+
+            }
+            else
+            {
+                _dialogCoordinator.ShowMessageAsync(this, "", "Invalid ExtremeStudio Project Selected.");
+            }
+        }
+
+        public void LoadProjectLoadProjectButton()
+        {
+            AddNewRecent(_currentProject.ProjectPath);
+            // Add it to the recent list.
+            VersionHandler.DoIfUpdateNeeded(_currentProject);
+            _windowManager.ShowWindow(new MainViewModel());
+            TryClose();
+        }
         #endregion
-
 
         #region Recent
         #region RECENT STUFF: 
@@ -346,6 +410,12 @@ namespace ExtremeStudio.ViewModels
             get { return _RecentListBox; }
             set { _RecentListBox = value; NotifyOfPropertyChange(() => RecentListBox); }
         }
+        private string _RecentListBoxSelectedItem;
+        public string RecentListBoxSelectedItem
+        {
+            get { return _RecentListBoxSelectedItem; }
+            set { _RecentListBoxSelectedItem = value; NotifyOfPropertyChange(() => RecentListBoxSelectedItem); }
+        }
 
         //Actions
         public void OnRecentLoaded()
@@ -361,6 +431,51 @@ namespace ExtremeStudio.ViewModels
                     RecentListBox.Add(str);
                 }
             }
+        }
+
+        public async void RecentLoadSelectedButton()
+        {
+            if ((RecentListBoxSelectedItem == null))
+            {
+                return;
+            }
+
+            LoadProjectProjectPathTextBox = RecentListBoxSelectedItem;
+            if ((LoadProjectButtonEnabled))
+            {
+                if (LoadProjectProjectVersionLabel != "The project version matches the latest project version.")
+                {
+                    var result = await _dialogCoordinator.ShowMessageAsync(this, "",
+                        (LoadProjectProjectVersionLabel +
+                         ("\r\n" + ("\r\n" + "Would you like to continue loading the project ?"))),
+                        MessageDialogStyle.AffirmativeAndNegative);
+                    if (result == MessageDialogResult.Affirmative)
+                    {
+                        LoadProjectLoadProjectButton();
+                        // Click `Load Project` button.
+                    }
+
+                }
+                else
+                {
+                    LoadProjectLoadProjectButton();
+                    // Click `Load Project` button.
+                }
+
+            }
+            else if (LoadProjectProjectVersionLabel != "The project version is newer then the latest project version known, Please update ExtremeStudio.")
+            {
+                await _dialogCoordinator.ShowMessageAsync(this, "", LoadProjectProjectVersionLabel);
+            }
+        }
+
+        public void RecentDeleteSelectedButton()
+        {
+            if (RecentListBoxSelectedItem == null)
+                return;
+
+            RemoveRecent(RecentListBoxSelectedItem);
+            OnRecentLoaded();
         }
         #endregion
     }
