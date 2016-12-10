@@ -2,6 +2,9 @@ using ExtremeStudio.ViewModels;
 using System;
 using System.Collections.Generic;
 using Caliburn.Micro;
+using ExtremeStudio.Classes;
+using MahApps.Metro.Controls.Dialogs;
+using Metro.Dialogs;
 
 namespace ExtremeStudio {
 
@@ -16,9 +19,17 @@ namespace ExtremeStudio {
         {
             _container = new SimpleContainer();
 
+            //Subscribe Managers.
             _container.Singleton<IWindowManager, WindowManager>();
             _container.Singleton<IEventAggregator, EventAggregator>();
-            _container.PerRequest<StartupViewModel>();
+            _container.Singleton<IWindowsDialogs, WindowsDialogs>();
+            _container.Singleton<IDialogCoordinator, DialogCoordinator>();
+
+            //Subscribe Forms.
+            _container.Singleton<StartupViewModel, StartupViewModel>();
+
+            //Subscribe Global Classes
+            _container.Singleton<CurrentProjectClass, CurrentProjectClass>();
         }
 
         protected override object GetInstance(Type service, string key) {

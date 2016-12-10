@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Net;
+using System.Reflection;
 using System.Windows.Forms;
 using ScintillaNET;
 using Ionic.Zip;
@@ -12,7 +13,12 @@ namespace ExtremeStudio.Core.Modules
 {
 	public sealed class GeneralFunctions
 	{
-		static public bool FilenameIsOk(string fileName, bool allowPathDefinition, int firstCharIndex)
+        public static string GetExecutionFolder()
+	    {
+	        return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+	    }
+
+		public static bool FilenameIsOk(string fileName, bool allowPathDefinition, int firstCharIndex)
 		{
 			
 		string file = string.Empty;
