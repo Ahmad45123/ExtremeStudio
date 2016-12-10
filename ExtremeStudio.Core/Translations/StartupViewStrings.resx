@@ -159,4 +159,39 @@
   <data name="Recent_DeleteSelectedButton" xml:space="preserve">
     <value>Delete Selected</value>
   </data>
+  <data name="StartupViewModel_NewProjectBrowseButton_SelectProjectFolder" xml:space="preserve">
+    <value>Select Project Folder</value>
+  </data>
+  <data name="StartupViewModel_NewProjectCreateProject_InvalidSAMPFolderSelected" xml:space="preserve">
+    <value>Invalid SAMP Folder Selected.</value>
+  </data>
+  <data name="StartupViewModel_NewProjectCreateProject_InvalidName" xml:space="preserve">
+    <value>Invalid Name.</value>
+  </data>
+  <data name="StartupViewModel_NewProjectCreateProject_NoSAMPVersionSelected" xml:space="preserve">
+    <value>No SAMP version was selected.</value>
+  </data>
+  <data name="StartupViewModel_NewProjectCreateProject_DirectorySpecifiedIsInvalid" xml:space="preserve">
+    <value>The directory specified is invalid.</value>
+  </data>
+  <data name="StartupViewModel_OnLoadProjectPathTextBoxChanged_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="StartupViewModel_OnLoadProjectPathTextBoxChanged_ProjectVersionMatches" xml:space="preserve">
+    <value>The project version matches the latest project version.</value>
+  </data>
+  <data name="StartupViewModel_OnLoadProjectPathTextBoxChanged_ProjectVersionOlder" xml:space="preserve">
+    <value>The project version is older then the latest project version, converting will be done.</value>
+  </data>
+  <data name="StartupViewModel_OnLoadProjectPathTextBoxChanged_ProjectVersionNewer" xml:space="preserve">
+    <value>The project version is newer then the latest project version known, Please update ExtremeStudio.</value>
+  </data>
+  <data name="StartupViewModel_OnLoadProjectPathTextBoxChanged_InvalidESSelected" xml:space="preserve">
+    <value>Invalid ExtremeStudio Project Selected.</value>
+  </data>
+  <data name="StartupViewModel_RecentLoadSelectedButton_WouldYouLikeToLoadProject" xml:space="preserve">
+    <value>
+
+Would you like to continue loading the project ?</value>
+  </data>
 </root>

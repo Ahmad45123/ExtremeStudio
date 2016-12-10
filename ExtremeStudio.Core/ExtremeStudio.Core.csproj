@@ -78,8 +78,8 @@
     <Compile Include="IExtremePlugin.cs" />
     <Compile Include="IPluginContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Translations\StartupView.Designer.cs">
-      <DependentUpon>StartupView.resx</DependentUpon>
+    <Compile Include="Translations\StartupViewStrings.Designer.cs">
+      <DependentUpon>StartupViewStrings.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -94,9 +94,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Translations\StartupView.resx">
+    <EmbeddedResource Include="Translations\StartupViewStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>StartupView.Designer.cs</LastGenOutput>
+      <LastGenOutput>StartupViewStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

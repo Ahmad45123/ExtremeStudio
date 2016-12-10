@@ -22,14 +22,14 @@ namespace ExtremeStudio.Core.Translations {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class StartupView {
+    public class StartupViewStrings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal StartupView() {
+        internal StartupViewStrings() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace ExtremeStudio.Core.Translations {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ExtremeStudio.Core.Translations.StartupView", typeof(StartupView).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ExtremeStudio.Core.Translations.StartupViewStrings", typeof(StartupViewStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -183,6 +183,107 @@ namespace ExtremeStudio.Core.Translations {
         public static string Recent_LoadSelectedButton {
             get {
                 return ResourceManager.GetString("Recent_LoadSelectedButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Project Folder.
+        /// </summary>
+        public static string StartupViewModel_NewProjectBrowseButton_SelectProjectFolder {
+            get {
+                return ResourceManager.GetString("StartupViewModel_NewProjectBrowseButton_SelectProjectFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The directory specified is invalid..
+        /// </summary>
+        public static string StartupViewModel_NewProjectCreateProject_DirectorySpecifiedIsInvalid {
+            get {
+                return ResourceManager.GetString("StartupViewModel_NewProjectCreateProject_DirectorySpecifiedIsInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Name..
+        /// </summary>
+        public static string StartupViewModel_NewProjectCreateProject_InvalidName {
+            get {
+                return ResourceManager.GetString("StartupViewModel_NewProjectCreateProject_InvalidName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid SAMP Folder Selected..
+        /// </summary>
+        public static string StartupViewModel_NewProjectCreateProject_InvalidSAMPFolderSelected {
+            get {
+                return ResourceManager.GetString("StartupViewModel_NewProjectCreateProject_InvalidSAMPFolderSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No SAMP version was selected..
+        /// </summary>
+        public static string StartupViewModel_NewProjectCreateProject_NoSAMPVersionSelected {
+            get {
+                return ResourceManager.GetString("StartupViewModel_NewProjectCreateProject_NoSAMPVersionSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid ExtremeStudio Project Selected..
+        /// </summary>
+        public static string StartupViewModel_OnLoadProjectPathTextBoxChanged_InvalidESSelected {
+            get {
+                return ResourceManager.GetString("StartupViewModel_OnLoadProjectPathTextBoxChanged_InvalidESSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        public static string StartupViewModel_OnLoadProjectPathTextBoxChanged_None {
+            get {
+                return ResourceManager.GetString("StartupViewModel_OnLoadProjectPathTextBoxChanged_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The project version matches the latest project version..
+        /// </summary>
+        public static string StartupViewModel_OnLoadProjectPathTextBoxChanged_ProjectVersionMatches {
+            get {
+                return ResourceManager.GetString("StartupViewModel_OnLoadProjectPathTextBoxChanged_ProjectVersionMatches", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The project version is newer then the latest project version known, Please update ExtremeStudio..
+        /// </summary>
+        public static string StartupViewModel_OnLoadProjectPathTextBoxChanged_ProjectVersionNewer {
+            get {
+                return ResourceManager.GetString("StartupViewModel_OnLoadProjectPathTextBoxChanged_ProjectVersionNewer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The project version is older then the latest project version, converting will be done..
+        /// </summary>
+        public static string StartupViewModel_OnLoadProjectPathTextBoxChanged_ProjectVersionOlder {
+            get {
+                return ResourceManager.GetString("StartupViewModel_OnLoadProjectPathTextBoxChanged_ProjectVersionOlder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///
+        ///Would you like to continue loading the project ?.
+        /// </summary>
+        public static string StartupViewModel_RecentLoadSelectedButton_WouldYouLikeToLoadProject {
+            get {
+                return ResourceManager.GetString("StartupViewModel_RecentLoadSelectedButton_WouldYouLikeToLoadProject", resourceCulture);
             }
         }
     }
