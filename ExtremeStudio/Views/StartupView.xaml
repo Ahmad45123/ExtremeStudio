@@ -10,7 +10,7 @@
       xmlns:cal="http://www.caliburnproject.org"
       xmlns:Translations="clr-namespace:ExtremeStudio.Core.Translations;assembly=ExtremeStudio.Core"
       mc:Ignorable="d" d:DesignWidth="870.677"
-      Title="ExtremeStudio" Height="319.174" MaxHeight="319" MaxWidth="870">
+      Title="ExtremeStudio" Height="319.174" MaxHeight="319" MaxWidth="870" WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -93,7 +93,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="RecentListBox" Margin="5" SelectedItem="{Binding Path=RecentListBoxSelectedItem, Mode=TwoWay}"/>
+                    <ListBox x:Name="RecentListBox" Margin="5" SelectedItem="{Binding Path=RecentListBoxSelectedItem, Mode=TwoWay}" cal:Message.Attach="[Event MouseDoubleClick] = [Action OnRecentListBoxDoubleClick]"/>
                     <StackPanel Grid.Column="1" Orientation="Vertical">
                         <Button x:Name="RecentLoadSelectedButton" Content="{x:Static Translations:StartupViewStrings.Recent_LoadSelectedButton}" Margin="5" Padding="10"/>
                         <Button x:Name="RecentDeleteSelectedButton" Content="{x:Static Translations:StartupViewStrings.Recent_DeleteSelectedButton}" Margin="5,0,5,5" Padding="10"/>

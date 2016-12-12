@@ -477,6 +477,11 @@ namespace ExtremeStudio.ViewModels
             RemoveRecent(RecentListBoxSelectedItem);
             OnRecentLoaded();
         }
+
+        public void OnRecentListBoxDoubleClick()
+        {
+            RecentLoadSelectedButton();
+        }
         #endregion
     }
 }
