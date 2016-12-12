@@ -38,7 +38,7 @@ namespace ExtremeStudio.ViewModels
             _dialogCoordinator = dialogcord;
             _currentProject = currentProject;
 
-            if (IsFirst & (!File.Exists(Core.Modules.GeneralFunctions.GetExecutionFolder() + "/x64/SQLite.Interop.dll") | !File.Exists(CurrentProjectClass.ApplicationFiles + "/x86/SQLite.Interop.dll")))
+            /*if (IsFirst & (!File.Exists(Core.Modules.GeneralFunctions.GetExecutionFolder() + "/x64/SQLite.Interop.dll") | !File.Exists(CurrentProjectClass.ApplicationFiles + "/x86/SQLite.Interop.dll")))
             {
                 //Remove old.
                 if (File.Exists(Core.Modules.GeneralFunctions.GetExecutionFolder() + "/x64/SQLite.Interop.dll"))
@@ -53,7 +53,7 @@ namespace ExtremeStudio.ViewModels
                 //Extract it.
                 File.Delete(Core.Modules.GeneralFunctions.GetExecutionFolder() + "/interop.zip");
                 //Delete the temp file.
-            }
+            }*/
 
             //Create needed folders and files.
             if (!Directory.Exists(CurrentProjectClass.ApplicationFiles + "/cache"))

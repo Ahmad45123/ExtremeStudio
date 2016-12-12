@@ -11,16 +11,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using MahApps.Metro.Controls;
 
-namespace ExtremeStudio.Views
+namespace ExtremeStudio.Views.Panels
 {
     /// <summary>
-    /// Interaction logic for MainView.xaml
+    /// Interaction logic for ScriptEditorView.xaml
     /// </summary>
-    public partial class MainView : MetroWindow
+    public partial class ScriptEditorView : Window
     {
-        public MainView()
+        public ScriptEditorView()
         {
             InitializeComponent();
         }

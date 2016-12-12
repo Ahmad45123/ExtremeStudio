@@ -26,10 +26,10 @@ namespace ExtremeStudio {
             _container.Singleton<IDialogCoordinator, DialogCoordinator>();
 
             //Subscribe Forms.
-            _container.Singleton<StartupViewModel, StartupViewModel>();
+            _container.PerRequest<StartupViewModel>();
 
             //Subscribe Global Classes
-            _container.Singleton<CurrentProjectClass, CurrentProjectClass>();
+            _container.Singleton<CurrentProjectClass>();
         }
 
         protected override object GetInstance(Type service, string key) {
