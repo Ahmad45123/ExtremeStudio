@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
         <Menu>
             <MenuItem Header="File">
-                <MenuItem Header="Exit"/>
+                <MenuItem Header="Exit" cal:Message.Attach="[Event Click] = [Action OnExitClick]"/>
             </MenuItem>
         </Menu>
 
@@ -54,19 +54,19 @@
                 <Style TargetType="{x:Type xcad:LayoutItem}">
                     <Setter Property="Title" Value="{Binding Model.Title}" />
                     <Setter Property="IconSource" Value="{Binding Model.Icon}"/>
-                    <Setter Property="IsActive" Value="{Binding Model.IsActive, Mode=TwoWay}"/>
+                    <!-- <Setter Property="IsActive" Value="{Binding Model.IsActive, Mode=OneWay}"/> -->
                     <Setter Property="ContentId" Value="{Binding Model.ContentId}"/>
                     <Setter Property="Visibility" Value="{Binding Model.IsVisible, Mode=TwoWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter={x:Static Visibility.Hidden}}"/>
                 </Style>
             </xcad:DockingManager.LayoutItemContainerStyle>
             <xcad:DockingManager.LayoutItemTemplateSelector>
-                <classes:AutobinderTemplateSelector>
-                    <classes:AutobinderTemplateSelector.Template>
+                <classes:LayoutItemTemplateSelector>
+                    <classes:LayoutItemTemplateSelector.Template>
                         <DataTemplate>
                             <ContentControl cal:View.Model="{Binding . }" IsTabStop="False" />
                         </DataTemplate>
-                    </classes:AutobinderTemplateSelector.Template>
-                </classes:AutobinderTemplateSelector>
+                    </classes:LayoutItemTemplateSelector.Template>
+                </classes:LayoutItemTemplateSelector>
             </xcad:DockingManager.LayoutItemTemplateSelector>
             <xcad:LayoutRoot>
                 <xcad:LayoutPanel Orientation="Vertical">

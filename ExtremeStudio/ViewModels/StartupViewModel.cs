@@ -252,14 +252,14 @@ namespace ExtremeStudio.ViewModels
             _currentProject.ProjectName = NewProjectProjectNameTextBox;
             _currentProject.ProjectPath = newPath;
             _currentProject.ProjectVersion = VersionHandler.CurrentVersion;
-            _currentProject.CreateTables();
-            //Create the tables of the db.
-            _currentProject.SaveInfo();
-            //Write the default extremeStudio config.
+            _currentProject.CreateTables(); //Create the tables of the db.
+            _currentProject.SaveInfo(); //Write the default extremeStudio config.
             _currentProject.CopyGlobalConfig();
-            AddNewRecent(_currentProject.ProjectPath);
-            //Add it to the recent list.
-            _windowManager.ShowWindow(new MainViewModel());
+            AddNewRecent(_currentProject.ProjectPath); //Add it to the recent list.
+
+            MainViewModel window = new MainViewModel();
+            window.OpenFile(newPath + "/gamemodes/" + NewProjectProjectNameTextBox + ".pwn");
+            _windowManager.ShowWindow(window);
             TryClose();
         }
 

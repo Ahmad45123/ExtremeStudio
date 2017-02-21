@@ -17,7 +17,7 @@ namespace ExtremeStudio.Views.Panels
     /// <summary>
     /// Interaction logic for ScriptEditorView.xaml
     /// </summary>
-    public partial class ScriptEditorView : Window
+    public partial class ScriptEditorView
     {
         public ScriptEditorView()
         {

@@ -8,10 +8,11 @@ using Caliburn.Micro;
 using ExtremeStudio.ViewModels.Panels;
 using Xceed.Wpf.AvalonDock;
 using Xceed.Wpf.AvalonDock.Layout.Serialization;
+using System.IO;
 
 namespace ExtremeStudio.ViewModels
 {
-    class MainViewModel : Screen
+    class MainViewModel : Conductor<Screen>.Collection.OneActive
     {
         private interface IDockingManagerSource
         {
@@ -30,26 +31,33 @@ namespace ExtremeStudio.ViewModels
             }
         }
  
-        public BindableCollection<ScriptEditorViewModel> Scripts { get; set; }
-        public BindableCollection<IPanelViewModel> Tools { get; set; }
+        public BindableCollection<ScriptEditorViewModel> Scripts { get; set; } = new BindableCollection<ScriptEditorViewModel>();
+        public BindableCollection<IPanelViewModel> Tools { get; set; } = new BindableCollection<IPanelViewModel>();
 
+        #region Functions
+        public void OpenFile(string path)
+        {
+            //TODO: fix openining files encoding.
+            Scripts.Add(new ScriptEditorViewModel(File.ReadAllText(path)));
+        }
+        #endregion
 
         public MainViewModel()
         {
-            Scripts = new BindableCollection<ScriptEditorViewModel>();
-            Tools = new BindableCollection<IPanelViewModel>();
         }
 
         public void DocumentClosing(ScriptEditorViewModel document, DocumentClosingEventArgs e)
         {
            //TODO: handle script closing.
         }
-
         public void DocumentClosed(ScriptEditorViewModel document)
         {
-            Scripts.Remove(document);
+            //TODO: handle script closed.
         }
 
-
+        public void OnExitClick()
+        {
+            Scripts.Add(new ScriptEditorViewModel("No EXIT!!!! Muhahahahahahhaha") {Title = "Test File"});
+        }
     }
 }
