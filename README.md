@@ -1,5 +1,6 @@
 # ![Logo](http://i.imgur.com/Jmxy3lc.png)
 
+[![Project Status: Inactive - The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](http://www.repostatus.org/badges/latest/inactive.svg)](http://www.repostatus.org/#inactive)
 [![Join the chat at https://gitter.im/JohnyMac/ExtremeStudio](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/JohnyMac/ExtremeStudio?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ExtremeStudio is a PAWN editor and is designed to be used in SA-MP development.
