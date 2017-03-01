@@ -12,7 +12,6 @@ Imports ExtremeStudio.My.Resources
 
 Public Class MainForm
 
-    'TODO ON EDIT: Change the paths in LanguagesForm too.
     Public ReadOnly ApplicationFiles As String = Environment.GetFolderPath(SpecialFolder.ApplicationData) + "/ExtremeStudio"
 
 #Region "Properties"
