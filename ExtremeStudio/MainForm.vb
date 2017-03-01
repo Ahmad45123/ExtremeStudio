@@ -12,7 +12,8 @@ Imports ExtremeStudio.My.Resources
 
 Public Class MainForm
 
-    Public ReadOnly ApplicationFiles As String = Environment.GetFolderPath(SpecialFolder.ApplicationData) + "/ExtremeStudio"
+    'This is set in LanguageForm by users needing.
+    Public ApplicationFiles As String
 
 #Region "Properties"
     Public ReadOnly Property CurrentScintilla As Scintilla

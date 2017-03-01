@@ -2,6 +2,7 @@
 Imports System.Globalization
 Imports System.IO
 Imports System.Threading
+Imports System.Deployment
 
 <Localizable(False)>
 Public Class LanguagesForm
@@ -39,6 +40,30 @@ Public Class LanguagesForm
     End Sub
 
     Private Sub LanguagesForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'We will want to set/know the settings folder first.
+        If My.Settings("SAVE_FOLDER") <> Nothing Then
+            If Directory.Exists(My.Settings("SAVE_FOLDER")) Then
+                MainForm.ApplicationFiles = My.Settings("SAVE_FOLDER")
+            Else
+                GoTo RESET_FOLDER
+            End If
+        Else
+RESET_FOLDER:
+            Dim fldr As New FolderBrowserDialog With {
+.RootFolder = Environment.SpecialFolder.MyComputer,
+.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+.Description = "Choose Folder To Save ExtremeStudio's Settings And Cache" + vbCrLf + "Can be a pre-existing folder with settings or cache already." + vbCrLf + "NOTE: A new folder will be created named ""ExtremeStudio"" inside the target folder."
+            }
+            If fldr.ShowDialog() = DialogResult.OK Then
+                My.Settings("SAVE_FOLDER") = fldr.SelectedPath + "\ExtremeStudio"
+                My.Settings.Save()
+                MainForm.ApplicationFiles = My.Settings("SAVE_FOLDER")
+                If Not Directory.Exists(MainForm.ApplicationFiles) Then Directory.CreateDirectory(MainForm.ApplicationFiles)
+            Else
+                Close()
+            End If
+        End If
+
         If Not Directory.Exists(MainForm.ApplicationFiles + "\configs") Then Directory.CreateDirectory(MainForm.ApplicationFiles + "\configs")
 
         If File.Exists(MainForm.ApplicationFiles + "\configs\lang.cfg") Then
