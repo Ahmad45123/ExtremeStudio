@@ -46,7 +46,7 @@ Public Module GeneralFunctions
     Public Function IsNetAvailable() As Boolean 'Custom function due to a bug in my.computer.network.isavailable.
         Dim webClient As New WebClient
         Try
-            Dim fileText As String = webClient.DownloadString("http://johnymac.github.io/esfiles/serverPackages.xml")
+            Dim fileText As String = webClient.DownloadString("http://ahmad45123.github.io/esfiles/serverPackages.xml")
             Return True
         Catch ex As WebException
             Return False

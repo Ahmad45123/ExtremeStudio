@@ -26,8 +26,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://johnymac.github.io/esfiles/latestProg/</InstallUrl>
-    <UpdateUrl>http://johnymac.github.io/esfiles/latestProg/</UpdateUrl>
+    <InstallUrl>http://ahmad45123.github.io/esfiles/latestProg/</InstallUrl>
+    <UpdateUrl>http://ahmad45123.github.io/esfiles/latestProg/</UpdateUrl>
     <SupportUrl>http://forum.sa-mp.com/showthread.php%3ft=608037</SupportUrl>
     <ErrorReportUrl>http://forum.sa-mp.com/showthread.php%3ft=608037</ErrorReportUrl>
     <TargetCulture>en</TargetCulture>
@@ -36,7 +36,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>21</ApplicationRevision>
+    <ApplicationRevision>22</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
