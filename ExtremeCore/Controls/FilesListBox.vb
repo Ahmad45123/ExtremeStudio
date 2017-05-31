@@ -280,31 +280,38 @@ Public Class FilesListBox
 		e.DrawFocusRectangle()
 		Dim bounds As Rectangle = e.Bounds
 		If e.Index > -1 AndAlso e.Index < Items.Count Then
-			Dim imageSize As Size
-			Dim fileNameOnly As String = Items(e.Index).ToString()
-			Dim fullFileName As String = GetFullName(fileNameOnly)
-			Dim fileIcon As Icon = Nothing
-			Dim imageRectangle As New Rectangle(bounds.Left + 1, bounds.Top + 1, ItemHeight - 2, ItemHeight - 2)
-			If fileNameOnly.Equals("..") Then
-				' When .. is the string - draws directory icon                    
-				fileIcon = IconExtractor.GetFileIcon(Application.StartupPath, _fileIconSize)
-				e.Graphics.DrawIcon(fileIcon, imageRectangle)
-			Else
-				fileIcon = IconExtractor.GetFileIcon(fullFileName, _fileIconSize)
-				' Icon.ExtractAssociatedIcon(item);
-				e.Graphics.DrawIcon(fileIcon, imageRectangle)
-			End If
-			imageSize = imageRectangle.Size
-			fileIcon.Dispose()
+            'Check if exists.
+            Dim imageSize As Size
+            Dim fileNameOnly As String = Items(e.Index).ToString()
+            Dim fullFileName As String = GetFullName(fileNameOnly)
+
+            If File.Exists(fullFileName) = False And Directory.Exists(fullFileName) = False Then
+                Items.RemoveAt(e.Index)
+                Exit Sub
+            End If
+
+            Dim fileIcon As Icon = Nothing
+                Dim imageRectangle As New Rectangle(bounds.Left + 1, bounds.Top + 1, ItemHeight - 2, ItemHeight - 2)
+                If fileNameOnly.Equals("..") Then
+                    ' When .. is the string - draws directory icon                    
+                    fileIcon = IconExtractor.GetFileIcon(Application.StartupPath, _fileIconSize)
+                    e.Graphics.DrawIcon(fileIcon, imageRectangle)
+                Else
+                    fileIcon = IconExtractor.GetFileIcon(fullFileName, _fileIconSize)
+                    ' Icon.ExtractAssociatedIcon(item);
+                    e.Graphics.DrawIcon(fileIcon, imageRectangle)
+                End If
+                imageSize = imageRectangle.Size
+                fileIcon.Dispose()
 
 
-			Dim fileNameRec As New Rectangle(bounds.Left + imageSize.Width + 3, bounds.Top, bounds.Width - imageSize.Width - 3, bounds.Height)
-			Dim format As New StringFormat()
-			format.LineAlignment = StringAlignment.Center
-			e.Graphics.DrawString(fileNameOnly, e.Font, New SolidBrush(e.ForeColor), fileNameRec, format)
-		End If
+                Dim fileNameRec As New Rectangle(bounds.Left + imageSize.Width + 3, bounds.Top, bounds.Width - imageSize.Width - 3, bounds.Height)
+                Dim format As New StringFormat()
+                format.LineAlignment = StringAlignment.Center
+                e.Graphics.DrawString(fileNameOnly, e.Font, New SolidBrush(e.ForeColor), fileNameRec, format)
+            End If
 
-		MyBase.OnDrawItem(e)
+            MyBase.OnDrawItem(e)
 	End Sub
 
 	#End Region
