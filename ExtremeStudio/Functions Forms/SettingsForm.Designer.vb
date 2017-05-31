@@ -26,6 +26,21 @@ Partial Class SettingsForm
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SettingsForm))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.GotoBeforeHotkey = New exscape.HotkeyControl()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.GotoNextHotkey = New exscape.HotkeyControl()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.ReplaceHotkey = New exscape.HotkeyControl()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.SearchHotkey = New exscape.HotkeyControl()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.GotoHotkey = New exscape.HotkeyControl()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.SaveAllHotkey = New exscape.HotkeyControl()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.SaveHotkey = New exscape.HotkeyControl()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.ResetLangBtn = New System.Windows.Forms.Button()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.resetBtn = New System.Windows.Forms.Button()
@@ -60,87 +75,188 @@ Partial Class SettingsForm
         Me.nameColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.valueColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolTipHandler = New System.Windows.Forms.ToolTip(Me.components)
-        Me.TabControl1.SuspendLayout
-        Me.TabPage3.SuspendLayout
-        Me.TabPage1.SuspendLayout
-        Me.TabPage2.SuspendLayout
-        CType(Me.skipLinesUpDown,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.tabSizeUpDown,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.optiLevelUpDown,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.debugLevelUpDown,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.serverCFGTabPage.SuspendLayout
-        CType(Me.serverCfgGrid,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.SuspendLayout
+        Me.BuildHotkey = New exscape.HotkeyControl()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.TabControl1.SuspendLayout()
+        Me.TabPage3.SuspendLayout()
+        Me.TabPage1.SuspendLayout()
+        Me.TabPage2.SuspendLayout()
+        CType(Me.skipLinesUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tabSizeUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.optiLevelUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.debugLevelUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.serverCFGTabPage.SuspendLayout()
+        CType(Me.serverCfgGrid, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
         '
         'TabControl1
         '
-        resources.ApplyResources(Me.TabControl1, "TabControl1")
         Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.serverCFGTabPage)
+        resources.ApplyResources(Me.TabControl1, "TabControl1")
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.ToolTipHandler.SetToolTip(Me.TabControl1, resources.GetString("TabControl1.ToolTip"))
         '
         'TabPage3
         '
-        resources.ApplyResources(Me.TabPage3, "TabPage3")
+        Me.TabPage3.Controls.Add(Me.Button2)
+        Me.TabPage3.Controls.Add(Me.BuildHotkey)
+        Me.TabPage3.Controls.Add(Me.Label18)
+        Me.TabPage3.Controls.Add(Me.GotoBeforeHotkey)
+        Me.TabPage3.Controls.Add(Me.Label17)
+        Me.TabPage3.Controls.Add(Me.GotoNextHotkey)
+        Me.TabPage3.Controls.Add(Me.Label16)
+        Me.TabPage3.Controls.Add(Me.ReplaceHotkey)
+        Me.TabPage3.Controls.Add(Me.Label15)
+        Me.TabPage3.Controls.Add(Me.SearchHotkey)
+        Me.TabPage3.Controls.Add(Me.Label14)
+        Me.TabPage3.Controls.Add(Me.GotoHotkey)
+        Me.TabPage3.Controls.Add(Me.Label13)
+        Me.TabPage3.Controls.Add(Me.SaveAllHotkey)
+        Me.TabPage3.Controls.Add(Me.Label12)
+        Me.TabPage3.Controls.Add(Me.Label11)
+        Me.TabPage3.Controls.Add(Me.SaveHotkey)
+        Me.TabPage3.Controls.Add(Me.Label10)
         Me.TabPage3.Controls.Add(Me.ResetLangBtn)
+        resources.ApplyResources(Me.TabPage3, "TabPage3")
         Me.TabPage3.Name = "TabPage3"
-        Me.ToolTipHandler.SetToolTip(Me.TabPage3, resources.GetString("TabPage3.ToolTip"))
-        Me.TabPage3.UseVisualStyleBackColor = true
+        Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'GotoBeforeHotkey
+        '
+        Me.GotoBeforeHotkey.Hotkey = System.Windows.Forms.Keys.None
+        Me.GotoBeforeHotkey.HotkeyModifiers = System.Windows.Forms.Keys.None
+        resources.ApplyResources(Me.GotoBeforeHotkey, "GotoBeforeHotkey")
+        Me.GotoBeforeHotkey.Name = "GotoBeforeHotkey"
+        '
+        'Label17
+        '
+        resources.ApplyResources(Me.Label17, "Label17")
+        Me.Label17.Name = "Label17"
+        '
+        'GotoNextHotkey
+        '
+        Me.GotoNextHotkey.Hotkey = System.Windows.Forms.Keys.None
+        Me.GotoNextHotkey.HotkeyModifiers = System.Windows.Forms.Keys.None
+        resources.ApplyResources(Me.GotoNextHotkey, "GotoNextHotkey")
+        Me.GotoNextHotkey.Name = "GotoNextHotkey"
+        '
+        'Label16
+        '
+        resources.ApplyResources(Me.Label16, "Label16")
+        Me.Label16.Name = "Label16"
+        '
+        'ReplaceHotkey
+        '
+        Me.ReplaceHotkey.Hotkey = System.Windows.Forms.Keys.None
+        Me.ReplaceHotkey.HotkeyModifiers = System.Windows.Forms.Keys.None
+        resources.ApplyResources(Me.ReplaceHotkey, "ReplaceHotkey")
+        Me.ReplaceHotkey.Name = "ReplaceHotkey"
+        '
+        'Label15
+        '
+        resources.ApplyResources(Me.Label15, "Label15")
+        Me.Label15.Name = "Label15"
+        '
+        'SearchHotkey
+        '
+        Me.SearchHotkey.Hotkey = System.Windows.Forms.Keys.None
+        Me.SearchHotkey.HotkeyModifiers = System.Windows.Forms.Keys.None
+        resources.ApplyResources(Me.SearchHotkey, "SearchHotkey")
+        Me.SearchHotkey.Name = "SearchHotkey"
+        '
+        'Label14
+        '
+        resources.ApplyResources(Me.Label14, "Label14")
+        Me.Label14.Name = "Label14"
+        '
+        'GotoHotkey
+        '
+        Me.GotoHotkey.Hotkey = System.Windows.Forms.Keys.None
+        Me.GotoHotkey.HotkeyModifiers = System.Windows.Forms.Keys.None
+        resources.ApplyResources(Me.GotoHotkey, "GotoHotkey")
+        Me.GotoHotkey.Name = "GotoHotkey"
+        '
+        'Label13
+        '
+        resources.ApplyResources(Me.Label13, "Label13")
+        Me.Label13.Name = "Label13"
+        '
+        'SaveAllHotkey
+        '
+        Me.SaveAllHotkey.Hotkey = System.Windows.Forms.Keys.None
+        Me.SaveAllHotkey.HotkeyModifiers = System.Windows.Forms.Keys.None
+        resources.ApplyResources(Me.SaveAllHotkey, "SaveAllHotkey")
+        Me.SaveAllHotkey.Name = "SaveAllHotkey"
+        '
+        'Label12
+        '
+        resources.ApplyResources(Me.Label12, "Label12")
+        Me.Label12.Name = "Label12"
+        '
+        'Label11
+        '
+        resources.ApplyResources(Me.Label11, "Label11")
+        Me.Label11.Name = "Label11"
+        '
+        'SaveHotkey
+        '
+        Me.SaveHotkey.Hotkey = System.Windows.Forms.Keys.None
+        Me.SaveHotkey.HotkeyModifiers = System.Windows.Forms.Keys.None
+        resources.ApplyResources(Me.SaveHotkey, "SaveHotkey")
+        Me.SaveHotkey.Name = "SaveHotkey"
+        '
+        'Label10
+        '
+        resources.ApplyResources(Me.Label10, "Label10")
+        Me.Label10.Name = "Label10"
         '
         'ResetLangBtn
         '
         resources.ApplyResources(Me.ResetLangBtn, "ResetLangBtn")
         Me.ResetLangBtn.Name = "ResetLangBtn"
-        Me.ToolTipHandler.SetToolTip(Me.ResetLangBtn, resources.GetString("ResetLangBtn.ToolTip"))
-        Me.ResetLangBtn.UseVisualStyleBackColor = true
+        Me.ResetLangBtn.UseVisualStyleBackColor = True
         '
         'TabPage1
         '
-        resources.ApplyResources(Me.TabPage1, "TabPage1")
         Me.TabPage1.BackColor = System.Drawing.SystemColors.Control
         Me.TabPage1.Controls.Add(Me.resetBtn)
         Me.TabPage1.Controls.Add(Me.importBtn)
         Me.TabPage1.Controls.Add(Me.exportBtn)
         Me.TabPage1.Controls.Add(Me.colorsSettings)
         Me.TabPage1.ForeColor = System.Drawing.SystemColors.ControlText
+        resources.ApplyResources(Me.TabPage1, "TabPage1")
         Me.TabPage1.Name = "TabPage1"
-        Me.ToolTipHandler.SetToolTip(Me.TabPage1, resources.GetString("TabPage1.ToolTip"))
         '
         'resetBtn
         '
         resources.ApplyResources(Me.resetBtn, "resetBtn")
         Me.resetBtn.Name = "resetBtn"
-        Me.ToolTipHandler.SetToolTip(Me.resetBtn, resources.GetString("resetBtn.ToolTip"))
-        Me.resetBtn.UseVisualStyleBackColor = true
+        Me.resetBtn.UseVisualStyleBackColor = True
         '
         'importBtn
         '
         resources.ApplyResources(Me.importBtn, "importBtn")
         Me.importBtn.Name = "importBtn"
-        Me.ToolTipHandler.SetToolTip(Me.importBtn, resources.GetString("importBtn.ToolTip"))
-        Me.importBtn.UseVisualStyleBackColor = true
+        Me.importBtn.UseVisualStyleBackColor = True
         '
         'exportBtn
         '
         resources.ApplyResources(Me.exportBtn, "exportBtn")
         Me.exportBtn.Name = "exportBtn"
-        Me.ToolTipHandler.SetToolTip(Me.exportBtn, resources.GetString("exportBtn.ToolTip"))
-        Me.exportBtn.UseVisualStyleBackColor = true
+        Me.exportBtn.UseVisualStyleBackColor = True
         '
         'colorsSettings
         '
         resources.ApplyResources(Me.colorsSettings, "colorsSettings")
         Me.colorsSettings.CategoryForeColor = System.Drawing.SystemColors.InactiveCaptionText
         Me.colorsSettings.Name = "colorsSettings"
-        Me.ToolTipHandler.SetToolTip(Me.colorsSettings, resources.GetString("colorsSettings.ToolTip"))
         '
         'TabPage2
         '
-        resources.ApplyResources(Me.TabPage2, "TabPage2")
         Me.TabPage2.Controls.Add(Me.Button1)
         Me.TabPage2.Controls.Add(Me.customArgsText)
         Me.TabPage2.Controls.Add(Me.Label9)
@@ -163,16 +279,15 @@ Partial Class SettingsForm
         Me.TabPage2.Controls.Add(Me.Label2)
         Me.TabPage2.Controls.Add(Me.activeDirText)
         Me.TabPage2.Controls.Add(Me.Label1)
+        resources.ApplyResources(Me.TabPage2, "TabPage2")
         Me.TabPage2.Name = "TabPage2"
-        Me.ToolTipHandler.SetToolTip(Me.TabPage2, resources.GetString("TabPage2.ToolTip"))
-        Me.TabPage2.UseVisualStyleBackColor = true
+        Me.TabPage2.UseVisualStyleBackColor = True
         '
         'Button1
         '
         resources.ApplyResources(Me.Button1, "Button1")
         Me.Button1.Name = "Button1"
-        Me.ToolTipHandler.SetToolTip(Me.Button1, resources.GetString("Button1.ToolTip"))
-        Me.Button1.UseVisualStyleBackColor = true
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'customArgsText
         '
@@ -184,21 +299,20 @@ Partial Class SettingsForm
         '
         resources.ApplyResources(Me.Label9, "Label9")
         Me.Label9.Name = "Label9"
-        Me.ToolTipHandler.SetToolTip(Me.Label9, resources.GetString("Label9.ToolTip"))
         '
         'parenthesesCheck
         '
         resources.ApplyResources(Me.parenthesesCheck, "parenthesesCheck")
         Me.parenthesesCheck.Name = "parenthesesCheck"
         Me.ToolTipHandler.SetToolTip(Me.parenthesesCheck, resources.GetString("parenthesesCheck.ToolTip"))
-        Me.parenthesesCheck.UseVisualStyleBackColor = true
+        Me.parenthesesCheck.UseVisualStyleBackColor = True
         '
         'semiColonCheck
         '
         resources.ApplyResources(Me.semiColonCheck, "semiColonCheck")
         Me.semiColonCheck.Name = "semiColonCheck"
         Me.ToolTipHandler.SetToolTip(Me.semiColonCheck, resources.GetString("semiColonCheck.ToolTip"))
-        Me.semiColonCheck.UseVisualStyleBackColor = true
+        Me.semiColonCheck.UseVisualStyleBackColor = True
         '
         'skipLinesUpDown
         '
@@ -210,7 +324,6 @@ Partial Class SettingsForm
         '
         resources.ApplyResources(Me.Label8, "Label8")
         Me.Label8.Name = "Label8"
-        Me.ToolTipHandler.SetToolTip(Me.Label8, resources.GetString("Label8.ToolTip"))
         '
         'tabSizeUpDown
         '
@@ -222,7 +335,6 @@ Partial Class SettingsForm
         '
         resources.ApplyResources(Me.Label7, "Label7")
         Me.Label7.Name = "Label7"
-        Me.ToolTipHandler.SetToolTip(Me.Label7, resources.GetString("Label7.ToolTip"))
         '
         'optiLevelUpDown
         '
@@ -235,7 +347,6 @@ Partial Class SettingsForm
         '
         resources.ApplyResources(Me.Label5, "Label5")
         Me.Label5.Name = "Label5"
-        Me.ToolTipHandler.SetToolTip(Me.Label5, resources.GetString("Label5.ToolTip"))
         '
         'debugLevelUpDown
         '
@@ -248,7 +359,6 @@ Partial Class SettingsForm
         '
         resources.ApplyResources(Me.Label4, "Label4")
         Me.Label4.Name = "Label4"
-        Me.ToolTipHandler.SetToolTip(Me.Label4, resources.GetString("Label4.ToolTip"))
         '
         'reportGenDirText
         '
@@ -263,14 +373,12 @@ Partial Class SettingsForm
         '
         resources.ApplyResources(Me.reportGenCheck, "reportGenCheck")
         Me.reportGenCheck.Name = "reportGenCheck"
-        Me.ToolTipHandler.SetToolTip(Me.reportGenCheck, resources.GetString("reportGenCheck.ToolTip"))
-        Me.reportGenCheck.UseVisualStyleBackColor = true
+        Me.reportGenCheck.UseVisualStyleBackColor = True
         '
         'Label6
         '
         resources.ApplyResources(Me.Label6, "Label6")
         Me.Label6.Name = "Label6"
-        Me.ToolTipHandler.SetToolTip(Me.Label6, resources.GetString("Label6.ToolTip"))
         '
         'ouputDirText
         '
@@ -285,7 +393,6 @@ Partial Class SettingsForm
         '
         resources.ApplyResources(Me.Label3, "Label3")
         Me.Label3.Name = "Label3"
-        Me.ToolTipHandler.SetToolTip(Me.Label3, resources.GetString("Label3.ToolTip"))
         '
         'includesDirText
         '
@@ -300,7 +407,6 @@ Partial Class SettingsForm
         '
         resources.ApplyResources(Me.Label2, "Label2")
         Me.Label2.Name = "Label2"
-        Me.ToolTipHandler.SetToolTip(Me.Label2, resources.GetString("Label2.ToolTip"))
         '
         'activeDirText
         '
@@ -315,25 +421,22 @@ Partial Class SettingsForm
         '
         resources.ApplyResources(Me.Label1, "Label1")
         Me.Label1.Name = "Label1"
-        Me.ToolTipHandler.SetToolTip(Me.Label1, resources.GetString("Label1.ToolTip"))
         '
         'serverCFGTabPage
         '
-        resources.ApplyResources(Me.serverCFGTabPage, "serverCFGTabPage")
         Me.serverCFGTabPage.Controls.Add(Me.serverCfgGrid)
+        resources.ApplyResources(Me.serverCFGTabPage, "serverCFGTabPage")
         Me.serverCFGTabPage.Name = "serverCFGTabPage"
-        Me.ToolTipHandler.SetToolTip(Me.serverCFGTabPage, resources.GetString("serverCFGTabPage.ToolTip"))
-        Me.serverCFGTabPage.UseVisualStyleBackColor = true
+        Me.serverCFGTabPage.UseVisualStyleBackColor = True
         '
         'serverCfgGrid
         '
-        resources.ApplyResources(Me.serverCfgGrid, "serverCfgGrid")
         Me.serverCfgGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.serverCfgGrid.BackgroundColor = System.Drawing.SystemColors.ControlLightLight
         Me.serverCfgGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.serverCfgGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.nameColumn, Me.valueColumn})
+        resources.ApplyResources(Me.serverCfgGrid, "serverCfgGrid")
         Me.serverCfgGrid.Name = "serverCfgGrid"
-        Me.ToolTipHandler.SetToolTip(Me.serverCfgGrid, resources.GetString("serverCfgGrid.ToolTip"))
         '
         'nameColumn
         '
@@ -354,16 +457,34 @@ Partial Class SettingsForm
         Me.ToolTipHandler.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
         Me.ToolTipHandler.ToolTipTitle = "Help"
         '
+        'BuildHotkey
+        '
+        Me.BuildHotkey.Hotkey = System.Windows.Forms.Keys.None
+        Me.BuildHotkey.HotkeyModifiers = System.Windows.Forms.Keys.None
+        resources.ApplyResources(Me.BuildHotkey, "BuildHotkey")
+        Me.BuildHotkey.Name = "BuildHotkey"
+        '
+        'Label18
+        '
+        resources.ApplyResources(Me.Label18, "Label18")
+        Me.Label18.Name = "Label18"
+        '
+        'Button2
+        '
+        resources.ApplyResources(Me.Button2, "Button2")
+        Me.Button2.Name = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'SettingsForm
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "SettingsForm"
-        Me.ToolTipHandler.SetToolTip(Me, resources.GetString("$this.ToolTip"))
-        Me.TabControl1.ResumeLayout(false)
-        Me.TabPage3.ResumeLayout(false)
-        Me.TabPage1.ResumeLayout(false)
+        Me.TabControl1.ResumeLayout(False)
+        Me.TabPage3.ResumeLayout(False)
+        Me.TabPage3.PerformLayout()
+        Me.TabPage1.ResumeLayout(False)
         Me.TabPage2.ResumeLayout(false)
         Me.TabPage2.PerformLayout
         CType(Me.skipLinesUpDown,System.ComponentModel.ISupportInitialize).EndInit
@@ -412,4 +533,22 @@ End Sub
     Friend WithEvents valueColumn As DataGridViewTextBoxColumn
     Friend WithEvents TabPage3 As TabPage
     Friend WithEvents ResetLangBtn As Button
+    Friend WithEvents Label10 As Label
+    Friend WithEvents SaveHotkey As exscape.HotkeyControl
+    Friend WithEvents GotoHotkey As exscape.HotkeyControl
+    Friend WithEvents Label13 As Label
+    Friend WithEvents SaveAllHotkey As exscape.HotkeyControl
+    Friend WithEvents Label12 As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents ReplaceHotkey As exscape.HotkeyControl
+    Friend WithEvents Label15 As Label
+    Friend WithEvents SearchHotkey As exscape.HotkeyControl
+    Friend WithEvents Label14 As Label
+    Friend WithEvents GotoBeforeHotkey As exscape.HotkeyControl
+    Friend WithEvents Label17 As Label
+    Friend WithEvents GotoNextHotkey As exscape.HotkeyControl
+    Friend WithEvents Label16 As Label
+    Friend WithEvents Button2 As Button
+    Friend WithEvents BuildHotkey As exscape.HotkeyControl
+    Friend WithEvents Label18 As Label
 End Class

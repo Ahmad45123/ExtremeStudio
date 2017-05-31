@@ -40,7 +40,7 @@ Public Class EditorDock
 
 #Region "Key Handling"
     Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
-        If (keyData = (Keys.Control Or Keys.S)) Or (keyData = ((Keys.Control Or Keys.Shift) Or Keys.S)) Then
+        If keyData = (SettingsForm.SaveHotkey.Hotkey Or SettingsForm.SaveHotkey.HotkeyModifiers) Then
             MainForm.SaveFile(Editor)
             Editor.SetSavePoint()
             If keyData And Keys.Shift Then 'If he has shift pressed also.
@@ -48,25 +48,31 @@ Public Class EditorDock
             End If
             Return True
 
-        ElseIf keyData = (Keys.Control Or Keys.G) Then
+        ElseIf keyData = (SettingsForm.SaveAllHotkey.Hotkey Or SettingsForm.SaveAllHotkey.HotkeyModifiers) Then
+            MainForm.SaveFile(Editor)
+            Editor.SetSavePoint()
+            MainForm.SaveAllFiles(Me, EventArgs.Empty)
+            Return True
+
+        ElseIf keyData = (SettingsForm.GotoHotkey.Hotkey Or SettingsForm.GotoHotkey.HotkeyModifiers) Then
             GotoForm = Nothing 'Resets the form
             GotoForm.Show()
             Return True
 
-        ElseIf keyData = (Keys.Control Or Keys.F) Then
+        ElseIf keyData = (SettingsForm.SearchHotkey.Hotkey Or SettingsForm.SearchHotkey.HotkeyModifiers) Then
             SearchReplaceForm = Nothing
             SearchReplaceForm.Show()
             SearchReplaceForm.TabControl1.SelectTab(0) 'Search Tab.
             SearchReplaceForm.searchFindText.Select()
             Return True
 
-        ElseIf keyData = (Keys.Control Or Keys.H) Then
+        ElseIf keyData = (SettingsForm.ReplaceHotkey.Hotkey Or SettingsForm.ReplaceHotkey.HotkeyModifiers) Then
             SearchReplaceForm = Nothing
             SearchReplaceForm.Show()
             SearchReplaceForm.TabControl1.SelectTab(1) 'Replace Tab.
             Return True
 
-        ElseIf keyData = ((Keys.Control Or Keys.Shift) Or Keys.N) Then
+        ElseIf keyData = (SettingsForm.GotoNextHotkey.Hotkey Or SettingsForm.GotoNextHotkey.HotkeyModifiers) Then
             If SearchReplaceForm.travelList.Count > 1 Then
                 Dim nearestNext As Long = 999999999999999999
                 Dim nearestID As Integer = 0
@@ -81,7 +87,7 @@ Public Class EditorDock
             End If
             Return True
 
-        ElseIf keyData = ((Keys.Control Or Keys.Shift) Or Keys.B) Then
+        ElseIf keyData = (SettingsForm.GotoBeforeHotkey.Hotkey Or SettingsForm.GotoBeforeHotkey.HotkeyModifiers) Then
             If SearchReplaceForm.travelList.Count > 1 Then
                 Dim nearestNext As Long = 0
                 Dim nearestID As Integer = 0
@@ -95,9 +101,9 @@ Public Class EditorDock
                 Editor.ScrollCaret()
             End If
             Return True
-        
-        ElseIf keyData = Keys.F5 Then
-            MainForm.CompileScriptBtn.PerformClick()
+
+        ElseIf keyData = (SettingsForm.BuildHotkey.Hotkey Or SettingsForm.BuildHotkey.HotkeyModifiers) Then
+            MainForm.compileScriptBtn.PerformClick()
             Return True
 
         End If

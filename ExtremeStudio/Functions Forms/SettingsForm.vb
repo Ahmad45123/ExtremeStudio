@@ -19,6 +19,7 @@ Public Class SettingsForm
         LoadColors()
         LoadCompiler()
         LoadServerCfg()
+        LoadHotkeys()
     End Sub
 
     <Localizable(False)>
@@ -257,11 +258,73 @@ Public Class SettingsForm
     End Sub
 
     Private Sub ResetLangBtn_Click(sender As Object, e As EventArgs) Handles ResetLangBtn.Click
-        If File.Exists(MainForm.ApplicationFiles + "\configs\lang.cfg") Then 
+        If File.Exists(MainForm.ApplicationFiles + "\configs\lang.cfg") Then
             File.Delete(MainForm.ApplicationFiles + "\configs\lang.cfg")
             MsgBox(translations.SettingsForm_ResetLangBtn_Click_LocalizationSettingsDeleted)
             Application.Exit()
         End If
+    End Sub
+
+    <Localizable(False)>
+    Public Sub LoadHotkeys()
+        Try
+            Dim configHandler As New ConfigsHandler(_configDirPath + "/hotkeys.json")
+            Dim key As Keys : Dim modif As Keys : Dim arr = configHandler("SaveHotkey").ToString.Split("|").ToArray()
+            Keys.TryParse(arr(0), key) : Keys.TryParse(arr(1), modif)
+            SaveHotkey.Hotkey = key : SaveHotkey.HotkeyModifiers = modif
+
+            arr = configHandler("SaveAllHotkey").ToString.Split("|").ToArray()
+            Keys.TryParse(arr(0), key) : Keys.TryParse(arr(1), modif)
+            SaveAllHotkey.Hotkey = key : SaveAllHotkey.HotkeyModifiers = modif
+
+            arr = configHandler("GotoHotkey").ToString.Split("|").ToArray()
+            Keys.TryParse(arr(0), key) : Keys.TryParse(arr(1), modif)
+            GotoHotkey.Hotkey = key : GotoHotkey.HotkeyModifiers = modif
+
+            arr = configHandler("SearchHotkey").ToString.Split("|").ToArray()
+            Keys.TryParse(arr(0), key) : Keys.TryParse(arr(1), modif)
+            SearchHotkey.Hotkey = key : SearchHotkey.HotkeyModifiers = modif
+
+            arr = configHandler("ReplaceHotkey").ToString.Split("|").ToArray()
+            Keys.TryParse(arr(0), key) : Keys.TryParse(arr(1), modif)
+            ReplaceHotkey.Hotkey = key : ReplaceHotkey.HotkeyModifiers = modif
+
+            arr = configHandler("GotoNextHotkey").ToString.Split("|").ToArray()
+            Keys.TryParse(arr(0), key) : Keys.TryParse(arr(1), modif)
+            GotoNextHotkey.Hotkey = key : GotoNextHotkey.HotkeyModifiers = modif
+
+            arr = configHandler("GotoBeforeHotkey").ToString.Split("|").ToArray()
+            Keys.TryParse(arr(0), key) : Keys.TryParse(arr(1), modif)
+            GotoBeforeHotkey.Hotkey = key : GotoBeforeHotkey.HotkeyModifiers = modif
+
+            arr = configHandler("BuildHotkey").ToString.Split("|").ToArray()
+            Keys.TryParse(arr(0), key) : Keys.TryParse(arr(1), modif)
+            BuildHotkey.Hotkey = key : BuildHotkey.HotkeyModifiers = modif
+        Catch ex As Exception
+            SaveHotkey.Hotkey = Keys.S : SaveHotkey.HotkeyModifiers = Keys.Control
+            SaveAllHotkey.Hotkey = Keys.S : SaveAllHotkey.HotkeyModifiers = Keys.Control Or Keys.Shift
+            GotoHotkey.Hotkey = Keys.G : GotoHotkey.HotkeyModifiers = Keys.Control
+            SearchHotkey.Hotkey = Keys.F : SearchHotkey.HotkeyModifiers = Keys.Control
+            ReplaceHotkey.Hotkey = Keys.H : ReplaceHotkey.HotkeyModifiers = Keys.Control
+            GotoNextHotkey.Hotkey = Keys.N : GotoNextHotkey.HotkeyModifiers = Keys.Control Or Keys.Shift
+            GotoBeforeHotkey.Hotkey = Keys.B : GotoBeforeHotkey.HotkeyModifiers = Keys.Control Or Keys.Shift
+            BuildHotkey.Hotkey = Keys.F5 : BuildHotkey.HotkeyModifiers = Keys.None
+            Button2_Click(Me, EventArgs.Empty)
+        End Try
+    End Sub
+
+    <Localizable(False)>
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim configHandler As New ConfigsHandler(_configDirPath + "/hotkeys.json")
+        configHandler.Item("SaveHotkey") = SaveHotkey.Hotkey.ToString() + "|" + SaveHotkey.HotkeyModifiers.ToString()
+        configHandler.Item("SaveAllHotkey") = SaveAllHotkey.Hotkey.ToString() + "|" + SaveAllHotkey.HotkeyModifiers.ToString()
+        configHandler.Item("GotoHotkey") = GotoHotkey.Hotkey.ToString() + "|" + GotoHotkey.HotkeyModifiers.ToString()
+        configHandler.Item("SearchHotkey") = SearchHotkey.Hotkey.ToString() + "|" + SearchHotkey.HotkeyModifiers.ToString()
+        configHandler.Item("ReplaceHotkey") = ReplaceHotkey.Hotkey.ToString() + "|" + ReplaceHotkey.HotkeyModifiers.ToString()
+        configHandler.Item("GotoNextHotkey") = GotoNextHotkey.Hotkey.ToString() + "|" + GotoNextHotkey.HotkeyModifiers.ToString()
+        configHandler.Item("GotoBeforeHotkey") = GotoBeforeHotkey.Hotkey.ToString() + "|" + GotoBeforeHotkey.HotkeyModifiers.ToString()
+        configHandler.Item("BuildHotkey") = BuildHotkey.Hotkey.ToString() + "|" + BuildHotkey.HotkeyModifiers.ToString()
+        configHandler.Save()
     End Sub
 #End Region
 End Class
