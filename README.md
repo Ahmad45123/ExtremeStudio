@@ -7,7 +7,7 @@ ExtremeStudio is a PAWN editor and is designed to be used in SA-MP development.
 
 ## Download
 You can download the app along with auto-updater by going to this page here and pressing Install:
-http://bit.ly/ESDownload
+https://rebrand.ly/ExtremeStudio
 
 Or, you could also download the portable version from GitHub releases but it doesn't cotain an auto-updater.
 
