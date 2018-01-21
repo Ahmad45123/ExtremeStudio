@@ -242,10 +242,15 @@ Public Class MainForm
 
 #Region "Compiler Stuff"
     Private Sub CompilerWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles CompilerWorker.DoWork
+        Control.CheckForIllegalCrossThreadCalls = false
         'First of all, Try and save all docs.
-        Dim msgRslt = MsgBox(translations.MainForm_CompilerWorker_DoWork_WouldYouLikeToSaveFiles, MsgBoxStyle.YesNoCancel Or MsgBoxStyle.Exclamation)
-        If msgRslt = DialogResult.Cancel Then Exit Sub
-        If msgRslt = DialogResult.Yes Then
+        If CurrentScintilla.Modified Then
+            Dim msgRslt = MsgBox(translations.MainForm_CompilerWorker_DoWork_WouldYouLikeToSaveFiles, MsgBoxStyle.YesNoCancel Or MsgBoxStyle.Exclamation)
+            If msgRslt = DialogResult.Cancel Then Exit Sub
+            If msgRslt = DialogResult.Yes Then
+                CompilerWorker.ReportProgress(1) 'Save all files.
+            End If
+        Else 
             CompilerWorker.ReportProgress(1) 'Save all files.
         End If
 
