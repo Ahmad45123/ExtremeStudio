@@ -195,6 +195,10 @@ Public Class EditorDock
         ' Instruct the lexer to calculate folding
         Editor.SetProperty("fold", "1")
         Editor.SetProperty("fold.compact", "1")
+        
+        'Instruct the lexer on defines.
+        Editor.SetProperty("lexer.cpp.track.preprocessor", "0")
+        Editor.SetProperty("lexer.cpp.update.preprocessor", "0")
 
         ' Configure folding markers with respective symbols.
         Editor.Markers(Marker.Folder).Symbol = MarkerSymbol.BoxPlus
