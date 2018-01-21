@@ -158,7 +158,7 @@ Public Class EditorDock
         DoStyle(Style.Cpp.CommentDoc, SettingsForm.ColorsInfo.SPawnDoc)
         DoStyle(Style.Cpp.Preprocessor, SettingsForm.ColorsInfo.SPawnPre)
         DoStyle(Style.Cpp.Word, SettingsForm.ColorsInfo.SPawnKeys)
-        Editor.SetKeywords(0, "static break case enum continue do else false for goto public stock if is new null return sizeof switch true while forward native")
+        Editor.SetKeywords(0, "default const static break case enum continue do else false for goto public stock if is new null return sizeof switch true while forward native")
 
         DoStyle(Styles.Functions, SettingsForm.ColorsInfo.SFunctions)
         DoStyle(Styles.Publics, SettingsForm.ColorsInfo.SPublics)
