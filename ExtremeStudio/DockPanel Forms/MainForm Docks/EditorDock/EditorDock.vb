@@ -43,9 +43,6 @@ Public Class EditorDock
         If keyData = (SettingsForm.SaveHotkey.Hotkey Or SettingsForm.SaveHotkey.HotkeyModifiers) Then
             MainForm.SaveFile(Editor)
             Editor.SetSavePoint()
-            If keyData And Keys.Shift Then 'If he has shift pressed also.
-                MainForm.SaveAllFiles(Me, EventArgs.Empty)
-            End If
             Return True
 
         ElseIf keyData = (SettingsForm.SaveAllHotkey.Hotkey Or SettingsForm.SaveAllHotkey.HotkeyModifiers) Then
