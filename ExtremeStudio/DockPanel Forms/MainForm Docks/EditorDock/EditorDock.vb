@@ -52,51 +52,50 @@ Public Class EditorDock
             Return True
 
         ElseIf keyData = (SettingsForm.GotoHotkey.Hotkey Or SettingsForm.GotoHotkey.HotkeyModifiers) Then
-            GotoForm = Nothing 'Resets the form
             GotoForm.Show()
             Return True
 
         ElseIf keyData = (SettingsForm.SearchHotkey.Hotkey Or SettingsForm.SearchHotkey.HotkeyModifiers) Then
-            SearchReplaceForm = Nothing
-            SearchReplaceForm.Show()
+            If Not SearchReplaceForm.Visible Then SearchReplaceForm.Show()
             SearchReplaceForm.TabControl1.SelectTab(0) 'Search Tab.
             SearchReplaceForm.searchFindText.Select()
             Return True
 
         ElseIf keyData = (SettingsForm.ReplaceHotkey.Hotkey Or SettingsForm.ReplaceHotkey.HotkeyModifiers) Then
-            SearchReplaceForm = Nothing
             SearchReplaceForm.Show()
             SearchReplaceForm.TabControl1.SelectTab(1) 'Replace Tab.
             Return True
 
         ElseIf keyData = (SettingsForm.GotoNextHotkey.Hotkey Or SettingsForm.GotoNextHotkey.HotkeyModifiers) Then
-            If SearchReplaceForm.travelList.Count > 1 Then
-                Dim nearestNext As Long = 999999999999999999
-                Dim nearestID As Integer = 0
-                For i As Integer = 0 To SearchReplaceForm.travelList.Count - 1
-                    If SearchReplaceForm.travelList(i).Key > Editor.CurrentPosition And SearchReplaceForm.travelList(i).Key < nearestNext Then
-                        nearestNext = SearchReplaceForm.travelList(i).Key
-                        nearestID = i
-                    End If
-                Next
-                Editor.SetSelection(SearchReplaceForm.travelList(nearestID).Key, SearchReplaceForm.travelList(nearestID).Value)
-                Editor.ScrollCaret()
-            End If
+            'If SearchReplaceForm.travelList.Count > 1 Then
+            '    Dim nearestNext As Long = 999999999999999999
+            '    Dim nearestID As Integer = 0
+            '    For i As Integer = 0 To SearchReplaceForm.travelList.Count - 1
+            '        If SearchReplaceForm.travelList(i).Key > Editor.CurrentPosition And SearchReplaceForm.travelList(i).Key < nearestNext Then
+            '            nearestNext = SearchReplaceForm.travelList(i).Key
+            '            nearestID = i
+            '        End If
+            '    Next
+            '    Editor.SetSelection(SearchReplaceForm.travelList(nearestID).Key, SearchReplaceForm.travelList(nearestID).Value)
+            '    Editor.ScrollCaret()
+            'End If
+            SearchReplaceForm.SearchAndMark(SearchReplaceForm.searchFindText.Text)
             Return True
 
         ElseIf keyData = (SettingsForm.GotoBeforeHotkey.Hotkey Or SettingsForm.GotoBeforeHotkey.HotkeyModifiers) Then
-            If SearchReplaceForm.travelList.Count > 1 Then
-                Dim nearestNext As Long = 0
-                Dim nearestID As Integer = 0
-                For i As Integer = 0 To SearchReplaceForm.travelList.Count - 1
-                    If SearchReplaceForm.travelList(i).Key < Editor.CurrentPosition And SearchReplaceForm.travelList(i).Key > nearestNext Then
-                        nearestNext = SearchReplaceForm.travelList(i).Key
-                        nearestID = i
-                    End If
-                Next
-                Editor.SetSelection(SearchReplaceForm.travelList(nearestID).Key, SearchReplaceForm.travelList(nearestID).Value)
-                Editor.ScrollCaret()
-            End If
+            'If SearchReplaceForm.travelList.Count > 1 Then
+            '    Dim nearestNext As Long = 0
+            '    Dim nearestID As Integer = 0
+            '    For i As Integer = 0 To SearchReplaceForm.travelList.Count - 1
+            '        If SearchReplaceForm.travelList(i).Key < Editor.CurrentPosition And SearchReplaceForm.travelList(i).Key > nearestNext Then
+            '            nearestNext = SearchReplaceForm.travelList(i).Key
+            '            nearestID = i
+            '        End If
+            '    Next
+            '    Editor.SetSelection(SearchReplaceForm.travelList(nearestID).Key, SearchReplaceForm.travelList(nearestID).Value)
+            '    Editor.ScrollCaret()
+            'End If
+            SearchReplaceForm.SearchAndMark(SearchReplaceForm.searchFindText.Text, True)
             Return True
 
         ElseIf keyData = (SettingsForm.BuildHotkey.Hotkey Or SettingsForm.BuildHotkey.HotkeyModifiers) Then

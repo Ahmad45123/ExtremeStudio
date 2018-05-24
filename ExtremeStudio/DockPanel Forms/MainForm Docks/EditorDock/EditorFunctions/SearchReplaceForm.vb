@@ -80,21 +80,27 @@ Public Class SearchReplaceForm
     End Sub
 
     Dim _isAlreadySearching As Boolean = False
-    Private sub SearchAndMark(ByVal searchText As String)
+    Public Sub SearchAndMark(searchText As String, Optional opposite As Boolean = False)
         'Only reset the settings if its new, or else: 
         'If its old, Just go with old settings to find literally next.
-        If _isAlreadySearching = False Then 
+        If _isAlreadySearching = False Then
             ResetSettings()
         Else
             'Prepare For Next: 
-            MainForm.CurrentScintilla.TargetStart = MainForm.CurrentScintilla.TargetEnd 'Start from the last end and continue to end.
-            MainForm.CurrentScintilla.TargetEnd = MainForm.CurrentScintilla.TextLength
+            If opposite = True Then
+                MainForm.CurrentScintilla.TargetStart = Math.Min(MainForm.CurrentScintilla.CurrentPosition, MainForm.CurrentScintilla.AnchorPosition)
+                MainForm.CurrentScintilla.TargetEnd = 0
+            Else
+                MainForm.CurrentScintilla.TargetStart = Math.Max(MainForm.CurrentScintilla.CurrentPosition, MainForm.CurrentScintilla.AnchorPosition)
+                MainForm.CurrentScintilla.TargetEnd = MainForm.CurrentScintilla.TextLength
+            End If
         End If
 
         'No WHILE because we don't want to get all but just the next.
-        If MainForm.CurrentScintilla?.SearchInTarget(searchText) <> -1
+        If MainForm.CurrentScintilla?.SearchInTarget(searchText) <> -1 Then
             'First set the selection: 
             MainForm.CurrentScintilla?.SetSelection(MainForm.CurrentScintilla?.TargetStart, MainForm.CurrentScintilla?.TargetEnd)
+
             'Scroll to it: 
             MainForm.CurrentScintilla?.ScrollCaret()
             'Set the var to true: 
@@ -103,7 +109,7 @@ Public Class SearchReplaceForm
             MsgBox(translations.SearchReplaceForm_SearchAndMark_ReachedEndDocument, MsgBoxStyle.Information)
             _isAlreadySearching = False
         End If
-    End sub
+    End Sub
     Private Sub searchFindText_TextChanged(sender As Object, e As EventArgs) Handles searchFindText.TextChanged
         'New search is being done: 
         _isAlreadySearching = False
