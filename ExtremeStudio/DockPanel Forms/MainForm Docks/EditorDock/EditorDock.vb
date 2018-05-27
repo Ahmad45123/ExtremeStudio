@@ -154,7 +154,7 @@ Public Class EditorDock
         DoStyle(Style.Cpp.CommentDoc, SettingsForm.ColorsInfo.SPawnDoc)
         DoStyle(Style.Cpp.Preprocessor, SettingsForm.ColorsInfo.SPawnPre)
         DoStyle(Style.Cpp.Word, SettingsForm.ColorsInfo.SPawnKeys)
-        Editor.SetKeywords(0, "static break case enum continue do else false for goto public stock if is new null return sizeof switch true while forward native")
+        Editor.SetKeywords(0, "default const static break case enum continue do else false for goto public stock if is new null return sizeof switch true while forward native")
 
         DoStyle(Styles.Functions, SettingsForm.ColorsInfo.SFunctions)
         DoStyle(Styles.Publics, SettingsForm.ColorsInfo.SPublics)
@@ -191,6 +191,10 @@ Public Class EditorDock
         ' Instruct the lexer to calculate folding
         Editor.SetProperty("fold", "1")
         Editor.SetProperty("fold.compact", "1")
+        
+        'Instruct the lexer on defines.
+        Editor.SetProperty("lexer.cpp.track.preprocessor", "0")
+        Editor.SetProperty("lexer.cpp.update.preprocessor", "0")
 
         ' Configure folding markers with respective symbols.
         Editor.Markers(Marker.Folder).Symbol = MarkerSymbol.BoxPlus
