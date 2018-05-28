@@ -3,6 +3,7 @@ Imports System.Globalization
 Imports System.IO
 Imports System.Threading
 Imports System.Deployment
+Imports System.Net
 
 <Localizable(False)>
 Public Class LanguagesForm
@@ -63,6 +64,19 @@ RESET_FOLDER:
                 Close()
             End If
         End If
+
+
+        'CHECK IF NO SUPPORT ANYMORE
+        Try
+            Dim t as New WebClient()
+            Dim out = t.DownloadString("https://github.com/Ahmad45123/ExtremeStudio/blob/master/isOldRunning.txt")
+            If out = "false"
+                MsgBox("ExtremeStudio got a MAJOR update which adds several new features and changes a bunch of stuff." + vbCrLf +"The changes include the way we handle updates so this version won't be getting any more updates. Make sure to visit the below link to download the newest version along with the newest updater." + vbCrLf + vbCrLf + "http://forum.sa-mp.com/showthread.php?t=608037", MsgBoxStyle.OkOnly Or MsgBoxStyle.Information)
+            End If
+        Catch ex As WebException
+            MsgBox("ExtremeStudio got a MAJOR update which adds several new features and changes a bunch of stuff." + vbCrLf +"The changes include the way we handle updates so this version won't be getting any more updates. Make sure to visit the below link to download the newest version along with the newest updater." + vbCrLf + vbCrLf + "http://forum.sa-mp.com/showthread.php?t=608037", MsgBoxStyle.OkOnly Or MsgBoxStyle.Information)
+        End Try
+
 
         If Not Directory.Exists(MainForm.ApplicationFiles + "\configs") Then Directory.CreateDirectory(MainForm.ApplicationFiles + "\configs")
 
