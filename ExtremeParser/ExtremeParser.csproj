@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{806B3C30-9A50-47D0-A785-854AE41B7B94}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExtremeParser</RootNamespace>
+    <AssemblyName>ExtremeParser</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CodeParts.cs" />
+    <Compile Include="Exceptions\ExceptionsList.cs" />
+    <Compile Include="Exceptions\IncludeNotFoundException.cs" />
+    <Compile Include="Exceptions\ParserException.cs" />
+    <Compile Include="Global\DefineReplacer.cs" />
+    <Compile Include="Global\FunctionParameters.cs" />
+    <Compile Include="Parser.cs" />
+    <Compile Include="Parsers\Cleaner.cs" />
+    <Compile Include="Parsers\Defines.cs" />
+    <Compile Include="Parsers\DefReplacer.cs" />
+    <Compile Include="Parsers\Enums.cs" />
+    <Compile Include="Parsers\Functions.cs" />
+    <Compile Include="Parsers\GlobalVariables.cs" />
+    <Compile Include="Parsers\IfDefines.cs" />
+    <Compile Include="Parsers\Includes.cs" />
+    <Compile Include="Parsers\PawnDoc.cs" />
+    <Compile Include="Parsers\PawnDocParser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Types\DefinesStruct.cs" />
+    <Compile Include="Types\EnumsStruct.cs" />
+    <Compile Include="Types\FunctionsStruct.cs" />
+    <Compile Include="Types\VarStruct.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ExtremeCore\ExtremeCore.csproj">
+      <Project>{e38216ad-0f1a-4064-8ff9-f74386450a9d}</Project>
+      <Name>ExtremeCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

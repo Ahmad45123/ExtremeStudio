@@ -126,6 +126,9 @@
   <data name="&gt;&gt;saveFileButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="&gt;&gt;statusLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;pluginManagePanel.Name" xml:space="preserve">
     <value>pluginManagePanel</value>
   </data>
@@ -155,9 +158,8 @@
   <data name="&gt;&gt;saveAllButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="MainDock.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="&gt;&gt;objExplorerView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="mainRibbon.OrbDropDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>527, 116</value>
@@ -165,20 +167,15 @@
   <data name="&gt;&gt;viewPanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;editTab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonTab, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="mainRibbon.OrbDropDown.AccessibleDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="pluginsButton.ToolTip" xml:space="preserve">
     <value>Download SAMP Plugins</value>
   </data>
-  <data name="&gt;&gt;objExplorerView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;downloadPanel.Name" xml:space="preserve">
     <value>downloadPanel</value>
-  </data>
-  <data name="mainRibbon.OrbDropDown.AccessibleDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
   </data>
   <data name="&gt;&gt;BuildPanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
@@ -198,8 +195,8 @@
   <data name="&gt;&gt;searchButton.Name" xml:space="preserve">
     <value>searchButton</value>
   </data>
-  <data name="searchPanel.Text" xml:space="preserve">
-    <value>Search &amp; Replace</value>
+  <data name="prjPanel.Text" xml:space="preserve">
+    <value>Files</value>
   </data>
   <data name="prjExplrerView.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -225,20 +222,17 @@
   <data name="mainRibbon.OrbDropDown.BackgroundImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="fileTab.Text" xml:space="preserve">
-    <value>Project</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>ExtremeStudio - Project</value>
   </data>
-  <data name="prjPanel.Text" xml:space="preserve">
-    <value>Files</value>
-  </data>
-  <data name="&gt;&gt;gotoButton.Name" xml:space="preserve">
-    <value>gotoButton</value>
+  <data name="&gt;&gt;StatusStrip1.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="gotoButton.ToolTip" xml:space="preserve">
     <value>GoTo</value>
   </data>
-  <data name="objExplorerView.ToolTip" xml:space="preserve">
-    <value>Object Explorer</value>
+  <data name="&gt;&gt;pasteButton.Name" xml:space="preserve">
+    <value>pasteButton</value>
   </data>
   <data name="errorsWarningsView.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -246,11 +240,8 @@
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="&gt;&gt;statusStripTimer.Name" xml:space="preserve">
-    <value>statusStripTimer</value>
-  </data>
-  <data name="&gt;&gt;StatusStrip1.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="mainRibbon.OrbDropDown.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Inherit</value>
   </data>
   <data name="replaceButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -267,8 +258,8 @@
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
-  <data name="&gt;&gt;RibbonOrbRecentItem1.Name" xml:space="preserve">
-    <value>RibbonOrbRecentItem1</value>
+  <data name="esPluginsManage.ToolTip" xml:space="preserve">
+    <value>Manage ES Plugins</value>
   </data>
   <data name="searchButton.ToolTip" xml:space="preserve">
     <value>Search</value>
@@ -281,9 +272,6 @@
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="esPluginsManage.ToolTip" xml:space="preserve">
-    <value>Manage ES Plugins</value>
   </data>
   <data name="StatusStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>610, 22</value>
@@ -306,11 +294,14 @@
   <data name="saveAllButton.ToolTip" xml:space="preserve">
     <value>Save All Files</value>
   </data>
-  <data name="&gt;&gt;statusLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;customTab.Name" xml:space="preserve">
+    <value>customTab</value>
   </data>
-  <data name="&gt;&gt;indentPanel.Name" xml:space="preserve">
-    <value>indentPanel</value>
+  <data name="&gt;&gt;syntaxHighPanel.Name" xml:space="preserve">
+    <value>syntaxHighPanel</value>
+  </data>
+  <data name="&gt;&gt;mainRibbon.Name" xml:space="preserve">
+    <value>mainRibbon</value>
   </data>
   <data name="StatusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 440</value>
@@ -321,26 +312,20 @@
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="&gt;&gt;searchButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;RibbonButton1.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;RibbonOrbMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonOrbMenuItem, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="indentPanel.Text" xml:space="preserve">
-    <value>Indentation</value>
+  <data name="mainRibbon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
   <data name="&gt;&gt;removeIndentButton.Name" xml:space="preserve">
     <value>removeIndentButton</value>
   </data>
   <data name="removeIndentButton.ToolTip" xml:space="preserve">
     <value>Remove Indentation</value>
-  </data>
-  <data name="mainRibbon.OrbDropDown.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>Inherit</value>
   </data>
   <data name="&gt;&gt;compileScriptBtn.Name" xml:space="preserve">
     <value>compileScriptBtn</value>
@@ -384,11 +369,14 @@
   <data name="&gt;&gt;copyButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="gotoButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="RibbonOrbMenuItem1.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="objExplorerView.ToolTip" xml:space="preserve">
+    <value>Object Explorer</value>
   </data>
   <data name="mainRibbon.OrbDropDown.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Tile</value>
@@ -402,14 +390,14 @@
   <data name="&gt;&gt;cutButton.Name" xml:space="preserve">
     <value>cutButton</value>
   </data>
-  <data name="&gt;&gt;pasteButton.Name" xml:space="preserve">
-    <value>pasteButton</value>
+  <data name="gotoButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="&gt;&gt;clipboardPanel.Name" xml:space="preserve">
     <value>clipboardPanel</value>
-  </data>
-  <data name="mainRibbon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
   </data>
   <data name="&gt;&gt;closeProjectButton.Name" xml:space="preserve">
     <value>closeProjectButton</value>
@@ -432,9 +420,6 @@
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="&gt;&gt;customTab.Name" xml:space="preserve">
-    <value>customTab</value>
-  </data>
   <data name="MainDock.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -456,8 +441,8 @@
   <data name="&gt;&gt;ideTab.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonTab, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;mainRibbon.Name" xml:space="preserve">
-    <value>mainRibbon</value>
+  <data name="MainDock.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="RibbonButton1.ToolTip" xml:space="preserve">
     <value>Modify Syntax Highlighting</value>
@@ -468,6 +453,9 @@
   <data name="MainDock.Size" type="System.Drawing.Size, System.Drawing">
     <value>610, 338</value>
   </data>
+  <data name="indentPanel.Text" xml:space="preserve">
+    <value>Indentation</value>
+  </data>
   <data name="RibbonOrbMenuItem1.Text" xml:space="preserve">
     <value>Project</value>
   </data>
@@ -476,9 +464,6 @@
   </data>
   <data name="&gt;&gt;closeProjectButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>ExtremeStudio - Project</value>
   </data>
   <data name="&gt;&gt;fileTab.Name" xml:space="preserve">
     <value>fileTab</value>
@@ -531,6 +516,9 @@
   <data name="&gt;&gt;searchPanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="searchPanel.Text" xml:space="preserve">
+    <value>Search &amp; Replace</value>
+  </data>
   <data name="esPluginsManage.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -559,16 +547,13 @@
     <value>View</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonForm, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;saveFileButton.Name" xml:space="preserve">
     <value>saveFileButton</value>
   </data>
-  <data name="RibbonOrbMenuItem1.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
-</value>
+  <data name="&gt;&gt;searchButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="RibbonOrbRecentItem1.Text" xml:space="preserve">
     <value>Close Current Project</value>
@@ -590,6 +575,9 @@
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="&gt;&gt;indentPanel.Name" xml:space="preserve">
+    <value>indentPanel</value>
   </data>
   <data name="copyButton.ToolTip" xml:space="preserve">
     <value>Copy</value>
@@ -660,14 +648,17 @@
   <data name="&gt;&gt;downloadPanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="&gt;&gt;gotoButton.Name" xml:space="preserve">
+    <value>gotoButton</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>610, 462</value>
   </data>
   <data name="&gt;&gt;StatusStrip1.Type" xml:space="preserve">
     <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;syntaxHighPanel.Name" xml:space="preserve">
-    <value>syntaxHighPanel</value>
+  <data name="&gt;&gt;statusStripTimer.Name" xml:space="preserve">
+    <value>statusStripTimer</value>
   </data>
   <data name="&gt;&gt;BuildPanel.Name" xml:space="preserve">
     <value>BuildPanel</value>
@@ -681,8 +672,14 @@
   <data name="&gt;&gt;removeIndentButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="&gt;&gt;RibbonOrbRecentItem1.Name" xml:space="preserve">
+    <value>RibbonOrbRecentItem1</value>
+  </data>
   <data name="&gt;&gt;statusLabel.Name" xml:space="preserve">
     <value>statusLabel</value>
+  </data>
+  <data name="&gt;&gt;editTab.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonTab, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="closeProjectButton.Text" xml:space="preserve">
     <value>RibbonButton4</value>
@@ -694,10 +691,13 @@
     <value>pluginsButton</value>
   </data>
   <data name="&gt;&gt;MainDock.Type" xml:space="preserve">
-    <value>WeifenLuo.WinFormsUI.Docking.DockPanel, WeifenLuo.WinFormsUI.Docking, Version=2.11.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481</value>
+    <value>WeifenLuo.WinFormsUI.Docking.DockPanel, WeifenLuo.WinFormsUI.Docking, Version=3.0.4.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481</value>
   </data>
   <data name="&gt;&gt;installedPlugins.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="fileTab.Text" xml:space="preserve">
+    <value>Project</value>
   </data>
   <data name="mainRibbon.OrbDropDown.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -720,20 +720,20 @@
   <data name="&gt;&gt;includesButton.Name" xml:space="preserve">
     <value>includesButton</value>
   </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="statusStripTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>286, 22</value>
+  </metadata>
+  <metadata name="StatusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>28, 22</value>
+  </metadata>
   <metadata name="CompilerWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>145, 22</value>
   </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>en</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="StatusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>28, 22</value>
-  </metadata>
-  <metadata name="statusStripTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>286, 22</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>65</value>
