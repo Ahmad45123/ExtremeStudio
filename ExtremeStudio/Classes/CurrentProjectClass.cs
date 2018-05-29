@@ -43,8 +43,6 @@ namespace ExtremeStudio.Classes
         {
             _sqlCon.ExecuteNonQuery("CREATE TABLE MainConfig(`name` STRING(50), `value` STRING(50));");
             _sqlCon.ExecuteNonQuery("CREATE TABLE ObjectExplorerItems(`name` STRING(50), `identifier` STRING(50));");
-            _sqlCon.ExecuteNonQuery("CREATE TABLE Includes(`incName` STRING(50), `incVer` STRING(50));");
-            _sqlCon.ExecuteNonQuery("CREATE TABLE Plugins(`plugName` STRING(50), `plugVer` STRING(50));");
         }
 
         #endregion
@@ -110,48 +108,6 @@ namespace ExtremeStudio.Classes
             File.Copy(Program.MainForm.ApplicationFiles + "/configs/themeInfo.json", ProjectPath + "/configs/themeInfo.json", true);
             File.Copy(Program.MainForm.ApplicationFiles + "/configs/compiler.json", ProjectPath + "/configs/compiler.json", true);
         }
-
-        #region Includes Codes
-
-        public void AddInclude(string inc, string ver)
-        {
-            var dt = _sqlCon.GetDataTable("SELECT * FROM `Includes` WHERE `incName` = '" + inc + "'");
-            if (dt.Rows.Count > 0)
-            {
-                _sqlCon.ExecuteNonQuery("DELETE FROM `Includes` WHERE `incName` = '" + inc + "'");
-            }
-
-            _sqlCon.ExecuteNonQuery("INSERT INTO `Includes` VALUES('" + inc + "', '" + ver + "');");
-        }
-
-        public void RemoveInclude(string inc)
-        {
-            _sqlCon.ExecuteNonQuery("DELETE FROM `Includes` WHERE `incName` = '" + inc + "'");
-        }
-
-        public bool IncludeExists(string inc)
-        {
-            var dt = _sqlCon.GetDataTable("SELECT * FROM `Includes` WHERE `incName` = '" + inc + "'");
-            if (dt.Rows.Count > 0)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        public string IncludeVersion(string inc)
-        {
-            var dt = _sqlCon.GetDataTable("SELECT `incVer` FROM `Includes` WHERE `incName` = '" + inc + "'");
-            if (dt.Rows.Count == 0)
-            {
-                return null;
-            }
-
-            return (string)dt.Rows[0][0];
-        }
-
-        #endregion
 
         #region server.cfg
 
@@ -225,107 +181,6 @@ namespace ExtremeStudio.Classes
             }
 
             return Convert.ToString(-1);
-        }
-
-        #endregion
-
-        #region PluginsHandler
-
-        public void AddPlugin(string inc, string ver)
-        {
-            var dt = _sqlCon.GetDataTable("SELECT * FROM `Plugins` WHERE `plugName` = '" + inc + "'");
-            if (dt.Rows.Count > 0)
-            {
-                _sqlCon.ExecuteNonQuery("DELETE FROM `Plugins` WHERE `plugName` = '" + inc + "'");
-            }
-
-            _sqlCon.ExecuteNonQuery("INSERT INTO `Plugins` VALUES('" + inc + "', '" + ver + "');");
-        }
-
-        public void RemovePlugin(string inc)
-        {
-            _sqlCon.ExecuteNonQuery("DELETE FROM `Plugins` WHERE `plugName` = '" + inc + "'");
-        }
-
-        public bool PluginExists(string inc)
-        {
-            var dt = _sqlCon.GetDataTable("SELECT * FROM `Plugins` WHERE `plugName` = '" + inc + "'");
-            if (dt.Rows.Count > 0)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        public string PluginVersion(string inc)
-        {
-            var dt = _sqlCon.GetDataTable("SELECT `plugVer` FROM `Plugins` WHERE `plugName` = '" + inc + "'");
-            if (dt.Rows.Count == 0)
-            {
-                return null;
-            }
-
-            return (string)dt.Rows[0][0];
-        }
-
-        //Server.cfg stuff for plugins.
-        private List<string> GetPluginsListInServerCfg()
-        {
-            List<string> returnValue = default(List<string>);
-            returnValue = new List<string>();
-
-            string st = GetSampConfig("plugins");
-            if (st == "-1")
-            {
-                st = "";
-            }
-            else
-            {
-                string[] bla = st.Split(" ".ToCharArray());
-
-                foreach (string bl in bla)
-                {
-                    if (!(string.IsNullOrEmpty(bl)) || bl != " ")
-                    {
-                        returnValue.Add(bl);
-                    }
-                }
-            }
-
-            return returnValue;
-        }
-
-        private void SavePluginsInServerCfg(List<string> plugs)
-        {
-            string str = plugs.Aggregate((current, plug) => current + (" " + plug));
-            str = str?.Remove(0, 1);
-
-            EditSampConfig("plugins", str);
-        }
-
-        public dynamic IsPluginInServerCfg(string pluginName)
-        {
-            List<string> lst = GetPluginsListInServerCfg();
-            return lst.Any(str => str == pluginName);
-        }
-
-        public void TogglePluginInServerCfg(string pluginName)
-        {
-            List<string> lst = GetPluginsListInServerCfg();
-            foreach (string str in lst)
-            {
-                if (str == pluginName)
-                {
-                    lst.Remove(str); //Remove it then exit sub and don't continue adding it.
-                    SavePluginsInServerCfg(lst); //Save it
-                    return;
-                }
-            }
-
-            //If code reaches here, Then it wasn't found so add it.
-            lst.Add(pluginName);
-            SavePluginsInServerCfg(lst);
         }
 
         #endregion
