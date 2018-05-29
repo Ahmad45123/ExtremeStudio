@@ -197,6 +197,8 @@ namespace ExtremeStudio
         {
             if (Program.ProjExplorerDock.Visible == false)
             {
+                if(Program.ProjExplorerDock.IsDisposed)
+                    Program.ProjExplorerDock = new ProjExplorerDock();
                 Program.ProjExplorerDock.Visible = true;
                 Program.ProjExplorerDock.Show(MainDock);
             }
@@ -211,6 +213,8 @@ namespace ExtremeStudio
         {
             if (Program.ObjectExplorerDock.Visible == false)
             {
+                if(Program.ObjectExplorerDock.IsDisposed)
+                    Program.ObjectExplorerDock = new ObjectExplorerDock();
                 Program.ObjectExplorerDock.Visible = true;
                 Program.ObjectExplorerDock.Show(MainDock);
             }
@@ -225,6 +229,8 @@ namespace ExtremeStudio
         {
             if (Program.ErrorsDock.Visible == false)
             {
+                if(Program.ErrorsDock.IsDisposed)
+                    Program.ErrorsDock = new ErrorsDock();
                 Program.ErrorsDock.Visible = true;
                 Program.ErrorsDock.Show(MainDock);
             }
@@ -381,14 +387,19 @@ namespace ExtremeStudio
             if (File.Exists(CurrentProject.ProjectPath + "/pawno/pawncc.exe"))
             {
                 //Start compilation process and wait till exit.
-                Process compiler = new Process();
-                compiler.StartInfo.FileName = CurrentProject.ProjectPath + "/pawno/pawncc.exe";
-                compiler.StartInfo.WorkingDirectory = CurrentProject.ProjectPath + "/gamemodes/";
-                compiler.StartInfo.Arguments = "\"" + ((object[])e.Argument)[0].ToString().Replace("/", "\\") + "\"" +
-                                               " " + ((object[])e.Argument)[1];
-                compiler.StartInfo.CreateNoWindow = true;
-                compiler.StartInfo.RedirectStandardError = true;
-                compiler.StartInfo.UseShellExecute = false;
+                Process compiler = new Process
+                {
+                    StartInfo =
+                    {
+                        FileName = CurrentProject.ProjectPath + "/pawno/pawncc.exe",
+                        WorkingDirectory = Path.GetDirectoryName(((object[]) e.Argument)[0].ToString().Replace("/", "\\")),
+                        Arguments = "\"" + ((object[]) e.Argument)[0].ToString().Replace("/", "\\") + "\"" +
+                                    " " + ((object[]) e.Argument)[1],
+                        CreateNoWindow = true,
+                        RedirectStandardError = true,
+                        UseShellExecute = false
+                    }
+                };
                 CompilerWorker.ReportProgress(2); //Compiling
                 compiler.Start();
                 compiler.WaitForExit();
@@ -489,6 +500,7 @@ namespace ExtremeStudio
                     Convert.ToString(translations
                         .MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithWarnings), 5000, true);
 
+                Program.ProjExplorerDock.RefreshList();
                 //5 = Finished Compiling.
             }
             else if (e.ProgressPercentage == 5)
@@ -496,6 +508,8 @@ namespace ExtremeStudio
                 ShowStatus(
                     Convert.ToString(translations
                         .MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithNoErrorsWarnings), 5000, true);
+
+                Program.ProjExplorerDock.RefreshList();
             }
         }
 

@@ -18,7 +18,8 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks
 
         public void RefreshList()
         {
-            filesList.SelectedPath = filesList.SelectedPath;
+            if(Visible)
+                filesList.SelectedPath = filesList.SelectedPath;
         }
 
         public bool IsProtected(string pPath)
