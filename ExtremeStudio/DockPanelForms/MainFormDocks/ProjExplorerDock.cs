@@ -116,13 +116,12 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks
                     translations.ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNewDirName);
                 if (input.ResResult == AdvancedInputBox.ReturnValue.InputResultOk)
                 {
-                    if (GeneralFunctions.IsValidFileName(input.ResText))
+                    if (input.ResText.IsValidFileName())
                     {
                         try
                         {
                             Directory.Move(
-                                Convert.ToString(filesList.SelectedFile),
-                                Convert.ToString(input.ResText));
+                                Convert.ToString(filesList.SelectedFile), Path.Combine(Path.GetDirectoryName(filesList.SelectedFile), input.ResText)); 
                         }
                         catch (Exception ex)
                         {
@@ -147,13 +146,25 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks
                     Path.GetFileName(Convert.ToString(filesList.SelectedFile)));
                 if (input.ResResult == AdvancedInputBox.ReturnValue.InputResultOk)
                 {
-                    if (GeneralFunctions.IsValidFileName(input.ResText))
+                    if (input.ResText.IsValidFileName())
                     {
                         try
                         {
                             File.Move(
-                                Convert.ToString(filesList.SelectedFile),
-                                Convert.ToString(input.ResText));
+                                Convert.ToString(filesList.SelectedFile), Path.Combine(Path.GetDirectoryName(filesList.SelectedFile), input.ResText));
+
+                            //If done, change path in openend documents
+                            foreach (var doc in Program.MainForm.MainDock.Documents)
+                            {
+                                var oy = (EditorDock.EditorDock)doc.DockHandler.Form;
+                                if ((string) oy.Editor.Tag == filesList.SelectedFile)
+                                {
+                                    oy.Editor.Tag = Path.Combine(Path.GetDirectoryName(filesList.SelectedFile),
+                                        input.ResText);
+                                    oy.TabText = input.ResText;
+                                    oy.Text = input.ResText;
+                                }
+                            }
                         }
                         catch (Exception ex)
                         {
