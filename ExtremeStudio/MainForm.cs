@@ -5,6 +5,7 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Diagnostics;
 using System.IO;
+using System.Media;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -154,7 +155,7 @@ namespace ExtremeStudio
             statusLabel.Text = textToShow;
             if (isBeep)
             {
-                //BUG: no beep
+                SystemSounds.Beep.Play();
             }
 
             if (msInterval == -1) return;

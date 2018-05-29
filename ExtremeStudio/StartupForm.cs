@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Media;
 using System.Net;
 using System.Windows.Forms;
 using System.Xml;
@@ -207,7 +208,7 @@ namespace ExtremeStudio
             }
             else
             {
-                //BUG: BEEP!
+                SystemSounds.Beep.Play();
 
                 //Replace invalid chars.
                 nameTextBox.Text = nameTextBox.Text.Replace("\\", "");
