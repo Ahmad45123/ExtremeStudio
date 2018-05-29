@@ -232,7 +232,7 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks.EditorDock
             DoStyle(Convert.ToInt32(Style.Cpp.Preprocessor), Program.SettingsForm.ColorsInfo.SPawnPre);
             DoStyle(Convert.ToInt32(Style.Cpp.Word), Program.SettingsForm.ColorsInfo.SPawnKeys);
             Editor.SetKeywords(0,
-                "static break case enum continue do else false for goto public stock if is new null return sizeof switch true while forward native");
+                "static break case enum continue do else false for goto public stock if is new null return sizeof switch true while forward native const default");
 
             DoStyle((Int32) Styles.Functions, Program.SettingsForm.ColorsInfo.SFunctions);
             DoStyle((Int32) Styles.Publics, Program.SettingsForm.ColorsInfo.SPublics);
