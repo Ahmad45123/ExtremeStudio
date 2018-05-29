@@ -13,6 +13,7 @@ using ExtremeStudio.Classes;
 using ExtremeStudio.DockPanelForms.MainFormDocks;
 using ExtremeStudio.DockPanelForms.MainFormDocks.EditorDock;
 using ExtremeStudio.DockPanelForms.MainFormDocks.ObjectExplorerDock;
+using ExtremeStudio.FunctionsForms;
 using Resources;
 using ScintillaNET;
 using WeifenLuo.WinFormsUI.Docking;
@@ -607,8 +608,8 @@ namespace ExtremeStudio
 
         private void esPluginsManage_Click(object sender, EventArgs e)
         {
-            /*ESPluginsForm dlg = new ESPluginsForm();
-            dlg.ShowDialog();*/
+            ESPluginsForm dlg = new ESPluginsForm();
+            dlg.ShowDialog();
         }
     }
 }
