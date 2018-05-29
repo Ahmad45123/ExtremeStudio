@@ -367,6 +367,10 @@ namespace ExtremeStudio.FunctionsForms
             }
         }
 
+        #endregion
+
+        #region HotKeyStuff
+
         [Localizable(false)]
         public void LoadHotkeys()
         {
@@ -435,10 +439,10 @@ namespace ExtremeStudio.FunctionsForms
                 SearchHotkey.HotkeyModifiers = Keys.Control;
                 ReplaceHotkey.Hotkey = Keys.H;
                 ReplaceHotkey.HotkeyModifiers = Keys.Control;
-                GotoNextHotkey.Hotkey = Keys.N;
-                GotoNextHotkey.HotkeyModifiers = Keys.Control | Keys.Shift;
-                GotoBeforeHotkey.Hotkey = Keys.B;
-                GotoBeforeHotkey.HotkeyModifiers = Keys.Control | Keys.Shift;
+                GotoNextHotkey.Hotkey = Keys.F3;
+                GotoNextHotkey.HotkeyModifiers = Keys.None;
+                GotoBeforeHotkey.Hotkey = Keys.F3;
+                GotoBeforeHotkey.HotkeyModifiers = Keys.Shift;
                 BuildHotkey.Hotkey = Keys.F5;
                 BuildHotkey.HotkeyModifiers = Keys.None;
                 Button2_Click(this, EventArgs.Empty);
