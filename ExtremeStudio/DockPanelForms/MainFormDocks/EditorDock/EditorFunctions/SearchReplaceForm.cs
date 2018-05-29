@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Media;
 using System.Windows.Forms;
 using Resources;
 using ScintillaNET;
@@ -164,7 +165,7 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks.EditorDock.EditorFunctions
             }
             else
             {
-                MessageBox.Show(translations.SearchReplaceForm_SearchAndMark_ReachedEndDocument, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Program.MainForm.ShowStatus(translations.SearchReplaceForm_SearchAndMark_ReachedEndDocument, 2000, true);
                 _isAlreadySearching = false;
             }
         }
