@@ -135,6 +135,12 @@
     <Compile Include="FunctionsForms\ESPluginsForm.Designer.cs">
       <DependentUpon>ESPluginsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FunctionsForms\PackagesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FunctionsForms\PackagesForm.Designer.cs">
+      <DependentUpon>PackagesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FunctionsForms\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +214,9 @@
     <EmbeddedResource Include="FunctionsForms\ESPluginsForm.resx">
       <DependentUpon>ESPluginsForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\PackagesForm.resx">
+      <DependentUpon>PackagesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FunctionsForms\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>

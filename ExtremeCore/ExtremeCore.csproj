@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Classes\ConfigsHandler.cs" />
     <Compile Include="Classes\GeneralFunctions.cs" />
+    <Compile Include="Classes\SampCtl.cs" />
     <Compile Include="Classes\SerilaizableColor.cs" />
     <Compile Include="Classes\TreeNodeStateSaver.cs" />
     <Compile Include="Controls And Tools\AdvancedInputBox.cs">

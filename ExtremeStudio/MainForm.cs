@@ -265,8 +265,8 @@ namespace ExtremeStudio
 
         private void ToolStripButton4_Click(object sender, EventArgs e)
         {
-            /*IncludesForm frm = new IncludesForm();
-            frm.Show();*/
+            PackagesForm frm = new PackagesForm();
+            frm.Show();
         }
 
         private void ToolStripButton5_Click(object sender, EventArgs e)
