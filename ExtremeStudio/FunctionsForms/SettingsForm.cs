@@ -426,6 +426,12 @@ namespace ExtremeStudio.FunctionsForms
                 Keys.TryParse(Convert.ToString(arr[1]), out modif);
                 BuildHotkey.Hotkey = key;
                 BuildHotkey.HotkeyModifiers = modif;
+
+                arr = configHandler["GotoDef"].ToString().Split('|').ToArray();
+                Keys.TryParse(Convert.ToString(arr[0]), out key);
+                Keys.TryParse(Convert.ToString(arr[1]), out modif);
+                GotoDefHotkey.Hotkey = key;
+                GotoDefHotkey.HotkeyModifiers = modif;
             }
             catch (Exception)
             {
@@ -445,6 +451,8 @@ namespace ExtremeStudio.FunctionsForms
                 GotoBeforeHotkey.HotkeyModifiers = Keys.Shift;
                 BuildHotkey.Hotkey = Keys.F5;
                 BuildHotkey.HotkeyModifiers = Keys.None;
+                GotoDefHotkey.Hotkey = Keys.F12;
+                GotoDefHotkey.HotkeyModifiers = Keys.None;
                 Button2_Click(this, EventArgs.Empty);
             }
         }
@@ -462,7 +470,8 @@ namespace ExtremeStudio.FunctionsForms
                 ["GotoNextHotkey"] = GotoNextHotkey.Hotkey.ToString() + '|' + GotoNextHotkey.HotkeyModifiers,
                 ["GotoBeforeHotkey"] =
                     GotoBeforeHotkey.Hotkey.ToString() + '|' + GotoBeforeHotkey.HotkeyModifiers,
-                ["BuildHotkey"] = BuildHotkey.Hotkey.ToString() + '|' + BuildHotkey.HotkeyModifiers
+                ["BuildHotkey"] = BuildHotkey.Hotkey.ToString() + '|' + BuildHotkey.HotkeyModifiers,
+                ["GotoDef"] = GotoDefHotkey.Hotkey.ToString() + '|' + GotoDefHotkey.HotkeyModifiers
             };
             configHandler.Save();
         }

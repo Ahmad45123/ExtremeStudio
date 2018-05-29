@@ -39,8 +39,6 @@ namespace ExtremeStudio.FunctionsForms
             this.TabControl1 = new System.Windows.Forms.TabControl();
             this.TabPage3 = new System.Windows.Forms.TabPage();
             this.Button2 = new System.Windows.Forms.Button();
-            this.BuildHotkey = new exscape.HotkeyControl();
-            this.Label18 = new System.Windows.Forms.Label();
             this.GotoBeforeHotkey = new exscape.HotkeyControl();
             this.Label17 = new System.Windows.Forms.Label();
             this.GotoNextHotkey = new exscape.HotkeyControl();
@@ -90,6 +88,10 @@ namespace ExtremeStudio.FunctionsForms
             this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToolTipHandler = new System.Windows.Forms.ToolTip(this.components);
+            this.Label18 = new System.Windows.Forms.Label();
+            this.BuildHotkey = new exscape.HotkeyControl();
+            this.GotoDefHotkey = new exscape.HotkeyControl();
+            this.label19 = new System.Windows.Forms.Label();
             this.TabControl1.SuspendLayout();
             this.TabPage3.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -114,6 +116,8 @@ namespace ExtremeStudio.FunctionsForms
             // 
             // TabPage3
             // 
+            this.TabPage3.Controls.Add(this.GotoDefHotkey);
+            this.TabPage3.Controls.Add(this.label19);
             this.TabPage3.Controls.Add(this.Button2);
             this.TabPage3.Controls.Add(this.BuildHotkey);
             this.TabPage3.Controls.Add(this.Label18);
@@ -143,18 +147,6 @@ namespace ExtremeStudio.FunctionsForms
             this.Button2.Name = "Button2";
             this.Button2.UseVisualStyleBackColor = true;
             this.Button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // BuildHotkey
-            // 
-            this.BuildHotkey.Hotkey = System.Windows.Forms.Keys.None;
-            this.BuildHotkey.HotkeyModifiers = System.Windows.Forms.Keys.None;
-            resources.ApplyResources(this.BuildHotkey, "BuildHotkey");
-            this.BuildHotkey.Name = "BuildHotkey";
-            // 
-            // Label18
-            // 
-            resources.ApplyResources(this.Label18, "Label18");
-            this.Label18.Name = "Label18";
             // 
             // GotoBeforeHotkey
             // 
@@ -505,6 +497,30 @@ namespace ExtremeStudio.FunctionsForms
             this.ToolTipHandler.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.ToolTipHandler.ToolTipTitle = "Help";
             // 
+            // Label18
+            // 
+            resources.ApplyResources(this.Label18, "Label18");
+            this.Label18.Name = "Label18";
+            // 
+            // BuildHotkey
+            // 
+            this.BuildHotkey.Hotkey = System.Windows.Forms.Keys.None;
+            this.BuildHotkey.HotkeyModifiers = System.Windows.Forms.Keys.None;
+            resources.ApplyResources(this.BuildHotkey, "BuildHotkey");
+            this.BuildHotkey.Name = "BuildHotkey";
+            // 
+            // GotoDefHotkey
+            // 
+            this.GotoDefHotkey.Hotkey = System.Windows.Forms.Keys.None;
+            this.GotoDefHotkey.HotkeyModifiers = System.Windows.Forms.Keys.None;
+            resources.ApplyResources(this.GotoDefHotkey, "GotoDefHotkey");
+            this.GotoDefHotkey.Name = "GotoDefHotkey";
+            // 
+            // label19
+            // 
+            resources.ApplyResources(this.label19, "label19");
+            this.label19.Name = "label19";
+            // 
             // SettingsForm
             // 
             resources.ApplyResources(this, "$this");
@@ -582,6 +598,8 @@ namespace ExtremeStudio.FunctionsForms
         internal HotkeyControl GotoNextHotkey;
         internal Label Label16;
         internal Button Button2;
+        internal HotkeyControl GotoDefHotkey;
+        internal Label label19;
         internal HotkeyControl BuildHotkey;
         internal Label Label18;
     }

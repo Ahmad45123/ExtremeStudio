@@ -68,8 +68,6 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks.EditorDock
             this.Editor.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainDock_DragDrop);
             this.Editor.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainDock_DragEnter);
             this.Editor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Editor_KeyDown);
-            this.Editor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Editor_KeyUp);
-            this.Editor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Editor_MouseClick);
             // 
             // RefreshWorker
             // 

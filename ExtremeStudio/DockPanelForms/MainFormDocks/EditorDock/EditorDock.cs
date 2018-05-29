@@ -1222,11 +1222,10 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks.EditorDock
 
         private void Editor_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.ControlKey)
+            if (e.KeyCode == Program.SettingsForm.GotoDefHotkey.Hotkey && e.Modifiers == Program.SettingsForm.GotoDefHotkey.HotkeyModifiers)
             {
                 //The pos.
-                var pos = Editor.CharPositionFromPointClose(Editor.PointToClient(MousePosition).X,
-                    Editor.PointToClient(MousePosition).Y);
+                var pos = Editor.CurrentPosition;
 
                 //Get what is there.
                 string item = Convert.ToString(Editor.GetWordFromPosition(pos));
@@ -1249,41 +1248,23 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks.EditorDock
                 //Now if found, Make the mouse cursor a click.
                 if (_foundItem.Key != _foundItem.Value)
                 {
-                    Cursor = Cursors.Hand;
+                    //Make sure that certain file is opened.
+                    if (_foundItemFile != "current")
+                    {
+                        Program.MainForm.OpenFile(_foundItemFile);
+                    }
+
+                    //Goto
+                    Program.MainForm.CurrentScintilla.SetSelection(_foundItem.Key, _foundItem.Value);
+                    Program.MainForm.CurrentScintilla.ScrollCaret();
+                    //Clear
+                    _foundItemFile = "";
+                    _foundItem = new KeyValuePair<int, int>(0, 0);
                 }
-                else if (Cursor == Cursors.Hand)
+                else
                 {
-                    Cursor = Cursors.Default;
+                    Program.MainForm.ShowStatus(translations.EditorDock_Editor_KeyDown_DefNotFound, 2000, true);
                 }
-            }
-        }
-
-        private void Editor_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.ControlKey & Cursor == Cursors.Hand)
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-
-        [Localizable(false)]
-        private void Editor_MouseClick(object sender, MouseEventArgs e)
-        {
-            //Small check to make sure he is over a navigateable place.
-            if (Cursor == Cursors.Hand && !string.IsNullOrEmpty(_foundItemFile) && _foundItem.Key != _foundItem.Value)
-            {
-                //Make sure that certain file is opened.
-                if (_foundItemFile != "current")
-                {
-                    Program.MainForm.OpenFile(_foundItemFile);
-                }
-
-                //Goto
-                Program.MainForm.CurrentScintilla.SetSelection(_foundItem.Key, _foundItem.Value);
-                Program.MainForm.CurrentScintilla.ScrollCaret();
-                //Clear
-                _foundItemFile = "";
-                _foundItem = new KeyValuePair<int, int>(0, 0);
             }
         }
 

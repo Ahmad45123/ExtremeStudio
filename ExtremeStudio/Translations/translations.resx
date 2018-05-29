@@ -328,4 +328,7 @@ NOTE: INCLUDE THE EXTENSION!</value>
   <data name="SettingsForm_ResetLangBtn_Click_LocalizationSettingsDeleted" xml:space="preserve">
     <value>Localization settings have been deleted sucessfully, please restart application and the language dialog will show.</value>
   </data>
+  <data name="EditorDock_Editor_KeyDown_DefNotFound" xml:space="preserve">
+    <value>The definition of selected keyword wasn't found.</value>
+  </data>
 </root>
