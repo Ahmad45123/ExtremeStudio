@@ -119,6 +119,11 @@ namespace ExtremeStudio
             // verListBox
             // 
             this.verListBox.FormattingEnabled = true;
+            this.verListBox.Items.AddRange(new object[] {
+            resources.GetString("verListBox.Items"),
+            resources.GetString("verListBox.Items1"),
+            resources.GetString("verListBox.Items2"),
+            resources.GetString("verListBox.Items3")});
             resources.ApplyResources(this.verListBox, "verListBox");
             this.verListBox.Name = "verListBox";
             // 

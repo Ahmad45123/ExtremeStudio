@@ -205,12 +205,18 @@ namespace ExtremeStudio.Classes
         public string output { get; set; }
         public List<string> dependencies { get; set; }
         public List<BuildInfo> builds { get; set; }
+        public RuntimeInfo runtime { get; set; }
     }
 
     public class BuildInfo
     {
         public string name { get; set; }
         public List<string> args { get; set; }
+    }
+
+    public class RuntimeInfo
+    {
+        public string version { get; set; }
     }
 
     public class SqLiteDatabase

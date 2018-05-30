@@ -87,7 +87,7 @@ namespace ExtremeStudio
             pathTextBox.PathText.TextChanged += pathTextBox_TextChanged;
 
             //If the interop files don't exist, Extract the files.
-            if (IsFirst &&
+            /*if (IsFirst &&
                 (!File.Exists(
                      Application.StartupPath + "/x64/SQLite.Interop.dll") ||
                  !File.Exists(
@@ -115,7 +115,7 @@ namespace ExtremeStudio
                     Application.StartupPath); //Extract it.
                 File.Delete(
                     Application.StartupPath + "/interop.zip"); //Delete the temp file.
-            }
+            }*/
 
             //Create needed folders and files.
             if (!Directory.Exists(
@@ -169,34 +169,6 @@ namespace ExtremeStudio
                 {
                 }
             }
-
-            //Load samp versions into list.
-            List<string> str = new List<string>();
-            if (GeneralFunctions.IsNetAvailable()) //Download latest from internet if there is internet.
-            {
-                WebClient webClient = new WebClient();
-                XmlDocument xmlFile = new XmlDocument();
-                string fileText =
-                    Convert.ToString(
-                        webClient.DownloadString("https://ahmad45123.github.io/esfiles/serverPackages.xml"));
-                xmlFile.LoadXml(fileText);
-
-                foreach (XmlNode cs in xmlFile.SelectNodes("serverPackages/samp"))
-                {
-                    int newList = Convert.ToInt32(verListBox.Items.Add(cs["name"].InnerText));
-                    str.Add(cs["download"].InnerText);
-                }
-            }
-            else //Load existing from folder.
-            {
-                foreach (string pth in Directory.GetFiles(Program.MainForm.ApplicationFiles + "/cache/serverPackages"))
-                {
-                    int newList = Convert.ToInt32(verListBox.Items.Add(Path.GetFileNameWithoutExtension(pth)));
-                    str.Add(pth);
-                }
-            }
-
-            verListBox.Tag = str;
         }
 
         [Localizable(false)]
@@ -275,6 +247,33 @@ namespace ExtremeStudio
                         File.WriteAllText(
                             newPath + "/gamemodes/" + nameTextBox.Text + ".pwn",
                             Convert.ToString(Properties.Resources.newfileTemplate));
+
+                        //Fill pawnctl data
+                        Program.MainForm.CurrentProject.SampCtlData = new PawnJson()
+                        {
+                            entry = "gamemodes\\" + nameTextBox.Text + ".pwn",
+                            output = "gamemodes\\" + nameTextBox.Text + ".amx",
+                            user = Environment.UserName,
+                            repo = nameTextBox.Text,
+                            dependencies = new List<string>() {"sampctl/samp-stdlib"},
+                            builds = new List<BuildInfo>() {new BuildInfo(){name = "main", args = Program.SettingsForm.GetCompilerArgs().Split(' ').ToList()}},
+                            runtime = new RuntimeInfo() {version = verListBox.SelectedItem.ToString()},
+                        };
+                        Program.MainForm.CurrentProject.ProjectName = nameTextBox.Text;
+                        Program.MainForm.CurrentProject.ProjectPath = newPath;
+                        Program.MainForm.CurrentProject.ProjectVersion = _versionHandler.CurrentVersion;
+                        Program.MainForm.CurrentProject.CreateTables(); //Create the tables of the db.
+                        Program.MainForm.CurrentProject.SaveInfo(); //Write the default extremeStudio config.
+                        Program.MainForm.CurrentProject.CopyGlobalConfig();
+            
+                        //Ensure the packages are ready
+                        SampCtl.SendCommand(Path.Combine(Application.StartupPath, "sampctl.exe"), newPath, "p ensure");
+            
+                        AddNewRecent(
+                            Convert.ToString(Program.MainForm.CurrentProject.ProjectPath)); //Add it to the recent list.
+                        Program.MainForm.Show();
+                        _isClosedProgram = true;
+                        Close();
                     }
                     else
                     {
@@ -289,32 +288,6 @@ namespace ExtremeStudio
                     return;
                 }
             }
-
-            //Fill pawnctl data
-            Program.MainForm.CurrentProject.SampCtlData = new PawnJson()
-            {
-                entry = "gamemodes\\" + nameTextBox.Text + ".pwn",
-                output = "gamemodes\\" + nameTextBox.Text + ".amx",
-                user = Environment.UserName,
-                repo = nameTextBox.Text,
-                dependencies = new List<string>() {"sampctl/samp-stdlib"},
-                builds = new List<BuildInfo>() {new BuildInfo(){name = "main", args = Program.SettingsForm.GetCompilerArgs().Split(' ').ToList()}},
-            };
-            Program.MainForm.CurrentProject.ProjectName = nameTextBox.Text;
-            Program.MainForm.CurrentProject.ProjectPath = newPath;
-            Program.MainForm.CurrentProject.ProjectVersion = _versionHandler.CurrentVersion;
-            Program.MainForm.CurrentProject.CreateTables(); //Create the tables of the db.
-            Program.MainForm.CurrentProject.SaveInfo(); //Write the default extremeStudio config.
-            Program.MainForm.CurrentProject.CopyGlobalConfig();
-            
-            //Ensure the packages are ready
-            SampCtl.SendCommand(Path.Combine(Application.StartupPath, "sampctl.exe"), newPath, "p ensure");
-            
-            AddNewRecent(
-                Convert.ToString(Program.MainForm.CurrentProject.ProjectPath)); //Add it to the recent list.
-            Program.MainForm.Show();
-            _isClosedProgram = true;
-            Close();
         }
 
         private void pathTextBox_TextChanged(object sender, EventArgs e)
