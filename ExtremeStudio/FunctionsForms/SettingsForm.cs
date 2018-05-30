@@ -262,7 +262,7 @@ namespace ExtremeStudio.FunctionsForms
         }
 
         [Localizable(false)]
-        public dynamic GetCompilerArgs()
+        public string GetCompilerArgs()
         {
             LoadCompiler();
 
@@ -311,7 +311,7 @@ namespace ExtremeStudio.FunctionsForms
 
             allArgs.Append(" " + customArgsText.Text);
 
-            return allArgs.ToString();
+            return allArgs.ToString().Trim();
         }
 
         #endregion

@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using ExtremeStudio.DockPanelForms.MainFormDocks.ObjectExplorerDock;
+using Newtonsoft.Json;
 
 namespace ExtremeStudio.Classes
 {
@@ -20,6 +21,7 @@ namespace ExtremeStudio.Classes
 
         public string ProjectName { get; set; }
         public string ProjectVersion { get; set; }
+        public PawnJson SampCtlData { get; set; }
 
         private string _projectPathB;
 
@@ -80,6 +82,9 @@ namespace ExtremeStudio.Classes
                 dic.Add("identifier", itm.Identifier);
                 _sqlCon.Insert("ObjectExplorerItems", dic);
             }
+
+            //Save the PAWNCTL json
+            File.WriteAllText(ProjectPath + "/pawn.json", JsonConvert.SerializeObject(SampCtlData));
         }
 
         public void ReadInfo() //Will only work if the projectPath is set to valid ExtremeStudio project.
@@ -93,6 +98,11 @@ namespace ExtremeStudio.Classes
             foreach (DataRow row in dt.Rows)
             {
                 ObjectExplorerItems.Add(new ObjectExplorerItem((string)row[0], (string)row[1]));
+            }
+
+            if (File.Exists(ProjectPath + "/pawn.json"))
+            {
+                SampCtlData = JsonConvert.DeserializeObject<PawnJson>(File.ReadAllText(ProjectPath + "/pawn.json"));
             }
         }
 
@@ -187,6 +197,21 @@ namespace ExtremeStudio.Classes
 
     }
 
+    public class PawnJson
+    {
+        public string user { get; set; }
+        public string repo { get; set; }
+        public string entry { get; set; }
+        public string output { get; set; }
+        public List<string> dependencies { get; set; }
+        public List<BuildInfo> builds { get; set; }
+    }
+
+    public class BuildInfo
+    {
+        public string name { get; set; }
+        public List<string> args { get; set; }
+    }
 
     public class SqLiteDatabase
     {

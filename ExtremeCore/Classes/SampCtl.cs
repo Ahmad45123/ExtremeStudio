@@ -13,8 +13,9 @@ namespace ExtremeCore.Classes
         public static bool EnsureLatestInstalled(string path)
         {
             WebClient client = new WebClient();
-            string latestInfo = client.DownloadString("https://api.github.com/repos/Southclaws/sampctl/releases/latest");
-            var mtch = Regex.Match(latestInfo, "\"tag_name\": \"(?<version>.+)\",");
+            client.Headers["User-Agent"] = "ExtremeStudio";
+            string latestInfo = client.DownloadString("http://api.github.com/repos/Southclaws/sampctl/releases/latest");
+            var mtch = Regex.Match(latestInfo, "\"tag_name\":\"(?<version>.+?)\",");
             string version = mtch.Groups["version"].Value;
 
             //If exists and different version, download, else keep.

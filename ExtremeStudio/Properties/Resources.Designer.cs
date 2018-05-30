@@ -172,23 +172,6 @@ namespace ExtremeStudio.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {
-        ///	&quot;user&quot;: &quot;{0}&quot;,
-        ///	&quot;repo&quot;: &quot;{1}&quot;,
-        ///	&quot;entry&quot;: &quot;gamemodes\\{2}&quot;,
-        ///	&quot;output&quot;: &quot;gamemodes\\{3}&quot;,
-        ///	&quot;dependencies&quot;: [
-        ///		&quot;sampctl/samp-stdlib&quot;
-        ///	]
-        ///}.
-        /// </summary>
-        internal static string pawn {
-            get {
-                return ResourceManager.GetString("pawn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap ribbon_addIndent {

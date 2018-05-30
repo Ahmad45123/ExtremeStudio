@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Media;
 using System.Net;
 using System.Windows.Forms;
@@ -264,34 +265,13 @@ namespace ExtremeStudio
                 {
                     if (verListBox.SelectedIndex != -1)
                     {
-                        if (File.Exists(
-                            Program.MainForm.ApplicationFiles + "/cache/serverPackages/" + verListBox.SelectedItem +
-                            ".zip")
-                        ) //check if that version is existing
-                        {
-                            GeneralFunctions.FastZipUnpack(
-                                Program.MainForm.ApplicationFiles + "/cache/serverPackages/" + verListBox.SelectedItem +
-                                ".zip",
-                                newPath); //Extract the zip to project folder.
-                        }
-                        else //Download from net if not exist.
-                        {
-                            WebClient client = new WebClient(); //For downloading the selected file.
-                            client.DownloadFile(((List<string>) verListBox.Tag)[verListBox.SelectedIndex],
-                                Path.GetTempPath() + "/" + nameTextBox.Text + ".zip"); //Download the zip file.
-                            GeneralFunctions.FastZipUnpack(
-                                Path.GetTempPath()
-                                + "/" + nameTextBox.Text + ".zip", newPath); //Extract the zip.
-                            File.Copy(
-                                Path.GetTempPath()
-                                + "/" + nameTextBox.Text + ".zip",
-                                Program.MainForm.ApplicationFiles + "/cache/serverPackages/" + verListBox.SelectedItem +
-                                ".zip"); //Copy the file to be used instead of downloading
-                            File.Delete(
-                                Path.GetTempPath()
-                                + "/" + nameTextBox.Text + ".zip"); //Delete the file from temp.
-                        }
+                        //Create directories.
+                        Directory.CreateDirectory(newPath + "/gamemodes");
+                        Directory.CreateDirectory(newPath + "/filterscripts");
+                        Directory.CreateDirectory(newPath + "/plugins");
+                        Directory.CreateDirectory(newPath + "/scriptfiles");
 
+                        //Create the default file
                         File.WriteAllText(
                             newPath + "/gamemodes/" + nameTextBox.Text + ".pwn",
                             Convert.ToString(Properties.Resources.newfileTemplate));
@@ -310,18 +290,26 @@ namespace ExtremeStudio
                 }
             }
 
-            //Delete the pawno folder, useless.
-            Directory.Delete(Path.Combine(newPath, "pawno"));
-            //Create the pawn.json file for SAMPCtl
-            File.WriteAllText(Path.Combine(newPath, "pawn.json"), string.Format(Properties.Resources.pawn, Environment.UserName, nameTextBox.Text, nameTextBox.Text + ".pwn", nameTextBox.Text + ".amx"));
-            
-
+            //Fill pawnctl data
+            Program.MainForm.CurrentProject.SampCtlData = new PawnJson()
+            {
+                entry = "gamemodes\\" + nameTextBox.Text + ".pwn",
+                output = "gamemodes\\" + nameTextBox.Text + ".amx",
+                user = Environment.UserName,
+                repo = nameTextBox.Text,
+                dependencies = new List<string>() {"sampctl/samp-stdlib"},
+                builds = new List<BuildInfo>() {new BuildInfo(){name = "main", args = Program.SettingsForm.GetCompilerArgs().Split(' ').ToList()}},
+            };
             Program.MainForm.CurrentProject.ProjectName = nameTextBox.Text;
             Program.MainForm.CurrentProject.ProjectPath = newPath;
             Program.MainForm.CurrentProject.ProjectVersion = _versionHandler.CurrentVersion;
             Program.MainForm.CurrentProject.CreateTables(); //Create the tables of the db.
             Program.MainForm.CurrentProject.SaveInfo(); //Write the default extremeStudio config.
             Program.MainForm.CurrentProject.CopyGlobalConfig();
+            
+            //Ensure the packages are ready
+            SampCtl.SendCommand(Path.Combine(Application.StartupPath, "sampctl.exe"), newPath, "p ensure");
+            
             AddNewRecent(
                 Convert.ToString(Program.MainForm.CurrentProject.ProjectPath)); //Add it to the recent list.
             Program.MainForm.Show();

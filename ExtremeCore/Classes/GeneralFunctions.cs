@@ -171,7 +171,7 @@ namespace ExtremeCore.Classes
 
         public static bool IsValidExtremeProject(string path)
         {
-            if (!IsValidSAMPFolder(path))
+            if (!IsValidSAMPFolder(path) && !IsValidSampCtlFolder(path))
                 return false;
             if (!File.Exists(path + "/extremeStudio.config"))
                 return false;
@@ -181,10 +181,6 @@ namespace ExtremeCore.Classes
             // If everything's correct, Create folders that ES requires if not already exists.
             if (!Directory.Exists(path + "/gamemodes"))
                 Directory.CreateDirectory(path + "/gamemodes");
-            if (!Directory.Exists(path + "/pawno"))
-                Directory.CreateDirectory(path + "/pawno");
-            if (!Directory.Exists(path + "/pawno/include"))
-                Directory.CreateDirectory(path + "/pawno/include");
             if (!Directory.Exists(path + "/plugins"))
                 Directory.CreateDirectory(path + "/plugins");
             return true;
@@ -207,6 +203,13 @@ namespace ExtremeCore.Classes
             if (!File.Exists(path + "/pawno/pawnc.dll"))
                 return false;
             if (!File.Exists(path + "/pawno/pawncc.exe"))
+                return false;
+            return true;
+        }
+
+        public static bool IsValidSampCtlFolder(string path)
+        {
+            if (!File.Exists(path + "/pawn.json"))
                 return false;
             return true;
         }

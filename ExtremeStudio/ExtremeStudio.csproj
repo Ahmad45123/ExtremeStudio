@@ -265,7 +265,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Resources\defaultThemeInfo.json" />
-    <None Include="Resources\pawn.json" />
     <None Include="Resources\SQLite.Interop.zip" />
   </ItemGroup>
   <ItemGroup>

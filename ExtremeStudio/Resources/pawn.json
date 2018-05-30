@@ -1,9 +1,0 @@
-{
-	"user": "{0}",
-	"repo": "{1}",
-	"entry": "gamemodes\\{2}",
-	"output": "gamemodes\\{3}",
-	"dependencies": [
-		"sampctl/samp-stdlib"
-	]
-}
