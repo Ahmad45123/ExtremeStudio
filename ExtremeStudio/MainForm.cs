@@ -345,7 +345,7 @@ namespace ExtremeStudio
 
         private void compileScriptBtn_Click(object sender, EventArgs e)
         {
-            if (CompilerWorker.IsBusy || CurrentEditor.RefreshWorker.IsBusy)
+            if (CompilerWorker.IsBusy)
             {
                 MessageBox.Show(Convert.ToString(translations.MainForm_compileScriptBtn_Click_WaitForCompile));
             }
@@ -361,7 +361,7 @@ namespace ExtremeStudio
         {
             CheckForIllegalCrossThreadCalls = false;
             //First of all, Try and save all docs.
-            if (CurrentScintilla.Modified)
+            if (CurrentScintilla?.Modified ?? false)
             {
                 var msgRslt = MessageBox.Show(translations.MainForm_CompilerWorker_DoWork_WouldYouLikeToSaveFiles, "",
                     MessageBoxButtons.YesNoCancel);
@@ -474,6 +474,14 @@ namespace ExtremeStudio
                         .MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithWarnings), 5000, true);
 
                 Program.ProjExplorerDock.RefreshList();
+
+                if (isAwaitingRunServer)
+                {
+                    isAwaitingRunServer = false;
+                    SampCtl.SendCommand(ApplicationFiles + "/sampctl.exe", CurrentProject.ProjectPath,
+                        "p run", false);
+                }
+
                 //5 = Finished Compiling.
             }
             else if (e.ProgressPercentage == 5)
@@ -483,6 +491,13 @@ namespace ExtremeStudio
                         .MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithNoErrorsWarnings), 5000, true);
 
                 Program.ProjExplorerDock.RefreshList();
+                
+                if (isAwaitingRunServer)
+                {
+                    isAwaitingRunServer = false;
+                    SampCtl.SendCommand(ApplicationFiles + "/sampctl.exe", CurrentProject.ProjectPath,
+                        "p run", false);
+                }
             }
         }
 
@@ -597,6 +612,13 @@ namespace ExtremeStudio
         {
             ESPluginsForm dlg = new ESPluginsForm();
             dlg.ShowDialog();
+        }
+
+        private bool isAwaitingRunServer = false;
+        private void CompileAndRunBtn_Click(object sender, EventArgs e)
+        {
+            compileScriptBtn.PerformClick();
+            isAwaitingRunServer = true;
         }
     }
 }

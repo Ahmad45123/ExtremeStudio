@@ -70,6 +70,7 @@ namespace ExtremeStudio
             this.RibbonButton1 = new System.Windows.Forms.RibbonButton();
             this.BuildPanel = new System.Windows.Forms.RibbonPanel();
             this.compileScriptBtn = new System.Windows.Forms.RibbonButton();
+            this.CompileAndRunBtn = new System.Windows.Forms.RibbonButton();
             this.customTab = new System.Windows.Forms.RibbonTab();
             this.pluginManagePanel = new System.Windows.Forms.RibbonPanel();
             this.esPluginsManage = new System.Windows.Forms.RibbonButton();
@@ -355,6 +356,7 @@ namespace ExtremeStudio
             // 
             this.BuildPanel.ButtonMoreVisible = false;
             this.BuildPanel.Items.Add(this.compileScriptBtn);
+            this.BuildPanel.Items.Add(this.CompileAndRunBtn);
             resources.ApplyResources(this.BuildPanel, "BuildPanel");
             // 
             // compileScriptBtn
@@ -363,6 +365,13 @@ namespace ExtremeStudio
             this.compileScriptBtn.SmallImage = ((System.Drawing.Image)(resources.GetObject("compileScriptBtn.SmallImage")));
             resources.ApplyResources(this.compileScriptBtn, "compileScriptBtn");
             this.compileScriptBtn.Click += new System.EventHandler(this.compileScriptBtn_Click);
+            // 
+            // CompileAndRunBtn
+            // 
+            this.CompileAndRunBtn.Image = global::ExtremeStudio.Properties.Resources.ribbon_compileandrun;
+            this.CompileAndRunBtn.SmallImage = ((System.Drawing.Image)(resources.GetObject("CompileAndRunBtn.SmallImage")));
+            resources.ApplyResources(this.CompileAndRunBtn, "CompileAndRunBtn");
+            this.CompileAndRunBtn.Click += new System.EventHandler(this.CompileAndRunBtn_Click);
             // 
             // customTab
             // 
@@ -461,5 +470,6 @@ namespace ExtremeStudio
         internal RibbonPanel indentPanel;
         internal RibbonButton addIndentButton;
         internal RibbonButton removeIndentButton;
+        private RibbonButton CompileAndRunBtn;
     }
 }

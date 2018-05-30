@@ -32,7 +32,7 @@ namespace ExtremeCore.Classes
             return true;
         }
 
-        public static string SendCommand(string sampctl, string workingDir, string cmd)
+        public static string SendCommand(string sampctl, string workingDir, string cmd, bool createnowindow = true)
         {
             Process compiler = new Process
             {
@@ -41,15 +41,24 @@ namespace ExtremeCore.Classes
                     FileName = sampctl,
                     WorkingDirectory = workingDir,
                     Arguments = cmd,
-                    CreateNoWindow = true,
-                    RedirectStandardError = true,
-                    RedirectStandardOutput = true,
-                    UseShellExecute = false
+                    CreateNoWindow = createnowindow,
+                    RedirectStandardError = createnowindow,
+                    RedirectStandardOutput = createnowindow,
+                    UseShellExecute = false,
+                    Verb = "runas"
                 }
             };
             compiler.Start();
             compiler.WaitForExit();
-            return compiler.StandardOutput.ReadToEnd();
+            try
+            {
+                Debug.WriteLine(compiler.StandardError.ReadToEnd());
+                return compiler.StandardOutput.ReadToEnd();
+            }
+            catch (Exception)
+            {
+                return "success";
+            }
         }
 
         public static string GetCurrentVersion(string sampctl)

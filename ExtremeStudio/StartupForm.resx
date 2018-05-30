@@ -238,7 +238,7 @@
     <value>0.3.DL</value>
   </data>
   <data name="verListBox.Items3" xml:space="preserve">
-    <value>0.3z,</value>
+    <value>0.3z</value>
   </data>
   <data name="verListBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>90, 36</value>
