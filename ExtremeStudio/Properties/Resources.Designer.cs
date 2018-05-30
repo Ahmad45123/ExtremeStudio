@@ -8,16 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.CodeDom.Compiler;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
-using System.Globalization;
-using System.Resources;
-using System.Runtime.CompilerServices;
-
 namespace ExtremeStudio.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -25,27 +19,27 @@ namespace ExtremeStudio.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
-    [DebuggerNonUserCode()]
-    [CompilerGenerated()]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
         
-        private static ResourceManager resourceMan;
+        private static global::System.Resources.ResourceManager resourceMan;
         
-        private static CultureInfo resourceCulture;
+        private static global::System.Globalization.CultureInfo resourceCulture;
         
-        [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        internal static ResourceManager ResourceManager {
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
-                if (ReferenceEquals(resourceMan, null)) {
-                    ResourceManager temp = new ResourceManager("ExtremeStudio.Properties.Resources", typeof(Resources).Assembly);
+                if (object.ReferenceEquals(resourceMan, null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ExtremeStudio.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -56,8 +50,8 @@ namespace ExtremeStudio.Properties {
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        internal static CultureInfo Culture {
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -69,10 +63,10 @@ namespace ExtremeStudio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap correct_projexplorer {
+        internal static System.Drawing.Bitmap correct_projexplorer {
             get {
                 object obj = ResourceManager.GetObject("correct_projexplorer", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -111,10 +105,10 @@ namespace ExtremeStudio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap dirs_projexplorer {
+        internal static System.Drawing.Bitmap dirs_projexplorer {
             get {
                 object obj = ResourceManager.GetObject("dirs_projexplorer", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -122,9 +116,9 @@ namespace ExtremeStudio.Properties {
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
         ///&lt;!--DockPanel configuration file. Author: Weifen Luo, all rights reserved.--&gt;
         ///&lt;!--!!! AUTOMATICALLY GENERATED FILE. DO NOT MODIFY !!!--&gt;
-        ///&lt;DockPanel FormatVersion=&quot;1.0&quot; DockLeftPortion=&quot;0.162884333821376&quot; DockRightPortion=&quot;0.181918008784773&quot; DockTopPortion=&quot;0.25&quot; DockBottomPortion=&quot;0.306198347107438&quot; ActiveDocumentPane=&quot;-1&quot; ActivePane=&quot;1&quot;&gt;
+        ///&lt;DockPanel FormatVersion=&quot;1.0&quot; DockLeftPortion=&quot;0.162884333821376&quot; DockRightPortion=&quot;0.181918008784773&quot; DockTopPortion=&quot;0.25&quot; DockBottomPortion=&quot;0.306198347107438&quot; ActiveDocumentPane=&quot;-1&quot; ActivePane=&quot;-1&quot;&gt;
         ///  &lt;Contents Count=&quot;3&quot;&gt;
-        ///    &lt;Content ID=&quot;0&quot; PersistString=&quot;ExtremeStudio.ProjExplorerDock&quot; AutoHidePortion=&quot;0.25&quot; IsHidden=&quot;Fal [rest of string was truncated]&quot;;.
+        ///    &lt;Content ID=&quot;0&quot; PersistString=&quot;ExtremeStudio.DockPanelForms.MainFormDocks.ProjExplorerDock&quot; AutoHi [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string docksInfo {
             get {
@@ -135,10 +129,10 @@ namespace ExtremeStudio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap file_projexplorer {
+        internal static System.Drawing.Bitmap file_projexplorer {
             get {
                 object obj = ResourceManager.GetObject("file_projexplorer", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -178,202 +172,219 @@ namespace ExtremeStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {
+        ///	&quot;user&quot;: &quot;{0}&quot;,
+        ///	&quot;repo&quot;: &quot;{1}&quot;,
+        ///	&quot;entry&quot;: &quot;gamemodes\\{2}&quot;,
+        ///	&quot;output&quot;: &quot;gamemodes\\{3}&quot;,
+        ///	&quot;dependencies&quot;: [
+        ///		&quot;sampctl/samp-stdlib&quot;
+        ///	]
+        ///}.
+        /// </summary>
+        internal static string pawn {
+            get {
+                return ResourceManager.GetString("pawn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_addIndent {
+        internal static System.Drawing.Bitmap ribbon_addIndent {
             get {
                 object obj = ResourceManager.GetObject("ribbon_addIndent", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_autoIndent {
+        internal static System.Drawing.Bitmap ribbon_autoIndent {
             get {
                 object obj = ResourceManager.GetObject("ribbon_autoIndent", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_closeProject {
+        internal static System.Drawing.Bitmap ribbon_closeProject {
             get {
                 object obj = ResourceManager.GetObject("ribbon_closeProject", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_compile {
+        internal static System.Drawing.Bitmap ribbon_compile {
             get {
                 object obj = ResourceManager.GetObject("ribbon_compile", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_copy {
+        internal static System.Drawing.Bitmap ribbon_copy {
             get {
                 object obj = ResourceManager.GetObject("ribbon_copy", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_cut {
+        internal static System.Drawing.Bitmap ribbon_cut {
             get {
                 object obj = ResourceManager.GetObject("ribbon_cut", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_errors {
+        internal static System.Drawing.Bitmap ribbon_errors {
             get {
                 object obj = ResourceManager.GetObject("ribbon_errors", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_esPlugins {
+        internal static System.Drawing.Bitmap ribbon_esPlugins {
             get {
                 object obj = ResourceManager.GetObject("ribbon_esPlugins", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_goto {
+        internal static System.Drawing.Bitmap ribbon_goto {
             get {
                 object obj = ResourceManager.GetObject("ribbon_goto", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_includes {
+        internal static System.Drawing.Bitmap ribbon_includes {
             get {
                 object obj = ResourceManager.GetObject("ribbon_includes", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_newFile {
+        internal static System.Drawing.Bitmap ribbon_newFile {
             get {
                 object obj = ResourceManager.GetObject("ribbon_newFile", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_objectExplrer {
+        internal static System.Drawing.Bitmap ribbon_objectExplrer {
             get {
                 object obj = ResourceManager.GetObject("ribbon_objectExplrer", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_paste {
+        internal static System.Drawing.Bitmap ribbon_paste {
             get {
                 object obj = ResourceManager.GetObject("ribbon_paste", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_plugins {
+        internal static System.Drawing.Bitmap ribbon_plugins {
             get {
                 object obj = ResourceManager.GetObject("ribbon_plugins", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_removeIndent {
+        internal static System.Drawing.Bitmap ribbon_removeIndent {
             get {
                 object obj = ResourceManager.GetObject("ribbon_removeIndent", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_saveFile {
+        internal static System.Drawing.Bitmap ribbon_saveFile {
             get {
                 object obj = ResourceManager.GetObject("ribbon_saveFile", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_saveFileAll {
+        internal static System.Drawing.Bitmap ribbon_saveFileAll {
             get {
                 object obj = ResourceManager.GetObject("ribbon_saveFileAll", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_search {
+        internal static System.Drawing.Bitmap ribbon_search {
             get {
                 object obj = ResourceManager.GetObject("ribbon_search", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_searchAndReplace {
+        internal static System.Drawing.Bitmap ribbon_searchAndReplace {
             get {
                 object obj = ResourceManager.GetObject("ribbon_searchAndReplace", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap ribbon_settings {
+        internal static System.Drawing.Bitmap ribbon_settings {
             get {
                 object obj = ResourceManager.GetObject("ribbon_settings", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -390,10 +401,10 @@ namespace ExtremeStudio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static Bitmap warning_icon {
+        internal static System.Drawing.Bitmap warning_icon {
             get {
                 object obj = ResourceManager.GetObject("warning_icon", resourceCulture);
-                return ((Bitmap)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

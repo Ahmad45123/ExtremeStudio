@@ -79,6 +79,9 @@ namespace ExtremeStudio
         [Localizable(false)]
         private void StartupForm_Load(object sender, EventArgs e)
         {
+            //Download SAMPCTL
+            SampCtl.EnsureLatestInstalled(Application.StartupPath);
+
             //Add event.
             pathTextBox.PathText.TextChanged += pathTextBox_TextChanged;
 
@@ -306,6 +309,12 @@ namespace ExtremeStudio
                     return;
                 }
             }
+
+            //Delete the pawno folder, useless.
+            Directory.Delete(Path.Combine(newPath, "pawno"));
+            //Create the pawn.json file for SAMPCtl
+            File.WriteAllText(Path.Combine(newPath, "pawn.json"), string.Format(Properties.Resources.pawn, Environment.UserName, nameTextBox.Text, nameTextBox.Text + ".pwn", nameTextBox.Text + ".amx"));
+            
 
             Program.MainForm.CurrentProject.ProjectName = nameTextBox.Text;
             Program.MainForm.CurrentProject.ProjectPath = newPath;

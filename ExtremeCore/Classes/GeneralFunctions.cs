@@ -8,7 +8,10 @@ using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Ionic.Zip;
+using Ionic.Zlib;
 using ScintillaNET;
+using SharpCompress.Common;
+using SharpCompress.Readers;
 
 namespace ExtremeCore.Classes
 {
@@ -244,12 +247,21 @@ namespace ExtremeCore.Classes
             Directory.Delete(tmpPath, true);
         }
 
-        public static void FastZipUnpack(string zipToUnpack, string targetDir)
+        public static void FastZipUnpack(string zipToUnpack, string targetDir, string file = "")
         {
-            using (ZipFile zip1 = ZipFile.Read(zipToUnpack))
+            using (Stream stream = File.OpenRead(zipToUnpack))
             {
-                foreach (ZipEntry e in zip1)
-                    e.Extract(targetDir, ExtractExistingFileAction.OverwriteSilently);
+                var reader = ReaderFactory.Open(stream);
+                while (reader.MoveToNextEntry())
+                {
+                    if(file != "" && file != reader.Entry.Key)
+                        continue;
+                    
+                    if (!reader.Entry.IsDirectory)
+                    {
+                        reader.WriteEntryToDirectory(targetDir, new ExtractionOptions() { ExtractFullPath = true, Overwrite = true });
+                    }
+                }
             }
         }
 
