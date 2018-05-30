@@ -90,15 +90,15 @@ namespace ExtremeStudio
             // 
             // StatusStrip1
             // 
-            resources.ApplyResources(this.StatusStrip1, "StatusStrip1");
             this.StatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
+            resources.ApplyResources(this.StatusStrip1, "StatusStrip1");
             this.StatusStrip1.Name = "StatusStrip1";
             // 
             // statusLabel
             // 
-            resources.ApplyResources(this.statusLabel, "statusLabel");
             this.statusLabel.Name = "statusLabel";
+            resources.ApplyResources(this.statusLabel, "statusLabel");
             // 
             // mainRibbon
             // 
@@ -108,21 +108,11 @@ namespace ExtremeStudio
             // 
             // 
             // 
-            this.mainRibbon.OrbDropDown.AccessibleDescription = resources.GetString("mainRibbon.OrbDropDown.AccessibleDescription");
-            this.mainRibbon.OrbDropDown.AccessibleName = resources.GetString("mainRibbon.OrbDropDown.AccessibleName");
-            this.mainRibbon.OrbDropDown.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("mainRibbon.OrbDropDown.Anchor")));
-            this.mainRibbon.OrbDropDown.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainRibbon.OrbDropDown.BackgroundImage")));
-            this.mainRibbon.OrbDropDown.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("mainRibbon.OrbDropDown.BackgroundImageLayout")));
             this.mainRibbon.OrbDropDown.BorderRoundness = 8;
-            this.mainRibbon.OrbDropDown.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("mainRibbon.OrbDropDown.Dock")));
-            this.mainRibbon.OrbDropDown.Font = ((System.Drawing.Font)(resources.GetObject("mainRibbon.OrbDropDown.Font")));
-            this.mainRibbon.OrbDropDown.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("mainRibbon.OrbDropDown.ImeMode")));
             this.mainRibbon.OrbDropDown.Location = ((System.Drawing.Point)(resources.GetObject("mainRibbon.OrbDropDown.Location")));
-            this.mainRibbon.OrbDropDown.MaximumSize = ((System.Drawing.Size)(resources.GetObject("mainRibbon.OrbDropDown.MaximumSize")));
             this.mainRibbon.OrbDropDown.MenuItems.Add(this.RibbonOrbMenuItem1);
             this.mainRibbon.OrbDropDown.Name = "";
             this.mainRibbon.OrbDropDown.RecentItems.Add(this.RibbonOrbRecentItem1);
-            this.mainRibbon.OrbDropDown.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("mainRibbon.OrbDropDown.RightToLeft")));
             this.mainRibbon.OrbDropDown.Size = ((System.Drawing.Size)(resources.GetObject("mainRibbon.OrbDropDown.Size")));
             this.mainRibbon.OrbDropDown.TabIndex = ((int)(resources.GetObject("mainRibbon.OrbDropDown.TabIndex")));
             this.mainRibbon.OrbImage = null;
@@ -133,9 +123,6 @@ namespace ExtremeStudio
             // 
             // 
             this.mainRibbon.QuickAcessToolbar.Items.Add(this.closeProjectButton);
-            this.mainRibbon.QuickAcessToolbar.Text = resources.GetString("mainRibbon.QuickAcessToolbar.Text");
-            this.mainRibbon.QuickAcessToolbar.ToolTip = resources.GetString("mainRibbon.QuickAcessToolbar.ToolTip");
-            this.mainRibbon.QuickAcessToolbar.ToolTipImage = ((System.Drawing.Image)(resources.GetObject("mainRibbon.QuickAcessToolbar.ToolTipImage")));
             this.mainRibbon.RibbonTabFont = new System.Drawing.Font("Trebuchet MS", 9F);
             this.mainRibbon.Tabs.Add(this.fileTab);
             this.mainRibbon.Tabs.Add(this.editTab);
@@ -321,7 +308,6 @@ namespace ExtremeStudio
             // 
             this.prjExplrerView.Image = global::ExtremeStudio.Properties.Resources.dirs_projexplorer;
             this.prjExplrerView.SmallImage = ((System.Drawing.Image)(resources.GetObject("prjExplrerView.SmallImage")));
-            resources.ApplyResources(this.prjExplrerView, "prjExplrerView");
             this.prjExplrerView.ToolTipTitle = "Project Explorer";
             this.prjExplrerView.Click += new System.EventHandler(this.ProjectExplorerToolStripMenuItem_Click);
             // 
@@ -370,7 +356,6 @@ namespace ExtremeStudio
             // 
             this.CompileAndRunBtn.Image = global::ExtremeStudio.Properties.Resources.ribbon_compileandrun;
             this.CompileAndRunBtn.SmallImage = ((System.Drawing.Image)(resources.GetObject("CompileAndRunBtn.SmallImage")));
-            resources.ApplyResources(this.CompileAndRunBtn, "CompileAndRunBtn");
             this.CompileAndRunBtn.Click += new System.EventHandler(this.CompileAndRunBtn_Click);
             // 
             // customTab
@@ -470,6 +455,6 @@ namespace ExtremeStudio
         internal RibbonPanel indentPanel;
         internal RibbonButton addIndentButton;
         internal RibbonButton removeIndentButton;
-        private RibbonButton CompileAndRunBtn;
+        internal RibbonButton CompileAndRunBtn;
     }
 }
