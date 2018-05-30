@@ -156,12 +156,6 @@ Would you like to continue ?</value>
   <data name="MainForm_CompilerWorker_DoWork_WouldYouLikeToSaveFiles" xml:space="preserve">
     <value>Would you like to save all files ?</value>
   </data>
-  <data name="MainForm_CompilerWorker_DoWork_PawnccNotFound" xml:space="preserve">
-    <value>The file pawncc.exe hasn't been found at the path</value>
-  </data>
-  <data name="MainForm_CompilerWorker_DoWork_VerifyPawnccIsThere" xml:space="preserve">
-    <value>Please verify its there.</value>
-  </data>
   <data name="MainForm_CompilerWorker_ProgressChanged_Compiling" xml:space="preserve">
     <value>Compiling...</value>
   </data>

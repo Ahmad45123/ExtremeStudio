@@ -5,6 +5,7 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Media;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -344,19 +345,13 @@ namespace ExtremeStudio
 
         private void compileScriptBtn_Click(object sender, EventArgs e)
         {
-            if (ReferenceEquals(CurrentEditor, null))
-            {
-                return;
-            }
-
             if (CompilerWorker.IsBusy || CurrentEditor.RefreshWorker.IsBusy)
             {
                 MessageBox.Show(Convert.ToString(translations.MainForm_compileScriptBtn_Click_WaitForCompile));
             }
             else
             {
-                CompilerWorker.RunWorkerAsync(new[]
-                    {CurrentScintilla.Tag, Program.SettingsForm.GetCompilerArgs()}); //The file path is the parameter.
+                CompilerWorker.RunWorkerAsync(); //The file path is the parameter.
             }
         }
 
@@ -368,7 +363,8 @@ namespace ExtremeStudio
             //First of all, Try and save all docs.
             if (CurrentScintilla.Modified)
             {
-                var msgRslt = MessageBox.Show(translations.MainForm_CompilerWorker_DoWork_WouldYouLikeToSaveFiles, "", MessageBoxButtons.YesNoCancel);
+                var msgRslt = MessageBox.Show(translations.MainForm_CompilerWorker_DoWork_WouldYouLikeToSaveFiles, "",
+                    MessageBoxButtons.YesNoCancel);
                 if (msgRslt == DialogResult.Cancel)
                 {
                     return;
@@ -384,88 +380,64 @@ namespace ExtremeStudio
                 CompilerWorker.ReportProgress(1); //Save all files.
             }
 
-            //Next, Create the compiler process.
-            if (File.Exists(CurrentProject.ProjectPath + "/pawno/pawncc.exe"))
+            //First of all, update the pawn.json compiler args.
+            CurrentProject.SampCtlData.builds[0].args = Program.SettingsForm.GetCompilerArgs().Split(' ').ToList();
+            CurrentProject.SaveInfo();
+
+            string errs = SampCtl.SendCommand(ApplicationFiles + "/sampctl.exe", CurrentProject.ProjectPath,
+                "p build");
+
+            //Now, Get the errors/warning then parse them and return.
+            //string errs = Convert.ToString(compiler.StandardError.ReadToEnd());
+            if (errs.Contains("success"))
             {
-                //Start compilation process and wait till exit.
-                Process compiler = new Process
-                {
-                    StartInfo =
-                    {
-                        FileName = CurrentProject.ProjectPath + "/pawno/pawncc.exe",
-                        WorkingDirectory = Path.GetDirectoryName(((object[]) e.Argument)[0].ToString().Replace("/", "\\")),
-                        Arguments = "\"" + ((object[]) e.Argument)[0].ToString().Replace("/", "\\") + "\"" +
-                                    " " + ((object[]) e.Argument)[1],
-                        CreateNoWindow = true,
-                        RedirectStandardError = true,
-                        UseShellExecute = false
-                    }
-                };
-                CompilerWorker.ReportProgress(2); //Compiling
-                compiler.Start();
-                compiler.WaitForExit();
-
-                //Now, Get the errors/warning then parse them and return.
-                string errs = Convert.ToString(compiler.StandardError.ReadToEnd());
-                if (string.IsNullOrEmpty(errs))
-                {
-                    CompilerWorker.ReportProgress(5); //Done sucessfully.
-                    e.Result = new List<ErrorsDock.ScriptErrorInfo>();
-                }
-                else
-                {
-                    //Parse the list for the errors and warnings first.
-                    var errorLevel = 0;
-                    List<ErrorsDock.ScriptErrorInfo> errorList = new List<ErrorsDock.ScriptErrorInfo>();
-                    foreach (Match match in Regex.Matches(errs,
-                        "(.*)\\(([0-9]+)\\)\\s:\\s(error|warning)\\s([0-9]+):\\s(.*)"))
-                    {
-                        ErrorsDock.ScriptErrorInfo err = new ErrorsDock.ScriptErrorInfo
-                        {
-                            FileName = Path.GetFileName(Convert.ToString(match.Groups[1].Value)),
-                            LineNumber = match.Groups[2].Value
-                        };
-                        if (match.Groups[3].Value == "error")
-                        {
-                            err.ErrorType = ErrorsDock.ScriptErrorInfo.ErrorTypes.Error;
-                            errorLevel = 2;
-                        }
-                        else
-                        {
-                            err.ErrorType = ErrorsDock.ScriptErrorInfo.ErrorTypes.Warning;
-                            if (errorLevel < 2)
-                            {
-                                errorLevel = 1;
-                            }
-                        }
-
-                        err.ErrorNumber = match.Groups[4].Value;
-                        err.ErrorMessage = match.Groups[5].Value;
-
-                        errorList.Add(err);
-                    }
-
-                    //Set result as the list.
-                    e.Result = errorList;
-
-                    //Report status.
-                    if (errorLevel == 2)
-                    {
-                        CompilerWorker.ReportProgress(3); //Failed with errors and possible warnings.
-                    }
-                    else if (errorLevel == 1)
-                    {
-                        CompilerWorker.ReportProgress(4); //Sucess but warnings..
-                    }
-                }
+                CompilerWorker.ReportProgress(5); //Done sucessfully.
+                e.Result = new List<ErrorsDock.ScriptErrorInfo>();
             }
             else
             {
-                MessageBox.Show(Convert.ToString(translations.MainForm_CompilerWorker_DoWork_PawnccNotFound +
-                                                        " \"" + CurrentProject.ProjectPath + "/pawno/pawncc.exe" +
-                                                        "\"" + "\r\n" +
-                                                        translations
-                                                            .MainForm_CompilerWorker_DoWork_VerifyPawnccIsThere));
+                //Parse the list for the errors and warnings first.
+                var errorLevel = 0;
+                List<ErrorsDock.ScriptErrorInfo> errorList = new List<ErrorsDock.ScriptErrorInfo>();
+                foreach (Match match in Regex.Matches(errs,
+                    @"(?<path>.+):(?<line>[0-9]+)\s\((?<type>error|warning)\)(?<text>.+)", RegexOptions.Multiline))
+                {
+                    ErrorsDock.ScriptErrorInfo err = new ErrorsDock.ScriptErrorInfo
+                    {
+                        FileName = Path.GetFileName(Convert.ToString(match.Groups["path"].Value)),
+                        LineNumber = match.Groups["line"].Value
+                    };
+                    if (match.Groups["type"].Value == "error")
+                    {
+                        err.ErrorType = ErrorsDock.ScriptErrorInfo.ErrorTypes.Error;
+                        errorLevel = 2;
+                    }
+                    else
+                    {
+                        err.ErrorType = ErrorsDock.ScriptErrorInfo.ErrorTypes.Warning;
+                        if (errorLevel < 2)
+                        {
+                            errorLevel = 1;
+                        }
+                    }
+
+                    err.ErrorMessage = match.Groups["text"].Value;
+
+                    errorList.Add(err);
+                }
+
+                //Set result as the list.
+                e.Result = errorList;
+
+                //Report status.
+                if (errorLevel == 2)
+                {
+                    CompilerWorker.ReportProgress(3); //Failed with errors and possible warnings.
+                }
+                else if (errorLevel == 1)
+                {
+                    CompilerWorker.ReportProgress(4); //Sucess but warnings..
+                }
             }
         }
 

@@ -277,24 +277,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The file pawncc.exe hasn&apos;t been found at the path.
-        /// </summary>
-        public static string MainForm_CompilerWorker_DoWork_PawnccNotFound {
-            get {
-                return ResourceManager.GetString("MainForm_CompilerWorker_DoWork_PawnccNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please verify its there..
-        /// </summary>
-        public static string MainForm_CompilerWorker_DoWork_VerifyPawnccIsThere {
-            get {
-                return ResourceManager.GetString("MainForm_CompilerWorker_DoWork_VerifyPawnccIsThere", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Would you like to save all files ?.
         /// </summary>
         public static string MainForm_CompilerWorker_DoWork_WouldYouLikeToSaveFiles {

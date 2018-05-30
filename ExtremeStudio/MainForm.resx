@@ -126,9 +126,6 @@
   <data name="&gt;&gt;saveFileButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;statusLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;pluginManagePanel.Name" xml:space="preserve">
     <value>pluginManagePanel</value>
   </data>
@@ -160,6 +157,9 @@
   </data>
   <data name="&gt;&gt;objExplorerView.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;fileTab.Name" xml:space="preserve">
+    <value>fileTab</value>
   </data>
   <data name="mainRibbon.OrbDropDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>527, 116</value>
@@ -249,6 +249,9 @@
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="includesButton.ToolTip" xml:space="preserve">
+    <value>Download SAMP Includes</value>
+  </data>
   <data name="&gt;&gt;StatusStrip1.Name" xml:space="preserve">
     <value>StatusStrip1</value>
   </data>
@@ -327,6 +330,12 @@
   <data name="removeIndentButton.ToolTip" xml:space="preserve">
     <value>Remove Indentation</value>
   </data>
+  <data name="CompileAndRunBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAABpJREFUWEftwQEBAAAAgiD/r25IQAAAAMC5GhAgAAGdeElDAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="&gt;&gt;compileScriptBtn.Name" xml:space="preserve">
     <value>compileScriptBtn</value>
   </data>
@@ -368,12 +377,6 @@
   </data>
   <data name="&gt;&gt;copyButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="RibbonOrbMenuItem1.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
-</value>
   </data>
   <data name="objExplorerView.ToolTip" xml:space="preserve">
     <value>Object Explorer</value>
@@ -429,6 +432,9 @@
   <data name="mainRibbon.Size" type="System.Drawing.Size, System.Drawing">
     <value>610, 100</value>
   </data>
+  <data name="&gt;&gt;CompileAndRunBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="BuildPanel.Text" xml:space="preserve">
     <value>Build</value>
   </data>
@@ -453,6 +459,9 @@
   <data name="MainDock.Size" type="System.Drawing.Size, System.Drawing">
     <value>610, 338</value>
   </data>
+  <data name="&gt;&gt;ribbonButton2.Name" xml:space="preserve">
+    <value>ribbonButton2</value>
+  </data>
   <data name="indentPanel.Text" xml:space="preserve">
     <value>Indentation</value>
   </data>
@@ -465,8 +474,11 @@
   <data name="&gt;&gt;closeProjectButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;fileTab.Name" xml:space="preserve">
-    <value>fileTab</value>
+  <data name="&gt;&gt;addIndentButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;searchButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="cutButton.ToolTip" xml:space="preserve">
     <value>Cut</value>
@@ -501,8 +513,11 @@
   <data name="&gt;&gt;prjPanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;addIndentButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;ribbonButton2.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;statusLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;MainDock.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -552,8 +567,11 @@
   <data name="&gt;&gt;saveFileButton.Name" xml:space="preserve">
     <value>saveFileButton</value>
   </data>
-  <data name="&gt;&gt;searchButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="RibbonOrbMenuItem1.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="RibbonOrbRecentItem1.Text" xml:space="preserve">
     <value>Close Current Project</value>
@@ -600,8 +618,8 @@
   <data name="&gt;&gt;pluginManagePanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="includesButton.ToolTip" xml:space="preserve">
-    <value>Download SAMP Includes</value>
+  <data name="&gt;&gt;CompileAndRunBtn.Name" xml:space="preserve">
+    <value>CompileAndRunBtn</value>
   </data>
   <data name="&gt;&gt;compileScriptBtn.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
@@ -627,8 +645,11 @@
   <data name="&gt;&gt;RibbonButton1.Name" xml:space="preserve">
     <value>RibbonButton1</value>
   </data>
-  <data name="&gt;&gt;saveAllButton.Name" xml:space="preserve">
-    <value>saveAllButton</value>
+  <data name="CompileAndRunBtn.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="objExplorerView.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -692,6 +713,9 @@
   </data>
   <data name="&gt;&gt;MainDock.Type" xml:space="preserve">
     <value>WeifenLuo.WinFormsUI.Docking.DockPanel, WeifenLuo.WinFormsUI.Docking, Version=3.0.4.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481</value>
+  </data>
+  <data name="&gt;&gt;saveAllButton.Name" xml:space="preserve">
+    <value>saveAllButton</value>
   </data>
   <data name="&gt;&gt;installedPlugins.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>

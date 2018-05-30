@@ -19,7 +19,6 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks
             public string FileName { get; set; }
             public string LineNumber { get; set; }
             public ErrorTypes ErrorType { get; set; }
-            public string ErrorNumber { get; set; }
             public string ErrorMessage { get; set; }
         }
 
@@ -49,7 +48,7 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks
 
                 errorsWarnsGrid.Rows.Add((err.ErrorType == ScriptErrorInfo.ErrorTypes.Error
                     ? Properties.Resources.ribbon_errors
-                    : Properties.Resources.warning_icon), err.FileName, err.LineNumber, err.ErrorNumber, err.ErrorMessage);
+                    : Properties.Resources.warning_icon), err.FileName, err.LineNumber, err.ErrorMessage);
             }
         }
 
