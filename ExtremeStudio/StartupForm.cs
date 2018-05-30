@@ -7,6 +7,7 @@ using System.Media;
 using System.Net;
 using System.Windows.Forms;
 using System.Xml;
+using AutoUpdaterDotNET;
 using ExtremeCore.Classes;
 using ExtremeStudio.Classes;
 using Newtonsoft.Json;
@@ -85,6 +86,12 @@ namespace ExtremeStudio
 
             //Add event.
             pathTextBox.PathText.TextChanged += pathTextBox_TextChanged;
+
+            //Check for updates
+            AutoUpdater.ParseUpdateInfoEvent += AutoUpdater_ParseUpdateInfoEvent;
+            WebClient client = new WebClient {Headers = {["User-Agent"] = "ExtremeStudio"}};
+            client.DownloadFile("https://api.github.com/repos/Ahmad45123/ExtremeStudio/releases/latest", Application.StartupPath + "/latest.txt");
+            AutoUpdater.Start(Application.StartupPath + "/latest.txt");
 
             //If the interop files don't exist, Extract the files.
             /*if (IsFirst &&
@@ -169,6 +176,18 @@ namespace ExtremeStudio
                 {
                 }
             }
+        }
+
+        private void AutoUpdater_ParseUpdateInfoEvent(ParseUpdateInfoEventArgs args)
+        {
+            dynamic json = JsonConvert.DeserializeObject(args.RemoteData);
+            string version = json.tag_name;
+            version = version.Remove(0, 1);
+            args.UpdateInfo = new UpdateInfoEventArgs
+            {
+                CurrentVersion = Version.Parse(version),
+                DownloadURL = $"https://github.com/Ahmad45123/ExtremeStudio/releases/download/{version}/ExtremeStudio.Setup_{version}.exe"
+            };
         }
 
         [Localizable(false)]
