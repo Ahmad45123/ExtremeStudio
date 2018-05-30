@@ -48,7 +48,6 @@ namespace ExtremeStudio
             this.saveAllButton = new System.Windows.Forms.RibbonButton();
             this.downloadPanel = new System.Windows.Forms.RibbonPanel();
             this.includesButton = new System.Windows.Forms.RibbonButton();
-            this.pluginsButton = new System.Windows.Forms.RibbonButton();
             this.editTab = new System.Windows.Forms.RibbonTab();
             this.clipboardPanel = new System.Windows.Forms.RibbonPanel();
             this.cutButton = new System.Windows.Forms.RibbonButton();
@@ -184,7 +183,6 @@ namespace ExtremeStudio
             // 
             this.downloadPanel.ButtonMoreVisible = false;
             this.downloadPanel.Items.Add(this.includesButton);
-            this.downloadPanel.Items.Add(this.pluginsButton);
             resources.ApplyResources(this.downloadPanel, "downloadPanel");
             // 
             // includesButton
@@ -193,13 +191,6 @@ namespace ExtremeStudio
             this.includesButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("includesButton.SmallImage")));
             resources.ApplyResources(this.includesButton, "includesButton");
             this.includesButton.Click += new System.EventHandler(this.ToolStripButton4_Click);
-            // 
-            // pluginsButton
-            // 
-            this.pluginsButton.Image = global::ExtremeStudio.Properties.Resources.ribbon_plugins;
-            this.pluginsButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("pluginsButton.SmallImage")));
-            resources.ApplyResources(this.pluginsButton, "pluginsButton");
-            this.pluginsButton.Click += new System.EventHandler(this.ToolStripButton5_Click);
             // 
             // editTab
             // 
@@ -436,7 +427,6 @@ namespace ExtremeStudio
         internal RibbonButton saveAllButton;
         internal RibbonPanel downloadPanel;
         internal RibbonButton includesButton;
-        internal RibbonButton pluginsButton;
         internal RibbonTab customTab;
         internal RibbonTab ideTab;
         internal RibbonPanel syntaxHighPanel;
