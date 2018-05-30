@@ -63,13 +63,29 @@ namespace ExtremeParser.Parsers
                         continue;
                     }
 
-                    fullPath = prjPath + "\\pawno\\include\\" + text;
-                    AddExtension(ref fullPath);
+                    foreach (var dir in Directory.GetDirectories(prjPath + "\\dependencies"))
+                    {
+                        string pth = Path.Combine(dir, text);
+                        AddExtension(ref pth);
+                        if (File.Exists(pth))
+                        {
+                            fullPath = pth;
+                            break;
+                        }
+                    }
                 }
                 else
                 {
-                    fullPath = prjPath + "\\pawno\\include\\" + text;
-                    AddExtension(ref fullPath);
+                    foreach (var dir in Directory.GetDirectories(prjPath + "\\dependencies"))
+                    {
+                        string pth = Path.Combine(dir, text);
+                        AddExtension(ref pth);
+                        if (File.Exists(pth))
+                        {
+                            fullPath = pth;
+                            break;
+                        }
+                    }
                 }
 
                 try
