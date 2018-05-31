@@ -266,6 +266,47 @@ namespace ExtremeStudio
                         Convert.ToString(translations.StartupForm_CreateProjectBtn_Click_InvalidSampFolder));
                     return;
                 }
+                else
+                {
+                    //Create the default file
+                    File.WriteAllText(
+                        newPath + "/gamemodes/" + nameTextBox.Text + ".pwn",
+                        Convert.ToString(Properties.Resources.newfileTemplate));
+
+                    //Fill pawnctl data
+                    Program.MainForm.CurrentProject.SampCtlData = new PawnJson()
+                    {
+                        entry = "gamemodes\\" + nameTextBox.Text + ".pwn",
+                        output = "gamemodes\\" + nameTextBox.Text + ".amx",
+                        user = Environment.UserName,
+                        repo = nameTextBox.Text,
+                        dependencies = new List<string>() {"sampctl/samp-stdlib"},
+                        builds = new List<BuildInfo>()
+                        {
+                            new BuildInfo()
+                            {
+                                name = "main",
+                                args = Program.SettingsForm.GetCompilerArgs().Split(' ').ToList()
+                            }
+                        },
+                        runtime = new RuntimeInfo() {version = verListBox.SelectedItem?.ToString() ?? "latest"},
+                    };
+                    Program.MainForm.CurrentProject.ProjectName = nameTextBox.Text;
+                    Program.MainForm.CurrentProject.ProjectPath = newPath;
+                    Program.MainForm.CurrentProject.ProjectVersion = _versionHandler.CurrentVersion;
+                    Program.MainForm.CurrentProject.CreateTables(); //Create the tables of the db.
+                    Program.MainForm.CurrentProject.SaveInfo(); //Write the default extremeStudio config.
+                    Program.MainForm.CurrentProject.CopyGlobalConfig();
+
+                    //Ensure the packages are ready
+                    SampCtl.SendCommand(Path.Combine(Application.StartupPath, "sampctl.exe"), newPath, "p ensure");
+
+                    AddNewRecent(
+                        Convert.ToString(Program.MainForm.CurrentProject.ProjectPath)); //Add it to the recent list.
+                    Program.MainForm.Show();
+                    _isClosedProgram = true;
+                    Close();
+                }
             }
             else
             {
