@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ExtremeCore.Classes;
+using ExtremeStudio.Classes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
@@ -43,7 +45,7 @@ namespace ExtremeStudio.FunctionsForms
 
             LoadColors();
             LoadCompiler();
-            LoadServerCfg();
+            if(!IsGlobal) LoadServerCfg();
             LoadHotkeys();
         }
 
@@ -322,23 +324,10 @@ namespace ExtremeStudio.FunctionsForms
         public void LoadServerCfg()
         {
             serverCfgGrid.Rows.Clear();
-
-            string textLine = "";
-            if (File.Exists(Program.MainForm.CurrentProject.ProjectPath + "/server.cfg"))
+            var props = typeof(RuntimeInfo).GetProperties();
+            foreach (var prop in props)
             {
-                StreamReader objReader =
-                    new StreamReader(Program.MainForm.CurrentProject.ProjectPath + "/server.cfg");
-                while (objReader.Peek() != -1)
-                {
-                    textLine = Convert.ToString(objReader.ReadLine());
-                    string[] values = textLine.Split(" ".ToCharArray(), 2, StringSplitOptions.None);
-                    if (values.Length == 2)
-                    {
-                        serverCfgGrid.Rows.Add(values[0].Trim(), values[1].Trim());
-                    }
-                }
-
-                objReader.Close();
+                serverCfgGrid.Rows.Add(prop.Name, prop.GetValue(Program.MainForm.CurrentProject.SampCtlData.runtime));
             }
         }
 
@@ -348,13 +337,32 @@ namespace ExtremeStudio.FunctionsForms
             if (IsGlobal)
                 return;
 
-            StringBuilder allStr = new StringBuilder();
             foreach (DataGridViewRow row in serverCfgGrid.Rows)
             {
-                allStr.Append(row.Cells[0].Value + " " + row.Cells[1].Value + "\r\n");
+                var prop = typeof(RuntimeInfo).GetProperties().First(x => x.Name == (string)row.Cells[0].Value);
+                object value;
+                if (prop.PropertyType == typeof(int))
+                {
+                    value = int.Parse(row.Cells[1].Value.ToString());
+                }
+                else if (prop.PropertyType == typeof(bool))
+                {
+                    value = bool.Parse(row.Cells[1].Value.ToString());
+                }
+                else if (prop.PropertyType == typeof(float))
+                {
+                    value = float.Parse(row.Cells[1].Value.ToString());
+                }
+                else
+                {
+                    value = row.Cells[1].Value.ToString();
+                }
+                prop.SetValue(Program.MainForm.CurrentProject.SampCtlData.runtime, value);
             }
-           File.WriteAllText(Program.MainForm.CurrentProject.ProjectPath + "/server.cfg", Convert.ToString(allStr.ToString()));
+            Program.MainForm.CurrentProject.SaveSampCtlData();
         }
+
+        #endregion
 
         private void ResetLangBtn_Click(object sender, EventArgs e)
         {
@@ -366,8 +374,6 @@ namespace ExtremeStudio.FunctionsForms
                 Application.Exit();
             }
         }
-
-        #endregion
 
         #region HotKeyStuff
 

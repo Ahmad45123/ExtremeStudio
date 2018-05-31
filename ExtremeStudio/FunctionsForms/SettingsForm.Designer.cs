@@ -38,7 +38,11 @@ namespace ExtremeStudio.FunctionsForms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.TabControl1 = new System.Windows.Forms.TabControl();
             this.TabPage3 = new System.Windows.Forms.TabPage();
+            this.GotoDefHotkey = new exscape.HotkeyControl();
+            this.label19 = new System.Windows.Forms.Label();
             this.Button2 = new System.Windows.Forms.Button();
+            this.BuildHotkey = new exscape.HotkeyControl();
+            this.Label18 = new System.Windows.Forms.Label();
             this.GotoBeforeHotkey = new exscape.HotkeyControl();
             this.Label17 = new System.Windows.Forms.Label();
             this.GotoNextHotkey = new exscape.HotkeyControl();
@@ -85,13 +89,9 @@ namespace ExtremeStudio.FunctionsForms
             this.Label1 = new System.Windows.Forms.Label();
             this.serverCFGTabPage = new System.Windows.Forms.TabPage();
             this.serverCfgGrid = new System.Windows.Forms.DataGridView();
+            this.ToolTipHandler = new System.Windows.Forms.ToolTip(this.components);
             this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ToolTipHandler = new System.Windows.Forms.ToolTip(this.components);
-            this.Label18 = new System.Windows.Forms.Label();
-            this.BuildHotkey = new exscape.HotkeyControl();
-            this.GotoDefHotkey = new exscape.HotkeyControl();
-            this.label19 = new System.Windows.Forms.Label();
             this.TabControl1.SuspendLayout();
             this.TabPage3.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -141,12 +141,36 @@ namespace ExtremeStudio.FunctionsForms
             this.TabPage3.Name = "TabPage3";
             this.TabPage3.UseVisualStyleBackColor = true;
             // 
+            // GotoDefHotkey
+            // 
+            this.GotoDefHotkey.Hotkey = System.Windows.Forms.Keys.None;
+            this.GotoDefHotkey.HotkeyModifiers = System.Windows.Forms.Keys.None;
+            resources.ApplyResources(this.GotoDefHotkey, "GotoDefHotkey");
+            this.GotoDefHotkey.Name = "GotoDefHotkey";
+            // 
+            // label19
+            // 
+            resources.ApplyResources(this.label19, "label19");
+            this.label19.Name = "label19";
+            // 
             // Button2
             // 
             resources.ApplyResources(this.Button2, "Button2");
             this.Button2.Name = "Button2";
             this.Button2.UseVisualStyleBackColor = true;
             this.Button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
+            // BuildHotkey
+            // 
+            this.BuildHotkey.Hotkey = System.Windows.Forms.Keys.None;
+            this.BuildHotkey.HotkeyModifiers = System.Windows.Forms.Keys.None;
+            resources.ApplyResources(this.BuildHotkey, "BuildHotkey");
+            this.BuildHotkey.Name = "BuildHotkey";
+            // 
+            // Label18
+            // 
+            resources.ApplyResources(this.Label18, "Label18");
+            this.Label18.Name = "Label18";
             // 
             // GotoBeforeHotkey
             // 
@@ -469,6 +493,8 @@ namespace ExtremeStudio.FunctionsForms
             // 
             // serverCfgGrid
             // 
+            this.serverCfgGrid.AllowUserToAddRows = false;
+            this.serverCfgGrid.AllowUserToDeleteRows = false;
             this.serverCfgGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.serverCfgGrid.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.serverCfgGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -477,16 +503,6 @@ namespace ExtremeStudio.FunctionsForms
             this.valueColumn});
             resources.ApplyResources(this.serverCfgGrid, "serverCfgGrid");
             this.serverCfgGrid.Name = "serverCfgGrid";
-            // 
-            // nameColumn
-            // 
-            resources.ApplyResources(this.nameColumn, "nameColumn");
-            this.nameColumn.Name = "nameColumn";
-            // 
-            // valueColumn
-            // 
-            resources.ApplyResources(this.valueColumn, "valueColumn");
-            this.valueColumn.Name = "valueColumn";
             // 
             // ToolTipHandler
             // 
@@ -497,29 +513,16 @@ namespace ExtremeStudio.FunctionsForms
             this.ToolTipHandler.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.ToolTipHandler.ToolTipTitle = "Help";
             // 
-            // Label18
+            // nameColumn
             // 
-            resources.ApplyResources(this.Label18, "Label18");
-            this.Label18.Name = "Label18";
+            resources.ApplyResources(this.nameColumn, "nameColumn");
+            this.nameColumn.Name = "nameColumn";
+            this.nameColumn.ReadOnly = true;
             // 
-            // BuildHotkey
+            // valueColumn
             // 
-            this.BuildHotkey.Hotkey = System.Windows.Forms.Keys.None;
-            this.BuildHotkey.HotkeyModifiers = System.Windows.Forms.Keys.None;
-            resources.ApplyResources(this.BuildHotkey, "BuildHotkey");
-            this.BuildHotkey.Name = "BuildHotkey";
-            // 
-            // GotoDefHotkey
-            // 
-            this.GotoDefHotkey.Hotkey = System.Windows.Forms.Keys.None;
-            this.GotoDefHotkey.HotkeyModifiers = System.Windows.Forms.Keys.None;
-            resources.ApplyResources(this.GotoDefHotkey, "GotoDefHotkey");
-            this.GotoDefHotkey.Name = "GotoDefHotkey";
-            // 
-            // label19
-            // 
-            resources.ApplyResources(this.label19, "label19");
-            this.label19.Name = "label19";
+            resources.ApplyResources(this.valueColumn, "valueColumn");
+            this.valueColumn.Name = "valueColumn";
             // 
             // SettingsForm
             // 
@@ -578,8 +581,6 @@ namespace ExtremeStudio.FunctionsForms
         internal PathTextBox activeDirText;
         internal TabPage serverCFGTabPage;
         internal DataGridView serverCfgGrid;
-        internal DataGridViewTextBoxColumn nameColumn;
-        internal DataGridViewTextBoxColumn valueColumn;
         internal TabPage TabPage3;
         internal Button ResetLangBtn;
         internal Label Label10;
@@ -602,5 +603,7 @@ namespace ExtremeStudio.FunctionsForms
         internal Label label19;
         internal HotkeyControl BuildHotkey;
         internal Label Label18;
+        private DataGridViewTextBoxColumn nameColumn;
+        private DataGridViewTextBoxColumn valueColumn;
     }
 }

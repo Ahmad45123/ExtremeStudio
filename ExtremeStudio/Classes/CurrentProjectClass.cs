@@ -128,83 +128,6 @@ namespace ExtremeStudio.Classes
             File.Copy(Program.MainForm.ApplicationFiles + "/configs/themeInfo.json", ProjectPath + "/configs/themeInfo.json", true);
             File.Copy(Program.MainForm.ApplicationFiles + "/configs/compiler.json", ProjectPath + "/configs/compiler.json", true);
         }
-
-        #region server.cfg
-
-        public void EditSampConfig(string key, string value)
-        {
-            //Variables
-            List<string> allInfo = new List<string>();
-
-            //Reading
-            string textLine = "";
-            if (File.Exists(ProjectPath + "/server.cfg"))
-            {
-                StreamReader objReader = new StreamReader(ProjectPath + "/server.cfg");
-                while (objReader.Peek() != -1)
-                {
-                    textLine = Convert.ToString(objReader.ReadLine());
-                    allInfo.Add(textLine);
-                }
-
-                objReader.Close();
-            }
-
-            //Editing
-            string allText = null; //To short the loops :P
-            bool done = false; //This is to know if it was edited or not.
-            foreach (string tmpstr in allInfo)
-            {
-                string str = tmpstr;
-                string[] values = str.Split(" ".ToCharArray(), 2, StringSplitOptions.None);
-                if (values[0] == key)
-                {
-                    str = values[0] + " " + value;
-                    allText += str + "\r\n";
-                    done = true;
-                }
-                else
-                {
-                    allText += str + "\r\n";
-                }
-            }
-
-            //If it wasn't edited, We add it.
-            if (done == false)
-            {
-                allText += key + " " + value;
-            }
-
-            //Writing
-            File.WriteAllText(ProjectPath + "/server.cfg",
-                allText);
-        }
-
-        public string GetSampConfig(string key)
-        {
-            string textLine = "";
-            if (File.Exists(ProjectPath + "/server.cfg"))
-            {
-                StreamReader objReader = new StreamReader(ProjectPath + "/server.cfg");
-                while (objReader.Peek() != -1)
-                {
-                    textLine = Convert.ToString(objReader.ReadLine());
-                    string[] values = textLine.Split(" ".ToCharArray(), 2, StringSplitOptions.None);
-                    if (values[0] == key && values.Length == 2)
-                    {
-                        objReader.Close();
-                        return values[1];
-                    }
-                }
-
-                objReader.Close();
-            }
-
-            return Convert.ToString(-1);
-        }
-
-        #endregion
-
     }
 
     public class PawnJson
@@ -226,7 +149,23 @@ namespace ExtremeStudio.Classes
 
     public class RuntimeInfo
     {
-        public string version { get; set; }
+        public string version { get; set; } = "latest";
+        public bool lanmode { get; set; } = false;
+        public string rcon_password { get; set; } = "12345678";
+        public int maxplayers { get; set; } = 50;
+        public int port { get; set; } = 7777;
+        public string hostname { get; set; } = "SA-MP 0.3 Server";
+        public bool announce { get; set; } = false;
+        public bool chatlogging { get; set; } = false;
+        public string weburl { get; set; } = "www.sa-mp.com";
+        public int onfoot_rate { get; set; } = 40;
+        public int incar_rate { get; set; } = 40;
+        public int weapon_rate { get; set; } = 40;
+        public float stream_distance { get; set; } = 300.0f;
+        public int stream_rate { get; set; } = 1000;
+        public int maxnpc { get; set; } = 0;
+        public string logtimeformat { get; set; } = "[%H:%M:%S]";
+        public string language { get; set; } = "English";
     }
 
     public class SqLiteDatabase
