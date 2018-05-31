@@ -38,14 +38,14 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks
             this.showWarnsCheck = new System.Windows.Forms.CheckBox();
             this.showErrorsCheck = new System.Windows.Forms.CheckBox();
             this.errorsWarnsGrid = new System.Windows.Forms.DataGridView();
-            this.TabPage3 = new System.Windows.Forms.TabPage();
-            this.parserErrors = new System.Windows.Forms.DataGridView();
-            this.ErrorMsg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.fileColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lineColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errortextColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TabPage3 = new System.Windows.Forms.TabPage();
+            this.parserErrors = new System.Windows.Forms.DataGridView();
+            this.ErrorMsg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorsWarnsGrid)).BeginInit();
@@ -92,6 +92,7 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks
             resources.ApplyResources(this.errorsWarnsGrid, "errorsWarnsGrid");
             this.errorsWarnsGrid.AllowUserToAddRows = false;
             this.errorsWarnsGrid.AllowUserToDeleteRows = false;
+            this.errorsWarnsGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.errorsWarnsGrid.BackgroundColor = System.Drawing.Color.White;
             this.errorsWarnsGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.errorsWarnsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -107,6 +108,30 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks
             this.errorsWarnsGrid.ReadOnly = true;
             this.errorsWarnsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.errorsWarnsGrid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.errorsWarnsGrid_CellMouseDoubleClick);
+            // 
+            // typeColumn
+            // 
+            resources.ApplyResources(this.typeColumn, "typeColumn");
+            this.typeColumn.Name = "typeColumn";
+            this.typeColumn.ReadOnly = true;
+            // 
+            // fileColumn
+            // 
+            resources.ApplyResources(this.fileColumn, "fileColumn");
+            this.fileColumn.Name = "fileColumn";
+            this.fileColumn.ReadOnly = true;
+            // 
+            // lineColumn
+            // 
+            resources.ApplyResources(this.lineColumn, "lineColumn");
+            this.lineColumn.Name = "lineColumn";
+            this.lineColumn.ReadOnly = true;
+            // 
+            // errortextColumn
+            // 
+            resources.ApplyResources(this.errortextColumn, "errortextColumn");
+            this.errortextColumn.Name = "errortextColumn";
+            this.errortextColumn.ReadOnly = true;
             // 
             // TabPage3
             // 
@@ -144,30 +169,6 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks
             resources.ApplyResources(this.Column1, "Column1");
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            // 
-            // typeColumn
-            // 
-            resources.ApplyResources(this.typeColumn, "typeColumn");
-            this.typeColumn.Name = "typeColumn";
-            this.typeColumn.ReadOnly = true;
-            // 
-            // fileColumn
-            // 
-            resources.ApplyResources(this.fileColumn, "fileColumn");
-            this.fileColumn.Name = "fileColumn";
-            this.fileColumn.ReadOnly = true;
-            // 
-            // lineColumn
-            // 
-            resources.ApplyResources(this.lineColumn, "lineColumn");
-            this.lineColumn.Name = "lineColumn";
-            this.lineColumn.ReadOnly = true;
-            // 
-            // errortextColumn
-            // 
-            resources.ApplyResources(this.errortextColumn, "errortextColumn");
-            this.errortextColumn.Name = "errortextColumn";
-            this.errortextColumn.ReadOnly = true;
             // 
             // ErrorsDock
             // 

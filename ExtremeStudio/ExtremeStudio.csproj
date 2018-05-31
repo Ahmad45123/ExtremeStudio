@@ -203,6 +203,9 @@
       <LastGenOutput>SearchReplaceForm.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ErrorsDock.hu.resx">
+      <DependentUpon>ErrorsDock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\ErrorsDock.resx">
       <DependentUpon>ErrorsDock.cs</DependentUpon>
       <SubType>Designer</SubType>
