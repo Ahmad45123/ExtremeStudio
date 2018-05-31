@@ -29,6 +29,8 @@ namespace ExtremeStudio
 
         private bool _isClosedProgram;
 
+        public string ProjectToOpen = "";
+
         #region RecentCode
 
         public List<string> Recent = new List<string>();
@@ -176,6 +178,40 @@ namespace ExtremeStudio
                 {
                 }
             }
+
+            if (ProjectToOpen != "")
+            {
+                if (GeneralFunctions.IsValidExtremeProject(ProjectToOpen))
+                {
+                    Program.MainForm.CurrentProject.ProjectPath = ProjectToOpen;
+                    Program.MainForm.CurrentProject.ReadInfo();
+                    projectName.Text = Program.MainForm.CurrentProject.ProjectName;
+
+                    string projVersion = Convert.ToString(Program.MainForm.CurrentProject.ProjectVersion);
+                    string progVersion = Convert.ToString(_versionHandler.CurrentVersion);
+
+                    VersionReader.CompareVersionResult versionCompare =
+                        VersionReader.CompareVersions(projVersion, progVersion);
+                    if (versionCompare == VersionReader.CompareVersionResult.VersionSame)
+                    {
+                        loadProjectBtn_Click(null, EventArgs.Empty);
+                    }
+                    else if (versionCompare == VersionReader.CompareVersionResult.VersionNew)
+                    {
+                        loadProjectBtn_Click(null, EventArgs.Empty);
+                    }
+                    else if (versionCompare == VersionReader.CompareVersionResult.VersionOld)
+                    {
+                        MessageBox.Show(translations.StartupForm_pathTextBox_TextChanged_ProjectVersionNewer);
+                        Application.Exit();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(Convert.ToString(translations.StartupForm_pathTextBox_TextChanged_InvalidESPrj));
+                    Application.Exit();
+                }
+            }
         }
 
         private void AutoUpdater_ParseUpdateInfoEvent(ParseUpdateInfoEventArgs args)
@@ -258,7 +294,6 @@ namespace ExtremeStudio
                     {
                         //Create directories.
                         Directory.CreateDirectory(newPath + "/gamemodes");
-                        Directory.CreateDirectory(newPath + "/filterscripts");
                         Directory.CreateDirectory(newPath + "/plugins");
                         Directory.CreateDirectory(newPath + "/scriptfiles");
 

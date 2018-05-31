@@ -23,7 +23,7 @@ namespace ExtremeStudio
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -38,6 +38,10 @@ namespace ExtremeStudio
             ErrorsDock = new ErrorsDock();
             SettingsForm = new SettingsForm();
 
+            if (args.Length == 1)
+            {
+                StartupForm.ProjectToOpen = args[0];
+            }
             LanguagesForm.Show();
             Application.Run();
         }

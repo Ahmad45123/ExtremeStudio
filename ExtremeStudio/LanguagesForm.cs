@@ -23,8 +23,8 @@ namespace ExtremeStudio
 
         private void Done()
         {
-            Program.StartupForm.Show();
             Close();
+            Program.StartupForm.Show();
         }
 
         private void Acceptbtn_Click(object sender, EventArgs e)

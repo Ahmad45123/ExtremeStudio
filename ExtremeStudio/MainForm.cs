@@ -144,6 +144,12 @@ namespace ExtremeStudio
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //Save all open docs and the current pos
+            foreach (var doc in MainDock.Documents)
+            {
+                Scintilla editor = (doc.DockHandler.Form as EditorDock).Editor;
+
+            }
             MainDock.SaveAsXml(ApplicationFiles + "/configs/docksInfo.xml");
         }
 
