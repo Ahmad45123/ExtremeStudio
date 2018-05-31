@@ -390,6 +390,7 @@ namespace ExtremeStudio
             CurrentProject.SampCtlData.builds[0].args = Program.SettingsForm.GetCompilerArgs().Split(' ').ToList();
             CurrentProject.SaveInfo();
 
+            CompilerWorker.ReportProgress(2);
             string errs = SampCtl.SendCommand(ApplicationFiles + "/sampctl.exe", CurrentProject.ProjectPath,
                 "p build");
 
@@ -406,14 +407,14 @@ namespace ExtremeStudio
                 var errorLevel = 0;
                 List<ErrorsDock.ScriptErrorInfo> errorList = new List<ErrorsDock.ScriptErrorInfo>();
                 foreach (Match match in Regex.Matches(errs,
-                    @"(?<path>.+):(?<line>[0-9]+)\s\((?<type>error|warning)\)(?<text>.+)", RegexOptions.Multiline))
+                    @"(?<path>.+):(?<line>[0-9]+)\s\((?<type>fatal|error|warning)\)(?<text>.+)", RegexOptions.Multiline))
                 {
                     ErrorsDock.ScriptErrorInfo err = new ErrorsDock.ScriptErrorInfo
                     {
                         FileName = Path.GetFileName(Convert.ToString(match.Groups["path"].Value)),
                         LineNumber = match.Groups["line"].Value
                     };
-                    if (match.Groups["type"].Value == "error")
+                    if (match.Groups["type"].Value == "error" || match.Groups["type"].Value == "fatal")
                     {
                         err.ErrorType = ErrorsDock.ScriptErrorInfo.ErrorTypes.Error;
                         errorLevel = 2;
