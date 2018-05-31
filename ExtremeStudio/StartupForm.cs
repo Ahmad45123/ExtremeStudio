@@ -269,9 +269,10 @@ namespace ExtremeStudio
                 else
                 {
                     //Create the default file
-                    File.WriteAllText(
-                        newPath + "/gamemodes/" + nameTextBox.Text + ".pwn",
-                        Convert.ToString(Properties.Resources.newfileTemplate));
+                    if(!File.Exists(newPath + "/gamemodes/" + nameTextBox.Text + ".pwn"))
+                        File.WriteAllText(
+                            newPath + "/gamemodes/" + nameTextBox.Text + ".pwn",
+                            Convert.ToString(Properties.Resources.newfileTemplate));
 
                     //Fill pawnctl data
                     Program.MainForm.CurrentProject.SampCtlData = new PawnJson()
