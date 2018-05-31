@@ -49,6 +49,19 @@ namespace ExtremeStudio.Classes
 
         #endregion
 
+        public void SaveSampCtlData()
+        {
+            File.WriteAllText(ProjectPath + "/pawn.json", JsonConvert.SerializeObject(SampCtlData, Formatting.Indented));
+        }
+
+        public void LoadSampCtlData()
+        {
+            if (File.Exists(ProjectPath + "/pawn.json"))
+            {
+                SampCtlData = JsonConvert.DeserializeObject<PawnJson>(File.ReadAllText(ProjectPath + "/pawn.json"));
+            }
+        }
+
         public void SaveInfo() //Will only work if the projectPath is set to valid ExtremeStudio project.
         {
             Dictionary<string, string> dic = new Dictionary<string, string>();
@@ -84,7 +97,7 @@ namespace ExtremeStudio.Classes
             }
 
             //Save the PAWNCTL json
-            File.WriteAllText(ProjectPath + "/pawn.json", JsonConvert.SerializeObject(SampCtlData));
+            SaveSampCtlData();
         }
 
         public void ReadInfo() //Will only work if the projectPath is set to valid ExtremeStudio project.
@@ -100,10 +113,7 @@ namespace ExtremeStudio.Classes
                 ObjectExplorerItems.Add(new ObjectExplorerItem((string)row[0], (string)row[1]));
             }
 
-            if (File.Exists(ProjectPath + "/pawn.json"))
-            {
-                SampCtlData = JsonConvert.DeserializeObject<PawnJson>(File.ReadAllText(ProjectPath + "/pawn.json"));
-            }
+            LoadSampCtlData();
         }
 
         public void CopyGlobalConfig()

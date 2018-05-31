@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ExtremeCore.Classes;
 using Newtonsoft.Json;
 
 namespace ExtremeStudio.FunctionsForms
@@ -92,6 +94,7 @@ namespace ExtremeStudio.FunctionsForms
 
         private void PackagesList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ActionButton.Enabled = false;
             if (PackagesList.SelectedIndex != -1)
             {
                 string[] data = PackagesList.SelectedItem.ToString().Split('/');
@@ -107,6 +110,28 @@ namespace ExtremeStudio.FunctionsForms
                         DependsTextBox.Text += d + '\r' + '\n';
                     }
                 }
+
+                ActionButton.Text = Program.MainForm.CurrentProject.SampCtlData.dependencies.Contains(PackagesList.SelectedItem) ? "Uninstall Package" : "Install Package";
+                ActionButton.Enabled = true;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (Program.MainForm.CurrentProject.SampCtlData.dependencies.Contains(PackagesList.SelectedItem.ToString()))
+            {
+                //Uninstall action: 
+                Program.MainForm.CurrentProject.SampCtlData.dependencies.Remove(PackagesList.SelectedItem.ToString());
+                Directory.Delete(Program.MainForm.CurrentProject.ProjectPath + "/dependencies/" + PackagesList.SelectedItem.ToString().Split('/')[1], true);
+                Program.MainForm.CurrentProject.SaveSampCtlData();
+                ActionButton.Text = "Install Package";
+            }
+            else
+            {
+                SampCtl.SendCommand(Application.StartupPath + "/sampctl.exe",
+                    Program.MainForm.CurrentProject.ProjectPath, "p install " + PackagesList.SelectedItem);
+                Program.MainForm.CurrentProject.LoadSampCtlData();
+                ActionButton.Text = "Uninstall Package";
             }
         }
     }

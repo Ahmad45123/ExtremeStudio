@@ -34,12 +34,12 @@
             this.NPages = new System.Windows.Forms.Label();
             this.SearchTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.PackageNameLabel = new System.Windows.Forms.Label();
-            this.LastUpdatedLabel = new System.Windows.Forms.Label();
-            this.StarsLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.DependsTextBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.StarsLabel = new System.Windows.Forms.Label();
+            this.LastUpdatedLabel = new System.Windows.Forms.Label();
+            this.PackageNameLabel = new System.Windows.Forms.Label();
+            this.ActionButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,35 +106,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Information";
             // 
-            // PackageNameLabel
+            // DependsTextBox
             // 
-            this.PackageNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PackageNameLabel.Location = new System.Drawing.Point(6, 21);
-            this.PackageNameLabel.Name = "PackageNameLabel";
-            this.PackageNameLabel.Size = new System.Drawing.Size(260, 23);
-            this.PackageNameLabel.TabIndex = 0;
-            this.PackageNameLabel.Text = "Name / Package";
-            this.PackageNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // LastUpdatedLabel
-            // 
-            this.LastUpdatedLabel.AutoSize = true;
-            this.LastUpdatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.LastUpdatedLabel.Location = new System.Drawing.Point(7, 51);
-            this.LastUpdatedLabel.Name = "LastUpdatedLabel";
-            this.LastUpdatedLabel.Size = new System.Drawing.Size(99, 17);
-            this.LastUpdatedLabel.TabIndex = 1;
-            this.LastUpdatedLabel.Text = "Last updated: ";
-            // 
-            // StarsLabel
-            // 
-            this.StarsLabel.AutoSize = true;
-            this.StarsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.StarsLabel.Location = new System.Drawing.Point(7, 78);
-            this.StarsLabel.Name = "StarsLabel";
-            this.StarsLabel.Size = new System.Drawing.Size(57, 17);
-            this.StarsLabel.TabIndex = 2;
-            this.StarsLabel.Text = "Stars: 0";
+            this.DependsTextBox.Location = new System.Drawing.Point(19, 125);
+            this.DependsTextBox.Multiline = true;
+            this.DependsTextBox.Name = "DependsTextBox";
+            this.DependsTextBox.ReadOnly = true;
+            this.DependsTextBox.Size = new System.Drawing.Size(247, 77);
+            this.DependsTextBox.TabIndex = 4;
             // 
             // label1
             // 
@@ -146,31 +125,52 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Dependencies: ";
             // 
-            // DependsTextBox
+            // StarsLabel
             // 
-            this.DependsTextBox.Location = new System.Drawing.Point(19, 125);
-            this.DependsTextBox.Multiline = true;
-            this.DependsTextBox.Name = "DependsTextBox";
-            this.DependsTextBox.ReadOnly = true;
-            this.DependsTextBox.Size = new System.Drawing.Size(247, 77);
-            this.DependsTextBox.TabIndex = 4;
+            this.StarsLabel.AutoSize = true;
+            this.StarsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.StarsLabel.Location = new System.Drawing.Point(7, 78);
+            this.StarsLabel.Name = "StarsLabel";
+            this.StarsLabel.Size = new System.Drawing.Size(57, 17);
+            this.StarsLabel.TabIndex = 2;
+            this.StarsLabel.Text = "Stars: 0";
             // 
-            // button1
+            // LastUpdatedLabel
             // 
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(281, 218);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(247, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Install Package";
-            this.button1.UseVisualStyleBackColor = true;
+            this.LastUpdatedLabel.AutoSize = true;
+            this.LastUpdatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.LastUpdatedLabel.Location = new System.Drawing.Point(7, 51);
+            this.LastUpdatedLabel.Name = "LastUpdatedLabel";
+            this.LastUpdatedLabel.Size = new System.Drawing.Size(99, 17);
+            this.LastUpdatedLabel.TabIndex = 1;
+            this.LastUpdatedLabel.Text = "Last updated: ";
+            // 
+            // PackageNameLabel
+            // 
+            this.PackageNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PackageNameLabel.Location = new System.Drawing.Point(6, 21);
+            this.PackageNameLabel.Name = "PackageNameLabel";
+            this.PackageNameLabel.Size = new System.Drawing.Size(260, 23);
+            this.PackageNameLabel.TabIndex = 0;
+            this.PackageNameLabel.Text = "Name / Package";
+            this.PackageNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ActionButton
+            // 
+            this.ActionButton.Location = new System.Drawing.Point(281, 218);
+            this.ActionButton.Name = "ActionButton";
+            this.ActionButton.Size = new System.Drawing.Size(247, 23);
+            this.ActionButton.TabIndex = 6;
+            this.ActionButton.Text = "Install Package";
+            this.ActionButton.UseVisualStyleBackColor = true;
+            this.ActionButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // PackagesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 432);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ActionButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.SearchTextBox);
             this.Controls.Add(this.NPages);
@@ -202,6 +202,6 @@
         private System.Windows.Forms.Label LastUpdatedLabel;
         private System.Windows.Forms.TextBox DependsTextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ActionButton;
     }
 }

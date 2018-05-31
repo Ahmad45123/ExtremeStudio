@@ -147,6 +147,12 @@
   <metadata name="StatusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>28, 22</value>
   </metadata>
+  <data name="statusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 17</value>
+  </data>
+  <data name="statusLabel.Text" xml:space="preserve">
+    <value>Idle</value>
+  </data>
   <data name="StatusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 440</value>
   </data>
@@ -171,12 +177,6 @@
   <data name="&gt;&gt;StatusStrip1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="statusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>26, 17</value>
-  </data>
-  <data name="statusLabel.Text" xml:space="preserve">
-    <value>Idle</value>
-  </data>
   <data name="mainRibbon.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
@@ -185,57 +185,6 @@
   </data>
   <data name="mainRibbon.OrbDropDown.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
-  </data>
-  <data name="mainRibbon.OrbDropDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>527, 116</value>
-  </data>
-  <data name="mainRibbon.OrbDropDown.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="mainRibbon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>610, 100</value>
-  </data>
-  <data name="mainRibbon.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="prjPanel.Text" xml:space="preserve">
-    <value>Files</value>
-  </data>
-  <data name="includesButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="includesButton.ToolTip" xml:space="preserve">
-    <value>Download SAMP Packages</value>
-  </data>
-  <data name="downloadPanel.Text" xml:space="preserve">
-    <value>Downloadables</value>
-  </data>
-  <data name="fileTab.Text" xml:space="preserve">
-    <value>Project</value>
-  </data>
-  <data name="editTab.Text" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="ideTab.Text" xml:space="preserve">
-    <value>IDE</value>
-  </data>
-  <data name="customTab.Text" xml:space="preserve">
-    <value>ES Plugins</value>
-  </data>
-  <data name="&gt;&gt;mainRibbon.Name" xml:space="preserve">
-    <value>mainRibbon</value>
-  </data>
-  <data name="&gt;&gt;mainRibbon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Ribbon, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;mainRibbon.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;mainRibbon.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="RibbonOrbMenuItem1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -261,11 +210,23 @@
   <data name="RibbonOrbRecentItem1.Text" xml:space="preserve">
     <value>Close Current Project</value>
   </data>
+  <data name="mainRibbon.OrbDropDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>527, 116</value>
+  </data>
+  <data name="mainRibbon.OrbDropDown.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="closeProjectButton.Text" xml:space="preserve">
     <value>RibbonButton4</value>
   </data>
   <data name="closeProjectButton.ToolTip" xml:space="preserve">
     <value>Close Project</value>
+  </data>
+  <data name="mainRibbon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>610, 100</value>
+  </data>
+  <data name="mainRibbon.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
   </data>
   <data name="saveFileButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -285,8 +246,23 @@
   <data name="saveAllButton.ToolTip" xml:space="preserve">
     <value>Save All Files</value>
   </data>
-  <data name="clipboardPanel.Text" xml:space="preserve">
-    <value>Clipboard</value>
+  <data name="prjPanel.Text" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="includesButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="includesButton.ToolTip" xml:space="preserve">
+    <value>Download SAMP Packages</value>
+  </data>
+  <data name="downloadPanel.Text" xml:space="preserve">
+    <value>Packages</value>
+  </data>
+  <data name="fileTab.Text" xml:space="preserve">
+    <value>Project</value>
   </data>
   <data name="cutButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -315,8 +291,8 @@
   <data name="pasteButton.ToolTip" xml:space="preserve">
     <value>Paste</value>
   </data>
-  <data name="searchPanel.Text" xml:space="preserve">
-    <value>Search &amp; Replace</value>
+  <data name="clipboardPanel.Text" xml:space="preserve">
+    <value>Clipboard</value>
   </data>
   <data name="searchButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -345,8 +321,8 @@
   <data name="gotoButton.ToolTip" xml:space="preserve">
     <value>GoTo</value>
   </data>
-  <data name="indentPanel.Text" xml:space="preserve">
-    <value>Indentation</value>
+  <data name="searchPanel.Text" xml:space="preserve">
+    <value>Search &amp; Replace</value>
   </data>
   <data name="addIndentButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -366,8 +342,11 @@
   <data name="removeIndentButton.ToolTip" xml:space="preserve">
     <value>Remove Indentation</value>
   </data>
-  <data name="viewPanel.Text" xml:space="preserve">
-    <value>View</value>
+  <data name="indentPanel.Text" xml:space="preserve">
+    <value>Indentation</value>
+  </data>
+  <data name="editTab.Text" xml:space="preserve">
+    <value>Edit</value>
   </data>
   <data name="prjExplrerView.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -393,8 +372,8 @@
   <data name="errorsWarningsView.ToolTip" xml:space="preserve">
     <value>Errors &amp; Warnings</value>
   </data>
-  <data name="syntaxHighPanel.Text" xml:space="preserve">
-    <value>Settings</value>
+  <data name="viewPanel.Text" xml:space="preserve">
+    <value>View</value>
   </data>
   <data name="RibbonButton1.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -405,8 +384,8 @@
   <data name="RibbonButton1.ToolTip" xml:space="preserve">
     <value>Modify Syntax Highlighting</value>
   </data>
-  <data name="BuildPanel.Text" xml:space="preserve">
-    <value>Build</value>
+  <data name="syntaxHighPanel.Text" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="compileScriptBtn.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -423,8 +402,11 @@
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="pluginManagePanel.Text" xml:space="preserve">
-    <value>Plugin Managment</value>
+  <data name="BuildPanel.Text" xml:space="preserve">
+    <value>Build</value>
+  </data>
+  <data name="ideTab.Text" xml:space="preserve">
+    <value>IDE</value>
   </data>
   <data name="esPluginsManage.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -435,8 +417,26 @@
   <data name="esPluginsManage.ToolTip" xml:space="preserve">
     <value>Manage ES Plugins</value>
   </data>
+  <data name="pluginManagePanel.Text" xml:space="preserve">
+    <value>Plugin Managment</value>
+  </data>
   <data name="installedPlugins.Text" xml:space="preserve">
     <value>Installed Plugins</value>
+  </data>
+  <data name="customTab.Text" xml:space="preserve">
+    <value>ES Plugins</value>
+  </data>
+  <data name="&gt;&gt;mainRibbon.Name" xml:space="preserve">
+    <value>mainRibbon</value>
+  </data>
+  <data name="&gt;&gt;mainRibbon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Ribbon, System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;mainRibbon.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;mainRibbon.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="CompilerWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>145, 22</value>
