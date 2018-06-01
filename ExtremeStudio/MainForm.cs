@@ -30,6 +30,7 @@ namespace ExtremeStudio
 
             Load += MainForm_Load;
             Load += DockSavingLoading_Mainform_Load;
+            Load += MainForm_Load_1;
             Load += OnFormLoadPlugin;
         }
 
@@ -145,11 +146,14 @@ namespace ExtremeStudio
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Save all open docs and the current pos
+            string data = "";
             foreach (var doc in MainDock.Documents)
             {
-                Scintilla editor = (doc.DockHandler.Form as EditorDock).Editor;
-
+                Scintilla editor = (doc.DockHandler.Form as EditorDock)?.Editor;
+                if (editor != null) data += editor.Tag + "|" + editor.CurrentPosition + '\n';
             }
+            CurrentProject.LastOpenFiles = data;
+            CurrentProject.SaveInfo();
             MainDock.SaveAsXml(ApplicationFiles + "/configs/docksInfo.xml");
         }
 
@@ -626,6 +630,21 @@ namespace ExtremeStudio
         {
             compileScriptBtn.PerformClick();
             isAwaitingRunServer = true;
+        }
+
+        private void MainForm_Load_1(object sender, EventArgs e)
+        {
+            string[] openedFiles = CurrentProject.LastOpenFiles.Split('\n');
+            foreach (var file in openedFiles)
+            {
+                string[] data = file.Split('|');
+                if (data[0] == "")
+                    continue;
+                OpenFile(data[0]);
+                CurrentScintilla.AnchorPosition = int.Parse(data[1]);
+                CurrentScintilla.CurrentPosition = int.Parse(data[1]);
+                CurrentScintilla.ScrollCaret();
+            }
         }
     }
 }

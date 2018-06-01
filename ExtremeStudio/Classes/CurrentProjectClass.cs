@@ -21,6 +21,7 @@ namespace ExtremeStudio.Classes
 
         public string ProjectName { get; set; }
         public string ProjectVersion { get; set; }
+        public string LastOpenFiles { get; set; }
         public PawnJson SampCtlData { get; set; }
 
         private string _projectPathB;
@@ -84,6 +85,11 @@ namespace ExtremeStudio.Classes
             dic.Add("value", ProjectVersion);
             _sqlCon.Insert("MainConfig", dic);
 
+            //Last opened files.
+            dic.Clear(); //Table already cleared once. :P
+            dic.Add("name", "LastOpenFiles");
+            dic.Add("value", LastOpenFiles);
+            _sqlCon.Insert("MainConfig", dic);
             #endregion
 
             //Save the objectexporleritems.
@@ -105,6 +111,7 @@ namespace ExtremeStudio.Classes
             //Read main info like project name and version.
             ProjectName = _sqlCon.ExecuteScalar("SELECT value FROM MainConfig WHERE name='ProjectName'");
             ProjectVersion = _sqlCon.ExecuteScalar("SELECT value FROM MainConfig WHERE name='ProjectVersion'");
+            LastOpenFiles = _sqlCon.ExecuteScalar("SELECT value FROM MainConfig WHERE name='LastOpenFiles'");
 
             //Get all the objectexpolreritems.
             DataTable dt = _sqlCon.GetDataTable("SELECT * FROM `ObjectExplorerItems`");
