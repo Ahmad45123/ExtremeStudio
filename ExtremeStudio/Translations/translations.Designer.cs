@@ -475,6 +475,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you&apos;d like to delete this file/folder ?.
+        /// </summary>
+        public static string ProjExplorerDock_DeleteToolStripMenuItem_Click_AreYouSure {
+            get {
+                return ResourceManager.GetString("ProjExplorerDock_DeleteToolStripMenuItem_Click_AreYouSure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This filetype is not supported to be veiwed by ExtremeStudio so it will be opened normally..
         /// </summary>
         public static string ProjExplorerDock_filesList_FileSelected_FileNotSupported {

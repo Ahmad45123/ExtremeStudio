@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -55,7 +57,9 @@ namespace ExtremeCore.Controls_And_Tools
                 }
             }
         }
-	
+
+        public IEnumerable<string> IgnoredNames { get; set; }
+
         private string _mainDirectory = "C:\\";
         /// <summary>
         /// Gets or sets the directory that the user can't go behind.
@@ -258,6 +262,8 @@ namespace ExtremeCore.Controls_And_Tools
                     foreach (string dir in dirNames)
                     {
                         string realDir = Path.GetFileName(dir);
+                        if (IgnoredNames.Contains(realDir))
+                            continue;
                         Items.Add(realDir);
                     }
                 }
@@ -266,6 +272,8 @@ namespace ExtremeCore.Controls_And_Tools
                 foreach (string file in fileNames)
                 {
                     string fileName = Path.GetFileName(file);
+                    if (IgnoredNames.Contains(fileName))
+                        continue;
                     Items.Add(fileName);
                 }
                 // eat this - back is still optional even when no other items exists

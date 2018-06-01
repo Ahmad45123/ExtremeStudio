@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -22,42 +23,19 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks
                 filesList.SelectedPath = filesList.SelectedPath;
         }
 
-        public bool IsProtected(string pPath)
-        {
-            if (pPath.StartsWith(Path.Combine(Convert.ToString(Program.MainForm.CurrentProject.ProjectPath), "configs"))
-                || pPath == (Path.Combine(Convert.ToString(Program.MainForm.CurrentProject.ProjectPath), "gamemodes"))
-                || pPath == (Path.Combine(Convert.ToString(Program.MainForm.CurrentProject.ProjectPath), "pawno"))
-                || pPath == (Path.Combine(Convert.ToString(Program.MainForm.CurrentProject.ProjectPath),
-                    "pawno\\libpawnc.dll"))
-                || pPath == (Path.Combine(Convert.ToString(Program.MainForm.CurrentProject.ProjectPath),
-                    "pawno\\pawn.ico"))
-                || pPath == (Path.Combine(Convert.ToString(Program.MainForm.CurrentProject.ProjectPath),
-                    "pawno\\pawnc.dll"))
-                || pPath == (Path.Combine(Convert.ToString(Program.MainForm.CurrentProject.ProjectPath),
-                    "pawno\\pawncc.exe"))
-                || pPath == (Path.Combine(Convert.ToString(Program.MainForm.CurrentProject.ProjectPath),
-                    "pawno\\include"))
-                || pPath == (Path.Combine(Convert.ToString(Program.MainForm.CurrentProject.ProjectPath), "plugins"))
-                || pPath == (Path.Combine(Convert.ToString(Program.MainForm.CurrentProject.ProjectPath),
-                    "extremeStudio.config"))
-                || pPath == (Path.Combine(Convert.ToString(Program.MainForm.CurrentProject.ProjectPath), "server.cfg"))
-                || pPath == (Path.Combine(Convert.ToString(Program.MainForm.CurrentProject.ProjectPath),
-                    "samp-server.exe"))
-                || pPath == (Path.Combine(Convert.ToString(Program.MainForm.CurrentProject.ProjectPath), "samp-npc.exe"))
-                || pPath == (Path.Combine(Convert.ToString(Program.MainForm.CurrentProject.ProjectPath),
-                    "announce.exe")))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
         private void ProjExplorerDock_Load(object sender, EventArgs e)
         {
             //Wont be called multiple times:
             filesList.MainDir = Program.MainForm.CurrentProject.ProjectPath;
             filesList.SelectedPath = Program.MainForm.CurrentProject.ProjectPath;
+            filesList.IgnoredNames = new List<string>()
+            {
+                "configs",
+                "dependencies",
+                "extremeStudio.config",
+                "pawn.json",
+            };
+            RefreshList();
         }
 
         private void RefreshToolStripMenuItem_Click(object sender, EventArgs e)
@@ -70,9 +48,7 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks
             if (e.Button == MouseButtons.Right)
             {
                 filesList.SelectedIndex = filesList.IndexFromPoint(e.Location);
-                if (filesList.SelectedItem != null && IsProtected(Path.Combine(
-                        Convert.ToString(filesList.SelectedPath),
-                        Convert.ToString(filesList.SelectedItem))))
+                if (filesList.SelectedItem != null)
                 {
                     DeleteToolStripMenuItem.Enabled = false;
                     RenameToolStripMenuItem.Enabled = false;
@@ -185,6 +161,10 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show(translations.ProjExplorerDock_DeleteToolStripMenuItem_Click_AreYouSure, "", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) == DialogResult.No)
+                return;
+
             if (Directory.Exists(Convert.ToString(filesList.SelectedFile)))
             {
                 Directory.Delete(Convert.ToString(filesList.SelectedFile));
@@ -277,11 +257,7 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks
         {
             if (e.KeyCode == Keys.Delete)
             {
-                if (IsProtected(Path.Combine(Convert.ToString(filesList.SelectedPath),
-                        Convert.ToString(filesList.SelectedItem))) == false)
-                {
-                    DeleteToolStripMenuItem_Click(this, null);
-                }
+                DeleteToolStripMenuItem_Click(this, null);
             }
         }
     }
