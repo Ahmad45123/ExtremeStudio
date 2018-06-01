@@ -82,6 +82,7 @@ namespace ExtremeStudio.FunctionsForms
                 _pcks = _tmppcks;
 
             PackagesList.Items.Clear();
+            NextButton.Enabled = true;
             _page = 1;
             for (int i = 0; i < Math.Min(MaxItemsPerPage, _pcks.Length); i++)
             {
@@ -90,6 +91,13 @@ namespace ExtremeStudio.FunctionsForms
             _lastIndex = Math.Min(MaxItemsPerPage, _pcks.Length);
             PreviousButton.Enabled = false;
             NPages.Text = $@"{_page}/{Math.Ceiling(_pcks.Length/(double)MaxItemsPerPage)}";
+            if(Math.Ceiling(_pcks.Length/(double)MaxItemsPerPage) == 1)
+                NextButton.Enabled = false;
+            else if (Math.Ceiling(_pcks.Length / (double) MaxItemsPerPage) == 0)
+            {
+                NextButton.Enabled = false;
+                NPages.Text = "0/0";
+            }
         }
 
         private void PackagesList_SelectedIndexChanged(object sender, EventArgs e)
