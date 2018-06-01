@@ -195,16 +195,10 @@
       <DependentUpon>GotoForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\SearchReplaceForm.hu.resx">
-      <DependentUpon>SearchReplaceForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\SearchReplaceForm.resx">
       <DependentUpon>SearchReplaceForm.cs</DependentUpon>
       <LastGenOutput>SearchReplaceForm.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ErrorsDock.hu.resx">
-      <DependentUpon>ErrorsDock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\ErrorsDock.resx">
       <DependentUpon>ErrorsDock.cs</DependentUpon>
@@ -254,9 +248,6 @@
       <DependentUpon>StartupForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Translations\translations.es.resx" />
-    <EmbeddedResource Include="Translations\translations.hr.resx" />
-    <EmbeddedResource Include="Translations\translations.pt-BR.resx" />
     <EmbeddedResource Include="Translations\translations.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>translations.Designer.cs</LastGenOutput>
