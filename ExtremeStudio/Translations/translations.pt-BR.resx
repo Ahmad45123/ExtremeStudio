@@ -343,4 +343,7 @@ NOTE: INCLUDE THE EXTENSION!</value>
   <data name="PackagesForm_button1_Click_UninstallPackage" xml:space="preserve">
     <value>Uninstall Package</value>
   </data>
+  <data name="ProjExplorerDock_DeleteToolStripMenuItem_Click_AreYouSure" xml:space="preserve">
+    <value>Are you sure you'd like to delete this file/folder ?</value>
+  </data>
 </root>
