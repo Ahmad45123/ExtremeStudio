@@ -349,6 +349,60 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Installing....
+        /// </summary>
+        public static string PackagesForm_button1_Click_Installing {
+            get {
+                return ResourceManager.GetString("PackagesForm_button1_Click_Installing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install Package.
+        /// </summary>
+        public static string PackagesForm_button1_Click_InstallPackage {
+            get {
+                return ResourceManager.GetString("PackagesForm_button1_Click_InstallPackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uninstalling....
+        /// </summary>
+        public static string PackagesForm_button1_Click_Uninstalling {
+            get {
+                return ResourceManager.GetString("PackagesForm_button1_Click_Uninstalling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uninstall Package.
+        /// </summary>
+        public static string PackagesForm_button1_Click_UninstallPackage {
+            get {
+                return ResourceManager.GetString("PackagesForm_button1_Click_UninstallPackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last updated: .
+        /// </summary>
+        public static string PackagesForm_PackagesList_SelectedIndexChanged_LastUpdated {
+            get {
+                return ResourceManager.GetString("PackagesForm_PackagesList_SelectedIndexChanged_LastUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stars: .
+        /// </summary>
+        public static string PackagesForm_PackagesList_SelectedIndexChanged_Stars {
+            get {
+                return ResourceManager.GetString("PackagesForm_PackagesList_SelectedIndexChanged_Stars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The plugin can&apos;t be found in the cache..
         /// </summary>
         public static string PluginsForm_Button1_Click_PluginCantBeFoundInCache {

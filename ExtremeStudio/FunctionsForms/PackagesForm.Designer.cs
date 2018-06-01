@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PackagesForm));
             this.PackagesList = new System.Windows.Forms.ListBox();
             this.NextButton = new System.Windows.Forms.Button();
             this.PreviousButton = new System.Windows.Forms.Button();
@@ -45,51 +46,34 @@
             // 
             // PackagesList
             // 
-            this.PackagesList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            resources.ApplyResources(this.PackagesList, "PackagesList");
             this.PackagesList.FormattingEnabled = true;
-            this.PackagesList.HorizontalScrollbar = true;
-            this.PackagesList.ItemHeight = 16;
-            this.PackagesList.Location = new System.Drawing.Point(12, 28);
             this.PackagesList.Name = "PackagesList";
-            this.PackagesList.Size = new System.Drawing.Size(247, 372);
-            this.PackagesList.TabIndex = 0;
             this.PackagesList.SelectedIndexChanged += new System.EventHandler(this.PackagesList_SelectedIndexChanged);
             // 
             // NextButton
             // 
-            this.NextButton.Location = new System.Drawing.Point(184, 402);
+            resources.ApplyResources(this.NextButton, "NextButton");
             this.NextButton.Name = "NextButton";
-            this.NextButton.Size = new System.Drawing.Size(75, 23);
-            this.NextButton.TabIndex = 1;
-            this.NextButton.Text = ">>";
             this.NextButton.UseVisualStyleBackColor = true;
             this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
             // 
             // PreviousButton
             // 
-            this.PreviousButton.Location = new System.Drawing.Point(12, 402);
+            resources.ApplyResources(this.PreviousButton, "PreviousButton");
             this.PreviousButton.Name = "PreviousButton";
-            this.PreviousButton.Size = new System.Drawing.Size(75, 23);
-            this.PreviousButton.TabIndex = 2;
-            this.PreviousButton.Text = "<<";
             this.PreviousButton.UseVisualStyleBackColor = true;
             this.PreviousButton.Click += new System.EventHandler(this.PreviousButton_Click);
             // 
             // NPages
             // 
-            this.NPages.AutoSize = true;
-            this.NPages.Location = new System.Drawing.Point(118, 407);
+            resources.ApplyResources(this.NPages, "NPages");
             this.NPages.Name = "NPages";
-            this.NPages.Size = new System.Drawing.Size(24, 13);
-            this.NPages.TabIndex = 3;
-            this.NPages.Text = "0/0";
             // 
             // SearchTextBox
             // 
-            this.SearchTextBox.Location = new System.Drawing.Point(12, 2);
+            resources.ApplyResources(this.SearchTextBox, "SearchTextBox");
             this.SearchTextBox.Name = "SearchTextBox";
-            this.SearchTextBox.Size = new System.Drawing.Size(247, 20);
-            this.SearchTextBox.TabIndex = 4;
             this.SearchTextBox.TextChanged += new System.EventHandler(this.SearchTextBox_TextChanged);
             // 
             // groupBox1
@@ -99,77 +83,47 @@
             this.groupBox1.Controls.Add(this.StarsLabel);
             this.groupBox1.Controls.Add(this.LastUpdatedLabel);
             this.groupBox1.Controls.Add(this.PackageNameLabel);
-            this.groupBox1.Location = new System.Drawing.Point(265, 2);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(272, 210);
-            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Information";
             // 
             // DependsTextBox
             // 
-            this.DependsTextBox.Location = new System.Drawing.Point(19, 125);
-            this.DependsTextBox.Multiline = true;
+            resources.ApplyResources(this.DependsTextBox, "DependsTextBox");
             this.DependsTextBox.Name = "DependsTextBox";
             this.DependsTextBox.ReadOnly = true;
-            this.DependsTextBox.Size = new System.Drawing.Size(247, 77);
-            this.DependsTextBox.TabIndex = 4;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label1.Location = new System.Drawing.Point(7, 103);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Dependencies: ";
             // 
             // StarsLabel
             // 
-            this.StarsLabel.AutoSize = true;
-            this.StarsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.StarsLabel.Location = new System.Drawing.Point(7, 78);
+            resources.ApplyResources(this.StarsLabel, "StarsLabel");
             this.StarsLabel.Name = "StarsLabel";
-            this.StarsLabel.Size = new System.Drawing.Size(57, 17);
-            this.StarsLabel.TabIndex = 2;
-            this.StarsLabel.Text = "Stars: 0";
             // 
             // LastUpdatedLabel
             // 
-            this.LastUpdatedLabel.AutoSize = true;
-            this.LastUpdatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.LastUpdatedLabel.Location = new System.Drawing.Point(7, 51);
+            resources.ApplyResources(this.LastUpdatedLabel, "LastUpdatedLabel");
             this.LastUpdatedLabel.Name = "LastUpdatedLabel";
-            this.LastUpdatedLabel.Size = new System.Drawing.Size(99, 17);
-            this.LastUpdatedLabel.TabIndex = 1;
-            this.LastUpdatedLabel.Text = "Last updated: ";
             // 
             // PackageNameLabel
             // 
-            this.PackageNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PackageNameLabel.Location = new System.Drawing.Point(6, 21);
+            resources.ApplyResources(this.PackageNameLabel, "PackageNameLabel");
             this.PackageNameLabel.Name = "PackageNameLabel";
-            this.PackageNameLabel.Size = new System.Drawing.Size(260, 23);
-            this.PackageNameLabel.TabIndex = 0;
-            this.PackageNameLabel.Text = "Name / Package";
-            this.PackageNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ActionButton
             // 
-            this.ActionButton.Location = new System.Drawing.Point(281, 218);
+            resources.ApplyResources(this.ActionButton, "ActionButton");
             this.ActionButton.Name = "ActionButton";
-            this.ActionButton.Size = new System.Drawing.Size(247, 23);
-            this.ActionButton.TabIndex = 6;
-            this.ActionButton.Text = "Install Package";
             this.ActionButton.UseVisualStyleBackColor = true;
             this.ActionButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // PackagesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 432);
             this.Controls.Add(this.ActionButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.SearchTextBox);
@@ -180,7 +134,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "PackagesForm";
-            this.Text = "Packages";
             this.Load += new System.EventHandler(this.PackagesForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

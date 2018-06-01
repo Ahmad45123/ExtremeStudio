@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ExtremeCore.Classes;
 using Newtonsoft.Json;
+using Resources;
 
 namespace ExtremeStudio.FunctionsForms
 {
@@ -96,7 +97,7 @@ namespace ExtremeStudio.FunctionsForms
             else if (Math.Ceiling(_pcks.Length / (double) MaxItemsPerPage) == 0)
             {
                 NextButton.Enabled = false;
-                NPages.Text = "0/0";
+                NPages.Text = @"0/0";
             }
         }
 
@@ -108,8 +109,8 @@ namespace ExtremeStudio.FunctionsForms
                 string[] data = PackagesList.SelectedItem.ToString().Split('/');
                 Package itm = _pcks.First(x => x.user == data[0] && x.repo == data[1]);
                 PackageNameLabel.Text = itm.user + " / " + itm.repo;
-                LastUpdatedLabel.Text = "Last updated: " + itm.updated.ToString("D");
-                StarsLabel.Text = "Stars: " + itm.stars;
+                LastUpdatedLabel.Text = translations.PackagesForm_PackagesList_SelectedIndexChanged_LastUpdated + itm.updated.ToString("D");
+                StarsLabel.Text = translations.PackagesForm_PackagesList_SelectedIndexChanged_Stars + itm.stars;
                 DependsTextBox.Text = "";
                 if (itm.dependencies != null)
                 {
@@ -119,7 +120,7 @@ namespace ExtremeStudio.FunctionsForms
                     }
                 }
 
-                ActionButton.Text = Program.MainForm.CurrentProject.SampCtlData.dependencies.Contains(PackagesList.SelectedItem) ? "Uninstall Package" : "Install Package";
+                ActionButton.Text = Program.MainForm.CurrentProject.SampCtlData.dependencies.Contains(PackagesList.SelectedItem) ? translations.PackagesForm_button1_Click_UninstallPackage : translations.PackagesForm_button1_Click_InstallPackage;
                 ActionButton.Enabled = true;
             }
         }
@@ -129,7 +130,7 @@ namespace ExtremeStudio.FunctionsForms
             if (Program.MainForm.CurrentProject.SampCtlData.dependencies.Contains(PackagesList.SelectedItem.ToString()))
             {
                 ActionButton.Enabled = false;
-                ActionButton.Text = "Uninstalling...";
+                ActionButton.Text = translations.PackagesForm_button1_Click_Uninstalling;
                 PackagesList.Enabled = false;
                 ControlBox = false;
 
@@ -137,7 +138,7 @@ namespace ExtremeStudio.FunctionsForms
                     Program.MainForm.CurrentProject.ProjectPath, "p uninstall " + PackagesList.SelectedItem);
                 Program.MainForm.CurrentProject.LoadSampCtlData();
 
-                ActionButton.Text = "Install Package";
+                ActionButton.Text = translations.PackagesForm_button1_Click_InstallPackage;
                 ActionButton.Enabled = true;
                 PackagesList.Enabled = true;
                 ControlBox = true;
@@ -145,7 +146,7 @@ namespace ExtremeStudio.FunctionsForms
             else
             {
                 ActionButton.Enabled = false;
-                ActionButton.Text = "Installing...";
+                ActionButton.Text = translations.PackagesForm_button1_Click_Installing;
                 PackagesList.Enabled = false;
                 ControlBox = false;
 
@@ -153,7 +154,7 @@ namespace ExtremeStudio.FunctionsForms
                     Program.MainForm.CurrentProject.ProjectPath, "p install " + PackagesList.SelectedItem);
                 Program.MainForm.CurrentProject.LoadSampCtlData();
                 
-                ActionButton.Text = "Uninstall Package";
+                ActionButton.Text = translations.PackagesForm_button1_Click_UninstallPackage;
                 ActionButton.Enabled = true;
                 PackagesList.Enabled = true;
                 ControlBox = true;
