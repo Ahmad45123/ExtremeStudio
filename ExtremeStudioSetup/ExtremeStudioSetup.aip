@@ -83,10 +83,10 @@
     <ROW Property="ARPURLUPDATEINFO" Value="https://github.com/Ahmad45123/ExtremeStudio/releases/latest"/>
     <ROW Property="AppLogoIcon" Value="applogoicon" MultiBuildValue="DefaultBuild:pawn.png" Type="1" MsiKey="AppLogoIcon"/>
     <ROW Property="Manufacturer" Value="Ahmad45123"/>
-    <ROW Property="ProductCode" Value="1033:{4BE09EEE-32C5-4FA5-8BB7-65B6178A4B82} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{F9B60960-AD61-4C1C-8E81-67BF1DCD50B2} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="ExtremeStudio"/>
-    <ROW Property="ProductVersion" Value="1.20.0" Type="32"/>
+    <ROW Property="ProductVersion" Value="3.0.0.0" Type="32" TargetFile="ExtremeStudio.exe"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{3978147D-BF89-44DB-997B-B2435802D8CC}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -113,7 +113,7 @@
     <ROW Directory="x86_Dir" Directory_Parent="APPDIR" DefaultDir="x86"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
-    <ROW Component="AI_CustomARPName" ComponentId="{E809CE22-38DB-423E-AB10-C78503D0B863}" Directory_="APPDIR" Attributes="4" KeyPath="DisplayName" Options="1"/>
+    <ROW Component="AI_CustomARPName" ComponentId="{FC562858-EC22-4506-9EFF-7C0B9934FA1B}" Directory_="APPDIR" Attributes="4" KeyPath="DisplayName" Options="1"/>
     <ROW Component="AI_ExePath" ComponentId="{A37204EA-8503-4A3D-8AD2-252973D43D88}" Directory_="APPDIR" Attributes="4" KeyPath="AI_ExePath"/>
     <ROW Component="AI_IA_ENABLE" ComponentId="{62DE820D-EA18-4981-AA49-B2CECD7DDF0C}" Directory_="APPDIR" Attributes="4" KeyPath="AI_IA_ENABLE" Options="1"/>
     <ROW Component="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" ComponentId="{644D34AC-0F19-4AB8-A4E9-CE6B3EC37E04}" Directory_="APPDIR" Attributes="0" KeyPath="AutocompleteMenuScintillaNET.dll" Type="0"/>

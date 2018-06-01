@@ -262,7 +262,7 @@ namespace ExtremeCore.Controls_And_Tools
                     foreach (string dir in dirNames)
                     {
                         string realDir = Path.GetFileName(dir);
-                        if (IgnoredNames.Contains(realDir))
+                        if (IgnoredNames.Contains(realDir) && SelectedPath == MainDir)
                             continue;
                         Items.Add(realDir);
                     }
@@ -272,7 +272,7 @@ namespace ExtremeCore.Controls_And_Tools
                 foreach (string file in fileNames)
                 {
                     string fileName = Path.GetFileName(file);
-                    if (IgnoredNames.Contains(fileName))
+                    if (IgnoredNames.Contains(fileName) && SelectedPath == MainDir)
                         continue;
                     Items.Add(fileName);
                 }

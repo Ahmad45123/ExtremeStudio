@@ -634,8 +634,8 @@ namespace ExtremeStudio
 
         private void MainForm_Load_1(object sender, EventArgs e)
         {
-            string[] openedFiles = CurrentProject.LastOpenFiles.Split('\n');
-            foreach (var file in openedFiles)
+            string[] openedFiles = CurrentProject.LastOpenFiles?.Split('\n');
+            foreach (var file in openedFiles ?? new string[0])
             {
                 string[] data = file.Split('|');
                 if (data[0] == "")
