@@ -25,7 +25,7 @@
       <Name>ExtremeStudio</Name>
       <Project>{a050f841-3c6f-4d86-a607-d139ec7ad051}</Project>
       <Private>True</Private>
-      <OutputsToImport>PrimaryOutput;References;LocalizedResourcesOutput;SymbolsOutput</OutputsToImport>
+      <OutputsToImport>PrimaryOutput;References;SymbolsOutput;ContentOutput;DocumentationOutput</OutputsToImport>
     </ProjectReference>
   </ItemGroup>
   <Import Condition="'$(AdvancedInstallerMSBuildTargets)' != ''" Project="$(AdvancedInstallerMSBuildTargets)\AdvInstExtTasks.Targets" />

@@ -5,12 +5,13 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace ExtremeCore.Classes
 {
     public static class SampCtl
     {
-        public static bool EnsureLatestInstalled(string path)
+        public static async Task<bool> EnsureLatestInstalled(string path)
         {
             WebClient client = new WebClient();
             client.Headers["User-Agent"] = "ExtremeStudio";
@@ -19,7 +20,7 @@ namespace ExtremeCore.Classes
             string version = mtch.Groups["version"].Value;
 
             //If exists and different version, download, else keep.
-            if (File.Exists(Path.Combine(path, "sampctl.exe")) == false || (File.Exists(Path.Combine(path, "sampctl.exe")) && GetCurrentVersion(Path.Combine(path, "sampctl.exe")) != version))
+            if (File.Exists(Path.Combine(path, "sampctl.exe")) == false || (File.Exists(Path.Combine(path, "sampctl.exe")) && await GetCurrentVersion(Path.Combine(path, "sampctl.exe")) != version))
             {
                 string arch = Environment.Is64BitOperatingSystem ? "amd64" : "386";
                 string fileToDownload =
@@ -32,38 +33,41 @@ namespace ExtremeCore.Classes
             return true;
         }
 
-        public static string SendCommand(string sampctl, string workingDir, string cmd, bool createnowindow = true)
+        public static async Task<string> SendCommand(string sampctl, string workingDir, string cmd, bool createnowindow = true)
         {
-            Process compiler = new Process
+            return await Task.Run(() =>
             {
-                StartInfo =
+                Process compiler = new Process
                 {
-                    FileName = sampctl,
-                    WorkingDirectory = workingDir,
-                    Arguments = cmd,
-                    CreateNoWindow = createnowindow,
-                    RedirectStandardError = createnowindow,
-                    RedirectStandardOutput = createnowindow,
-                    UseShellExecute = false,
-                    Verb = "runas"
+                    StartInfo =
+                    {
+                        FileName = sampctl,
+                        WorkingDirectory = workingDir,
+                        Arguments = cmd,
+                        CreateNoWindow = createnowindow,
+                        RedirectStandardError = createnowindow,
+                        RedirectStandardOutput = createnowindow,
+                        UseShellExecute = false,
+                        Verb = "runas"
+                    }
+                };
+                compiler.Start();
+                compiler.WaitForExit();
+                try
+                {
+                    Debug.WriteLine(compiler.StandardError.ReadToEnd());
+                    return compiler.StandardOutput.ReadToEnd();
                 }
-            };
-            compiler.Start();
-            compiler.WaitForExit();
-            try
-            {
-                Debug.WriteLine(compiler.StandardError.ReadToEnd());
-                return compiler.StandardOutput.ReadToEnd();
-            }
-            catch (Exception)
-            {
-                return "success";
-            }
+                catch (Exception)
+                {
+                    return "success";
+                }
+            });
         }
 
-        public static string GetCurrentVersion(string sampctl)
+        public static async Task<string> GetCurrentVersion(string sampctl)
         {
-            string v = SendCommand(sampctl, Path.GetDirectoryName(sampctl), "version");
+            string v = await SendCommand(sampctl, Path.GetDirectoryName(sampctl), "version");
             var p = v.Split(' ')[2].Trim();
             return p;
         }

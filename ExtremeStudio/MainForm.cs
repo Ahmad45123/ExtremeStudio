@@ -367,7 +367,7 @@ namespace ExtremeStudio
 
         #region Compiler Stuff
 
-        private void CompilerWorker_DoWork(object sender, DoWorkEventArgs e)
+        private async void CompilerWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             CheckForIllegalCrossThreadCalls = false;
             //First of all, Try and save all docs.
@@ -395,7 +395,7 @@ namespace ExtremeStudio
             CurrentProject.SaveInfo();
 
             CompilerWorker.ReportProgress(2);
-            string errs = SampCtl.SendCommand(ApplicationFiles + "/sampctl.exe", CurrentProject.ProjectPath,
+            string errs = await SampCtl.SendCommand(ApplicationFiles + "/sampctl.exe", CurrentProject.ProjectPath,
                 "p build");
 
             //Now, Get the errors/warning then parse them and return.
@@ -452,7 +452,7 @@ namespace ExtremeStudio
             }
         }
 
-        private void CompilerWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private async void CompilerWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             //We will use the progress event to do stuff in the UI.
 
@@ -489,7 +489,7 @@ namespace ExtremeStudio
                 if (isAwaitingRunServer)
                 {
                     isAwaitingRunServer = false;
-                    SampCtl.SendCommand(ApplicationFiles + "/sampctl.exe", CurrentProject.ProjectPath,
+                    await SampCtl.SendCommand(ApplicationFiles + "/sampctl.exe", CurrentProject.ProjectPath,
                         "p run", false);
                 }
 
@@ -506,7 +506,7 @@ namespace ExtremeStudio
                 if (isAwaitingRunServer)
                 {
                     isAwaitingRunServer = false;
-                    SampCtl.SendCommand(ApplicationFiles + "/sampctl.exe", CurrentProject.ProjectPath,
+                    await SampCtl.SendCommand(ApplicationFiles + "/sampctl.exe", CurrentProject.ProjectPath,
                         "p run", false);
                 }
             }

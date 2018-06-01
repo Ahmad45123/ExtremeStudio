@@ -116,22 +116,39 @@ namespace ExtremeStudio.FunctionsForms
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             if (Program.MainForm.CurrentProject.SampCtlData.dependencies.Contains(PackagesList.SelectedItem.ToString()))
             {
-                //Uninstall action: 
-                Program.MainForm.CurrentProject.SampCtlData.dependencies.Remove(PackagesList.SelectedItem.ToString());
-                Directory.Delete(Program.MainForm.CurrentProject.ProjectPath + "/dependencies/" + PackagesList.SelectedItem.ToString().Split('/')[1], true);
-                Program.MainForm.CurrentProject.SaveSampCtlData();
+                ActionButton.Enabled = false;
+                ActionButton.Text = "Uninstalling...";
+                PackagesList.Enabled = false;
+                ControlBox = false;
+
+                await SampCtl.SendCommand(Application.StartupPath + "/sampctl.exe",
+                    Program.MainForm.CurrentProject.ProjectPath, "p uninstall " + PackagesList.SelectedItem);
+                Program.MainForm.CurrentProject.LoadSampCtlData();
+
                 ActionButton.Text = "Install Package";
+                ActionButton.Enabled = true;
+                PackagesList.Enabled = true;
+                ControlBox = true;
             }
             else
             {
-                SampCtl.SendCommand(Application.StartupPath + "/sampctl.exe",
+                ActionButton.Enabled = false;
+                ActionButton.Text = "Installing...";
+                PackagesList.Enabled = false;
+                ControlBox = false;
+
+                await SampCtl.SendCommand(Application.StartupPath + "/sampctl.exe",
                     Program.MainForm.CurrentProject.ProjectPath, "p install " + PackagesList.SelectedItem);
                 Program.MainForm.CurrentProject.LoadSampCtlData();
+                
                 ActionButton.Text = "Uninstall Package";
+                ActionButton.Enabled = true;
+                PackagesList.Enabled = true;
+                ControlBox = true;
             }
         }
     }
