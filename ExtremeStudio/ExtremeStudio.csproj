@@ -186,71 +186,311 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>translations.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorDock.es-ES.resx">
+      <DependentUpon>EditorDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorDock.hr-HR.resx">
+      <DependentUpon>EditorDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorDock.hu-HU.resx">
+      <DependentUpon>EditorDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorDock.pt-BR.resx">
+      <DependentUpon>EditorDock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorDock.resx">
       <DependentUpon>EditorDock.cs</DependentUpon>
       <LastGenOutput>EditorDock.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorDock.ru-RU.resx">
+      <DependentUpon>EditorDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorDock.tr-TR.resx">
+      <DependentUpon>EditorDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\GotoForm.es-ES.resx">
+      <DependentUpon>GotoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\GotoForm.hr-HR.resx">
+      <DependentUpon>GotoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\GotoForm.hu-HU.resx">
+      <DependentUpon>GotoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\GotoForm.pt-BR.resx">
+      <DependentUpon>GotoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\GotoForm.resx">
       <DependentUpon>GotoForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\GotoForm.ru-RU.resx">
+      <DependentUpon>GotoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\GotoForm.tr-TR.resx">
+      <DependentUpon>GotoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\SearchReplaceForm.es-ES.resx">
+      <DependentUpon>SearchReplaceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\SearchReplaceForm.hr-HR.resx">
+      <DependentUpon>SearchReplaceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\SearchReplaceForm.hu-HU.resx">
+      <DependentUpon>SearchReplaceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\SearchReplaceForm.pt-BR.resx">
+      <DependentUpon>SearchReplaceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\SearchReplaceForm.resx">
       <DependentUpon>SearchReplaceForm.cs</DependentUpon>
       <LastGenOutput>SearchReplaceForm.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\SearchReplaceForm.ru-RU.resx">
+      <DependentUpon>SearchReplaceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\SearchReplaceForm.tr-TR.resx">
+      <DependentUpon>SearchReplaceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ErrorsDock.es-ES.resx">
+      <DependentUpon>ErrorsDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ErrorsDock.hr-HR.resx">
+      <DependentUpon>ErrorsDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ErrorsDock.hu-HU.resx">
+      <DependentUpon>ErrorsDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ErrorsDock.pt-BR.resx">
+      <DependentUpon>ErrorsDock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\ErrorsDock.resx">
       <DependentUpon>ErrorsDock.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ErrorsDock.ru-RU.resx">
+      <DependentUpon>ErrorsDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ErrorsDock.tr-TR.resx">
+      <DependentUpon>ErrorsDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDock.es-ES.resx">
+      <DependentUpon>ObjectExplorerDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDock.hr-HR.resx">
+      <DependentUpon>ObjectExplorerDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDock.hu-HU.resx">
+      <DependentUpon>ObjectExplorerDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDock.pt-BR.resx">
+      <DependentUpon>ObjectExplorerDock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDock.resx">
       <DependentUpon>ObjectExplorerDock.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDock.ru-RU.resx">
+      <DependentUpon>ObjectExplorerDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDock.tr-TR.resx">
+      <DependentUpon>ObjectExplorerDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDockItems.es-ES.resx">
+      <DependentUpon>ObjectExplorerDockItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDockItems.hr-HR.resx">
+      <DependentUpon>ObjectExplorerDockItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDockItems.hu-HU.resx">
+      <DependentUpon>ObjectExplorerDockItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDockItems.pt-BR.resx">
+      <DependentUpon>ObjectExplorerDockItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDockItems.resx">
       <DependentUpon>ObjectExplorerDockItems.cs</DependentUpon>
       <LastGenOutput>ObjectExplorerDockItems.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDockItems.ru-RU.resx">
+      <DependentUpon>ObjectExplorerDockItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDockItems.tr-TR.resx">
+      <DependentUpon>ObjectExplorerDockItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ProjExplorerDock.es-ES.resx">
+      <DependentUpon>ProjExplorerDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ProjExplorerDock.hr-HR.resx">
+      <DependentUpon>ProjExplorerDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ProjExplorerDock.hu-HU.resx">
+      <DependentUpon>ProjExplorerDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ProjExplorerDock.pt-BR.resx">
+      <DependentUpon>ProjExplorerDock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\ProjExplorerDock.resx">
       <DependentUpon>ProjExplorerDock.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ProjExplorerDock.ru-RU.resx">
+      <DependentUpon>ProjExplorerDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ProjExplorerDock.tr-TR.resx">
+      <DependentUpon>ProjExplorerDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\ESPluginsForm.es-ES.resx">
+      <DependentUpon>ESPluginsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\ESPluginsForm.hr-HR.resx">
+      <DependentUpon>ESPluginsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\ESPluginsForm.hu-HU.resx">
+      <DependentUpon>ESPluginsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\ESPluginsForm.pt-BR.resx">
+      <DependentUpon>ESPluginsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FunctionsForms\ESPluginsForm.resx">
       <DependentUpon>ESPluginsForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\ESPluginsForm.ru-RU.resx">
+      <DependentUpon>ESPluginsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\ESPluginsForm.tr-TR.resx">
+      <DependentUpon>ESPluginsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\PackagesForm.es-ES.resx">
+      <DependentUpon>PackagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\PackagesForm.hr-HR.resx">
+      <DependentUpon>PackagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\PackagesForm.hu-HU.resx">
+      <DependentUpon>PackagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\PackagesForm.pt-BR.resx">
+      <DependentUpon>PackagesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FunctionsForms\PackagesForm.resx">
       <DependentUpon>PackagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\PackagesForm.ru-RU.resx">
+      <DependentUpon>PackagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\PackagesForm.tr-TR.resx">
+      <DependentUpon>PackagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\SettingsForm.es-ES.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\SettingsForm.hr-HR.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\SettingsForm.hu-HU.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\SettingsForm.pt-BR.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FunctionsForms\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\SettingsForm.ru-RU.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\SettingsForm.tr-TR.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LanguagesForm.es-ES.resx">
+      <DependentUpon>LanguagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LanguagesForm.hr-HR.resx">
+      <DependentUpon>LanguagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LanguagesForm.hu-HU.resx">
+      <DependentUpon>LanguagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LanguagesForm.pt-BR.resx">
+      <DependentUpon>LanguagesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LanguagesForm.resx">
       <DependentUpon>LanguagesForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="LanguagesForm.ru-RU.resx">
+      <DependentUpon>LanguagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LanguagesForm.tr-TR.resx">
+      <DependentUpon>LanguagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.es-ES.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.hr-HR.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.hu-HU.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.pt-BR.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.ru-RU.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.tr-TR.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="StartupForm.es-ES.resx">
+      <DependentUpon>StartupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartupForm.hr-HR.resx">
+      <DependentUpon>StartupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartupForm.hu-HU.resx">
+      <DependentUpon>StartupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartupForm.pt-BR.resx">
+      <DependentUpon>StartupForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StartupForm.resx">
       <DependentUpon>StartupForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="StartupForm.ru-RU.resx">
+      <DependentUpon>StartupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartupForm.tr-TR.resx">
+      <DependentUpon>StartupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\translations.es-ES.resx" />
+    <EmbeddedResource Include="Translations\translations.hr-HR.resx" />
+    <EmbeddedResource Include="Translations\translations.hu-HU.resx" />
+    <EmbeddedResource Include="Translations\translations.pt-BR.resx" />
     <EmbeddedResource Include="Translations\translations.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>translations.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Translations\translations.ru-RU.resx" />
+    <EmbeddedResource Include="Translations\translations.tr-TR.resx" />
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

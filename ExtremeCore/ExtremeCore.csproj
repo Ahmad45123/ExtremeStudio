@@ -91,7 +91,25 @@
     <Compile Include="Classes\VersionReader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.es-ES.resx">
+      <DependentUpon>AdvancedInputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.hr-HR.resx">
+      <DependentUpon>AdvancedInputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.hu-HU.resx">
+      <DependentUpon>AdvancedInputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.pt-BR.resx">
+      <DependentUpon>AdvancedInputBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.resx">
+      <DependentUpon>AdvancedInputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.ru-RU.resx">
+      <DependentUpon>AdvancedInputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.tr-TR.resx">
       <DependentUpon>AdvancedInputBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls And Tools\PathTextBox.resx">
