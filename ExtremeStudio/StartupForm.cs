@@ -218,7 +218,6 @@ namespace ExtremeStudio
         {
             dynamic json = JsonConvert.DeserializeObject(args.RemoteData);
             string version = json.tag_name;
-            version = version.Remove(0, 1);
             args.UpdateInfo = new UpdateInfoEventArgs
             {
                 CurrentVersion = Version.Parse(version),
