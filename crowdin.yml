@@ -1,3 +1,6 @@
 files:
   - source: '*.resx'
+    ignore:
+      - Resources*.resx
+      - '*.??-??.resx'
     translation: /%original_path%/%file_name%.%locale%.resx
