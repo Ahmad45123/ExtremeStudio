@@ -60,6 +60,8 @@ namespace ExtremeStudio
             this.indentPanel = new System.Windows.Forms.RibbonPanel();
             this.addIndentButton = new System.Windows.Forms.RibbonButton();
             this.removeIndentButton = new System.Windows.Forms.RibbonButton();
+            this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
+            this.UndoButton = new System.Windows.Forms.RibbonButton();
             this.ideTab = new System.Windows.Forms.RibbonTab();
             this.viewPanel = new System.Windows.Forms.RibbonPanel();
             this.prjExplrerView = new System.Windows.Forms.RibbonButton();
@@ -76,6 +78,7 @@ namespace ExtremeStudio
             this.installedPlugins = new System.Windows.Forms.RibbonPanel();
             this.CompilerWorker = new System.ComponentModel.BackgroundWorker();
             this.statusStripTimer = new System.Windows.Forms.Timer(this.components);
+            this.RedoButton = new System.Windows.Forms.RibbonButton();
             this.StatusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -197,6 +200,7 @@ namespace ExtremeStudio
             this.editTab.Panels.Add(this.clipboardPanel);
             this.editTab.Panels.Add(this.searchPanel);
             this.editTab.Panels.Add(this.indentPanel);
+            this.editTab.Panels.Add(this.ribbonPanel1);
             resources.ApplyResources(this.editTab, "editTab");
             // 
             // clipboardPanel
@@ -279,6 +283,20 @@ namespace ExtremeStudio
             this.removeIndentButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("removeIndentButton.SmallImage")));
             resources.ApplyResources(this.removeIndentButton, "removeIndentButton");
             this.removeIndentButton.Click += new System.EventHandler(this.removeIndentButton_Click);
+            // 
+            // ribbonPanel1
+            // 
+            this.ribbonPanel1.ButtonMoreVisible = false;
+            this.ribbonPanel1.Items.Add(this.UndoButton);
+            this.ribbonPanel1.Items.Add(this.RedoButton);
+            resources.ApplyResources(this.ribbonPanel1, "ribbonPanel1");
+            // 
+            // UndoButton
+            // 
+            this.UndoButton.Image = global::ExtremeStudio.Properties.Resources.ribbon_undo;
+            this.UndoButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("UndoButton.SmallImage")));
+            resources.ApplyResources(this.UndoButton, "UndoButton");
+            this.UndoButton.Click += new System.EventHandler(this.UndoButton_Click);
             // 
             // ideTab
             // 
@@ -384,6 +402,13 @@ namespace ExtremeStudio
             // 
             this.statusStripTimer.Tick += new System.EventHandler(this.statusStripTimer_Tick);
             // 
+            // RedoButton
+            // 
+            this.RedoButton.Image = global::ExtremeStudio.Properties.Resources.ribbon_redo;
+            this.RedoButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("RedoButton.SmallImage")));
+            resources.ApplyResources(this.RedoButton, "RedoButton");
+            this.RedoButton.Click += new System.EventHandler(this.RedoButton_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -446,5 +471,8 @@ namespace ExtremeStudio
         internal RibbonButton addIndentButton;
         internal RibbonButton removeIndentButton;
         internal RibbonButton CompileAndRunBtn;
+        private RibbonPanel ribbonPanel1;
+        private RibbonButton UndoButton;
+        private RibbonButton RedoButton;
     }
 }

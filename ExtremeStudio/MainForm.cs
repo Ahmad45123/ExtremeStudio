@@ -646,5 +646,15 @@ namespace ExtremeStudio
                 CurrentScintilla.ScrollCaret();
             }
         }
+
+        private void UndoButton_Click(object sender, EventArgs e)
+        {
+            CurrentScintilla?.Undo();
+        }
+
+        private void RedoButton_Click(object sender, EventArgs e)
+        {
+            CurrentScintilla?.Redo();
+        }
     }
 }
