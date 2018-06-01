@@ -84,6 +84,11 @@
       "Font": null,
       "ForeColor": "Orange",
       "BackColor": "Transparent"
+    },
+    "Tags": {
+      "Font": null,
+      "ForeColor": "DimGray",
+      "BackColor": "Transparent"
     }
   }
 }

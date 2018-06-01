@@ -242,6 +242,7 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks.EditorDock
             DoStyle((Int32) Styles.Macros, Program.SettingsForm.ColorsInfo.SMacros);
             DoStyle((Int32) Styles.Enums, Program.SettingsForm.ColorsInfo.SEnums);
             DoStyle((Int32) Styles.PublicVars, Program.SettingsForm.ColorsInfo.SGlobalVars);
+            DoStyle((Int32) Styles.Tags, Program.SettingsForm.ColorsInfo.Tags);
 
             Editor.IndentationGuides = IndentView.LookBoth;
 
@@ -554,7 +555,7 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks.EditorDock
                         {
                             type = "integer";
                         }
-                        else if (enm.Type == FunctionParameters.VarTypes.TypeFloat)
+                        else if (enm.Type == FunctionParameters.VarTypes.TypeTagged)
                         {
                             type = "tagged";
                         }
@@ -893,7 +894,8 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks.EditorDock
             Defines,
             Macros,
             Enums,
-            PublicVars
+            PublicVars,
+            Tags
         }
 
         private void DoColor(int startPos, string code, string rgx, Styles reqstyle, bool isMultiLine = false)
@@ -919,6 +921,9 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks.EditorDock
             //Setup vars:
             string code = Convert.ToString(Editor.GetTextRange(startPos, endPos - startPos));
 
+            //Tags.
+            List<string> tags = new List<string>();
+
             StringBuilder rgx = new StringBuilder();
             //Functions:
             rgx.Clear();
@@ -930,6 +935,9 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks.EditorDock
                 {
                     rgx.Append("|");
                 }
+
+                if(!tags.Contains(parts.Functions[i].ReturnTag))
+                    tags.Add(parts.Functions[i].ReturnTag);
             }
 
             if (parts.Functions.Any())
@@ -948,6 +956,9 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks.EditorDock
                 {
                     rgx.Append("|");
                 }
+
+                if(!tags.Contains(parts.Publics[i].ReturnTag))
+                    tags.Add(parts.Publics[i].ReturnTag);
             }
             
             if (parts.Publics.Any())
@@ -966,6 +977,9 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks.EditorDock
                 {
                     rgx.Append("|");
                 }
+
+                if(!tags.Contains(parts.Stocks[i].ReturnTag))
+                    tags.Add(parts.Stocks[i].ReturnTag);
             }
 
             if (parts.Stocks.Any())
@@ -984,6 +998,9 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks.EditorDock
                 {
                     rgx.Append("|");
                 }
+
+                if(!tags.Contains(parts.Natives[i].ReturnTag))
+                    tags.Add(parts.Natives[i].ReturnTag);
             }
 
             if (parts.Natives.Any())
@@ -1059,12 +1076,34 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks.EditorDock
                 {
                     rgx.Append("|");
                 }
+
+                if(!tags.Contains(parts.PublicVariables[i].VarTag))
+                    tags.Add(parts.PublicVariables[i].VarTag);
             }
 
             if (parts.PublicVariables.Any())
             {
                 rgx.Append(")\\b");
                 DoColor(startPos, code, rgx.ToString(), Styles.PublicVars);
+            }
+
+            //tags colorize
+            rgx.Clear();
+            rgx.Append("\\b(?:");
+            for (int i = 0; i <= tags.Count - 1; i++)
+            {
+                if(tags[i] == "")
+                    continue;
+                rgx.Append(Regex.Escape(tags[i].Remove(tags[i].Length-1, 1)));
+                if (i < tags.Count - 1)
+                {
+                    rgx.Append("|");
+                }
+            }
+            if (tags.Any())
+            {
+                rgx.Append(")\\b");
+                DoColor(startPos, code, rgx.ToString(), Styles.Tags);
             }
         }
 

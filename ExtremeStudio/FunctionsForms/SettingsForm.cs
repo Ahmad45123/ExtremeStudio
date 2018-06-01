@@ -600,6 +600,9 @@ namespace ExtremeStudio.FunctionsForms
 
         [DisplayName("Global Variables"), Category("WordSets Syntax Highlighting")]
         public StyleItem SGlobalVars { get; set; } = new StyleItem();
+
+        [DisplayName("Tags"), Category("WordSets Syntax Highlighting")]
+        public StyleItem Tags { get; set; } = new StyleItem();
     }
 
     #endregion
