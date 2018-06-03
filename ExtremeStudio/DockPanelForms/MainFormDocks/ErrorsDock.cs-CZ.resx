@@ -346,7 +346,7 @@
     <value>showWarnsCheck</value>
   </data>
   <data name="TabPage3.Text" xml:space="preserve">
-    <value>Parser Errors</value>
+    <value>Analyzátor chyb</value>
   </data>
   <data name="TabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
