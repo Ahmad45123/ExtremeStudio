@@ -43,7 +43,8 @@ namespace ExtremeStudio
             "English",
             "Hungarian",
             "Portuguese, Brazillian",
-            "Spanish"});
+            "Spanish",
+            "Russian"});
             this.LangsListBox.Location = new System.Drawing.Point(12, 12);
             this.LangsListBox.Name = "LangsListBox";
             this.LangsListBox.Size = new System.Drawing.Size(302, 316);
