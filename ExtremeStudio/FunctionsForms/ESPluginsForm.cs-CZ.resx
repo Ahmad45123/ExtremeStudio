@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label4.Text" xml:space="preserve">
-    <value>NOTE: Restart ExtremeStudio to reload plugins.</value>
+    <value>DŮLEŽITÉ: Je potřeba restartovat ExtremeStudio pro obnovu pluginů.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"/>
   <data name="PluginList.Location" type="System.Drawing.Point, System.Drawing">
@@ -134,7 +134,7 @@
     <value>221, 222</value>
   </data>
   <data name="Label3.Text" xml:space="preserve">
-    <value>Plugin Description: </value>
+    <value>Popis pluginu: </value>
   </data>
   <data name="&gt;&gt;installBtn.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -198,7 +198,7 @@
     <value>Label1</value>
   </data>
   <data name="Label2.Text" xml:space="preserve">
-    <value>Plugin Name: </value>
+    <value>Název pluginu: </value>
   </data>
   <data name="Label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -258,7 +258,7 @@
     <value>$this</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
-    <value>Plugins: </value>
+    <value>Pluginy: </value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -291,7 +291,7 @@
     <value>Label3</value>
   </data>
   <data name="deleteBtn.Text" xml:space="preserve">
-    <value>Delete Plugin</value>
+    <value>Odstranit plugin</value>
   </data>
   <data name="&gt;&gt;PluginList.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -354,7 +354,7 @@
     <value>6</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>ES Plugins Management.</value>
+    <value>Správa pluginů ES.</value>
   </data>
   <data name="&gt;&gt;installBtn.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -408,7 +408,7 @@
     <value>$this</value>
   </data>
   <data name="updateLabel.Text" xml:space="preserve">
-    <value>This plugin has an update, reinstall to update.</value>
+    <value>Tento plugin má novou aktualizaci, přeinstalujte jej.</value>
   </data>
   <data name="Label4.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
