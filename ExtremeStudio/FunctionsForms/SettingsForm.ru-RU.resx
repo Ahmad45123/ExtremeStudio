@@ -1615,7 +1615,7 @@
     <value>Функции нужны скобки.</value>
   </data>
   <data name="parenthesesCheck.ToolTip" xml:space="preserve">
-    <value>If checked, parameters passed in a function must be enclosed in parentheses.</value>
+    <value>Если этот флажок установлен, параметры, передаваемые в функции, должны быть заключены в круглые скобки.</value>
   </data>
   <data name="&gt;&gt;parenthesesCheck.Name" xml:space="preserve">
     <value>parenthesesCheck</value>
@@ -1642,10 +1642,10 @@
     <value>22</value>
   </data>
   <data name="semiColonCheck.Text" xml:space="preserve">
-    <value>Lines must end with a semicolon.</value>
+    <value>Строки должны заканчиваться точкой с запятой.</value>
   </data>
   <data name="semiColonCheck.ToolTip" xml:space="preserve">
-    <value>If checked, lines must end with a semi-colon.</value>
+    <value>Если этот флажок установлен, строки должны заканчиваться точкой с запятой.</value>
   </data>
   <data name="&gt;&gt;semiColonCheck.Name" xml:space="preserve">
     <value>semiColonCheck</value>
@@ -1700,7 +1700,7 @@ for example, to skip a "header" in the source ﬁle which is not in a valid pawn
     <value>19</value>
   </data>
   <data name="Label8.Text" xml:space="preserve">
-    <value>Number of lines to skip: </value>
+    <value>Количество пропускаемый строк: </value>
   </data>
   <data name="&gt;&gt;Label8.Name" xml:space="preserve">
     <value>Label8</value>
@@ -1727,8 +1727,8 @@ for example, to skip a "header" in the source ﬁle which is not in a valid pawn
     <value>18</value>
   </data>
   <data name="tabSizeUpDown.ToolTip" xml:space="preserve">
-    <value>Tab size: the number of space characters to use for a tab character. 
-Without this option, the pawn parser will autodetect the tab.</value>
+    <value>Размер табуляции: Количество пробелов перед символом табуляции.
+Без этой опции, парсер Pawn автоматически определит табуляцию.</value>
   </data>
   <data name="&gt;&gt;tabSizeUpDown.Name" xml:space="preserve">
     <value>tabSizeUpDown</value>
@@ -1755,7 +1755,7 @@ Without this option, the pawn parser will autodetect the tab.</value>
     <value>17</value>
   </data>
   <data name="Label7.Text" xml:space="preserve">
-    <value>Tab Size: </value>
+    <value>Размер табуляции: </value>
   </data>
   <data name="&gt;&gt;Label7.Name" xml:space="preserve">
     <value>Label7</value>
@@ -1782,10 +1782,10 @@ Without this option, the pawn parser will autodetect the tab.</value>
     <value>16</value>
   </data>
   <data name="optiLevelUpDown.ToolTip" xml:space="preserve">
-    <value>Optimization level: 0 = no optimizations, 1 = core instructions only, 
-2 = core &amp; supplemental instructions. 
-Optimization level 1 is compatible with JIT implementations
-(JIT = “Just In Time” compiler, a high-performance abstract machine).</value>
+    <value>Уровень оптимизации: 0 = не оптимизировать, 1 = только основные инструкции,
+2 = основные и дополнительные инструкции.
+Уровень оптимизации 1 совместим с реализацией JIT
+(JIT = "Just In Time" компилятор, высокопроизводительная абстрактная машина).</value>
   </data>
   <data name="&gt;&gt;optiLevelUpDown.Name" xml:space="preserve">
     <value>optiLevelUpDown</value>
@@ -1812,7 +1812,7 @@ Optimization level 1 is compatible with JIT implementations
     <value>15</value>
   </data>
   <data name="Label5.Text" xml:space="preserve">
-    <value>Optimization Level: </value>
+    <value>Уровень оптимизации: </value>
   </data>
   <data name="&gt;&gt;Label5.Name" xml:space="preserve">
     <value>Label5</value>
@@ -1839,9 +1839,8 @@ Optimization level 1 is compatible with JIT implementations
     <value>14</value>
   </data>
   <data name="debugLevelUpDown.ToolTip" xml:space="preserve">
-    <value>Debug level: 0 = none, 1 = bounds checking and assertions only, 
-2 = full symbolic information, 3 = full symbolic information and
-optimizations disabled (same as the combination -d2 and -O0).</value>
+    <value>Уровень отладки: 0 = нет, 1 = проверка границ и только утверждения,
+2 = полная символьная информация, 3 = полная символьная информация и отключение оптимизации (тоже самое, что и комбинация -d2 и -O0).</value>
   </data>
   <data name="&gt;&gt;debugLevelUpDown.Name" xml:space="preserve">
     <value>debugLevelUpDown</value>
@@ -1868,7 +1867,7 @@ optimizations disabled (same as the combination -d2 and -O0).</value>
     <value>13</value>
   </data>
   <data name="Label4.Text" xml:space="preserve">
-    <value>Debugging Level: </value>
+    <value>Уровень отладки: </value>
   </data>
   <data name="&gt;&gt;Label4.Name" xml:space="preserve">
     <value>Label4</value>
@@ -1898,11 +1897,11 @@ optimizations disabled (same as the combination -d2 and -O0).</value>
     <value>12</value>
   </data>
   <data name="reportGenDirText.ToolTip" xml:space="preserve">
-    <value>Report: enable the creation of the report and optionally set
-the ﬁlename to which the extracted documentation and a
-cross-reference report will be written.
+    <value>Отчет: включите создание отчета и при необходимости установите
+имя файла, в который извлекается документация и
+будет составлен отчет.
 
-Set the path to default to create report in output dir.</value>
+Задайте путь по умолчанию для создания отчета в дериктории.</value>
   </data>
   <data name="&gt;&gt;reportGenDirText.Name" xml:space="preserve">
     <value>reportGenDirText</value>
@@ -1953,7 +1952,7 @@ Set the path to default to create report in output dir.</value>
     <value>10</value>
   </data>
   <data name="Label6.Text" xml:space="preserve">
-    <value>Report Generation: </value>
+    <value>Генерация отчёта: </value>
   </data>
   <data name="&gt;&gt;Label6.Name" xml:space="preserve">
     <value>Label6</value>
@@ -1980,9 +1979,9 @@ Set the path to default to create report in output dir.</value>
     <value>5</value>
   </data>
   <data name="ouputDirText.ToolTip" xml:space="preserve">
-    <value>Output ﬁle: set the name and path of the binary output ﬁle.
+    <value>Выходной файл: задайте название и путь для выходного двоичного файла.
 
-Set it to null for default.</value>
+Установите null для значений по умолчанию.</value>
   </data>
   <data name="&gt;&gt;ouputDirText.Name" xml:space="preserve">
     <value>ouputDirText</value>
@@ -2009,7 +2008,7 @@ Set it to null for default.</value>
     <value>4</value>
   </data>
   <data name="Label3.Text" xml:space="preserve">
-    <value>Output Dir: </value>
+    <value>Выходной каталог: </value>
   </data>
   <data name="&gt;&gt;Label3.Name" xml:space="preserve">
     <value>Label3</value>
@@ -2036,10 +2035,9 @@ Set it to null for default.</value>
     <value>3</value>
   </data>
   <data name="includesDirText.ToolTip" xml:space="preserve">
-    <value>Include path: set the path where the compiler
-can ﬁnd the include ﬁles.
+    <value>Путь включения: укажите путь, где компилятор сможет найти файлы включения(Include).
 
-Set it to null for default.</value>
+Установите null для значения по умолчанию.</value>
   </data>
   <data name="&gt;&gt;includesDirText.Name" xml:space="preserve">
     <value>includesDirText</value>
