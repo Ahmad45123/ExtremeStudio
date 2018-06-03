@@ -395,15 +395,15 @@ namespace ExtremeStudio
             CurrentProject.SaveInfo();
 
             CompilerWorker.ReportProgress(2);
-            string errs = await SampCtl.SendCommand(ApplicationFiles + "/sampctl.exe", CurrentProject.ProjectPath,
-                "p build");
+            string errs = SampCtl.SendCommand(ApplicationFiles + "/sampctl.exe", CurrentProject.ProjectPath,
+                "p build").Result;
 
             //Now, Get the errors/warning then parse them and return.
             //string errs = Convert.ToString(compiler.StandardError.ReadToEnd());
             if (errs.Contains("success"))
             {
-                CompilerWorker.ReportProgress(5); //Done sucessfully.
                 e.Result = new List<ErrorsDock.ScriptErrorInfo>();
+                CompilerWorker.ReportProgress(5); //Done sucessfully.
             }
             else
             {
