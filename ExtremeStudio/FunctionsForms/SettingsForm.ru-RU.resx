@@ -457,7 +457,7 @@
     <value>0</value>
   </data>
   <data name="TabPage1.Text" xml:space="preserve">
-    <value>Theme And Colors</value>
+    <value>Тема и цвета</value>
   </data>
   <data name="&gt;&gt;TabPage1.Name" xml:space="preserve">
     <value>TabPage1</value>
@@ -748,7 +748,7 @@
     <value>1</value>
   </data>
   <data name="TabPage2.Text" xml:space="preserve">
-    <value>Compiler</value>
+    <value>Компилятор</value>
   </data>
   <data name="&gt;&gt;TabPage2.Name" xml:space="preserve">
     <value>TabPage2</value>
@@ -766,13 +766,13 @@
     <value>True</value>
   </metadata>
   <data name="nameColumn.HeaderText" xml:space="preserve">
-    <value>Name</value>
+    <value>Название</value>
   </data>
   <metadata name="valueColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="valueColumn.HeaderText" xml:space="preserve">
-    <value>Value</value>
+    <value>Значение</value>
   </data>
   <data name="serverCfgGrid.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -967,7 +967,7 @@
     <value>16</value>
   </data>
   <data name="Label18.Text" xml:space="preserve">
-    <value>Build: </value>
+    <value>Сборка: </value>
   </data>
   <data name="&gt;&gt;Label18.Name" xml:space="preserve">
     <value>Label18</value>
@@ -1021,7 +1021,7 @@
     <value>14</value>
   </data>
   <data name="Label17.Text" xml:space="preserve">
-    <value>Goto Before :</value>
+    <value>Перейти к предыдущему:</value>
   </data>
   <data name="&gt;&gt;Label17.Name" xml:space="preserve">
     <value>Label17</value>
@@ -1075,7 +1075,7 @@
     <value>12</value>
   </data>
   <data name="Label16.Text" xml:space="preserve">
-    <value>Goto Next :</value>
+    <value>Перейти к следующему:</value>
   </data>
   <data name="&gt;&gt;Label16.Name" xml:space="preserve">
     <value>Label16</value>
@@ -1129,7 +1129,7 @@
     <value>10</value>
   </data>
   <data name="Label15.Text" xml:space="preserve">
-    <value>Replace :</value>
+    <value>Заменить:</value>
   </data>
   <data name="&gt;&gt;Label15.Name" xml:space="preserve">
     <value>Label15</value>
@@ -1183,7 +1183,7 @@
     <value>8</value>
   </data>
   <data name="Label14.Text" xml:space="preserve">
-    <value>Search :</value>
+    <value>Поиск:</value>
   </data>
   <data name="&gt;&gt;Label14.Name" xml:space="preserve">
     <value>Label14</value>
@@ -1237,7 +1237,7 @@
     <value>6</value>
   </data>
   <data name="Label13.Text" xml:space="preserve">
-    <value>Goto :</value>
+    <value>Перейти:</value>
   </data>
   <data name="&gt;&gt;Label13.Name" xml:space="preserve">
     <value>Label13</value>
@@ -1291,7 +1291,7 @@
     <value>4</value>
   </data>
   <data name="Label12.Text" xml:space="preserve">
-    <value>Save All Files :</value>
+    <value>Сохранить все:</value>
   </data>
   <data name="&gt;&gt;Label12.Name" xml:space="preserve">
     <value>Label12</value>
@@ -1372,7 +1372,7 @@
     <value>1</value>
   </data>
   <data name="Label10.Text" xml:space="preserve">
-    <value>Save File :</value>
+    <value>Сохранить:</value>
   </data>
   <data name="&gt;&gt;Label10.Name" xml:space="preserve">
     <value>Label10</value>
@@ -1396,7 +1396,7 @@
     <value>0</value>
   </data>
   <data name="ResetLangBtn.Text" xml:space="preserve">
-    <value>Reset Localization Settings</value>
+    <value>Сброс параметров локализации</value>
   </data>
   <data name="&gt;&gt;ResetLangBtn.Name" xml:space="preserve">
     <value>ResetLangBtn</value>
@@ -1423,7 +1423,7 @@
     <value>44</value>
   </data>
   <data name="resetBtn.Text" xml:space="preserve">
-    <value>Reset Default</value>
+    <value>Восстановить по умолчанию</value>
   </data>
   <data name="&gt;&gt;resetBtn.Name" xml:space="preserve">
     <value>resetBtn</value>
@@ -1450,7 +1450,7 @@
     <value>43</value>
   </data>
   <data name="importBtn.Text" xml:space="preserve">
-    <value>Import</value>
+    <value>Импортировать</value>
   </data>
   <data name="&gt;&gt;importBtn.Name" xml:space="preserve">
     <value>importBtn</value>
@@ -1477,7 +1477,7 @@
     <value>42</value>
   </data>
   <data name="exportBtn.Text" xml:space="preserve">
-    <value>Export</value>
+    <value>Экспортировать</value>
   </data>
   <data name="&gt;&gt;exportBtn.Name" xml:space="preserve">
     <value>exportBtn</value>
@@ -1528,7 +1528,7 @@
     <value>26</value>
   </data>
   <data name="Button1.Text" xml:space="preserve">
-    <value>Reset Defaults</value>
+    <value>Восстановить по умолчанию</value>
   </data>
   <data name="&gt;&gt;Button1.Name" xml:space="preserve">
     <value>Button1</value>
@@ -1558,7 +1558,7 @@
     <value>25</value>
   </data>
   <data name="customArgsText.ToolTip" xml:space="preserve">
-    <value>If there is some args that you want to compile with that aren't above, Write them here.</value>
+    <value>Если аргументы, которые вы хотите скомпилировать не присутствуют выше, укажите их тут.</value>
   </data>
   <data name="&gt;&gt;customArgsText.Name" xml:space="preserve">
     <value>customArgsText</value>
@@ -1585,7 +1585,7 @@
     <value>24</value>
   </data>
   <data name="Label9.Text" xml:space="preserve">
-    <value>Extra Custom Args: </value>
+    <value>Дополнительные пользовательские аргументы: </value>
   </data>
   <data name="&gt;&gt;Label9.Name" xml:space="preserve">
     <value>Label9</value>
@@ -1612,7 +1612,7 @@
     <value>23</value>
   </data>
   <data name="parenthesesCheck.Text" xml:space="preserve">
-    <value>Functions need parentheses.</value>
+    <value>Функции нужны скобки.</value>
   </data>
   <data name="parenthesesCheck.ToolTip" xml:space="preserve">
     <value>If checked, parameters passed in a function must be enclosed in parentheses.</value>
