@@ -199,16 +199,16 @@
     <value>13</value>
   </data>
   <data name="fileTab.Text" xml:space="preserve">
-    <value>Прект</value>
+    <value>Project</value>
   </data>
   <data name="clipboardPanel.Text" xml:space="preserve">
-    <value>Буфер обмена</value>
+    <value>Clipboard</value>
   </data>
   <data name="searchPanel.Text" xml:space="preserve">
-    <value>Поиск &amp; Замена</value>
+    <value>Search &amp; Replace</value>
   </data>
   <data name="indentPanel.Text" xml:space="preserve">
-    <value>Отступы</value>
+    <value>Indentation</value>
   </data>
   <data name="UndoButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -220,7 +220,7 @@
     <value></value>
   </data>
   <data name="UndoButton.ToolTip" xml:space="preserve">
-    <value>Отменить</value>
+    <value>Undo</value>
   </data>
   <data name="RedoButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -233,19 +233,19 @@
     <value></value>
   </data>
   <data name="RedoButton.ToolTip" xml:space="preserve">
-    <value>Повторить</value>
+    <value>Redo</value>
   </data>
   <data name="ribbonPanel1.Text" xml:space="preserve">
-    <value>Редактирование</value>
+    <value>Editing</value>
   </data>
   <data name="editTab.Text" xml:space="preserve">
-    <value>Изменить</value>
+    <value>Edit</value>
   </data>
   <data name="ideTab.Text" xml:space="preserve">
     <value>IDE</value>
   </data>
   <data name="customTab.Text" xml:space="preserve">
-    <value>ES плагины</value>
+    <value>ES Plugins</value>
   </data>
   <data name="&gt;&gt;mainRibbon.Name" xml:space="preserve">
     <value>mainRibbon</value>
@@ -272,7 +272,7 @@
 </value>
   </data>
   <data name="RibbonOrbMenuItem1.Text" xml:space="preserve">
-    <value>Проект</value>
+    <value>Project</value>
   </data>
   <data name="RibbonOrbRecentItem1.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -281,16 +281,16 @@
 </value>
   </data>
   <data name="RibbonOrbRecentItem1.Text" xml:space="preserve">
-    <value>Закрыть текущий проект</value>
+    <value>Close Current Project</value>
   </data>
   <data name="closeProjectButton.Text" xml:space="preserve">
     <value>RibbonButton4</value>
   </data>
   <data name="closeProjectButton.ToolTip" xml:space="preserve">
-    <value>Закрыть проект</value>
+    <value>Close Project</value>
   </data>
   <data name="prjPanel.Text" xml:space="preserve">
-    <value>Файлы</value>
+    <value>Files</value>
   </data>
   <data name="saveFileButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -299,7 +299,7 @@
 </value>
   </data>
   <data name="saveFileButton.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
+    <value>Save File</value>
   </data>
   <data name="saveAllButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -308,10 +308,10 @@
 </value>
   </data>
   <data name="saveAllButton.ToolTip" xml:space="preserve">
-    <value>Сохранить все</value>
+    <value>Save All Files</value>
   </data>
   <data name="downloadPanel.Text" xml:space="preserve">
-    <value>Пакеты</value>
+    <value>Packages</value>
   </data>
   <data name="includesButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -320,7 +320,7 @@
 </value>
   </data>
   <data name="includesButton.ToolTip" xml:space="preserve">
-    <value>Скачать пакеты SAMP</value>
+    <value>Download SAMP Packages</value>
   </data>
   <data name="cutButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -329,7 +329,7 @@
 </value>
   </data>
   <data name="cutButton.ToolTip" xml:space="preserve">
-    <value>Вырезать</value>
+    <value>Cut</value>
   </data>
   <data name="copyButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -338,7 +338,7 @@
 </value>
   </data>
   <data name="copyButton.ToolTip" xml:space="preserve">
-    <value>Копировать</value>
+    <value>Copy</value>
   </data>
   <data name="pasteButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -347,7 +347,7 @@
 </value>
   </data>
   <data name="pasteButton.ToolTip" xml:space="preserve">
-    <value>Вставить</value>
+    <value>Paste</value>
   </data>
   <data name="searchButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -356,7 +356,7 @@
 </value>
   </data>
   <data name="searchButton.ToolTip" xml:space="preserve">
-    <value>Поиск</value>
+    <value>Search</value>
   </data>
   <data name="replaceButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -365,7 +365,7 @@
 </value>
   </data>
   <data name="replaceButton.ToolTip" xml:space="preserve">
-    <value>Заменить</value>
+    <value>Replace</value>
   </data>
   <data name="gotoButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -374,7 +374,7 @@
 </value>
   </data>
   <data name="gotoButton.ToolTip" xml:space="preserve">
-    <value>Перейти</value>
+    <value>GoTo</value>
   </data>
   <data name="addIndentButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -383,7 +383,7 @@
 </value>
   </data>
   <data name="addIndentButton.ToolTip" xml:space="preserve">
-    <value>Добавить отступ</value>
+    <value>Add Indentation</value>
   </data>
   <data name="removeIndentButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -392,10 +392,10 @@
 </value>
   </data>
   <data name="removeIndentButton.ToolTip" xml:space="preserve">
-    <value>Удалить отступ</value>
+    <value>Remove Indentation</value>
   </data>
   <data name="viewPanel.Text" xml:space="preserve">
-    <value>Вид</value>
+    <value>View</value>
   </data>
   <data name="prjExplrerView.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -410,7 +410,7 @@
 </value>
   </data>
   <data name="objExplorerView.ToolTip" xml:space="preserve">
-    <value>Обозреватель объектов</value>
+    <value>Object Explorer</value>
   </data>
   <data name="errorsWarningsView.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -419,10 +419,10 @@
 </value>
   </data>
   <data name="errorsWarningsView.ToolTip" xml:space="preserve">
-    <value>Ошибки &amp; Предупреждения</value>
+    <value>Errors &amp; Warnings</value>
   </data>
   <data name="syntaxHighPanel.Text" xml:space="preserve">
-    <value>Настройки</value>
+    <value>Settings</value>
   </data>
   <data name="RibbonButton1.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -431,10 +431,10 @@
 </value>
   </data>
   <data name="RibbonButton1.ToolTip" xml:space="preserve">
-    <value>Изменение подсветки синтаксиса</value>
+    <value>Modify Syntax Highlighting</value>
   </data>
   <data name="BuildPanel.Text" xml:space="preserve">
-    <value>Скомпилировать</value>
+    <value>Build</value>
   </data>
   <data name="compileScriptBtn.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -443,7 +443,7 @@
 </value>
   </data>
   <data name="compileScriptBtn.ToolTip" xml:space="preserve">
-    <value>Скомпилировать открытый скрипт</value>
+    <value>Compile Opened Script</value>
   </data>
   <data name="CompileAndRunBtn.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -452,7 +452,7 @@
 </value>
   </data>
   <data name="pluginManagePanel.Text" xml:space="preserve">
-    <value>Управление плагинами</value>
+    <value>Plugin Managment</value>
   </data>
   <data name="esPluginsManage.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -461,10 +461,10 @@
 </value>
   </data>
   <data name="esPluginsManage.ToolTip" xml:space="preserve">
-    <value>Управление ES плагинами</value>
+    <value>Manage ES Plugins</value>
   </data>
   <data name="installedPlugins.Text" xml:space="preserve">
-    <value>Загруженные плагины</value>
+    <value>Installed Plugins</value>
   </data>
   <metadata name="CompilerWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>145, 22</value>
@@ -485,7 +485,7 @@
     <value>610, 462</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>ExtremeStudio - проект</value>
+    <value>ExtremeStudio - Project</value>
   </data>
   <data name="&gt;&gt;statusLabel.Name" xml:space="preserve">
     <value>statusLabel</value>

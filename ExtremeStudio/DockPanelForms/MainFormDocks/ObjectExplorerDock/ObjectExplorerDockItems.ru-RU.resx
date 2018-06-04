@@ -134,7 +134,7 @@
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Label3.Text" xml:space="preserve">
-    <value>Identifier: </value>
+    <value>Идентификатор: </value>
   </data>
   <data name="Label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 26</value>
@@ -189,7 +189,7 @@
     <value>0</value>
   </data>
   <data name="Label5.Text" xml:space="preserve">
-    <value>Name: </value>
+    <value>Название: </value>
   </data>
   <data name="&gt;&gt;addName.Parent" xml:space="preserve">
     <value>GroupBox1</value>
@@ -270,7 +270,7 @@
     <value>selinfo</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
-    <value>Name: </value>
+    <value>Название: </value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -288,7 +288,7 @@
     <value>Label5</value>
   </data>
   <data name="GroupBox1.Text" xml:space="preserve">
-    <value>New: </value>
+    <value>Новый: </value>
   </data>
   <data name="&gt;&gt;deleteBtn.Name" xml:space="preserve">
     <value>deleteBtn</value>
@@ -297,7 +297,7 @@
     <value>41, 13</value>
   </data>
   <data name="addBtn.Text" xml:space="preserve">
-    <value>Add</value>
+    <value>Добавить</value>
   </data>
   <data name="&gt;&gt;addIden.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -360,7 +360,7 @@
     <value>True</value>
   </data>
   <data name="Label6.Text" xml:space="preserve">
-    <value>Identifier: </value>
+    <value>Идентификатор: </value>
   </data>
   <data name="&gt;&gt;infoName.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -372,7 +372,7 @@
     <value>4</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Object Explorer Items</value>
+    <value>Элементы списка объектов</value>
   </data>
   <data name="infoName.Location" type="System.Drawing.Point, System.Drawing">
     <value>49, 28</value>
@@ -417,7 +417,7 @@
     <value>171, 20</value>
   </data>
   <data name="selinfo.Text" xml:space="preserve">
-    <value>Selected Info</value>
+    <value>Информация</value>
   </data>
   <data name="&gt;&gt;deleteBtn.ZOrder" xml:space="preserve">
     <value>0</value>

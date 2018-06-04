@@ -58,6 +58,11 @@ namespace ExtremeStudio
                         File.WriteAllText(
                             Program.MainForm.ApplicationFiles + "\\configs\\lang.cfg", "hu");
                         break;
+                    case "Russian":
+                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("ru");
+                        File.WriteAllText(
+                            Program.MainForm.ApplicationFiles + "\\configs\\lang.cfg", "ru");
+                        break;
                 }
 
                 Done();

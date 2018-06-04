@@ -117,15 +117,65 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
+  <data name="Editor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"/>
+  <data name="Editor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="Editor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>566, 417</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
+  <data name="Editor.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Editor.Name" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="&gt;&gt;Editor.Type" xml:space="preserve">
+    <value>ScintillaNET.Scintilla, ScintillaNET, Version=3.6.3.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Editor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Editor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="RefreshWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>32, 20</value>
   </metadata>
-  <data name="ImageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+  <metadata name="AutoCompleteMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>164, 20</value>
+  </metadata>
+  <data name="AutoCompleteMenu.Colors" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFRBdXRvY29tcGxldGVNZW51LVNjaW50aWxsYU5FVCwgVmVyc2lv
+        bj0xLjMuNC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGwMAwAAAFFTeXN0ZW0u
+        RHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIw
+        M2Y1ZjdmMTFkNTBhM2EFAQAAABlBdXRvY29tcGxldGVNZW51TlMuQ29sb3JzBgAAABo8Rm9yZUNvbG9y
+        PmtfX0JhY2tpbmdGaWVsZBo8QmFja0NvbG9yPmtfX0JhY2tpbmdGaWVsZCI8U2VsZWN0ZWRGb3JlQ29s
+        b3I+a19fQmFja2luZ0ZpZWxkIjxTZWxlY3RlZEJhY2tDb2xvcj5rX19CYWNraW5nRmllbGQjPFNlbGVj
+        dGVkQmFja0NvbG9yMj5rX19CYWNraW5nRmllbGQiPEhpZ2hsaWdodGluZ0NvbG9yPmtfX0JhY2tpbmdG
+        aWVsZAQEBAQEBBRTeXN0ZW0uRHJhd2luZy5Db2xvcgMAAAAUU3lzdGVtLkRyYXdpbmcuQ29sb3IDAAAA
+        FFN5c3RlbS5EcmF3aW5nLkNvbG9yAwAAABRTeXN0ZW0uRHJhd2luZy5Db2xvcgMAAAAUU3lzdGVtLkRy
+        YXdpbmcuQ29sb3IDAAAAFFN5c3RlbS5EcmF3aW5nLkNvbG9yAwAAAAIAAAAF/P///xRTeXN0ZW0uRHJh
+        d2luZy5Db2xvcgQAAAAEbmFtZQV2YWx1ZQprbm93bkNvbG9yBXN0YXRlAQAAAAkHBwMAAAAKAAAAAAAA
+        AAAjAAEAAfv////8////CgAAAAAAAAAApAABAAH6/////P///woAAAAAAAAAACMAAQAB+f////z///8K
+        AAAAAAAAAAB/AAEAAfj////8////CgAAAAAAAAAApAABAAH3/////P///woAAAAAAAAAAH8AAQAL
+</value>
+  </data>
+  <metadata name="ACImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>326, 20</value>
+  </metadata>
+  <data name="ACImageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAY
-        CgAAAk1TRnQBSQFMAgEBAwEAAQQBAQEEAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABW
+        CQAAAk1TRnQBSQFMAgEBAgEAAfwBAAH8AQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -153,102 +203,23 @@
         AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
         AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
         AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
-        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/wIAAfMBkwp0AZMB8wMA
-        AfQB7wj3Ae8B9AQADP8SAAH0DlMB9AEAAf8BbQHzCPQB8wFtAf8BAAb/AfQB8wL0Bv8QAAGZDlMBmQEA
-        AfMB9wH/AfEC8gHxBf8B9wHzBQAC/wGZARwE/xQAAZkOUwGZAQAB8wH3Af8C8gHxA/IB8QH0Af8B9wHz
-        BQAB8gGYApkBmAH/FgABmQ5TAZkBAAHzAfcB/wMHAvEC8gL/AfcB8wMAAf8BmQF4AZgCBwKZAf8VAAGZ
-        BlMIWQGaAQAB8wH3Af8I8QH/Ae8B8wMAAfECeAHxAQAB/wGYAZkBCBUAAZkOWQGaAQAB8wHvAf8HvAHx
-        AfQB7wHzBAAC9AMAAfICmQHxFAABmQ5ZAZkBAAHzAe8B/wLwA7wC8AHzAf8B7wHzCgADmQHzEwABmQF5
-        DFkBUgGZAQAB8wHvAfQC8AO8AfABvAHxAfQB9wHzCgAB/wGYAZkBmAH0EgABmQGTAe8GWQGZAe8BBwLv
-        ARwBmQEAAfMB7wH0BwcBvAHzAZIB8wsAAfECmQGYEgABmQIHBnoBmQEHAbwCBwGTAZkBAAHzAe8B9AHw
-        A7wD8AK8AewB8wsAAf8CmQGYEgABmQEaAfAHBwG8AfABBwG8ApkBAAHzAe8B8wHvAQcB7wIHAfIB8QLy
-        AW0B/wwAAfYCmBIAApkJ8gPwAQcBmQEAAfMB7wHzAe0B7wP3AfAB8wHyAewB8w4AAfEBHBIAAZoBWQGa
-        ARoH8gHxAfAB8QGZAZoBAAHzAe8F8gHwAbwB8wHsAfQPAAH/ARwSAAEbA1kBegEbB/MBGgF6ARsBAAH/
-        AewE8wHyAbwB7wHsAfQRAAH/EgAB/wEaAXoFWQF6BFkBegEaAf8CAAH0Ae8G9wH0JQABQgFNAT4HAAE+
-        AwABKAMAAUADAAEQAwABAQEAAQEFAAGAFwAD/wEAAYABAQHAAQMBwAEDBAABgAEBBgABgAEBAfABDwQA
-        AYABAQHwAT8EAAGAAQEBwAEfBAABgAEBAcIBHwQAAYABAQHnAQ8EAAGAAQEB/wGHBAABgAEBAf8BgwQA
-        AYABAQH/AcMEAAGAAQEB/wHDBAABgAEBAf8B4wQAAYABAwH/AfMEAAGAAQcB/wHzBAABgAEPAf8B+wQA
-        AcABHwL/AgAL
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/wgAAv8JAAH/Ae0B7wH/
+        BAAB/wHvAewB9CcAAf8BcgIzAXIB/wcAAe8BAAFDAe8B/wMAAesBDwEOAQ8B8gH/JAABTwEzAlUDMwFP
+        Af8FAAHtAQ4BDwEOAf8DAAEUARADDgH/IgAC/wIzAlUEMwH/BgABEAIRAf8CAAHxARQBFQEHAfIBDgH/
+        IQAB/wHtAUYBLQOXBC0B2QG7Av8EAAEQARQDAAH3ARMB6gIAAfEB8yEAAUUCHwGXApgBnQQtA9kBugQA
+        Af8BEgH/AgAB7AESAbwlAAIfASUBmAEIAZgBlwFPAS0CMwHZAdMBsgHwBQABFAHwAgAB7QESAfAkAAH/
+        AUYCbwGeAVUEMwFVATMCsgGzBgABEQH3AgAB7wETAbwlAAFvAZkBkwFzApcBTwNOAQYCsgHwBgABDgFt
+        AgAB8AEVAQclAAGTAfQDGgGTAggC0wGyAqwHAAEPAQ4CAAH0AREB9yYAAfQCkwH0AwABugHZAbMBrAHw
+        AwABvAMAAewBDgMAAQ8B7C0AAf8B2QGzAawEAAHsAfQCAAEHAUMDAAEUARUuAAG7Aa0B8QQAAf8BbQEO
+        AgAB6gMAAUMwAAGtBgAB8ALvAZIB7QPsAesCbQHqLQAB/wcAAfQB7AEOagABQgFNAT4HAAE+AwABKAMA
+        AUADAAEQAwABAQEAAQEFAAGAFwAD/wEAAf4BfwLDBAAB+AEfAcEBwAQAAfABBwHBAcAEAAHAAQcB4QGA
+        BAABgAEAAfMBjAQAAYABAAHxAY8EAAGAAQAB+QGPBQABAQH5AY8EAAGAAQEB+QGPBAABgAEDAfkBjwQA
+        AcMBgwG5Ac8EAAH/AYcBmQHPBAAB/wHHAYABAQQAAf8B7wHAAQEEAAH/Ae8B4AEBBAAE/wQACw==
 </value>
   </data>
-  <metadata name="mouseRightClick.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>121, 17</value>
+  <metadata name="colorizingWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>445, 20</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"/>
-  <data name="RefreshToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="RefreshToolStripMenuItem.Text" xml:space="preserve">
-    <value>Обновить</value>
-  </data>
-  <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 6</value>
-  </data>
-  <data name="RenameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="RenameToolStripMenuItem.Text" xml:space="preserve">
-    <value>Переименовать</value>
-  </data>
-  <data name="DeleteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="DeleteToolStripMenuItem.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 6</value>
-  </data>
-  <data name="NewFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="NewFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Новый файл</value>
-  </data>
-  <data name="NewDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="NewDirectoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Новая директория</value>
-  </data>
-  <data name="mouseRightClick.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 126</value>
-  </data>
-  <data name="&gt;&gt;mouseRightClick.Name" xml:space="preserve">
-    <value>mouseRightClick</value>
-  </data>
-  <data name="&gt;&gt;mouseRightClick.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
-  <data name="filesList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
-  <data name="filesList.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="filesList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="filesList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>254, 382</value>
-  </data>
-  <data name="filesList.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;filesList.Name" xml:space="preserve">
-    <value>filesList</value>
-  </data>
-  <data name="&gt;&gt;filesList.Type" xml:space="preserve">
-    <value>ExtremeCore.Controls_And_Tools.FilesListBox, ExtremeCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;filesList.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;filesList.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -256,64 +227,37 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>254, 382</value>
+    <value>566, 417</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Список проектов</value>
+  <data name="&gt;&gt;RefreshWorker.Name" xml:space="preserve">
+    <value>RefreshWorker</value>
   </data>
-  <data name="&gt;&gt;ImageList.Name" xml:space="preserve">
-    <value>ImageList</value>
+  <data name="&gt;&gt;RefreshWorker.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ImageList.Type" xml:space="preserve">
+  <data name="&gt;&gt;AutoCompleteMenu.Name" xml:space="preserve">
+    <value>AutoCompleteMenu</value>
+  </data>
+  <data name="&gt;&gt;AutoCompleteMenu.Type" xml:space="preserve">
+    <value>AutocompleteMenuNS.AutocompleteMenu, AutocompleteMenu-ScintillaNET, Version=1.3.4.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ACImageList.Name" xml:space="preserve">
+    <value>ACImageList</value>
+  </data>
+  <data name="&gt;&gt;ACImageList.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;RefreshToolStripMenuItem.Name" xml:space="preserve">
-    <value>RefreshToolStripMenuItem</value>
+  <data name="&gt;&gt;colorizingWorker.Name" xml:space="preserve">
+    <value>colorizingWorker</value>
   </data>
-  <data name="&gt;&gt;RefreshToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator1.Name" xml:space="preserve">
-    <value>ToolStripSeparator1</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RenameToolStripMenuItem.Name" xml:space="preserve">
-    <value>RenameToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;RenameToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DeleteToolStripMenuItem.Name" xml:space="preserve">
-    <value>DeleteToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;DeleteToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem1.Name" xml:space="preserve">
-    <value>ToolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NewFileToolStripMenuItem.Name" xml:space="preserve">
-    <value>NewFileToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;NewFileToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NewDirectoryToolStripMenuItem.Name" xml:space="preserve">
-    <value>NewDirectoryToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;NewDirectoryToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colorizingWorker.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>ProjExplorerDock</value>
+    <value>EditorDock</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>WeifenLuo.WinFormsUI.Docking.DockContent, WeifenLuo.WinFormsUI.Docking, Version=3.0.4.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481</value>

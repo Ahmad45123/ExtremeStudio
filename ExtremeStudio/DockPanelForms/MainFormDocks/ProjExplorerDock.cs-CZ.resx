@@ -179,7 +179,7 @@
     <value>149, 22</value>
   </data>
   <data name="RefreshToolStripMenuItem.Text" xml:space="preserve">
-    <value>Обновить</value>
+    <value>Obnovit</value>
   </data>
   <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 6</value>
@@ -188,13 +188,13 @@
     <value>149, 22</value>
   </data>
   <data name="RenameToolStripMenuItem.Text" xml:space="preserve">
-    <value>Переименовать</value>
+    <value>Přejmenovat</value>
   </data>
   <data name="DeleteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 22</value>
   </data>
   <data name="DeleteToolStripMenuItem.Text" xml:space="preserve">
-    <value>Удалить</value>
+    <value>Odstranit</value>
   </data>
   <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 6</value>
@@ -203,13 +203,13 @@
     <value>149, 22</value>
   </data>
   <data name="NewFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Новый файл</value>
+    <value>Nový soubor</value>
   </data>
   <data name="NewDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 22</value>
   </data>
   <data name="NewDirectoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Новая директория</value>
+    <value>Nový adresář</value>
   </data>
   <data name="mouseRightClick.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 126</value>
@@ -262,7 +262,7 @@
     <value>Tahoma, 8pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Список проектов</value>
+    <value>Seznam funkcí</value>
   </data>
   <data name="&gt;&gt;ImageList.Name" xml:space="preserve">
     <value>ImageList</value>
