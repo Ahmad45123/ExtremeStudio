@@ -91,6 +91,9 @@
     <Compile Include="Classes\VersionReader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.cs-CZ.resx">
+      <DependentUpon>AdvancedInputBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.es-ES.resx">
       <DependentUpon>AdvancedInputBox.cs</DependentUpon>
     </EmbeddedResource>

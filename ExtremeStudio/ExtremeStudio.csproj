@@ -212,6 +212,9 @@
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorDock.tr-TR.resx">
       <DependentUpon>EditorDock.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\GotoForm.cs-CZ.resx">
+      <DependentUpon>GotoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\GotoForm.es-ES.resx">
       <DependentUpon>GotoForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -233,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\GotoForm.tr-TR.resx">
       <DependentUpon>GotoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\SearchReplaceForm.cs-CZ.resx">
+      <DependentUpon>SearchReplaceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\SearchReplaceForm.es-ES.resx">
       <DependentUpon>SearchReplaceForm.cs</DependentUpon>
@@ -257,6 +263,9 @@
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\EditorDock\EditorFunctions\SearchReplaceForm.tr-TR.resx">
       <DependentUpon>SearchReplaceForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ErrorsDock.cs-CZ.resx">
+      <DependentUpon>ErrorsDock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\ErrorsDock.es-ES.resx">
       <DependentUpon>ErrorsDock.cs</DependentUpon>
     </EmbeddedResource>
@@ -279,6 +288,9 @@
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\ErrorsDock.tr-TR.resx">
       <DependentUpon>ErrorsDock.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDock.cs-CZ.resx">
+      <DependentUpon>ObjectExplorerDock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDock.es-ES.resx">
       <DependentUpon>ObjectExplorerDock.cs</DependentUpon>
     </EmbeddedResource>
@@ -300,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDock.tr-TR.resx">
       <DependentUpon>ObjectExplorerDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDockItems.cs-CZ.resx">
+      <DependentUpon>ObjectExplorerDockItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDockItems.es-ES.resx">
       <DependentUpon>ObjectExplorerDockItems.cs</DependentUpon>
@@ -324,6 +339,9 @@
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\ObjectExplorerDock\ObjectExplorerDockItems.tr-TR.resx">
       <DependentUpon>ObjectExplorerDockItems.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DockPanelForms\MainFormDocks\ProjExplorerDock.cs-CZ.resx">
+      <DependentUpon>ProjExplorerDock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\ProjExplorerDock.es-ES.resx">
       <DependentUpon>ProjExplorerDock.cs</DependentUpon>
     </EmbeddedResource>
@@ -345,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DockPanelForms\MainFormDocks\ProjExplorerDock.tr-TR.resx">
       <DependentUpon>ProjExplorerDock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\ESPluginsForm.cs-CZ.resx">
+      <DependentUpon>ESPluginsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FunctionsForms\ESPluginsForm.es-ES.resx">
       <DependentUpon>ESPluginsForm.cs</DependentUpon>
@@ -368,6 +389,9 @@
     <EmbeddedResource Include="FunctionsForms\ESPluginsForm.tr-TR.resx">
       <DependentUpon>ESPluginsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\PackagesForm.cs-CZ.resx">
+      <DependentUpon>PackagesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FunctionsForms\PackagesForm.es-ES.resx">
       <DependentUpon>PackagesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -388,6 +412,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FunctionsForms\PackagesForm.tr-TR.resx">
       <DependentUpon>PackagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FunctionsForms\SettingsForm.cs-CZ.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FunctionsForms\SettingsForm.es-ES.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
@@ -411,6 +438,9 @@
     <EmbeddedResource Include="FunctionsForms\SettingsForm.tr-TR.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LanguagesForm.cs-CZ.resx">
+      <DependentUpon>LanguagesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LanguagesForm.es-ES.resx">
       <DependentUpon>LanguagesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -432,6 +462,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LanguagesForm.tr-TR.resx">
       <DependentUpon>LanguagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.cs-CZ.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.es-ES.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -459,6 +492,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartupForm.cs-CZ.resx">
+      <DependentUpon>StartupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StartupForm.es-ES.resx">
       <DependentUpon>StartupForm.cs</DependentUpon>
