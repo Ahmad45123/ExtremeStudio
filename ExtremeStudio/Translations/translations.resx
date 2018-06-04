@@ -346,4 +346,7 @@ NOTE: INCLUDE THE EXTENSION!</value>
   <data name="ProjExplorerDock_DeleteToolStripMenuItem_Click_AreYouSure" xml:space="preserve">
     <value>Are you sure you'd like to delete this file/folder ?</value>
   </data>
+  <data name="MainForm_CompilerWorker_DoWork_CompilationFailed" xml:space="preserve">
+    <value>Compilation failed.</value>
+  </data>
 </root>

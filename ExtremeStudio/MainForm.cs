@@ -410,45 +410,54 @@ namespace ExtremeStudio
                 //Parse the list for the errors and warnings first.
                 var errorLevel = 0;
                 List<ErrorsDock.ScriptErrorInfo> errorList = new List<ErrorsDock.ScriptErrorInfo>();
-                foreach (Match match in Regex.Matches(errs,
-                    @"(?<path>.+):(?<line>[0-9]+)\s\((?<type>fatal|error|warning)\)(?<text>.+)", RegexOptions.Multiline))
+                var matches = Regex.Matches(errs,
+                    @"(?<path>.+):(?<line>[0-9]+)\s\((?<type>fatal|error|warning)\)(?<text>.+)",
+                    RegexOptions.Multiline);
+                if (matches.Count > 0)
                 {
-                    ErrorsDock.ScriptErrorInfo err = new ErrorsDock.ScriptErrorInfo
+                    foreach (Match match in matches)
                     {
-                        FileName = Path.GetFileName(Convert.ToString(match.Groups["path"].Value)),
-                        LineNumber = match.Groups["line"].Value
-                    };
-                    if (match.Groups["type"].Value == "error" || match.Groups["type"].Value == "fatal")
-                    {
-                        err.ErrorType = ErrorsDock.ScriptErrorInfo.ErrorTypes.Error;
-                        errorLevel = 2;
-                    }
-                    else
-                    {
-                        err.ErrorType = ErrorsDock.ScriptErrorInfo.ErrorTypes.Warning;
-                        if (errorLevel < 2)
+                        ErrorsDock.ScriptErrorInfo err = new ErrorsDock.ScriptErrorInfo
                         {
-                            errorLevel = 1;
+                            FileName = Path.GetFileName(Convert.ToString(match.Groups["path"].Value)),
+                            LineNumber = match.Groups["line"].Value
+                        };
+                        if (match.Groups["type"].Value == "error" || match.Groups["type"].Value == "fatal")
+                        {
+                            err.ErrorType = ErrorsDock.ScriptErrorInfo.ErrorTypes.Error;
+                            errorLevel = 2;
                         }
+                        else
+                        {
+                            err.ErrorType = ErrorsDock.ScriptErrorInfo.ErrorTypes.Warning;
+                            if (errorLevel < 2)
+                            {
+                                errorLevel = 1;
+                            }
+                        }
+
+                        err.ErrorMessage = match.Groups["text"].Value;
+
+                        errorList.Add(err);
                     }
 
-                    err.ErrorMessage = match.Groups["text"].Value;
-
-                    errorList.Add(err);
+                    //Report status.
+                    if (errorLevel == 2)
+                    {
+                        CompilerWorker.ReportProgress(3); //Failed with errors and possible warnings.
+                    }
+                    else if (errorLevel == 1)
+                    {
+                        CompilerWorker.ReportProgress(4); //Sucess but warnings..
+                    }
                 }
-
+                else
+                {
+                    MessageBox.Show(errs, translations.MainForm_CompilerWorker_DoWork_CompilationFailed, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    CompilerWorker.ReportProgress(3);
+                }
                 //Set result as the list.
                 e.Result = errorList;
-
-                //Report status.
-                if (errorLevel == 2)
-                {
-                    CompilerWorker.ReportProgress(3); //Failed with errors and possible warnings.
-                }
-                else if (errorLevel == 1)
-                {
-                    CompilerWorker.ReportProgress(4); //Sucess but warnings..
-                }
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using ExtremeCore.Classes;
 using ExtremeParser.Exceptions;
@@ -34,6 +35,10 @@ namespace ExtremeParser.Parsers
 
                 var type = text.Substring(0, 1);
 
+                var dirs = Directory.GetDirectories(prjPath + "\\dependencies").ToList();
+                if(Directory.Exists(prjPath + "\\pawno\\include"))
+                    dirs.Add(prjPath + "\\pawno\\include");
+
                 if (char.Parse(type) == (char) 34)
                 {
                     //Remove the quotes.
@@ -63,7 +68,7 @@ namespace ExtremeParser.Parsers
                         continue;
                     }
 
-                    foreach (var dir in Directory.GetDirectories(prjPath + "\\dependencies"))
+                    foreach (var dir in dirs)
                     {
                         string pth = Path.Combine(dir, text);
                         AddExtension(ref pth);
@@ -76,7 +81,7 @@ namespace ExtremeParser.Parsers
                 }
                 else
                 {
-                    foreach (var dir in Directory.GetDirectories(prjPath + "\\dependencies"))
+                    foreach (var dir in dirs)
                     {
                         string pth = Path.Combine(dir, text);
                         AddExtension(ref pth);

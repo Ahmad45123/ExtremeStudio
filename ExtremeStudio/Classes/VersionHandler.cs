@@ -11,7 +11,7 @@ namespace ExtremeStudio.Classes
     {
         public string CurrentVersion {get;} = "2.0.0";
 	
-        public void DoIfUpdateNeeded(CurrentProjectClass project)
+        public async void DoIfUpdateNeeded(CurrentProjectClass project)
         {
             if (project.ProjectVersion == "1.0.0")
             {
@@ -36,7 +36,8 @@ namespace ExtremeStudio.Classes
                         runtime = new RuntimeInfo() {version = "latest"},
                     };
                     project.SaveInfo();
-                    SampCtl.SendCommand(Path.Combine(Application.StartupPath, "sampctl.exe"), project.ProjectPath, "p ensure");
+                    project.LoadSampCtlData(); //to make sure pawno/includes is also supported.
+                    await SampCtl.SendCommand(Path.Combine(Application.StartupPath, "sampctl.exe"), project.ProjectPath, "p ensure");
                 }
             }
             project.ProjectVersion = CurrentVersion;

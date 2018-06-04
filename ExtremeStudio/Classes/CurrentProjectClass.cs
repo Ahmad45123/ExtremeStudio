@@ -33,7 +33,7 @@ namespace ExtremeStudio.Classes
                 _sqlCon = new SqLiteDatabase(value + "/extremeStudio.config");
                 _projectPathB = value;
             }
-            get { return _projectPathB; }
+            get => _projectPathB;
         }
 
         public List<ObjectExplorerItem> ObjectExplorerItems { get; set; } = new List<ObjectExplorerItem>();
@@ -60,6 +60,48 @@ namespace ExtremeStudio.Classes
             if (File.Exists(ProjectPath + "/pawn.json"))
             {
                 SampCtlData = JsonConvert.DeserializeObject<PawnJson>(File.ReadAllText(ProjectPath + "/pawn.json"));
+                if ((SampCtlData.builds[0].includes == null || !SampCtlData.builds[0].includes.Contains("./pawno/include/")) && Directory.Exists(Path.Combine(ProjectPath, "pawno/include/")))
+                {
+                    SampCtlData.builds[0].includes = new List<string>() {"./pawno/include/"};
+                    foreach (var inc in Directory.GetFiles(Path.Combine(ProjectPath, "pawno/include/")))
+                    {
+                        bool isit = false;
+                        switch (Path.GetFileName(inc))
+                        {
+                            case "a_actor.inc":
+                            case "a_http.inc":
+                            case "a_npc.inc":
+                            case "a_objects.inc":
+                            case "a_players.inc":
+                            case "a_samp.inc":
+                            case "a_sampdb.inc":
+                            case "a_vehicles.inc":
+                            case "core.inc":
+                            case "datagram.inc":
+                            case "file.inc":
+                            case "float.inc":
+                            case "string.inc":
+                            case "time.inc":
+                                isit = true;
+                                break;
+                        }
+
+                        if (isit)
+                        {
+                            string newPath = Path.Combine(Path.GetDirectoryName(inc),
+                                Path.GetFileNameWithoutExtension(inc));
+                            File.Move(inc, newPath + "_disabled.inc");
+                        }
+                    }
+
+                    SaveSampCtlData();
+                }
+                else if(SampCtlData.builds[0].includes.Contains("./pawno/include/") && !Directory.Exists(Path.Combine(ProjectPath, "pawno/include/")))
+
+                {
+                    SampCtlData.builds[0].includes.Remove("./pawno/include/");
+                    SaveSampCtlData();
+                }
             }
         }
 
@@ -151,6 +193,7 @@ namespace ExtremeStudio.Classes
     public class BuildInfo
     {
         public string name { get; set; }
+        public List<string> includes { get; set; }
         public List<string> args { get; set; }
     }
 

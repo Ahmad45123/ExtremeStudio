@@ -277,6 +277,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Compilation failed..
+        /// </summary>
+        public static string MainForm_CompilerWorker_DoWork_CompilationFailed {
+            get {
+                return ResourceManager.GetString("MainForm_CompilerWorker_DoWork_CompilationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Would you like to save all files ?.
         /// </summary>
         public static string MainForm_CompilerWorker_DoWork_WouldYouLikeToSaveFiles {

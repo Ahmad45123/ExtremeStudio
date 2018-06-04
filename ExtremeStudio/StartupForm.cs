@@ -253,7 +253,7 @@ namespace ExtremeStudio
             }
         }
 
-        private void CreateProjectBtn_Click(object sender, EventArgs e)
+        private async void CreateProjectBtn_Click(object sender, EventArgs e)
         {
             string newPath = Convert.ToString(locTextBox.PathText.Text);
             if (preExistCheck.Checked)
@@ -297,9 +297,10 @@ namespace ExtremeStudio
                     Program.MainForm.CurrentProject.CreateTables(); //Create the tables of the db.
                     Program.MainForm.CurrentProject.SaveInfo(); //Write the default extremeStudio config.
                     Program.MainForm.CurrentProject.CopyGlobalConfig();
+                    Program.MainForm.CurrentProject.LoadSampCtlData(); //to ensure pawno/includes is there.
 
                     //Ensure the packages are ready
-                    SampCtl.SendCommand(Path.Combine(Application.StartupPath, "sampctl.exe"), newPath, "p ensure");
+                    await SampCtl.SendCommand(Path.Combine(Application.StartupPath, "sampctl.exe"), newPath, "p ensure");
 
                     AddNewRecent(
                         Convert.ToString(Program.MainForm.CurrentProject.ProjectPath)); //Add it to the recent list.
@@ -362,7 +363,7 @@ namespace ExtremeStudio
                         Program.MainForm.CurrentProject.CopyGlobalConfig();
             
                         //Ensure the packages are ready
-                        SampCtl.SendCommand(Path.Combine(Application.StartupPath, "sampctl.exe"), newPath, "p ensure");
+                        await SampCtl.SendCommand(Path.Combine(Application.StartupPath, "sampctl.exe"), newPath, "p ensure");
             
                         AddNewRecent(
                             Convert.ToString(Program.MainForm.CurrentProject.ProjectPath)); //Add it to the recent list.
