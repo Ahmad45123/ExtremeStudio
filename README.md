@@ -30,6 +30,6 @@ If there is a missing language, Please create an issue asking for it.
 * [JetBrains](https://www.jetbrains.com/) for supporting ES by providing [ReSharper](https://www.jetbrains.com/resharper/) free of charge.
 * [Crowdin](https://crowdin.com) for providing an open-source license for ES.
 * [Advanced Installer](https://www.advancedinstaller.com) for providing a free open-source license for ES.
-* Icon made by [Roundicons](https://www.flaticon.com/authors/roundicons) from [Flaticon](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
+* Icon made by [Roundicons](https://www.flaticon.com/authors/roundicons) from [Flaticon](https://www.flaticon.com/) is licensed by [CC 3.0](http://creativecommons.org/licenses/by/3.0/)
 * [Crayder](http://forum.sa-mp.com/member.php?u=214776), designed the logo. ;)
 * Pretty much everything else is by me.
