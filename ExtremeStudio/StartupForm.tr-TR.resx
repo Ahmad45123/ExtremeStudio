@@ -157,7 +157,7 @@
     <value>8</value>
   </data>
   <data name="preExistCheck.Text" xml:space="preserve">
-    <value>Create from pre-existing files.</value>
+    <value>Önceden varolan dosyaları oluşturun.</value>
   </data>
   <data name="&gt;&gt;preExistCheck.Name" xml:space="preserve">
     <value>preExistCheck</value>
@@ -229,7 +229,7 @@
     <value>3</value>
   </data>
   <data name="verListBox.Items" xml:space="preserve">
-    <value>latest</value>
+    <value>En Son</value>
   </data>
   <data name="verListBox.Items1" xml:space="preserve">
     <value>0.3.7</value>
@@ -298,7 +298,7 @@
     <value>1</value>
   </data>
   <data name="Label2.Text" xml:space="preserve">
-    <value>SA-MP Version: </value>
+    <value>SA-MP Version:</value>
   </data>
   <data name="&gt;&gt;Label2.Name" xml:space="preserve">
     <value>Label2</value>
@@ -328,7 +328,7 @@
     <value>0</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
-    <value>Project Name: </value>
+    <value>Proje Adı</value>
   </data>
   <data name="&gt;&gt;Label1.Name" xml:space="preserve">
     <value>Label1</value>
@@ -355,7 +355,7 @@
     <value>0</value>
   </data>
   <data name="TabPage1.Text" xml:space="preserve">
-    <value>Create new project</value>
+    <value>Yeni proje yarat</value>
   </data>
   <data name="&gt;&gt;TabPage1.Name" xml:space="preserve">
     <value>TabPage1</value>
@@ -385,7 +385,7 @@
     <value>7</value>
   </data>
   <data name="loadProjectBtn.Text" xml:space="preserve">
-    <value>Load Project</value>
+    <value>Proje Yükle</value>
   </data>
   <data name="&gt;&gt;loadProjectBtn.Name" xml:space="preserve">
     <value>loadProjectBtn</value>
@@ -415,7 +415,7 @@
     <value>6</value>
   </data>
   <data name="projectVersion.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Hiç</value>
   </data>
   <data name="&gt;&gt;projectVersion.Name" xml:space="preserve">
     <value>projectVersion</value>
@@ -445,7 +445,7 @@
     <value>5</value>
   </data>
   <data name="Label6.Text" xml:space="preserve">
-    <value>Project Version: </value>
+    <value>Proje Versiyonu:</value>
   </data>
   <data name="&gt;&gt;Label6.Name" xml:space="preserve">
     <value>Label6</value>
@@ -475,7 +475,7 @@
     <value>4</value>
   </data>
   <data name="projectName.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Hiçbiri</value>
   </data>
   <data name="&gt;&gt;projectName.Name" xml:space="preserve">
     <value>projectName</value>
@@ -505,7 +505,7 @@
     <value>3</value>
   </data>
   <data name="Label5.Text" xml:space="preserve">
-    <value>Project Name: </value>
+    <value>Proej Adı:</value>
   </data>
   <data name="&gt;&gt;Label5.Name" xml:space="preserve">
     <value>Label5</value>
@@ -535,7 +535,7 @@
     <value>0</value>
   </data>
   <data name="Label4.Text" xml:space="preserve">
-    <value>Project directory: </value>
+    <value>Proje Yolu:</value>
   </data>
   <data name="&gt;&gt;Label4.Name" xml:space="preserve">
     <value>Label4</value>
@@ -583,7 +583,7 @@
     <value>1</value>
   </data>
   <data name="TabPage2.Text" xml:space="preserve">
-    <value>Load project</value>
+    <value>Proje Yükle</value>
   </data>
   <data name="&gt;&gt;TabPage2.Name" xml:space="preserve">
     <value>TabPage2</value>
@@ -610,7 +610,7 @@
     <value>2</value>
   </data>
   <data name="Button3.Text" xml:space="preserve">
-    <value>Delete Selected</value>
+    <value>Seçileni Sil</value>
   </data>
   <data name="&gt;&gt;Button3.Name" xml:space="preserve">
     <value>Button3</value>
@@ -637,7 +637,7 @@
     <value>1</value>
   </data>
   <data name="Button1.Text" xml:space="preserve">
-    <value>Load Selected</value>
+    <value>Seçileni Yükle</value>
   </data>
   <data name="&gt;&gt;Button1.Name" xml:space="preserve">
     <value>Button1</value>
@@ -763,7 +763,7 @@
     <value>799, 243</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Load / Create Project</value>
+    <value>Yükle / Proje Oluştur</value>
   </data>
   <data name="&gt;&gt;OpenGlobalSettingsToolStripMenuItem.Name" xml:space="preserve">
     <value>OpenGlobalSettingsToolStripMenuItem</value>
