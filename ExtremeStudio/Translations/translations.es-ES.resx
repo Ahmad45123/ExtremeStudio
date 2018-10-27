@@ -122,19 +122,19 @@
 Must contain the pawno folder, gamemodes folder, plugins folder, all executables and the server config.</value>
   </data>
   <data name="StartupForm_CreateProjectBtn_Click_InvalidName" xml:space="preserve">
-    <value>Invalid Name.</value>
+    <value>Nombre inválido.</value>
   </data>
   <data name="StartupForm_CreateProjectBtn_Click_NoSampSelected" xml:space="preserve">
-    <value>You haven't selected a SAMP version to use.</value>
+    <value>No has seleccionado una versión de SAMP para utilizar.</value>
   </data>
   <data name="StartupForm_CreateProjectBtn_Click_DirError" xml:space="preserve">
-    <value>That directory doesn't exist or there is a project with that name already there.</value>
+    <value>Ese directorio no existe o ya hay un proyecto con el mismo nombre.</value>
   </data>
   <data name="StartupForm_pathTextBox_TextChanged_None" xml:space="preserve">
-    <value>None</value>
+    <value>Ninguno</value>
   </data>
   <data name="StartupForm_pathTextBox_TextChanged_ProjectVersionSame" xml:space="preserve">
-    <value>Project version is the same as ExtremeStudio's version, No converion is needed.</value>
+    <value>La version del proyecto es la misma que ExtremeStudio. No se necesita conversión.</value>
   </data>
   <data name="StartupForm_pathTextBox_TextChanged_ProjectVersionOlder" xml:space="preserve">
     <value>Project older then ExtremeStudio, Conversion will be done however it may bug with older versions so its recommended to not try.</value>
@@ -157,34 +157,34 @@ Would you like to continue ?</value>
     <value>Would you like to save all files ?</value>
   </data>
   <data name="MainForm_CompilerWorker_ProgressChanged_Compiling" xml:space="preserve">
-    <value>Compiling...</value>
+    <value>Compilando...</value>
   </data>
   <data name="MainForm_CompilerWorker_ProgressChanged_CompilingFailedWithErrors" xml:space="preserve">
-    <value>Compiling failed with errors/warnings.</value>
+    <value>La compilación falló con errores/advertencias.</value>
   </data>
   <data name="MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithWarnings" xml:space="preserve">
-    <value>Compiling finished successfully but there are warning(s).</value>
+    <value>Se ha compilado con éxito pero hay advertencia(s).</value>
   </data>
   <data name="MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithNoErrorsWarnings" xml:space="preserve">
-    <value>Compiling finished sucessfully with no errors/warnings.</value>
+    <value>Se ha compilado con éxito sin errores/advertencias.</value>
   </data>
   <data name="SettingsForm_resetBtn_Click_ResetDefaultSettings" xml:space="preserve">
-    <value>Are you sure you want to reset to default settings ?</value>
+    <value>¿Estás seguro que quieres reestablecer a los valores predeterminados?</value>
   </data>
   <data name="SettingsForm_importBtn_Click_OpenFileDialogTitle" xml:space="preserve">
-    <value>Select Source.</value>
+    <value>Seleccione una fuente.</value>
   </data>
   <data name="SettingsForm_exportBtn_Click_OpenFileDialogTitle" xml:space="preserve">
-    <value>Select Target.</value>
+    <value>Seleccione un destino.</value>
   </data>
   <data name="SettingsForm_exportBtn_Click_ExporteSuccess" xml:space="preserve">
-    <value>Exported Successfully!</value>
+    <value>Exportado exitosamente!</value>
   </data>
   <data name="SettingsForm_IsGlobal_SettingsGLOBAL" xml:space="preserve">
-    <value>Settings. [GLOBAL]</value>
+    <value>Ajustes.[GLOBAL]</value>
   </data>
   <data name="SettingsForm_IsGlobal_SettingsPROJECT" xml:space="preserve">
-    <value>Settings. [PROJECT]</value>
+    <value>Ajustes.[PROJECT]</value>
   </data>
   <data name="PluginsForm_PluginsForm_Load_PluginCached" xml:space="preserve">
     <value>The plugin is cached, No description is available.</value>
@@ -199,10 +199,10 @@ Would you like to continue ?</value>
     <value>Remove from server.cfg</value>
   </data>
   <data name="PluginsForm_includesList_SelectedIndexChanged_AddToServerCfg" xml:space="preserve">
-    <value>Add to server.cfg</value>
+    <value>Agregar a server.cfg</value>
   </data>
   <data name="PluginsForm_includesList_SelectedIndexChanged_InstallPlugin" xml:space="preserve">
-    <value>Install Plugin</value>
+    <value>Instalar plugin</value>
   </data>
   <data name="PluginsForm_Button1_Click_PluginCantBeFoundInCache" xml:space="preserve">
     <value>The plugin can't be found in the cache.</value>
@@ -214,25 +214,25 @@ Would you like to continue ?</value>
     <value>The include is cached, No description is available.</value>
   </data>
   <data name="IncludesForm_includesList_SelectedIndexChanged_IncludeNeedsPlugin" xml:space="preserve">
-    <value>This include needs the {0} plugin to work.</value>
+    <value>Este include necesita el plugin {0} para funcionar.</value>
   </data>
   <data name="IncludesForm_includesList_SelectedIndexChanged_ReinstallInclude" xml:space="preserve">
-    <value>Reinstall Include</value>
+    <value>Reinstalar Include</value>
   </data>
   <data name="IncludesForm_includesList_SelectedIndexChanged_InstallInclude" xml:space="preserve">
-    <value>Install Include</value>
+    <value>Instalar Include</value>
   </data>
   <data name="IncludesForm_Button1_Click_IncludeNotFoundCache" xml:space="preserve">
-    <value>The include can't be found in the cache.</value>
+    <value>El plugin no se encuentra en la caché.</value>
   </data>
   <data name="IncludesForm_Button1_Click_IncludeInstalled" xml:space="preserve">
-    <value>The include '{0}' has been successfully installed.</value>
+    <value>El plugin '{0}' se ha instalado correctamente.</value>
   </data>
   <data name="EsPluginsForm_PluginList_Click_ReInstallPlugin" xml:space="preserve">
-    <value>ReInstall Plugin</value>
+    <value>Reinstalar Plugin</value>
   </data>
   <data name="EsPluginsForm_PluginList_Click_InstallPlugin" xml:space="preserve">
-    <value>Install Plugin</value>
+    <value>Instalar Plugin</value>
   </data>
   <data name="ProjExplorerDock_filesList_FileSelected_FileNotSupported" xml:space="preserve">
     <value>This filetype is not supported to be veiwed by ExtremeStudio so it will be opened normally.</value>
