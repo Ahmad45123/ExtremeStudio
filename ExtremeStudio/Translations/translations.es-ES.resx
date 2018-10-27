@@ -235,7 +235,7 @@ Would you like to continue ?</value>
     <value>Instalar Plugin</value>
   </data>
   <data name="ProjExplorerDock_filesList_FileSelected_FileNotSupported" xml:space="preserve">
-    <value>This filetype is not supported to be veiwed by ExtremeStudio so it will be opened normally.</value>
+    <value>Este tipo de archivo no es compatible para ser visto por ExtremeStudio por lo que se abrirá normalmente.</value>
   </data>
   <data name="ProjExplorerDock_RenameToolStripMenuItem_Click_EnterNewNameTitle" xml:space="preserve">
     <value>Enter new name.</value>
