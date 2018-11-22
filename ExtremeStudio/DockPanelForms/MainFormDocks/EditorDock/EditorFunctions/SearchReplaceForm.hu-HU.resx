@@ -577,7 +577,7 @@
     <value>395, 43</value>
   </data>
   <data name="replaceReplaceBtn.Text" xml:space="preserve">
-    <value>Replace</value>
+    <value>Csere</value>
   </data>
   <data name="matchWholeWordCheck.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 230</value>
@@ -592,7 +592,7 @@
     <value>0</value>
   </data>
   <data name="searchNormalRadio.Text" xml:space="preserve">
-    <value>Normal</value>
+    <value>Normál</value>
   </data>
   <data name="&gt;&gt;replaceFindText.Parent" xml:space="preserve">
     <value>TabPage2</value>
@@ -670,7 +670,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="replaceCloseBtn.Text" xml:space="preserve">
-    <value>Close</value>
+    <value>Bezár</value>
   </data>
   <data name="&gt;&gt;TabPage2.Parent" xml:space="preserve">
     <value>TabControl1</value>
@@ -691,10 +691,10 @@
     <value>TabPage2</value>
   </data>
   <data name="searchFindBtn.Text" xml:space="preserve">
-    <value>Find Next</value>
+    <value>Következő találat</value>
   </data>
   <data name="GroupBox1.Text" xml:space="preserve">
-    <value>Search Mode</value>
+    <value>Keresési mód</value>
   </data>
   <data name="Label3.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
