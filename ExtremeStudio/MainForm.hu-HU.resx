@@ -199,16 +199,16 @@
     <value>13</value>
   </data>
   <data name="fileTab.Text" xml:space="preserve">
-    <value>Project</value>
+    <value>Projekt</value>
   </data>
   <data name="clipboardPanel.Text" xml:space="preserve">
-    <value>Clipboard</value>
+    <value>Vágólap</value>
   </data>
   <data name="searchPanel.Text" xml:space="preserve">
-    <value>Search &amp; Replace</value>
+    <value>Keresés és csere</value>
   </data>
   <data name="indentPanel.Text" xml:space="preserve">
-    <value>Indentation</value>
+    <value>Indentáció</value>
   </data>
   <data name="UndoButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -220,7 +220,7 @@
     <value></value>
   </data>
   <data name="UndoButton.ToolTip" xml:space="preserve">
-    <value>Undo</value>
+    <value>Visszavonás</value>
   </data>
   <data name="RedoButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -233,13 +233,13 @@
     <value></value>
   </data>
   <data name="RedoButton.ToolTip" xml:space="preserve">
-    <value>Redo</value>
+    <value>Ismétlés</value>
   </data>
   <data name="ribbonPanel1.Text" xml:space="preserve">
-    <value>Editing</value>
+    <value>Szerkesztés</value>
   </data>
   <data name="editTab.Text" xml:space="preserve">
-    <value>Edit</value>
+    <value>Szerkesztés</value>
   </data>
   <data name="ideTab.Text" xml:space="preserve">
     <value>IDE</value>
@@ -272,7 +272,7 @@
 </value>
   </data>
   <data name="RibbonOrbMenuItem1.Text" xml:space="preserve">
-    <value>Project</value>
+    <value>Projekt</value>
   </data>
   <data name="RibbonOrbRecentItem1.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -311,7 +311,7 @@
     <value>Save All Files</value>
   </data>
   <data name="downloadPanel.Text" xml:space="preserve">
-    <value>Packages</value>
+    <value>Csomagok</value>
   </data>
   <data name="includesButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -329,7 +329,7 @@
 </value>
   </data>
   <data name="cutButton.ToolTip" xml:space="preserve">
-    <value>Cut</value>
+    <value>Kivágás</value>
   </data>
   <data name="copyButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -338,7 +338,7 @@
 </value>
   </data>
   <data name="copyButton.ToolTip" xml:space="preserve">
-    <value>Copy</value>
+    <value>Másolás</value>
   </data>
   <data name="pasteButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -347,7 +347,7 @@
 </value>
   </data>
   <data name="pasteButton.ToolTip" xml:space="preserve">
-    <value>Paste</value>
+    <value>Beillesztés</value>
   </data>
   <data name="searchButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -356,7 +356,7 @@
 </value>
   </data>
   <data name="searchButton.ToolTip" xml:space="preserve">
-    <value>Search</value>
+    <value>Keresés</value>
   </data>
   <data name="replaceButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -365,7 +365,7 @@
 </value>
   </data>
   <data name="replaceButton.ToolTip" xml:space="preserve">
-    <value>Replace</value>
+    <value>Csere</value>
   </data>
   <data name="gotoButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -374,7 +374,7 @@
 </value>
   </data>
   <data name="gotoButton.ToolTip" xml:space="preserve">
-    <value>GoTo</value>
+    <value>Ugrás</value>
   </data>
   <data name="addIndentButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -383,7 +383,7 @@
 </value>
   </data>
   <data name="addIndentButton.ToolTip" xml:space="preserve">
-    <value>Add Indentation</value>
+    <value>Indentáció hozzáadása</value>
   </data>
   <data name="removeIndentButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -392,10 +392,10 @@
 </value>
   </data>
   <data name="removeIndentButton.ToolTip" xml:space="preserve">
-    <value>Remove Indentation</value>
+    <value>Indentáció törlése</value>
   </data>
   <data name="viewPanel.Text" xml:space="preserve">
-    <value>View</value>
+    <value>Nézet</value>
   </data>
   <data name="prjExplrerView.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -422,7 +422,7 @@
     <value>Errors &amp; Warnings</value>
   </data>
   <data name="syntaxHighPanel.Text" xml:space="preserve">
-    <value>Settings</value>
+    <value>Beállítások</value>
   </data>
   <data name="RibbonButton1.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
