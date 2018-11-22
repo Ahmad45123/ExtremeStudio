@@ -1153,7 +1153,7 @@
     <value>9</value>
   </data>
   <data name="SearchHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Semmi</value>
   </data>
   <data name="&gt;&gt;SearchHotkey.Name" xml:space="preserve">
     <value>SearchHotkey</value>
@@ -1183,7 +1183,7 @@
     <value>8</value>
   </data>
   <data name="Label14.Text" xml:space="preserve">
-    <value>Search :</value>
+    <value>Keresés :</value>
   </data>
   <data name="&gt;&gt;Label14.Name" xml:space="preserve">
     <value>Label14</value>
@@ -1207,7 +1207,7 @@
     <value>7</value>
   </data>
   <data name="GotoHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Semmi</value>
   </data>
   <data name="&gt;&gt;GotoHotkey.Name" xml:space="preserve">
     <value>GotoHotkey</value>
@@ -1237,7 +1237,7 @@
     <value>6</value>
   </data>
   <data name="Label13.Text" xml:space="preserve">
-    <value>Goto :</value>
+    <value>Ugrás :</value>
   </data>
   <data name="&gt;&gt;Label13.Name" xml:space="preserve">
     <value>Label13</value>
@@ -1261,7 +1261,7 @@
     <value>5</value>
   </data>
   <data name="SaveAllHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Semmi</value>
   </data>
   <data name="&gt;&gt;SaveAllHotkey.Name" xml:space="preserve">
     <value>SaveAllHotkey</value>
@@ -1291,7 +1291,7 @@
     <value>4</value>
   </data>
   <data name="Label12.Text" xml:space="preserve">
-    <value>Save All Files :</value>
+    <value>Minden fájl mentése :</value>
   </data>
   <data name="&gt;&gt;Label12.Name" xml:space="preserve">
     <value>Label12</value>
@@ -1321,7 +1321,7 @@
     <value>3</value>
   </data>
   <data name="Label11.Text" xml:space="preserve">
-    <value>HotKeys</value>
+    <value>Gyorsbillentyűk</value>
   </data>
   <data name="&gt;&gt;Label11.Name" xml:space="preserve">
     <value>Label11</value>
@@ -1345,7 +1345,7 @@
     <value>2</value>
   </data>
   <data name="SaveHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Semmi</value>
   </data>
   <data name="&gt;&gt;SaveHotkey.Name" xml:space="preserve">
     <value>SaveHotkey</value>
@@ -1372,7 +1372,7 @@
     <value>1</value>
   </data>
   <data name="Label10.Text" xml:space="preserve">
-    <value>Save File :</value>
+    <value>Fájl mentése :</value>
   </data>
   <data name="&gt;&gt;Label10.Name" xml:space="preserve">
     <value>Label10</value>
@@ -1396,7 +1396,7 @@
     <value>0</value>
   </data>
   <data name="ResetLangBtn.Text" xml:space="preserve">
-    <value>Reset Localization Settings</value>
+    <value>Honosítási beállítások visszaállítása</value>
   </data>
   <data name="&gt;&gt;ResetLangBtn.Name" xml:space="preserve">
     <value>ResetLangBtn</value>
@@ -1423,7 +1423,7 @@
     <value>44</value>
   </data>
   <data name="resetBtn.Text" xml:space="preserve">
-    <value>Reset Default</value>
+    <value>Visszaállítás alapértelmezettre</value>
   </data>
   <data name="&gt;&gt;resetBtn.Name" xml:space="preserve">
     <value>resetBtn</value>
@@ -1450,7 +1450,7 @@
     <value>43</value>
   </data>
   <data name="importBtn.Text" xml:space="preserve">
-    <value>Import</value>
+    <value>Importálás</value>
   </data>
   <data name="&gt;&gt;importBtn.Name" xml:space="preserve">
     <value>importBtn</value>
@@ -1477,7 +1477,7 @@
     <value>42</value>
   </data>
   <data name="exportBtn.Text" xml:space="preserve">
-    <value>Export</value>
+    <value>Exportálás</value>
   </data>
   <data name="&gt;&gt;exportBtn.Name" xml:space="preserve">
     <value>exportBtn</value>
@@ -1528,7 +1528,7 @@
     <value>26</value>
   </data>
   <data name="Button1.Text" xml:space="preserve">
-    <value>Reset Defaults</value>
+    <value>Visszaállítás alapértelmezettre</value>
   </data>
   <data name="&gt;&gt;Button1.Name" xml:space="preserve">
     <value>Button1</value>
@@ -1558,7 +1558,7 @@
     <value>25</value>
   </data>
   <data name="customArgsText.ToolTip" xml:space="preserve">
-    <value>If there is some args that you want to compile with that aren't above, Write them here.</value>
+    <value>Ha van néhány argument, amit le akar fordítani de nincs fent, őket írja ide.</value>
   </data>
   <data name="&gt;&gt;customArgsText.Name" xml:space="preserve">
     <value>customArgsText</value>
@@ -1585,7 +1585,7 @@
     <value>24</value>
   </data>
   <data name="Label9.Text" xml:space="preserve">
-    <value>Extra Custom Args: </value>
+    <value>Extra egyéni argumentek: </value>
   </data>
   <data name="&gt;&gt;Label9.Name" xml:space="preserve">
     <value>Label9</value>
@@ -1612,10 +1612,10 @@
     <value>23</value>
   </data>
   <data name="parenthesesCheck.Text" xml:space="preserve">
-    <value>Functions need parentheses.</value>
+    <value>Funkcióknak kellenek zárójelek.</value>
   </data>
   <data name="parenthesesCheck.ToolTip" xml:space="preserve">
-    <value>If checked, parameters passed in a function must be enclosed in parentheses.</value>
+    <value>Ha be van jelölve, átadott egy funkció zárójelek közé kell tenni.</value>
   </data>
   <data name="&gt;&gt;parenthesesCheck.Name" xml:space="preserve">
     <value>parenthesesCheck</value>
@@ -1642,10 +1642,10 @@
     <value>22</value>
   </data>
   <data name="semiColonCheck.Text" xml:space="preserve">
-    <value>Lines must end with a semicolon.</value>
+    <value>A soroknak pontosvesszővel kell végződnie.</value>
   </data>
   <data name="semiColonCheck.ToolTip" xml:space="preserve">
-    <value>If checked, lines must end with a semi-colon.</value>
+    <value>Ha be van jelölve, a soroknak pontosvesszővel kell végződnie.</value>
   </data>
   <data name="&gt;&gt;semiColonCheck.Name" xml:space="preserve">
     <value>semiColonCheck</value>
@@ -1672,8 +1672,7 @@
     <value>20</value>
   </data>
   <data name="skipLinesUpDown.ToolTip" xml:space="preserve">
-    <value>Skip count: the number of lines to skip in the input ﬁle before starting to compile; 
-for example, to skip a "header" in the source ﬁle which is not in a valid pawn syntax.</value>
+    <value>Átugrás mennyisége: a lefordítás megkezdése előtt az átugrandó sorok száma; például, hogy kihagyja a "fejléc"-t forráskódban, amely nem érvényes pawn szintaxis.</value>
   </data>
   <data name="&gt;&gt;skipLinesUpDown.Name" xml:space="preserve">
     <value>skipLinesUpDown</value>
@@ -1727,8 +1726,7 @@ for example, to skip a "header" in the source ﬁle which is not in a valid pawn
     <value>18</value>
   </data>
   <data name="tabSizeUpDown.ToolTip" xml:space="preserve">
-    <value>Tab size: the number of space characters to use for a tab character. 
-Without this option, the pawn parser will autodetect the tab.</value>
+    <value>Tab mérete: mennyi szóköz karakter használata egy tab karakterhez. Ezen opció nélkül a pawn elemző automatikusan felismeri a tab-ot.</value>
   </data>
   <data name="&gt;&gt;tabSizeUpDown.Name" xml:space="preserve">
     <value>tabSizeUpDown</value>
@@ -1893,11 +1891,7 @@ Without this option, the pawn parser will autodetect the tab.</value>
     <value>12</value>
   </data>
   <data name="reportGenDirText.ToolTip" xml:space="preserve">
-    <value>Report: enable the creation of the report and optionally set
-the ﬁlename to which the extracted documentation and a
-cross-reference report will be written.
-
-Set the path to default to create report in output dir.</value>
+    <value>Jelentés: a jelentés létrehozását teszik lehetővé, és opcionálisan beállítani a fájl nevét, amelyhez a kibontott dokumentáció és egy kereszthivatkozás jelentés íródik. Állítsa be az elérési utat az alapértelmezettre, hogy jelentést hozzon létre a kimeneti könyvtárban.</value>
   </data>
   <data name="&gt;&gt;reportGenDirText.Name" xml:space="preserve">
     <value>reportGenDirText</value>
@@ -1948,7 +1942,7 @@ Set the path to default to create report in output dir.</value>
     <value>10</value>
   </data>
   <data name="Label6.Text" xml:space="preserve">
-    <value>Report Generation: </value>
+    <value>Jelentéskészítés: </value>
   </data>
   <data name="&gt;&gt;Label6.Name" xml:space="preserve">
     <value>Label6</value>
@@ -1975,9 +1969,7 @@ Set the path to default to create report in output dir.</value>
     <value>5</value>
   </data>
   <data name="ouputDirText.ToolTip" xml:space="preserve">
-    <value>Output ﬁle: set the name and path of the binary output ﬁle.
-
-Set it to null for default.</value>
+    <value>Kimeneti fájl: állítsa be a nevét és elérési útját a bináris kimeneti fájlnak. Állítsa be az alapértelmezett értékhez null-ra.</value>
   </data>
   <data name="&gt;&gt;ouputDirText.Name" xml:space="preserve">
     <value>ouputDirText</value>
@@ -2004,7 +1996,7 @@ Set it to null for default.</value>
     <value>4</value>
   </data>
   <data name="Label3.Text" xml:space="preserve">
-    <value>Output Dir: </value>
+    <value>Kimeneti könyvtár: </value>
   </data>
   <data name="&gt;&gt;Label3.Name" xml:space="preserve">
     <value>Label3</value>
@@ -2031,10 +2023,7 @@ Set it to null for default.</value>
     <value>3</value>
   </data>
   <data name="includesDirText.ToolTip" xml:space="preserve">
-    <value>Include path: set the path where the compiler
-can ﬁnd the include ﬁles.
-
-Set it to null for default.</value>
+    <value>Include elérési út: állítsa be az elérési utat ahol a lefordító megtalálhatja az include fájlokat. Állítsa be az null-ra alapértelmezett értékhez.</value>
   </data>
   <data name="&gt;&gt;includesDirText.Name" xml:space="preserve">
     <value>includesDirText</value>
@@ -2061,7 +2050,7 @@ Set it to null for default.</value>
     <value>2</value>
   </data>
   <data name="Label2.Text" xml:space="preserve">
-    <value>Includes Dir: </value>
+    <value>Include-ok könyvtára: </value>
   </data>
   <data name="&gt;&gt;Label2.Name" xml:space="preserve">
     <value>Label2</value>
@@ -2088,10 +2077,7 @@ Set it to null for default.</value>
     <value>1</value>
   </data>
   <data name="activeDirText.ToolTip" xml:space="preserve">
-    <value>Directory: the "active" directory, where the compiler
-should search for its input ﬁles and store its output ﬁles.
-
-Set it to null for default.</value>
+    <value>Könyvtár: az "aktív" könyvtár, ahol a lefordító keresni a bemeneti fájlokat, és tárolja a kimeneti fájlokat. Állítsa be az null-ra alapértelmezett értékhez.</value>
   </data>
   <data name="&gt;&gt;activeDirText.Name" xml:space="preserve">
     <value>activeDirText</value>
@@ -2118,7 +2104,7 @@ Set it to null for default.</value>
     <value>0</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
-    <value>Active Dir: </value>
+    <value>Aktív könyvtár: </value>
   </data>
   <data name="&gt;&gt;Label1.Name" xml:space="preserve">
     <value>Label1</value>
@@ -2145,7 +2131,7 @@ Set it to null for default.</value>
     <value>367, 459</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Settings [Project]</value>
+    <value>Beállítások [Project]</value>
   </data>
   <data name="&gt;&gt;ToolTipHandler.Name" xml:space="preserve">
     <value>ToolTipHandler</value>
