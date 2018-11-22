@@ -128,10 +128,10 @@ Tartalmaznia kell a pawno mappát, gamemodes mappát, plugins mappát, minden fu
     <value>Még nem választotta ki a használandó SAMP-verziót.</value>
   </data>
   <data name="StartupForm_CreateProjectBtn_Click_DirError" xml:space="preserve">
-    <value>That directory doesn't exist or there is a project with that name already there.</value>
+    <value>Az a könyvtár nem létezik, vagy van egy projekt már ott.</value>
   </data>
   <data name="StartupForm_pathTextBox_TextChanged_None" xml:space="preserve">
-    <value>None</value>
+    <value>Semmi</value>
   </data>
   <data name="StartupForm_pathTextBox_TextChanged_ProjectVersionSame" xml:space="preserve">
     <value>A projekt verziója ugyanaz, mint a ExtremeStudio verziója, nincs konvertálásra szükség.</value>
@@ -140,21 +140,21 @@ Tartalmaznia kell a pawno mappát, gamemodes mappát, plugins mappát, minden fu
     <value>A project régebbi mint az ExtremeStudio, konvertálás történik azonban ez lehet hogy nem működik régebbi verziókkal, tehát az ajánlott, hogy nem próbálja meg.</value>
   </data>
   <data name="StartupForm_pathTextBox_TextChanged_ProjectVersionNewer" xml:space="preserve">
-    <value>Project version is newer then ExtremeStudio's version, Please download latest ExtremeStudio package.</value>
+    <value>Projekt verziója újabb, mint az ExtremeStudio verziója, kérjük töltse le a legújabb ExtremeStudio csomagot.</value>
   </data>
   <data name="StartupForm_pathTextBox_TextChanged_InvalidESPrj" xml:space="preserve">
-    <value>ERROR: That folder isn't a valid ExtremeStudio project. Make sure you haven't deleted or modified any file manually.</value>
+    <value>Hiba: A mappa nem egy érvényes ExtremeStudio projekt. Győződjön meg róla, nem törölt, vagy módosított bármilyen fájlt kézzel.</value>
   </data>
   <data name="StartupForm_Button1_Click_WouldYouLikeToContinue" xml:space="preserve">
     <value>
 
-Would you like to continue ?</value>
+Folytatni szeretné?</value>
   </data>
   <data name="MainForm_compileScriptBtn_Click_WaitForCompile" xml:space="preserve">
-    <value>Please wait until the current compilation or parsing process is finished.</value>
+    <value>Várjon, amíg a jelenlegi lefordítási vagy feldolgozási folyamat befejeződött.</value>
   </data>
   <data name="MainForm_CompilerWorker_DoWork_WouldYouLikeToSaveFiles" xml:space="preserve">
-    <value>Would you like to save all files ?</value>
+    <value>Szeretne minden fájlt menteni?</value>
   </data>
   <data name="MainForm_CompilerWorker_ProgressChanged_Compiling" xml:space="preserve">
     <value>Átfordítás...</value>
@@ -163,13 +163,13 @@ Would you like to continue ?</value>
     <value>Az átfordítás meghiúsult hibákkal/figyelmeztetésekkel.</value>
   </data>
   <data name="MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithWarnings" xml:space="preserve">
-    <value>Compiling finished successfully but there are warning(s).</value>
+    <value>A lefordítás sikerült, de vannak figyelmeztetés(ek).</value>
   </data>
   <data name="MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithNoErrorsWarnings" xml:space="preserve">
-    <value>Compiling finished sucessfully with no errors/warnings.</value>
+    <value>A lefordítás sikerült hibák/figyelmeztetések nélkül.</value>
   </data>
   <data name="SettingsForm_resetBtn_Click_ResetDefaultSettings" xml:space="preserve">
-    <value>Are you sure you want to reset to default settings ?</value>
+    <value>Biztos benne hogy vissza szeretné állítani minden beállítást?</value>
   </data>
   <data name="SettingsForm_importBtn_Click_OpenFileDialogTitle" xml:space="preserve">
     <value>Forrás kiválasztása.</value>
@@ -241,112 +241,112 @@ Would you like to continue ?</value>
     <value>Írja be az új nevet.</value>
   </data>
   <data name="ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNewDirName" xml:space="preserve">
-    <value>Please enter a new name for the directory.</value>
+    <value>Kérem adja meg a könyvtár új nevét.</value>
   </data>
   <data name="ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNameForFile" xml:space="preserve">
-    <value>Please enter a new name for the file.
+    <value>Kérjük írja be a fájl új nevét. 
 
-NOTE: INCLUDE THE EXTENSION!</value>
+MEGJEGYZÉS: TARTALMAZZA A KITERJESZTÉST!</value>
   </data>
   <data name="ProjExplorerDock_NewDirectoryToolStripMenuItem_Click_PleaseEnterNameForDir" xml:space="preserve">
-    <value>Please enter a name for the directory.</value>
+    <value>Kérem a könyvtár nevét adja meg.</value>
   </data>
   <data name="ProjExplorerDock_NewFileToolStripMenuItem_Click_PleaseEnterNameForFile" xml:space="preserve">
-    <value>Please enter a name for the file.
+    <value>Kérjük írja be a fájl új nevét. 
 
-NOTE: INCLUDE THE EXTENSION!</value>
+MEGJEGYZÉS: TARTALMAZZA A KITERJESZTÉST!</value>
   </data>
   <data name="ObjectExplorerDockItems_deleteBtn_Click_YouWantDelete" xml:space="preserve">
-    <value>Are you sure you want to delete this ?</value>
+    <value>Biztosan törli ezt az elemet?</value>
   </data>
   <data name="ObjectExplorerDockItems_addBtn_Click_PleaseEnterDetials" xml:space="preserve">
-    <value>Please enter any details.</value>
+    <value>Kérem adjon meg részleteket.</value>
   </data>
   <data name="EditorDock_EditorDock_FormClosing_FileContainsUnSavedContent" xml:space="preserve">
-    <value>The file contains un-saved content, Would you like to save it ?</value>
+    <value>A fájl tartalmaz nem mentett tartalmat. Szeretnéd elmenteni?</value>
   </data>
   <data name="EditorDock_scintilla_TextChangedDelayed_ParsingCode" xml:space="preserve">
-    <value>Parsing Code.</value>
+    <value>Kód elemzése.</value>
   </data>
   <data name="EditorDock_RefreshWorker_RunWorkerCompleted_Idle" xml:space="preserve">
     <value>Üresjárat.</value>
   </data>
   <data name="EditorDock_RefreshWorker_RunWorkerCompleted_IncludeNotFoundError" xml:space="preserve">
-    <value>The include `{0}` is not found, Please make sure it exists.</value>
+    <value>Az include "{0}" nem található, győződjön meg róla, hogy létezik.</value>
   </data>
   <data name="GotoForm_linenumberRadio_CheckedChanged_LineNumberLabel" xml:space="preserve">
-    <value>Line Number: </value>
+    <value>Sor száma: </value>
   </data>
   <data name="GotoForm_linenumberRadio_CheckedChanged_MaximumLabel" xml:space="preserve">
     <value>Maximum: </value>
   </data>
   <data name="GotoForm_linenumberRadio_CheckedChanged_CurrentLabel" xml:space="preserve">
-    <value>Current: </value>
+    <value>Jelenlegi: </value>
   </data>
   <data name="GotoForm_positionRadio_CheckedChanged_PositionLabel" xml:space="preserve">
-    <value>Position: </value>
+    <value>Helyzet: </value>
   </data>
   <data name="GotoForm_GoBtn_Click_CheckYourValues" xml:space="preserve">
-    <value>Please check your value, It seems to be wrong.</value>
+    <value>Kérjük ellenőrizze hogy az értéket, úgy tűnik, hogy rossz.</value>
   </data>
   <data name="SearchReplaceForm_searchCountBtn_Click_NumberItemsFound" xml:space="preserve">
-    <value>Number of items found are: </value>
+    <value>Talált elemek száma száma: </value>
   </data>
   <data name="SearchReplaceForm_SearchAndMark_ReachedEndDocument" xml:space="preserve">
-    <value>Reached End Of Document.</value>
+    <value>Elérte a dokumentum végét.</value>
   </data>
   <data name="SearchReplaceForm_searchFindAllBtn_Click_UseKeysForTravel" xml:space="preserve">
-    <value>Use CTRL+SHIFT+N and CTRL+SHIFT+B to fast-travel in between the finds.</value>
+    <value>Használja a CTRL+SHIFT+N-t és a CTRL+SHIFT+B-t ahhoz hogy gyors-utazzon találatok között.</value>
   </data>
   <data name="SearchReplaceForm_replaceReplaceAllBtn_Click_NumberItemsReplaced" xml:space="preserve">
-    <value>Number of items replaced are: </value>
+    <value>Cserélt elemek száma: </value>
   </data>
   <data name="AutoCompleteItemEx_New_PawnDocHelp" xml:space="preserve">
-    <value>PawnDoc Help: </value>
+    <value>PawnDoc Súgó: </value>
   </data>
   <data name="AutoCompleteItemEx_New_Remarks" xml:space="preserve">
-    <value>Remarks: </value>
+    <value>Megjegyzések: </value>
   </data>
   <data name="AutoCompleteItemEx_New_Parameters" xml:space="preserve">
-    <value>Parameters :</value>
+    <value>Paraméterek:</value>
   </data>
   <data name="AutoCompleteItemEx_New_Returns" xml:space="preserve">
-    <value>Returns: </value>
+    <value>Visszatérés: </value>
   </data>
   <data name="AutoCompleteItemEx_New_FunctionName" xml:space="preserve">
-    <value>Function Name: </value>
+    <value>Funkció neve: </value>
   </data>
   <data name="AutoCompleteItemEx_New_ReturnTag" xml:space="preserve">
-    <value>Return Tag: </value>
+    <value>Visszatérés tag: </value>
   </data>
   <data name="SettingsForm_ResetLangBtn_Click_LocalizationSettingsDeleted" xml:space="preserve">
-    <value>Localization settings have been deleted sucessfully, please restart application and the language dialog will show.</value>
+    <value>A honosítási beállítások sikeresen lettek törölve, indítsa újra az alkalmazást, és a nyelv párbeszédpanel majd megjelenik.</value>
   </data>
   <data name="EditorDock_Editor_KeyDown_DefNotFound" xml:space="preserve">
-    <value>The definition of selected keyword wasn't found.</value>
+    <value>A kijelölt kulcsszó definíciója nem található.</value>
   </data>
   <data name="PackagesForm_PackagesList_SelectedIndexChanged_LastUpdated" xml:space="preserve">
-    <value>Last updated: </value>
+    <value>Utoljára frissítve: </value>
   </data>
   <data name="PackagesForm_PackagesList_SelectedIndexChanged_Stars" xml:space="preserve">
-    <value>Stars: </value>
+    <value>Csillagok: </value>
   </data>
   <data name="PackagesForm_button1_Click_Uninstalling" xml:space="preserve">
-    <value>Uninstalling...</value>
+    <value>Eltávolítás...</value>
   </data>
   <data name="PackagesForm_button1_Click_InstallPackage" xml:space="preserve">
-    <value>Install Package</value>
+    <value>Csomag telepítése</value>
   </data>
   <data name="PackagesForm_button1_Click_Installing" xml:space="preserve">
-    <value>Installing...</value>
+    <value>Telepítés...</value>
   </data>
   <data name="PackagesForm_button1_Click_UninstallPackage" xml:space="preserve">
-    <value>Uninstall Package</value>
+    <value>Csomag eltávolítása</value>
   </data>
   <data name="ProjExplorerDock_DeleteToolStripMenuItem_Click_AreYouSure" xml:space="preserve">
-    <value>Are you sure you'd like to delete this file/folder ?</value>
+    <value>Biztos, hogy törölni akarod ezt a mappát?</value>
   </data>
   <data name="MainForm_CompilerWorker_DoWork_CompilationFailed" xml:space="preserve">
-    <value>Compilation failed.</value>
+    <value>A fordítás sikertelen.</value>
   </data>
 </root>
