@@ -175,7 +175,7 @@
     <value>26, 17</value>
   </data>
   <data name="statusLabel.Text" xml:space="preserve">
-    <value>Idle</value>
+    <value>Tétlen</value>
   </data>
   <data name="mainRibbon.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -245,7 +245,7 @@
     <value>IDE</value>
   </data>
   <data name="customTab.Text" xml:space="preserve">
-    <value>ES Plugins</value>
+    <value>ES pluginok</value>
   </data>
   <data name="&gt;&gt;mainRibbon.Name" xml:space="preserve">
     <value>mainRibbon</value>
@@ -281,16 +281,16 @@
 </value>
   </data>
   <data name="RibbonOrbRecentItem1.Text" xml:space="preserve">
-    <value>Close Current Project</value>
+    <value>Aktuális projekt bezárása</value>
   </data>
   <data name="closeProjectButton.Text" xml:space="preserve">
     <value>RibbonButton4</value>
   </data>
   <data name="closeProjectButton.ToolTip" xml:space="preserve">
-    <value>Close Project</value>
+    <value>Projekt bezárása</value>
   </data>
   <data name="prjPanel.Text" xml:space="preserve">
-    <value>Files</value>
+    <value>Fájlok</value>
   </data>
   <data name="saveFileButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -299,7 +299,7 @@
 </value>
   </data>
   <data name="saveFileButton.ToolTip" xml:space="preserve">
-    <value>Save File</value>
+    <value>Fájl mentése</value>
   </data>
   <data name="saveAllButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -308,7 +308,7 @@
 </value>
   </data>
   <data name="saveAllButton.ToolTip" xml:space="preserve">
-    <value>Save All Files</value>
+    <value>Minden fájl mentése</value>
   </data>
   <data name="downloadPanel.Text" xml:space="preserve">
     <value>Csomagok</value>
@@ -320,7 +320,7 @@
 </value>
   </data>
   <data name="includesButton.ToolTip" xml:space="preserve">
-    <value>Download SAMP Packages</value>
+    <value>SAMP Csomagok Letöltése</value>
   </data>
   <data name="cutButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -410,7 +410,7 @@
 </value>
   </data>
   <data name="objExplorerView.ToolTip" xml:space="preserve">
-    <value>Object Explorer</value>
+    <value>Objektum explorer</value>
   </data>
   <data name="errorsWarningsView.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -419,7 +419,7 @@
 </value>
   </data>
   <data name="errorsWarningsView.ToolTip" xml:space="preserve">
-    <value>Errors &amp; Warnings</value>
+    <value>Hibák &amp; figyelmeztetések</value>
   </data>
   <data name="syntaxHighPanel.Text" xml:space="preserve">
     <value>Beállítások</value>
@@ -431,10 +431,10 @@
 </value>
   </data>
   <data name="RibbonButton1.ToolTip" xml:space="preserve">
-    <value>Modify Syntax Highlighting</value>
+    <value>Szintaxis kiemelés megváltozatása</value>
   </data>
   <data name="BuildPanel.Text" xml:space="preserve">
-    <value>Build</value>
+    <value>Épít</value>
   </data>
   <data name="compileScriptBtn.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -443,7 +443,7 @@
 </value>
   </data>
   <data name="compileScriptBtn.ToolTip" xml:space="preserve">
-    <value>Compile Opened Script</value>
+    <value>Megnyitott script lefordítása</value>
   </data>
   <data name="CompileAndRunBtn.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -452,7 +452,7 @@
 </value>
   </data>
   <data name="pluginManagePanel.Text" xml:space="preserve">
-    <value>Plugin Managment</value>
+    <value>Plugin Menedzsment</value>
   </data>
   <data name="esPluginsManage.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -461,10 +461,10 @@
 </value>
   </data>
   <data name="esPluginsManage.ToolTip" xml:space="preserve">
-    <value>Manage ES Plugins</value>
+    <value>ES pluginok kezelése</value>
   </data>
   <data name="installedPlugins.Text" xml:space="preserve">
-    <value>Installed Plugins</value>
+    <value>Telepített Pluginok</value>
   </data>
   <metadata name="CompilerWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>145, 22</value>
@@ -485,7 +485,7 @@
     <value>610, 462</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>ExtremeStudio - Project</value>
+    <value>ExtremeStudio - Projekt</value>
   </data>
   <data name="&gt;&gt;statusLabel.Name" xml:space="preserve">
     <value>statusLabel</value>
