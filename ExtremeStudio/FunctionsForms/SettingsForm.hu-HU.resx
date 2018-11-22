@@ -457,7 +457,7 @@
     <value>0</value>
   </data>
   <data name="TabPage1.Text" xml:space="preserve">
-    <value>Theme And Colors</value>
+    <value>Téma és színek</value>
   </data>
   <data name="&gt;&gt;TabPage1.Name" xml:space="preserve">
     <value>TabPage1</value>
@@ -748,7 +748,7 @@
     <value>1</value>
   </data>
   <data name="TabPage2.Text" xml:space="preserve">
-    <value>Compiler</value>
+    <value>Lefordító</value>
   </data>
   <data name="&gt;&gt;TabPage2.Name" xml:space="preserve">
     <value>TabPage2</value>
@@ -766,13 +766,13 @@
     <value>True</value>
   </metadata>
   <data name="nameColumn.HeaderText" xml:space="preserve">
-    <value>Name</value>
+    <value>Név</value>
   </data>
   <metadata name="valueColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="valueColumn.HeaderText" xml:space="preserve">
-    <value>Value</value>
+    <value>Érték</value>
   </data>
   <data name="serverCfgGrid.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -859,7 +859,7 @@
     <value>20</value>
   </data>
   <data name="GotoDefHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Nincs</value>
   </data>
   <data name="&gt;&gt;GotoDefHotkey.Name" xml:space="preserve">
     <value>GotoDefHotkey</value>
@@ -889,7 +889,7 @@
     <value>19</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
-    <value>Goto Defination: </value>
+    <value>Ugrás a definícióhoz: </value>
   </data>
   <data name="&gt;&gt;label19.Name" xml:space="preserve">
     <value>label19</value>
@@ -913,7 +913,7 @@
     <value>18</value>
   </data>
   <data name="Button2.Text" xml:space="preserve">
-    <value>Save HotKeys</value>
+    <value>Gyorsgombok mentése</value>
   </data>
   <data name="&gt;&gt;Button2.Name" xml:space="preserve">
     <value>Button2</value>
@@ -937,7 +937,7 @@
     <value>17</value>
   </data>
   <data name="BuildHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Nincs</value>
   </data>
   <data name="&gt;&gt;BuildHotkey.Name" xml:space="preserve">
     <value>BuildHotkey</value>
@@ -967,7 +967,7 @@
     <value>16</value>
   </data>
   <data name="Label18.Text" xml:space="preserve">
-    <value>Build: </value>
+    <value>Verzió: </value>
   </data>
   <data name="&gt;&gt;Label18.Name" xml:space="preserve">
     <value>Label18</value>
@@ -991,7 +991,7 @@
     <value>15</value>
   </data>
   <data name="GotoBeforeHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Nincs</value>
   </data>
   <data name="&gt;&gt;GotoBeforeHotkey.Name" xml:space="preserve">
     <value>GotoBeforeHotkey</value>
@@ -1021,7 +1021,7 @@
     <value>14</value>
   </data>
   <data name="Label17.Text" xml:space="preserve">
-    <value>Goto Before :</value>
+    <value>Ugrás az előzőhöz:</value>
   </data>
   <data name="&gt;&gt;Label17.Name" xml:space="preserve">
     <value>Label17</value>
@@ -1045,7 +1045,7 @@
     <value>13</value>
   </data>
   <data name="GotoNextHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Nincs</value>
   </data>
   <data name="&gt;&gt;GotoNextHotkey.Name" xml:space="preserve">
     <value>GotoNextHotkey</value>
@@ -1075,7 +1075,7 @@
     <value>12</value>
   </data>
   <data name="Label16.Text" xml:space="preserve">
-    <value>Goto Next :</value>
+    <value>Ugrás a következőhöz:</value>
   </data>
   <data name="&gt;&gt;Label16.Name" xml:space="preserve">
     <value>Label16</value>
@@ -1099,7 +1099,7 @@
     <value>11</value>
   </data>
   <data name="ReplaceHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Nincs</value>
   </data>
   <data name="&gt;&gt;ReplaceHotkey.Name" xml:space="preserve">
     <value>ReplaceHotkey</value>
@@ -1129,7 +1129,7 @@
     <value>10</value>
   </data>
   <data name="Label15.Text" xml:space="preserve">
-    <value>Replace :</value>
+    <value>Csere :</value>
   </data>
   <data name="&gt;&gt;Label15.Name" xml:space="preserve">
     <value>Label15</value>
@@ -1700,7 +1700,7 @@ for example, to skip a "header" in the source ﬁle which is not in a valid pawn
     <value>19</value>
   </data>
   <data name="Label8.Text" xml:space="preserve">
-    <value>Number of lines to skip: </value>
+    <value>Átugrandó sorok száma: </value>
   </data>
   <data name="&gt;&gt;Label8.Name" xml:space="preserve">
     <value>Label8</value>
@@ -1755,7 +1755,7 @@ Without this option, the pawn parser will autodetect the tab.</value>
     <value>17</value>
   </data>
   <data name="Label7.Text" xml:space="preserve">
-    <value>Tab Size: </value>
+    <value>Tabulátorméret: </value>
   </data>
   <data name="&gt;&gt;Label7.Name" xml:space="preserve">
     <value>Label7</value>
@@ -1782,10 +1782,7 @@ Without this option, the pawn parser will autodetect the tab.</value>
     <value>16</value>
   </data>
   <data name="optiLevelUpDown.ToolTip" xml:space="preserve">
-    <value>Optimization level: 0 = no optimizations, 1 = core instructions only, 
-2 = core &amp; supplemental instructions. 
-Optimization level 1 is compatible with JIT implementations
-(JIT = “Just In Time” compiler, a high-performance abstract machine).</value>
+    <value>Optimalizálás szint: 0 = nincs optimalizáció, 1 = alapvető utasítások, 2 = alap &amp; kiegészítő utasítások. Optimalizálás szint 1 kompatibilis JIT megvalósításokkal (JIT = "Just In Time" lefordító, egy nagy teljesítményű absztrakt gép).</value>
   </data>
   <data name="&gt;&gt;optiLevelUpDown.Name" xml:space="preserve">
     <value>optiLevelUpDown</value>
@@ -1812,7 +1809,7 @@ Optimization level 1 is compatible with JIT implementations
     <value>15</value>
   </data>
   <data name="Label5.Text" xml:space="preserve">
-    <value>Optimization Level: </value>
+    <value>Optimalizálás szint: </value>
   </data>
   <data name="&gt;&gt;Label5.Name" xml:space="preserve">
     <value>Label5</value>
@@ -1839,9 +1836,7 @@ Optimization level 1 is compatible with JIT implementations
     <value>14</value>
   </data>
   <data name="debugLevelUpDown.ToolTip" xml:space="preserve">
-    <value>Debug level: 0 = none, 1 = bounds checking and assertions only, 
-2 = full symbolic information, 3 = full symbolic information and
-optimizations disabled (same as the combination -d2 and -O0).</value>
+    <value>Debug szintje: 0 nincs, 1 = = határ ellenőrzés és assertiók csak, 2 = teljes szimbolikus információ, 3 = teljes szimbolikus információk és az optimalizáció le van tiltva (ugyanaz, mint a kombináció- d2 és - O0).</value>
   </data>
   <data name="&gt;&gt;debugLevelUpDown.Name" xml:space="preserve">
     <value>debugLevelUpDown</value>
@@ -1868,7 +1863,7 @@ optimizations disabled (same as the combination -d2 and -O0).</value>
     <value>13</value>
   </data>
   <data name="Label4.Text" xml:space="preserve">
-    <value>Debugging Level: </value>
+    <value>Hibakeresési szint: </value>
   </data>
   <data name="&gt;&gt;Label4.Name" xml:space="preserve">
     <value>Label4</value>
