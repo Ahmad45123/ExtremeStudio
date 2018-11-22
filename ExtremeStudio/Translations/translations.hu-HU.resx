@@ -118,14 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="StartupForm_CreateProjectBtn_Click_InvalidSampFolder" xml:space="preserve">
-    <value>Invalid SAMP Folder.. 
-Must contain the pawno folder, gamemodes folder, plugins folder, all executables and the server config.</value>
+    <value>Érvénytelen SAMP mappa.. 
+Tartalmaznia kell a pawno mappát, gamemodes mappát, plugins mappát, minden futtathatót és a szerver konfigurációját.</value>
   </data>
   <data name="StartupForm_CreateProjectBtn_Click_InvalidName" xml:space="preserve">
-    <value>Invalid Name.</value>
+    <value>Érvénytelen név.</value>
   </data>
   <data name="StartupForm_CreateProjectBtn_Click_NoSampSelected" xml:space="preserve">
-    <value>You haven't selected a SAMP version to use.</value>
+    <value>Még nem választotta ki a használandó SAMP-verziót.</value>
   </data>
   <data name="StartupForm_CreateProjectBtn_Click_DirError" xml:space="preserve">
     <value>That directory doesn't exist or there is a project with that name already there.</value>
@@ -134,10 +134,10 @@ Must contain the pawno folder, gamemodes folder, plugins folder, all executables
     <value>None</value>
   </data>
   <data name="StartupForm_pathTextBox_TextChanged_ProjectVersionSame" xml:space="preserve">
-    <value>Project version is the same as ExtremeStudio's version, No converion is needed.</value>
+    <value>A projekt verziója ugyanaz, mint a ExtremeStudio verziója, nincs konvertálásra szükség.</value>
   </data>
   <data name="StartupForm_pathTextBox_TextChanged_ProjectVersionOlder" xml:space="preserve">
-    <value>Project older then ExtremeStudio, Conversion will be done however it may bug with older versions so its recommended to not try.</value>
+    <value>A project régebbi mint az ExtremeStudio, konvertálás történik azonban ez lehet hogy nem működik régebbi verziókkal, tehát az ajánlott, hogy nem próbálja meg.</value>
   </data>
   <data name="StartupForm_pathTextBox_TextChanged_ProjectVersionNewer" xml:space="preserve">
     <value>Project version is newer then ExtremeStudio's version, Please download latest ExtremeStudio package.</value>
@@ -157,10 +157,10 @@ Would you like to continue ?</value>
     <value>Would you like to save all files ?</value>
   </data>
   <data name="MainForm_CompilerWorker_ProgressChanged_Compiling" xml:space="preserve">
-    <value>Compiling...</value>
+    <value>Átfordítás...</value>
   </data>
   <data name="MainForm_CompilerWorker_ProgressChanged_CompilingFailedWithErrors" xml:space="preserve">
-    <value>Compiling failed with errors/warnings.</value>
+    <value>Az átfordítás meghiúsult hibákkal/figyelmeztetésekkel.</value>
   </data>
   <data name="MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithWarnings" xml:space="preserve">
     <value>Compiling finished successfully but there are warning(s).</value>
@@ -172,73 +172,73 @@ Would you like to continue ?</value>
     <value>Are you sure you want to reset to default settings ?</value>
   </data>
   <data name="SettingsForm_importBtn_Click_OpenFileDialogTitle" xml:space="preserve">
-    <value>Select Source.</value>
+    <value>Forrás kiválasztása.</value>
   </data>
   <data name="SettingsForm_exportBtn_Click_OpenFileDialogTitle" xml:space="preserve">
-    <value>Select Target.</value>
+    <value>Cél kiválasztása.</value>
   </data>
   <data name="SettingsForm_exportBtn_Click_ExporteSuccess" xml:space="preserve">
-    <value>Exported Successfully!</value>
+    <value>Sikeresen exportálva!</value>
   </data>
   <data name="SettingsForm_IsGlobal_SettingsGLOBAL" xml:space="preserve">
-    <value>Settings. [GLOBAL]</value>
+    <value>Beállítások. [GLOBAL]</value>
   </data>
   <data name="SettingsForm_IsGlobal_SettingsPROJECT" xml:space="preserve">
-    <value>Settings. [PROJECT]</value>
+    <value>Beállítások. [PROJECT]</value>
   </data>
   <data name="PluginsForm_PluginsForm_Load_PluginCached" xml:space="preserve">
-    <value>The plugin is cached, No description is available.</value>
+    <value>A plugin gyorsítótárazott, nem tartozik hozzá leírás.</value>
   </data>
   <data name="PluginsForm_includesList_SelectedIndexChanged_ThisPluginNeedsTheIncludeToWork" xml:space="preserve">
-    <value>This plugin needs the {0} include to work.</value>
+    <value>Ennek az plugin-nak kell a {0} include, hogy működjön.</value>
   </data>
   <data name="PluginsForm_includesList_SelectedIndexChanged_ReinstallPlugin" xml:space="preserve">
-    <value>Reinstall Plugin</value>
+    <value>Plugin újratelepítése</value>
   </data>
   <data name="PluginsForm_includesList_SelectedIndexChanged_RemoveFromServerCfg" xml:space="preserve">
-    <value>Remove from server.cfg</value>
+    <value>Eltávolítás a server.cfg-ből</value>
   </data>
   <data name="PluginsForm_includesList_SelectedIndexChanged_AddToServerCfg" xml:space="preserve">
-    <value>Add to server.cfg</value>
+    <value>Hozzáadás a server.cfg-hez</value>
   </data>
   <data name="PluginsForm_includesList_SelectedIndexChanged_InstallPlugin" xml:space="preserve">
-    <value>Install Plugin</value>
+    <value>Plugin Telepítése</value>
   </data>
   <data name="PluginsForm_Button1_Click_PluginCantBeFoundInCache" xml:space="preserve">
-    <value>The plugin can't be found in the cache.</value>
+    <value>A plugin nem található a gyorsítótárban.</value>
   </data>
   <data name="PluginsForm_Button1_Click_PluginInstalled" xml:space="preserve">
-    <value>The plugin '{0}' has been successfully installed.</value>
+    <value>A "{0}" plugin telepítése sikeres volt.</value>
   </data>
   <data name="IncludesForm_IncludesForm_Load_IncludeCached" xml:space="preserve">
-    <value>The include is cached, No description is available.</value>
+    <value>A include gyorsítótárazott, nem tartozik hozzá leírás.</value>
   </data>
   <data name="IncludesForm_includesList_SelectedIndexChanged_IncludeNeedsPlugin" xml:space="preserve">
-    <value>This include needs the {0} plugin to work.</value>
+    <value>Ennek az include-nak kell a {0} plugin, hogy működjön.</value>
   </data>
   <data name="IncludesForm_includesList_SelectedIndexChanged_ReinstallInclude" xml:space="preserve">
-    <value>Reinstall Include</value>
+    <value>Include újratelepítése</value>
   </data>
   <data name="IncludesForm_includesList_SelectedIndexChanged_InstallInclude" xml:space="preserve">
-    <value>Install Include</value>
+    <value>Include telepítése</value>
   </data>
   <data name="IncludesForm_Button1_Click_IncludeNotFoundCache" xml:space="preserve">
-    <value>The include can't be found in the cache.</value>
+    <value>Az include nem található a gyorsítótárban.</value>
   </data>
   <data name="IncludesForm_Button1_Click_IncludeInstalled" xml:space="preserve">
-    <value>The include '{0}' has been successfully installed.</value>
+    <value>A "{0}" include telepítése sikeres volt.</value>
   </data>
   <data name="EsPluginsForm_PluginList_Click_ReInstallPlugin" xml:space="preserve">
-    <value>ReInstall Plugin</value>
+    <value>Plugin újratelepítése</value>
   </data>
   <data name="EsPluginsForm_PluginList_Click_InstallPlugin" xml:space="preserve">
-    <value>Install Plugin</value>
+    <value>Plugin Telepítése</value>
   </data>
   <data name="ProjExplorerDock_filesList_FileSelected_FileNotSupported" xml:space="preserve">
-    <value>This filetype is not supported to be veiwed by ExtremeStudio so it will be opened normally.</value>
+    <value>Ez a fájltípust nem támogatja az ExtremeStudio, és normálisan lesz megnyitva.</value>
   </data>
   <data name="ProjExplorerDock_RenameToolStripMenuItem_Click_EnterNewNameTitle" xml:space="preserve">
-    <value>Enter new name.</value>
+    <value>Írja be az új nevet.</value>
   </data>
   <data name="ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNewDirName" xml:space="preserve">
     <value>Please enter a new name for the directory.</value>
@@ -269,7 +269,7 @@ NOTE: INCLUDE THE EXTENSION!</value>
     <value>Parsing Code.</value>
   </data>
   <data name="EditorDock_RefreshWorker_RunWorkerCompleted_Idle" xml:space="preserve">
-    <value>Idle.</value>
+    <value>Üresjárat.</value>
   </data>
   <data name="EditorDock_RefreshWorker_RunWorkerCompleted_IncludeNotFoundError" xml:space="preserve">
     <value>The include `{0}` is not found, Please make sure it exists.</value>
