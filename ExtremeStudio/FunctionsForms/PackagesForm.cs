@@ -32,7 +32,7 @@ namespace ExtremeStudio.FunctionsForms
         private void PackagesForm_Load(object sender, EventArgs e)
         {
             WebClient client = new WebClient();
-            string allPackages = client.DownloadString(@"https://list.packages.sampctl.com");
+            string allPackages = client.DownloadString(@"https://api.sampctl.com");
             _tmppcks = JsonConvert.DeserializeObject<Package[]>(allPackages);
             _pcks = _tmppcks;
 

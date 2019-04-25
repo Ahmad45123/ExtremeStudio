@@ -96,7 +96,7 @@ namespace ExtremeStudio.Classes
 
                     SaveSampCtlData();
                 }
-                else if(SampCtlData.builds[0].includes.Contains("./pawno/include/") && !Directory.Exists(Path.Combine(ProjectPath, "pawno/include/")))
+                else if(SampCtlData.builds[0].includes != null && SampCtlData.builds[0].includes.Contains("./pawno/include/") && !Directory.Exists(Path.Combine(ProjectPath, "pawno/include/")))
 
                 {
                     SampCtlData.builds[0].includes.Remove("./pawno/include/");

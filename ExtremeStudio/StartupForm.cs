@@ -81,10 +81,14 @@ namespace ExtremeStudio
         VersionHandler _versionHandler = new VersionHandler();
 
         [Localizable(false)]
-        private void StartupForm_Load(object sender, EventArgs e)
+        private async void StartupForm_Load(object sender, EventArgs e)
         {
             //Download SAMPCTL
-            SampCtl.EnsureLatestInstalled(Application.StartupPath);
+            this.Enabled = false;
+            this.Text = "Updating sampctl...";
+            await SampCtl.EnsureLatestInstalled(Application.StartupPath);
+            this.Text = "ExtremeStudio";
+            this.Enabled = true;
 
             //Add event.
             pathTextBox.PathText.TextChanged += pathTextBox_TextChanged;
@@ -300,7 +304,10 @@ namespace ExtremeStudio
                     Program.MainForm.CurrentProject.LoadSampCtlData(); //to ensure pawno/includes is there.
 
                     //Ensure the packages are ready
+                    this.Enabled = false;
+                    this.Text = "Ensuring Packages...";
                     await SampCtl.SendCommand(Path.Combine(Application.StartupPath, "sampctl.exe"), newPath, "p ensure");
+                    this.Enabled = true;
 
                     AddNewRecent(
                         Convert.ToString(Program.MainForm.CurrentProject.ProjectPath)); //Add it to the recent list.
@@ -361,10 +368,13 @@ namespace ExtremeStudio
                         Program.MainForm.CurrentProject.CreateTables(); //Create the tables of the db.
                         Program.MainForm.CurrentProject.SaveInfo(); //Write the default extremeStudio config.
                         Program.MainForm.CurrentProject.CopyGlobalConfig();
-            
+
                         //Ensure the packages are ready
+                        this.Enabled = false;
+                        this.Text = "Ensuring Packages...";
                         await SampCtl.SendCommand(Path.Combine(Application.StartupPath, "sampctl.exe"), newPath, "p ensure");
-            
+                        Enabled = true;
+
                         AddNewRecent(
                             Convert.ToString(Program.MainForm.CurrentProject.ProjectPath)); //Add it to the recent list.
                         Program.MainForm.Show();

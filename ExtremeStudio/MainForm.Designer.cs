@@ -62,6 +62,7 @@ namespace ExtremeStudio
             this.removeIndentButton = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
             this.UndoButton = new System.Windows.Forms.RibbonButton();
+            this.RedoButton = new System.Windows.Forms.RibbonButton();
             this.ideTab = new System.Windows.Forms.RibbonTab();
             this.viewPanel = new System.Windows.Forms.RibbonPanel();
             this.prjExplrerView = new System.Windows.Forms.RibbonButton();
@@ -78,7 +79,6 @@ namespace ExtremeStudio
             this.installedPlugins = new System.Windows.Forms.RibbonPanel();
             this.CompilerWorker = new System.ComponentModel.BackgroundWorker();
             this.statusStripTimer = new System.Windows.Forms.Timer(this.components);
-            this.RedoButton = new System.Windows.Forms.RibbonButton();
             this.StatusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -298,6 +298,13 @@ namespace ExtremeStudio
             resources.ApplyResources(this.UndoButton, "UndoButton");
             this.UndoButton.Click += new System.EventHandler(this.UndoButton_Click);
             // 
+            // RedoButton
+            // 
+            this.RedoButton.Image = global::ExtremeStudio.Properties.Resources.ribbon_redo;
+            this.RedoButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("RedoButton.SmallImage")));
+            resources.ApplyResources(this.RedoButton, "RedoButton");
+            this.RedoButton.Click += new System.EventHandler(this.RedoButton_Click);
+            // 
             // ideTab
             // 
             this.ideTab.Panels.Add(this.viewPanel);
@@ -381,6 +388,7 @@ namespace ExtremeStudio
             // 
             // esPluginsManage
             // 
+            this.esPluginsManage.Enabled = false;
             this.esPluginsManage.Image = global::ExtremeStudio.Properties.Resources.ribbon_esPlugins;
             this.esPluginsManage.SmallImage = ((System.Drawing.Image)(resources.GetObject("esPluginsManage.SmallImage")));
             resources.ApplyResources(this.esPluginsManage, "esPluginsManage");
@@ -401,13 +409,6 @@ namespace ExtremeStudio
             // statusStripTimer
             // 
             this.statusStripTimer.Tick += new System.EventHandler(this.statusStripTimer_Tick);
-            // 
-            // RedoButton
-            // 
-            this.RedoButton.Image = global::ExtremeStudio.Properties.Resources.ribbon_redo;
-            this.RedoButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("RedoButton.SmallImage")));
-            resources.ApplyResources(this.RedoButton, "RedoButton");
-            this.RedoButton.Click += new System.EventHandler(this.RedoButton_Click);
             // 
             // MainForm
             // 
