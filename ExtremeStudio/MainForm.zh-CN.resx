@@ -156,9 +156,7 @@
   <data name="StatusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="StatusStrip1.Text" xml:space="preserve">
-    <value>StatusStrip1</value>
-  </data>
+  
   <data name="&gt;&gt;StatusStrip1.Name" xml:space="preserve">
     <value>StatusStrip1</value>
   </data>
@@ -174,9 +172,7 @@
   <data name="statusLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>26, 17</value>
   </data>
-  <data name="statusLabel.Text" xml:space="preserve">
-    <value>Idle</value>
-  </data>
+  
   <data name="mainRibbon.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
@@ -198,30 +194,18 @@
   <data name="mainRibbon.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
-  <data name="fileTab.Text" xml:space="preserve">
-    <value>Project</value>
-  </data>
-  <data name="clipboardPanel.Text" xml:space="preserve">
-    <value>Clipboard</value>
-  </data>
-  <data name="searchPanel.Text" xml:space="preserve">
-    <value>Search &amp; Replace</value>
-  </data>
-  <data name="indentPanel.Text" xml:space="preserve">
-    <value>Indentation</value>
-  </data>
+  
+  
+  
+  
   <data name="UndoButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="UndoButton.Text" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="UndoButton.ToolTip" xml:space="preserve">
-    <value>Undo</value>
-  </data>
+  
+  
   <data name="RedoButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -229,24 +213,12 @@
         TkSuQmCC
 </value>
   </data>
-  <data name="RedoButton.Text" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="RedoButton.ToolTip" xml:space="preserve">
-    <value>Redo</value>
-  </data>
-  <data name="ribbonPanel1.Text" xml:space="preserve">
-    <value>Editing</value>
-  </data>
-  <data name="editTab.Text" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="ideTab.Text" xml:space="preserve">
-    <value>IDE</value>
-  </data>
-  <data name="customTab.Text" xml:space="preserve">
-    <value>ES Plugins</value>
-  </data>
+  
+  
+  
+  
+  
+  
   <data name="&gt;&gt;mainRibbon.Name" xml:space="preserve">
     <value>mainRibbon</value>
   </data>
@@ -271,132 +243,96 @@
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="RibbonOrbMenuItem1.Text" xml:space="preserve">
-    <value>Project</value>
-  </data>
+  
   <data name="RibbonOrbRecentItem1.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="RibbonOrbRecentItem1.Text" xml:space="preserve">
-    <value>Close Current Project</value>
-  </data>
-  <data name="closeProjectButton.Text" xml:space="preserve">
-    <value>RibbonButton4</value>
-  </data>
-  <data name="closeProjectButton.ToolTip" xml:space="preserve">
-    <value>Close Project</value>
-  </data>
-  <data name="prjPanel.Text" xml:space="preserve">
-    <value>Files</value>
-  </data>
+  
+  
+  
+  
   <data name="saveFileButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="saveFileButton.ToolTip" xml:space="preserve">
-    <value>Save File</value>
-  </data>
+  
   <data name="saveAllButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="saveAllButton.ToolTip" xml:space="preserve">
-    <value>Save All Files</value>
-  </data>
-  <data name="downloadPanel.Text" xml:space="preserve">
-    <value>Packages</value>
-  </data>
+  
+  
   <data name="includesButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="includesButton.ToolTip" xml:space="preserve">
-    <value>Download SAMP Packages</value>
-  </data>
+  
   <data name="cutButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="cutButton.ToolTip" xml:space="preserve">
-    <value>Cut</value>
-  </data>
+  
   <data name="copyButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="copyButton.ToolTip" xml:space="preserve">
-    <value>Copy</value>
-  </data>
+  
   <data name="pasteButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="pasteButton.ToolTip" xml:space="preserve">
-    <value>Paste</value>
-  </data>
+  
   <data name="searchButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="searchButton.ToolTip" xml:space="preserve">
-    <value>Search</value>
-  </data>
+  
   <data name="replaceButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="replaceButton.ToolTip" xml:space="preserve">
-    <value>Replace</value>
-  </data>
+  
   <data name="gotoButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="gotoButton.ToolTip" xml:space="preserve">
-    <value>GoTo</value>
-  </data>
+  
   <data name="addIndentButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="addIndentButton.ToolTip" xml:space="preserve">
-    <value>Add Indentation</value>
-  </data>
+  
   <data name="removeIndentButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="removeIndentButton.ToolTip" xml:space="preserve">
-    <value>Remove Indentation</value>
-  </data>
-  <data name="viewPanel.Text" xml:space="preserve">
-    <value>View</value>
-  </data>
+  
+  
   <data name="prjExplrerView.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -409,63 +345,45 @@
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="objExplorerView.ToolTip" xml:space="preserve">
-    <value>Object Explorer</value>
-  </data>
+  
   <data name="errorsWarningsView.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="errorsWarningsView.ToolTip" xml:space="preserve">
-    <value>Errors &amp; Warnings</value>
-  </data>
-  <data name="syntaxHighPanel.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
+  
+  
   <data name="RibbonButton1.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="RibbonButton1.ToolTip" xml:space="preserve">
-    <value>Modify Syntax Highlighting</value>
-  </data>
-  <data name="BuildPanel.Text" xml:space="preserve">
-    <value>Build</value>
-  </data>
+  
+  
   <data name="compileScriptBtn.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="compileScriptBtn.ToolTip" xml:space="preserve">
-    <value>Compile Opened Script</value>
-  </data>
+  
   <data name="CompileAndRunBtn.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="pluginManagePanel.Text" xml:space="preserve">
-    <value>Plugin Managment</value>
-  </data>
+  
   <data name="esPluginsManage.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="esPluginsManage.ToolTip" xml:space="preserve">
-    <value>Manage ES Plugins</value>
-  </data>
-  <data name="installedPlugins.Text" xml:space="preserve">
-    <value>Installed Plugins</value>
-  </data>
+  
+  
   <metadata name="CompilerWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>145, 22</value>
   </metadata>
@@ -484,9 +402,7 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>610, 462</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>ExtremeStudio - Project</value>
-  </data>
+  
   <data name="&gt;&gt;statusLabel.Name" xml:space="preserve">
     <value>statusLabel</value>
   </data>
