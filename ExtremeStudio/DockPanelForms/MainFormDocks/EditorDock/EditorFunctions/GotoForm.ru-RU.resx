@@ -134,9 +134,7 @@
   <data name="&gt;&gt;theLabel.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="CancelBtn.Text" xml:space="preserve">
-    <value>&amp;Отмена</value>
-  </data>
+  
   <data name="&gt;&gt;linenumberRadio.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
@@ -176,9 +174,7 @@
   <data name="positionRadio.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="theLabel.Text" xml:space="preserve">
-    <value>Номер строки: </value>
-  </data>
+  
   <data name="&gt;&gt;GoBtn.Name" xml:space="preserve">
     <value>GoBtn</value>
   </data>
@@ -195,9 +191,7 @@
   <data name="CancelBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>261, 66</value>
   </data>
-  <data name="maxLabel.Text" xml:space="preserve">
-    <value>Максимальный: 0</value>
-  </data>
+  
   <data name="&gt;&gt;positionRadio.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -255,9 +249,7 @@
   <data name="positionRadio.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="curLabel.Text" xml:space="preserve">
-    <value>Текущий: 0</value>
-  </data>
+  
   <data name="&gt;&gt;maxLabel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
@@ -279,18 +271,10 @@
   <data name="&gt;&gt;theLabel.Name" xml:space="preserve">
     <value>theLabel</value>
   </data>
-  <data name="positionRadio.Text" xml:space="preserve">
-    <value>Позиция</value>
-  </data>
-  <data name="linenumberRadio.Text" xml:space="preserve">
-    <value>Номер строки</value>
-  </data>
-  <data name="GoBtn.Text" xml:space="preserve">
-    <value>&amp;Вперёд</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Перейти</value>
-  </data>
+  
+  
+  
+  
   <data name="&gt;&gt;curLabel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
