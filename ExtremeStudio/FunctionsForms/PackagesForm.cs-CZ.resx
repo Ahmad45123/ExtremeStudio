@@ -158,9 +158,7 @@
   <data name="NextButton.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="NextButton.Text" xml:space="preserve">
-    <value>&gt;&gt;</value>
-  </data>
+  
   <data name="&gt;&gt;NextButton.Name" xml:space="preserve">
     <value>NextButton</value>
   </data>
@@ -182,9 +180,7 @@
   <data name="PreviousButton.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="PreviousButton.Text" xml:space="preserve">
-    <value>&lt;&lt;</value>
-  </data>
+  
   <data name="&gt;&gt;PreviousButton.Name" xml:space="preserve">
     <value>PreviousButton</value>
   </data>
@@ -209,9 +205,7 @@
   <data name="NPages.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="NPages.Text" xml:space="preserve">
-    <value>0/0</value>
-  </data>
+  
   <data name="&gt;&gt;NPages.Name" xml:space="preserve">
     <value>NPages</value>
   </data>
@@ -284,9 +278,7 @@
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Závislosti: </value>
-  </data>
+  
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
   </data>
@@ -314,9 +306,7 @@
   <data name="StarsLabel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="StarsLabel.Text" xml:space="preserve">
-    <value>Stars: 0</value>
-  </data>
+  
   <data name="&gt;&gt;StarsLabel.Name" xml:space="preserve">
     <value>StarsLabel</value>
   </data>
@@ -344,9 +334,7 @@
   <data name="LastUpdatedLabel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="LastUpdatedLabel.Text" xml:space="preserve">
-    <value>Poslední aktualizace: </value>
-  </data>
+  
   <data name="&gt;&gt;LastUpdatedLabel.Name" xml:space="preserve">
     <value>LastUpdatedLabel</value>
   </data>
@@ -371,9 +359,7 @@
   <data name="PackageNameLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="PackageNameLabel.Text" xml:space="preserve">
-    <value>Název / balíček</value>
-  </data>
+  
   <data name="PackageNameLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
@@ -398,9 +384,7 @@
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Informace</value>
-  </data>
+  
   <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
     <value>groupBox1</value>
   </data>
@@ -422,9 +406,7 @@
   <data name="ActionButton.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="ActionButton.Text" xml:space="preserve">
-    <value>Nainstalovat balíček</value>
-  </data>
+  
   <data name="&gt;&gt;ActionButton.Name" xml:space="preserve">
     <value>ActionButton</value>
   </data>
@@ -446,9 +428,7 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>549, 432</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Balíčky</value>
-  </data>
+  
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>PackagesForm</value>
   </data>
