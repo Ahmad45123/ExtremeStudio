@@ -140,9 +140,7 @@
   <data name="&gt;&gt;searchFindBtn.Name" xml:space="preserve">
     <value>searchFindBtn</value>
   </data>
-  <data name="matchCaseCheck.Text" xml:space="preserve">
-    <value>Match Case</value>
-  </data>
+  
   <data name="&gt;&gt;GroupBox1.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -206,9 +204,7 @@
   <data name="TabPage1.Size" type="System.Drawing.Size, System.Drawing">
     <value>488, 197</value>
   </data>
-  <data name="Label3.Text" xml:space="preserve">
-    <value>Replace: </value>
-  </data>
+  
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
   <data name="TabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -216,24 +212,18 @@
   <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 14</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Search &amp; Replace</value>
-  </data>
+  
   <data name="replaceCloseBtn.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
   </data>
   <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="matchWholeWordCheck.Text" xml:space="preserve">
-    <value>Match Whole Word</value>
-  </data>
+  
   <data name="matchCaseCheck.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 17</value>
   </data>
-  <data name="searchCountBtn.Text" xml:space="preserve">
-    <value>Count</value>
-  </data>
+  
   <data name="replaceReplaceText.Location" type="System.Drawing.Point, System.Drawing">
     <value>46, 45</value>
   </data>
@@ -342,9 +332,7 @@
   <data name="&gt;&gt;searchFindBtn.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="inSelCheck.Text" xml:space="preserve">
-    <value>In Selection</value>
-  </data>
+  
   <data name="&gt;&gt;replaceFindText.Name" xml:space="preserve">
     <value>replaceFindText</value>
   </data>
@@ -414,9 +402,7 @@
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
-  <data name="findCloseBtn.Text" xml:space="preserve">
-    <value>Close</value>
-  </data>
+  
   <data name="&gt;&gt;matchWholeWordCheck.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
@@ -429,9 +415,7 @@
   <data name="&gt;&gt;Label3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="replaceReplaceAllBtn.Text" xml:space="preserve">
-    <value>Replace All</value>
-  </data>
+  
   <data name="&gt;&gt;GroupBox1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
@@ -444,9 +428,7 @@
   <data name="TabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="replaceFindNextBtn.Text" xml:space="preserve">
-    <value>Find Next</value>
-  </data>
+  
   <data name="&gt;&gt;searchFindAllBtn.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
@@ -495,9 +477,7 @@
   <data name="searchRegexRadio.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 40</value>
   </data>
-  <data name="Label2.Text" xml:space="preserve">
-    <value>Find what: </value>
-  </data>
+  
   <data name="&gt;&gt;GroupBox1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
@@ -531,9 +511,7 @@
   <data name="&gt;&gt;matchCaseCheck.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="Label1.Text" xml:space="preserve">
-    <value>Find what: </value>
-  </data>
+  
   <data name="&gt;&gt;replaceFindText.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
@@ -546,27 +524,19 @@
   <data name="&gt;&gt;findCloseBtn.Name" xml:space="preserve">
     <value>findCloseBtn</value>
   </data>
-  <data name="TabPage2.Text" xml:space="preserve">
-    <value>Replace</value>
-  </data>
+  
   <data name="GroupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>135, 230</value>
   </data>
-  <data name="TabPage1.Text" xml:space="preserve">
-    <value>Search</value>
-  </data>
+  
   <data name="replaceReplaceText.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
   <data name="&gt;&gt;Label1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="searchRegexRadio.Text" xml:space="preserve">
-    <value>Regular Expression</value>
-  </data>
-  <data name="searchFindAllBtn.Text" xml:space="preserve">
-    <value>Find All In Current Doc</value>
-  </data>
+  
+  
   <data name="&gt;&gt;Label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -576,9 +546,7 @@
   <data name="replaceReplaceBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>395, 43</value>
   </data>
-  <data name="replaceReplaceBtn.Text" xml:space="preserve">
-    <value>Replace</value>
-  </data>
+  
   <data name="matchWholeWordCheck.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 230</value>
   </data>
@@ -591,9 +559,7 @@
   <data name="TabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="searchNormalRadio.Text" xml:space="preserve">
-    <value>Normal</value>
-  </data>
+  
   <data name="&gt;&gt;replaceFindText.Parent" xml:space="preserve">
     <value>TabPage2</value>
   </data>
@@ -669,9 +635,7 @@
   <data name="&gt;&gt;searchFindText.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="replaceCloseBtn.Text" xml:space="preserve">
-    <value>Close</value>
-  </data>
+  
   <data name="&gt;&gt;TabPage2.Parent" xml:space="preserve">
     <value>TabControl1</value>
   </data>
@@ -690,12 +654,8 @@
   <data name="&gt;&gt;replaceCloseBtn.Parent" xml:space="preserve">
     <value>TabPage2</value>
   </data>
-  <data name="searchFindBtn.Text" xml:space="preserve">
-    <value>Find Next</value>
-  </data>
-  <data name="GroupBox1.Text" xml:space="preserve">
-    <value>Search Mode</value>
-  </data>
+  
+  
   <data name="Label3.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
