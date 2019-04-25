@@ -117,236 +117,79 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="StartupForm_CreateProjectBtn_Click_InvalidSampFolder" xml:space="preserve">
-    <value>Invalid SAMP Folder.. 
-Must contain the pawno folder, gamemodes folder, plugins folder, all executables and the server config.</value>
-  </data>
-  <data name="StartupForm_CreateProjectBtn_Click_InvalidName" xml:space="preserve">
-    <value>Invalid Name.</value>
-  </data>
-  <data name="StartupForm_CreateProjectBtn_Click_NoSampSelected" xml:space="preserve">
-    <value>You haven't selected a SAMP version to use.</value>
-  </data>
-  <data name="StartupForm_CreateProjectBtn_Click_DirError" xml:space="preserve">
-    <value>That directory doesn't exist or there is a project with that name already there.</value>
-  </data>
-  <data name="StartupForm_pathTextBox_TextChanged_None" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="StartupForm_pathTextBox_TextChanged_ProjectVersionSame" xml:space="preserve">
-    <value>Project version is the same as ExtremeStudio's version, No converion is needed.</value>
-  </data>
-  <data name="StartupForm_pathTextBox_TextChanged_ProjectVersionOlder" xml:space="preserve">
-    <value>Project older then ExtremeStudio, Conversion will be done however it may bug with older versions so its recommended to not try.</value>
-  </data>
-  <data name="StartupForm_pathTextBox_TextChanged_ProjectVersionNewer" xml:space="preserve">
-    <value>Project version is newer then ExtremeStudio's version, Please download latest ExtremeStudio package.</value>
-  </data>
-  <data name="StartupForm_pathTextBox_TextChanged_InvalidESPrj" xml:space="preserve">
-    <value>ERROR: That folder isn't a valid ExtremeStudio project. Make sure you haven't deleted or modified any file manually.</value>
-  </data>
-  <data name="StartupForm_Button1_Click_WouldYouLikeToContinue" xml:space="preserve">
-    <value>
-
-Would you like to continue ?</value>
-  </data>
-  <data name="MainForm_compileScriptBtn_Click_WaitForCompile" xml:space="preserve">
-    <value>Please wait until the current compilation or parsing process is finished.</value>
-  </data>
-  <data name="MainForm_CompilerWorker_DoWork_WouldYouLikeToSaveFiles" xml:space="preserve">
-    <value>Would you like to save all files ?</value>
-  </data>
-  <data name="MainForm_CompilerWorker_ProgressChanged_Compiling" xml:space="preserve">
-    <value>Compiling...</value>
-  </data>
-  <data name="MainForm_CompilerWorker_ProgressChanged_CompilingFailedWithErrors" xml:space="preserve">
-    <value>Compiling failed with errors/warnings.</value>
-  </data>
-  <data name="MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithWarnings" xml:space="preserve">
-    <value>Compiling finished successfully but there are warning(s).</value>
-  </data>
-  <data name="MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithNoErrorsWarnings" xml:space="preserve">
-    <value>Compiling finished sucessfully with no errors/warnings.</value>
-  </data>
-  <data name="SettingsForm_resetBtn_Click_ResetDefaultSettings" xml:space="preserve">
-    <value>Are you sure you want to reset to default settings ?</value>
-  </data>
-  <data name="SettingsForm_importBtn_Click_OpenFileDialogTitle" xml:space="preserve">
-    <value>Select Source.</value>
-  </data>
-  <data name="SettingsForm_exportBtn_Click_OpenFileDialogTitle" xml:space="preserve">
-    <value>Select Target.</value>
-  </data>
-  <data name="SettingsForm_exportBtn_Click_ExporteSuccess" xml:space="preserve">
-    <value>Exported Successfully!</value>
-  </data>
-  <data name="SettingsForm_IsGlobal_SettingsGLOBAL" xml:space="preserve">
-    <value>Settings. [GLOBAL]</value>
-  </data>
-  <data name="SettingsForm_IsGlobal_SettingsPROJECT" xml:space="preserve">
-    <value>Settings. [PROJECT]</value>
-  </data>
-  <data name="PluginsForm_PluginsForm_Load_PluginCached" xml:space="preserve">
-    <value>The plugin is cached, No description is available.</value>
-  </data>
-  <data name="PluginsForm_includesList_SelectedIndexChanged_ThisPluginNeedsTheIncludeToWork" xml:space="preserve">
-    <value>This plugin needs the {0} include to work.</value>
-  </data>
-  <data name="PluginsForm_includesList_SelectedIndexChanged_ReinstallPlugin" xml:space="preserve">
-    <value>Reinstall Plugin</value>
-  </data>
-  <data name="PluginsForm_includesList_SelectedIndexChanged_RemoveFromServerCfg" xml:space="preserve">
-    <value>Remove from server.cfg</value>
-  </data>
-  <data name="PluginsForm_includesList_SelectedIndexChanged_AddToServerCfg" xml:space="preserve">
-    <value>Add to server.cfg</value>
-  </data>
-  <data name="PluginsForm_includesList_SelectedIndexChanged_InstallPlugin" xml:space="preserve">
-    <value>Install Plugin</value>
-  </data>
-  <data name="PluginsForm_Button1_Click_PluginCantBeFoundInCache" xml:space="preserve">
-    <value>The plugin can't be found in the cache.</value>
-  </data>
-  <data name="PluginsForm_Button1_Click_PluginInstalled" xml:space="preserve">
-    <value>The plugin '{0}' has been successfully installed.</value>
-  </data>
-  <data name="IncludesForm_IncludesForm_Load_IncludeCached" xml:space="preserve">
-    <value>The include is cached, No description is available.</value>
-  </data>
-  <data name="IncludesForm_includesList_SelectedIndexChanged_IncludeNeedsPlugin" xml:space="preserve">
-    <value>This include needs the {0} plugin to work.</value>
-  </data>
-  <data name="IncludesForm_includesList_SelectedIndexChanged_ReinstallInclude" xml:space="preserve">
-    <value>Reinstall Include</value>
-  </data>
-  <data name="IncludesForm_includesList_SelectedIndexChanged_InstallInclude" xml:space="preserve">
-    <value>Install Include</value>
-  </data>
-  <data name="IncludesForm_Button1_Click_IncludeNotFoundCache" xml:space="preserve">
-    <value>The include can't be found in the cache.</value>
-  </data>
-  <data name="IncludesForm_Button1_Click_IncludeInstalled" xml:space="preserve">
-    <value>The include '{0}' has been successfully installed.</value>
-  </data>
-  <data name="EsPluginsForm_PluginList_Click_ReInstallPlugin" xml:space="preserve">
-    <value>ReInstall Plugin</value>
-  </data>
-  <data name="EsPluginsForm_PluginList_Click_InstallPlugin" xml:space="preserve">
-    <value>Install Plugin</value>
-  </data>
-  <data name="ProjExplorerDock_filesList_FileSelected_FileNotSupported" xml:space="preserve">
-    <value>This filetype is not supported to be veiwed by ExtremeStudio so it will be opened normally.</value>
-  </data>
-  <data name="ProjExplorerDock_RenameToolStripMenuItem_Click_EnterNewNameTitle" xml:space="preserve">
-    <value>Enter new name.</value>
-  </data>
-  <data name="ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNewDirName" xml:space="preserve">
-    <value>Please enter a new name for the directory.</value>
-  </data>
-  <data name="ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNameForFile" xml:space="preserve">
-    <value>Please enter a new name for the file.
-
-NOTE: INCLUDE THE EXTENSION!</value>
-  </data>
-  <data name="ProjExplorerDock_NewDirectoryToolStripMenuItem_Click_PleaseEnterNameForDir" xml:space="preserve">
-    <value>Please enter a name for the directory.</value>
-  </data>
-  <data name="ProjExplorerDock_NewFileToolStripMenuItem_Click_PleaseEnterNameForFile" xml:space="preserve">
-    <value>Please enter a name for the file.
-
-NOTE: INCLUDE THE EXTENSION!</value>
-  </data>
-  <data name="ObjectExplorerDockItems_deleteBtn_Click_YouWantDelete" xml:space="preserve">
-    <value>Are you sure you want to delete this ?</value>
-  </data>
-  <data name="ObjectExplorerDockItems_addBtn_Click_PleaseEnterDetials" xml:space="preserve">
-    <value>Please enter any details.</value>
-  </data>
-  <data name="EditorDock_EditorDock_FormClosing_FileContainsUnSavedContent" xml:space="preserve">
-    <value>The file contains un-saved content, Would you like to save it ?</value>
-  </data>
-  <data name="EditorDock_scintilla_TextChangedDelayed_ParsingCode" xml:space="preserve">
-    <value>Parsing Code.</value>
-  </data>
-  <data name="EditorDock_RefreshWorker_RunWorkerCompleted_Idle" xml:space="preserve">
-    <value>Idle.</value>
-  </data>
-  <data name="EditorDock_RefreshWorker_RunWorkerCompleted_IncludeNotFoundError" xml:space="preserve">
-    <value>The include `{0}` is not found, Please make sure it exists.</value>
-  </data>
-  <data name="GotoForm_linenumberRadio_CheckedChanged_LineNumberLabel" xml:space="preserve">
-    <value>Line Number: </value>
-  </data>
-  <data name="GotoForm_linenumberRadio_CheckedChanged_MaximumLabel" xml:space="preserve">
-    <value>Maximum: </value>
-  </data>
-  <data name="GotoForm_linenumberRadio_CheckedChanged_CurrentLabel" xml:space="preserve">
-    <value>Current: </value>
-  </data>
-  <data name="GotoForm_positionRadio_CheckedChanged_PositionLabel" xml:space="preserve">
-    <value>Position: </value>
-  </data>
-  <data name="GotoForm_GoBtn_Click_CheckYourValues" xml:space="preserve">
-    <value>Please check your value, It seems to be wrong.</value>
-  </data>
-  <data name="SearchReplaceForm_searchCountBtn_Click_NumberItemsFound" xml:space="preserve">
-    <value>Number of items found are: </value>
-  </data>
-  <data name="SearchReplaceForm_SearchAndMark_ReachedEndDocument" xml:space="preserve">
-    <value>Reached End Of Document.</value>
-  </data>
-  <data name="SearchReplaceForm_searchFindAllBtn_Click_UseKeysForTravel" xml:space="preserve">
-    <value>Use CTRL+SHIFT+N and CTRL+SHIFT+B to fast-travel in between the finds.</value>
-  </data>
-  <data name="SearchReplaceForm_replaceReplaceAllBtn_Click_NumberItemsReplaced" xml:space="preserve">
-    <value>Number of items replaced are: </value>
-  </data>
-  <data name="AutoCompleteItemEx_New_PawnDocHelp" xml:space="preserve">
-    <value>PawnDoc Help: </value>
-  </data>
-  <data name="AutoCompleteItemEx_New_Remarks" xml:space="preserve">
-    <value>Remarks: </value>
-  </data>
-  <data name="AutoCompleteItemEx_New_Parameters" xml:space="preserve">
-    <value>Parameters :</value>
-  </data>
-  <data name="AutoCompleteItemEx_New_Returns" xml:space="preserve">
-    <value>Returns: </value>
-  </data>
-  <data name="AutoCompleteItemEx_New_FunctionName" xml:space="preserve">
-    <value>Function Name: </value>
-  </data>
-  <data name="AutoCompleteItemEx_New_ReturnTag" xml:space="preserve">
-    <value>Return Tag: </value>
-  </data>
-  <data name="SettingsForm_ResetLangBtn_Click_LocalizationSettingsDeleted" xml:space="preserve">
-    <value>Localization settings have been deleted sucessfully, please restart application and the language dialog will show.</value>
-  </data>
-  <data name="EditorDock_Editor_KeyDown_DefNotFound" xml:space="preserve">
-    <value>The definition of selected keyword wasn't found.</value>
-  </data>
-  <data name="PackagesForm_PackagesList_SelectedIndexChanged_LastUpdated" xml:space="preserve">
-    <value>Last updated: </value>
-  </data>
-  <data name="PackagesForm_PackagesList_SelectedIndexChanged_Stars" xml:space="preserve">
-    <value>Stars: </value>
-  </data>
-  <data name="PackagesForm_button1_Click_Uninstalling" xml:space="preserve">
-    <value>Uninstalling...</value>
-  </data>
-  <data name="PackagesForm_button1_Click_InstallPackage" xml:space="preserve">
-    <value>Install Package</value>
-  </data>
-  <data name="PackagesForm_button1_Click_Installing" xml:space="preserve">
-    <value>Installing...</value>
-  </data>
-  <data name="PackagesForm_button1_Click_UninstallPackage" xml:space="preserve">
-    <value>Uninstall Package</value>
-  </data>
-  <data name="ProjExplorerDock_DeleteToolStripMenuItem_Click_AreYouSure" xml:space="preserve">
-    <value>Are you sure you'd like to delete this file/folder ?</value>
-  </data>
-  <data name="MainForm_CompilerWorker_DoWork_CompilationFailed" xml:space="preserve">
-    <value>Compilation failed.</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </root>
