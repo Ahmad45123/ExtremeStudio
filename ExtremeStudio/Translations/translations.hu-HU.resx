@@ -117,236 +117,79 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="StartupForm_CreateProjectBtn_Click_InvalidSampFolder" xml:space="preserve">
-    <value>Érvénytelen SAMP mappa.. 
-Tartalmaznia kell a pawno mappát, gamemodes mappát, plugins mappát, minden futtathatót és a szerver konfigurációját.</value>
-  </data>
-  <data name="StartupForm_CreateProjectBtn_Click_InvalidName" xml:space="preserve">
-    <value>Érvénytelen név.</value>
-  </data>
-  <data name="StartupForm_CreateProjectBtn_Click_NoSampSelected" xml:space="preserve">
-    <value>Még nem választotta ki a használandó SAMP-verziót.</value>
-  </data>
-  <data name="StartupForm_CreateProjectBtn_Click_DirError" xml:space="preserve">
-    <value>Az a könyvtár nem létezik, vagy van egy projekt már ott.</value>
-  </data>
-  <data name="StartupForm_pathTextBox_TextChanged_None" xml:space="preserve">
-    <value>Semmi</value>
-  </data>
-  <data name="StartupForm_pathTextBox_TextChanged_ProjectVersionSame" xml:space="preserve">
-    <value>A projekt verziója ugyanaz, mint a ExtremeStudio verziója, nincs konvertálásra szükség.</value>
-  </data>
-  <data name="StartupForm_pathTextBox_TextChanged_ProjectVersionOlder" xml:space="preserve">
-    <value>A project régebbi mint az ExtremeStudio, konvertálás történik azonban ez lehet hogy nem működik régebbi verziókkal, tehát az ajánlott, hogy nem próbálja meg.</value>
-  </data>
-  <data name="StartupForm_pathTextBox_TextChanged_ProjectVersionNewer" xml:space="preserve">
-    <value>Projekt verziója újabb, mint az ExtremeStudio verziója, kérjük töltse le a legújabb ExtremeStudio csomagot.</value>
-  </data>
-  <data name="StartupForm_pathTextBox_TextChanged_InvalidESPrj" xml:space="preserve">
-    <value>Hiba: A mappa nem egy érvényes ExtremeStudio projekt. Győződjön meg róla, nem törölt, vagy módosított bármilyen fájlt kézzel.</value>
-  </data>
-  <data name="StartupForm_Button1_Click_WouldYouLikeToContinue" xml:space="preserve">
-    <value>
-
-Folytatni szeretné?</value>
-  </data>
-  <data name="MainForm_compileScriptBtn_Click_WaitForCompile" xml:space="preserve">
-    <value>Várjon, amíg a jelenlegi lefordítási vagy feldolgozási folyamat befejeződött.</value>
-  </data>
-  <data name="MainForm_CompilerWorker_DoWork_WouldYouLikeToSaveFiles" xml:space="preserve">
-    <value>Szeretne minden fájlt menteni?</value>
-  </data>
-  <data name="MainForm_CompilerWorker_ProgressChanged_Compiling" xml:space="preserve">
-    <value>Átfordítás...</value>
-  </data>
-  <data name="MainForm_CompilerWorker_ProgressChanged_CompilingFailedWithErrors" xml:space="preserve">
-    <value>Az átfordítás meghiúsult hibákkal/figyelmeztetésekkel.</value>
-  </data>
-  <data name="MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithWarnings" xml:space="preserve">
-    <value>A lefordítás sikerült, de vannak figyelmeztetés(ek).</value>
-  </data>
-  <data name="MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithNoErrorsWarnings" xml:space="preserve">
-    <value>A lefordítás sikerült hibák/figyelmeztetések nélkül.</value>
-  </data>
-  <data name="SettingsForm_resetBtn_Click_ResetDefaultSettings" xml:space="preserve">
-    <value>Biztos benne hogy vissza szeretné állítani minden beállítást?</value>
-  </data>
-  <data name="SettingsForm_importBtn_Click_OpenFileDialogTitle" xml:space="preserve">
-    <value>Forrás kiválasztása.</value>
-  </data>
-  <data name="SettingsForm_exportBtn_Click_OpenFileDialogTitle" xml:space="preserve">
-    <value>Cél kiválasztása.</value>
-  </data>
-  <data name="SettingsForm_exportBtn_Click_ExporteSuccess" xml:space="preserve">
-    <value>Sikeresen exportálva!</value>
-  </data>
-  <data name="SettingsForm_IsGlobal_SettingsGLOBAL" xml:space="preserve">
-    <value>Beállítások. [GLOBAL]</value>
-  </data>
-  <data name="SettingsForm_IsGlobal_SettingsPROJECT" xml:space="preserve">
-    <value>Beállítások. [PROJECT]</value>
-  </data>
-  <data name="PluginsForm_PluginsForm_Load_PluginCached" xml:space="preserve">
-    <value>A plugin gyorsítótárazott, nem tartozik hozzá leírás.</value>
-  </data>
-  <data name="PluginsForm_includesList_SelectedIndexChanged_ThisPluginNeedsTheIncludeToWork" xml:space="preserve">
-    <value>Ennek az plugin-nak kell a {0} include, hogy működjön.</value>
-  </data>
-  <data name="PluginsForm_includesList_SelectedIndexChanged_ReinstallPlugin" xml:space="preserve">
-    <value>Plugin újratelepítése</value>
-  </data>
-  <data name="PluginsForm_includesList_SelectedIndexChanged_RemoveFromServerCfg" xml:space="preserve">
-    <value>Eltávolítás a server.cfg-ből</value>
-  </data>
-  <data name="PluginsForm_includesList_SelectedIndexChanged_AddToServerCfg" xml:space="preserve">
-    <value>Hozzáadás a server.cfg-hez</value>
-  </data>
-  <data name="PluginsForm_includesList_SelectedIndexChanged_InstallPlugin" xml:space="preserve">
-    <value>Plugin Telepítése</value>
-  </data>
-  <data name="PluginsForm_Button1_Click_PluginCantBeFoundInCache" xml:space="preserve">
-    <value>A plugin nem található a gyorsítótárban.</value>
-  </data>
-  <data name="PluginsForm_Button1_Click_PluginInstalled" xml:space="preserve">
-    <value>A "{0}" plugin telepítése sikeres volt.</value>
-  </data>
-  <data name="IncludesForm_IncludesForm_Load_IncludeCached" xml:space="preserve">
-    <value>A include gyorsítótárazott, nem tartozik hozzá leírás.</value>
-  </data>
-  <data name="IncludesForm_includesList_SelectedIndexChanged_IncludeNeedsPlugin" xml:space="preserve">
-    <value>Ennek az include-nak kell a {0} plugin, hogy működjön.</value>
-  </data>
-  <data name="IncludesForm_includesList_SelectedIndexChanged_ReinstallInclude" xml:space="preserve">
-    <value>Include újratelepítése</value>
-  </data>
-  <data name="IncludesForm_includesList_SelectedIndexChanged_InstallInclude" xml:space="preserve">
-    <value>Include telepítése</value>
-  </data>
-  <data name="IncludesForm_Button1_Click_IncludeNotFoundCache" xml:space="preserve">
-    <value>Az include nem található a gyorsítótárban.</value>
-  </data>
-  <data name="IncludesForm_Button1_Click_IncludeInstalled" xml:space="preserve">
-    <value>A "{0}" include telepítése sikeres volt.</value>
-  </data>
-  <data name="EsPluginsForm_PluginList_Click_ReInstallPlugin" xml:space="preserve">
-    <value>Plugin újratelepítése</value>
-  </data>
-  <data name="EsPluginsForm_PluginList_Click_InstallPlugin" xml:space="preserve">
-    <value>Plugin Telepítése</value>
-  </data>
-  <data name="ProjExplorerDock_filesList_FileSelected_FileNotSupported" xml:space="preserve">
-    <value>Ez a fájltípust nem támogatja az ExtremeStudio, és normálisan lesz megnyitva.</value>
-  </data>
-  <data name="ProjExplorerDock_RenameToolStripMenuItem_Click_EnterNewNameTitle" xml:space="preserve">
-    <value>Írja be az új nevet.</value>
-  </data>
-  <data name="ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNewDirName" xml:space="preserve">
-    <value>Kérem adja meg a könyvtár új nevét.</value>
-  </data>
-  <data name="ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNameForFile" xml:space="preserve">
-    <value>Kérjük írja be a fájl új nevét. 
-
-MEGJEGYZÉS: TARTALMAZZA A KITERJESZTÉST!</value>
-  </data>
-  <data name="ProjExplorerDock_NewDirectoryToolStripMenuItem_Click_PleaseEnterNameForDir" xml:space="preserve">
-    <value>Kérem a könyvtár nevét adja meg.</value>
-  </data>
-  <data name="ProjExplorerDock_NewFileToolStripMenuItem_Click_PleaseEnterNameForFile" xml:space="preserve">
-    <value>Kérjük írja be a fájl új nevét. 
-
-MEGJEGYZÉS: TARTALMAZZA A KITERJESZTÉST!</value>
-  </data>
-  <data name="ObjectExplorerDockItems_deleteBtn_Click_YouWantDelete" xml:space="preserve">
-    <value>Biztosan törli ezt az elemet?</value>
-  </data>
-  <data name="ObjectExplorerDockItems_addBtn_Click_PleaseEnterDetials" xml:space="preserve">
-    <value>Kérem adjon meg részleteket.</value>
-  </data>
-  <data name="EditorDock_EditorDock_FormClosing_FileContainsUnSavedContent" xml:space="preserve">
-    <value>A fájl tartalmaz nem mentett tartalmat. Szeretnéd elmenteni?</value>
-  </data>
-  <data name="EditorDock_scintilla_TextChangedDelayed_ParsingCode" xml:space="preserve">
-    <value>Kód elemzése.</value>
-  </data>
-  <data name="EditorDock_RefreshWorker_RunWorkerCompleted_Idle" xml:space="preserve">
-    <value>Üresjárat.</value>
-  </data>
-  <data name="EditorDock_RefreshWorker_RunWorkerCompleted_IncludeNotFoundError" xml:space="preserve">
-    <value>Az include "{0}" nem található, győződjön meg róla, hogy létezik.</value>
-  </data>
-  <data name="GotoForm_linenumberRadio_CheckedChanged_LineNumberLabel" xml:space="preserve">
-    <value>Sor száma: </value>
-  </data>
-  <data name="GotoForm_linenumberRadio_CheckedChanged_MaximumLabel" xml:space="preserve">
-    <value>Maximum: </value>
-  </data>
-  <data name="GotoForm_linenumberRadio_CheckedChanged_CurrentLabel" xml:space="preserve">
-    <value>Jelenlegi: </value>
-  </data>
-  <data name="GotoForm_positionRadio_CheckedChanged_PositionLabel" xml:space="preserve">
-    <value>Helyzet: </value>
-  </data>
-  <data name="GotoForm_GoBtn_Click_CheckYourValues" xml:space="preserve">
-    <value>Kérjük ellenőrizze hogy az értéket, úgy tűnik, hogy rossz.</value>
-  </data>
-  <data name="SearchReplaceForm_searchCountBtn_Click_NumberItemsFound" xml:space="preserve">
-    <value>Talált elemek száma száma: </value>
-  </data>
-  <data name="SearchReplaceForm_SearchAndMark_ReachedEndDocument" xml:space="preserve">
-    <value>Elérte a dokumentum végét.</value>
-  </data>
-  <data name="SearchReplaceForm_searchFindAllBtn_Click_UseKeysForTravel" xml:space="preserve">
-    <value>Használja a CTRL+SHIFT+N-t és a CTRL+SHIFT+B-t ahhoz hogy gyors-utazzon találatok között.</value>
-  </data>
-  <data name="SearchReplaceForm_replaceReplaceAllBtn_Click_NumberItemsReplaced" xml:space="preserve">
-    <value>Cserélt elemek száma: </value>
-  </data>
-  <data name="AutoCompleteItemEx_New_PawnDocHelp" xml:space="preserve">
-    <value>PawnDoc Súgó: </value>
-  </data>
-  <data name="AutoCompleteItemEx_New_Remarks" xml:space="preserve">
-    <value>Megjegyzések: </value>
-  </data>
-  <data name="AutoCompleteItemEx_New_Parameters" xml:space="preserve">
-    <value>Paraméterek:</value>
-  </data>
-  <data name="AutoCompleteItemEx_New_Returns" xml:space="preserve">
-    <value>Visszatérés: </value>
-  </data>
-  <data name="AutoCompleteItemEx_New_FunctionName" xml:space="preserve">
-    <value>Funkció neve: </value>
-  </data>
-  <data name="AutoCompleteItemEx_New_ReturnTag" xml:space="preserve">
-    <value>Visszatérés tag: </value>
-  </data>
-  <data name="SettingsForm_ResetLangBtn_Click_LocalizationSettingsDeleted" xml:space="preserve">
-    <value>A honosítási beállítások sikeresen lettek törölve, indítsa újra az alkalmazást, és a nyelv párbeszédpanel majd megjelenik.</value>
-  </data>
-  <data name="EditorDock_Editor_KeyDown_DefNotFound" xml:space="preserve">
-    <value>A kijelölt kulcsszó definíciója nem található.</value>
-  </data>
-  <data name="PackagesForm_PackagesList_SelectedIndexChanged_LastUpdated" xml:space="preserve">
-    <value>Utoljára frissítve: </value>
-  </data>
-  <data name="PackagesForm_PackagesList_SelectedIndexChanged_Stars" xml:space="preserve">
-    <value>Csillagok: </value>
-  </data>
-  <data name="PackagesForm_button1_Click_Uninstalling" xml:space="preserve">
-    <value>Eltávolítás...</value>
-  </data>
-  <data name="PackagesForm_button1_Click_InstallPackage" xml:space="preserve">
-    <value>Csomag telepítése</value>
-  </data>
-  <data name="PackagesForm_button1_Click_Installing" xml:space="preserve">
-    <value>Telepítés...</value>
-  </data>
-  <data name="PackagesForm_button1_Click_UninstallPackage" xml:space="preserve">
-    <value>Csomag eltávolítása</value>
-  </data>
-  <data name="ProjExplorerDock_DeleteToolStripMenuItem_Click_AreYouSure" xml:space="preserve">
-    <value>Biztos, hogy törölni akarod ezt a mappát?</value>
-  </data>
-  <data name="MainForm_CompilerWorker_DoWork_CompilationFailed" xml:space="preserve">
-    <value>A fordítás sikertelen.</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </root>
