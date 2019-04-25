@@ -380,9 +380,7 @@
   <data name="TabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="TabPage3.Text" xml:space="preserve">
-    <value>ES</value>
-  </data>
+  
   <data name="&gt;&gt;TabPage3.Name" xml:space="preserve">
     <value>TabPage3</value>
   </data>
@@ -456,9 +454,7 @@
   <data name="TabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="TabPage1.Text" xml:space="preserve">
-    <value>Téma és színek</value>
-  </data>
+  
   <data name="&gt;&gt;TabPage1.Name" xml:space="preserve">
     <value>TabPage1</value>
   </data>
@@ -747,9 +743,7 @@
   <data name="TabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="TabPage2.Text" xml:space="preserve">
-    <value>Lefordító</value>
-  </data>
+  
   <data name="&gt;&gt;TabPage2.Name" xml:space="preserve">
     <value>TabPage2</value>
   </data>
@@ -765,15 +759,11 @@
   <metadata name="nameColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="nameColumn.HeaderText" xml:space="preserve">
-    <value>Név</value>
-  </data>
+  
   <metadata name="valueColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="valueColumn.HeaderText" xml:space="preserve">
-    <value>Érték</value>
-  </data>
+  
   <data name="serverCfgGrid.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -810,9 +800,7 @@
   <data name="serverCFGTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="serverCFGTabPage.Text" xml:space="preserve">
-    <value>server.cfg</value>
-  </data>
+  
   <data name="&gt;&gt;serverCFGTabPage.Name" xml:space="preserve">
     <value>serverCFGTabPage</value>
   </data>
@@ -858,9 +846,7 @@
   <data name="GotoDefHotkey.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
-  <data name="GotoDefHotkey.Text" xml:space="preserve">
-    <value>Nincs</value>
-  </data>
+  
   <data name="&gt;&gt;GotoDefHotkey.Name" xml:space="preserve">
     <value>GotoDefHotkey</value>
   </data>
@@ -888,9 +874,7 @@
   <data name="label19.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
   </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Ugrás a definícióhoz: </value>
-  </data>
+  
   <data name="&gt;&gt;label19.Name" xml:space="preserve">
     <value>label19</value>
   </data>
@@ -912,9 +896,7 @@
   <data name="Button2.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
-  <data name="Button2.Text" xml:space="preserve">
-    <value>Gyorsgombok mentése</value>
-  </data>
+  
   <data name="&gt;&gt;Button2.Name" xml:space="preserve">
     <value>Button2</value>
   </data>
@@ -936,9 +918,7 @@
   <data name="BuildHotkey.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
-  <data name="BuildHotkey.Text" xml:space="preserve">
-    <value>Nincs</value>
-  </data>
+  
   <data name="&gt;&gt;BuildHotkey.Name" xml:space="preserve">
     <value>BuildHotkey</value>
   </data>
@@ -966,9 +946,7 @@
   <data name="Label18.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
-  <data name="Label18.Text" xml:space="preserve">
-    <value>Verzió: </value>
-  </data>
+  
   <data name="&gt;&gt;Label18.Name" xml:space="preserve">
     <value>Label18</value>
   </data>
@@ -990,9 +968,7 @@
   <data name="GotoBeforeHotkey.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
-  <data name="GotoBeforeHotkey.Text" xml:space="preserve">
-    <value>Nincs</value>
-  </data>
+  
   <data name="&gt;&gt;GotoBeforeHotkey.Name" xml:space="preserve">
     <value>GotoBeforeHotkey</value>
   </data>
@@ -1020,9 +996,7 @@
   <data name="Label17.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
   </data>
-  <data name="Label17.Text" xml:space="preserve">
-    <value>Ugrás az előzőhöz:</value>
-  </data>
+  
   <data name="&gt;&gt;Label17.Name" xml:space="preserve">
     <value>Label17</value>
   </data>
@@ -1044,9 +1018,7 @@
   <data name="GotoNextHotkey.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
-  <data name="GotoNextHotkey.Text" xml:space="preserve">
-    <value>Nincs</value>
-  </data>
+  
   <data name="&gt;&gt;GotoNextHotkey.Name" xml:space="preserve">
     <value>GotoNextHotkey</value>
   </data>
@@ -1074,9 +1046,7 @@
   <data name="Label16.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="Label16.Text" xml:space="preserve">
-    <value>Ugrás a következőhöz:</value>
-  </data>
+  
   <data name="&gt;&gt;Label16.Name" xml:space="preserve">
     <value>Label16</value>
   </data>
@@ -1098,9 +1068,7 @@
   <data name="ReplaceHotkey.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
-  <data name="ReplaceHotkey.Text" xml:space="preserve">
-    <value>Nincs</value>
-  </data>
+  
   <data name="&gt;&gt;ReplaceHotkey.Name" xml:space="preserve">
     <value>ReplaceHotkey</value>
   </data>
@@ -1128,9 +1096,7 @@
   <data name="Label15.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="Label15.Text" xml:space="preserve">
-    <value>Csere :</value>
-  </data>
+  
   <data name="&gt;&gt;Label15.Name" xml:space="preserve">
     <value>Label15</value>
   </data>
@@ -1152,9 +1118,7 @@
   <data name="SearchHotkey.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="SearchHotkey.Text" xml:space="preserve">
-    <value>Semmi</value>
-  </data>
+  
   <data name="&gt;&gt;SearchHotkey.Name" xml:space="preserve">
     <value>SearchHotkey</value>
   </data>
@@ -1182,9 +1146,7 @@
   <data name="Label14.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="Label14.Text" xml:space="preserve">
-    <value>Keresés :</value>
-  </data>
+  
   <data name="&gt;&gt;Label14.Name" xml:space="preserve">
     <value>Label14</value>
   </data>
@@ -1206,9 +1168,7 @@
   <data name="GotoHotkey.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="GotoHotkey.Text" xml:space="preserve">
-    <value>Semmi</value>
-  </data>
+  
   <data name="&gt;&gt;GotoHotkey.Name" xml:space="preserve">
     <value>GotoHotkey</value>
   </data>
@@ -1236,9 +1196,7 @@
   <data name="Label13.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="Label13.Text" xml:space="preserve">
-    <value>Ugrás :</value>
-  </data>
+  
   <data name="&gt;&gt;Label13.Name" xml:space="preserve">
     <value>Label13</value>
   </data>
@@ -1260,9 +1218,7 @@
   <data name="SaveAllHotkey.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="SaveAllHotkey.Text" xml:space="preserve">
-    <value>Semmi</value>
-  </data>
+  
   <data name="&gt;&gt;SaveAllHotkey.Name" xml:space="preserve">
     <value>SaveAllHotkey</value>
   </data>
@@ -1290,9 +1246,7 @@
   <data name="Label12.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="Label12.Text" xml:space="preserve">
-    <value>Minden fájl mentése :</value>
-  </data>
+  
   <data name="&gt;&gt;Label12.Name" xml:space="preserve">
     <value>Label12</value>
   </data>
@@ -1320,9 +1274,7 @@
   <data name="Label11.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="Label11.Text" xml:space="preserve">
-    <value>Gyorsbillentyűk</value>
-  </data>
+  
   <data name="&gt;&gt;Label11.Name" xml:space="preserve">
     <value>Label11</value>
   </data>
@@ -1344,9 +1296,7 @@
   <data name="SaveHotkey.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="SaveHotkey.Text" xml:space="preserve">
-    <value>Semmi</value>
-  </data>
+  
   <data name="&gt;&gt;SaveHotkey.Name" xml:space="preserve">
     <value>SaveHotkey</value>
   </data>
@@ -1371,9 +1321,7 @@
   <data name="Label10.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="Label10.Text" xml:space="preserve">
-    <value>Fájl mentése :</value>
-  </data>
+  
   <data name="&gt;&gt;Label10.Name" xml:space="preserve">
     <value>Label10</value>
   </data>
@@ -1395,9 +1343,7 @@
   <data name="ResetLangBtn.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="ResetLangBtn.Text" xml:space="preserve">
-    <value>Honosítási beállítások visszaállítása</value>
-  </data>
+  
   <data name="&gt;&gt;ResetLangBtn.Name" xml:space="preserve">
     <value>ResetLangBtn</value>
   </data>
@@ -1422,9 +1368,7 @@
   <data name="resetBtn.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
   </data>
-  <data name="resetBtn.Text" xml:space="preserve">
-    <value>Visszaállítás alapértelmezettre</value>
-  </data>
+  
   <data name="&gt;&gt;resetBtn.Name" xml:space="preserve">
     <value>resetBtn</value>
   </data>
@@ -1449,9 +1393,7 @@
   <data name="importBtn.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
   </data>
-  <data name="importBtn.Text" xml:space="preserve">
-    <value>Importálás</value>
-  </data>
+  
   <data name="&gt;&gt;importBtn.Name" xml:space="preserve">
     <value>importBtn</value>
   </data>
@@ -1476,9 +1418,7 @@
   <data name="exportBtn.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
   </data>
-  <data name="exportBtn.Text" xml:space="preserve">
-    <value>Exportálás</value>
-  </data>
+  
   <data name="&gt;&gt;exportBtn.Name" xml:space="preserve">
     <value>exportBtn</value>
   </data>
@@ -1527,9 +1467,7 @@
   <data name="Button1.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
   </data>
-  <data name="Button1.Text" xml:space="preserve">
-    <value>Visszaállítás alapértelmezettre</value>
-  </data>
+  
   <data name="&gt;&gt;Button1.Name" xml:space="preserve">
     <value>Button1</value>
   </data>
@@ -1557,9 +1495,7 @@
   <data name="customArgsText.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
-  <data name="customArgsText.ToolTip" xml:space="preserve">
-    <value>Ha van néhány argument, amit le akar fordítani de nincs fent, őket írja ide.</value>
-  </data>
+  
   <data name="&gt;&gt;customArgsText.Name" xml:space="preserve">
     <value>customArgsText</value>
   </data>
@@ -1584,9 +1520,7 @@
   <data name="Label9.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
   </data>
-  <data name="Label9.Text" xml:space="preserve">
-    <value>Extra egyéni argumentek: </value>
-  </data>
+  
   <data name="&gt;&gt;Label9.Name" xml:space="preserve">
     <value>Label9</value>
   </data>
@@ -1611,12 +1545,8 @@
   <data name="parenthesesCheck.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
   </data>
-  <data name="parenthesesCheck.Text" xml:space="preserve">
-    <value>Funkcióknak kellenek zárójelek.</value>
-  </data>
-  <data name="parenthesesCheck.ToolTip" xml:space="preserve">
-    <value>Ha be van jelölve, átadott egy funkció zárójelek közé kell tenni.</value>
-  </data>
+  
+  
   <data name="&gt;&gt;parenthesesCheck.Name" xml:space="preserve">
     <value>parenthesesCheck</value>
   </data>
@@ -1641,12 +1571,8 @@
   <data name="semiColonCheck.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
   </data>
-  <data name="semiColonCheck.Text" xml:space="preserve">
-    <value>A soroknak pontosvesszővel kell végződnie.</value>
-  </data>
-  <data name="semiColonCheck.ToolTip" xml:space="preserve">
-    <value>Ha be van jelölve, a soroknak pontosvesszővel kell végződnie.</value>
-  </data>
+  
+  
   <data name="&gt;&gt;semiColonCheck.Name" xml:space="preserve">
     <value>semiColonCheck</value>
   </data>
@@ -1671,9 +1597,7 @@
   <data name="skipLinesUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
-  <data name="skipLinesUpDown.ToolTip" xml:space="preserve">
-    <value>Átugrás mennyisége: a lefordítás megkezdése előtt az átugrandó sorok száma; például, hogy kihagyja a "fejléc"-t forráskódban, amely nem érvényes pawn szintaxis.</value>
-  </data>
+  
   <data name="&gt;&gt;skipLinesUpDown.Name" xml:space="preserve">
     <value>skipLinesUpDown</value>
   </data>
@@ -1698,9 +1622,7 @@
   <data name="Label8.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
   </data>
-  <data name="Label8.Text" xml:space="preserve">
-    <value>Átugrandó sorok száma: </value>
-  </data>
+  
   <data name="&gt;&gt;Label8.Name" xml:space="preserve">
     <value>Label8</value>
   </data>
@@ -1725,9 +1647,7 @@
   <data name="tabSizeUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
-  <data name="tabSizeUpDown.ToolTip" xml:space="preserve">
-    <value>Tab mérete: mennyi szóköz karakter használata egy tab karakterhez. Ezen opció nélkül a pawn elemző automatikusan felismeri a tab-ot.</value>
-  </data>
+  
   <data name="&gt;&gt;tabSizeUpDown.Name" xml:space="preserve">
     <value>tabSizeUpDown</value>
   </data>
@@ -1752,9 +1672,7 @@
   <data name="Label7.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
-  <data name="Label7.Text" xml:space="preserve">
-    <value>Tabulátorméret: </value>
-  </data>
+  
   <data name="&gt;&gt;Label7.Name" xml:space="preserve">
     <value>Label7</value>
   </data>
@@ -1779,9 +1697,7 @@
   <data name="optiLevelUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
-  <data name="optiLevelUpDown.ToolTip" xml:space="preserve">
-    <value>Optimalizálás szint: 0 = nincs optimalizáció, 1 = alapvető utasítások, 2 = alap &amp; kiegészítő utasítások. Optimalizálás szint 1 kompatibilis JIT megvalósításokkal (JIT = "Just In Time" lefordító, egy nagy teljesítményű absztrakt gép).</value>
-  </data>
+  
   <data name="&gt;&gt;optiLevelUpDown.Name" xml:space="preserve">
     <value>optiLevelUpDown</value>
   </data>
@@ -1806,9 +1722,7 @@
   <data name="Label5.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
-  <data name="Label5.Text" xml:space="preserve">
-    <value>Optimalizálás szint: </value>
-  </data>
+  
   <data name="&gt;&gt;Label5.Name" xml:space="preserve">
     <value>Label5</value>
   </data>
@@ -1833,9 +1747,7 @@
   <data name="debugLevelUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
   </data>
-  <data name="debugLevelUpDown.ToolTip" xml:space="preserve">
-    <value>Debug szintje: 0 nincs, 1 = = határ ellenőrzés és assertiók csak, 2 = teljes szimbolikus információ, 3 = teljes szimbolikus információk és az optimalizáció le van tiltva (ugyanaz, mint a kombináció- d2 és - O0).</value>
-  </data>
+  
   <data name="&gt;&gt;debugLevelUpDown.Name" xml:space="preserve">
     <value>debugLevelUpDown</value>
   </data>
@@ -1860,9 +1772,7 @@
   <data name="Label4.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
-  <data name="Label4.Text" xml:space="preserve">
-    <value>Hibakeresési szint: </value>
-  </data>
+  
   <data name="&gt;&gt;Label4.Name" xml:space="preserve">
     <value>Label4</value>
   </data>
@@ -1890,9 +1800,7 @@
   <data name="reportGenDirText.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="reportGenDirText.ToolTip" xml:space="preserve">
-    <value>Jelentés: a jelentés létrehozását teszik lehetővé, és opcionálisan beállítani a fájl nevét, amelyhez a kibontott dokumentáció és egy kereszthivatkozás jelentés íródik. Állítsa be az elérési utat az alapértelmezettre, hogy jelentést hozzon létre a kimeneti könyvtárban.</value>
-  </data>
+  
   <data name="&gt;&gt;reportGenDirText.Name" xml:space="preserve">
     <value>reportGenDirText</value>
   </data>
@@ -1941,9 +1849,7 @@
   <data name="Label6.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="Label6.Text" xml:space="preserve">
-    <value>Jelentéskészítés: </value>
-  </data>
+  
   <data name="&gt;&gt;Label6.Name" xml:space="preserve">
     <value>Label6</value>
   </data>
@@ -1968,9 +1874,7 @@
   <data name="ouputDirText.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="ouputDirText.ToolTip" xml:space="preserve">
-    <value>Kimeneti fájl: állítsa be a nevét és elérési útját a bináris kimeneti fájlnak. Állítsa be az alapértelmezett értékhez null-ra.</value>
-  </data>
+  
   <data name="&gt;&gt;ouputDirText.Name" xml:space="preserve">
     <value>ouputDirText</value>
   </data>
@@ -1995,9 +1899,7 @@
   <data name="Label3.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="Label3.Text" xml:space="preserve">
-    <value>Kimeneti könyvtár: </value>
-  </data>
+  
   <data name="&gt;&gt;Label3.Name" xml:space="preserve">
     <value>Label3</value>
   </data>
@@ -2022,9 +1924,7 @@
   <data name="includesDirText.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="includesDirText.ToolTip" xml:space="preserve">
-    <value>Include elérési út: állítsa be az elérési utat ahol a lefordító megtalálhatja az include fájlokat. Állítsa be az null-ra alapértelmezett értékhez.</value>
-  </data>
+  
   <data name="&gt;&gt;includesDirText.Name" xml:space="preserve">
     <value>includesDirText</value>
   </data>
@@ -2049,9 +1949,7 @@
   <data name="Label2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="Label2.Text" xml:space="preserve">
-    <value>Include-ok könyvtára: </value>
-  </data>
+  
   <data name="&gt;&gt;Label2.Name" xml:space="preserve">
     <value>Label2</value>
   </data>
@@ -2076,9 +1974,7 @@
   <data name="activeDirText.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="activeDirText.ToolTip" xml:space="preserve">
-    <value>Könyvtár: az "aktív" könyvtár, ahol a lefordító keresni a bemeneti fájlokat, és tárolja a kimeneti fájlokat. Állítsa be az null-ra alapértelmezett értékhez.</value>
-  </data>
+  
   <data name="&gt;&gt;activeDirText.Name" xml:space="preserve">
     <value>activeDirText</value>
   </data>
@@ -2103,9 +1999,7 @@
   <data name="Label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="Label1.Text" xml:space="preserve">
-    <value>Aktív könyvtár: </value>
-  </data>
+  
   <data name="&gt;&gt;Label1.Name" xml:space="preserve">
     <value>Label1</value>
   </data>
@@ -2130,9 +2024,7 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>367, 459</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Beállítások [Project]</value>
-  </data>
+  
   <data name="&gt;&gt;ToolTipHandler.Name" xml:space="preserve">
     <value>ToolTipHandler</value>
   </data>
