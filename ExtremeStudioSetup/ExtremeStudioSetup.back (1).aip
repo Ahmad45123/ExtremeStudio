@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="14.9" version="15.5.1" PreviousModules="simple" Modules="professional" RootPath="." Language="en" Id="{E9840C83-41D3-4805-891E-7009E79F49AB}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="14.9" version="14.9" PreviousModules="simple" Modules="professional" RootPath="." Language="en" Id="{E9840C83-41D3-4805-891E-7009E79F49AB}">
   <COMPONENT cid="caphyon.advinst.msicomp.ProjectOptionsComponent">
-    <ROW Name="HiddenItems" Value="AppXAppDetailsComponent;AppXCapabilitiesComponent;AppXDependenciesComponent;AppXProductDetailsComponent;AppXVisualAssetsComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent;FixupComponent"/>
+    <ROW Name="HiddenItems" Value="AppXAppDetailsComponent;AppXCapabilitiesComponent;AppXDependenciesComponent;AppXProductDetailsComponent;AppXVisualAssetsComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
@@ -88,7 +88,7 @@
     <ROW Property="ProductCode" Value="1033:{F9110CE4-4A80-4E77-A1C8-639BC4425EB9} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="ExtremeStudio"/>
-    <ROW Property="ProductVersion" Value="3.0.3.0" Type="32" TargetFile="ExtremeStudio.exe"/>
+    <ROW Property="ProductVersion" Value="3.0.2.0" Type="32" TargetFile="ExtremeStudio.exe"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{3978147D-BF89-44DB-997B-B2435802D8CC}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>

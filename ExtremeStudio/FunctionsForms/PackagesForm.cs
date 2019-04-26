@@ -31,8 +31,7 @@ namespace ExtremeStudio.FunctionsForms
 
         private void PackagesForm_Load(object sender, EventArgs e)
         {
-            WebClient client = new WebClient();
-            string allPackages = client.DownloadString(@"https://api.sampctl.com");
+            string allPackages = DownloadForm.DownloadString("Downloading plugin list...", @"https://api.sampctl.com");
             _tmppcks = JsonConvert.DeserializeObject<Package[]>(allPackages);
             _pcks = _tmppcks;
 
@@ -134,9 +133,18 @@ namespace ExtremeStudio.FunctionsForms
                 PackagesList.Enabled = false;
                 ControlBox = false;
 
+                DownloadForm frm = new DownloadForm
+                {
+                    progressBar1 = { Style = ProgressBarStyle.Marquee },
+                    descLabel = { Text = translations.PackagesForm_button1_Click_Removing_package___ }
+                };
+                frm.Show();
+                Enabled = false;
                 await SampCtl.SendCommand(Application.StartupPath + "/sampctl.exe",
                     Program.MainForm.CurrentProject.ProjectPath, "p uninstall " + PackagesList.SelectedItem);
                 Program.MainForm.CurrentProject.LoadSampCtlData();
+                frm.Close();
+                Enabled = true;
 
                 ActionButton.Text = translations.PackagesForm_button1_Click_InstallPackage;
                 ActionButton.Enabled = true;
@@ -150,8 +158,19 @@ namespace ExtremeStudio.FunctionsForms
                 PackagesList.Enabled = false;
                 ControlBox = false;
 
+                DownloadForm frm = new DownloadForm
+                {
+                    progressBar1 = { Style = ProgressBarStyle.Marquee },
+                    descLabel = { Text = translations.PackagesForm_button1_Click_Downloading_package___ }
+                };
+                frm.Show();
+                Enabled = false;
                 await SampCtl.SendCommand(Application.StartupPath + "/sampctl.exe",
                     Program.MainForm.CurrentProject.ProjectPath, "p install " + PackagesList.SelectedItem);
+                frm.Close();
+                Enabled = true;
+
+
                 Program.MainForm.CurrentProject.LoadSampCtlData();
                 
                 ActionButton.Text = translations.PackagesForm_button1_Click_UninstallPackage;

@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using ExtremeCore.Classes;
+using ExtremeStudio.FunctionsForms;
+using Resources;
 
 namespace ExtremeStudio.Classes
 {
@@ -37,7 +39,14 @@ namespace ExtremeStudio.Classes
                     };
                     project.SaveInfo();
                     project.LoadSampCtlData(); //to make sure pawno/includes is also supported.
+                    DownloadForm frm = new DownloadForm
+                    {
+                        progressBar1 = { Style = ProgressBarStyle.Marquee },
+                        descLabel = { Text = translations.StartupForm_CreateProjectBtn_Click_Ensuring_packages }
+                    };
+                    frm.Show();
                     await SampCtl.SendCommand(Path.Combine(Application.StartupPath, "sampctl.exe"), project.ProjectPath, "p ensure");
+                    frm.Close();
                 }
             }
             project.ProjectVersion = CurrentVersion;

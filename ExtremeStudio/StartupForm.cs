@@ -10,6 +10,7 @@ using System.Xml;
 using AutoUpdaterDotNET;
 using ExtremeCore.Classes;
 using ExtremeStudio.Classes;
+using ExtremeStudio.FunctionsForms;
 using Newtonsoft.Json;
 using Resources;
 
@@ -84,19 +85,14 @@ namespace ExtremeStudio
         private async void StartupForm_Load(object sender, EventArgs e)
         {
             //Download SAMPCTL
-            this.Enabled = false;
-            this.Text = "Updating sampctl...";
             await SampCtl.EnsureLatestInstalled(Application.StartupPath);
-            this.Text = "ExtremeStudio";
-            this.Enabled = true;
 
             //Add event.
             pathTextBox.PathText.TextChanged += pathTextBox_TextChanged;
 
             //Check for updates
             AutoUpdater.ParseUpdateInfoEvent += AutoUpdater_ParseUpdateInfoEvent;
-            WebClient client = new WebClient {Headers = {["User-Agent"] = "ExtremeStudio"}};
-            client.DownloadFile("https://api.github.com/repos/Ahmad45123/ExtremeStudio/releases/latest", Application.StartupPath + "/latest.txt");
+            DownloadForm.DownloadFile("Checking for updates...", "https://api.github.com/repos/Ahmad45123/ExtremeStudio/releases/latest", Application.StartupPath + "/latest.txt");
             AutoUpdater.Start(Application.StartupPath + "/latest.txt");
 
             //If the interop files don't exist, Extract the files.
@@ -304,10 +300,16 @@ namespace ExtremeStudio
                     Program.MainForm.CurrentProject.LoadSampCtlData(); //to ensure pawno/includes is there.
 
                     //Ensure the packages are ready
-                    this.Enabled = false;
-                    this.Text = "Ensuring Packages...";
+                    DownloadForm frm = new DownloadForm
+                    {
+                        progressBar1 = {Style = ProgressBarStyle.Continuous},
+                        descLabel = {Text = translations.StartupForm_CreateProjectBtn_Click_Ensuring_packages}
+                    };
+                    frm.Show();
+                    Enabled = false;
                     await SampCtl.SendCommand(Path.Combine(Application.StartupPath, "sampctl.exe"), newPath, "p ensure");
-                    this.Enabled = true;
+                    frm.Close();
+                    Enabled = true;
 
                     AddNewRecent(
                         Convert.ToString(Program.MainForm.CurrentProject.ProjectPath)); //Add it to the recent list.
@@ -370,9 +372,15 @@ namespace ExtremeStudio
                         Program.MainForm.CurrentProject.CopyGlobalConfig();
 
                         //Ensure the packages are ready
-                        this.Enabled = false;
-                        this.Text = "Ensuring Packages...";
+                        DownloadForm frm = new DownloadForm
+                        {
+                            progressBar1 = { Style = ProgressBarStyle.Marquee },
+                            descLabel = { Text = translations.StartupForm_CreateProjectBtn_Click_Ensuring_packages }
+                        };
+                        frm.Show();
+                        Enabled = false;
                         await SampCtl.SendCommand(Path.Combine(Application.StartupPath, "sampctl.exe"), newPath, "p ensure");
+                        frm.Close();
                         Enabled = true;
 
                         AddNewRecent(

@@ -71,6 +71,12 @@
     <Compile Include="Controls And Tools\AdvancedInputBox.Designer.cs">
       <DependentUpon>AdvancedInputBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls And Tools\DownloadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls And Tools\DownloadForm.Designer.cs">
+      <DependentUpon>DownloadForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls And Tools\FilesListBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.tr-TR.resx">
       <DependentUpon>AdvancedInputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls And Tools\DownloadForm.resx">
+      <DependentUpon>DownloadForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls And Tools\PathTextBox.resx">
       <DependentUpon>PathTextBox.cs</DependentUpon>

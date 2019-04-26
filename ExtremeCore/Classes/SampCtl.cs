@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using ExtremeStudio.FunctionsForms;
 
 namespace ExtremeCore.Classes
 {
@@ -13,9 +14,8 @@ namespace ExtremeCore.Classes
     {
         public static async Task<bool> EnsureLatestInstalled(string path)
         {
-            WebClient client = new WebClient();
-            client.Headers["User-Agent"] = "ExtremeStudio";
-            string latestInfo = client.DownloadString("http://api.github.com/repos/Southclaws/sampctl/releases/latest");
+            string latestInfo =
+                DownloadForm.DownloadString("Checking for sampctl update...", "http://api.github.com/repos/Southclaws/sampctl/releases/latest");
             var mtch = Regex.Match(latestInfo, "\"tag_name\":\"(?<version>.+?)\",");
             string version = mtch.Groups["version"].Value;
 
@@ -25,7 +25,7 @@ namespace ExtremeCore.Classes
                 string arch = Environment.Is64BitOperatingSystem ? "amd64" : "386";
                 string fileToDownload =
                     $@"https://github.com/Southclaws/sampctl/releases/download/{version}/sampctl_{version}_windows_{arch}.tar.gz";
-                client.DownloadFile(fileToDownload, Path.Combine(path, "archive.tar.gz"));
+                DownloadForm.DownloadFile("Downloading SampCTL...", fileToDownload, Path.Combine(path, "archive.tar.gz"));
                 GeneralFunctions.FastZipUnpack(Path.Combine(path, "archive.tar.gz"), path, "sampctl.exe");
                 File.Delete(Path.Combine(path, "archive.tar.gz"));
             }

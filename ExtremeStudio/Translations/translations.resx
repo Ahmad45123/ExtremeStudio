@@ -349,4 +349,13 @@ NOTE: INCLUDE THE EXTENSION!</value>
   <data name="MainForm_CompilerWorker_DoWork_CompilationFailed" xml:space="preserve">
     <value>Compilation failed.</value>
   </data>
+  <data name="StartupForm_CreateProjectBtn_Click_Ensuring_packages" xml:space="preserve">
+    <value>Ensuring packages...</value>
+  </data>
+  <data name="PackagesForm_button1_Click_Downloading_package___" xml:space="preserve">
+    <value>Downloading package...</value>
+  </data>
+  <data name="PackagesForm_button1_Click_Removing_package___" xml:space="preserve">
+    <value>Removing package...</value>
+  </data>
 </root>

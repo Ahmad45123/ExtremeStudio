@@ -358,6 +358,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Downloading package....
+        /// </summary>
+        public static string PackagesForm_button1_Click_Downloading_package___ {
+            get {
+                return ResourceManager.GetString("PackagesForm_button1_Click_Downloading_package___", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Installing....
         /// </summary>
         public static string PackagesForm_button1_Click_Installing {
@@ -372,6 +381,15 @@ namespace Resources {
         public static string PackagesForm_button1_Click_InstallPackage {
             get {
                 return ResourceManager.GetString("PackagesForm_button1_Click_InstallPackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing package....
+        /// </summary>
+        public static string PackagesForm_button1_Click_Removing_package___ {
+            get {
+                return ResourceManager.GetString("PackagesForm_button1_Click_Removing_package___", resourceCulture);
             }
         }
         
@@ -666,6 +684,15 @@ namespace Resources {
         public static string StartupForm_CreateProjectBtn_Click_DirError {
             get {
                 return ResourceManager.GetString("StartupForm_CreateProjectBtn_Click_DirError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ensuring packages....
+        /// </summary>
+        public static string StartupForm_CreateProjectBtn_Click_Ensuring_packages {
+            get {
+                return ResourceManager.GetString("StartupForm_CreateProjectBtn_Click_Ensuring_packages", resourceCulture);
             }
         }
         
