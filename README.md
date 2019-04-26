@@ -5,15 +5,13 @@
 ExtremeStudio is a PAWN editor and is designed to be used in SA-MP development.
 
 ## Download
-You can download the app along with auto-updater by going to this page here and pressing Install:
-https://github.com/Ahmad45123/ExtremeStudio/releases/latest
-
-Or, you could also download the portable version from GitHub releases but it doesn't cotain an auto-updater.
+You can download the app along with auto-updater from here:
+https://rebrand.ly/ExtremeStudio
 
 ## Localization
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/extremestudio/localized.svg)](https://crowdin.com/project/extremestudio)
 
-All localization is done in Crowdin, Kindly register through this link: 
+All localization is done on Crowdin, Kindly register through this link: 
 https://crowdin.com/project/extremestudio/invite
 
 If there is a missing language, Please create an issue asking for it.
@@ -22,7 +20,7 @@ If there is a missing language, Please create an issue asking for it.
 * Microsoft for .NET ofcourse.
 * [ScintillaNET](https://github.com/jacobslusser/ScintillaNET) for the wrapper for Scintilla.
 * [DockPanelSuite](http://dockpanelsuite.com/) for the tabbing control.
-* [sampctl](http://forum.sa-mp.com/showthread.php?t=651159) used as the packages manager and to handle the project system.
+* [sampctl](http://sampctl.com) used as the packages manager and to handle the project system.
 * [AutoCompleteMenu](http://www.codeproject.com/Articles/365974/Autocomplete-Menu) for the auto-complete menu used along with ScintillaNET using [this](https://github.com/JohnyMac/AutoCompleteMenu-ScintillaNET) wrapper by me.
 * [DotNetZIP](https://dotnetzip.codeplex.com/), A class library that add support for handling ZIP files. 
 * [JSON.NET](http://www.json.net/) for the awesome JSON serializer.
