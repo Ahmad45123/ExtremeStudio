@@ -1210,7 +1210,7 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks.EditorDock
             else if (part.Natives.FindAll(x => x.FuncName == item).Any())
             {
                 string allText = fileContent;
-                var mtch = Regex.Match(allText, "native[ \\t]+" + Regex.Escape(item) + "[ \\t]*?\\((.*)\\);",
+                var mtch = Regex.Match(allText, "native.+" + Regex.Escape(item) + "[ \\t]*?\\((.*)\\);",
                     RegexOptions.Multiline);
                 if (mtch.Length != 0)
                 {
@@ -1275,7 +1275,7 @@ namespace ExtremeStudio.DockPanelForms.MainFormDocks.EditorDock
                 {
                     var allIncs = CodeParts.FlattenIncludes();
                     var codePartses = allIncs as CodeParts[] ?? allIncs.ToArray();
-                    for (var i = 1; i <= codePartses.Count() - 1; i++)
+                    for (var i = 1; i < codePartses.Count(); i++)
                     {
                         if (_foundItem.Key == _foundItem.Value)
                         {

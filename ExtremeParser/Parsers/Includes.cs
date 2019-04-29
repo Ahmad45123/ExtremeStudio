@@ -77,6 +77,7 @@ namespace ExtremeParser.Parsers
                             fullPath = pth;
                             break;
                         }
+            
                     }
                 }
                 else
@@ -122,7 +123,7 @@ namespace ExtremeParser.Parsers
                         else
                         {
                             errors.ExceptionsList_Renamed.Add(
-                                new IncludeNotFoundException(Path.GetFileNameWithoutExtension(fullPath)));
+                                new IncludeNotFoundException(Path.GetFileNameWithoutExtension(text)));
                         }
                     }
                     else
@@ -142,11 +143,11 @@ namespace ExtremeParser.Parsers
                 }
                 catch (DirectoryNotFoundException)
                 {
-                    errors.ExceptionsList_Renamed.Add(new IncludeNotFoundException(Path.GetFileNameWithoutExtension(fullPath)));
+                    errors.ExceptionsList_Renamed.Add(new IncludeNotFoundException(Path.GetFileNameWithoutExtension(text)));
                 }
                 catch (FileNotFoundException)
                 {
-                    errors.ExceptionsList_Renamed.Add(new IncludeNotFoundException(Path.GetFileNameWithoutExtension(fullPath)));
+                    errors.ExceptionsList_Renamed.Add(new IncludeNotFoundException(Path.GetFileNameWithoutExtension(text)));
                 }
             }
         }
