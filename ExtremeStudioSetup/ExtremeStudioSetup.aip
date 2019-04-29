@@ -85,7 +85,7 @@
     <ROW Property="ARPURLUPDATEINFO" Value="https://github.com/Ahmad45123/ExtremeStudio/releases/latest"/>
     <ROW Property="AppLogoIcon" Value="applogoicon" MultiBuildValue="DefaultBuild:pawn.png" Type="1" MsiKey="AppLogoIcon"/>
     <ROW Property="Manufacturer" Value="Ahmad45123"/>
-    <ROW Property="ProductCode" Value="1033:{F9110CE4-4A80-4E77-A1C8-639BC4425EB9} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{45CA5303-AD47-4FFE-9D76-B7B33808FFD8} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="ExtremeStudio"/>
     <ROW Property="ProductVersion" Value="3.0.3.0" Type="32" TargetFile="ExtremeStudio.exe"/>

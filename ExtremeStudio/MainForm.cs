@@ -304,14 +304,10 @@ namespace ExtremeStudio
 
             //Then close ourself.
             _isClosedProgrammitcly = true;
-            Close();
 
-            //Open the form
-            StartupForm str = new StartupForm
-            {
-                IsFirst = false
-            };
-            str.Show();
+            //Restart..
+            //For some reason creating new instance of Mainform just bugs everything.
+            Application.Restart();
         }
 
         private void cutButton_Click(object sender, EventArgs e)

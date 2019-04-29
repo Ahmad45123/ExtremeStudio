@@ -79,7 +79,7 @@ namespace ExtremeStudio
 
         #endregion
 
-        VersionHandler _versionHandler = new VersionHandler();
+        readonly VersionHandler _versionHandler = new VersionHandler();
 
         [Localizable(false)]
         private async void StartupForm_Load(object sender, EventArgs e)
