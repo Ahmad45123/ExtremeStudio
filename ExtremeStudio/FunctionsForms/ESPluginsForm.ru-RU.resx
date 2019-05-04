@@ -117,7 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
+  <data name="Label4.Text" xml:space="preserve">
+    <value>Примечание: Перезагрузите ExtremeStudio для перезагрузки плагинов.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"/>
   <data name="PluginList.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 21</value>
@@ -131,7 +133,9 @@
   <data name="updateLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>221, 222</value>
   </data>
-  
+  <data name="Label3.Text" xml:space="preserve">
+    <value>Описание плагина: </value>
+  </data>
   <data name="&gt;&gt;installBtn.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -193,7 +197,9 @@
   <data name="&gt;&gt;Label1.Name" xml:space="preserve">
     <value>Label1</value>
   </data>
-  
+  <data name="Label2.Text" xml:space="preserve">
+    <value>Название плагина: </value>
+  </data>
   <data name="Label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -251,7 +257,9 @@
   <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  
+  <data name="Label1.Text" xml:space="preserve">
+    <value>Плагины: </value>
+  </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -264,7 +272,9 @@
   <data name="PluginDescText.Location" type="System.Drawing.Point, System.Drawing">
     <value>104, 52</value>
   </data>
-  
+  <data name="GroupBox1.Text" xml:space="preserve">
+    <value>Информация: </value>
+  </data>
   <data name="&gt;&gt;deleteBtn.Name" xml:space="preserve">
     <value>deleteBtn</value>
   </data>
@@ -280,7 +290,9 @@
   <data name="&gt;&gt;Label3.Name" xml:space="preserve">
     <value>Label3</value>
   </data>
-  
+  <data name="deleteBtn.Text" xml:space="preserve">
+    <value>Удалить плагин</value>
+  </data>
   <data name="&gt;&gt;PluginList.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -341,7 +353,9 @@
   <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  
+  <data name="$this.Text" xml:space="preserve">
+    <value>Управление ES плагинами.</value>
+  </data>
   <data name="&gt;&gt;installBtn.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
@@ -393,7 +407,9 @@
   <data name="&gt;&gt;updateLabel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  
+  <data name="updateLabel.Text" xml:space="preserve">
+    <value>Плагин был обновлен, переустановите для обновления.</value>
+  </data>
   <data name="Label4.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
