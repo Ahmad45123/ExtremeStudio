@@ -125,14 +125,18 @@
   <data name="lineColumn.Width" type="System.Int32, mscorlib">
     <value>91</value>
   </data>
-  
+  <data name="errNumberColumn.HeaderText" xml:space="preserve">
+    <value>Номер ошибки</value>
+  </data>
   <data name="&gt;&gt;ErrorMsg.Name" xml:space="preserve">
     <value>ErrorMsg</value>
   </data>
   <data name="TabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  
+  <data name="showWarnsCheck.Text" xml:space="preserve">
+    <value>Показать предупреждения</value>
+  </data>
   <data name="&gt;&gt;TabPage1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
@@ -167,7 +171,9 @@
   <data name="&gt;&gt;TabControl1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  
+  <data name="TabPage1.Text" xml:space="preserve">
+    <value>Ошибки &amp; Предупреждения</value>
+  </data>
   <data name="&gt;&gt;errortextColumn.Name" xml:space="preserve">
     <value>errortextColumn</value>
   </data>
@@ -177,11 +183,15 @@
   <data name="TabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  
+  <data name="Column1.HeaderText" xml:space="preserve">
+    <value>Идентификатор ошибки</value>
+  </data>
   <data name="fileColumn.Width" type="System.Int32, mscorlib">
     <value>48</value>
   </data>
-  
+  <data name="lineColumn.HeaderText" xml:space="preserve">
+    <value>Номер строки</value>
+  </data>
   <data name="&gt;&gt;TabControl1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
@@ -197,7 +207,9 @@
   <data name="&gt;&gt;TabPage1.Parent" xml:space="preserve">
     <value>TabControl1</value>
   </data>
-  
+  <data name="showErrorsCheck.Text" xml:space="preserve">
+    <value>Показать ошибки</value>
+  </data>
   <data name="&gt;&gt;showErrorsCheck.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
@@ -207,7 +219,9 @@
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
-  
+  <data name="errortextColumn.HeaderText" xml:space="preserve">
+    <value>Текст ошибки</value>
+  </data>
   <data name="TabPage3.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
@@ -232,7 +246,9 @@
   <data name="&gt;&gt;errorsWarnsGrid.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  
+  <data name="ErrorMsg.HeaderText" xml:space="preserve">
+    <value>Сообщение</value>
+  </data>
   <data name="showWarnsCheck.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 23</value>
   </data>
@@ -269,7 +285,9 @@
   <data name="&gt;&gt;parserErrors.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  
+  <data name="typeColumn.HeaderText" xml:space="preserve">
+    <value>Тип</value>
+  </data>
   <data name="&gt;&gt;Column1.Name" xml:space="preserve">
     <value>Column1</value>
   </data>
@@ -279,7 +297,9 @@
   <data name="showErrorsCheck.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  
+  <data name="fileColumn.HeaderText" xml:space="preserve">
+    <value>Файл</value>
+  </data>
   <data name="errorsWarnsGrid.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -301,7 +321,9 @@
   <data name="&gt;&gt;errortextColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  
+  <data name="$this.Text" xml:space="preserve">
+    <value>Ошибки &amp; Предупреждения</value>
+  </data>
   <data name="&gt;&gt;parserErrors.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
@@ -323,7 +345,9 @@
   <data name="&gt;&gt;showWarnsCheck.Name" xml:space="preserve">
     <value>showWarnsCheck</value>
   </data>
-  
+  <data name="TabPage3.Text" xml:space="preserve">
+    <value>Ошибка парсера</value>
+  </data>
   <data name="TabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
