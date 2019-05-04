@@ -23,43 +23,31 @@
     <ROW Property="AI_PRODUCTNAME_ARP" Value="ExtremeStudio"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_AutoUpdater.NET.dll" Value="..\packages\Autoupdater.NET.Official.1.4.9\lib\net452"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_AutocompleteMenuScintillaNET.dll" Value="..\packages\AutoCompleteMenu-ScintillaNET.1.6.1\lib\net40"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_DotNetZip.dll" Value="..\packages\DotNetZip.1.11.0\lib\net20"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_ExtremeCore.dll" Value="..\ExtremeCore\bin\Debug"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_ExtremeParser.dll" Value="..\ExtremeParser\bin\Debug"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.exe" Value="..\ExtremeStudio\bin\Debug"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.exe.config" Value="..\ExtremeStudio\bin\Debug"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.pdb" Value="..\ExtremeStudio\bin\Debug"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.resources.dll" Value="..\ExtremeStudio\bin\Debug\es-ES"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.resources.dll_1" Value="..\ExtremeStudio\bin\Debug\hr-HR"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.resources.dll_2" Value="..\ExtremeStudio\bin\Debug\hu-HU"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.resources.dll_3" Value="..\ExtremeStudio\bin\Debug\pt-BR"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.resources.dll_4" Value="..\ExtremeStudio\bin\Debug\ru-RU"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.resources.dll_5" Value="..\ExtremeStudio\bin\Debug\tr-TR"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.resources.dll_6" Value="..\ExtremeStudio\bin\Debug\cs-CZ"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_HotkeyControl.dll" Value="..\lib"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_Newtonsoft.Json.dll" Value="..\packages\Newtonsoft.Json.11.0.2\lib\net45"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_ScintillaNET.dll" Value="..\packages\jacobslusser.ScintillaNET.3.6.3\lib\net40"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_SharpCompress.dll" Value="..\packages\SharpCompress.0.21.1\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_SharpCompress.dll" Value="..\packages\SharpCompress.0.23.0\lib\net45"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Data.SQLite.dll" Value="..\packages\System.Data.SQLite.Core.1.0.108.0\lib\net46"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Windows.Forms.Ribbon35.dll" Value="..\lib"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_ThemeColorPicker.dll" Value="..\lib"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll" Value="..\packages\DockPanelSuite.ThemeVS2015.3.0.4\lib\net40"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_WeifenLuo.WinFormsUI.Docking.dll" Value="..\packages\DockPanelSuite.3.0.4\lib\net40"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll" Value="..\packages\DockPanelSuite.ThemeVS2015.3.1.0-beta3\lib\net40"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_WeifenLuo.WinFormsUI.Docking.dll" Value="..\packages\DockPanelSuite.3.1.0-beta3\lib\net40"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_AutoUpdater.NET.dll" Value="AutoUpdater.NET.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" Value="AutocompleteMenu-ScintillaNET.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_DotNetZip.dll" Value="DotNetZip.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ExtremeCore.dll" Value="ExtremeCore.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ExtremeParser.dll" Value="ExtremeParser.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.exe" Value="ExtremeStudio.exe"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.exe.config" Value="ExtremeStudio.exe.config"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.pdb" Value="ExtremeStudio.pdb"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll" Value="ExtremeStudio.resources.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_1" Value="ExtremeStudio.resources.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_2" Value="ExtremeStudio.resources.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_3" Value="ExtremeStudio.resources.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_4" Value="ExtremeStudio.resources.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_5" Value="ExtremeStudio.resources.dll"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_6" Value="ExtremeStudio.resources.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_HotkeyControl.dll" Value="HotkeyControl.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Newtonsoft.Json.dll" Value="Newtonsoft.Json.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ScintillaNET.dll" Value="ScintillaNET.dll"/>
@@ -85,10 +73,10 @@
     <ROW Property="ARPURLUPDATEINFO" Value="https://github.com/Ahmad45123/ExtremeStudio/releases/latest"/>
     <ROW Property="AppLogoIcon" Value="applogoicon" MultiBuildValue="DefaultBuild:pawn.png" Type="1" MsiKey="AppLogoIcon"/>
     <ROW Property="Manufacturer" Value="Ahmad45123"/>
-    <ROW Property="ProductCode" Value="1033:{2D238F27-812F-4853-89F4-B82DEE70E604} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{CA2D02B0-7221-4599-8B15-37AF25933847} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="ExtremeStudio"/>
-    <ROW Property="ProductVersion" Value="3.0.4.0" Type="32" TargetFile="ExtremeStudio.exe"/>
+    <ROW Property="ProductVersion" Value="3.0.5.0" Type="32" TargetFile="ExtremeStudio.exe"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{3978147D-BF89-44DB-997B-B2435802D8CC}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -105,13 +93,8 @@
     <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="DESKTO~1|DesktopFolder" IsPseudoRoot="1"/>
     <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
-    <ROW Directory="csCZ_Dir" Directory_Parent="APPDIR" DefaultDir="cs-CZ"/>
-    <ROW Directory="esES_Dir" Directory_Parent="APPDIR" DefaultDir="es-ES"/>
-    <ROW Directory="hrHR_Dir" Directory_Parent="APPDIR" DefaultDir="hr-HR"/>
     <ROW Directory="huHU_Dir" Directory_Parent="APPDIR" DefaultDir="hu-HU"/>
-    <ROW Directory="ptBR_Dir" Directory_Parent="APPDIR" DefaultDir="pt-BR"/>
     <ROW Directory="ruRU_Dir" Directory_Parent="APPDIR" DefaultDir="ru-RU"/>
-    <ROW Directory="trTR_Dir" Directory_Parent="APPDIR" DefaultDir="tr-TR"/>
     <ROW Directory="x64_Dir" Directory_Parent="APPDIR" DefaultDir="x64"/>
     <ROW Directory="x86_Dir" Directory_Parent="APPDIR" DefaultDir="x86"/>
   </COMPONENT>
@@ -121,13 +104,8 @@
     <ROW Component="AI_IA_ENABLE" ComponentId="{62DE820D-EA18-4981-AA49-B2CECD7DDF0C}" Directory_="APPDIR" Attributes="4" KeyPath="AI_IA_ENABLE" Options="1"/>
     <ROW Component="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" ComponentId="{644D34AC-0F19-4AB8-A4E9-CE6B3EC37E04}" Directory_="APPDIR" Attributes="0" KeyPath="AutocompleteMenuScintillaNET.dll" Type="0"/>
     <ROW Component="AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.exe" ComponentId="{B7CCBD28-6E26-4857-9D50-02E9333640CA}" Directory_="APPDIR" Attributes="0" KeyPath="ExtremeStudio.exe"/>
-    <ROW Component="ExtremeStudio_LocalizedResourcesOutput_csCZ" ComponentId="{F513506E-83A8-42A0-AF9C-A814D2C8984D}" Directory_="csCZ_Dir" Attributes="0" KeyPath="ExtremeStudio.resources.dll_6"/>
-    <ROW Component="ExtremeStudio_LocalizedResourcesOutput_esES" ComponentId="{24499F51-B787-40B5-BEAC-5F5E66B734B3}" Directory_="esES_Dir" Attributes="0" KeyPath="ExtremeStudio.resources.dll"/>
-    <ROW Component="ExtremeStudio_LocalizedResourcesOutput_hrHR" ComponentId="{2C7667B6-24FF-4D65-88B0-7094001DC4B7}" Directory_="hrHR_Dir" Attributes="0" KeyPath="ExtremeStudio.resources.dll_1"/>
     <ROW Component="ExtremeStudio_LocalizedResourcesOutput_huHU" ComponentId="{3C5DCF59-C6C0-4566-A46F-5800F0B1B515}" Directory_="huHU_Dir" Attributes="0" KeyPath="ExtremeStudio.resources.dll_2"/>
-    <ROW Component="ExtremeStudio_LocalizedResourcesOutput_ptBR" ComponentId="{1BE9D465-01B5-4D4D-9BD2-EA1C6F4D06D5}" Directory_="ptBR_Dir" Attributes="0" KeyPath="ExtremeStudio.resources.dll_3"/>
     <ROW Component="ExtremeStudio_LocalizedResourcesOutput_ruRU" ComponentId="{BD855CEB-DB19-4B6F-90B9-57BC10FC1F18}" Directory_="ruRU_Dir" Attributes="0" KeyPath="ExtremeStudio.resources.dll_4"/>
-    <ROW Component="ExtremeStudio_LocalizedResourcesOutput_trTR" ComponentId="{3C6F9138-68D3-4A7B-8349-4CA63B49A8BE}" Directory_="trTR_Dir" Attributes="0" KeyPath="ExtremeStudio.resources.dll_5"/>
     <ROW Component="ProductInformation" ComponentId="{F2B1D73D-B434-4DFC-971B-9D43D0E887B7}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
     <ROW Component="SHORTCUTDIR" ComponentId="{32DE322C-EF3A-467C-957E-B5475A4A2EDE}" Directory_="SHORTCUTDIR" Attributes="0"/>
     <ROW Component="SQLite.Interop.dll" ComponentId="{5EA0EB4D-8144-40A6-8667-047C408EE744}" Directory_="x64_Dir" Attributes="256" KeyPath="SQLite.Interop.dll"/>
@@ -136,29 +114,23 @@
     <ROW Component="__1" ComponentId="{D7BF8459-E6AC-4E88-9B5A-9F6695FB388D}" Directory_="APPDIR" Attributes="4" KeyPath="__1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
-    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AI_CustomARPName AI_ExePath AI_IA_ENABLE AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.exe ExtremeStudio_LocalizedResourcesOutput_csCZ ExtremeStudio_LocalizedResourcesOutput_esES ExtremeStudio_LocalizedResourcesOutput_hrHR ExtremeStudio_LocalizedResourcesOutput_huHU ExtremeStudio_LocalizedResourcesOutput_ptBR ExtremeStudio_LocalizedResourcesOutput_ruRU ExtremeStudio_LocalizedResourcesOutput_trTR ProductInformation SHORTCUTDIR SQLite.Interop.dll SQLite.Interop.dll_1 _ __1"/>
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AI_CustomARPName AI_ExePath AI_IA_ENABLE AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.exe ExtremeStudio_LocalizedResourcesOutput_huHU ExtremeStudio_LocalizedResourcesOutput_ruRU ProductInformation SHORTCUTDIR SQLite.Interop.dll SQLite.Interop.dll_1 _ __1"/>
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
     <ROW File="AutoUpdater.NET.dll" Component_="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" FileName="AUTOUP~1.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_AutoUpdater.NET.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_AutoUpdater.NET.dll&gt;" SelfReg="false" NextFile="HotkeyControl.dll"/>
     <ROW File="AutocompleteMenuScintillaNET.dll" Component_="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" FileName="AUTOCO~1.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_AutocompleteMenuScintillaNET.dll&gt;" SelfReg="false" NextFile="AutoUpdater.NET.dll"/>
-    <ROW File="DotNetZip.dll" Component_="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" FileName="DOTNET~1.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_DotNetZip.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_DotNetZip.dll&gt;" SelfReg="false" NextFile="Newtonsoft.Json.dll"/>
     <ROW File="ExtremeCore.dll" Component_="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" FileName="EXTREM~1.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeCore.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ExtremeCore.dll&gt;" SelfReg="false" NextFile="ExtremeParser.dll"/>
-    <ROW File="ExtremeParser.dll" Component_="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" FileName="EXTREM~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeParser.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ExtremeParser.dll&gt;" SelfReg="false" NextFile="DotNetZip.dll"/>
+    <ROW File="ExtremeParser.dll" Component_="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" FileName="EXTREM~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeParser.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ExtremeParser.dll&gt;" SelfReg="false" NextFile="Newtonsoft.Json.dll"/>
     <ROW File="ExtremeStudio.exe" Component_="AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.exe" FileName="EXTREM~1.EXE|[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.exe]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ExtremeStudio.exe&gt;" SelfReg="false" NextFile="ExtremeStudio.exe.config" DigSign="true"/>
     <ROW File="ExtremeStudio.exe.config" Component_="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" FileName="EXTREM~1.CON|[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.exe.config]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ExtremeStudio.exe.config&gt;" SelfReg="false" NextFile="ExtremeCore.dll"/>
-    <ROW File="ExtremeStudio.pdb" Component_="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" FileName="EXTREM~1.PDB|[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.pdb]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ExtremeStudio.pdb&gt;" SelfReg="false" NextFile="ExtremeStudio.resources.dll"/>
-    <ROW File="ExtremeStudio.resources.dll" Component_="ExtremeStudio_LocalizedResourcesOutput_esES" FileName="EXTREM~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ExtremeStudio.resources.dll&gt;" SelfReg="false" NextFile="ExtremeStudio.resources.dll_1"/>
-    <ROW File="ExtremeStudio.resources.dll_1" Component_="ExtremeStudio_LocalizedResourcesOutput_hrHR" FileName="EXTREM~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_1]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ExtremeStudio.resources.dll_1&gt;" SelfReg="false" NextFile="ExtremeStudio.resources.dll_2"/>
-    <ROW File="ExtremeStudio.resources.dll_2" Component_="ExtremeStudio_LocalizedResourcesOutput_huHU" FileName="EXTREM~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_2]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ExtremeStudio.resources.dll_2&gt;" SelfReg="false" NextFile="ExtremeStudio.resources.dll_3"/>
-    <ROW File="ExtremeStudio.resources.dll_3" Component_="ExtremeStudio_LocalizedResourcesOutput_ptBR" FileName="EXTREM~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_3]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ExtremeStudio.resources.dll_3&gt;" SelfReg="false" NextFile="ExtremeStudio.resources.dll_4"/>
-    <ROW File="ExtremeStudio.resources.dll_4" Component_="ExtremeStudio_LocalizedResourcesOutput_ruRU" FileName="EXTREM~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_4]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ExtremeStudio.resources.dll_4&gt;" SelfReg="false" NextFile="ExtremeStudio.resources.dll_5"/>
-    <ROW File="ExtremeStudio.resources.dll_5" Component_="ExtremeStudio_LocalizedResourcesOutput_trTR" FileName="EXTREM~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_5]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ExtremeStudio.resources.dll_5&gt;" SelfReg="false" NextFile="SQLite.Interop.dll"/>
-    <ROW File="ExtremeStudio.resources.dll_6" Component_="ExtremeStudio_LocalizedResourcesOutput_csCZ" FileName="EXTREM~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_6]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ExtremeStudio.resources.dll_6&gt;" SelfReg="false"/>
+    <ROW File="ExtremeStudio.pdb" Component_="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" FileName="EXTREM~1.PDB|[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.pdb]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ExtremeStudio.pdb&gt;" SelfReg="false" NextFile="ExtremeStudio.resources.dll_2"/>
+    <ROW File="ExtremeStudio.resources.dll_2" Component_="ExtremeStudio_LocalizedResourcesOutput_huHU" FileName="EXTREM~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_2]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ExtremeStudio.resources.dll_2&gt;" SelfReg="false" NextFile="ExtremeStudio.resources.dll_4"/>
+    <ROW File="ExtremeStudio.resources.dll_4" Component_="ExtremeStudio_LocalizedResourcesOutput_ruRU" FileName="EXTREM~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_4]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ExtremeStudio.resources.dll_4&gt;" SelfReg="false" NextFile="SQLite.Interop.dll"/>
     <ROW File="HotkeyControl.dll" Component_="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" FileName="HOTKEY~1.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_HotkeyControl.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_HotkeyControl.dll&gt;" SelfReg="false" NextFile="System.Data.SQLite.dll"/>
     <ROW File="Newtonsoft.Json.dll" Component_="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" FileName="NEWTON~1.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Newtonsoft.Json.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Newtonsoft.Json.dll&gt;" SelfReg="false" NextFile="ScintillaNET.dll"/>
     <ROW File="SQLite.Interop.dll" Component_="SQLite.Interop.dll" FileName="SQLITE~1.DLL|SQLite.Interop.dll" Attributes="0" SourcePath="..\ExtremeStudio\bin\Debug\x64\SQLite.Interop.dll" SelfReg="false" NextFile="SQLite.Interop.dll_1"/>
-    <ROW File="SQLite.Interop.dll_1" Component_="SQLite.Interop.dll_1" FileName="SQLITE~1.DLL|SQLite.Interop.dll" Attributes="0" SourcePath="..\ExtremeStudio\bin\Debug\x86\SQLite.Interop.dll" SelfReg="false" NextFile="ExtremeStudio.resources.dll_6"/>
+    <ROW File="SQLite.Interop.dll_1" Component_="SQLite.Interop.dll_1" FileName="SQLITE~1.DLL|SQLite.Interop.dll" Attributes="0" SourcePath="..\ExtremeStudio\bin\Debug\x86\SQLite.Interop.dll" SelfReg="false"/>
     <ROW File="ScintillaNET.dll" Component_="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" FileName="SCINTI~1.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ScintillaNET.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ScintillaNET.dll&gt;" SelfReg="false" NextFile="SharpCompress.dll"/>
     <ROW File="SharpCompress.dll" Component_="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" FileName="SHARPC~1.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_SharpCompress.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_SharpCompress.dll&gt;" SelfReg="false" NextFile="System.Windows.Forms.Ribbon35.dll"/>
     <ROW File="System.Data.SQLite.dll" Component_="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" FileName="SYSTEM~1.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Data.SQLite.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Data.SQLite.dll&gt;" SelfReg="false" NextFile="ThemeColorPicker.dll"/>
@@ -177,19 +149,13 @@
   <COMPONENT cid="caphyon.advinst.msicomp.AppPathsComponent">
     <ROW Name="AI_APPPATH_PERBUILD_AutoUpdater.NET.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_AutoUpdater.NET.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_AutoUpdater.NET.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_AutocompleteMenuScintillaNET.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_AutocompleteMenuScintillaNET.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_DotNetZip.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_DotNetZip.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_DotNetZip.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_ExtremeCore.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_ExtremeCore.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeCore.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_ExtremeParser.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_ExtremeParser.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeParser.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_ExtremeStudio.exe" Path="[|AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.exe]\[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.exe]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_ExtremeStudio.exe.config" Path="[|AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.exe.config]\[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.exe.config]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_ExtremeStudio.pdb" Path="[|AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.pdb]\[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.pdb]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_ExtremeStudio.resources.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.resources.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_ExtremeStudio.resources.dll_1" Path="[|AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.resources.dll_1]\[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_1]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_ExtremeStudio.resources.dll_2" Path="[|AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.resources.dll_2]\[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_2]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_ExtremeStudio.resources.dll_3" Path="[|AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.resources.dll_3]\[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_3]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_ExtremeStudio.resources.dll_4" Path="[|AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.resources.dll_4]\[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_4]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_ExtremeStudio.resources.dll_5" Path="[|AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.resources.dll_5]\[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_5]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_ExtremeStudio.resources.dll_6" Path="[|AI_PROPPATH_DIR_PERBUILD_ExtremeStudio.resources.dll_6]\[|AI_PROPPATH_FILENAME_PERBUILD_ExtremeStudio.resources.dll_6]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_HotkeyControl.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_HotkeyControl.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_HotkeyControl.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Newtonsoft.Json.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Newtonsoft.Json.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Newtonsoft.Json.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_ScintillaNET.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_ScintillaNET.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_ScintillaNET.dll]" Type="2" Content="0"/>
@@ -580,7 +546,6 @@
     <ROW ProjectId="{a050f841-3c6f-4d86-a607-d139ec7ad051}" ProjectName="ExtremeStudio" OutputGroup="PrimaryOutput" OutputFile="ExtremeStudio.exe.config"/>
     <ROW ProjectId="{a050f841-3c6f-4d86-a607-d139ec7ad051}" ProjectName="ExtremeStudio" OutputGroup="References" OutputFile="ExtremeCore.dll"/>
     <ROW ProjectId="{a050f841-3c6f-4d86-a607-d139ec7ad051}" ProjectName="ExtremeStudio" OutputGroup="References" OutputFile="ExtremeParser.dll"/>
-    <ROW ProjectId="{a050f841-3c6f-4d86-a607-d139ec7ad051}" ProjectName="ExtremeStudio" OutputGroup="References" OutputFile="DotNetZip.dll"/>
     <ROW ProjectId="{a050f841-3c6f-4d86-a607-d139ec7ad051}" ProjectName="ExtremeStudio" OutputGroup="References" OutputFile="Newtonsoft.Json.dll"/>
     <ROW ProjectId="{a050f841-3c6f-4d86-a607-d139ec7ad051}" ProjectName="ExtremeStudio" OutputGroup="References" OutputFile="ScintillaNET.dll"/>
     <ROW ProjectId="{a050f841-3c6f-4d86-a607-d139ec7ad051}" ProjectName="ExtremeStudio" OutputGroup="References" OutputFile="SharpCompress.dll"/>
@@ -593,12 +558,7 @@
     <ROW ProjectId="{a050f841-3c6f-4d86-a607-d139ec7ad051}" ProjectName="ExtremeStudio" OutputGroup="References" OutputFile="ThemeColorPicker.dll"/>
     <ROW ProjectId="{a050f841-3c6f-4d86-a607-d139ec7ad051}" ProjectName="ExtremeStudio" OutputGroup="References" OutputFile="WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll"/>
     <ROW ProjectId="{a050f841-3c6f-4d86-a607-d139ec7ad051}" ProjectName="ExtremeStudio" OutputGroup="SymbolsOutput" OutputFile="ExtremeStudio.pdb"/>
-    <ROW ProjectId="{a050f841-3c6f-4d86-a607-d139ec7ad051}" ProjectName="ExtremeStudio" OutputGroup="LocalizedResourcesOutput" OutputFile="ExtremeStudio.resources.dll"/>
-    <ROW ProjectId="{a050f841-3c6f-4d86-a607-d139ec7ad051}" ProjectName="ExtremeStudio" OutputGroup="LocalizedResourcesOutput" OutputFile="ExtremeStudio.resources.dll_1"/>
     <ROW ProjectId="{a050f841-3c6f-4d86-a607-d139ec7ad051}" ProjectName="ExtremeStudio" OutputGroup="LocalizedResourcesOutput" OutputFile="ExtremeStudio.resources.dll_2"/>
-    <ROW ProjectId="{a050f841-3c6f-4d86-a607-d139ec7ad051}" ProjectName="ExtremeStudio" OutputGroup="LocalizedResourcesOutput" OutputFile="ExtremeStudio.resources.dll_3"/>
     <ROW ProjectId="{a050f841-3c6f-4d86-a607-d139ec7ad051}" ProjectName="ExtremeStudio" OutputGroup="LocalizedResourcesOutput" OutputFile="ExtremeStudio.resources.dll_4"/>
-    <ROW ProjectId="{a050f841-3c6f-4d86-a607-d139ec7ad051}" ProjectName="ExtremeStudio" OutputGroup="LocalizedResourcesOutput" OutputFile="ExtremeStudio.resources.dll_5"/>
-    <ROW ProjectId="{a050f841-3c6f-4d86-a607-d139ec7ad051}" ProjectName="ExtremeStudio" OutputGroup="LocalizedResourcesOutput" OutputFile="ExtremeStudio.resources.dll_6"/>
   </COMPONENT>
 </DOCUMENT>
