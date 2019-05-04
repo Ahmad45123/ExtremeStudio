@@ -859,7 +859,7 @@
     <value>20</value>
   </data>
   <data name="GotoDefHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Отсутствует</value>
   </data>
   <data name="&gt;&gt;GotoDefHotkey.Name" xml:space="preserve">
     <value>GotoDefHotkey</value>
@@ -889,7 +889,7 @@
     <value>19</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
-    <value>Goto Defination: </value>
+    <value>Перейти к определению: </value>
   </data>
   <data name="&gt;&gt;label19.Name" xml:space="preserve">
     <value>label19</value>
@@ -913,7 +913,7 @@
     <value>18</value>
   </data>
   <data name="Button2.Text" xml:space="preserve">
-    <value>Save HotKeys</value>
+    <value>Сохранить горячие клавишы</value>
   </data>
   <data name="&gt;&gt;Button2.Name" xml:space="preserve">
     <value>Button2</value>
@@ -937,7 +937,7 @@
     <value>17</value>
   </data>
   <data name="BuildHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Отсутствует</value>
   </data>
   <data name="&gt;&gt;BuildHotkey.Name" xml:space="preserve">
     <value>BuildHotkey</value>
@@ -991,7 +991,7 @@
     <value>15</value>
   </data>
   <data name="GotoBeforeHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Отсутствует</value>
   </data>
   <data name="&gt;&gt;GotoBeforeHotkey.Name" xml:space="preserve">
     <value>GotoBeforeHotkey</value>
@@ -1045,7 +1045,7 @@
     <value>13</value>
   </data>
   <data name="GotoNextHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Отсутствует</value>
   </data>
   <data name="&gt;&gt;GotoNextHotkey.Name" xml:space="preserve">
     <value>GotoNextHotkey</value>
@@ -1099,7 +1099,7 @@
     <value>11</value>
   </data>
   <data name="ReplaceHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Отсутствует</value>
   </data>
   <data name="&gt;&gt;ReplaceHotkey.Name" xml:space="preserve">
     <value>ReplaceHotkey</value>
@@ -1153,7 +1153,7 @@
     <value>9</value>
   </data>
   <data name="SearchHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Отсутствует</value>
   </data>
   <data name="&gt;&gt;SearchHotkey.Name" xml:space="preserve">
     <value>SearchHotkey</value>
@@ -1207,7 +1207,7 @@
     <value>7</value>
   </data>
   <data name="GotoHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Отсутствует</value>
   </data>
   <data name="&gt;&gt;GotoHotkey.Name" xml:space="preserve">
     <value>GotoHotkey</value>
@@ -1261,7 +1261,7 @@
     <value>5</value>
   </data>
   <data name="SaveAllHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Отсутствует</value>
   </data>
   <data name="&gt;&gt;SaveAllHotkey.Name" xml:space="preserve">
     <value>SaveAllHotkey</value>
@@ -1321,7 +1321,7 @@
     <value>3</value>
   </data>
   <data name="Label11.Text" xml:space="preserve">
-    <value>HotKeys</value>
+    <value>Горячие клавишы</value>
   </data>
   <data name="&gt;&gt;Label11.Name" xml:space="preserve">
     <value>Label11</value>
@@ -1345,7 +1345,7 @@
     <value>2</value>
   </data>
   <data name="SaveHotkey.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Отсутствует</value>
   </data>
   <data name="&gt;&gt;SaveHotkey.Name" xml:space="preserve">
     <value>SaveHotkey</value>
@@ -1672,8 +1672,7 @@
     <value>20</value>
   </data>
   <data name="skipLinesUpDown.ToolTip" xml:space="preserve">
-    <value>Skip count: the number of lines to skip in the input ﬁle before starting to compile; 
-for example, to skip a "header" in the source ﬁle which is not in a valid pawn syntax.</value>
+    <value>Пропустить количество: количество линей для пропуска в исходном файле перед запуском компиляции; для примера, пропустить "заголовок" в исходном файле который синтаксически неверный в pawn.</value>
   </data>
   <data name="&gt;&gt;skipLinesUpDown.Name" xml:space="preserve">
     <value>skipLinesUpDown</value>
@@ -2064,7 +2063,7 @@ for example, to skip a "header" in the source ﬁle which is not in a valid pawn
     <value>2</value>
   </data>
   <data name="Label2.Text" xml:space="preserve">
-    <value>Includes Dir: </value>
+    <value>Включает директорию: </value>
   </data>
   <data name="&gt;&gt;Label2.Name" xml:space="preserve">
     <value>Label2</value>
@@ -2091,10 +2090,7 @@ for example, to skip a "header" in the source ﬁle which is not in a valid pawn
     <value>1</value>
   </data>
   <data name="activeDirText.ToolTip" xml:space="preserve">
-    <value>Directory: the "active" directory, where the compiler
-should search for its input ﬁles and store its output ﬁles.
-
-Set it to null for default.</value>
+    <value>Директория: "активная" директория, где компилятор должен искать файлы и хранить выходные файлы.</value>
   </data>
   <data name="&gt;&gt;activeDirText.Name" xml:space="preserve">
     <value>activeDirText</value>
@@ -2121,7 +2117,7 @@ Set it to null for default.</value>
     <value>0</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
-    <value>Active Dir: </value>
+    <value>Активная директория: </value>
   </data>
   <data name="&gt;&gt;Label1.Name" xml:space="preserve">
     <value>Label1</value>
@@ -2148,7 +2144,7 @@ Set it to null for default.</value>
     <value>367, 459</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Settings [Project]</value>
+    <value>Настройки [Проект]</value>
   </data>
   <data name="&gt;&gt;ToolTipHandler.Name" xml:space="preserve">
     <value>ToolTipHandler</value>
