@@ -39,11 +39,8 @@ namespace ExtremeStudio
             // 
             this.LangsListBox.FormattingEnabled = true;
             this.LangsListBox.Items.AddRange(new object[] {
-            "Croatian",
             "English",
             "Hungarian",
-            "Portuguese, Brazillian",
-            "Spanish",
             "Russian"});
             this.LangsListBox.Location = new System.Drawing.Point(12, 12);
             this.LangsListBox.Name = "LangsListBox";

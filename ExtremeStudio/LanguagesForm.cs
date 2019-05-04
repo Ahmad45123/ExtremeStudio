@@ -38,21 +38,6 @@ namespace ExtremeStudio
                         File.WriteAllText(
                             Program.MainForm.ApplicationFiles + "\\configs\\lang.cfg", "en");
                         break;
-                    case "Portuguese, Brazillian":
-                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-BR");
-                        File.WriteAllText(
-                            Program.MainForm.ApplicationFiles + "\\configs\\lang.cfg", "pt-BR");
-                        break;
-                    case "Croatian":
-                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("hr");
-                        File.WriteAllText(
-                            Program.MainForm.ApplicationFiles + "\\configs\\lang.cfg", "hr");
-                        break;
-                    case "Spanish":
-                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("es");
-                        File.WriteAllText(
-                            Program.MainForm.ApplicationFiles + "\\configs\\lang.cfg", "es");
-                        break;
                     case "Hungarian":
                         Thread.CurrentThread.CurrentUICulture = new CultureInfo("hu");
                         File.WriteAllText(

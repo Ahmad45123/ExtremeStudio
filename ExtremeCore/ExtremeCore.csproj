@@ -94,19 +94,7 @@
     <Compile Include="Classes\VersionReader.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.cs-CZ.resx">
-      <DependentUpon>AdvancedInputBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.es-ES.resx">
-      <DependentUpon>AdvancedInputBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.hr-HR.resx">
-      <DependentUpon>AdvancedInputBox.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.hu-HU.resx">
-      <DependentUpon>AdvancedInputBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.pt-BR.resx">
       <DependentUpon>AdvancedInputBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.resx">
@@ -115,15 +103,24 @@
     <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.ru-RU.resx">
       <DependentUpon>AdvancedInputBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls And Tools\AdvancedInputBox.tr-TR.resx">
-      <DependentUpon>AdvancedInputBox.cs</DependentUpon>
+    <EmbeddedResource Include="Controls And Tools\DownloadForm.hu-HU.resx">
+      <DependentUpon>DownloadForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls And Tools\DownloadForm.resx">
       <DependentUpon>DownloadForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls And Tools\DownloadForm.ru-RU.resx">
+      <DependentUpon>DownloadForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls And Tools\PathTextBox.hu-HU.resx">
+      <DependentUpon>PathTextBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls And Tools\PathTextBox.resx">
       <DependentUpon>PathTextBox.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls And Tools\PathTextBox.ru-RU.resx">
+      <DependentUpon>PathTextBox.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
