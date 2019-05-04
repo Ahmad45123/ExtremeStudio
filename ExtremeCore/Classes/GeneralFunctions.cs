@@ -7,8 +7,6 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Ionic.Zip;
-using Ionic.Zlib;
 using ScintillaNET;
 using SharpCompress.Common;
 using SharpCompress.Readers;
