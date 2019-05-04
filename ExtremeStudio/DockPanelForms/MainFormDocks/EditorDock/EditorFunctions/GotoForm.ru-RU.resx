@@ -135,7 +135,7 @@
     <value>5</value>
   </data>
   <data name="CancelBtn.Text" xml:space="preserve">
-    <value>&amp;Отмена</value>
+    <value>Отмена</value>
   </data>
   <data name="&gt;&gt;linenumberRadio.Parent" xml:space="preserve">
     <value>$this</value>
