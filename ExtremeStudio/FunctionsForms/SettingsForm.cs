@@ -73,7 +73,7 @@ namespace ExtremeStudio.FunctionsForms
                 if (value)
                 {
                     _isGlobal = true;
-                    _configDirPath = Program.MainForm.ApplicationFiles + "/configs/";
+                    _configDirPath = Application.StartupPath + "/configs/";
                     Text = translations.SettingsForm_IsGlobal_SettingsGLOBAL;
                     ReloadInfoAll();
                 }
@@ -366,9 +366,9 @@ namespace ExtremeStudio.FunctionsForms
 
         private void ResetLangBtn_Click(object sender, EventArgs e)
         {
-            if (File.Exists(Program.MainForm.ApplicationFiles + "\\configs\\lang.cfg"))
+            if (File.Exists(Application.StartupPath + "\\configs\\lang.cfg"))
             {
-                File.Delete(Program.MainForm.ApplicationFiles + "\\configs\\lang.cfg");
+                File.Delete(Application.StartupPath + "\\configs\\lang.cfg");
                 MessageBox.Show(
                     Convert.ToString(translations.SettingsForm_ResetLangBtn_Click_LocalizationSettingsDeleted));
                 Application.Exit();

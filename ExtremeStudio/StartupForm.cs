@@ -56,7 +56,7 @@ namespace ExtremeStudio
             }
 
             File.WriteAllText(
-                Program.MainForm.ApplicationFiles + "/configs/recent.json",
+                Application.StartupPath + "/configs/recent.json",
                 Convert.ToString(JsonConvert.SerializeObject(Recent)));
         }
 
@@ -73,7 +73,7 @@ namespace ExtremeStudio
             }
 
             File.WriteAllText(
-                Program.MainForm.ApplicationFiles + "/configs/recent.json",
+                Application.StartupPath + "/configs/recent.json",
                 Convert.ToString(JsonConvert.SerializeObject(Recent)));
         }
 
@@ -92,7 +92,7 @@ namespace ExtremeStudio
 
             //Check for updates
             AutoUpdater.ParseUpdateInfoEvent += AutoUpdater_ParseUpdateInfoEvent;
-            DownloadForm.DownloadFile("Checking for updates...", "https://api.github.com/repos/Ahmad45123/ExtremeStudio/releases/latest", Application.StartupPath + "/latest.txt");
+            DownloadForm.DownloadFile(translations.StartupForm_StartupForm_Load_Checking_for_updates, "https://api.github.com/repos/Ahmad45123/ExtremeStudio/releases/latest", Application.StartupPath + "/latest.txt");
             AutoUpdater.Start(Application.StartupPath + "/latest.txt");
 
             //If the interop files don't exist, Extract the files.
@@ -100,7 +100,7 @@ namespace ExtremeStudio
                 (!File.Exists(
                      Application.StartupPath + "/x64/SQLite.Interop.dll") ||
                  !File.Exists(
-                     Program.MainForm.ApplicationFiles + "/x86/SQLite.Interop.dll")))
+                     Application.StartupPath + "/x86/SQLite.Interop.dll")))
             {
                 //Remove old.
                 if (File.Exists(
@@ -128,33 +128,33 @@ namespace ExtremeStudio
 
             //Create needed folders and files.
             if (!Directory.Exists(
-                Program.MainForm.ApplicationFiles + "/cache"))
+                Application.StartupPath + "/cache"))
             {
                 Directory.CreateDirectory(
-                    Program.MainForm.ApplicationFiles + "/cache");
+                    Application.StartupPath + "/cache");
             }
 
             if (!Directory.Exists(
-                Program.MainForm.ApplicationFiles + "/cache/serverPackages"))
+                Application.StartupPath + "/cache/serverPackages"))
             {
                 Directory.CreateDirectory(
-                    Program.MainForm.ApplicationFiles + "/cache/serverPackages");
+                    Application.StartupPath + "/cache/serverPackages");
             }
 
             if (!Directory.Exists(
-                Program.MainForm.ApplicationFiles + "/cache/includes"))
+                Application.StartupPath + "/cache/includes"))
             {
                 Directory.CreateDirectory(
-                    Program.MainForm.ApplicationFiles + "/cache/includes");
+                    Application.StartupPath + "/cache/includes");
             }
 
             if (!Directory.Exists(
-                Program.MainForm.ApplicationFiles + "/configs"))
+                Application.StartupPath + "/configs"))
             {
                 Directory.CreateDirectory(
-                    Program.MainForm.ApplicationFiles + "/configs");
+                    Application.StartupPath + "/configs");
                 File.WriteAllText(
-                    Program.MainForm.ApplicationFiles + "/configs/recent.json", "");
+                    Application.StartupPath + "/configs/recent.json", "");
             }
 
             //Setting the IsGlobal in Settings will make sure the settings are in place and correct.
@@ -162,13 +162,13 @@ namespace ExtremeStudio
 
             //Load all the recent.
             if (File.Exists(
-                Program.MainForm.ApplicationFiles + "/configs/recent.json"))
+                Application.StartupPath + "/configs/recent.json"))
             {
                 try
                 {
                     Recent = JsonConvert.DeserializeObject<List<string>>(
                         File.ReadAllText(
-                            Program.MainForm.ApplicationFiles + "/configs/recent.json"));
+                            Application.StartupPath + "/configs/recent.json"));
                     if (ReferenceEquals(Recent, null))
                     {
                         Recent = new List<string>();

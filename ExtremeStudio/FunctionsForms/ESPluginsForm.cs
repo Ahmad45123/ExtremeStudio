@@ -37,7 +37,7 @@ namespace ExtremeStudio.FunctionsForms
         {
             string file = Path.GetFileName(plug.PluginPath);
             if (File.Exists(
-                Program.MainForm.ApplicationFiles + "/plugins/" + file))
+                Application.StartupPath + "/plugins/" + file))
             {
                 return true;
             }
@@ -51,7 +51,7 @@ namespace ExtremeStudio.FunctionsForms
         {
             string file = Path.GetFileName(plug.PluginPath);
             string oldHash =
-                System.Convert.ToString(ExtremeCore.Classes.GeneralFunctions.GetFileHash(Program.MainForm.ApplicationFiles + "/plugins/" + file));
+                System.Convert.ToString(ExtremeCore.Classes.GeneralFunctions.GetFileHash(Application.StartupPath + "/plugins/" + file));
             if (oldHash == plug.PluginSha)
             {
                 return false;
@@ -88,7 +88,7 @@ namespace ExtremeStudio.FunctionsForms
             else
             {
                 _isThereInteret = false;
-                foreach (var file in Directory.GetFiles(Program.MainForm.ApplicationFiles + "/plugins", "*.dll"))
+                foreach (var file in Directory.GetFiles(Application.StartupPath + "/plugins", "*.dll"))
                 {
                     _plugins.Add(new EsPluginData() {PluginName = Path.GetFileName(System.Convert.ToString(file))});
                 }
@@ -157,7 +157,7 @@ namespace ExtremeStudio.FunctionsForms
                     {
                         if (plug.PluginName == (string) PluginList.SelectedItem)
                         {
-                            var plugPath = Program.MainForm.ApplicationFiles + "/plugins/" +
+                            var plugPath = Application.StartupPath + "/plugins/" +
                                               Path.GetFileName(System.Convert.ToString(plug.PluginPath));
                             if (File.Exists(plugPath))
                             {
@@ -186,7 +186,7 @@ namespace ExtremeStudio.FunctionsForms
                     {
                         if (plug.PluginName == PluginList.SelectedItem)
                         {
-                            plugPath = Program.MainForm.ApplicationFiles + "/plugins/" +
+                            plugPath = Application.StartupPath + "/plugins/" +
                                        Path.GetFileName(System.Convert.ToString(plug.PluginPath));
                             if (File.Exists(plugPath))
                             {
@@ -202,7 +202,7 @@ namespace ExtremeStudio.FunctionsForms
             }
             else
             {
-                File.Delete(Program.MainForm.ApplicationFiles + "/plugins/" + PluginList.SelectedItem);
+                File.Delete(Application.StartupPath + "/plugins/" + PluginList.SelectedItem);
                 EsPluginsForm_Load(this, null);
                 PluginList_Click(this, null);
             }

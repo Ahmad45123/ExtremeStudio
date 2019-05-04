@@ -358,4 +358,7 @@ NOTE: INCLUDE THE EXTENSION!</value>
   <data name="PackagesForm_button1_Click_Removing_package___" xml:space="preserve">
     <value>Removing package...</value>
   </data>
+  <data name="StartupForm_StartupForm_Load_Checking_for_updates" xml:space="preserve">
+    <value>Checking for updates...</value>
+  </data>
 </root>

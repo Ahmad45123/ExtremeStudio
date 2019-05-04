@@ -174,8 +174,8 @@ namespace ExtremeStudio.Classes
             }
 
             //We will only copy the files that is project specific and not all.
-            File.Copy(Program.MainForm.ApplicationFiles + "/configs/themeInfo.json", ProjectPath + "/configs/themeInfo.json", true);
-            File.Copy(Program.MainForm.ApplicationFiles + "/configs/compiler.json", ProjectPath + "/configs/compiler.json", true);
+            File.Copy(Application.StartupPath + "/configs/themeInfo.json", ProjectPath + "/configs/themeInfo.json", true);
+            File.Copy(Application.StartupPath + "/configs/compiler.json", ProjectPath + "/configs/compiler.json", true);
         }
     }
 

@@ -768,5 +768,14 @@ namespace Resources {
                 return ResourceManager.GetString("StartupForm_pathTextBox_TextChanged_ProjectVersionSame", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Checking for updates....
+        /// </summary>
+        public static string StartupForm_StartupForm_Load_Checking_for_updates {
+            get {
+                return ResourceManager.GetString("StartupForm_StartupForm_Load_Checking_for_updates", resourceCulture);
+            }
+        }
     }
 }

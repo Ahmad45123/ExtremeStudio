@@ -28,21 +28,24 @@ namespace ExtremeStudio
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            LanguagesForm = new LanguagesForm();
+            LanguagesForm.ShowDialog();
+
             GotoForm = new GotoForm();
             SearchReplaceForm = new SearchReplaceForm();
             MainForm = new MainForm();
             StartupForm = new StartupForm();
-            LanguagesForm = new LanguagesForm();
             ProjExplorerDock = new ProjExplorerDock();
             ObjectExplorerDock = new ObjectExplorerDock();
             ErrorsDock = new ErrorsDock();
             SettingsForm = new SettingsForm();
 
+
             if (args.Length == 1)
             {
                 StartupForm.ProjectToOpen = args[0];
             }
-            LanguagesForm.Show();
+            StartupForm.Show();
             Application.Run();
         }
     }

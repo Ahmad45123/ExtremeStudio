@@ -24,7 +24,6 @@ namespace ExtremeStudio
         private void Done()
         {
             Close();
-            Program.StartupForm.Show();
         }
 
         private void Acceptbtn_Click(object sender, EventArgs e)
@@ -36,17 +35,17 @@ namespace ExtremeStudio
                     case "English":
                         Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
                         File.WriteAllText(
-                            Program.MainForm.ApplicationFiles + "\\configs\\lang.cfg", "en");
+                            Application.StartupPath + "\\configs\\lang.cfg", "en");
                         break;
                     case "Hungarian":
-                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("hu");
+                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("hu-HU");
                         File.WriteAllText(
-                            Program.MainForm.ApplicationFiles + "\\configs\\lang.cfg", "hu");
+                            Application.StartupPath + "\\configs\\lang.cfg", "hu-HU");
                         break;
                     case "Russian":
-                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("ru");
+                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("ru-RU");
                         File.WriteAllText(
-                            Program.MainForm.ApplicationFiles + "\\configs\\lang.cfg", "ru");
+                            Application.StartupPath + "\\configs\\lang.cfg", "ru-RU");
                         break;
                 }
 
@@ -56,19 +55,15 @@ namespace ExtremeStudio
 
         private void LanguagesForm_Load(object sender, EventArgs e)
         {
-            //We will want to set/know the settings folder first.
-            //CHANGED: it now just saved in the same folder as app
-            Program.MainForm.ApplicationFiles = Application.StartupPath;
-
-            if (!Directory.Exists(Program.MainForm.ApplicationFiles + "\\configs"))
+            if (!Directory.Exists(Application.StartupPath + "\\configs"))
             {
-                Directory.CreateDirectory(Program.MainForm.ApplicationFiles + "\\configs");
+                Directory.CreateDirectory(Application.StartupPath + "\\configs");
             }
 
-            if (File.Exists(Program.MainForm.ApplicationFiles + "\\configs\\lang.cfg"))
+            if (File.Exists(Application.StartupPath + "\\configs\\lang.cfg"))
             {
                 Thread.CurrentThread.CurrentUICulture =
-                    new CultureInfo(File.ReadAllText(Program.MainForm.ApplicationFiles + "\\configs\\lang.cfg"));
+                    new CultureInfo(File.ReadAllText(Application.StartupPath + "\\configs\\lang.cfg"));
                 Done();
             }
         }
