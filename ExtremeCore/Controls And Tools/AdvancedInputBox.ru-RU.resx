@@ -174,7 +174,7 @@
     <value>2</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
-    <value>&amp;Cancel</value>
+    <value>Отмена</value>
   </data>
   <data name="&gt;&gt;button1.Name" xml:space="preserve">
     <value>button1</value>
@@ -198,7 +198,7 @@
     <value>3</value>
   </data>
   <data name="button2.Text" xml:space="preserve">
-    <value>&amp;Ok</value>
+    <value>Ок</value>
   </data>
   <data name="&gt;&gt;button2.Name" xml:space="preserve">
     <value>button2</value>
@@ -222,7 +222,7 @@
     <value>409, 147</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>AdvancedInputBox</value>
+    <value>Расширенное поле ввода</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>AdvancedInputBox</value>

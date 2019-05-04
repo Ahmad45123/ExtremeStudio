@@ -118,232 +118,244 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="StartupForm_CreateProjectBtn_Click_InvalidSampFolder" xml:space="preserve">
-    <value>Invalid SAMP Folder.. 
-Must contain the pawno folder, gamemodes folder, plugins folder, all executables and the server config.</value>
+    <value>Неверная папка SAMP.. 
+Она должна содержать папку pawno, gamemodes, plugins, все исполняемые файлы и настройки сервера.</value>
   </data>
   <data name="StartupForm_CreateProjectBtn_Click_InvalidName" xml:space="preserve">
-    <value>Invalid Name.</value>
+    <value>Неверное название.</value>
   </data>
   <data name="StartupForm_CreateProjectBtn_Click_NoSampSelected" xml:space="preserve">
-    <value>You haven't selected a SAMP version to use.</value>
+    <value>Вы не выбрали версию SAMP для использования.</value>
   </data>
   <data name="StartupForm_CreateProjectBtn_Click_DirError" xml:space="preserve">
-    <value>That directory doesn't exist or there is a project with that name already there.</value>
+    <value>Данная директория не существует или проект с таким именем уже существует.</value>
   </data>
   <data name="StartupForm_pathTextBox_TextChanged_None" xml:space="preserve">
-    <value>None</value>
+    <value>Отсутствует</value>
   </data>
   <data name="StartupForm_pathTextBox_TextChanged_ProjectVersionSame" xml:space="preserve">
-    <value>Project version is the same as ExtremeStudio's version, No converion is needed.</value>
+    <value>Версия проекта как у ExtremeStudio, конвертация не нужна.</value>
   </data>
   <data name="StartupForm_pathTextBox_TextChanged_ProjectVersionOlder" xml:space="preserve">
-    <value>Project older then ExtremeStudio, Conversion will be done however it may bug with older versions so its recommended to not try.</value>
+    <value>Версия проекта меньше чем у ExtremeStudio, конвертация будет завершена, но может содержать ошибки, поэтому не рекомендуется ее выполнять.</value>
   </data>
   <data name="StartupForm_pathTextBox_TextChanged_ProjectVersionNewer" xml:space="preserve">
-    <value>Project version is newer then ExtremeStudio's version, Please download latest ExtremeStudio package.</value>
+    <value>Версия проекта больше чем версия ExtremeStudio, пожалуйста обновите ExtremeStudio.</value>
   </data>
   <data name="StartupForm_pathTextBox_TextChanged_InvalidESPrj" xml:space="preserve">
-    <value>ERROR: That folder isn't a valid ExtremeStudio project. Make sure you haven't deleted or modified any file manually.</value>
+    <value>ОШИБКА: Данная директория не является проектом ExtremeStudio. Возможно вы удалили или изменили какой-либо файл вручную.</value>
   </data>
   <data name="StartupForm_Button1_Click_WouldYouLikeToContinue" xml:space="preserve">
     <value>
 
-Would you like to continue ?</value>
+Вы хотите продолжить?</value>
   </data>
   <data name="MainForm_compileScriptBtn_Click_WaitForCompile" xml:space="preserve">
-    <value>Please wait until the current compilation or parsing process is finished.</value>
+    <value>Пожалуйста, подождите пока компиляция или парсинг завершиться.</value>
   </data>
   <data name="MainForm_CompilerWorker_DoWork_WouldYouLikeToSaveFiles" xml:space="preserve">
-    <value>Would you like to save all files ?</value>
+    <value>Вы хотите сохранить все файлы?</value>
   </data>
   <data name="MainForm_CompilerWorker_ProgressChanged_Compiling" xml:space="preserve">
-    <value>Compiling...</value>
+    <value>Компиляция...</value>
   </data>
   <data name="MainForm_CompilerWorker_ProgressChanged_CompilingFailedWithErrors" xml:space="preserve">
-    <value>Compiling failed with errors/warnings.</value>
+    <value>Компиляция завершилась с ошибками/предупреждениями.</value>
   </data>
   <data name="MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithWarnings" xml:space="preserve">
-    <value>Compiling finished successfully but there are warning(s).</value>
+    <value>Компиляция завершилась с предупреждениями.</value>
   </data>
   <data name="MainForm_CompilerWorker_ProgressChanged_CompilingDoneWithNoErrorsWarnings" xml:space="preserve">
-    <value>Compiling finished sucessfully with no errors/warnings.</value>
+    <value>Компиляция завершилась успешно.</value>
   </data>
   <data name="SettingsForm_resetBtn_Click_ResetDefaultSettings" xml:space="preserve">
-    <value>Are you sure you want to reset to default settings ?</value>
+    <value>Вы уверены, что хотите сбросить настройки?</value>
   </data>
   <data name="SettingsForm_importBtn_Click_OpenFileDialogTitle" xml:space="preserve">
-    <value>Select Source.</value>
+    <value>Выберите источник.</value>
   </data>
   <data name="SettingsForm_exportBtn_Click_OpenFileDialogTitle" xml:space="preserve">
-    <value>Select Target.</value>
+    <value>Выберите цель.</value>
   </data>
   <data name="SettingsForm_exportBtn_Click_ExporteSuccess" xml:space="preserve">
-    <value>Exported Successfully!</value>
+    <value>Успешно экспортировано!</value>
   </data>
   <data name="SettingsForm_IsGlobal_SettingsGLOBAL" xml:space="preserve">
-    <value>Settings. [GLOBAL]</value>
+    <value>Настройки. [ГЛОБАЛЬНЫЕ]</value>
   </data>
   <data name="SettingsForm_IsGlobal_SettingsPROJECT" xml:space="preserve">
-    <value>Settings. [PROJECT]</value>
+    <value>Настройки. [ПРОЕКТ]</value>
   </data>
   <data name="PluginsForm_PluginsForm_Load_PluginCached" xml:space="preserve">
-    <value>The plugin is cached, No description is available.</value>
+    <value>Данный плагин не кеширован, описание не доступно.</value>
   </data>
   <data name="PluginsForm_includesList_SelectedIndexChanged_ThisPluginNeedsTheIncludeToWork" xml:space="preserve">
-    <value>This plugin needs the {0} include to work.</value>
+    <value>Данный плагин требует {0} для работы.</value>
   </data>
   <data name="PluginsForm_includesList_SelectedIndexChanged_ReinstallPlugin" xml:space="preserve">
-    <value>Reinstall Plugin</value>
+    <value>Переустановить плагин</value>
   </data>
   <data name="PluginsForm_includesList_SelectedIndexChanged_RemoveFromServerCfg" xml:space="preserve">
-    <value>Remove from server.cfg</value>
+    <value>Удалить с server.cfg</value>
   </data>
   <data name="PluginsForm_includesList_SelectedIndexChanged_AddToServerCfg" xml:space="preserve">
-    <value>Add to server.cfg</value>
+    <value>Добавить в server.cfg</value>
   </data>
   <data name="PluginsForm_includesList_SelectedIndexChanged_InstallPlugin" xml:space="preserve">
-    <value>Install Plugin</value>
+    <value>Добавить Плагин</value>
   </data>
   <data name="PluginsForm_Button1_Click_PluginCantBeFoundInCache" xml:space="preserve">
-    <value>The plugin can't be found in the cache.</value>
+    <value>Плагин не может быть найден в кеше.</value>
   </data>
   <data name="PluginsForm_Button1_Click_PluginInstalled" xml:space="preserve">
-    <value>The plugin '{0}' has been successfully installed.</value>
+    <value>Плаги "{0}" был успешно установлен.</value>
   </data>
   <data name="IncludesForm_IncludesForm_Load_IncludeCached" xml:space="preserve">
-    <value>The include is cached, No description is available.</value>
+    <value>Дополнение кешировано, описание не доступно.</value>
   </data>
   <data name="IncludesForm_includesList_SelectedIndexChanged_IncludeNeedsPlugin" xml:space="preserve">
-    <value>This include needs the {0} plugin to work.</value>
+    <value>Данное дополнение требует плагин {0} для работы.</value>
   </data>
   <data name="IncludesForm_includesList_SelectedIndexChanged_ReinstallInclude" xml:space="preserve">
-    <value>Reinstall Include</value>
+    <value>Переустановить дополнение</value>
   </data>
   <data name="IncludesForm_includesList_SelectedIndexChanged_InstallInclude" xml:space="preserve">
-    <value>Install Include</value>
+    <value>Установить дополнение</value>
   </data>
   <data name="IncludesForm_Button1_Click_IncludeNotFoundCache" xml:space="preserve">
-    <value>The include can't be found in the cache.</value>
+    <value>Дополнение не может быть найдено в кеше.</value>
   </data>
   <data name="IncludesForm_Button1_Click_IncludeInstalled" xml:space="preserve">
-    <value>The include '{0}' has been successfully installed.</value>
+    <value>Дополнение "{0}" было успешно установлено.</value>
   </data>
   <data name="EsPluginsForm_PluginList_Click_ReInstallPlugin" xml:space="preserve">
-    <value>ReInstall Plugin</value>
+    <value>Переустановить плагин</value>
   </data>
   <data name="EsPluginsForm_PluginList_Click_InstallPlugin" xml:space="preserve">
-    <value>Install Plugin</value>
+    <value>Установить плагин</value>
   </data>
   <data name="ProjExplorerDock_filesList_FileSelected_FileNotSupported" xml:space="preserve">
-    <value>This filetype is not supported to be veiwed by ExtremeStudio so it will be opened normally.</value>
+    <value>Данный тип файлов не поддерживается ExtremeStudio, поэтому он будет открыт как обычно.</value>
   </data>
   <data name="ProjExplorerDock_RenameToolStripMenuItem_Click_EnterNewNameTitle" xml:space="preserve">
-    <value>Enter new name.</value>
+    <value>Введите новое имя.</value>
   </data>
   <data name="ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNewDirName" xml:space="preserve">
-    <value>Please enter a new name for the directory.</value>
+    <value>Пожалуйста, введите новое имя для этой директории.</value>
   </data>
   <data name="ProjExplorerDock_RenameToolStripMenuItem_Click_PleaseEnterNameForFile" xml:space="preserve">
-    <value>Please enter a new name for the file.
+    <value>Пожалуйста, введите новое имя для этого файла.
 
-NOTE: INCLUDE THE EXTENSION!</value>
+Примечание: включая расширение!</value>
   </data>
   <data name="ProjExplorerDock_NewDirectoryToolStripMenuItem_Click_PleaseEnterNameForDir" xml:space="preserve">
-    <value>Please enter a name for the directory.</value>
+    <value>Пожалуйста, введите имя для этой директории.</value>
   </data>
   <data name="ProjExplorerDock_NewFileToolStripMenuItem_Click_PleaseEnterNameForFile" xml:space="preserve">
-    <value>Please enter a name for the file.
+    <value>Пожалуйста, введите имя для этого файла.
 
-NOTE: INCLUDE THE EXTENSION!</value>
+Примечание: включая расширение!</value>
   </data>
   <data name="ObjectExplorerDockItems_deleteBtn_Click_YouWantDelete" xml:space="preserve">
-    <value>Are you sure you want to delete this ?</value>
+    <value>Вы уверены, что хотите удалить это?</value>
   </data>
   <data name="ObjectExplorerDockItems_addBtn_Click_PleaseEnterDetials" xml:space="preserve">
-    <value>Please enter any details.</value>
+    <value>Пожалуйста, введите какие-либо данные.</value>
   </data>
   <data name="EditorDock_EditorDock_FormClosing_FileContainsUnSavedContent" xml:space="preserve">
-    <value>The file contains un-saved content, Would you like to save it ?</value>
+    <value>Данный файл содержит не сохраненное содержимое, вы хотите сохранить это?</value>
   </data>
   <data name="EditorDock_scintilla_TextChangedDelayed_ParsingCode" xml:space="preserve">
-    <value>Parsing Code.</value>
+    <value>Анализ кода.</value>
   </data>
   <data name="EditorDock_RefreshWorker_RunWorkerCompleted_Idle" xml:space="preserve">
-    <value>Idle.</value>
+    <value>В ожидании.</value>
   </data>
   <data name="EditorDock_RefreshWorker_RunWorkerCompleted_IncludeNotFoundError" xml:space="preserve">
-    <value>The include `{0}` is not found, Please make sure it exists.</value>
+    <value>Дополнение {0} не найдено. Пожалуйста, убедитесь, что он существует.</value>
   </data>
   <data name="GotoForm_linenumberRadio_CheckedChanged_LineNumberLabel" xml:space="preserve">
-    <value>Line Number: </value>
+    <value>Номер строки: </value>
   </data>
   <data name="GotoForm_linenumberRadio_CheckedChanged_MaximumLabel" xml:space="preserve">
-    <value>Maximum: </value>
+    <value>Максимум: </value>
   </data>
   <data name="GotoForm_linenumberRadio_CheckedChanged_CurrentLabel" xml:space="preserve">
-    <value>Current: </value>
+    <value>Текущий: </value>
   </data>
   <data name="GotoForm_positionRadio_CheckedChanged_PositionLabel" xml:space="preserve">
-    <value>Position: </value>
+    <value>Позиция: </value>
   </data>
   <data name="GotoForm_GoBtn_Click_CheckYourValues" xml:space="preserve">
-    <value>Please check your value, It seems to be wrong.</value>
+    <value>Пожалуйста, проверьте значения. Кажется, они неправильные.</value>
   </data>
   <data name="SearchReplaceForm_searchCountBtn_Click_NumberItemsFound" xml:space="preserve">
-    <value>Number of items found are: </value>
+    <value>Количество найденных элементов: </value>
   </data>
   <data name="SearchReplaceForm_SearchAndMark_ReachedEndDocument" xml:space="preserve">
-    <value>Reached End Of Document.</value>
+    <value>Достигнут конец документа.</value>
   </data>
   <data name="SearchReplaceForm_searchFindAllBtn_Click_UseKeysForTravel" xml:space="preserve">
-    <value>Use CTRL+SHIFT+N and CTRL+SHIFT+B to fast-travel in between the finds.</value>
+    <value>Используйте сочетание клавиш CTRL+SHIFT+N и CTRL+SHIFT+B для быстрого перемещения между найденными элементами.</value>
   </data>
   <data name="SearchReplaceForm_replaceReplaceAllBtn_Click_NumberItemsReplaced" xml:space="preserve">
-    <value>Number of items replaced are: </value>
+    <value>Количество замененных элементов: </value>
   </data>
   <data name="AutoCompleteItemEx_New_PawnDocHelp" xml:space="preserve">
-    <value>PawnDoc Help: </value>
+    <value>Помощь PawnDoc: </value>
   </data>
   <data name="AutoCompleteItemEx_New_Remarks" xml:space="preserve">
-    <value>Remarks: </value>
+    <value>Примечания: </value>
   </data>
   <data name="AutoCompleteItemEx_New_Parameters" xml:space="preserve">
-    <value>Parameters :</value>
+    <value>Параметры:</value>
   </data>
   <data name="AutoCompleteItemEx_New_Returns" xml:space="preserve">
-    <value>Returns: </value>
+    <value>Возвращает: </value>
   </data>
   <data name="AutoCompleteItemEx_New_FunctionName" xml:space="preserve">
-    <value>Function Name: </value>
+    <value>Название функции: </value>
   </data>
   <data name="AutoCompleteItemEx_New_ReturnTag" xml:space="preserve">
-    <value>Return Tag: </value>
+    <value>Возвращаемый тег: </value>
   </data>
   <data name="SettingsForm_ResetLangBtn_Click_LocalizationSettingsDeleted" xml:space="preserve">
-    <value>Localization settings have been deleted sucessfully, please restart application and the language dialog will show.</value>
+    <value>Параметры локализации были успешно удалены, Пожалуйста перезапустите приложение и будет показано языковое диалоговое окно.</value>
   </data>
   <data name="EditorDock_Editor_KeyDown_DefNotFound" xml:space="preserve">
-    <value>The definition of selected keyword wasn't found.</value>
+    <value>Определение выбранного ключевого слова не найдено.</value>
   </data>
   <data name="PackagesForm_PackagesList_SelectedIndexChanged_LastUpdated" xml:space="preserve">
-    <value>Last updated: </value>
+    <value>Обновлено: </value>
   </data>
   <data name="PackagesForm_PackagesList_SelectedIndexChanged_Stars" xml:space="preserve">
-    <value>Stars: </value>
+    <value>Оценка: </value>
   </data>
   <data name="PackagesForm_button1_Click_Uninstalling" xml:space="preserve">
-    <value>Uninstalling...</value>
+    <value>Удаление...</value>
   </data>
   <data name="PackagesForm_button1_Click_InstallPackage" xml:space="preserve">
-    <value>Install Package</value>
+    <value>Установить плагин</value>
   </data>
   <data name="PackagesForm_button1_Click_Installing" xml:space="preserve">
-    <value>Installing...</value>
+    <value>Установка...</value>
   </data>
   <data name="PackagesForm_button1_Click_UninstallPackage" xml:space="preserve">
-    <value>Uninstall Package</value>
+    <value>Удалить плагин</value>
   </data>
   <data name="ProjExplorerDock_DeleteToolStripMenuItem_Click_AreYouSure" xml:space="preserve">
-    <value>Are you sure you'd like to delete this file/folder ?</value>
+    <value>Вы уверены, что хотите удалить файл/папку?</value>
+  </data>
+  <data name="MainForm_CompilerWorker_DoWork_CompilationFailed" xml:space="preserve">
+    <value>Ошибка компиляции.</value>
+  </data>
+  <data name="StartupForm_CreateProjectBtn_Click_Ensuring_packages" xml:space="preserve">
+    <value>Проверка плагинов...</value>
+  </data>
+  <data name="PackagesForm_button1_Click_Downloading_package___" xml:space="preserve">
+    <value>Скачивание плагина...</value>
+  </data>
+  <data name="PackagesForm_button1_Click_Removing_package___" xml:space="preserve">
+    <value>Удаление плагина...</value>
   </data>
 </root>
