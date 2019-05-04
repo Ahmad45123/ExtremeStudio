@@ -135,7 +135,7 @@
     <value>5</value>
   </data>
   <data name="CancelBtn.Text" xml:space="preserve">
-    <value>&amp;Cancel</value>
+    <value>&amp;Mégse</value>
   </data>
   <data name="&gt;&gt;linenumberRadio.Parent" xml:space="preserve">
     <value>$this</value>
@@ -177,7 +177,7 @@
     <value>True</value>
   </data>
   <data name="theLabel.Text" xml:space="preserve">
-    <value>Line Number: </value>
+    <value>Sor száma: </value>
   </data>
   <data name="&gt;&gt;GoBtn.Name" xml:space="preserve">
     <value>GoBtn</value>
@@ -256,7 +256,7 @@
     <value>1</value>
   </data>
   <data name="curLabel.Text" xml:space="preserve">
-    <value>Current: 0</value>
+    <value>Jelenleg: 0</value>
   </data>
   <data name="&gt;&gt;maxLabel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -280,16 +280,16 @@
     <value>theLabel</value>
   </data>
   <data name="positionRadio.Text" xml:space="preserve">
-    <value>Position</value>
+    <value>Pozíció</value>
   </data>
   <data name="linenumberRadio.Text" xml:space="preserve">
-    <value>Line Number</value>
+    <value>Sor szám</value>
   </data>
   <data name="GoBtn.Text" xml:space="preserve">
-    <value>&amp;Go</value>
+    <value>&amp;Ugrás</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Goto</value>
+    <value>Ugrás</value>
   </data>
   <data name="&gt;&gt;curLabel.ZOrder" xml:space="preserve">
     <value>1</value>
