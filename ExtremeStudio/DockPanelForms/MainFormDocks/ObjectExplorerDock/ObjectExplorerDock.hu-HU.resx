@@ -129,7 +129,7 @@
     <value>126, 22</value>
   </data>
   <data name="ToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Refresh</value>
+    <value>Frissítés</value>
   </data>
   <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 6</value>
@@ -138,7 +138,7 @@
     <value>126, 22</value>
   </data>
   <data name="EditItemsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Edit Items</value>
+    <value>Elemek szerkesztése</value>
   </data>
   <data name="MenuStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 54</value>
@@ -208,7 +208,7 @@
     <value>2</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
-    <value>Search Term</value>
+    <value>Keresési kifejezés</value>
   </data>
   <data name="&gt;&gt;Label1.Name" xml:space="preserve">
     <value>Label1</value>
@@ -235,7 +235,7 @@
     <value>Tahoma, 8pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Object Explorer</value>
+    <value>Objektum explorer</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItem1.Name" xml:space="preserve">
     <value>ToolStripMenuItem1</value>
