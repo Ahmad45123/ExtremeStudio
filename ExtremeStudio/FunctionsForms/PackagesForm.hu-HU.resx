@@ -285,7 +285,7 @@
     <value>3</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Dependencies: </value>
+    <value>Szükséges összetevők: </value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -315,7 +315,7 @@
     <value>2</value>
   </data>
   <data name="StarsLabel.Text" xml:space="preserve">
-    <value>Stars: 0</value>
+    <value>Csillagok: 0</value>
   </data>
   <data name="&gt;&gt;StarsLabel.Name" xml:space="preserve">
     <value>StarsLabel</value>
@@ -345,7 +345,7 @@
     <value>1</value>
   </data>
   <data name="LastUpdatedLabel.Text" xml:space="preserve">
-    <value>Last updated: </value>
+    <value>Utoljára frissítve: </value>
   </data>
   <data name="&gt;&gt;LastUpdatedLabel.Name" xml:space="preserve">
     <value>LastUpdatedLabel</value>
@@ -372,7 +372,7 @@
     <value>0</value>
   </data>
   <data name="PackageNameLabel.Text" xml:space="preserve">
-    <value>Name / Package</value>
+    <value>Név / Csomag</value>
   </data>
   <data name="PackageNameLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -399,7 +399,7 @@
     <value>5</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Information</value>
+    <value>Információ</value>
   </data>
   <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
     <value>groupBox1</value>
@@ -423,7 +423,7 @@
     <value>6</value>
   </data>
   <data name="ActionButton.Text" xml:space="preserve">
-    <value>Install Package</value>
+    <value>Csomag telepítése</value>
   </data>
   <data name="&gt;&gt;ActionButton.Name" xml:space="preserve">
     <value>ActionButton</value>
@@ -447,7 +447,7 @@
     <value>549, 432</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Packages</value>
+    <value>Csomagok</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>PackagesForm</value>
