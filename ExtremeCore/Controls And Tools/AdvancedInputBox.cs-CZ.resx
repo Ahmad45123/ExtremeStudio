@@ -128,9 +128,7 @@
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Label1</value>
-  </data>
+  
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
   </data>
@@ -173,9 +171,7 @@
   <data name="button1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>Zrušit</value>
-  </data>
+  
   <data name="&gt;&gt;button1.Name" xml:space="preserve">
     <value>button1</value>
   </data>
@@ -197,9 +193,7 @@
   <data name="button2.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="button2.Text" xml:space="preserve">
-    <value>&amp; Ok</value>
-  </data>
+  
   <data name="&gt;&gt;button2.Name" xml:space="preserve">
     <value>button2</value>
   </data>
@@ -221,9 +215,7 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>409, 147</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>AdvancedInputBox</value>
-  </data>
+  
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>AdvancedInputBox</value>
   </data>
