@@ -37,8 +37,8 @@
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Data.SQLite.dll" Value="..\packages\System.Data.SQLite.Core.1.0.108.0\lib\net46"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Windows.Forms.Ribbon35.dll" Value="..\lib"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_ThemeColorPicker.dll" Value="..\lib"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll" Value="..\packages\DockPanelSuite.ThemeVS2015.3.1.0-beta3\lib\net40"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_WeifenLuo.WinFormsUI.Docking.dll" Value="..\packages\DockPanelSuite.3.1.0-beta3\lib\net40"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll" Value="..\packages\DockPanelSuite.ThemeVS2015.3.0.6\lib\net40"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_WeifenLuo.WinFormsUI.Docking.dll" Value="..\packages\DockPanelSuite.3.0.6\lib\net40"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_AutoUpdater.NET.dll" Value="AutoUpdater.NET.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_AutocompleteMenuScintillaNET.dll" Value="AutocompleteMenu-ScintillaNET.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ExtremeCore.dll" Value="ExtremeCore.dll"/>

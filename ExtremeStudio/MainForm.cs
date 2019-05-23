@@ -35,7 +35,7 @@ namespace ExtremeStudio
         }
 
         //This is set in LanguageForm by users needing.
-        public string ApplicationFiles;
+        public readonly string ApplicationFiles = Application.StartupPath;
 
         #region Properties
 
@@ -124,13 +124,10 @@ namespace ExtremeStudio
                 _mDeserlise = GetContentFromPersistString;
                 try
                 {
-                    if (File.Exists(ApplicationFiles + "/configs/docksInfo.xml") == false)
+                    if (File.Exists(ApplicationFiles + "/configs/docksInfo.xml"))
                     {
-                        File.WriteAllText(ApplicationFiles + "/configs/docksInfo.xml",
-                            Convert.ToString(Properties.Resources.docksInfo), Encoding.Unicode);
+                        MainDock.LoadFromXml(ApplicationFiles + "/configs/docksInfo.xml", _mDeserlise);
                     }
-
-                    MainDock.LoadFromXml(ApplicationFiles + "/configs/docksInfo.xml", _mDeserlise);
                 }
                 catch (Exception)
                 {
@@ -212,7 +209,7 @@ namespace ExtremeStudio
                 if(Program.ProjExplorerDock.IsDisposed)
                     Program.ProjExplorerDock = new ProjExplorerDock();
                 Program.ProjExplorerDock.Visible = true;
-                Program.ProjExplorerDock.Show(MainDock);
+                Program.ProjExplorerDock.Show(MainDock, DockState.DockRight);
             }
             else
             {
@@ -228,7 +225,7 @@ namespace ExtremeStudio
                 if(Program.ObjectExplorerDock.IsDisposed)
                     Program.ObjectExplorerDock = new ObjectExplorerDock();
                 Program.ObjectExplorerDock.Visible = true;
-                Program.ObjectExplorerDock.Show(MainDock);
+                Program.ObjectExplorerDock.Show(MainDock, DockState.DockLeft);
             }
             else
             {
@@ -244,7 +241,7 @@ namespace ExtremeStudio
                 if(Program.ErrorsDock.IsDisposed)
                     Program.ErrorsDock = new ErrorsDock();
                 Program.ErrorsDock.Visible = true;
-                Program.ErrorsDock.Show(MainDock);
+                Program.ErrorsDock.Show(MainDock, DockState.DockBottom);
             }
             else
             {
