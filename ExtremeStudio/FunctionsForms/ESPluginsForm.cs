@@ -105,7 +105,7 @@ namespace ExtremeStudio.FunctionsForms
                 {
                     foreach (var plug in _plugins)
                     {
-                        if (plug.PluginName == PluginList.SelectedItem)
+                        if (plug.PluginName == (string)PluginList.SelectedItem)
                         {
                             PluginNameText.Text = plug.PluginName;
                             PluginDescText.Text = plug.PluginDesc;
@@ -184,7 +184,7 @@ namespace ExtremeStudio.FunctionsForms
                     string plugPath = null;
                     foreach (var plug in _plugins)
                     {
-                        if (plug.PluginName == PluginList.SelectedItem)
+                        if (plug.PluginName == (string)PluginList.SelectedItem)
                         {
                             plugPath = Application.StartupPath + "/plugins/" +
                                        Path.GetFileName(System.Convert.ToString(plug.PluginPath));

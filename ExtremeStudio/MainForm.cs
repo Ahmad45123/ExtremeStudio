@@ -360,7 +360,7 @@ namespace ExtremeStudio
 
         #region Compiler Stuff
 
-        private async void CompilerWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void CompilerWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             CheckForIllegalCrossThreadCalls = false;
             //First of all, Try and save all docs.
