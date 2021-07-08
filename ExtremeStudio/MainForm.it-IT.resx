@@ -150,9 +150,7 @@
   <data name="statusLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>26, 17</value>
   </data>
-  <data name="statusLabel.Text" xml:space="preserve">
-    <value>В ожидании</value>
-  </data>
+  
   <data name="StatusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 440</value>
   </data>
@@ -162,9 +160,7 @@
   <data name="StatusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="StatusStrip1.Text" xml:space="preserve">
-    <value>Строка состояния</value>
-  </data>
+  
   <data name="&gt;&gt;StatusStrip1.Name" xml:space="preserve">
     <value>StatusStrip1</value>
   </data>
@@ -198,30 +194,22 @@
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="RibbonOrbMenuItem1.Text" xml:space="preserve">
-    <value>Проект</value>
-  </data>
+  
   <data name="RibbonOrbRecentItem1.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="RibbonOrbRecentItem1.Text" xml:space="preserve">
-    <value>Закрыть текущий проект</value>
-  </data>
+  
   <data name="mainRibbon.OrbDropDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>527, 116</value>
   </data>
   <data name="mainRibbon.OrbDropDown.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="closeProjectButton.Text" xml:space="preserve">
-    <value>RibbonButton4</value>
-  </data>
-  <data name="closeProjectButton.ToolTip" xml:space="preserve">
-    <value>Закрыть проект</value>
-  </data>
+  
+  
   <data name="mainRibbon.Size" type="System.Drawing.Size, System.Drawing">
     <value>610, 100</value>
   </data>
@@ -234,117 +222,83 @@
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="saveFileButton.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
+  
   <data name="saveAllButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="saveAllButton.ToolTip" xml:space="preserve">
-    <value>Сохранить все</value>
-  </data>
-  <data name="prjPanel.Text" xml:space="preserve">
-    <value>Файлы</value>
-  </data>
+  
+  
   <data name="includesButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="includesButton.ToolTip" xml:space="preserve">
-    <value>Скачать пакеты SAMP</value>
-  </data>
-  <data name="downloadPanel.Text" xml:space="preserve">
-    <value>Пакеты</value>
-  </data>
-  <data name="fileTab.Text" xml:space="preserve">
-    <value>Прект</value>
-  </data>
+  
+  
+  
   <data name="cutButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="cutButton.ToolTip" xml:space="preserve">
-    <value>Вырезать</value>
-  </data>
+  
   <data name="copyButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="copyButton.ToolTip" xml:space="preserve">
-    <value>Копировать</value>
-  </data>
+  
   <data name="pasteButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="pasteButton.ToolTip" xml:space="preserve">
-    <value>Вставить</value>
-  </data>
-  <data name="clipboardPanel.Text" xml:space="preserve">
-    <value>Буфер обмена</value>
-  </data>
+  
+  
   <data name="searchButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="searchButton.ToolTip" xml:space="preserve">
-    <value>Поиск</value>
-  </data>
+  
   <data name="replaceButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="replaceButton.ToolTip" xml:space="preserve">
-    <value>Заменить</value>
-  </data>
+  
   <data name="gotoButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="gotoButton.ToolTip" xml:space="preserve">
-    <value>Перейти</value>
-  </data>
-  <data name="searchPanel.Text" xml:space="preserve">
-    <value>Поиск &amp; Замена</value>
-  </data>
+  
+  
   <data name="addIndentButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="addIndentButton.ToolTip" xml:space="preserve">
-    <value>Добавить отступ</value>
-  </data>
+  
   <data name="removeIndentButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="removeIndentButton.ToolTip" xml:space="preserve">
-    <value>Удалить отступ</value>
-  </data>
-  <data name="indentPanel.Text" xml:space="preserve">
-    <value>Отступы</value>
-  </data>
+  
+  
   <data name="UndoButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -352,9 +306,7 @@
 </value>
   </data>
   
-  <data name="UndoButton.ToolTip" xml:space="preserve">
-    <value>Отменить</value>
-  </data>
+  
   <data name="RedoButton.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -362,15 +314,9 @@
 </value>
   </data>
   
-  <data name="RedoButton.ToolTip" xml:space="preserve">
-    <value>Повторить</value>
-  </data>
-  <data name="ribbonPanel1.Text" xml:space="preserve">
-    <value>Редактирование</value>
-  </data>
-  <data name="editTab.Text" xml:space="preserve">
-    <value>Изменить</value>
-  </data>
+  
+  
+  
   <data name="prjExplrerView.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -383,72 +329,48 @@
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="objExplorerView.ToolTip" xml:space="preserve">
-    <value>Обозреватель объектов</value>
-  </data>
+  
   <data name="errorsWarningsView.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="errorsWarningsView.ToolTip" xml:space="preserve">
-    <value>Ошибки &amp; Предупреждения</value>
-  </data>
-  <data name="viewPanel.Text" xml:space="preserve">
-    <value>Вид</value>
-  </data>
+  
+  
   <data name="RibbonButton1.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="RibbonButton1.ToolTip" xml:space="preserve">
-    <value>Изменение подсветки синтаксиса</value>
-  </data>
-  <data name="syntaxHighPanel.Text" xml:space="preserve">
-    <value>Настройки</value>
-  </data>
+  
+  
   <data name="compileScriptBtn.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="compileScriptBtn.ToolTip" xml:space="preserve">
-    <value>Скомпилировать открытый скрипт</value>
-  </data>
+  
   <data name="CompileAndRunBtn.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="BuildPanel.Text" xml:space="preserve">
-    <value>Скомпилировать</value>
-  </data>
-  <data name="ideTab.Text" xml:space="preserve">
-    <value>IDE</value>
-  </data>
+  
+  
   <data name="esPluginsManage.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="esPluginsManage.ToolTip" xml:space="preserve">
-    <value>Управление ES плагинами</value>
-  </data>
-  <data name="pluginManagePanel.Text" xml:space="preserve">
-    <value>Управление плагинами</value>
-  </data>
-  <data name="installedPlugins.Text" xml:space="preserve">
-    <value>Загруженные плагины</value>
-  </data>
-  <data name="customTab.Text" xml:space="preserve">
-    <value>ES плагины</value>
-  </data>
+  
+  
+  
+  
   <data name="&gt;&gt;mainRibbon.Name" xml:space="preserve">
     <value>mainRibbon</value>
   </data>
@@ -985,9 +907,7 @@
         QXruSuxRRgQ8gvTmw7F/n0QOxjgafW8SMYMKOKFnif8PP91G8CHMLWQAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>ExtremeStudio - проект</value>
-  </data>
+  
   <data name="&gt;&gt;statusLabel.Name" xml:space="preserve">
     <value>statusLabel</value>
   </data>
